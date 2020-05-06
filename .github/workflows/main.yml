@@ -51,7 +51,7 @@ jobs:
         run: yarn lint
 
       - name: Unit tests
-        run: yarn test --coverage
+        run: yarn test --coverage --coverageReporters=text-summary
 
       - name: Send test coverage to codecov
         continue-on-error: true
