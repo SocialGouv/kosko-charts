@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 //
 
-import { Environment } from "@kosko/env";
 import { dirname, join } from "path";
+import { Environment } from "@kosko/env";
 
 const chartPath = dirname(__dirname);
 
@@ -10,10 +11,7 @@ beforeEach(() => {
 });
 
 test("should return a namespace", () => {
-  const {
-    default: components,
-    namespace,
-  } = require("../components/namespace");
+  const { default: components, namespace } = require("../components/namespace");
 
   expect(components).toStrictEqual([namespace]);
 });

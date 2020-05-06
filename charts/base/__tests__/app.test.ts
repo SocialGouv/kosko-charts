@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 //
 
-import { Environment } from "@kosko/env";
 import { dirname, join } from "path";
+import { Environment } from "@kosko/env";
 
 const chartPath = dirname(__dirname);
 
@@ -11,7 +12,10 @@ describe("service", () => {
   });
 
   it("should return a service", () => {
-    const {default: components, ['service']: component} = require("../components/app");
+    const {
+      default: components,
+      ["service"]: component,
+    } = require("../components/app");
 
     expect(components).toContain(component);
   });
@@ -26,7 +30,7 @@ describe("service", () => {
       default: env,
     }));
 
-    const { ['service']: component } = require("../components/app");
+    const { ["service"]: component } = require("../components/app");
 
     expect(() => component.validate()).not.toThrowError();
     expect(component).toMatchSnapshot();
