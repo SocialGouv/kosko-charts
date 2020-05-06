@@ -1,2 +1,3 @@
-# kosko-charts
-The Social Gouv Kosko Charts
+# Kosko Charts
+
+> [Kosko](https://github.com/tommy351/kosko) charts for the SocialGouv needs
