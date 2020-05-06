@@ -10,6 +10,6 @@
       "@socialgouv/kosko-charts/*": ["./*"]
     },
     "target": "ESNext",
-    "types": ["dotenv", "jest", "node"],
+    "types": ["dotenv", "jest", "node"]
   }
 }

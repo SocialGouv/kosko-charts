@@ -18,3 +18,7 @@ rules:
         - sibling
         - index
       newlines-between: ignore
+overrides:
+  - files: jest.config.js
+    rules:
+      "@typescript-eslint/no-var-requires": off
