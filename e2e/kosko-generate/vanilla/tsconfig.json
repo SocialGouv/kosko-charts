@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es2015",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "types": ["execa", "node", "jest"],
+    "paths": {
+      "@socialgouv/kosko-charts/*": ["../../../*"]
+    }
+  }
+}

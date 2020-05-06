@@ -1,0 +1,20 @@
+extends:
+  - "@socialgouv/eslint-config-recommended"
+  - "plugin:import/typescript"
+  - "plugin:@typescript-eslint/recommended"
+parser: '@typescript-eslint/parser'
+plugins:
+  - '@typescript-eslint'
+root: true
+rules:
+  import/no-unresolved: off
+  import/order:
+    - error
+    - groups:
+        - internal
+        - builtin
+        - external
+        - parent
+        - sibling
+        - index
+      newlines-between: ignore
