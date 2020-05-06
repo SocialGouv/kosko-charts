@@ -21,6 +21,8 @@ test("should return a local namespace", () => {
   env.paths.global = "environments/#{environment}/global";
   env.env = ["local"];
 
+  process.env.USERNAME = "momo";
+
   jest.doMock("@kosko/env", () => ({
     __esModule: true,
     default: env,
@@ -35,10 +37,10 @@ test("should return a local namespace", () => {
       "kind": "Namespace",
       "metadata": Object {
         "labels": Object {
-          "app": "cdtn-veille-git-localhost-x",
+          "app": "cdtn-veille-git-localhost-momo",
           "cert": "wildcard",
         },
-        "name": "cdtn-veille-git-localhost-x",
+        "name": "cdtn-veille-git-localhost-momo",
       },
     }
   `);

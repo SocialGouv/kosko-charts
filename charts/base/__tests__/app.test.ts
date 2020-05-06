@@ -25,6 +25,8 @@ describe("service", () => {
     env.paths.global = "environments/#{environment}/global";
     env.env = ["local"];
 
+    process.env.USERNAME = "coco";
+
     jest.doMock("@kosko/env", () => ({
       __esModule: true,
       default: env,

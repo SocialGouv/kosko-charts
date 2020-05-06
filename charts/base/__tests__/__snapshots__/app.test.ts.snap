@@ -38,7 +38,7 @@ Object {
       "app": "app",
     },
     "name": "app",
-    "namespace": "cdtn-veille-git-localhost-x",
+    "namespace": "cdtn-veille-git-localhost-coco",
   },
   "spec": Object {
     "ports": Array [
