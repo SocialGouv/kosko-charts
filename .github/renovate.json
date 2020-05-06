@@ -2,8 +2,5 @@
   "extends": [
     "github>SocialGouv/renovate-config",
     ":automergeAll"
-   ],
-  "gitlabci": {
-    "fileMatch": ["\\.gitlab-ci.yml$"]
-  }
+  ]
 }
