@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`service should return a gitlab namespace 1`] = `
+Object {
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": Object {
+    "labels": Object {
+      "app": "app",
+      "application": "sample",
+      "owner": "sample",
+      "team": "sample",
+    },
+    "name": "app",
+    "namespace": "sample-42-fabrique-dev",
+  },
+  "spec": Object {
+    "ports": Array [
+      Object {
+        "port": 8080,
+        "targetPort": 8080,
+      },
+    ],
+    "selector": Object {
+      "app": "app",
+    },
+    "type": "ClusterIP",
+  },
+}
+`;
+
+exports[`service should return a local service 1`] = `
+Object {
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": Object {
+    "labels": Object {
+      "app": "app",
+    },
+    "name": "app",
+    "namespace": "cdtn-veille-git-localhost-x",
+  },
+  "spec": Object {
+    "ports": Array [
+      Object {
+        "port": 8080,
+        "targetPort": 8080,
+      },
+    ],
+    "selector": Object {
+      "app": "app",
+    },
+    "type": "ClusterIP",
+  },
+}
+`;

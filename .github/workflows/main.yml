@@ -50,8 +50,8 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Functional tests
-        run: yarn e2e --coverage
+      - name: Unit tests
+        run: yarn test --coverage
 
       - name: Send test coverage to codecov
         continue-on-error: true
@@ -60,3 +60,5 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Functional tests
+        run: yarn e2e
