@@ -1,31 +1,12 @@
 {
   "name": "@socialgouv/kosko-charts",
-  "version": "0.0.0",
   "description": "Kosko charts for the SocialGouv needs",
-  "scripts": {
-    "e2e": "jest -c ./e2e/jest.config.js",
-    "lint": "eslint charts e2e --ext .ts",
-    "precommit": "lint-staged",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SocialGouv/kosko-charts.git"
-  },
-  "keywords": [],
+  "version": "0.0.0",
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/SocialGouv/kosko-charts/issues"
+  "_moduleAliases": {
+    "@socialgouv/kosko-charts": "."
   },
-  "homepage": "https://github.com/SocialGouv/kosko-charts#readme",
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "@kosko/env": "0",
-    "kubernetes-models": "0"
-  },
+  "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
@@ -52,7 +33,22 @@
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   },
-  "_moduleAliases": {
-    "@socialgouv/kosko-charts": "."
+  "homepage": "https://github.com/SocialGouv/kosko-charts#readme",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "@kosko/env": "0",
+    "kubernetes-models": "0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "SocialGouv/kosko-charts.git",
+  "scripts": {
+    "build": "tsc",
+    "e2e": "jest -c ./e2e/jest.config.js",
+    "lint": "eslint charts e2e --ext .ts",
+    "precommit": "lint-staged",
+    "test": "jest"
   }
 }

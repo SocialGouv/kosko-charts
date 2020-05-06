@@ -2,12 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "esModuleInterop": true,
+    "lib": ["ESNext"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es2015",
-    "types": ["dotenv", "jest", "node"],
+    "noEmit": true,
     "paths": {
       "@socialgouv/kosko-charts/*": ["./*"]
-    }
+    },
+    "target": "ESNext",
+    "types": ["dotenv", "jest", "node"],
   }
 }
