@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/SocialGouv/kosko-charts/compare/v1.0.0...v1.0.1) (2020-05-07)
+
+
+### Bug Fixes
+
+* **release:** release on npm too ([182e3b9](https://github.com/SocialGouv/kosko-charts/commit/182e3b98e2a37745072674b2a27c278dd6cda845))
+
 # 1.0.0 (2020-05-07)
 
 
