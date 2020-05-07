@@ -77,8 +77,11 @@ jobs:
 
       - name: Release
         run: |
-          npm i @semantic-release/changelog --ignore-scripts --no-save
-          npx semantic-release
+          npm i --global --ignore-scripts --no-save \
+            @semantic-release/changelog \
+            @semantic-release/git \
+            semantic-release
+          semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
