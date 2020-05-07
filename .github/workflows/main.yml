@@ -65,7 +65,7 @@ jobs:
 
   release:
     needs: [build]
-    if: github.ref == 'refs/heads/master'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node
@@ -75,13 +75,12 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - name: Release
-        run: |
-          npm i --global --ignore-scripts --no-save \
-            @semantic-release/changelog \
-            @semantic-release/git \
-            semantic-release
-          semantic-release
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
