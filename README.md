@@ -1,5 +1,8 @@
-# Kosko Charts
-
+<h1 align="center">
+  <img src="https://github.com/SocialGouv/helm-charts/raw/master/.github/boat.gif" width="250"/>
+  <p align="center">Kosko Charts</p>
+  <p align="center" style="font-size: 0.5em">🧹The Social Gouv Kosko Charts✨</p>
+</h1>
 
 <p align="center">
   <a href="https://github.com/SocialGouv/kosko-charts/workflows/main/"><img src="https://github.com/SocialGouv/kosko-charts/workflows/main/badge.svg" alt="Github Master Main Status"></a>
