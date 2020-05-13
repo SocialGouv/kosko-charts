@@ -3,19 +3,23 @@
 export interface GlobalEnvironment {
   annotations?: Record<string, string>;
   domain: string;
+  ingress?: {
+    annotations?: Record<string, string | null>;
+    secretName?: string;
+  };
   labels?: Record<string, string>;
-  namespaceName: string;
+  namespace: {
+    name: string;
+  };
   subdomain: string;
-  subdomainSeparator: string;
 }
 
 export type AppComponentEnvironment = {
   containerPort: number;
-  imageName: string;
-  imageTag: string;
+  image: { name: string; tag: string };
   labels?: Record<string, string>;
   limits?: { cpu: string; memory: string };
-  name?: string;
+  name: string;
   requests?: { cpu: string; memory: string };
   servicePort: number;
   subdomain?: string;
@@ -23,6 +27,5 @@ export type AppComponentEnvironment = {
 
 export type NamespaceComponentEnvironment = {
   annotations?: Record<string, string>;
-  enabled: boolean;
   labels?: Record<string, string>;
 };

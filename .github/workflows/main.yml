@@ -64,7 +64,8 @@ jobs:
         run: yarn e2e
 
   release:
-    needs: [build]
+    needs:
+      - build
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:

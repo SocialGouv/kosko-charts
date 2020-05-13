@@ -1,2 +1,9 @@
 coverage
 node_modules
+/charts
+/charts.old
+/environments
+/components
+/utils
+/types
+/tsconfig.build.tsbuildinfo

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should throw because of missing variables 1`] = `
+"Invalid config provided:
+- Invalid value undefined supplied to : process.env.CI_ENVIRONMENT_NAME: NonEmptyString
+- Invalid value undefined supplied to : process.env.CI_ENVIRONMENT_SLUG: NonEmptyString
+- Invalid value undefined supplied to : process.env.CI_PROJECT_NAME: NonEmptyString
+- Invalid value undefined supplied to : process.env.CI_PROJECT_PATH_SLUG: NonEmptyString
+- Invalid value undefined supplied to : process.env.KUBE_INGRESS_BASE_DOMAIN: NonEmptyString
+- Invalid value undefined supplied to : process.env.KUBE_NAMESPACE: NonEmptyString"
+`;

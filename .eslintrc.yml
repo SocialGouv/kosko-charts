@@ -7,6 +7,7 @@ plugins:
   - '@typescript-eslint'
 root: true
 rules:
+  "@typescript-eslint/no-use-before-define": off
   import/no-unresolved: off
   import/order:
     - error
@@ -18,6 +19,10 @@ rules:
         - sibling
         - index
       newlines-between: ignore
+      pathGroups:
+        - pattern: "@socialgouv/kosko-charts/**"
+          group: index
+
 overrides:
   - files: jest.config.js
     rules:
