@@ -21,6 +21,7 @@ test("should throw because the containerPort is not an integer", () => {
 test("should return a deployment, an ingress and service ", () => {
   const params: Partial<Params> = {
     containerPort: 1234,
+    servicePort: 5678,
     domain: "fabrique.social.gouv.fr",
     name: "app_name",
     image: { name: "image_name", tag: "image_tag" },
@@ -54,6 +55,7 @@ test("should return the models with global params in it", () => {
   };
   const params: Partial<AppComponentEnvironment> = {
     containerPort: 1234,
+    servicePort: 5678,
     image: { name: "image_name", tag: "image_tag" },
     name: "app_name",
     subdomain: "my.sample",
