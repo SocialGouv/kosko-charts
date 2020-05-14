@@ -134,6 +134,7 @@ function assertType(params: Params): Partial<Params> | never {
         namespace: t.type({
           name: NonEmptyString,
         }),
+        servicePort: t.Integer,
       },
       "AppComponentParams"
     ).decode,

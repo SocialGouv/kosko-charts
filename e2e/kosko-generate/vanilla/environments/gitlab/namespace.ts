@@ -1,3 +1,5 @@
 //
 
-export { default } from "@socialgouv/kosko-charts/charts/base/environments/gitlab/namespace";
+import gitlab from "@socialgouv/kosko-charts/environments/gitlab/namespaces";
+
+export default gitlab(process.env);

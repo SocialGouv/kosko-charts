@@ -8,6 +8,8 @@ plugins:
 root: true
 rules:
   "@typescript-eslint/no-use-before-define": off
+  "@typescript-eslint/prefer-reduce-type-parameter": off
+
   import/no-unresolved: off
   import/order:
     - error

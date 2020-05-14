@@ -8,7 +8,7 @@
   ],
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "_moduleAliases": {
-    "@socialgouv/kosko-charts": "."
+    "@socialgouv/kosko-charts": "src"
   },
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "devDependencies": {
