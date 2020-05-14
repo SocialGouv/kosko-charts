@@ -1,3 +1,17 @@
+# [2.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v1.0.2...v2.0.0-alpha.1) (2020-05-14)
+
+
+* refactor(github)!: export generators ([4f502d0](https://github.com/SocialGouv/kosko-charts/commit/4f502d040f14bec93229e8b2cad29b4e03eeaf10))
+
+
+### BREAKING CHANGES
+
+* **COMPLETE REWORK**
+
+`@socialgouv/kosko-charts` is now exposing component and environment
+generators !
+More docs soon ;)
+
 ## [1.0.2](https://github.com/SocialGouv/kosko-charts/compare/v1.0.1...v1.0.2) (2020-05-11)
 
 
