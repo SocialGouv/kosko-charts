@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`--env gitlab : should generate gitlab manifest 1`] = `
+"---
+metadata:
+  name: sample-next-app-24-e2e-branch-42
+  labels:
+    app: sample-next-app-24-e2e-branch-42
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev
+    git/remote: 'git@github.com:SocialGouv/sample-next-app.git'
+    git/branch: e2e-branch
+    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
+    field.cattle.io/creatorId: gitlab
+apiVersion: v1
+kind: Namespace
+---
+metadata:
+  name: www
+  labels:
+    app: www
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    component: next
+  namespace: sample-next-app-24-e2e-branch-42
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: www
+  template:
+    metadata:
+      labels:
+        app: www
+        application: sample-next-app
+        owner: sample-next-app
+        team: sample-next-app
+        component: next
+    spec:
+      containers:
+        - image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app:123456789
+          name: www
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 50m
+              memory: 32Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  name: www
+  labels:
+    app: www
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    component: next
+  namespace: sample-next-app-24-e2e-branch-42
+  annotations:
+    appgw.ingress.kubernetes.io/ssl-redirect: 'true'
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: azure/application-gateway
+    kubernetes.io/tls-acme: 'true'
+spec:
+  rules:
+    - host: e2e-branch-42-sample-next-app.dev.fabrique.social.gouv.fr
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: www
+              servicePort: 80
+  tls:
+    - hosts:
+        - e2e-branch-42-sample-next-app.dev.fabrique.social.gouv.fr
+apiVersion: extensions/v1beta1
+kind: Ingress
+---
+metadata:
+  name: www
+  labels:
+    app: www
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    component: next
+  namespace: sample-next-app-24-e2e-branch-42
+spec:
+  selector:
+    app: www
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+apiVersion: v1
+kind: Service"
+`;
