@@ -1,15 +1,15 @@
-import * as t from "io-ts";
-import { failure } from "io-ts/lib/PathReporter";
-import { fold } from "fp-ts/lib/Either";
-import { pipe } from "fp-ts/lib/pipeable";
-import { NonEmptyString } from "io-ts-types/lib/NonEmptyString";
 import {
   AppComponentEnvironment,
   GlobalEnvironment,
 } from "@socialgouv/kosko-charts/types";
-import { Service } from "kubernetes-models/v1/Service";
-import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
+import { fold } from "fp-ts/lib/Either";
+import { pipe } from "fp-ts/lib/pipeable";
+import * as t from "io-ts";
+import { NonEmptyString } from "io-ts-types/lib/NonEmptyString";
+import { failure } from "io-ts/lib/PathReporter";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
+import { Service } from "kubernetes-models/v1/Service";
 
 export type Params = AppComponentEnvironment & GlobalEnvironment;
 

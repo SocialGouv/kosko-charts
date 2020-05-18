@@ -1,7 +1,9 @@
 extends:
   - "@socialgouv/eslint-config-recommended"
-  - "plugin:import/typescript"
+  - "plugin:@typescript-eslint/eslint-recommended"
   - "plugin:@typescript-eslint/recommended"
+  - "plugin:import/typescript"
+  - "prettier/@typescript-eslint"
 parser: '@typescript-eslint/parser'
 plugins:
   - '@typescript-eslint'
@@ -13,7 +15,10 @@ rules:
   import/no-unresolved: off
   import/order:
     - error
-    - groups:
+    - alphabetize:
+        caseInsensitive: true
+        order: asc
+      groups:
         - internal
         - builtin
         - external
