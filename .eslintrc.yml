@@ -1,17 +1,19 @@
 extends:
   - "@socialgouv/eslint-config-recommended"
   - "plugin:@typescript-eslint/eslint-recommended"
-  - "plugin:@typescript-eslint/recommended"
+  - "plugin:@typescript-eslint/all"
   - "plugin:import/typescript"
   - "prettier/@typescript-eslint"
 parser: '@typescript-eslint/parser'
+parserOptions:
+  project: tsconfig.json
 plugins:
   - '@typescript-eslint'
 root: true
 rules:
-  "@typescript-eslint/no-use-before-define": off
-  "@typescript-eslint/prefer-reduce-type-parameter": off
-
+  "@typescript-eslint/no-type-alias": off
+  "@typescript-eslint/prefer-readonly-parameter-types": off
+  "@typescript-eslint/typedef": off
   import/no-unresolved:
     - error
     - ignore:

@@ -20,45 +20,11 @@ const GitlabProcessEnv = t.type(
   },
   "process.env"
 );
+
 type GitlabProcessEnv = t.TypeOf<typeof GitlabProcessEnv>;
 
-export default (env = process.env): GlobalEnvironment => {
-  const {
-    PRODUCTION,
-    CI_ENVIRONMENT_NAME,
-    CI_ENVIRONMENT_SLUG,
-    CI_PROJECT_NAME,
-    CI_PROJECT_PATH_SLUG,
-    KUBE_INGRESS_BASE_DOMAIN,
-    KUBE_NAMESPACE,
-  } = assertValidEnv(env);
-
-  const isProductionCluster = Boolean(PRODUCTION);
-
-  return {
-    namespace: {
-      name: KUBE_NAMESPACE,
-    },
-    //
-    domain: KUBE_INGRESS_BASE_DOMAIN,
-    subdomain: isProductionCluster
-      ? CI_PROJECT_NAME
-      : `${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}`,
-    //
-    annotations: {
-      "app.gitlab.com/app": CI_PROJECT_PATH_SLUG,
-      "app.gitlab.com/env": CI_ENVIRONMENT_SLUG,
-      "app.gitlab.com/env.name": CI_ENVIRONMENT_NAME,
-    },
-    labels: {
-      application: CI_PROJECT_NAME,
-      owner: CI_PROJECT_NAME,
-      team: CI_PROJECT_NAME,
-    },
-  };
-};
-
 function assertValidEnv(env: typeof process.env): GitlabProcessEnv {
+  /* eslint-disable @typescript-eslint/unbound-method */
   return pipe(
     env,
     GitlabProcessEnv.decode,
@@ -83,3 +49,39 @@ function assertValidEnv(env: typeof process.env): GitlabProcessEnv {
     )
   );
 }
+
+export default (env = process.env): GlobalEnvironment => {
+  const {
+    PRODUCTION,
+    CI_ENVIRONMENT_NAME,
+    CI_ENVIRONMENT_SLUG,
+    CI_PROJECT_NAME,
+    CI_PROJECT_PATH_SLUG,
+    KUBE_INGRESS_BASE_DOMAIN,
+    KUBE_NAMESPACE,
+  } = assertValidEnv(env);
+
+  const isProductionCluster = Boolean(PRODUCTION);
+
+  return {
+    namespace: {
+      name: KUBE_NAMESPACE,
+    },
+    //
+    domain: KUBE_INGRESS_BASE_DOMAIN,
+    subdomain: isProductionCluster
+      ? CI_PROJECT_NAME
+      : `${CI_ENVIRONMENT_SLUG as string}-${CI_PROJECT_NAME as string}`,
+    //
+    annotations: {
+      "app.gitlab.com/app": CI_PROJECT_PATH_SLUG,
+      "app.gitlab.com/env": CI_ENVIRONMENT_SLUG,
+      "app.gitlab.com/env.name": CI_ENVIRONMENT_NAME,
+    },
+    labels: {
+      application: CI_PROJECT_NAME,
+      owner: CI_PROJECT_NAME,
+      team: CI_PROJECT_NAME,
+    },
+  };
+};

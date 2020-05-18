@@ -14,7 +14,7 @@ export interface GlobalEnvironment {
   subdomain: string;
 }
 
-export type AppComponentEnvironment = {
+export interface AppComponentEnvironment {
   containerPort: number;
   image: { name: string; tag: string };
   labels?: Record<string, string>;
@@ -23,9 +23,9 @@ export type AppComponentEnvironment = {
   requests?: { cpu: string; memory: string };
   servicePort: number;
   subdomain?: string;
-};
+}
 
-export type NamespaceComponentEnvironment = {
+export interface NamespaceComponentEnvironment {
   annotations?: Record<string, string>;
   labels?: Record<string, string>;
-};
+}

@@ -12,21 +12,8 @@ import {
 
 export type Params = NamespaceComponentEnvironment & GlobalEnvironment;
 
-export const create = (params: Params): { namespace: Namespace } => {
-  assertType(params);
-  const name = params.namespace.name;
-  return {
-    namespace: new Namespace({
-      metadata: {
-        name,
-        labels: { app: name, ...params.labels },
-        annotations: params.annotations,
-      },
-    }),
-  };
-};
-
 function assertType(params: Params): Partial<Params> | never {
+  /* eslint-disable @typescript-eslint/unbound-method */
   return pipe(
     params,
     t.type(
@@ -50,3 +37,17 @@ function assertType(params: Params): Partial<Params> | never {
     )
   );
 }
+
+export const create = (params: Params): { namespace: Namespace } => {
+  assertType(params);
+  const name = params.namespace.name;
+  return {
+    namespace: new Namespace({
+      metadata: {
+        name,
+        labels: { app: name, ...params.labels },
+        annotations: params.annotations,
+      },
+    }),
+  };
+};

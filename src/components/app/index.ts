@@ -14,6 +14,39 @@ import {
 
 export type Params = AppComponentEnvironment & GlobalEnvironment;
 
+function assertType(params: Params): Partial<Params> | never {
+  /* eslint-disable @typescript-eslint/unbound-method */
+  return pipe(
+    params,
+    t.type(
+      {
+        containerPort: t.Integer,
+        image: t.type({
+          name: NonEmptyString,
+          tag: NonEmptyString,
+        }),
+        name: t.string,
+        namespace: t.type({
+          name: NonEmptyString,
+        }),
+        servicePort: t.Integer,
+      },
+      "AppComponentParams"
+    ).decode,
+    fold(
+      (errors) => {
+        throw new Error(
+          [
+            "Invalid config provided:",
+            "- " + failure(errors).join("\n- ").replace(/\//g, "."),
+          ].join("\n")
+        );
+      },
+      (_) => _
+    )
+  );
+}
+
 export const create = (
   params: Params
 ): { deployment: Deployment; ingress: Ingress; service: Service } => {
@@ -120,35 +153,3 @@ export const create = (
     }),
   };
 };
-
-function assertType(params: Params): Partial<Params> | never {
-  return pipe(
-    params,
-    t.type(
-      {
-        containerPort: t.Integer,
-        image: t.type({
-          name: NonEmptyString,
-          tag: NonEmptyString,
-        }),
-        name: t.string,
-        namespace: t.type({
-          name: NonEmptyString,
-        }),
-        servicePort: t.Integer,
-      },
-      "AppComponentParams"
-    ).decode,
-    fold(
-      (errors) => {
-        throw new Error(
-          [
-            "Invalid config provided:",
-            "- " + failure(errors).join("\n- ").replace(/\//g, "."),
-          ].join("\n")
-        );
-      },
-      (_) => _
-    )
-  );
-}
