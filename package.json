@@ -15,7 +15,7 @@
     "@socialgouv/eslint-config-recommended": "^0.22.1",
     "@types/dotenv": "^8.2.0",
     "@types/execa": "^2.0.0",
-    "@types/jest": "^25.2.2",
+    "@types/jest": "^25.2.3",
     "@types/node": "^13.13.5",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
