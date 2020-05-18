@@ -1,8 +1,10 @@
 import { merge } from "@kosko/env/dist/merge";
+
 import {
   GlobalEnvironment,
   AppComponentEnvironment,
 } from "@socialgouv/kosko-charts/types";
+
 import { create, Params } from "./index";
 
 test("should throw because of missing variables", () => {

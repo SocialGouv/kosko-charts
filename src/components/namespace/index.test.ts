@@ -1,4 +1,5 @@
 import { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
+
 import { create, Params } from "./index";
 
 test("should throw because of missing variables", () => {

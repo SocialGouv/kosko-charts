@@ -12,23 +12,23 @@ rules:
   "@typescript-eslint/no-use-before-define": off
   "@typescript-eslint/prefer-reduce-type-parameter": off
 
-  import/no-unresolved: off
+  import/no-unresolved:
+    - error
+    - ignore:
+      - "^@socialgouv/kosko-charts/"
+
   import/order:
     - error
     - alphabetize:
         caseInsensitive: true
         order: asc
-      groups:
-        - internal
-        - builtin
-        - external
-        - parent
-        - sibling
-        - index
-      newlines-between: ignore
+      newlines-between: always
       pathGroups:
         - pattern: "@socialgouv/kosko-charts/**"
-          group: index
+          group: external
+          position: after
+      pathGroupsExcludedImportTypes:
+        - builtin
 
 overrides:
   - files: jest.config.js

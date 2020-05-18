@@ -1,7 +1,3 @@
-import {
-  AppComponentEnvironment,
-  GlobalEnvironment,
-} from "@socialgouv/kosko-charts/types";
 import { fold } from "fp-ts/lib/Either";
 import { pipe } from "fp-ts/lib/pipeable";
 import * as t from "io-ts";
@@ -10,6 +6,11 @@ import { failure } from "io-ts/lib/PathReporter";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
 import { Service } from "kubernetes-models/v1/Service";
+
+import {
+  AppComponentEnvironment,
+  GlobalEnvironment,
+} from "@socialgouv/kosko-charts/types";
 
 export type Params = AppComponentEnvironment & GlobalEnvironment;
 
