@@ -62,9 +62,7 @@ export default (env = process.env): GlobalEnvironment => {
   } = assertValidEnv(env);
 
   const isProductionCluster = Boolean(PRODUCTION);
-  const application = isProductionCluster
-    ? CI_PROJECT_NAME
-    : `${CI_ENVIRONMENT_SLUG as string}-${CI_PROJECT_NAME as string}`;
+  const application = isProductionCluster ? CI_PROJECT_NAME : KUBE_NAMESPACE;
 
   return {
     namespace: {
