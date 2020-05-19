@@ -3,8 +3,9 @@
   "description": "Kosko charts for the SocialGouv needs",
   "version": "2.0.0-alpha.2",
   "files": [
-    "charts",
-    "environments"
+    "components",
+    "environments",
+    "types"
   ],
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "_moduleAliases": {
