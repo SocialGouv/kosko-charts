@@ -1,3 +1,10 @@
+# [2.0.0-alpha.7](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2020-05-19)
+
+
+### Features
+
+* **env:** prefix app with gitlab env slug ([ffcaa3c](https://github.com/SocialGouv/kosko-charts/commit/ffcaa3c3e53fbb8f61f8077ca83958714e7c336e))
+
 # [2.0.0-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2020-05-19)
 
 
