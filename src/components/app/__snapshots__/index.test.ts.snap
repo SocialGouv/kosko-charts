@@ -217,7 +217,7 @@ Object {
           "hosts": Array [
             "my.sample.fabrique.social.gouv.fr",
           ],
-          "secretName": "wildcard-crt",
+          "secretName": "sample-crt",
         },
       ],
     },

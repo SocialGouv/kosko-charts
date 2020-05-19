@@ -17,6 +17,7 @@ export interface GlobalEnvironment {
 export interface AppComponentEnvironment {
   containerPort: number;
   image: { name: string; tag: string };
+  ingress?: { secretName?: string };
   labels?: Record<string, string>;
   limits?: { cpu: string; memory: string };
   name: string;

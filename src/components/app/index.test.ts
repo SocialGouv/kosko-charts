@@ -61,6 +61,9 @@ test("should return the models with global params in it", () => {
     image: { name: "image_name", tag: "image_tag" },
     name: "app_name",
     subdomain: "my.sample",
+    ingress: {
+      secretName: "sample-crt",
+    },
   };
   expect(create(merge(global, params) as Params)).toMatchSnapshot();
 });
