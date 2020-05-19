@@ -62,6 +62,9 @@ export default (env = process.env): GlobalEnvironment => {
   } = assertValidEnv(env);
 
   const isProductionCluster = Boolean(PRODUCTION);
+  const application = isProductionCluster
+    ? CI_PROJECT_NAME
+    : `${CI_ENVIRONMENT_SLUG as string}-${CI_PROJECT_NAME as string}`;
 
   return {
     namespace: {
@@ -69,9 +72,7 @@ export default (env = process.env): GlobalEnvironment => {
     },
     //
     domain: KUBE_INGRESS_BASE_DOMAIN,
-    subdomain: isProductionCluster
-      ? CI_PROJECT_NAME
-      : `${CI_ENVIRONMENT_SLUG as string}-${CI_PROJECT_NAME as string}`,
+    subdomain: isProductionCluster ? CI_PROJECT_NAME : application,
     //
     annotations: {
       "app.gitlab.com/app": CI_PROJECT_PATH_SLUG,
@@ -79,7 +80,7 @@ export default (env = process.env): GlobalEnvironment => {
       "app.gitlab.com/env.name": CI_ENVIRONMENT_NAME,
     },
     labels: {
-      application: CI_PROJECT_NAME,
+      application,
       owner: CI_PROJECT_NAME,
       team: CI_PROJECT_NAME,
     },

@@ -27,7 +27,7 @@ test("should return the gitlab global env", () => {
       },
       "domain": "dev.fabrique.social.gouv.fr",
       "labels": Object {
-        "application": "sample",
+        "application": "my-test-sample",
         "owner": "sample",
         "team": "sample",
       },

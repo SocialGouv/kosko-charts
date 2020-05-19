@@ -6,7 +6,7 @@ metadata:
   name: sample-next-app-24-e2e-branch-42
   labels:
     app: sample-next-app-24-e2e-branch-42
-    application: sample-next-app
+    application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -25,7 +25,7 @@ metadata:
   name: www
   labels:
     app: www
-    application: sample-next-app
+    application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
@@ -39,7 +39,7 @@ spec:
     metadata:
       labels:
         app: www
-        application: sample-next-app
+        application: e2e-branch-42-sample-next-app
         owner: sample-next-app
         team: sample-next-app
         component: next
@@ -64,7 +64,7 @@ metadata:
   name: www
   labels:
     app: www
-    application: sample-next-app
+    application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
@@ -93,7 +93,7 @@ metadata:
   name: www
   labels:
     app: www
-    application: sample-next-app
+    application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
