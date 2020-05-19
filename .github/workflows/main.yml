@@ -98,14 +98,17 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: components
+          path: components
       - name: Download environments form build job
         uses: actions/download-artifact@v2
         with:
           name: environments
+          path: environments
       - name: Download types form build job
         uses: actions/download-artifact@v2
         with:
           name: types
+          path: types
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
