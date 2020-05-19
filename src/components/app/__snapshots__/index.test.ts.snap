@@ -182,9 +182,7 @@ Object {
     "metadata": Object {
       "annotations": Object {
         "appgw.ingress.kubernetes.io/ssl-redirect": "true",
-        "certmanager.k8s.io/cluster-issuer": null,
         "kubernetes.io/ingress.class": "azure/application-gateway",
-        "kubernetes.io/tls-acme": null,
       },
       "labels": Object {
         "app": "app_name",

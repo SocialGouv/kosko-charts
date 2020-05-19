@@ -4,7 +4,7 @@ export interface GlobalEnvironment {
   annotations?: Record<string, string>;
   domain: string;
   ingress?: {
-    annotations?: Record<string, string | null>;
+    annotations?: Record<string, string | undefined>;
     secretName?: string;
   };
   labels?: Record<string, string>;
