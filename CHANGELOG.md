@@ -1,3 +1,10 @@
+# [2.0.0-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2020-05-19)
+
+
+### Features
+
+* **component:** use undefined to disable annotations ([0e90f1a](https://github.com/SocialGouv/kosko-charts/commit/0e90f1a94bc79d35457ae5dc8527641e330960e9))
+
 # [2.0.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2020-05-19)
 
 
