@@ -1,3 +1,11 @@
+# [2.0.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2020-05-19)
+
+
+### Bug Fixes
+
+* compile without composite option ([f78b9a0](https://github.com/SocialGouv/kosko-charts/commit/f78b9a07a4447c8f99b80682f75b50e6a19e98a2))
+* **pkg:** missing files in published package ([05ea4c3](https://github.com/SocialGouv/kosko-charts/commit/05ea4c3d7f53f76e5155d79d4d03cd5f16323847))
+
 # [2.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2020-05-19)
 
 
