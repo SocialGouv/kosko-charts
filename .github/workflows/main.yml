@@ -64,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: lib
-          path: "+(components|environments|types)/**"
+          path: "./+(components|environments|types)/**"
 
       - name: Functional tests
         run: yarn e2e
