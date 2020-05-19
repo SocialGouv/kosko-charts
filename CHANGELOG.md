@@ -1,3 +1,10 @@
+# [2.0.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2020-05-19)
+
+
+### Bug Fixes
+
+* **components:** allow ingress secretName override in app ([22346e8](https://github.com/SocialGouv/kosko-charts/commit/22346e870dc9a8901f2b1197ed8ec1dd9f89c5af))
+
 # [2.0.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2020-05-19)
 
 
