@@ -50,7 +50,7 @@
   },
   "repository": "SocialGouv/kosko-charts.git",
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json",
     "e2e": "jest -c ./e2e/jest.config.js",
     "lint": "eslint src e2e --ext .ts",
     "precommit": "lint-staged",
