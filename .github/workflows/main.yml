@@ -63,9 +63,26 @@ jobs:
       - name: Archive build
         uses: actions/upload-artifact@v2
         with:
-          name: lib
-          path: "./{components,environments,types}/"
+          name: components
+          path: components/
 
+      - name: Archive build
+        uses: actions/upload-artifact@v2
+        with:
+          name: abs-components
+          path: ${{ github.workspace }}/components/
+
+      - name: Archive build
+        uses: actions/upload-artifact@v2
+        with:
+          name: environments
+          path: ${{ github.workspace }}/environments/
+
+      - name: Archive build
+        uses: actions/upload-artifact@v2
+        with:
+          name: lib
+          path: ${{ github.workspace }}/{components,environments}/
       - name: Functional tests
         run: yarn e2e
 
