@@ -1,3 +1,10 @@
+# [2.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2020-05-19)
+
+
+### Bug Fixes
+
+* trigger patch release ([c1c2fd6](https://github.com/SocialGouv/kosko-charts/commit/c1c2fd679ad133c64d62df2d50749b2133160fbb))
+
 # [2.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v1.0.2...v2.0.0-alpha.1) (2020-05-14)
 
 
