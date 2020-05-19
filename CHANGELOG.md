@@ -1,3 +1,10 @@
+# [2.0.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2020-05-19)
+
+
+### Bug Fixes
+
+* **github:** transfert built folder to release job (9) ([ca73944](https://github.com/SocialGouv/kosko-charts/commit/ca7394470092955aa1fb8d3d2f6be7b9c2d38b90))
+
 # [2.0.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2020-05-19)
 
 
