@@ -1,10 +1,13 @@
 //
 
+import { config } from "dotenv";
 // eslint-disable-next-line import/default
 import execa from "execa";
 import { dirname, resolve } from "path";
 
-import env from "../../.env";
+//
+
+const env = config({ path: resolve(__dirname, "../../.env") }).parsed;
 
 //
 

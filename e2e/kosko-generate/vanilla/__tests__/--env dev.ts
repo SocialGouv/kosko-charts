@@ -1,12 +1,13 @@
 //
 
+import { config } from "dotenv";
 // eslint-disable-next-line import/default
 import execa from "execa";
 import { dirname, resolve } from "path";
 
-import env from "../../.env";
-
 //
+
+const env = config({ path: resolve(__dirname, "../../.env") }).parsed;
 
 test("--env dev : should generate dev manifest", async () => {
   const { stdout: BIN_ROOT } = await execa("npm", ["bin"]);
