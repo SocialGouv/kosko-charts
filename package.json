@@ -28,6 +28,8 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.0.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
     "execa": "^4.0.1",
     "jest": "^26.0.1",
     "jest-file-snapshot": "^0.3.8",
@@ -59,9 +61,6 @@
   },
   "dependencies": {
     "fp-ts": "^2.6.0",
-    "io-ts": "^2.2.2",
-    "io-ts-types": "^0.5.6",
-    "monocle-ts": "^2.1.0",
-    "newtype-ts": "^0.3.4"
+    "io-ts": "^2.2.2"
   }
 }

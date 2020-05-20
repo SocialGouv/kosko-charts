@@ -1,13 +1,18 @@
-import { AppComponentEnvironment } from "@socialgouv/kosko-charts/types";
+import { AppComponentEnvironment } from "@socialgouv/kosko-charts/components/app/params";
 
-const env: Partial<AppComponentEnvironment> = {
-  name: "www",
+const env: AppComponentEnvironment = {
+  containerPort: 8080,
+
+  image: {
+    name: "node",
+    tag: "12-alpine",
+  },
 
   labels: {
     component: "next",
   },
 
-  containerPort: 8080,
+  name: "www",
   servicePort: 80,
 };
 

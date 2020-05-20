@@ -3,32 +3,32 @@
 exports[`--env gitlab : should generate gitlab manifest 1`] = `
 "---
 metadata:
-  name: sample-next-app-24-e2e-branch-42
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev
+    field.cattle.io/creatorId: gitlab
+    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
+    git/branch: e2e-branch
+    git/remote: 'git@github.com:SocialGouv/sample-next-app.git'
   labels:
     app: sample-next-app-24-e2e-branch-42
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-  annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev
-    git/remote: 'git@github.com:SocialGouv/sample-next-app.git'
-    git/branch: e2e-branch
-    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
-    field.cattle.io/creatorId: gitlab
+  name: sample-next-app-24-e2e-branch-42
 apiVersion: v1
 kind: Namespace
 ---
 metadata:
-  name: www
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
+  name: www
   namespace: sample-next-app-24-e2e-branch-42
 spec:
   replicas: 1
@@ -61,13 +61,13 @@ apiVersion: apps/v1
 kind: Deployment
 ---
 metadata:
-  name: www
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
+  name: www
   namespace: sample-next-app-24-e2e-branch-42
   annotations:
     appgw.ingress.kubernetes.io/ssl-redirect: 'true'
@@ -79,10 +79,10 @@ spec:
     - host: e2e-branch-42-sample-next-app.dev.fabrique.social.gouv.fr
       http:
         paths:
-          - path: /
-            backend:
+          - backend:
               serviceName: www
               servicePort: 80
+            path: /
   tls:
     - hosts:
         - e2e-branch-42-sample-next-app.dev.fabrique.social.gouv.fr
@@ -90,21 +90,21 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 ---
 metadata:
-  name: www
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
+  name: www
   namespace: sample-next-app-24-e2e-branch-42
 spec:
-  selector:
-    app: www
-  type: ClusterIP
   ports:
     - port: 80
       targetPort: 8080
+  selector:
+    app: www
+  type: ClusterIP
 apiVersion: v1
 kind: Service"
 `;

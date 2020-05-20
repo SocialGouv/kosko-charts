@@ -8,9 +8,19 @@ parser: '@typescript-eslint/parser'
 parserOptions:
   project: tsconfig.json
 plugins:
-  - '@typescript-eslint'
+  - "@typescript-eslint"
+  - sort-keys-fix
+  - simple-import-sort
 root: true
 rules:
+  "sort-imports": off
+  "sort-keys":
+    - error
+
+  "simple-import-sort/sort": error
+
+  "sort-keys-fix/sort-keys-fix": warn
+
   "@typescript-eslint/no-type-alias": off
   "@typescript-eslint/prefer-readonly-parameter-types": off
   "@typescript-eslint/typedef": off
@@ -18,24 +28,16 @@ rules:
   "@typescript-eslint/strict-boolean-expressions": off
   "@typescript-eslint/no-magic-numbers": off
 
+  "import/first": error
+  "import/newline-after-import": error
+  "import/no-duplicates": error
+
   import/no-unresolved:
     - error
     - ignore:
       - "^@socialgouv/kosko-charts/"
 
-  import/order:
-    - error
-    - alphabetize:
-        caseInsensitive: true
-        order: asc
-      newlines-between: always
-      pathGroups:
-        - pattern: "@socialgouv/kosko-charts/**"
-          group: external
-          position: after
-      pathGroupsExcludedImportTypes:
-        - builtin
-
+  "import/order": off
 overrides:
   - files: "*.config.js"
     rules:

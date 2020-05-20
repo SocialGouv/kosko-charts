@@ -1,9 +1,8 @@
 //
 
-import { dirname, join } from "path";
-
 // eslint-disable-next-line import/default
 import execa from "execa";
+import { dirname, join } from "path";
 
 import env from "../../.env";
 
