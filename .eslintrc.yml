@@ -14,6 +14,10 @@ rules:
   "@typescript-eslint/no-type-alias": off
   "@typescript-eslint/prefer-readonly-parameter-types": off
   "@typescript-eslint/typedef": off
+
+  "@typescript-eslint/strict-boolean-expressions": off
+  "@typescript-eslint/no-magic-numbers": off
+
   import/no-unresolved:
     - error
     - ignore:
@@ -33,6 +37,8 @@ rules:
         - builtin
 
 overrides:
-  - files: jest.config.js
+  - files: "*.config.js"
     rules:
+      "@typescript-eslint/no-require-imports": off
+      "@typescript-eslint/no-unsafe-member-access": off
       "@typescript-eslint/no-var-requires": off
