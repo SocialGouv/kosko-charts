@@ -1,3 +1,14 @@
+# [2.0.0-alpha.8](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.7...v2.0.0-alpha.8) (2020-05-20)
+
+
+* feat!: format preprod subdomain with CI_COMMIT_TAG (#16) ([6a6d59e](https://github.com/SocialGouv/kosko-charts/commit/6a6d59ef661b50b8e5a64487e9a589ddb44dcefc)), closes [#16](https://github.com/SocialGouv/kosko-charts/issues/16)
+
+
+### BREAKING CHANGES
+
+*   - format preprod subdomain with CI_COMMIT_TAG
+  - refactor(app): better runtime error
+
 # [2.0.0-alpha.7](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2020-05-19)
 
 
