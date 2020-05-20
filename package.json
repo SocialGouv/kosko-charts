@@ -59,9 +59,6 @@
   },
   "dependencies": {
     "fp-ts": "^2.6.0",
-    "io-ts": "^2.2.2",
-    "io-ts-types": "^0.5.6",
-    "monocle-ts": "^2.1.0",
-    "newtype-ts": "^0.3.4"
+    "io-ts": "^2.2.2"
   }
 }
