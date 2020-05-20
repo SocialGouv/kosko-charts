@@ -1,3 +1,12 @@
+# [2.0.0-alpha.10](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2020-05-20)
+
+
+### Bug Fixes
+
+* **gitlab:** use CI_PROJECT_NAME as namespace in prod ([f97d05e](https://github.com/SocialGouv/kosko-charts/commit/f97d05ed90b2b3a28c66edce97e7a145ab9bd5d5))
+* **k8s:** use tagged image when available (2) ([15cca25](https://github.com/SocialGouv/kosko-charts/commit/15cca255103f5920fdcab5d7a921b374b37bfe4d))
+* **k8s:** use tagged image when available (3) ([527687d](https://github.com/SocialGouv/kosko-charts/commit/527687da4b372de8c9fb340fe5a9b069910f46d7))
+
 # [2.0.0-alpha.9](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.8...v2.0.0-alpha.9) (2020-05-20)
 
 
