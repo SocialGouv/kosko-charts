@@ -53,7 +53,7 @@ const mapper = ({
       team: CI_PROJECT_NAME,
     },
     namespace: {
-      name: isProductionCluster ? KUBE_NAMESPACE : CI_PROJECT_NAME,
+      name: isProductionCluster ? CI_PROJECT_NAME : KUBE_NAMESPACE,
     },
     subdomain: isProductionCluster ? CI_PROJECT_NAME : application,
   };

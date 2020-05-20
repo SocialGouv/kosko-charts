@@ -14,7 +14,7 @@ Object {
     "team": "sample",
   },
   "namespace": Object {
-    "name": "sample-42-my-test",
+    "name": "sample",
   },
   "subdomain": "sample",
 }
