@@ -17,6 +17,9 @@ export const AppComponentParams = D.intersection(
     servicePort: Integer,
   }),
   D.partial({
+    ingress: D.partial({
+      secretName: D.string,
+    }),
     labels: D.record(D.string),
     limits: D.type({ cpu: D.string, memory: D.string }),
     requests: D.type({ cpu: D.string, memory: D.string }),

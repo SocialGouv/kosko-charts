@@ -10,11 +10,15 @@ const env: AppComponentEnvironment = {
       : process.env.CI_COMMIT_SHA,
   },
 
+  ingress: {
+    secretName: process.env.PRODUCTION ? "www-crt" : "wildcard-crt",
+  },
+
   labels: {
     component: "next",
   },
-
   name: "www",
+
   servicePort: 80,
 };
 

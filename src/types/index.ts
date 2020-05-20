@@ -5,7 +5,6 @@ export interface GlobalEnvironment {
   domain: string;
   ingress?: {
     annotations?: Record<string, string | undefined>;
-    secretName?: string;
   };
   labels?: Record<string, string>;
   namespace: {

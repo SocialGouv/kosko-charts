@@ -6,6 +6,5 @@ export default {
       "certmanager.k8s.io/cluster-issuer": undefined,
       "kubernetes.io/tls-acme": undefined,
     },
-    secretName: "wildcard-crt",
   },
 } as Partial<GlobalEnvironment>;
