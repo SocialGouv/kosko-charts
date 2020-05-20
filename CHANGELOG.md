@@ -1,3 +1,10 @@
+# [2.0.0-alpha.9](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.8...v2.0.0-alpha.9) (2020-05-20)
+
+
+### Bug Fixes
+
+* **pkg:** missing utils files in published package ([1d92713](https://github.com/SocialGouv/kosko-charts/commit/1d92713b524aabbf6a556c34f1cd2e38cdd8d2cc))
+
 # [2.0.0-alpha.8](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.7...v2.0.0-alpha.8) (2020-05-20)
 
 
