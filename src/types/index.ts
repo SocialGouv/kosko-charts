@@ -14,18 +14,6 @@ export interface GlobalEnvironment {
   subdomain: string;
 }
 
-export interface AppComponentEnvironment {
-  containerPort: number;
-  image: { name: string; tag: string };
-  ingress?: { secretName?: string };
-  labels?: Record<string, string>;
-  limits?: { cpu: string; memory: string };
-  name: string;
-  requests?: { cpu: string; memory: string };
-  servicePort: number;
-  subdomain?: string;
-}
-
 export interface NamespaceComponentEnvironment {
   annotations?: Record<string, string>;
   labels?: Record<string, string>;

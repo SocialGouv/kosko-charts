@@ -1,18 +1,9 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-//
-
+import { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
+import { NonEmptyString } from "@socialgouv/kosko-charts/utils/NonEmptyString";
+import { onDecodeError } from "@socialgouv/kosko-charts/utils/onDecodeError";
 import { fold } from "fp-ts/lib/Either";
 import { pipe } from "fp-ts/lib/pipeable";
-import { drawForest } from "fp-ts/lib/Tree";
 import * as D from "io-ts/lib/Decoder";
-
-import { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
-
-export const NonEmptyString: D.Decoder<string> = D.refinement(
-  D.string,
-  (s: unknown): s is string => typeof s === "string" && s.length > 0,
-  "NonEmptyString"
-);
 
 const GitlabProcessEnv = D.intersection(
   D.type({
@@ -31,41 +22,16 @@ const GitlabProcessEnv = D.intersection(
 
 type GitlabProcessEnv = D.TypeOf<typeof GitlabProcessEnv>;
 
-function assertValidEnv(env: typeof process.env): GitlabProcessEnv {
-  /* eslint-disable @typescript-eslint/unbound-method */
-  return pipe(
-    env,
-    GitlabProcessEnv.decode,
-    fold(
-      (errorForest) => {
-        throw new Error(["BadArgument:", drawForest(errorForest)].join(""));
-      },
-      (env) => ({
-        CI_COMMIT_TAG: env.CI_COMMIT_TAG,
-        CI_ENVIRONMENT_NAME: env.CI_ENVIRONMENT_NAME,
-        CI_ENVIRONMENT_SLUG: env.CI_ENVIRONMENT_SLUG,
-        CI_PROJECT_NAME: env.CI_PROJECT_NAME,
-        CI_PROJECT_PATH_SLUG: env.CI_PROJECT_PATH_SLUG,
-        KUBE_INGRESS_BASE_DOMAIN: env.KUBE_INGRESS_BASE_DOMAIN,
-        KUBE_NAMESPACE: env.KUBE_NAMESPACE,
-        PRODUCTION: env.PRODUCTION,
-      })
-    )
-  );
-}
-
-export default (env = process.env): GlobalEnvironment => {
-  const {
-    CI_COMMIT_TAG,
-    CI_ENVIRONMENT_NAME,
-    CI_ENVIRONMENT_SLUG,
-    CI_PROJECT_NAME,
-    CI_PROJECT_PATH_SLUG,
-    KUBE_INGRESS_BASE_DOMAIN,
-    KUBE_NAMESPACE,
-    PRODUCTION,
-  } = assertValidEnv(env);
-
+const mapper = ({
+  CI_COMMIT_TAG,
+  CI_ENVIRONMENT_NAME,
+  CI_ENVIRONMENT_SLUG,
+  CI_PROJECT_NAME,
+  CI_PROJECT_PATH_SLUG,
+  KUBE_INGRESS_BASE_DOMAIN,
+  KUBE_NAMESPACE,
+  PRODUCTION,
+}: GitlabProcessEnv): GlobalEnvironment => {
   const isProductionCluster = Boolean(PRODUCTION);
 
   const application = isProductionCluster
@@ -75,22 +41,23 @@ export default (env = process.env): GlobalEnvironment => {
     : `${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}`;
 
   return {
-    namespace: {
-      name: KUBE_NAMESPACE,
-    },
-    //
-    domain: KUBE_INGRESS_BASE_DOMAIN,
-    subdomain: isProductionCluster ? CI_PROJECT_NAME : application,
-    //
     annotations: {
       "app.gitlab.com/app": CI_PROJECT_PATH_SLUG,
       "app.gitlab.com/env": CI_ENVIRONMENT_SLUG,
       "app.gitlab.com/env.name": CI_ENVIRONMENT_NAME,
     },
+    domain: KUBE_INGRESS_BASE_DOMAIN,
     labels: {
       application,
       owner: CI_PROJECT_NAME,
       team: CI_PROJECT_NAME,
     },
+    namespace: {
+      name: KUBE_NAMESPACE,
+    },
+    subdomain: isProductionCluster ? CI_PROJECT_NAME : application,
   };
 };
+
+export default (env = process.env): GlobalEnvironment =>
+  pipe(env, GitlabProcessEnv.decode, fold(onDecodeError, mapper));

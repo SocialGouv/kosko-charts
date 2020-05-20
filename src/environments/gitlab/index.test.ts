@@ -5,13 +5,13 @@ test.each([
   [
     "because of empty strings",
     {
+      CI_COMMIT_TAG: "",
       CI_ENVIRONMENT_NAME: "",
       CI_ENVIRONMENT_SLUG: "",
       CI_PROJECT_NAME: "",
       CI_PROJECT_PATH_SLUG: "",
       KUBE_INGRESS_BASE_DOMAIN: "",
       KUBE_NAMESPACE: "",
-      CI_COMMIT_TAG: "",
       PRODUCTION: "",
     },
   ],

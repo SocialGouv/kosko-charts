@@ -1,69 +1,70 @@
 import { merge } from "@kosko/env/dist/merge";
+import { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
 
-import {
-  GlobalEnvironment,
-  AppComponentEnvironment,
-} from "@socialgouv/kosko-charts/types";
+import { create } from "./index";
+import { AppComponentEnvironment, Params } from "./params";
 
-import { create, Params } from "./index";
-
-test("should throw because of missing variables", () => {
-  expect(create).toThrowErrorMatchingSnapshot();
-});
-
-test("should throw because the containerPort is not an integer", () => {
-  expect(() =>
-    create({
+test.each([
+  ["because of missing variables", {} as Params],
+  [
+    "because the containerPort is not an integer",
+    {
       containerPort: 1234.56789,
       image: { name: "image_name", tag: "image_tag" },
-    } as Params)
-  ).toThrowErrorMatchingSnapshot();
+      servicePort: 1234.56789,
+    } as Params,
+  ],
+])("should throw %s", (_: string, params: Params) => {
+  expect(() => create(params)).toThrowErrorMatchingSnapshot();
 });
 
-test("should return a deployment, an ingress and service ", () => {
-  const params: Partial<Params> = {
-    containerPort: 1234,
-    servicePort: 5678,
-    domain: "fabrique.social.gouv.fr",
-    name: "app_name",
-    image: { name: "image_name", tag: "image_tag" },
-    namespace: { name: "namespace_name" },
-    subdomain: "sample",
-  };
-  expect(create(params as Params)).toMatchSnapshot();
-});
-
-test("should return the models with global params in it", () => {
-  const global: Partial<GlobalEnvironment> = {
-    annotations: {
-      "app.gitlab.com/app": "socialgouv-sample",
-      "app.gitlab.com/env": "my-test",
-    },
-    domain: "fabrique.social.gouv.fr",
-    ingress: {
-      annotations: {
-        "kubernetes.io/tls-acme": undefined,
-        "certmanager.k8s.io/cluster-issuer": undefined,
-      },
-      secretName: "wildcard-crt",
-    },
-    labels: {
-      team: "sample",
-      application: "sample",
-      owner: "sample",
-    },
-    namespace: { name: "sample-42-my-test" },
-    subdomain: "sample",
-  };
-  const params: Partial<AppComponentEnvironment> = {
-    containerPort: 1234,
-    servicePort: 5678,
-    image: { name: "image_name", tag: "image_tag" },
-    name: "app_name",
-    subdomain: "my.sample",
-    ingress: {
-      secretName: "sample-crt",
-    },
-  };
-  expect(create(merge(global, params) as Params)).toMatchSnapshot();
+const validParams: Params = {
+  containerPort: 1234,
+  domain: "fabrique.social.gouv.fr",
+  image: { name: "image_name", tag: "image_tag" },
+  name: "app_name",
+  namespace: { name: "namespace_name" },
+  servicePort: 5678,
+  subdomain: "sample",
+};
+test.each([
+  ["a deployment, an ingress and service", {}],
+  [
+    "the models with global params in it",
+    merge(
+      {
+        annotations: {
+          "app.gitlab.com/app": "socialgouv-sample",
+          "app.gitlab.com/env": "my-test",
+        },
+        domain: "fabrique.social.gouv.fr",
+        ingress: {
+          annotations: {
+            "certmanager.k8s.io/cluster-issuer": undefined,
+            "kubernetes.io/tls-acme": undefined,
+          },
+          secretName: "wildcard-crt",
+        },
+        labels: {
+          application: "sample",
+          owner: "sample",
+          team: "sample",
+        },
+        namespace: { name: "sample-42-my-test" },
+        subdomain: "sample",
+      } as GlobalEnvironment,
+      {
+        containerPort: 1234,
+        image: { name: "image_name", tag: "image_tag" },
+        ingress: {
+          secretName: "sample-crt",
+        },
+        name: "app_name",
+        servicePort: 5678,
+        subdomain: "my.sample",
+      } as AppComponentEnvironment
+    ),
+  ],
+])("should return %s", (_: string, params: Partial<Params>) => {
+  expect(create({ ...validParams, ...params })).toMatchSnapshot();
 });
