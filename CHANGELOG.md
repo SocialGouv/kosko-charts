@@ -1,3 +1,10 @@
+# [2.0.0-alpha.11](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.10...v2.0.0-alpha.11) (2020-05-20)
+
+
+### Bug Fixes
+
+* **app:** add wildcard-crt as default cert ([65b2146](https://github.com/SocialGouv/kosko-charts/commit/65b21461f2bcde78c6d700b7a1b49ceb882b7f25))
+
 # [2.0.0-alpha.10](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2020-05-20)
 
 
