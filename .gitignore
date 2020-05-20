@@ -1,9 +1,8 @@
+/components
+/environments
+/lib
+/tsconfig.build.tsbuildinfo
+/types
+/utils
 coverage
 node_modules
-/charts
-/charts.old
-/environments
-/components
-/utils
-/types
-/tsconfig.build.tsbuildinfo
