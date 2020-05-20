@@ -11,6 +11,7 @@ test.each([
     {
       containerPort: 1234.56789,
       image: { name: "image_name", tag: "image_tag" },
+      namespace: { name: "sample-42-my-test" },
       servicePort: 1234.56789,
     } as Params,
   ],

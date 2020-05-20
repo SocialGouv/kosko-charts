@@ -23,5 +23,8 @@ export const AppComponentParams = D.intersection(
   })
 );
 
-export type AppComponentEnvironment = D.TypeOf<typeof AppComponentParams>;
+export type AppComponentEnvironment = Omit<
+  D.TypeOf<typeof AppComponentParams>,
+  "namespace"
+>;
 export type Params = AppComponentEnvironment & GlobalEnvironment;

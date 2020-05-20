@@ -257,6 +257,8 @@ exports[`should throw because of missing variables 1`] = `
 │  └─ cannot decode undefined, should be Record<string, unknown>
 ├─ required property \\"name\\"
 │  └─ cannot decode undefined, should be string
+├─ required property \\"namespace\\"
+│  └─ cannot decode undefined, should be Record<string, unknown>
 └─ required property \\"servicePort\\"
    └─ cannot decode undefined, should be number"
 `;
