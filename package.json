@@ -2,16 +2,15 @@
   "name": "@socialgouv/kosko-charts",
   "description": "Kosko charts for the SocialGouv needs",
   "version": "2.0.0-alpha.8",
-  "files": [
-    "components",
-    "environments",
-    "types"
-  ],
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "_moduleAliases": {
     "@socialgouv/kosko-charts": "src"
   },
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
+  "dependencies": {
+    "fp-ts": "^2.6.0",
+    "io-ts": "^2.2.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
@@ -40,6 +39,12 @@
     "ts-node": "^8.10.1",
     "typescript": "^3.9.2"
   },
+  "files": [
+    "components",
+    "environments",
+    "types",
+    "utils"
+  ],
   "homepage": "https://github.com/SocialGouv/kosko-charts#readme",
   "keywords": [],
   "license": "Apache-2.0",
@@ -58,9 +63,5 @@
     "precommit": "lint-staged",
     "test": "jest",
     "typecheck": "tsc"
-  },
-  "dependencies": {
-    "fp-ts": "^2.6.0",
-    "io-ts": "^2.2.2"
   }
 }
