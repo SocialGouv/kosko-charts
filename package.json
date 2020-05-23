@@ -11,7 +11,7 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.9.0",
-    "@kosko/env": "^0.5.1",
+    "@kosko/env": "^0.5.2",
     "@socialgouv/eslint-config-recommended": "^0.22.1",
     "@types/dotenv": "^8.2.0",
     "@types/execa": "^2.0.0",
