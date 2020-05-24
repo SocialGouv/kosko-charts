@@ -1,12 +1,16 @@
 {
   "name": "@socialgouv/kosko-charts",
   "description": "Kosko charts for the SocialGouv needs",
-  "version": "1.0.2",
+  "version": "2.0.0-alpha.11",
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "_moduleAliases": {
-    "@socialgouv/kosko-charts": "."
+    "@socialgouv/kosko-charts": "src"
   },
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
+  "dependencies": {
+    "fp-ts": "^2.6.0",
+    "io-ts": "^2.2.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
@@ -16,13 +20,15 @@
     "@types/dotenv": "^8.2.0",
     "@types/execa": "^2.0.0",
     "@types/jest": "^25.2.3",
-    "@types/node": "^13.13.5",
+    "@types/node": "^14.0.1",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
     "execa": "^4.0.2",
     "jest": "^26.0.1",
     "jest-file-snapshot": "^0.3.8",
@@ -33,6 +39,12 @@
     "ts-node": "^8.10.1",
     "typescript": "^3.9.3"
   },
+  "files": [
+    "components",
+    "environments",
+    "types",
+    "utils"
+  ],
   "homepage": "https://github.com/SocialGouv/kosko-charts#readme",
   "keywords": [],
   "license": "Apache-2.0",
@@ -45,10 +57,11 @@
   },
   "repository": "SocialGouv/kosko-charts.git",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "e2e": "jest -c ./e2e/jest.config.js",
-    "lint": "eslint charts e2e --ext .ts",
+    "lint": "eslint src e2e --ext .ts",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc"
   }
 }

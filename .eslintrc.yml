@@ -1,24 +1,46 @@
 extends:
   - "@socialgouv/eslint-config-recommended"
+  - "plugin:@typescript-eslint/eslint-recommended"
+  - "plugin:@typescript-eslint/all"
   - "plugin:import/typescript"
-  - "plugin:@typescript-eslint/recommended"
+  - "prettier/@typescript-eslint"
 parser: '@typescript-eslint/parser'
+parserOptions:
+  project: tsconfig.json
 plugins:
-  - '@typescript-eslint'
+  - "@typescript-eslint"
+  - sort-keys-fix
+  - simple-import-sort
 root: true
 rules:
-  import/no-unresolved: off
-  import/order:
+  "sort-imports": off
+  "sort-keys":
     - error
-    - groups:
-        - internal
-        - builtin
-        - external
-        - parent
-        - sibling
-        - index
-      newlines-between: ignore
+
+  "simple-import-sort/sort": error
+
+  "sort-keys-fix/sort-keys-fix": warn
+
+  "@typescript-eslint/no-type-alias": off
+  "@typescript-eslint/prefer-readonly-parameter-types": off
+  "@typescript-eslint/typedef": off
+
+  "@typescript-eslint/strict-boolean-expressions": off
+  "@typescript-eslint/no-magic-numbers": off
+
+  "import/first": error
+  "import/newline-after-import": error
+  "import/no-duplicates": error
+
+  import/no-unresolved:
+    - error
+    - ignore:
+      - "^@socialgouv/kosko-charts/"
+
+  "import/order": off
 overrides:
-  - files: jest.config.js
+  - files: "*.config.js"
     rules:
+      "@typescript-eslint/no-require-imports": off
+      "@typescript-eslint/no-unsafe-member-access": off
       "@typescript-eslint/no-var-requires": off

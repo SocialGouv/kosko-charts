@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a deployment, an ingress and service 1`] = `
+Object {
+  "deployment": Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "labels": Object {
+        "app": "app_name",
+      },
+      "name": "app_name",
+      "namespace": "namespace_name",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "app_name",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "labels": Object {
+            "app": "app_name",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "image": "image_name:image_tag",
+              "name": "app_name",
+              "ports": Array [
+                Object {
+                  "containerPort": 1234,
+                },
+              ],
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "50m",
+                  "memory": "32Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  "ingress": Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "appgw.ingress.kubernetes.io/ssl-redirect": "true",
+        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+        "kubernetes.io/ingress.class": "azure/application-gateway",
+        "kubernetes.io/tls-acme": "true",
+      },
+      "labels": Object {
+        "app": "app_name",
+      },
+      "name": "app_name",
+      "namespace": "namespace_name",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "sample.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "app_name",
+                  "servicePort": 5678,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "sample.fabrique.social.gouv.fr",
+          ],
+        },
+      ],
+    },
+  },
+  "service": Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "labels": Object {
+        "app": "app_name",
+      },
+      "name": "app_name",
+      "namespace": "namespace_name",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "port": 5678,
+          "targetPort": 1234,
+        },
+      ],
+      "selector": Object {
+        "app": "app_name",
+      },
+      "type": "ClusterIP",
+    },
+  },
+}
+`;
+
+exports[`should return the models with global params in it 1`] = `
+Object {
+  "deployment": Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "labels": Object {
+        "app": "app_name",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app_name",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "app_name",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "labels": Object {
+            "app": "app_name",
+            "application": "sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "image": "image_name:image_tag",
+              "name": "app_name",
+              "ports": Array [
+                Object {
+                  "containerPort": 1234,
+                },
+              ],
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "50m",
+                  "memory": "32Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  "ingress": Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "appgw.ingress.kubernetes.io/ssl-redirect": "true",
+        "kubernetes.io/ingress.class": "azure/application-gateway",
+      },
+      "labels": Object {
+        "app": "app_name",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app_name",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "my.sample.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "app_name",
+                  "servicePort": 5678,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "my.sample.fabrique.social.gouv.fr",
+          ],
+          "secretName": "sample-crt",
+        },
+      ],
+    },
+  },
+  "service": Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "labels": Object {
+        "app": "app_name",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app_name",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "port": 5678,
+          "targetPort": 1234,
+        },
+      ],
+      "selector": Object {
+        "app": "app_name",
+      },
+      "type": "ClusterIP",
+    },
+  },
+}
+`;
+
+exports[`should throw because of missing variables 1`] = `
+"BadArgument:
+├─ required property \\"containerPort\\"
+│  └─ cannot decode undefined, should be number
+├─ required property \\"image\\"
+│  └─ cannot decode undefined, should be Record<string, unknown>
+├─ required property \\"name\\"
+│  └─ cannot decode undefined, should be string
+├─ required property \\"namespace\\"
+│  └─ cannot decode undefined, should be Record<string, unknown>
+└─ required property \\"servicePort\\"
+   └─ cannot decode undefined, should be number"
+`;
+
+exports[`should throw because the containerPort is not an integer 1`] = `
+"BadArgument:
+├─ required property \\"containerPort\\"
+│  └─ cannot refine 1234.56789, should be Integer
+├─ required property \\"name\\"
+│  └─ cannot decode undefined, should be string
+└─ required property \\"servicePort\\"
+   └─ cannot refine 1234.56789, should be Integer"
+`;
