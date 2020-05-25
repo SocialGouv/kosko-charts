@@ -4,7 +4,7 @@ extends:
   - "plugin:@typescript-eslint/all"
   - "plugin:import/typescript"
   - "prettier/@typescript-eslint"
-parser: '@typescript-eslint/parser'
+parser: "@typescript-eslint/parser"
 parserOptions:
   project: tsconfig.json
 plugins:
@@ -21,12 +21,14 @@ rules:
 
   "sort-keys-fix/sort-keys-fix": warn
 
+  "@typescript-eslint/explicit-function-return-type": off
+  "@typescript-eslint/no-magic-numbers": off
   "@typescript-eslint/no-type-alias": off
   "@typescript-eslint/prefer-readonly-parameter-types": off
+  "@typescript-eslint/strict-boolean-expressions": off
   "@typescript-eslint/typedef": off
 
-  "@typescript-eslint/strict-boolean-expressions": off
-  "@typescript-eslint/no-magic-numbers": off
+  '@typescript-eslint/explicit-module-boundary-types': 'warn'
 
   "import/first": error
   "import/newline-after-import": error
@@ -35,9 +37,15 @@ rules:
   import/no-unresolved:
     - error
     - ignore:
-      - "^@socialgouv/kosko-charts/"
+        - "^@socialgouv/kosko-charts/"
 
   "import/order": off
+
+settings:
+  import/resolver:
+    typescript:
+      alwaysTryTypes: true
+
 overrides:
   - files: "*.config.js"
     rules:

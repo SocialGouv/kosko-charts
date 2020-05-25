@@ -59,7 +59,7 @@ $ DOTENV_CONFIG_PATH=.gitlab.env yarn --cwd .k8s generate --require dotenv/confi
 We use [degit](https://github.com/Rich-Harris/degit) to scaffold the deployment config.
 
 ```sh
-$ npx degit SocialGouv/kosko-charts#2.0.0-beta.1/e2e/kosko-generate/vanilla .k8s
+$ npx degit SocialGouv/kosko-charts#2.0.0-beta.1/templates/simple .k8s
 ```
 
 `.k8s` is the target deployment config package folder.

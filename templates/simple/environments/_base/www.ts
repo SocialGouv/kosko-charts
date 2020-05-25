@@ -1,4 +1,8 @@
 import { AppComponentEnvironment } from "@socialgouv/kosko-charts/components/app/params";
+import { ok } from "assert";
+
+ok(process.env.CI_REGISTRY_IMAGE);
+ok(process.env.CI_COMMIT_SHA);
 
 const env: AppComponentEnvironment = {
   containerPort: 8080,

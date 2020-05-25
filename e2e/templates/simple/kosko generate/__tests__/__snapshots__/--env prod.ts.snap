@@ -1,35 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`--env preprod : should generate preprod manifest 1`] = `
+exports[`--env prod : should generate prod manifest 1`] = `
 "---
-metadata:
-  annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev
-    field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
-    git/branch: e2e-branch
-    git/remote: 'git@github.com:SocialGouv/sample-next-app.git'
-  labels:
-    app: sample-next-app-24-e2e-branch-42
-    application: v1-2-3-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
-    cert: wildcard
-  name: sample-next-app-24-e2e-branch-42
-apiVersion: v1
-kind: Namespace
----
 metadata:
   labels:
     app: www
-    application: v1-2-3-sample-next-app
+    application: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
   name: www
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app
 spec:
   replicas: 1
   selector:
@@ -39,7 +20,7 @@ spec:
     metadata:
       labels:
         app: www
-        application: v1-2-3-sample-next-app
+        application: sample-next-app
         owner: sample-next-app
         team: sample-next-app
         component: next
@@ -63,18 +44,20 @@ kind: Deployment
 metadata:
   labels:
     app: www
-    application: v1-2-3-sample-next-app
+    application: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
   name: www
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app
   annotations:
     appgw.ingress.kubernetes.io/ssl-redirect: 'true'
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: azure/application-gateway
+    kubernetes.io/tls-acme: 'true'
 spec:
   rules:
-    - host: v1-2-3-sample-next-app.dev.fabrique.social.gouv.fr
+    - host: sample-next-app.dev.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -83,20 +66,20 @@ spec:
             path: /
   tls:
     - hosts:
-        - v1-2-3-sample-next-app.dev.fabrique.social.gouv.fr
-      secretName: wildcard-crt
+        - sample-next-app.dev.fabrique.social.gouv.fr
+      secretName: www-crt
 apiVersion: extensions/v1beta1
 kind: Ingress
 ---
 metadata:
   labels:
     app: www
-    application: v1-2-3-sample-next-app
+    application: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     component: next
   name: www
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app
 spec:
   ports:
     - port: 80

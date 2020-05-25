@@ -5,6 +5,7 @@
 //
 
 import deepMerge from "deepmerge";
+// eslint-disable-next-line import/default
 import isPlainObject from "is-plain-object";
 
 // https://stackoverflow.com/a/48769843
