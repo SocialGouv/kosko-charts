@@ -1,3 +1,10 @@
+# [2.0.0-beta.4](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2020-05-25)
+
+
+### Bug Fixes
+
+* **release:** update string to replace in README.md ([413a67f](https://github.com/SocialGouv/kosko-charts/commit/413a67f38032742c1debb6a346cae803cf058865))
+
 # [2.0.0-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2020-05-25)
 
 
