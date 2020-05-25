@@ -1,3 +1,20 @@
+# [2.0.0-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2020-05-25)
+
+
+### Code Refactoring
+
+* **e2e:** run e2e tests on real world templates ([e975403](https://github.com/SocialGouv/kosko-charts/commit/e9754036234e49d15b4914c68ba58c7299ca6f04)), closes [SocialGouv/kosko-charts#2](https://github.com/SocialGouv/kosko-charts/issues/2) [SocialGouv/kosko-charts#2](https://github.com/SocialGouv/kosko-charts/issues/2)
+
+
+### BREAKING CHANGES
+
+* **e2e:** we are introduction the `templates` folder
+
+This will change how we scaffold a deployment folder
+We should now be using
+
+```diff
+
 # [2.0.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v1.0.2...v2.0.0-beta.1) (2020-05-25)
 
 
