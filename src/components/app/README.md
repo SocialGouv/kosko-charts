@@ -1,4 +1,4 @@
-# app Component
+# App Component
 
 ## Usage
 

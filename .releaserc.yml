@@ -3,9 +3,13 @@ plugins:
   - "@semantic-release/release-notes-generator"
   - "@semantic-release/npm"
   - "@semantic-release/changelog"
+  - - "@semantic-release/exec"
+    - prepareCmd: |-
+        sed -i -e 's/SocialGouv\/kosko-charts#.*\/e2e/SocialGouv\/kosko-charts#${nextRelease.version}\/e2e/g' README.md
   - - "@semantic-release/git"
     - assets:
         - CHANGELOG.md
+        - README.md
         - package.json
       message: "chore(release): version ${nextRelease.version}\n\n${nextRelease.notes}"
   - "@semantic-release/github"
