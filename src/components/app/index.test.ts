@@ -1,5 +1,5 @@
-import { merge } from "@kosko/env/dist/merge";
 import { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
+import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
 import { create } from "./index";
 import { AppComponentEnvironment, Params } from "./params";
