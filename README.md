@@ -41,7 +41,7 @@ Providing a common Kubernetes (k8s) configuration to SocialGouv apps is a tricky
 Powered by [Kosko](https://github.com/tommy351/kosko), in this lib we provide default SocialGouv components and environments. We expect project to use and extend them at will.
 
 ```sh
-$ npx degit SocialGouv/kosko-charts#2.0.0-beta.2/e2e/kosko-generate/vanilla .k8s
+$ npx degit SocialGouv/kosko-charts#2.0.0-beta.3/e2e/kosko-generate/vanilla .k8s
 $ yarn --cwd .k8s
 # on GitLab
 $ yarn --cwd .k8s generate --env dev
