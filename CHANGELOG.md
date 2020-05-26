@@ -1,3 +1,11 @@
+# [2.0.0-beta.5](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2020-05-26)
+
+
+### Features
+
+* **app:** add default livenessProbe and readinessProbe ([03aeba9](https://github.com/SocialGouv/kosko-charts/commit/03aeba926ad1ff8be5284178a70ea8b582c9e168))
+* **app:** boost default limits ([95c139c](https://github.com/SocialGouv/kosko-charts/commit/95c139cef30c9045af0a6a12a33fcd45af7f844b))
+
 # [2.0.0-beta.4](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2020-05-25)
 
 
