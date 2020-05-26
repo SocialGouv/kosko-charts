@@ -30,12 +30,12 @@ Object {
             Object {
               "image": "image_name:image_tag",
               "livenessProbe": Object {
-                "failureThreshold": 11,
+                "failureThreshold": 6,
                 "httpGet": Object {
                   "path": "/healthz",
                   "port": "http",
                 },
-                "initialDelaySeconds": 5,
+                "initialDelaySeconds": 30,
                 "periodSeconds": 5,
                 "timeoutSeconds": 5,
               },
@@ -47,14 +47,15 @@ Object {
                 },
               ],
               "readinessProbe": Object {
-                "failureThreshold": 5,
+                "failureThreshold": 15,
                 "httpGet": Object {
                   "path": "/healthz",
                   "port": "http",
                 },
-                "initialDelaySeconds": 5,
+                "initialDelaySeconds": 0,
                 "periodSeconds": 5,
-                "timeoutSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
               },
               "resources": Object {
                 "limits": Object {
@@ -65,6 +66,14 @@ Object {
                   "cpu": "5m",
                   "memory": "16Mi",
                 },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
               },
             },
           ],
@@ -176,12 +185,12 @@ Object {
             Object {
               "image": "image_name:image_tag",
               "livenessProbe": Object {
-                "failureThreshold": 11,
+                "failureThreshold": 6,
                 "httpGet": Object {
                   "path": "/healthz",
                   "port": "http",
                 },
-                "initialDelaySeconds": 5,
+                "initialDelaySeconds": 30,
                 "periodSeconds": 5,
                 "timeoutSeconds": 5,
               },
@@ -193,14 +202,15 @@ Object {
                 },
               ],
               "readinessProbe": Object {
-                "failureThreshold": 5,
+                "failureThreshold": 15,
                 "httpGet": Object {
                   "path": "/healthz",
                   "port": "http",
                 },
-                "initialDelaySeconds": 5,
+                "initialDelaySeconds": 0,
                 "periodSeconds": 5,
-                "timeoutSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
               },
               "resources": Object {
                 "limits": Object {
@@ -211,6 +221,14 @@ Object {
                   "cpu": "5m",
                   "memory": "16Mi",
                 },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
               },
             },
           ],

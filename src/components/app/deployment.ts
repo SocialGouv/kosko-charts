@@ -22,14 +22,14 @@ export default (params: Params): Deployment => {
             {
               image: `${params.image.name}:${params.image.tag}`,
               livenessProbe: {
-                // 11 x 5s + 30s = 30-1m
+                // 6 x 5s + 30s = 30-1m
                 // Kill the pod if not alive after 1 minute
-                failureThreshold: 11,
+                failureThreshold: 6,
                 httpGet: {
                   path: "/healthz",
                   port: "http",
                 },
-                initialDelaySeconds: 5,
+                initialDelaySeconds: 30,
                 periodSeconds: 5,
                 timeoutSeconds: 5,
               },
@@ -41,16 +41,17 @@ export default (params: Params): Deployment => {
                 },
               ],
               readinessProbe: {
-                // 5 x 5s + 5s = 5-30s
-                // Mark pod as unhealthy after 30s
-                failureThreshold: 5,
+                // 15 x 1s = 0-15s
+                // Mark pod as unhealthy after 15s
+                failureThreshold: 15,
                 httpGet: {
                   path: "/healthz",
                   port: "http",
                 },
-                initialDelaySeconds: 5,
+                initialDelaySeconds: 0,
                 periodSeconds: 5,
-                timeoutSeconds: 5,
+                successThreshold: 1,
+                timeoutSeconds: 1,
               },
               resources: {
                 limits: {
@@ -63,6 +64,16 @@ export default (params: Params): Deployment => {
                   memory: "16Mi",
                   ...(params.requests ?? {}),
                 },
+              },
+              startupProbe: {
+                // 12 x 5s = 0-1min
+                // Takes up to 1 minute to start up before it fails
+                failureThreshold: 12,
+                httpGet: {
+                  path: "/healthz",
+                  port: "http",
+                },
+                periodSeconds: 5,
               },
             },
           ],
