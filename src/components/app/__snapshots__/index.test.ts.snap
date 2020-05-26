@@ -58,8 +58,8 @@ Object {
               },
               "resources": Object {
                 "limits": Object {
-                  "cpu": "50m",
-                  "memory": "32Mi",
+                  "cpu": "500m",
+                  "memory": "128Mi",
                 },
                 "requests": Object {
                   "cpu": "5m",
@@ -204,8 +204,8 @@ Object {
               },
               "resources": Object {
                 "limits": Object {
-                  "cpu": "50m",
-                  "memory": "32Mi",
+                  "cpu": "500m",
+                  "memory": "128Mi",
                 },
                 "requests": Object {
                   "cpu": "5m",

@@ -54,8 +54,8 @@ export default (params: Params): Deployment => {
               },
               resources: {
                 limits: {
-                  cpu: "50m",
-                  memory: "32Mi",
+                  cpu: "500m",
+                  memory: "128Mi",
                   ...(params.limits ?? {}),
                 },
                 requests: {
