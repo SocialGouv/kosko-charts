@@ -11,9 +11,8 @@ export default (params: Params): Ingress => {
     metadata: {
       ...metadata,
       annotations: {
-        "appgw.ingress.kubernetes.io/ssl-redirect": "true",
         "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
-        "kubernetes.io/ingress.class": "azure/application-gateway",
+        "kubernetes.io/ingress.class": "nginx",
         "kubernetes.io/tls-acme": "true",
         ...params.ingress?.annotations,
       },
