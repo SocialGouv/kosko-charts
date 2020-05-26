@@ -29,12 +29,33 @@ Object {
           "containers": Array [
             Object {
               "image": "image_name:image_tag",
+              "livenessProbe": Object {
+                "failureThreshold": 11,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 5,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
               "name": "app_name",
               "ports": Array [
                 Object {
                   "containerPort": 1234,
+                  "name": "http",
                 },
               ],
+              "readinessProbe": Object {
+                "failureThreshold": 5,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 5,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
               "resources": Object {
                 "limits": Object {
                   "cpu": "50m",
@@ -154,12 +175,33 @@ Object {
           "containers": Array [
             Object {
               "image": "image_name:image_tag",
+              "livenessProbe": Object {
+                "failureThreshold": 11,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 5,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
               "name": "app_name",
               "ports": Array [
                 Object {
                   "containerPort": 1234,
+                  "name": "http",
                 },
               ],
+              "readinessProbe": Object {
+                "failureThreshold": 5,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 5,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
               "resources": Object {
                 "limits": Object {
                   "cpu": "50m",

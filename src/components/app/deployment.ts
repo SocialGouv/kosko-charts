@@ -21,12 +21,37 @@ export default (params: Params): Deployment => {
           containers: [
             {
               image: `${params.image.name}:${params.image.tag}`,
+              livenessProbe: {
+                // 11 x 5s + 30s = 30-1m
+                // Kill the pod if not alive after 1 minute
+                failureThreshold: 11,
+                httpGet: {
+                  path: "/healthz",
+                  port: "http",
+                },
+                initialDelaySeconds: 5,
+                periodSeconds: 5,
+                timeoutSeconds: 5,
+              },
               name: metadata.name,
               ports: [
                 {
                   containerPort: params.containerPort,
+                  name: "http",
                 },
               ],
+              readinessProbe: {
+                // 5 x 5s + 5s = 5-30s
+                // Mark pod as unhealthy after 30s
+                failureThreshold: 5,
+                httpGet: {
+                  path: "/healthz",
+                  port: "http",
+                },
+                initialDelaySeconds: 5,
+                periodSeconds: 5,
+                timeoutSeconds: 5,
+              },
               resources: {
                 limits: {
                   cpu: "50m",
