@@ -1,3 +1,11 @@
+# [2.0.0-beta.6](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2020-05-26)
+
+
+### Features
+
+* **app:** add startupProbe ([ec6e468](https://github.com/SocialGouv/kosko-charts/commit/ec6e4680de04d57a730ef45c5ce5f81366535066))
+* **app:** target our cluster v2 ([fac1347](https://github.com/SocialGouv/kosko-charts/commit/fac13475823ba04c9814ad51e60ea1527104946c))
+
 # [2.0.0-beta.5](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2020-05-26)
 
 
