@@ -51,13 +51,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": [
-        "yarn lint",
-        "yarn typecheck",
-        "yarn test",
-        "yarn build",
-        "yarn e2e"
-      ]
+      "pre-push": " yarn lint && yarn typecheck && yarn test && yarn build && yarn e2e"
     }
   },
   "keywords": [],
