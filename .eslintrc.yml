@@ -1,54 +1,13 @@
-extends:
-  - "@socialgouv/eslint-config-recommended"
-  - "plugin:@typescript-eslint/eslint-recommended"
-  - "plugin:@typescript-eslint/all"
-  - "plugin:import/typescript"
-  - "prettier/@typescript-eslint"
-parser: "@typescript-eslint/parser"
-parserOptions:
-  project: tsconfig.json
-plugins:
-  - "@typescript-eslint"
-  - sort-keys-fix
-  - simple-import-sort
 root: true
-rules:
-  "sort-imports": off
-  "sort-keys":
-    - error
-
-  "simple-import-sort/sort": error
-
-  "sort-keys-fix/sort-keys-fix": warn
-
-  "@typescript-eslint/explicit-function-return-type": off
-  "@typescript-eslint/no-magic-numbers": off
-  "@typescript-eslint/no-type-alias": off
-  "@typescript-eslint/prefer-readonly-parameter-types": off
-  "@typescript-eslint/strict-boolean-expressions": off
-  "@typescript-eslint/typedef": off
-
-  '@typescript-eslint/explicit-module-boundary-types': 'warn'
-
-  "import/first": error
-  "import/newline-after-import": error
-  "import/no-duplicates": error
-
-  import/no-unresolved:
-    - error
-    - ignore:
-        - "^@socialgouv/kosko-charts/"
-
-  "import/order": off
-
-settings:
-  import/resolver:
-    typescript:
-      alwaysTryTypes: true
-
 overrides:
-  - files: "*.config.js"
+  - files: "*.js"
+    extends:
+      - "@socialgouv/eslint-config-recommended"
+  - files: "*.ts"
+    extends:
+      - "@socialgouv/eslint-config-typescript"
     rules:
-      "@typescript-eslint/no-require-imports": off
-      "@typescript-eslint/no-unsafe-member-access": off
-      "@typescript-eslint/no-var-requires": off
+      import/no-unresolved:
+        - error
+        - ignore:
+            - "^@socialgouv/kosko-charts/"
