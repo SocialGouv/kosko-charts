@@ -30,7 +30,7 @@
     "kubernetes-models": "^0.8.0",
     "module-alias": "^2.2.2",
     "prettier": "^2.0.5",
-    "ts-node": "^8.10.1",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.3"
   },
   "homepage": "https://github.com/SocialGouv/kosko-charts#readme",
