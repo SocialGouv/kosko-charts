@@ -6,6 +6,7 @@ import { Params } from "./params";
 export const metadataFromParams = (
   params: Params
 ): IIoK8sApimachineryPkgApisMetaV1ObjectMeta & { name: string } => ({
+  annotations: params.annotations,
   labels: { ...matchLabelsFromParams(params), ...(params.labels ?? {}) },
   name: params.name,
   namespace: params.namespace.name,

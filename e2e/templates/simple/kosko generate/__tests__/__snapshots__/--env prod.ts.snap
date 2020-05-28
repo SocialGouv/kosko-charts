@@ -3,6 +3,10 @@
 exports[`--env prod : should generate prod manifest 1`] = `
 "---
 metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev
   labels:
     app: www
     application: sample-next-app
@@ -18,6 +22,10 @@ spec:
       app: www
   template:
     metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev
       labels:
         app: www
         application: sample-next-app
@@ -66,6 +74,10 @@ apiVersion: apps/v1
 kind: Deployment
 ---
 metadata:
+  annotations:
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: 'true'
   labels:
     app: www
     application: sample-next-app
@@ -74,10 +86,6 @@ metadata:
     component: next
   name: www
   namespace: sample-next-app
-  annotations:
-    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: 'true'
 spec:
   rules:
     - host: sample-next-app.dev.fabrique.social.gouv.fr
@@ -95,6 +103,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 ---
 metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev
   labels:
     app: www
     application: sample-next-app

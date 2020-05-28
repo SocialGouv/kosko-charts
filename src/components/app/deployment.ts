@@ -15,6 +15,7 @@ export default (params: Params): Deployment => {
       },
       template: {
         metadata: {
+          annotations: metadata.annotations,
           labels: metadata.labels,
         },
         spec: {

@@ -154,6 +154,10 @@ Object {
     "apiVersion": "apps/v1",
     "kind": "Deployment",
     "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
       "labels": Object {
         "app": "app_name",
         "application": "sample",
@@ -172,6 +176,10 @@ Object {
       },
       "template": Object {
         "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+          },
           "labels": Object {
             "app": "app_name",
             "application": "sample",
@@ -282,6 +290,10 @@ Object {
     "apiVersion": "v1",
     "kind": "Service",
     "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
       "labels": Object {
         "app": "app_name",
         "application": "sample",
