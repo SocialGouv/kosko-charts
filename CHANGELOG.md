@@ -1,3 +1,10 @@
+# [2.0.0-beta.7](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2020-05-28)
+
+
+### Features
+
+* **app:** pass params annotations down to pods ([a154598](https://github.com/SocialGouv/kosko-charts/commit/a154598be9f6a486d7757f0fe62242adcf9b50b1))
+
 # [2.0.0-beta.6](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2020-05-26)
 
 
