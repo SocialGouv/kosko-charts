@@ -16,7 +16,7 @@ export default [deployment, ingress, service];
 You can customize it
 
 ```ts
-// in .k8s/components/_app.ts
+// in .k8s/components/app.ts
 import { app } from "kubernetes-models/v1/app";
 import { create } from "@socialgouv/kosko-charts/components/app";
 import env from "@kosko/env";
