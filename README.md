@@ -18,7 +18,6 @@
 
 > [Kosko](https://github.com/tommy351/kosko) charts for the SocialGouv needs
 
-
 ## Problem
 
 Providing a common Kubernetes (k8s) configuration to SocialGouv apps is a tricky task. We want to provide
@@ -46,7 +45,7 @@ $ yarn --cwd .k8s
 # on GitLab
 $ yarn --cwd .k8s generate --env dev
 # locally
-$ DOTENV_CONFIG_PATH=.gitlab.env yarn --cwd .k8s generate --require dotenv/config --env gitlab
+$ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require dotenv/config
 ```
 
 <br>
@@ -83,7 +82,6 @@ You can add a shortcut to it in your `package.json`
 }
 ```
 
-
 The shortcut using `--silent` to be pipable to `kubectl apply` like :
 
 ```
@@ -102,6 +100,7 @@ $ yarn k8s generate | kubectl apply -f -
 The SocialGouv default components
 
 #### [`@socialgouv/kosko-charts/components/app`](./src/components/app)
+
 #### [`@socialgouv/kosko-charts/components/namespace`](./src/components/namespace)
 
 ### Environments
@@ -109,8 +108,6 @@ The SocialGouv default components
 The SocialGouv default components
 
 #### [`@socialgouv/kosko-charts/components/gitlab`](./src/components/gitlab)
-
-
 
 <br>
 <br>
