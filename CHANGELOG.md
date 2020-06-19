@@ -1,3 +1,10 @@
+# [2.0.0-beta.8](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2020-06-19)
+
+
+### Bug Fixes
+
+* generation doc ([b5f2a44](https://github.com/SocialGouv/kosko-charts/commit/b5f2a443f34f739e7fa1b9c044c2ee10c79b2d41))
+
 # [2.0.0-beta.7](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2020-05-28)
 
 
