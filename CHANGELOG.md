@@ -1,3 +1,14 @@
+# [2.0.0-beta.9](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2020-06-19)
+
+
+### Bug Fixes
+
+* **release:** sed the doc ([9d252f4](https://github.com/SocialGouv/kosko-charts/commit/9d252f4b15291e77a171f83efd6706af35c7f452))
+* **release:** sed the doc (2) ([10db9b8](https://github.com/SocialGouv/kosko-charts/commit/10db9b8467a701d43e7f27573a3a5af505c0b667))
+* **release:** sed the doc (3) ([5ffa54e](https://github.com/SocialGouv/kosko-charts/commit/5ffa54e4d000ad05c2916c8b65f83b5de4a463ca))
+* **release:** sed the doc (4) ([0734af1](https://github.com/SocialGouv/kosko-charts/commit/0734af1edc439045d9e69170888d04ea28ab57d6))
+* **release:** sed the doc (5) ([799539e](https://github.com/SocialGouv/kosko-charts/commit/799539e932ec2afef6a09d5bdc271ca769a8256d))
+
 # [2.0.0-beta.8](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2020-06-19)
 
 
