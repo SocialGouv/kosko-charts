@@ -15,4 +15,3 @@ plugins:
         - templates/*/package.json
       message: "chore(release): version ${nextRelease.version}\n\n${nextRelease.notes}"
   - "@semantic-release/github"
-SocialGouv/kosko-charts/templates/simple#
