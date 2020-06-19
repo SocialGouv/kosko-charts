@@ -43,7 +43,7 @@ Powered by [Kosko](https://github.com/tommy351/kosko), in this lib we provide de
 $ npx degit "SocialGouv/kosko-charts/templates/simple#v2.0.0-beta.4" .k8s
 $ yarn --cwd .k8s
 # on GitLab
-$ yarn --cwd .k8s generate --env dev
+$ yarn --cwd .k8s kosko generate --env dev
 # locally
 $ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require dotenv/config
 ```
