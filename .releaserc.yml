@@ -5,7 +5,7 @@ plugins:
   - "@semantic-release/changelog"
   - - "@semantic-release/exec"
     - prepareCmd: |-
-        sed -i -e 's/SocialGouv\/kosko-charts#.*\/templates/SocialGouv\/kosko-charts#${nextRelease.version}\/templates/g' README.md
+        sed -i -e 's/SocialGouv\/kosko-charts\/templates\/simple#.*/SocialGouv\/kosko-chart\/templates\/simples#${nextRelease.version}/g' README.md
         sed -i -e 's/"@socialgouv\/kosko-charts": "^.*",/"@socialgouv\/kosko-charts": "^${nextRelease.version}",/g' templates/simple/package.json
   - - "@semantic-release/git"
     - assets:
@@ -15,3 +15,4 @@ plugins:
         - templates/*/package.json
       message: "chore(release): version ${nextRelease.version}\n\n${nextRelease.notes}"
   - "@semantic-release/github"
+SocialGouv/kosko-charts/templates/simple#
