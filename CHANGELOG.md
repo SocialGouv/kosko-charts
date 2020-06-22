@@ -1,3 +1,10 @@
+# [2.0.0-beta.11](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.10...v2.0.0-beta.11) (2020-06-22)
+
+
+### Bug Fixes
+
+* **release:** missing v before version number ([eea00a4](https://github.com/SocialGouv/kosko-charts/commit/eea00a4d3aee5755f23ec4b1cad5f0f5a6def9e1))
+
 # [2.0.0-beta.10](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2020-06-19)
 
 
