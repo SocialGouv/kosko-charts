@@ -5,7 +5,7 @@ plugins:
   - "@semantic-release/changelog"
   - - "@semantic-release/exec"
     - prepareCmd: |-
-        sed -i -e 's/\/templates\/simple#.*" /\/templates\/simple#${nextRelease.version}" /g' README.md
+        sed -i -e 's/\/templates\/simple#v.*" /\/templates\/simple#v${nextRelease.version}" /g' README.md
         sed -i -e 's/"@socialgouv\/kosko-charts": "^.*",/"@socialgouv\/kosko-charts": "^${nextRelease.version}",/g' templates/simple/package.json
   - - "@semantic-release/git"
     - assets:
