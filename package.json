@@ -5,21 +5,19 @@
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
-    "fp-ts": "^2.6.0",
-    "io-ts": "^2.2.2"
+    "fp-ts": "^2.6.6",
+    "io-ts": "^2.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-typescript": "^7.10.1",
     "@kosko/env": "^0.5.2",
-    "@socialgouv/eslint-config-recommended": "^1.0.0-beta.4",
-    "@socialgouv/eslint-config-typescript": "^1.0.0-beta.4",
+    "@socialgouv/eslint-config-recommended": "^1.1.0",
+    "@socialgouv/eslint-config-typescript": "^1.1.0",
     "@socialgouv/kosko-charts": "link:./src",
-    "@types/dotenv": "^8.2.0",
-    "@types/execa": "^2.0.0",
     "@types/jest": "^26.0.3",
-    "@types/node": "^14.0.1",
+    "@types/node": "^14.0.14",
     "babel-plugin-module-resolver": "^4.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.3.1",
@@ -28,7 +26,7 @@
     "jest": "^26.1.0",
     "kosko": "^0.9.2",
     "kubernetes-models": "^0.8.0",
-    "lint-staged": "^10.2.6",
+    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
