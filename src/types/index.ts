@@ -13,6 +13,10 @@ export interface GlobalEnvironment {
   subdomain: string;
 }
 
+export interface NamedComponentEnvironment {
+  name: string;
+}
+
 export interface NamespaceComponentEnvironment {
   annotations?: Record<string, string>;
   labels?: Record<string, string>;
