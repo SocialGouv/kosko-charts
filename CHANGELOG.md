@@ -1,3 +1,15 @@
+# [2.0.0-beta.12](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.11...v2.0.0-beta.12) (2020-06-28)
+
+
+### Bug Fixes
+
+* **app:** simplify metadata typing to allow more cases ([0ba7acd](https://github.com/SocialGouv/kosko-charts/commit/0ba7acd2cd71a04b8137c8ba8f6869c56c2f5ad3))
+
+
+### Features
+
+* **types:** add NamedComponentEnvironment ([101aa32](https://github.com/SocialGouv/kosko-charts/commit/101aa32401481df724371a196293cb4aa68c4725))
+
 # [2.0.0-beta.11](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.10...v2.0.0-beta.11) (2020-06-22)
 
 
