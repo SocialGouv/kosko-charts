@@ -1,3 +1,10 @@
+# [2.0.0-beta.13](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2020-06-28)
+
+
+### Features
+
+* **templates:** update default scripts ([d255d8b](https://github.com/SocialGouv/kosko-charts/commit/d255d8b981d80784aa63806dbe862c26282d2c10))
+
 # [2.0.0-beta.12](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.11...v2.0.0-beta.12) (2020-06-28)
 
 
