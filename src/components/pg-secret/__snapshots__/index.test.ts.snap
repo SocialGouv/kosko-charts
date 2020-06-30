@@ -29,11 +29,11 @@ exports[`should throw because of missing variables 1`] = `
 "BadArgument:
 ├─ required property \\"database\\"
 │  └─ cannot decode undefined, should be string
+├─ required property \\"host\\"
+│  └─ cannot decode undefined, should be string
 ├─ required property \\"password\\"
 │  └─ cannot decode undefined, should be string
-├─ required property \\"user\\"
-│  └─ cannot decode undefined, should be string
-└─ required property \\"host\\"
+└─ required property \\"user\\"
    └─ cannot decode undefined, should be string"
 `;
 
@@ -41,9 +41,9 @@ exports[`should throw because of missing variables 2`] = `
 "BadArgument:
 ├─ required property \\"database\\"
 │  └─ cannot decode undefined, should be string
-├─ required property \\"password\\"
+├─ required property \\"host\\"
 │  └─ cannot decode undefined, should be string
-└─ required property \\"host\\"
+└─ required property \\"password\\"
    └─ cannot decode undefined, should be string"
 `;
 
