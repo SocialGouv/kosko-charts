@@ -6,7 +6,7 @@ import { Params } from "./params";
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
 
 // needs azure-pg-admin-user secret
-const createDbJob = ({
+export const createDbJob = ({
   database,
   user,
   password,
@@ -73,5 +73,3 @@ const createDbJob = ({
   });
   return job;
 };
-
-export default createDbJob;
