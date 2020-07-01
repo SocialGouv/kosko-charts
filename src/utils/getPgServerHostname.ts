@@ -8,7 +8,7 @@ export const getPgServerHostname = (
   env: EnvironmentName = "dev"
 ): string =>
   appName.toLowerCase().replace(/\W/g, "") +
-  (env === "preprod" ? "dev" : env) +
+  (env !== "prod" ? "dev" : "prod") +
   "server.postgres.database.azure.com";
 
 ok(
