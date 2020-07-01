@@ -3,10 +3,11 @@
 import { gitlabEnv, KOSKO_BIN, template, TIMEOUT } from "e2e/helpers";
 // eslint-disable-next-line import/default
 import execa from "execa";
+import { basename, resolve } from "path";
 
 //
 
-const cwd = template("simple");
+const cwd = template(basename(resolve(__dirname, "..", "..")));
 
 test(
   "--env preprod : should generate dev manifest",
