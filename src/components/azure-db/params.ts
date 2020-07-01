@@ -16,11 +16,37 @@ export const CreateDbComponentParams = D.intersection(
   })
 );
 
-export interface CreateDbJobParameters extends NamedComponentEnvironment {
+export interface BaseCreateDbJobParameters {
   database: string;
   user: string;
   password: string;
   extensions?: string;
+}
+
+export interface CreateDbJobParameters
+  extends NamedComponentEnvironment,
+    BaseCreateDbJobParameters {}
+
+interface GetDevDababaseParameters {
+  suffix?: string;
+}
+
+// default dev values
+export function getDevDatabaseParameters({
+  suffix,
+}: GetDevDababaseParameters): BaseCreateDbJobParameters {
+  return {
+    database: `autodevops_${suffix}`,
+    password: `password_${suffix}`,
+    user: `user_${suffix}`,
+  };
+}
+export function getProdDatabaseParameters(): BaseCreateDbJobParameters {
+  return {
+    database: "production_db",
+    password: "production_password",
+    user: "production_user",
+  };
 }
 
 export type Params = CreateDbJobParameters & GlobalEnvironment;
