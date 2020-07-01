@@ -1,3 +1,10 @@
+# [2.0.0-beta.15](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2020-07-01)
+
+
+### Bug Fixes
+
+* **deps:** pin io-ts to 2.2.6 ([2caebbc](https://github.com/SocialGouv/kosko-charts/commit/2caebbc0a725cf7a96fd62c4730ffd3c74bba57a))
+
 # [2.0.0-beta.14](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2020-07-01)
 
 
