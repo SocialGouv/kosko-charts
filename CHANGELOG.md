@@ -1,3 +1,10 @@
+# [2.0.0-beta.14](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2020-07-01)
+
+
+### Features
+
+* components/azure-db ([#62](https://github.com/SocialGouv/kosko-charts/issues/62)) ([90de6d4](https://github.com/SocialGouv/kosko-charts/commit/90de6d406d7a2c6d8fb0fa702df0310533c88401))
+
 # [2.0.0-beta.13](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2020-06-28)
 
 
