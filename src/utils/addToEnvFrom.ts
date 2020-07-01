@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { assert } from "@sindresorhus/is";
+=======
+>>>>>>> feat: add utils/addToEnvFrom
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
