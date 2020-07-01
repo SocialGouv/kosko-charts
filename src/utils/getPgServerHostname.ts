@@ -3,7 +3,7 @@ import { ok } from "assert";
 type EnvironmentName = "dev" | "preprod" | "prod";
 
 // dummy slugify - use "dev" server for "preprod" env too
-export const getPgServerHostName = (
+export const getPgServerHostname = (
   appName: string,
   env: EnvironmentName = "dev"
 ): string =>
@@ -12,6 +12,6 @@ export const getPgServerHostName = (
   "server.postgres.database.azure.com";
 
 ok(
-  getPgServerHostName("sample-Next-App123", "preprod") ===
-    "samplenextappdevserver.postgres.database.azure.com"
+  getPgServerHostname("sample-Next-App123", "preprod") ===
+    "samplenextapp123devserver.postgres.database.azure.com"
 );
