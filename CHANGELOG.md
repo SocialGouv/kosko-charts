@@ -1,3 +1,10 @@
+# [2.0.0-beta.16](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2020-07-01)
+
+
+### Features
+
+* update to io-ts 2.2.7 ([400704b](https://github.com/SocialGouv/kosko-charts/commit/400704b78b2637f4cee0a8a9d929b0c70c568b91))
+
 # [2.0.0-beta.15](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2020-07-01)
 
 
