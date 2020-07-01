@@ -9,7 +9,7 @@ Object {
       "labels": Object {
         "app": "test-job",
       },
-      "name": "create-azure-db",
+      "name": "test-job",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
@@ -106,7 +106,7 @@ Object {
       "labels": Object {
         "app": "test-job",
       },
-      "name": "create-azure-db",
+      "name": "test-job",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {

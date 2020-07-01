@@ -16,7 +16,6 @@ export const createDbJob = ({
   const job = new Job({
     metadata: {
       ...metadataFromParams(params),
-      name: `create-azure-db`,
     },
     spec: {
       backoffLimit: 0,

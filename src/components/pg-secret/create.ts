@@ -16,7 +16,6 @@ export const createSecret = ({
   const secret = new Secret({
     metadata: {
       ...metadataFromParams(params),
-      name: `azure-pg-user`,
     },
     stringData: {
       DATABASE_URL: connectionString,
