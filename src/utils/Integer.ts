@@ -1,7 +1,10 @@
-import { Decoder, number, refinement } from "io-ts/lib/Decoder";
+import { pipe } from "fp-ts/lib/pipeable";
+import { Decoder, number, refine } from "io-ts/lib/Decoder";
 
-export const Integer: Decoder<number> = refinement(
+export const Integer: Decoder<number> = pipe(
   number,
-  (n: unknown): n is number => typeof n === "number" && Number.isInteger(n),
-  "Integer"
+  refine(
+    (n: unknown): n is number => typeof n === "number" && Number.isInteger(n),
+    "Integer"
+  )
 );

@@ -38,14 +38,12 @@ Object {
 `;
 
 exports[`should throw because of missing variables 1`] = `
-"BadArgument:
-└─ required property \\"namespace\\"
-   └─ cannot decode undefined, should be Record<string, unknown>"
+"BadArgument:required property \\"namespace\\"
+└─ cannot decode undefined, should be object"
 `;
 
 exports[`should throw because the namespace name is emptys 1`] = `
-"BadArgument:
-└─ required property \\"namespace\\"
-   └─ required property \\"name\\"
-      └─ cannot refine \\"\\", should be NonEmptyString"
+"BadArgument:required property \\"namespace\\"
+└─ required property \\"name\\"
+   └─ cannot decode \\"\\", should be NonEmptyString"
 `;

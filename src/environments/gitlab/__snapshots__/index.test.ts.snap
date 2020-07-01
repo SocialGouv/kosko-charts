@@ -61,35 +61,33 @@ Object {
 `;
 
 exports[`should throw because of empty strings 1`] = `
-"BadArgument:
-├─ required property \\"CI_ENVIRONMENT_NAME\\"
-│  └─ cannot refine \\"\\", should be NonEmptyString
-├─ required property \\"CI_ENVIRONMENT_SLUG\\"
-│  └─ cannot refine \\"\\", should be NonEmptyString
-├─ required property \\"CI_PROJECT_NAME\\"
-│  └─ cannot refine \\"\\", should be NonEmptyString
-├─ required property \\"CI_PROJECT_PATH_SLUG\\"
-│  └─ cannot refine \\"\\", should be NonEmptyString
-├─ required property \\"KUBE_INGRESS_BASE_DOMAIN\\"
-│  └─ cannot refine \\"\\", should be NonEmptyString
-├─ required property \\"KUBE_NAMESPACE\\"
-│  └─ cannot refine \\"\\", should be NonEmptyString
-└─ optional property \\"CI_COMMIT_TAG\\"
-   └─ cannot refine \\"\\", should be NonEmptyString"
+"BadArgument:required property \\"CI_ENVIRONMENT_NAME\\"
+└─ cannot decode \\"\\", should be NonEmptyString
+required property \\"CI_ENVIRONMENT_SLUG\\"
+└─ cannot decode \\"\\", should be NonEmptyString
+required property \\"CI_PROJECT_NAME\\"
+└─ cannot decode \\"\\", should be NonEmptyString
+required property \\"CI_PROJECT_PATH_SLUG\\"
+└─ cannot decode \\"\\", should be NonEmptyString
+required property \\"KUBE_INGRESS_BASE_DOMAIN\\"
+└─ cannot decode \\"\\", should be NonEmptyString
+required property \\"KUBE_NAMESPACE\\"
+└─ cannot decode \\"\\", should be NonEmptyString
+optional property \\"CI_COMMIT_TAG\\"
+└─ cannot decode \\"\\", should be NonEmptyString"
 `;
 
 exports[`should throw because of missing variables 1`] = `
-"BadArgument:
-├─ required property \\"CI_ENVIRONMENT_NAME\\"
-│  └─ cannot decode undefined, should be string
-├─ required property \\"CI_ENVIRONMENT_SLUG\\"
-│  └─ cannot decode undefined, should be string
-├─ required property \\"CI_PROJECT_NAME\\"
-│  └─ cannot decode undefined, should be string
-├─ required property \\"CI_PROJECT_PATH_SLUG\\"
-│  └─ cannot decode undefined, should be string
-├─ required property \\"KUBE_INGRESS_BASE_DOMAIN\\"
-│  └─ cannot decode undefined, should be string
-└─ required property \\"KUBE_NAMESPACE\\"
-   └─ cannot decode undefined, should be string"
+"BadArgument:required property \\"CI_ENVIRONMENT_NAME\\"
+└─ cannot decode undefined, should be string
+required property \\"CI_ENVIRONMENT_SLUG\\"
+└─ cannot decode undefined, should be string
+required property \\"CI_PROJECT_NAME\\"
+└─ cannot decode undefined, should be string
+required property \\"CI_PROJECT_PATH_SLUG\\"
+└─ cannot decode undefined, should be string
+required property \\"KUBE_INGRESS_BASE_DOMAIN\\"
+└─ cannot decode undefined, should be string
+required property \\"KUBE_NAMESPACE\\"
+└─ cannot decode undefined, should be string"
 `;

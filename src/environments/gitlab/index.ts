@@ -5,7 +5,7 @@ import { fold } from "fp-ts/lib/Either";
 import { pipe } from "fp-ts/lib/pipeable";
 import * as D from "io-ts/lib/Decoder";
 
-const GitlabProcessEnv = D.intersection(
+const GitlabProcessEnv = pipe(
   D.type({
     CI_ENVIRONMENT_NAME: NonEmptyString,
     CI_ENVIRONMENT_SLUG: NonEmptyString,
@@ -14,10 +14,12 @@ const GitlabProcessEnv = D.intersection(
     KUBE_INGRESS_BASE_DOMAIN: NonEmptyString,
     KUBE_NAMESPACE: NonEmptyString,
   }),
-  D.partial({
-    CI_COMMIT_TAG: NonEmptyString,
-    PRODUCTION: D.string,
-  })
+  D.intersect(
+    D.partial({
+      CI_COMMIT_TAG: NonEmptyString,
+      PRODUCTION: D.string,
+    })
+  )
 );
 
 type GitlabProcessEnv = D.TypeOf<typeof GitlabProcessEnv>;
@@ -33,10 +35,9 @@ const mapper = ({
   PRODUCTION,
 }: GitlabProcessEnv): GlobalEnvironment => {
   const isProductionCluster = Boolean(PRODUCTION);
-
   const application = isProductionCluster
     ? CI_PROJECT_NAME
-    : CI_COMMIT_TAG !== undefined
+    : CI_COMMIT_TAG
     ? `${CI_COMMIT_TAG.replace(/\./g, "-")}-${CI_PROJECT_NAME}`
     : `${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}`;
 

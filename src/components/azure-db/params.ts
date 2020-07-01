@@ -3,17 +3,20 @@ import {
   NamedComponentEnvironment,
 } from "@socialgouv/kosko-charts/types";
 import { NonEmptyString } from "@socialgouv/kosko-charts/utils/NonEmptyString";
+import { pipe } from "fp-ts/lib/pipeable";
 import * as D from "io-ts/lib/Decoder";
 
-export const CreateDbComponentParams = D.intersection(
+export const CreateDbComponentParams = pipe(
   D.type({
     database: NonEmptyString,
     password: NonEmptyString,
     user: NonEmptyString,
   }),
-  D.partial({
-    extensions: NonEmptyString,
-  })
+  D.intersect(
+    D.partial({
+      extensions: NonEmptyString,
+    })
+  )
 );
 
 export interface CreateDbJobParameters extends NamedComponentEnvironment {

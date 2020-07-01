@@ -3,18 +3,21 @@ import {
   NamedComponentEnvironment,
 } from "@socialgouv/kosko-charts/types";
 import { NonEmptyString } from "@socialgouv/kosko-charts/utils/NonEmptyString";
+import { pipe } from "fp-ts/lib/pipeable";
 import * as D from "io-ts/lib/Decoder";
 
-export const PostresSecretParameters = D.intersection(
+export const PostresSecretParameters = pipe(
   D.type({
     database: NonEmptyString,
     host: NonEmptyString,
     password: NonEmptyString,
     user: NonEmptyString,
   }),
-  D.partial({
-    sslmode: NonEmptyString,
-  })
+  D.intersect(
+    D.partial({
+      sslmode: NonEmptyString,
+    })
+  )
 );
 
 export interface PostresSecretParameters extends NamedComponentEnvironment {

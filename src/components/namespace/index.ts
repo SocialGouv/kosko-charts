@@ -11,16 +11,18 @@ import { Namespace } from "kubernetes-models/v1/Namespace";
 
 export type Params = NamespaceComponentEnvironment & GlobalEnvironment;
 
-const NamespaceComponentParams = D.intersection(
+const NamespaceComponentParams = pipe(
   D.type({
     namespace: D.type({
       name: NonEmptyString,
     }),
   }),
-  D.partial({
-    annotations: D.record(D.string),
-    labels: D.record(D.string),
-  })
+  D.intersect(
+    D.partial({
+      annotations: D.record(D.string),
+      labels: D.record(D.string),
+    })
+  )
 );
 type NamespaceComponentParams = D.TypeOf<typeof NamespaceComponentParams>;
 
