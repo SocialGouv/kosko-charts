@@ -1,3 +1,10 @@
+# [2.0.0-beta.17](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2020-07-02)
+
+
+### Features
+
+* **utils:** add helperz ([#65](https://github.com/SocialGouv/kosko-charts/issues/65)) ([787a882](https://github.com/SocialGouv/kosko-charts/commit/787a882dcfc48c4c05fbbfead66ed37022c9ecce))
+
 # [2.0.0-beta.16](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2020-07-01)
 
 
