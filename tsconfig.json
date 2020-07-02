@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "ESNext",
+    "target": "ES2019",
     "types": ["dotenv", "jest", "node"]
   },
   "exclude": ["components", "coverage", "environments", "types"]
