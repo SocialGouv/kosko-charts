@@ -1,3 +1,4 @@
+import { assert } from "@sindresorhus/is";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
@@ -12,9 +13,9 @@ export const addToEnvFrom = ({
   data,
   containerIndex = 0,
 }: AddToContainerParams): void => {
-  const container = deployment.spec!.template.spec!.containers[containerIndex]; // eslint-disable-line @typescript-eslint/no-non-null-assertion
-  if (!container.envFrom) {
-    container.envFrom = [];
-  }
+  assert.object(deployment.spec);
+  assert.object(deployment.spec.template.spec);
+  const container = deployment.spec.template.spec.containers[containerIndex];
+  container.envFrom = container.envFrom ?? [];
   container.envFrom.push(...data);
 };
