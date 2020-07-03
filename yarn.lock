@@ -1422,7 +1422,7 @@
     eslint-import-resolver-typescript "~2.0.0"
     eslint-plugin-import "~2.22.0"
 
-"@socialgouv/kosko-charts@link:./src":
+"@socialgouv/kosko-charts@link:.":
   version "0.0.0"
   uid ""
 
