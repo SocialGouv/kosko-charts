@@ -7,6 +7,7 @@ overrides:
     extends:
       - "@socialgouv/eslint-config-typescript"
     rules:
+      "@typescript-eslint/no-use-before-define": off
       import/no-unresolved:
         - error
         - ignore:

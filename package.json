@@ -5,16 +5,16 @@
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
-    "fp-ts": "^2.6.6",
+    "fp-ts": "^2.6.7",
     "io-ts": "2.2.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
-    "@babel/preset-typescript": "^7.10.1",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@kosko/env": "^0.5.2",
-    "@socialgouv/eslint-config-recommended": "^1.1.3",
-    "@socialgouv/eslint-config-typescript": "^1.1.3",
+    "@socialgouv/eslint-config-recommended": "^1.6.0",
+    "@socialgouv/eslint-config-typescript": "^1.6.0",
     "@socialgouv/kosko-charts": "link:./src",
     "@types/jest": "^26.0.3",
     "@types/node": "^14.0.14",
@@ -29,7 +29,7 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.6"
   },
   "files": [
     "components",
@@ -62,7 +62,7 @@
   },
   "repository": "SocialGouv/kosko-charts.git",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc",
     "e2e": "jest -c ./e2e/jest.config.js",
     "lint": "eslint .",
     "precommit": "lint-staged",

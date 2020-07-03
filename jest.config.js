@@ -1,18 +1,12 @@
 const { defaults } = require("jest-config");
 
-const ignorePatterns = [
-  "<rootDir>/components",
-  "<rootDir>/coverage",
-  "<rootDir>/e2e",
-  "<rootDir>/environments",
-  "<rootDir>/types",
-];
+const ignorePatterns = ["<rootDir>/coverage", "<rootDir>/e2e"];
 
 module.exports = {
   collectCoverageFrom: ["src/**/*.ts"],
   moduleDirectories: ["src", ...defaults.moduleDirectories],
   moduleNameMapper: {
-    "^@socialgouv/kosko-charts(.*)$": "<rootDir>/src$1",
+    "^@socialgouv/kosko-charts(.*)$": "<rootDir>$1",
   },
   testEnvironment: "node",
   testPathIgnorePatterns: [
