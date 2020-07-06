@@ -24,10 +24,10 @@ export default (env = process.env): AppComponentEnvironment => {
       memory: "64Mi",
     },
     limits: {
-      cpu: "50m",
-      memory: "128Mi",
+      cpu: "1000m",
+      memory: "514Mi",
     },
-    containerPort: 8080,
+    containerPort: 3000,
     servicePort: 80,
   };
 };
