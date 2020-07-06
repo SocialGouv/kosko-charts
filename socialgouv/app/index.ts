@@ -1,9 +1,8 @@
-import { SocialGouvAppParams } from "./params";
-import { create as createNamespace } from "@socialgouv/kosko-charts/components/namespace";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
+import { create as createNamespace } from "@socialgouv/kosko-charts/components/namespace";
 import gitlabGlobalEnv from "@socialgouv/kosko-charts/environments/gitlab";
-import gitlabNamespaceEnv from "@socialgouv/kosko-charts/environments/gitlab/namespaces";
 import gitlabAppEnv from "@socialgouv/kosko-charts/environments/gitlab/app";
+import gitlabNamespaceEnv from "@socialgouv/kosko-charts/environments/gitlab/namespaces";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
 export function create(env = process.env) {
