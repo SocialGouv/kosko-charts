@@ -6,15 +6,16 @@ import gitlabNamespaceEnv from "@socialgouv/kosko-charts/environments/gitlab/nam
 import gitlabAppEnv from "@socialgouv/kosko-charts/environments/gitlab/app";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
-export function create(params: SocialGouvAppParams) {
-  const globalParams = gitlabGlobalEnv(process.env);
+export function create(env = process.env) {
+  const globalParams = gitlabGlobalEnv(env);
 
-  const namespaceParams = gitlabNamespaceEnv(process.env);
+  const namespaceParams = gitlabNamespaceEnv(env);
   const { namespace } = createNamespace(merge(globalParams, namespaceParams));
 
-  const appParams = gitlabAppEnv(process.env);
+  const appParams = gitlabAppEnv(env);
   const { deployment, ingress, service } = createApp(
     merge(globalParams, appParams)
   );
+
   return [namespace, deployment, ingress, service];
 }
