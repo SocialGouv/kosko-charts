@@ -1,58 +1,47 @@
-import { metadataFromParams } from "@socialgouv/kosko-charts/components/app/metadata";
+//import env from "@kosko/env";
+//import { metadataFromParams } from "@socialgouv/kosko-charts/components/app/metadata";
 import { Job } from "kubernetes-models/batch/v1/Job";
 
-import { Params } from "./params";
-
-const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
-
-// needs azure-pg-admin-user secret
-export const createDbJob = ({
+export const dropDbJob = ({
+  //@ts-expect-error
   database,
+  //@ts-expect-error
   user,
-  password,
-  extensions = DEFAULT_EXTENSIONS,
-  ...params
-}: Params): Job => {
-  const job = new Job({
+  secretRefName = `azure-pg-admin-user`,
+}): Job => {
+  return new Job({
     metadata: {
-      ...metadataFromParams(params),
+      name: `drop-azure-db-${process.env.CI_COMMIT_SHORT_SHA}`,
     },
     spec: {
       backoffLimit: 0,
       template: {
+        metadata: {},
         spec: {
           containers: [
             {
-              command: ["create-db-user"],
+              command: ["drop-db-user"],
               env: [
                 {
-                  name: "NEW_DB_NAME",
+                  name: "DROP_DATABASE",
                   value: database,
                 },
                 {
-                  name: "NEW_USER",
+                  name: "DROP_USER",
                   value: user,
-                },
-                {
-                  name: "NEW_PASSWORD",
-                  value: password,
-                },
-                {
-                  name: "NEW_DB_EXTENSIONS",
-                  value: extensions,
                 },
               ],
               envFrom: [
                 {
                   secretRef: {
-                    name: `azure-pg-admin-user`,
+                    name: secretRefName,
                   },
                 },
               ],
               image:
                 "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
               imagePullPolicy: "IfNotPresent",
-              name: "create-db-user",
+              name: "drop-db-user",
               resources: {
                 limits: {
                   cpu: "300m",
@@ -70,5 +59,4 @@ export const createDbJob = ({
       },
     },
   });
-  return job;
 };

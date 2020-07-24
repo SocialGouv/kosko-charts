@@ -1,21 +1,22 @@
 import { Secret } from "kubernetes-models/v1/Secret";
 
-import { metadataFromParams } from "../app/metadata";
-import { Params } from "./params";
-
 // create the azure-pg-user secret for dynamic environments (dev)
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createSecret = ({
+  //@ts-expect-error
   database,
+  //@ts-expect-error
   user,
+  //@ts-expect-error
   password,
+  //@ts-expect-error
   host,
   sslmode = "require",
-  ...params
-}: Params): Secret => {
+}): Secret => {
   const connectionString = `postgresql://${user}%40${host}:${password}@${host}/${database}?sslmode=require`.toString();
   const secret = new Secret({
     metadata: {
-      ...metadataFromParams(params),
+      // ...metadataFromParams(params),
     },
     stringData: {
       DATABASE_URL: connectionString,

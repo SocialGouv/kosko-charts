@@ -1,28 +1,139 @@
-import { onDecodeError } from "@socialgouv/kosko-charts/utils/onDecodeError";
-import { fold } from "fp-ts/lib/Either";
-import { pipe } from "fp-ts/lib/pipeable";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
-import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
-import { Service } from "kubernetes-models/v1/Service";
+/* eslint-disable */
+import { Environment } from "@kosko/env";
+import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+import { ok } from "assert";
+import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
+import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
-import createDeployment from "./deployment";
-import createIngress from "./ingress";
-import { AppComponentParams, Params } from "./params";
-import createService from "./service";
+import gitlab from "../../environments/gitlab";
+import { addToEnvFrom } from "../../utils/addToEnvFrom";
+import createDeployment from "../../utils/createDeployment";
+import createIngress from "../../utils/createIngress";
+import createService from "../../utils/createService";
+import { loadYaml } from "../../utils/getEnvironmentComponent";
+import { updateMetadata } from "../../utils/updateMetadata";
 
-const mapper = (
-  params: Params
-): { deployment: Deployment; ingress: Ingress; service: Service } => ({
-  deployment: createDeployment(params),
-  ingress: createIngress(params),
-  service: createService(params),
-});
+type CreateResult = unknown[];
 
 export const create = (
-  params: Params
-): { deployment: Deployment; ingress: Ingress; service: Service } =>
-  pipe(
-    params,
-    AppComponentParams.decode,
-    fold(onDecodeError, () => mapper(params))
-  );
+  name: string,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  { env, config }: { env: Environment; config: object }
+): CreateResult => {
+  ok(process.env.CI_REGISTRY_IMAGE);
+  ok(process.env.CI_ENVIRONMENT_URL);
+  const manifests = [];
+
+  const defaultEnvParams = {
+    containerPort: 3000,
+    name,
+    servicePort: 3000,
+  };
+
+  // kosko component env values
+  const envParams = {
+    ...defaultEnvParams, // set name as default if not provided
+    ...gitlab(process.env),
+    ...env.component(name), // kosko env overrides
+    ...config, // create options
+  };
+
+  // console.log("envParams", envParams);
+
+  const { containerPort, servicePort } = envParams;
+
+  const deployment = createDeployment(envParams);
+  updateMetadata(deployment, {
+    annotations: envParams.annotations,
+    labels: envParams.labels,
+    namespace: envParams.namespace,
+    name,
+  });
+  manifests.push(deployment);
+
+  /* SEALED-SECRET */
+  // try to import environment sealed-secret
+  const secret = loadYaml<SealedSecret>(env, `${name}.sealed-secret.yaml`);
+  if (secret) {
+    // add gitlab annotations
+    updateMetadata(secret, {
+      annotations: envParams.annotations,
+      labels: envParams.labels,
+      namespace: envParams.namespace,
+    });
+    // add to deployment.envFrom
+    addToEnvFrom({
+      data: [
+        new EnvFromSource({
+          secretRef: {
+            name: secret.metadata?.name,
+          },
+        }),
+      ],
+      deployment,
+    });
+    manifests.push(secret);
+  }
+
+  /* CONFIGMAP */
+  // try to import configmap
+  const configMap = loadYaml<ConfigMap>(env, `${name}.configmap.yaml`);
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (configMap) {
+    // add gitlab annotations
+    updateMetadata(configMap, {
+      annotations: envParams.annotations,
+      labels: envParams.labels,
+      namespace: envParams.namespace,
+    });
+    // add to deployment.envFrom
+    addToEnvFrom({
+      data: [
+        new EnvFromSource({
+          configMapRef: {
+            name: configMap.metadata?.name,
+          },
+        }),
+      ],
+      deployment,
+    });
+    manifests.push(configMap);
+  }
+
+  /* SERVICE */
+  const service = createService({
+    name,
+    containerPort,
+    servicePort,
+    selector: { app: name },
+  });
+  // add gitlab annotations
+  updateMetadata(service, {
+    annotations: envParams.annotations,
+    labels: envParams.labels,
+    namespace: envParams.namespace,
+    name,
+  });
+  manifests.push(service);
+
+  /* INGRESS */
+  if (envParams.ingress !== false) {
+    const ingress = createIngress({
+      name,
+      host: `${envParams.subdomain}.${envParams.domain}`,
+      serviceName: name,
+      servicePort,
+    });
+    // add gitlab annotations
+    updateMetadata(ingress, {
+      annotations: envParams.annotations,
+      labels: envParams.labels,
+      namespace: envParams.namespace,
+      name,
+    });
+    manifests.push(ingress);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return manifests;
+};
