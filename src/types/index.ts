@@ -6,10 +6,10 @@ export interface GlobalEnvironment {
   ingress?: {
     annotations?: Record<string, string | undefined>;
   };
-  git: { branch?: string; remote?: string };
   labels?: Record<string, string>;
-  namespace: { name: string };
-  rancherId?: string;
+  namespace: {
+    name: string;
+  };
   subdomain: string;
 }
 

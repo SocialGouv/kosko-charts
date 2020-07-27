@@ -14,10 +14,6 @@ test.each([
 
 const validParams: Params = {
   domain: "",
-  git: {
-    branch: "",
-    remote: "",
-  },
   namespace: { name: "sample-42-my-test" },
   subdomain: "",
 };

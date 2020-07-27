@@ -16,11 +16,8 @@ const GitlabProcessEnv = pipe(
   }),
   D.intersect(
     D.partial({
-      CI_COMMIT_REF_NAME: NonEmptyString,
       CI_COMMIT_TAG: NonEmptyString,
-      CI_REPOSITORY_URL: NonEmptyString,
       PRODUCTION: D.string,
-      RANCHER_PROJECT_ID: NonEmptyString,
     })
   )
 );
@@ -28,17 +25,14 @@ const GitlabProcessEnv = pipe(
 type GitlabProcessEnv = D.TypeOf<typeof GitlabProcessEnv>;
 
 const mapper = ({
-  CI_COMMIT_REF_NAME,
   CI_COMMIT_TAG,
   CI_ENVIRONMENT_NAME,
   CI_ENVIRONMENT_SLUG,
   CI_PROJECT_NAME,
   CI_PROJECT_PATH_SLUG,
-  CI_REPOSITORY_URL,
   KUBE_INGRESS_BASE_DOMAIN,
   KUBE_NAMESPACE,
   PRODUCTION,
-  RANCHER_PROJECT_ID,
 }: GitlabProcessEnv): GlobalEnvironment => {
   const isProductionCluster = Boolean(PRODUCTION);
   const application = isProductionCluster
@@ -54,21 +48,15 @@ const mapper = ({
       "app.gitlab.com/env.name": CI_ENVIRONMENT_NAME,
     },
     domain: KUBE_INGRESS_BASE_DOMAIN,
-    git: {
-      branch: CI_COMMIT_REF_NAME,
-      remote: CI_REPOSITORY_URL,
-    },
     labels: {
       application,
       //component: application,
       owner: CI_PROJECT_NAME,
       team: CI_PROJECT_NAME,
-      ...(CI_ENVIRONMENT_NAME.endsWith("-dev2") ? { cert: "wildcard" } : {}),
     },
     namespace: {
       name: isProductionCluster ? CI_PROJECT_NAME : KUBE_NAMESPACE,
     },
-    rancherId: RANCHER_PROJECT_ID ?? "",
     subdomain: isProductionCluster ? CI_PROJECT_NAME : application,
   };
 };

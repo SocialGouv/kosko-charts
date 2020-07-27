@@ -1,13 +1,10 @@
 import env from "@kosko/env";
 import { create } from "@socialgouv/kosko-charts/components/app";
 
-const manifests = create("www", {
+const manifests = create("app", {
   config: {
-    containerPort: 8080,
+    containerPort: 3030,
     image: "",
-    labels: {
-      component: "next",
-    },
     limits: {
       cpu: "50m",
       memory: "128Mi",
