@@ -1,5 +1,5 @@
 import { IIoK8sApiCoreV1Probe } from "kubernetes-models/_definitions/IoK8sApiCoreV1Probe";
-import { IoK8sApiCoreV1ResourceRequirements } from "kubernetes-models/_definitions/IoK8sApiCoreV1ResourceRequirements";
+import { IIoK8sApimachineryPkgApiResourceQuantity } from "kubernetes-models/_definitions/IoK8sApimachineryPkgApiResourceQuantity";
 //import { IIoK8sApimachineryPkgApisMetaV1ObjectMeta } from "kubernetes-models/_definitions/IoK8sApimachineryPkgApisMetaV1ObjectMeta";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
@@ -9,7 +9,12 @@ interface DeploymentParams {
   //metadata: IIoK8sApimachineryPkgApisMetaV1ObjectMeta;
   image: string;
   // { name: string | undefined; tag: string | undefined };
-  resources: IoK8sApiCoreV1ResourceRequirements | null;
+  limits?: {
+    [key: string]: IIoK8sApimachineryPkgApiResourceQuantity;
+  };
+  requests?: {
+    [key: string]: IIoK8sApimachineryPkgApiResourceQuantity;
+  };
   livenessProbe: IIoK8sApiCoreV1Probe | null;
   readinessProbe: IIoK8sApiCoreV1Probe | null;
 }
@@ -85,12 +90,12 @@ export default (params: DeploymentParams): Deployment => {
                 limits: {
                   cpu: "500m",
                   memory: "128Mi",
-                  //   ...(params.limits ?? {}),
+                  ...(params.limits ?? {}),
                 },
                 requests: {
                   cpu: "5m",
                   memory: "16Mi",
-                  //  ...(params.requests ?? {}),
+                  ...(params.requests ?? {}),
                 },
               },
               startupProbe: {
