@@ -91,7 +91,6 @@ $ yarn k8s generate | kubectl apply -f -
 <br>
 <br>
 <br>
-<br>
 
 ## Usage
 
