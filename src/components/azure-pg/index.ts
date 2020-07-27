@@ -54,7 +54,7 @@ export const create = ({ env, config }) => {
   updateMetadata(job, {
     annotations: envParams.annotations,
     labels: envParams.labels,
-    name: "create-db-job",
+    name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
     namespace: envParams.namespace,
   });
 
