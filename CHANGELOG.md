@@ -1,3 +1,10 @@
+# [2.0.0-alpha.13](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.12...v2.0.0-alpha.13) (2020-07-27)
+
+
+### Bug Fixes
+
+* create-db-job name ([2236bc6](https://github.com/SocialGouv/kosko-charts/commit/2236bc6acd613412597a1176bd94f358838a4424))
+
 # [2.0.0-alpha.12](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.11...v2.0.0-alpha.12) (2020-07-27)
 
 
