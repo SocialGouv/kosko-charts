@@ -25,6 +25,7 @@ export default (params: DeploymentParams): Deployment => {
 
   return new Deployment({
     metadata: {
+      annotations: {},
       labels: {
         app: params.name,
       },
@@ -38,6 +39,12 @@ export default (params: DeploymentParams): Deployment => {
         },
       },
       template: {
+        metadata: {
+          annotations: {},
+          labels: {
+            app: params.name,
+          },
+        },
         spec: {
           containers: [
             {

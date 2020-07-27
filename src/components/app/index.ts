@@ -12,6 +12,7 @@ import createIngress from "../../utils/createIngress";
 import createService from "../../utils/createService";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
+import { merge } from "../../utils/merge";
 
 type CreateResult = unknown[];
 
@@ -27,16 +28,16 @@ export const create = (
   const defaultEnvParams = {
     containerPort: 3000,
     name,
-    servicePort: 3000,
+    servicePort: 80,
   };
 
   // kosko component env values
-  const envParams = {
-    ...defaultEnvParams, // set name as default if not provided
-    ...gitlab(process.env),
-    ...env.component(name), // kosko env overrides
-    ...config, // create options
-  };
+  const envParams = merge(
+    defaultEnvParams, // set name as default if not provided
+    gitlab(process.env),
+    env.component(name), // kosko env overrides
+    config // create options
+  );
 
   // console.log("envParams", envParams);
 

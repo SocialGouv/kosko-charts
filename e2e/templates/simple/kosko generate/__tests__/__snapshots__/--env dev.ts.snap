@@ -4,15 +4,14 @@ exports[`--env dev : should generate dev manifest 1`] = `
 "---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev
     field.cattle.io/creatorId: gitlab
     field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
     git/branch: e2e-branch
     git/remote: 'git@github.com:SocialGouv/sample-next-app.git'
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
   labels:
-    app: sample-next-app-24-e2e-branch-42
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
@@ -25,12 +24,13 @@ metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev
+    app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
+    cert: wildcard
     component: next
   name: www
   namespace: sample-next-app-24-e2e-branch-42
@@ -44,17 +44,18 @@ spec:
       annotations:
         app.gitlab.com/app: socialgouv-sample-next-app
         app.gitlab.com/env: e2e-branch-42
-        app.gitlab.com/env.name: e2e-branch-dev
+        app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: www
         application: e2e-branch-42-sample-next-app
         owner: sample-next-app
         team: sample-next-app
+        cert: wildcard
         component: next
     spec:
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app:123456789
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/www:123456789
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -93,13 +94,41 @@ apiVersion: apps/v1
 kind: Deployment
 ---
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
+    cert: wildcard
+    component: next
+  name: www
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-next-app-24-e2e-branch-42
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: www
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: www
+    application: e2e-branch-42-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
     component: next
   name: www
   namespace: sample-next-app-24-e2e-branch-42
@@ -117,28 +146,5 @@ spec:
         - e2e-branch-42-sample-next-app.dev.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
-kind: Ingress
----
-metadata:
-  annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev
-  labels:
-    app: www
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
-    component: next
-  name: www
-  namespace: sample-next-app-24-e2e-branch-42
-spec:
-  ports:
-    - port: 80
-      targetPort: 8080
-  selector:
-    app: www
-  type: ClusterIP
-apiVersion: v1
-kind: Service"
+kind: Ingress"
 `;
