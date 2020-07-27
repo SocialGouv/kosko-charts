@@ -1,3 +1,10 @@
+# [2.0.0-alpha.14](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2020-07-27)
+
+
+### Bug Fixes
+
+* **createDeployment:** handle request/limits ([25f7ae5](https://github.com/SocialGouv/kosko-charts/commit/25f7ae5112688ec86065f2940466be7708d0d626))
+
 # [2.0.0-alpha.13](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.12...v2.0.0-alpha.13) (2020-07-27)
 
 
