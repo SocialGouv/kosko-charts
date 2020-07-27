@@ -14,8 +14,8 @@ export const addPostgresUserSecret = (deployment) => {
       },
     });
     addToEnvFrom({
-      deployment,
       data: [azureSecretSource],
+      deployment,
     });
   }
 };
