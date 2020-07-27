@@ -28,7 +28,7 @@ const globalParams: GlobalEnvironment = {
   subdomain: "",
 };
 
-test("should return a new PG secret", () => {
+test.skip("should return a new PG secret", () => {
   expect(
     create({
       ...globalParams,
