@@ -1,3 +1,53 @@
+# [2.0.0-alpha.12](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.11...v2.0.0-alpha.12) (2020-07-27)
+
+
+### Bug Fixes
+
+* **app:** simplify metadata typing to allow more cases ([0ba7acd](https://github.com/SocialGouv/kosko-charts/commit/0ba7acd2cd71a04b8137c8ba8f6869c56c2f5ad3))
+* **deps:** pin io-ts to 2.2.6 ([2caebbc](https://github.com/SocialGouv/kosko-charts/commit/2caebbc0a725cf7a96fd62c4730ffd3c74bba57a))
+* **release:** add template package.json in release commit ([584263d](https://github.com/SocialGouv/kosko-charts/commit/584263da191a1d5e578727443643b826e32f5912))
+* **release:** missing v before version number ([eea00a4](https://github.com/SocialGouv/kosko-charts/commit/eea00a4d3aee5755f23ec4b1cad5f0f5a6def9e1))
+* **release:** sed the doc ([9d252f4](https://github.com/SocialGouv/kosko-charts/commit/9d252f4b15291e77a171f83efd6706af35c7f452))
+* **release:** sed the doc (2) ([10db9b8](https://github.com/SocialGouv/kosko-charts/commit/10db9b8467a701d43e7f27573a3a5af505c0b667))
+* **release:** sed the doc (3) ([5ffa54e](https://github.com/SocialGouv/kosko-charts/commit/5ffa54e4d000ad05c2916c8b65f83b5de4a463ca))
+* **release:** sed the doc (4) ([0734af1](https://github.com/SocialGouv/kosko-charts/commit/0734af1edc439045d9e69170888d04ea28ab57d6))
+* **release:** sed the doc (5) ([799539e](https://github.com/SocialGouv/kosko-charts/commit/799539e932ec2afef6a09d5bdc271ca769a8256d))
+* **release:** sed the doc (6) ([b0366cc](https://github.com/SocialGouv/kosko-charts/commit/b0366cc9678c2cf84f1c22d604f067653e7dd548))
+* **utils:** committed conflicts ([ed3ac80](https://github.com/SocialGouv/kosko-charts/commit/ed3ac80fd930eb93b675a072bd213d6c804abeab))
+* generation doc ([b5f2a44](https://github.com/SocialGouv/kosko-charts/commit/b5f2a443f34f739e7fa1b9c044c2ee10c79b2d41))
+* **release:** update string to replace in README.md ([413a67f](https://github.com/SocialGouv/kosko-charts/commit/413a67f38032742c1debb6a346cae803cf058865))
+
+
+### Code Refactoring
+
+* **e2e:** run e2e tests on real world templates ([e975403](https://github.com/SocialGouv/kosko-charts/commit/e9754036234e49d15b4914c68ba58c7299ca6f04)), closes [SocialGouv/kosko-charts#2](https://github.com/SocialGouv/kosko-charts/issues/2) [SocialGouv/kosko-charts#2](https://github.com/SocialGouv/kosko-charts/issues/2)
+
+
+### Features
+
+* more utils ([b26991c](https://github.com/SocialGouv/kosko-charts/commit/b26991ccdcb64e41e570037110490452a6285466))
+* **utils:** add helperz ([#65](https://github.com/SocialGouv/kosko-charts/issues/65)) ([787a882](https://github.com/SocialGouv/kosko-charts/commit/787a882dcfc48c4c05fbbfead66ed37022c9ecce))
+* components/azure-db ([#62](https://github.com/SocialGouv/kosko-charts/issues/62)) ([90de6d4](https://github.com/SocialGouv/kosko-charts/commit/90de6d406d7a2c6d8fb0fa702df0310533c88401))
+* update to io-ts 2.2.7 ([400704b](https://github.com/SocialGouv/kosko-charts/commit/400704b78b2637f4cee0a8a9d929b0c70c568b91))
+* **app:** add default livenessProbe and readinessProbe ([03aeba9](https://github.com/SocialGouv/kosko-charts/commit/03aeba926ad1ff8be5284178a70ea8b582c9e168))
+* **app:** add startupProbe ([ec6e468](https://github.com/SocialGouv/kosko-charts/commit/ec6e4680de04d57a730ef45c5ce5f81366535066))
+* **app:** boost default limits ([95c139c](https://github.com/SocialGouv/kosko-charts/commit/95c139cef30c9045af0a6a12a33fcd45af7f844b))
+* **app:** pass params annotations down to pods ([a154598](https://github.com/SocialGouv/kosko-charts/commit/a154598be9f6a486d7757f0fe62242adcf9b50b1))
+* **app:** target our cluster v2 ([fac1347](https://github.com/SocialGouv/kosko-charts/commit/fac13475823ba04c9814ad51e60ea1527104946c))
+* **templates:** update default scripts ([d255d8b](https://github.com/SocialGouv/kosko-charts/commit/d255d8b981d80784aa63806dbe862c26282d2c10))
+* **types:** add NamedComponentEnvironment ([101aa32](https://github.com/SocialGouv/kosko-charts/commit/101aa32401481df724371a196293cb4aa68c4725))
+* **utils:** add public merge function ([fbd0f82](https://github.com/SocialGouv/kosko-charts/commit/fbd0f82c31bb05fe504316b03cc3240dfa8e199b))
+
+
+### BREAKING CHANGES
+
+* **e2e:** we are introduction the `templates` folder
+
+This will change how we scaffold a deployment folder
+We should now be using
+
+```diff
+
 # [2.0.0-beta.17](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2020-07-02)
 
 
