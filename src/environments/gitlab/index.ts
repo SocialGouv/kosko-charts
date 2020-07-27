@@ -50,6 +50,7 @@ const mapper = ({
     domain: KUBE_INGRESS_BASE_DOMAIN,
     labels: {
       application,
+      //component: application,
       owner: CI_PROJECT_NAME,
       team: CI_PROJECT_NAME,
     },
