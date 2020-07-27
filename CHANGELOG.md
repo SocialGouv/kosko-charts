@@ -1,3 +1,10 @@
+# [2.0.0-alpha.15](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.14...v2.0.0-alpha.15) (2020-07-27)
+
+
+### Features
+
+* add components/hasura ([75a2f9a](https://github.com/SocialGouv/kosko-charts/commit/75a2f9aa5646dc962abfc1dbf5605b2fb257f452))
+
 # [2.0.0-alpha.14](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2020-07-27)
 
 
