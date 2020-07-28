@@ -1,3 +1,11 @@
+# [2.0.0-alpha.18](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2020-07-28)
+
+
+### Bug Fixes
+
+* test pg script ([731630e](https://github.com/SocialGouv/kosko-charts/commit/731630ed615b51035e005734e6d7c8da3a98c380))
+* tests ([75de4c3](https://github.com/SocialGouv/kosko-charts/commit/75de4c32bc6491445557e4eb6305583554acc719))
+
 # [2.0.0-alpha.17](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2020-07-28)
 
 
