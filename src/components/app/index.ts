@@ -19,7 +19,6 @@ import createService, {
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/merge";
-import { Model } from "@kubernetes-models/base";
 
 export type AppConfig = DeploymentParams &
   ServiceParams &
@@ -30,8 +29,16 @@ export type AppConfig = DeploymentParams &
   };
 export const create = (
   name: string,
-  { env, config }: { env: Environment; config: Partial<AppConfig> }
-): Model<unknown>[] => {
+  {
+    env,
+    config,
+    deployment: deploymentParams,
+  }: {
+    env: Environment;
+    config: Partial<AppConfig>;
+    deployment?: Partial<DeploymentParams>;
+  }
+): { kind: string }[] => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
   const manifests = [];
@@ -52,7 +59,7 @@ export const create = (
 
   const { containerPort, servicePort } = envParams;
 
-  const deployment = createDeployment(envParams);
+  const deployment = createDeployment(merge(envParams, deploymentParams || {}));
   updateMetadata(deployment, {
     annotations: envParams.annotations || {},
     labels: envParams.labels || {},

@@ -37,21 +37,26 @@ spec:
         - image: >-
             registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/hasura:1.2.3
           livenessProbe:
+            failureThreshold: 6
             httpGet:
               path: /healthz
               port: http
             initialDelaySeconds: 60
             periodSeconds: 20
+            timeoutSeconds: 5
           name: hasura
           ports:
             - containerPort: 80
               name: http
           readinessProbe:
+            failureThreshold: 15
             httpGet:
               path: /healthz
               port: http
             initialDelaySeconds: 60
             periodSeconds: 20
+            successThreshold: 1
+            timeoutSeconds: 1
           resources:
             limits:
               cpu: 500m
@@ -230,7 +235,6 @@ metadata:
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-    component: next
   name: www
   annotations:
     app.gitlab.com/app: socialgouv-sample-next-app
@@ -259,7 +263,6 @@ metadata:
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-    component: next
   name: www
   namespace: sample-next-app
 spec:

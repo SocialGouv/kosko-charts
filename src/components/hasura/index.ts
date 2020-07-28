@@ -1,9 +1,10 @@
 import { Environment } from "@kosko/env";
+import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
-// import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
+import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 import { create as createApp } from "../app";
 
 type CreateResult = unknown[];
@@ -19,53 +20,47 @@ export const create = (
 
   // todo: extract to @socialgouv/kosko-charts/components/hasura
   const manifests = createApp("hasura", {
-    config: {
-      containerPort: 80,
-
-      limits: {
-        cpu: "500m",
-        memory: "256Mi",
-      },
-
-      livenessProbe: {
-        httpGet: {
-          path: "/healthz",
-          port: "http",
+    config: merge(
+      {
+        container: {
+          livenessProbe: {
+            initialDelaySeconds: 60,
+            periodSeconds: 20,
+          },
+          readinessProbe: {
+            initialDelaySeconds: 60,
+            periodSeconds: 20,
+          },
+          resources: {
+            limits: {
+              cpu: "500m",
+              memory: "256Mi",
+            },
+            requests: {
+              cpu: "100m",
+              memory: "64Mi",
+            },
+          },
         },
-        initialDelaySeconds: 60,
-        periodSeconds: 20,
-      },
+        containerPort: 80,
 
-      readinessProbe: {
-        httpGet: {
-          path: "/healthz",
-          port: "http",
-        },
-        initialDelaySeconds: 60,
-        periodSeconds: 20,
+        subdomain: `hasura-${process.env.CI_PROJECT_NAME}`,
       },
-
-      requests: {
-        cpu: "100m",
-        memory: "64Mi",
-      },
-      //ingress: false,
-      subdomain: `hasura-${process.env.CI_PROJECT_NAME}`,
-      ...config,
-    },
+      config
+    ),
     env,
   });
 
   // DEV: add secret to access DB
   const deployment = manifests.find(
-    //@ts-expect-error
-    (manifest) => manifest.kind === "Deployment"
-  ) as Deployment;
+    (manifest): manifest is Deployment => manifest.kind === "Deployment"
+  );
+  ok(deployment);
 
   addPostgresUserSecret(deployment);
 
   // todo: doesnt work ATM, we need to check if user+db are ready
-  // addWaitForPostgres(deployment);
+  addWaitForPostgres(deployment);
 
   //
   return manifests;
