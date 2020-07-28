@@ -12,7 +12,7 @@ import { createDbJob } from "./create-db.job";
 //const { createDbJob } = createDb(params);
 //const { createSecret: secret } = createSecret(params);
 
-const getDefaultPgParams = () => {
+export const getDefaultPgParams = () => {
   ok(process.env.CI_PROJECT_NAME);
   const sha = process.env.CI_COMMIT_SHORT_SHA;
   const projectName = process.env.CI_PROJECT_NAME;
@@ -25,6 +25,7 @@ const getDefaultPgParams = () => {
     user: `user_${sha}`,
   };
 };
+
 //@ts-expect-error
 export const create = ({ env, config }) => {
   const defaultParams = getDefaultPgParams();

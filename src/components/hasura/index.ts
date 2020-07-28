@@ -1,7 +1,9 @@
 import { Environment } from "@kosko/env";
 import { ok } from "assert";
+import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
+import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 import { create as createApp } from "../app";
 
 type CreateResult = unknown[];
@@ -58,8 +60,10 @@ export const create = (
   const deployment = manifests.find(
     //@ts-expect-error
     (manifest) => manifest.kind === "Deployment"
-  );
+  ) as Deployment;
+
   addPostgresUserSecret(deployment);
+  addWaitForPostgres(deployment);
 
   //
   return manifests;
