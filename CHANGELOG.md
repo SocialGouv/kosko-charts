@@ -1,3 +1,10 @@
+# [2.0.0-alpha.16](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2020-07-28)
+
+
+### Features
+
+* add addWaitForPostgres and use in hasura component ([f8181ff](https://github.com/SocialGouv/kosko-charts/commit/f8181ffae293d06819d4d59e3af1f411c8475392))
+
 # [2.0.0-alpha.15](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.14...v2.0.0-alpha.15) (2020-07-27)
 
 
