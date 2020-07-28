@@ -1,3 +1,15 @@
+# [2.0.0-alpha.19](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.18...v2.0.0-alpha.19) (2020-07-28)
+
+
+### Bug Fixes
+
+* tests ([4f83185](https://github.com/SocialGouv/kosko-charts/commit/4f83185f5057a93c7a85c611f6d943f46c6c8e52))
+
+
+### Features
+
+* **app:** merge containers ([731fdd5](https://github.com/SocialGouv/kosko-charts/commit/731fdd56a0fe5f614a0915d05e76fe2d697cd45c))
+
 # [2.0.0-alpha.18](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2020-07-28)
 
 
