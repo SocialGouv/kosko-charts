@@ -3,10 +3,9 @@ import { IIoK8sApimachineryPkgApiResourceQuantity } from "kubernetes-models/_def
 //import { IIoK8sApimachineryPkgApisMetaV1ObjectMeta } from "kubernetes-models/_definitions/IoK8sApimachineryPkgApisMetaV1ObjectMeta";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
-interface DeploymentParams {
+export interface DeploymentParams {
   name: string;
   containerPort: number;
-  //metadata: IIoK8sApimachineryPkgApisMetaV1ObjectMeta;
   image: string;
   // { name: string | undefined; tag: string | undefined };
   limits?: {

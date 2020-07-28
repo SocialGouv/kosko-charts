@@ -3,7 +3,7 @@ import { ok } from "assert";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
-import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
+// import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 import { create as createApp } from "../app";
 
 type CreateResult = unknown[];

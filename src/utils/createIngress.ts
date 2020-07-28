@@ -1,10 +1,10 @@
 import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
 
-interface IngressConfig {
+export interface IngressConfig {
   name: string;
   host: string;
   serviceName: string;
-  servicePort: string;
+  servicePort: number;
   secretName?: string;
 }
 

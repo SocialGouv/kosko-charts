@@ -4,7 +4,7 @@ import { Service } from "kubernetes-models/v1/Service";
 //import { metadataFromParams } from "./metadata";
 //import { Params } from "./params";
 
-interface Params {
+export interface Params {
   name: string;
   servicePort: number;
   containerPort: number;
