@@ -63,7 +63,9 @@ export const create = (
   ) as Deployment;
 
   addPostgresUserSecret(deployment);
-  addWaitForPostgres(deployment);
+
+  // todo: doesnt work ATM, we need to check if user+db are ready
+  // addWaitForPostgres(deployment);
 
   //
   return manifests;
