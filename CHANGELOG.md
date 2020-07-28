@@ -1,3 +1,11 @@
+# [2.0.0-alpha.17](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2020-07-28)
+
+
+### Bug Fixes
+
+* typo ([60ed9a1](https://github.com/SocialGouv/kosko-charts/commit/60ed9a1c42824f6dd58217a4dc5606adf3eede61))
+* typo ([875b48d](https://github.com/SocialGouv/kosko-charts/commit/875b48d3ac16dcd2699ea6666fe87b39bd411943))
+
 # [2.0.0-alpha.16](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2020-07-28)
 
 
