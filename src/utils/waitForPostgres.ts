@@ -6,12 +6,20 @@ interface WaitForPostgresParams {
   secretRefName: string;
 }
 
+const script = `
+retry=120; # 5s * (12 * 10) = 10min
+while ! pg_isready -d \${DATABASE_URL} > /dev/null 2> /dev/null && [[ $(( retry-- )) -gt 0 ]];
+  do
+    echo "Waiting for Postgres to go Green ($(( retry )))" ; sleep 5s ; done ;
+echo Ready;
+`;
+
 export const waitForPostgres = ({
   secretRefName = "azure-pg-user",
 }: WaitForPostgresParams): IIoK8sApiCoreV1Container => {
   return {
     name: "wait-for-postgres",
-    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:1.50.0`,
+    image: `postgres:10`,
     imagePullPolicy: "Always",
     resources: {
       requests: {
@@ -30,5 +38,6 @@ export const waitForPostgres = ({
         },
       },
     ],
+    command: ["sh", "-c", script],
   };
 };
