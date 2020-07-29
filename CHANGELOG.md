@@ -1,3 +1,10 @@
+# [2.0.0-alpha.24](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.23...v2.0.0-alpha.24) (2020-07-29)
+
+
+### Bug Fixes
+
+* type azure-pg ([fca477b](https://github.com/SocialGouv/kosko-charts/commit/fca477b126e7bb06011a045015e1fcc1e4108395))
+
 # [2.0.0-alpha.23](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.22...v2.0.0-alpha.23) (2020-07-29)
 
 
