@@ -1,3 +1,10 @@
+# [2.0.0-alpha.21](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.20...v2.0.0-alpha.21) (2020-07-29)
+
+
+### Bug Fixes
+
+* **app:** forbid the use of containerPort in external deployment config ([6e4592c](https://github.com/SocialGouv/kosko-charts/commit/6e4592c3eb1007dccf096260aac6f46e557d09e2))
+
 # [2.0.0-alpha.20](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.19...v2.0.0-alpha.20) (2020-07-29)
 
 
