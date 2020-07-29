@@ -8,7 +8,7 @@ interface WaitForPostgresParams {
 
 const script = `
 retry=120; # 5s * (12 * 10) = 10min
-while ! pg_isready -d \${DATABASE_URL} > /dev/null 2> /dev/null && [[ $(( retry-- )) -gt 0 ]];
+while ! psql -c "SELECT VERSION();" > /dev/null 2> /dev/null && [[ $(( retry-- )) -gt 0 ]];
   do
     echo "Waiting for Postgres to go Green ($(( retry )))" ; sleep 5s ; done ;
 echo Ready;
