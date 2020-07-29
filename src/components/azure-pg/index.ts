@@ -20,7 +20,7 @@ interface PgParams {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const getDefaultPgParams = (): PgParams => {
-  ok(process.env.CI_PROJECT_NAME);
+  ok(process.env.CI_PROJECT_NAME, "Missing process.env.CI_PROJECT_NAME");
   const sha = process.env.CI_COMMIT_SHORT_SHA;
   const projectName = process.env.CI_PROJECT_NAME;
 
@@ -53,6 +53,7 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
   /* SEALED-SECRET */
   // try to import environment sealed-secret
   const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
+  ok(sealedSecret, "Missing pg.sealed-secret.yaml");
   // add gitlab annotations
   updateMetadata(sealedSecret, {
     annotations: envParams.annotations ?? {},
