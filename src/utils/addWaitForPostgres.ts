@@ -10,7 +10,13 @@ export const addWaitForPostgres = (deployment: Deployment): Deployment => {
     secretRefName: defaultParams.name,
   });
 
-  if (deployment.spec && deployment.spec.template.spec) {
+  if (deployment.spec) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (!deployment.spec.template) {
+      //@ts-expect-error
+      deployment.spec.template = { spec: {} };
+    }
+    //@ts-expect-error
     deployment.spec.template.spec.initContainers = [initContainer];
   }
 
