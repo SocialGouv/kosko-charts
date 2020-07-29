@@ -52,10 +52,7 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
 
   /* SEALED-SECRET */
   // try to import environment sealed-secret
-  const sealedSecret = loadYaml<SealedSecret>(
-    env,
-    `azure-pg.sealed-secret.yaml`
-  );
+  const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
   // add gitlab annotations
   updateMetadata(sealedSecret, {
     annotations: envParams.annotations ?? {},
