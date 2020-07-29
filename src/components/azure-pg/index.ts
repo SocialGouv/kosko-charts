@@ -58,24 +58,24 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
   );
   // add gitlab annotations
   updateMetadata(sealedSecret, {
-    annotations: envParams.annotations || {},
-    labels: envParams.labels || {},
+    annotations: envParams.annotations ?? {},
+    labels: envParams.labels ?? {},
     namespace: envParams.namespace,
   });
   // add to deployment.envFrom
 
   const job = createDbJob(defaultParams);
   updateMetadata(job, {
-    annotations: envParams.annotations || {},
-    labels: envParams.labels || {},
+    annotations: envParams.annotations ?? {},
+    labels: envParams.labels ?? {},
     name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
     namespace: envParams.namespace,
   });
 
   const secret = createSecret(envParams);
   updateMetadata(secret, {
-    annotations: envParams.annotations || {},
-    labels: envParams.labels || {},
+    annotations: envParams.annotations ?? {},
+    labels: envParams.labels ?? {},
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
