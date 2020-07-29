@@ -1,16 +1,17 @@
 import { Namespace as K8SNamespace } from "kubernetes-models/v1/Namespace";
 
 import gitlab from "../environments/gitlab";
+import { merge } from "./merge";
 
 export const createNamespace = (
   // eslint-disable-next-line @typescript-eslint/ban-types
   config: object = {}
 ): K8SNamespace => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const envParams = {
-    ...gitlab(process.env),
-    ...config, // create options
-  };
+  const envParams = merge(
+    gitlab(process.env),
+    config // create options
+  );
   const namespace = new K8SNamespace({
     metadata: {
       annotations: {

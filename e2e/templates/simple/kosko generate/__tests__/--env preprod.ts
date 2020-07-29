@@ -18,7 +18,11 @@ test(
       ["generate", "--env", "preprod"],
       {
         cwd,
-        env: { ...gitlabEnv, CI_COMMIT_TAG: "v1.2.3" },
+        env: {
+          ...gitlabEnv,
+          CI_COMMIT_TAG: "v1.2.3",
+          KUBE_NAMESPACE: "sample-next-app-24-preprod-dev2",
+        },
       }
     );
 

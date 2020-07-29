@@ -44,7 +44,7 @@ export const create = (
         },
         containerPort: 80,
 
-        subdomain: `hasura-${process.env.CI_PROJECT_NAME}`,
+        subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
       },
       config
     ),

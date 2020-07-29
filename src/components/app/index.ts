@@ -24,6 +24,7 @@ export type AppConfig = DeploymentParams &
   ServiceParams &
   IngressParams & {
     subdomain: string;
+    subDomainPrefix: string;
     domain: string;
     labels: Record<string, string>;
   };
@@ -137,7 +138,9 @@ export const create = (
   if (envParams.ingress !== false) {
     const ingress = createIngress({
       name,
-      host: `${envParams.subdomain}.${envParams.domain}`,
+      host: `${(envParams.subDomainPrefix || "") + envParams.subdomain}.${
+        envParams.domain
+      }`,
       serviceName: name,
       servicePort,
     });
