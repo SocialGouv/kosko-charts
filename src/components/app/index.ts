@@ -35,7 +35,7 @@ export const create = (
     deployment: deploymentParams,
   }: {
     env: Environment;
-    config: Partial<AppConfig>;
+    config?: Partial<AppConfig>;
     deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
   }
 ): { kind: string }[] => {
@@ -54,7 +54,7 @@ export const create = (
     defaultEnvParams, // set name as default if not provided
     gitlab(process.env),
     env.component(name) as AppConfig, // kosko env overrides
-    config // create options
+    config ?? {} // create options
   );
 
   const { containerPort, servicePort } = envParams;
