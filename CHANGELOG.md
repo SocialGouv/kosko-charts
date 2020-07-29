@@ -1,3 +1,10 @@
+# [2.0.0-alpha.26](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.25...v2.0.0-alpha.26) (2020-07-29)
+
+
+### Reverts
+
+* Revert "e2e(templates): update snapshots" ([8d33664](https://github.com/SocialGouv/kosko-charts/commit/8d3366441fd039c8d3ec9a75cd43b99480dcede7))
+
 # [2.0.0-alpha.25](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.24...v2.0.0-alpha.25) (2020-07-29)
 
 
