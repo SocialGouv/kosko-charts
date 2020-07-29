@@ -1,3 +1,10 @@
+# [2.0.0-alpha.22](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.21...v2.0.0-alpha.22) (2020-07-29)
+
+
+### Features
+
+* **app:** allow optional config ([31d9b50](https://github.com/SocialGouv/kosko-charts/commit/31d9b501eeb2ecd491ecb415c032a4b307050511))
+
 # [2.0.0-alpha.21](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.20...v2.0.0-alpha.21) (2020-07-29)
 
 
