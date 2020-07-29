@@ -141,7 +141,7 @@ metadata:
   namespace: sample-next-app
 spec:
   rules:
-    - host: hasura-sample-next-app.dev.fabrique.social.gouv.fr
+    - host: hasura.sample-next-app.dev.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -150,7 +150,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - hasura-sample-next-app.dev.fabrique.social.gouv.fr
+        - hasura.sample-next-app.dev.fabrique.social.gouv.fr
       secretName: hasura-crt
 apiVersion: extensions/v1beta1
 kind: Ingress

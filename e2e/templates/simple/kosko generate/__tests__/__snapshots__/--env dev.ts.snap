@@ -159,7 +159,7 @@ metadata:
   namespace: sample-next-app-24-e2e-branch-42
 spec:
   rules:
-    - host: hasura-sample-next-app.dev.fabrique.social.gouv.fr
+    - host: hasura-e2e-branch-42-sample-next-app.dev.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -168,7 +168,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - hasura-sample-next-app.dev.fabrique.social.gouv.fr
+        - hasura-e2e-branch-42-sample-next-app.dev.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress

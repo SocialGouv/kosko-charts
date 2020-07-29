@@ -16,7 +16,7 @@ metadata:
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-  name: sample-next-app-24-e2e-branch-42
+  name: sample-next-app-24-preprod-dev2
 apiVersion: v1
 kind: Namespace
 ---
@@ -27,12 +27,12 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: hasura
-    application: v1-2-3-sample-next-app
+    application: preprod-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
   name: hasura
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app-24-preprod-dev2
 spec:
   replicas: 1
   selector:
@@ -46,7 +46,7 @@ spec:
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: hasura
-        application: v1-2-3-sample-next-app
+        application: preprod-sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -123,7 +123,7 @@ kind: Deployment
 metadata:
   labels:
     app: hasura
-    application: v1-2-3-sample-next-app
+    application: preprod-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -132,7 +132,7 @@ metadata:
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app-24-preprod-dev2
 spec:
   ports:
     - port: 80
@@ -151,15 +151,15 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: hasura
-    application: v1-2-3-sample-next-app
+    application: preprod-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
   name: hasura
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app-24-preprod-dev2
 spec:
   rules:
-    - host: hasura-sample-next-app.dev.fabrique.social.gouv.fr
+    - host: hasura-preprod-sample-next-app.dev.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -168,7 +168,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - hasura-sample-next-app.dev.fabrique.social.gouv.fr
+        - hasura-preprod-sample-next-app.dev.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -186,7 +186,7 @@ metadata:
     cert: wildcard
     component: next
   name: www
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app-24-preprod-dev2
 spec:
   replicas: 1
   selector:
@@ -258,7 +258,7 @@ metadata:
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app-24-preprod-dev2
 spec:
   ports:
     - port: 80
@@ -282,7 +282,7 @@ metadata:
     team: sample-next-app
     cert: wildcard
   name: www
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-next-app-24-preprod-dev2
 spec:
   rules:
     - host: preprod-sample-next-app.dev.fabrique.social.gouv.fr
