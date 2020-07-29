@@ -1,3 +1,10 @@
+# [2.0.0-alpha.23](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.22...v2.0.0-alpha.23) (2020-07-29)
+
+
+### Bug Fixes
+
+* make hasura/config optional ([e4d4958](https://github.com/SocialGouv/kosko-charts/commit/e4d4958ba720b427f89403a715688dfdb43ee7dd))
+
 # [2.0.0-alpha.22](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.21...v2.0.0-alpha.22) (2020-07-29)
 
 
