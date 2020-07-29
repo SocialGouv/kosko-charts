@@ -1,3 +1,10 @@
+# [2.0.0-alpha.28](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.27...v2.0.0-alpha.28) (2020-07-29)
+
+
+### Bug Fixes
+
+* tmp fix addWaitForPostgres ([d5eef8e](https://github.com/SocialGouv/kosko-charts/commit/d5eef8e0fd153225951946ce4d4977f28fc3dc9d))
+
 # [2.0.0-alpha.27](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.26...v2.0.0-alpha.27) (2020-07-29)
 
 
