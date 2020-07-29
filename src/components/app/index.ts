@@ -36,7 +36,7 @@ export const create = (
   }: {
     env: Environment;
     config: Partial<AppConfig>;
-    deployment?: Partial<DeploymentParams>;
+    deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
   }
 ): { kind: string }[] => {
   ok(process.env.CI_REGISTRY_IMAGE);
