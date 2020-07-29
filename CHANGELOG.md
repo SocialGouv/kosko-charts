@@ -1,3 +1,10 @@
+# [2.0.0-alpha.20](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.19...v2.0.0-alpha.20) (2020-07-29)
+
+
+### Bug Fixes
+
+* **wait-for-pg:** use dummy psql ([8c4f0c7](https://github.com/SocialGouv/kosko-charts/commit/8c4f0c736e460182f8cc5d34f2925c3cbb0596bb))
+
 # [2.0.0-alpha.19](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.18...v2.0.0-alpha.19) (2020-07-28)
 
 
