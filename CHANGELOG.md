@@ -1,3 +1,10 @@
+# [2.0.0-alpha.27](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.26...v2.0.0-alpha.27) (2020-07-29)
+
+
+### Bug Fixes
+
+* use pg.sealed-secret.yaml ([c08771e](https://github.com/SocialGouv/kosko-charts/commit/c08771e3fca1dcb068aeff8eeec7c1e3a405b840))
+
 # [2.0.0-alpha.26](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.25...v2.0.0-alpha.26) (2020-07-29)
 
 
