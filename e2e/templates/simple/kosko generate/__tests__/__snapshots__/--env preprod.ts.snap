@@ -180,7 +180,7 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: www
-    application: v1-2-3-sample-next-app
+    application: preprod-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -200,7 +200,7 @@ spec:
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: www
-        application: v1-2-3-sample-next-app
+        application: preprod-sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -249,7 +249,7 @@ kind: Deployment
 metadata:
   labels:
     app: www
-    application: v1-2-3-sample-next-app
+    application: preprod-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -277,7 +277,7 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: www
-    application: v1-2-3-sample-next-app
+    application: preprod-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -285,7 +285,7 @@ metadata:
   namespace: sample-next-app-24-e2e-branch-42
 spec:
   rules:
-    - host: v1-2-3-sample-next-app.dev.fabrique.social.gouv.fr
+    - host: preprod-sample-next-app.dev.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -294,7 +294,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - v1-2-3-sample-next-app.dev.fabrique.social.gouv.fr
+        - preprod-sample-next-app.dev.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress"
