@@ -5,14 +5,14 @@ import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
-import { create as createApp } from "../app";
+import { AppConfig, create as createApp } from "../app";
 
 type CreateResult = unknown[];
 
 export const create = (
   //name: string,
   // eslint-disable-next-line @typescript-eslint/ban-types
-  { env, config }: { env: Environment; config: object }
+  { env, config = {} }: { env: Environment; config?: Partial<AppConfig> }
 ): CreateResult => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
@@ -58,6 +58,7 @@ export const create = (
   ok(deployment);
 
   addPostgresUserSecret(deployment);
+
   addWaitForPostgres(deployment);
 
   //
