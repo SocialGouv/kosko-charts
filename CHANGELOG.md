@@ -1,3 +1,15 @@
+# [2.0.0-alpha.25](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.24...v2.0.0-alpha.25) (2020-07-29)
+
+
+### Bug Fixes
+
+* **k8s:** preprod namespace name ([f9ea78f](https://github.com/SocialGouv/kosko-charts/commit/f9ea78f366ad7d86e0940c22478ed3868a95aba2))
+
+
+### Features
+
+* **k8s:** add subdomain prefix ([88046e2](https://github.com/SocialGouv/kosko-charts/commit/88046e2336e64a12042baa2a58f7a8ede0e464b2))
+
 # [2.0.0-alpha.24](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.23...v2.0.0-alpha.24) (2020-07-29)
 
 
