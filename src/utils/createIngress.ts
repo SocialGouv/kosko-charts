@@ -10,13 +10,16 @@ export interface IngressConfig {
 
 export default (params: IngressConfig): Ingress => {
   const host = params.host;
+  const annotations: Record<string, string> = {
+    "kubernetes.io/ingress.class": "nginx",
+  };
+  if (process.env.PRODUCTION) {
+    annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
+    annotations["kubernetes.io/tls-acme"] = "true";
+  }
   return new Ingress({
     metadata: {
-      annotations: {
-        //      "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
-        "kubernetes.io/ingress.class": "nginx",
-        //    "kubernetes.io/tls-acme": "true",
-      },
+      annotations,
       labels: {
         app: params.name,
       },
