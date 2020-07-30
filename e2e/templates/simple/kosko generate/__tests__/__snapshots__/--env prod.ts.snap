@@ -163,6 +163,132 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
+    app: app
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: app
+  namespace: sample-next-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: app
+        application: sample-next-app
+        owner: sample-next-app
+        team: sample-next-app
+        cert: wildcard
+    spec:
+      containers:
+        - image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/app:1.2.3
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+          name: app
+          ports:
+            - containerPort: 80
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 300m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 5
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: app
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: app
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-next-app
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: app
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: 'true'
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: app
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: app
+  namespace: sample-next-app
+spec:
+  rules:
+    - host: sample-next-app.dev.fabrique.social.gouv.fr
+      http:
+        paths:
+          - backend:
+              serviceName: app
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - sample-next-app.dev.fabrique.social.gouv.fr
+      secretName: app-crt
+apiVersion: extensions/v1beta1
+kind: Ingress
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
     app: www
     application: sample-next-app
     owner: sample-next-app
