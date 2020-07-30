@@ -1,3 +1,10 @@
+# [2.0.0-beta.20](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2020-07-30)
+
+
+### Features
+
+* add nginx component ([af9592b](https://github.com/SocialGouv/kosko-charts/commit/af9592b9fbe38e0e771cda7e584906777763270c))
+
 # [2.0.0-beta.19](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2020-07-30)
 
 
