@@ -1,3 +1,10 @@
+# [2.0.0-beta.21](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2020-07-30)
+
+
+### Bug Fixes
+
+* **nginx:** use / for probes ([2ee3697](https://github.com/SocialGouv/kosko-charts/commit/2ee369769dd59f6509708bdac3d6f0cbdfb1eeec))
+
 # [2.0.0-beta.20](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2020-07-30)
 
 
