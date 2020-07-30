@@ -1,3 +1,10 @@
+# [2.0.0-beta.19](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2020-07-30)
+
+
+### Bug Fixes
+
+* yarn.lock ([cacaea6](https://github.com/SocialGouv/kosko-charts/commit/cacaea693cefd2066aee861e71db3f9e607b8e5a))
+
 # [2.0.0-beta.18](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2020-07-30)
 
 
