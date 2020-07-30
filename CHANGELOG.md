@@ -1,3 +1,10 @@
+# [2.0.0-alpha.31](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.30...v2.0.0-alpha.31) (2020-07-30)
+
+
+### Bug Fixes
+
+* **ingress:** add prod annotations ([a309eb3](https://github.com/SocialGouv/kosko-charts/commit/a309eb38ec7347460735e20f946f5b72a669e7ef))
+
 # [2.0.0-alpha.30](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.29...v2.0.0-alpha.30) (2020-07-30)
 
 
