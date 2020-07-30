@@ -10,7 +10,6 @@ import { AppConfig, create as createApp } from "../app";
 type CreateResult = unknown[];
 
 export const create = (
-  //name: string,
   // eslint-disable-next-line @typescript-eslint/ban-types
   { env, config = {} }: { env: Environment; config?: Partial<AppConfig> }
 ): CreateResult => {
@@ -18,7 +17,6 @@ export const create = (
   ok(process.env.CI_ENVIRONMENT_URL);
   ok(process.env.CI_PROJECT_NAME);
 
-  // todo: extract to @socialgouv/kosko-charts/components/hasura
   const manifests = createApp("hasura", {
     config: merge(
       {
