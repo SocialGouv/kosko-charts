@@ -104,7 +104,7 @@ spec:
               memory: 32Mi
           envFrom:
             - secretRef:
-                name: azure-pg-user-undefined
+                name: azure-pg-user
           command:
             - sh
             - '-c'

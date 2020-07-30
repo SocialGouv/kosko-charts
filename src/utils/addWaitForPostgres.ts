@@ -6,8 +6,11 @@ import { waitForPostgres } from "./waitForPostgres";
 export const addWaitForPostgres = (deployment: Deployment): Deployment => {
   const defaultParams = getDefaultPgParams();
 
+  const secretRefName = process.env.CI_COMMIT_TAG
+    ? `azure-pg-user`
+    : defaultParams.name;
   const initContainer = waitForPostgres({
-    secretRefName: defaultParams.name,
+    secretRefName,
   });
 
   if (deployment.spec) {
