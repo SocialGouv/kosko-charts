@@ -128,6 +128,8 @@ kind: Service
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: 'true'
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -254,6 +256,8 @@ kind: Service
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: 'true'
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
