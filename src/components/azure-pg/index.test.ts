@@ -1,5 +1,5 @@
 import { Environment } from "@kosko/env";
-import { mkdir, writeFile } from "fs/promises";
+import { promises } from "fs";
 import { directory } from "tempy";
 
 import { create } from "./index";
@@ -38,8 +38,8 @@ test("should return create an job", async () => {
   const cwd = directory();
   const env = new Environment(cwd);
   env.env = "dev";
-  await mkdir(`${cwd}/environments/dev`, { recursive: true });
-  await writeFile(
+  await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
+  await promises.writeFile(
     `${cwd}/environments/dev/pg.sealed-secret.yaml`,
     "---\napiVersion: v1\nkind: ConfigMap"
   );
