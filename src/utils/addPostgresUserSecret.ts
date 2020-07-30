@@ -1,21 +1,22 @@
 import { addToEnvFrom } from "@socialgouv/kosko-charts/utils/addToEnvFrom";
+import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
-// DEV: add secret to access DB
-//@ts-expect-error
-export const addPostgresUserSecret = (deployment) => {
-  if (deployment) {
-    const name = process.env.PRODUCTION
-      ? `azure-pg-user`
-      : `azure-pg-user-${process.env.CI_COMMIT_SHORT_SHA}`;
-    const azureSecretSource = new EnvFromSource({
-      secretRef: {
-        name,
-      },
-    });
-    addToEnvFrom({
-      data: [azureSecretSource],
-      deployment,
-    });
+export const addPostgresUserSecret = (deployment?: Deployment): void => {
+  if (!deployment) {
+    return;
   }
+
+  const name = process.env.CI_COMMIT_TAG
+    ? `azure-pg-user`
+    : `azure-pg-user-${process.env.CI_COMMIT_SHORT_SHA}`;
+  const azureSecretSource = new EnvFromSource({
+    secretRef: {
+      name,
+    },
+  });
+  addToEnvFrom({
+    data: [azureSecretSource],
+    deployment,
+  });
 };

@@ -90,7 +90,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-undefined
+                name: azure-pg-user
       initContainers:
         - name: wait-for-postgres
           image: 'postgres:10'
