@@ -1,3 +1,10 @@
+# [2.0.0-alpha.30](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.29...v2.0.0-alpha.30) (2020-07-30)
+
+
+### Bug Fixes
+
+* **utils:** ensure to use the azure-pg-user on tags ([638c457](https://github.com/SocialGouv/kosko-charts/commit/638c457a7816654b7ec1a8ca32ed58c806c03ce4))
+
 # [2.0.0-alpha.29](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.28...v2.0.0-alpha.29) (2020-07-30)
 
 
