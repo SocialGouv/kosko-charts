@@ -23,18 +23,18 @@ export const create = ({
         container: {
           livenessProbe: {
             httpGet: {
-              path: "/",
+              path: "/index.html",
             },
             initialDelaySeconds: 10,
           },
           readinessProbe: {
             httpGet: {
-              path: "/",
+              path: "/index.html",
             },
           },
           startupProbe: {
             httpGet: {
-              path: "/",
+              path: "/index.html",
             },
           },
           // eslint-disable-next-line sort-keys-fix/sort-keys-fix
