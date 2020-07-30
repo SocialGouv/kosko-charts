@@ -194,7 +194,7 @@ spec:
           livenessProbe:
             failureThreshold: 6
             httpGet:
-              path: /healthz
+              path: /
               port: http
             initialDelaySeconds: 10
             periodSeconds: 5
@@ -206,7 +206,7 @@ spec:
           readinessProbe:
             failureThreshold: 15
             httpGet:
-              path: /healthz
+              path: /
               port: http
             initialDelaySeconds: 0
             periodSeconds: 5
@@ -222,7 +222,7 @@ spec:
           startupProbe:
             failureThreshold: 12
             httpGet:
-              path: /healthz
+              path: /
               port: http
             periodSeconds: 5
 apiVersion: apps/v1

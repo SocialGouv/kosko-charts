@@ -22,8 +22,23 @@ export const create = ({
       {
         container: {
           livenessProbe: {
+            httpGet: {
+              path: "/",
+            },
             initialDelaySeconds: 10,
           },
+          readinessProbe: {
+            httpGet: {
+              path: "/",
+            },
+          },
+          startupProbe: {
+            httpGet: {
+              path: "/",
+            },
+          },
+          // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+          // eslint-disable-next-line sort-keys
           resources: {
             limits: {
               cpu: "300m",
