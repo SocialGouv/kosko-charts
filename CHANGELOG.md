@@ -1,3 +1,15 @@
+# [2.0.0-beta.18](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2020-07-30)
+
+
+### Bug Fixes
+
+* **utils:** committed conflicts ([ed3ac80](https://github.com/SocialGouv/kosko-charts/commit/ed3ac80fd930eb93b675a072bd213d6c804abeab))
+
+
+### Features
+
+* more utils ([b26991c](https://github.com/SocialGouv/kosko-charts/commit/b26991ccdcb64e41e570037110490452a6285466))
+
 # [2.0.0-alpha.31](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-alpha.30...v2.0.0-alpha.31) (2020-07-30)
 
 
