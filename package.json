@@ -1,12 +1,12 @@
 {
   "name": "@socialgouv/kosko-charts",
   "description": "Kosko charts for the SocialGouv needs",
-  "version": "2.0.0-beta.17",
+  "version": "2.0.0-alpha.31",
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
-    "@sindresorhus/is": "^3.0.0",
     "@kubernetes-models/sealed-secrets": "^0.1.4",
+    "@sindresorhus/is": "^3.0.0",
     "fp-ts": "^2.6.6",
     "io-ts": "2.2.7"
   },
@@ -30,6 +30,7 @@
     "kubernetes-models": "^0.8.1",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
+    "tempy": "^0.6.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },

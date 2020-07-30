@@ -24,6 +24,10 @@ const validParams: PostresSecretParameters = {
 
 const globalParams: GlobalEnvironment = {
   domain: "",
+  git: {
+    branch: "",
+    remote: "",
+  },
   namespace: { name: "sample-42-my-test" },
   subdomain: "",
 };

@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return create an job 1`] = `
+Array [
+  Object {
+    "apiVersion": "v1",
+    "kind": "ConfigMap",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "app.gitlab.com/env.name": "fabrique-dev",
+      },
+      "labels": Object {
+        "application": "my-test-sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "namespace": "sample-42-my-test",
+    },
+  },
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "app.gitlab.com/env.name": "fabrique-dev",
+      },
+      "labels": Object {
+        "application": "my-test-sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "create-db-job-undefined",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "backoffLimit": 0,
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "app.gitlab.com/env.name": "fabrique-dev",
+          },
+          "labels": Object {
+            "application": "my-test-sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "create-db-user",
+              ],
+              "env": Array [
+                Object {
+                  "name": "NEW_DB_NAME",
+                  "value": "autodevops_undefined",
+                },
+                Object {
+                  "name": "NEW_USER",
+                  "value": "user_undefined",
+                },
+                Object {
+                  "name": "NEW_PASSWORD",
+                  "value": "password_undefined",
+                },
+                Object {
+                  "name": "NEW_DB_EXTENSIONS",
+                  "value": "hstore pgcrypto citext",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user",
+                  },
+                },
+              ],
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "create-db-user",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "256Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
+                },
+              },
+            },
+          ],
+          "restartPolicy": "Never",
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Secret",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "app.gitlab.com/env.name": "fabrique-dev",
+      },
+      "labels": Object {
+        "application": "my-test-sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "azure-pg-user-undefined",
+      "namespace": "sample-42-my-test",
+    },
+    "stringData": Object {
+      "DATABASE_URL": "postgresql://user_undefined%40sampledevserver.postgres.database.azure.com:password_undefined@sampledevserver.postgres.database.azure.com/autodevops_undefined?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_undefined%40sampledevserver.postgres.database.azure.com:password_undefined@sampledevserver.postgres.database.azure.com/autodevops_undefined?sslmode=require",
+      "PGDATABASE": "autodevops_undefined",
+      "PGHOST": "sampledevserver.postgres.database.azure.com",
+      "PGPASSWORD": "password_undefined",
+      "PGSSLMODE": "require",
+      "PGUSER": "user_undefined@sampledevserver.postgres.database.azure.com",
+    },
+  },
+]
+`;
+
+exports[`should throw because of a missing envs 1`] = `
+"BadArgument:required property \\"CI_ENVIRONMENT_NAME\\"
+└─ cannot decode undefined, should be string
+required property \\"CI_ENVIRONMENT_SLUG\\"
+└─ cannot decode undefined, should be string
+required property \\"CI_PROJECT_PATH_SLUG\\"
+└─ cannot decode undefined, should be string
+required property \\"KUBE_INGRESS_BASE_DOMAIN\\"
+└─ cannot decode undefined, should be string
+required property \\"KUBE_NAMESPACE\\"
+└─ cannot decode undefined, should be string"
+`;

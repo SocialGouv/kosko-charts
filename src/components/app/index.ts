@@ -7,45 +7,63 @@ import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
 import gitlab from "../../environments/gitlab";
 import { addToEnvFrom } from "../../utils/addToEnvFrom";
-import createDeployment from "../../utils/createDeployment";
-import createIngress from "../../utils/createIngress";
-import createService from "../../utils/createService";
+import createDeployment, {
+  DeploymentParams,
+} from "../../utils/createDeployment";
+import createIngress, {
+  IngressConfig as IngressParams,
+} from "../../utils/createIngress";
+import createService, {
+  Params as ServiceParams,
+} from "../../utils/createService";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
+import { merge } from "../../utils/merge";
 
-type CreateResult = unknown[];
-
+export type AppConfig = DeploymentParams &
+  ServiceParams &
+  IngressParams & {
+    subdomain: string;
+    subDomainPrefix: string;
+    domain: string;
+    labels: Record<string, string>;
+  };
 export const create = (
   name: string,
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  { env, config }: { env: Environment; config: object }
-): CreateResult => {
+  {
+    env,
+    config,
+    deployment: deploymentParams,
+  }: {
+    env: Environment;
+    config?: Partial<AppConfig>;
+    deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
+  }
+): { kind: string }[] => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
   const manifests = [];
 
-  const defaultEnvParams = {
+  const defaultEnvParams: Partial<AppConfig> = {
     containerPort: 3000,
     name,
-    servicePort: 3000,
+    servicePort: 80,
   };
 
   // kosko component env values
-  const envParams = {
-    ...defaultEnvParams, // set name as default if not provided
-    ...gitlab(process.env),
-    ...env.component(name), // kosko env overrides
-    ...config, // create options
-  };
-
-  // console.log("envParams", envParams);
+  const envParams = merge(
+    defaultEnvParams, // set name as default if not provided
+    gitlab(process.env),
+    env.component(name) as AppConfig, // kosko env overrides
+    config ?? {} // create options
+  );
 
   const { containerPort, servicePort } = envParams;
 
-  const deployment = createDeployment(envParams);
+  const deployment = createDeployment(merge(envParams, deploymentParams || {}));
   updateMetadata(deployment, {
-    annotations: envParams.annotations,
-    labels: envParams.labels,
+    annotations: envParams.annotations || {},
+    labels: envParams.labels || {},
     namespace: envParams.namespace,
     name,
   });
@@ -57,8 +75,8 @@ export const create = (
   if (secret) {
     // add gitlab annotations
     updateMetadata(secret, {
-      annotations: envParams.annotations,
-      labels: envParams.labels,
+      annotations: envParams.annotations || {},
+      labels: envParams.labels || {},
       namespace: envParams.namespace,
     });
     // add to deployment.envFrom
@@ -82,8 +100,8 @@ export const create = (
   if (configMap) {
     // add gitlab annotations
     updateMetadata(configMap, {
-      annotations: envParams.annotations,
-      labels: envParams.labels,
+      annotations: envParams.annotations || {},
+      labels: envParams.labels || {},
       namespace: envParams.namespace,
     });
     // add to deployment.envFrom
@@ -109,8 +127,8 @@ export const create = (
   });
   // add gitlab annotations
   updateMetadata(service, {
-    annotations: envParams.annotations,
-    labels: envParams.labels,
+    annotations: envParams.annotations || {},
+    labels: envParams.labels || {},
     namespace: envParams.namespace,
     name,
   });
@@ -120,20 +138,21 @@ export const create = (
   if (envParams.ingress !== false) {
     const ingress = createIngress({
       name,
-      host: `${envParams.subdomain}.${envParams.domain}`,
+      host: `${(envParams.subDomainPrefix || "") + envParams.subdomain}.${
+        envParams.domain
+      }`,
       serviceName: name,
       servicePort,
     });
     // add gitlab annotations
     updateMetadata(ingress, {
-      annotations: envParams.annotations,
-      labels: envParams.labels,
+      annotations: envParams.annotations || {},
+      labels: envParams.labels || {},
       namespace: envParams.namespace,
       name,
     });
     manifests.push(ingress);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return manifests;
 };

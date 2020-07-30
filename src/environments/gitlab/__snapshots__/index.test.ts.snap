@@ -8,6 +8,10 @@ Object {
     "app.gitlab.com/env.name": "fabrique-dev",
   },
   "domain": "dev.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
   "labels": Object {
     "application": "sample",
     "owner": "sample",
@@ -16,6 +20,7 @@ Object {
   "namespace": Object {
     "name": "sample",
   },
+  "rancherId": "",
   "subdomain": "sample",
 }
 `;
@@ -28,6 +33,10 @@ Object {
     "app.gitlab.com/env.name": "fabrique-dev",
   },
   "domain": "dev.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
   "labels": Object {
     "application": "vX-Y-Z-sample",
     "owner": "sample",
@@ -36,6 +45,7 @@ Object {
   "namespace": Object {
     "name": "sample-42-my-test",
   },
+  "rancherId": "",
   "subdomain": "vX-Y-Z-sample",
 }
 `;
@@ -48,6 +58,10 @@ Object {
     "app.gitlab.com/env.name": "fabrique-dev",
   },
   "domain": "dev.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
   "labels": Object {
     "application": "my-test-sample",
     "owner": "sample",
@@ -56,6 +70,7 @@ Object {
   "namespace": Object {
     "name": "sample-42-my-test",
   },
+  "rancherId": "",
   "subdomain": "my-test-sample",
 }
 `;

@@ -1,10 +1,9 @@
+import { merge } from "./merge";
+
 interface Metadatas {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  annotations: object;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  labels: object;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  namespace: object;
+  annotations: Record<string, string>;
+  labels: Record<string, string>;
+  namespace: { name: string };
   name?: string;
 }
 
@@ -12,39 +11,29 @@ interface Metadatas {
 export const updateMetadata = (
   //@ts-expect-error
   manifest,
-  { annotations = {}, labels = {}, namespace, name }: Metadatas
-) => {
+  metadata: Metadatas
+): void => {
   if (manifest) {
     if (!manifest.metadata) {
       manifest.metadata = {};
     }
-    //console.log("manifest.metadata", manifest.metadata);
-    // add gitlab annotations
-    manifest.metadata.annotations = {
-      ...(manifest.metadata.annotations || {}),
-      ...annotations,
-    };
-    manifest.metadata.labels = {
-      ...(manifest.metadata.labels || {}),
-      ...labels,
-    };
-    //@ts-expect-error
+
+    manifest.metadata = merge(manifest.metadata, metadata);
+
+    const { annotations = {}, labels = {}, namespace, name } = metadata;
+
     manifest.metadata.namespace = namespace.name;
+
     if (name) manifest.metadata.name = name;
 
     if (manifest.spec && manifest.spec.template) {
-      manifest.spec.template.metadata = {
-        ...manifest.spec.template.metadata,
-        annotations: {
-          ...manifest.spec.template?.metadata?.annotations,
-          ...annotations,
-        },
-        labels: {
-          ...manifest.spec.template?.metadata?.labels,
-          ...labels,
-        },
-      };
-      if (name) manifest.spec.template.metadata.labels.app = name;
+      manifest.spec.template.metadata = merge(
+        manifest.spec.template.metadata || {},
+        {
+          annotations,
+          labels,
+        }
+      );
     }
   }
 };

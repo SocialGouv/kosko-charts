@@ -8,11 +8,14 @@ import { Module } from "module";
 import { join } from "path";
 import { runInThisContext } from "vm";
 
-export function tryRequireComponent(loader: (id: string) => string) {
+export function tryRequireComponent(
+  cwd: string,
+  loader: (id: string) => string
+) {
   return (id: string): unknown[] => {
     const mod = new Module("");
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    runInThisContext(Module.wrap(loader(id)))(
+    runInThisContext(Module.wrap(loader(join(cwd, id))))(
       mod.exports,
       require,
       mod,
@@ -43,7 +46,10 @@ export function getEnvironmentComponent(
 
   if (!legitEnv) return [];
 
-  return tryRequireComponent(loader)(
+  return tryRequireComponent(
+    cwd,
+    loader
+  )(
     formatPath(component, {
       component: filename,
       environment: legitEnv,
@@ -57,10 +63,6 @@ export function koskoMigrateLoader(id: string): string {
 
 // TODO: export to kosko-charts
 export function loadYaml<T>(env: Environment, path: string): T {
-  // console.log("loadYaml", env);
-  // console.log("loadYaml", env.env);
-  // console.log("loadYaml", env.cwd);
-  // console.log("loadYaml", env.paths);
   const [obj] = getEnvironmentComponent(env, path, {
     loader: koskoMigrateLoader,
   });
