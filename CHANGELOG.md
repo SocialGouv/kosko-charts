@@ -1,3 +1,10 @@
+# [2.0.0-beta.22](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2020-07-31)
+
+
+### Bug Fixes
+
+* **nginx:** use /index.html for probes ([6e15237](https://github.com/SocialGouv/kosko-charts/commit/6e152379abc0b39ee00a19ca0bae9cd3cced6921))
+
 # [2.0.0-beta.21](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2020-07-30)
 
 
