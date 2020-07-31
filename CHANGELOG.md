@@ -1,3 +1,11 @@
+# [2.0.0-beta.23](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.22...v2.0.0-beta.23) (2020-07-31)
+
+
+### Bug Fixes
+
+* adjust some nginx values ([34cee31](https://github.com/SocialGouv/kosko-charts/commit/34cee310e521a02a7a553bc8bd771d5c8bcda657))
+* tests ([b9f2954](https://github.com/SocialGouv/kosko-charts/commit/b9f2954bfad58b0b4c323471e41b7d0c6c00a78d))
+
 # [2.0.0-beta.22](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0-beta.21...v2.0.0-beta.22) (2020-07-31)
 
 
