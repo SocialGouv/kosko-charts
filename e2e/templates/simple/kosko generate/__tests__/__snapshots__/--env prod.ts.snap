@@ -196,7 +196,7 @@ spec:
             httpGet:
               path: /index.html
               port: http
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
           name: app
@@ -214,11 +214,11 @@ spec:
             timeoutSeconds: 1
           resources:
             limits:
-              cpu: 300m
+              cpu: 500m
               memory: 128Mi
             requests:
-              cpu: 50m
-              memory: 64Mi
+              cpu: 5m
+              memory: 32Mi
           startupProbe:
             failureThreshold: 12
             httpGet:
