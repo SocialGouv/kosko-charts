@@ -18,5 +18,5 @@
     "target": "ES2019",
     "types": ["dotenv", "jest", "node"]
   },
-  "exclude": ["components", "coverage", "environments", "types"]
+  "exclude": ["components", "coverage", "environments", "types", "utils"]
 }
