@@ -6,7 +6,7 @@
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
     "@kubernetes-models/sealed-secrets": "^0.1.4",
-    "@sindresorhus/is": "^3.0.0",
+    "@sindresorhus/is": "^3.1.0",
     "fp-ts": "^2.7.1",
     "io-ts": "2.2.7"
   },
