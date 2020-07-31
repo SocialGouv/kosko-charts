@@ -2,14 +2,14 @@ import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
 
 export interface IngressConfig {
   name: string;
-  host: string;
+  hosts: string[];
   serviceName: string;
   servicePort: number;
   secretName?: string;
 }
 
 export default (params: IngressConfig): Ingress => {
-  const host = params.host;
+  const hosts = params.hosts;
   const annotations: Record<string, string> = {
     "kubernetes.io/ingress.class": "nginx",
   };
@@ -26,25 +26,23 @@ export default (params: IngressConfig): Ingress => {
       name: params.name,
     },
     spec: {
-      rules: [
-        {
-          host,
-          http: {
-            paths: [
-              {
-                backend: {
-                  serviceName: params.serviceName,
-                  servicePort: params.servicePort,
-                },
-                path: "/",
+      rules: hosts.map((host) => ({
+        host,
+        http: {
+          paths: [
+            {
+              backend: {
+                serviceName: params.serviceName,
+                servicePort: params.servicePort,
               },
-            ],
-          },
+              path: "/",
+            },
+          ],
         },
-      ],
+      })),
       tls: [
         {
-          hosts: [host],
+          hosts: hosts,
           secretName:
             params.secretName ??
             (process.env.PRODUCTION ? `${params.name}-crt` : "wildcard-crt"),

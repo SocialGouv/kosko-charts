@@ -1,9 +1,13 @@
 import createIngress from "./createIngress";
 
+beforeEach(() => {
+  delete process.env.PRODUCTION;
+});
+
 test("should create a dev ingress", () => {
   expect(
     createIngress({
-      host: "sample.dev.fabrique.social.gouv.fr",
+      hosts: ["sample.dev.fabrique.social.gouv.fr"],
       name: "my-ingress",
       serviceName: "www",
       servicePort: 80,
@@ -15,7 +19,21 @@ test("should create a prod ingress", () => {
   process.env.PRODUCTION = "true";
   expect(
     createIngress({
-      host: "sample.dev.fabrique.social.gouv.fr",
+      hosts: ["sample.dev.fabrique.social.gouv.fr"],
+      name: "my-ingress",
+      serviceName: "www",
+      servicePort: 80,
+    })
+  ).toMatchSnapshot();
+});
+
+test("should create an ingress with multiple hosts", () => {
+  expect(
+    createIngress({
+      hosts: [
+        "sample.dev.fabrique.social.gouv.fr",
+        "www.sample.dev.fabrique.social.gouv.fr",
+      ],
       name: "my-ingress",
       serviceName: "www",
       servicePort: 80,
