@@ -2,14 +2,21 @@
   "compilerOptions": {
     "baseUrl": ".",
     "esModuleInterop": true,
-    "lib": ["ESNext"],
+    "importHelpers": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
-    "paths": {
-      "@socialgouv/kosko-charts/*": ["./*"]
-    },
-    "target": "ESNext",
+    "noEmitHelpers": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "paths": { "@socialgouv/kosko-charts/*": ["./src/*"] },
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ES2019",
     "types": ["dotenv", "jest", "node"]
-  }
+  },
+  "exclude": ["components", "coverage", "environments", "types"]
 }

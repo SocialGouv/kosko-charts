@@ -1,24 +1,16 @@
-extends:
-  - "@socialgouv/eslint-config-recommended"
-  - "plugin:import/typescript"
-  - "plugin:@typescript-eslint/recommended"
-parser: '@typescript-eslint/parser'
-plugins:
-  - '@typescript-eslint'
 root: true
-rules:
-  import/no-unresolved: off
-  import/order:
-    - error
-    - groups:
-        - internal
-        - builtin
-        - external
-        - parent
-        - sibling
-        - index
-      newlines-between: ignore
 overrides:
-  - files: jest.config.js
+  - files: "*.js"
+    extends:
+      - "@socialgouv/eslint-config-recommended"
+  - files: "*.ts"
+    extends:
+      - "@socialgouv/eslint-config-typescript"
     rules:
-      "@typescript-eslint/no-var-requires": off
+      "@typescript-eslint/no-unsafe-member-access": off
+      "@typescript-eslint/ban-ts-comment": off
+      "@typescript-eslint/prefer-optional-chain": off
+      import/no-unresolved:
+        - error
+        - ignore:
+            - "^@socialgouv/kosko-charts/"
