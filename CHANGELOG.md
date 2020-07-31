@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0...v2.1.0) (2020-07-31)
+
+
+### Features
+
+* **ingress:** allow mutliple hosts ([#94](https://github.com/SocialGouv/kosko-charts/issues/94)) ([e0101f9](https://github.com/SocialGouv/kosko-charts/commit/e0101f90143294e4355257373d25e88393204f19))
+
 # [2.0.0](https://github.com/SocialGouv/kosko-charts/compare/v1.0.2...v2.0.0) (2020-07-31)
 
 
