@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create a dev ingress 1`] = `
+Object {
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Ingress",
+  "metadata": Object {
+    "annotations": Object {
+      "kubernetes.io/ingress.class": "nginx",
+    },
+    "labels": Object {
+      "app": "my-ingress",
+    },
+    "name": "my-ingress",
+  },
+  "spec": Object {
+    "rules": Array [
+      Object {
+        "host": "sample.dev.fabrique.social.gouv.fr",
+        "http": Object {
+          "paths": Array [
+            Object {
+              "backend": Object {
+                "serviceName": "www",
+                "servicePort": 80,
+              },
+              "path": "/",
+            },
+          ],
+        },
+      },
+    ],
+    "tls": Array [
+      Object {
+        "hosts": Array [
+          "sample.dev.fabrique.social.gouv.fr",
+        ],
+        "secretName": "wildcard-crt",
+      },
+    ],
+  },
+}
+`;
+
+exports[`should create a prod ingress 1`] = `
+Object {
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Ingress",
+  "metadata": Object {
+    "annotations": Object {
+      "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+      "kubernetes.io/ingress.class": "nginx",
+      "kubernetes.io/tls-acme": "true",
+    },
+    "labels": Object {
+      "app": "my-ingress",
+    },
+    "name": "my-ingress",
+  },
+  "spec": Object {
+    "rules": Array [
+      Object {
+        "host": "sample.dev.fabrique.social.gouv.fr",
+        "http": Object {
+          "paths": Array [
+            Object {
+              "backend": Object {
+                "serviceName": "www",
+                "servicePort": 80,
+              },
+              "path": "/",
+            },
+          ],
+        },
+      },
+    ],
+    "tls": Array [
+      Object {
+        "hosts": Array [
+          "sample.dev.fabrique.social.gouv.fr",
+        ],
+        "secretName": "my-ingress-crt",
+      },
+    ],
+  },
+}
+`;
