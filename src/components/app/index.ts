@@ -136,11 +136,14 @@ export const create = (
 
   /* INGRESS */
   if (envParams.ingress !== false) {
-    const ingress = createIngress({
-      name,
-      host: `${(envParams.subDomainPrefix || "") + envParams.subdomain}.${
+    const hosts = envParams.hosts || [
+      `${(envParams.subDomainPrefix || "") + envParams.subdomain}.${
         envParams.domain
       }`,
+    ];
+    const ingress = createIngress({
+      name,
+      hosts,
       serviceName: name,
       servicePort,
     });
