@@ -25,7 +25,7 @@ export const create = ({
             httpGet: {
               path: "/index.html",
             },
-            initialDelaySeconds: 10,
+            initialDelaySeconds: 30,
           },
           readinessProbe: {
             httpGet: {
@@ -41,12 +41,12 @@ export const create = ({
           // eslint-disable-next-line sort-keys
           resources: {
             limits: {
-              cpu: "300m",
+              cpu: "500m",
               memory: "128Mi",
             },
             requests: {
-              cpu: "50m",
-              memory: "64Mi",
+              cpu: "5m",
+              memory: "32Mi",
             },
           },
         },
