@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/SocialGouv/kosko-charts/compare/v2.1.0...v2.1.1) (2020-07-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kosko/env to ^0.5.2 ([#87](https://github.com/SocialGouv/kosko-charts/issues/87)) ([ae79793](https://github.com/SocialGouv/kosko-charts/commit/ae79793f1af70b9051336ca5f9f02e1da9105e4a))
+
 # [2.1.0](https://github.com/SocialGouv/kosko-charts/compare/v2.0.0...v2.1.0) (2020-07-31)
 
 
