@@ -425,6 +425,105 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
+    app: redis
+    application: v1-2-3-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: redis
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: redis
+        application: v1-2-3-sample-next-app
+        owner: sample-next-app
+        team: sample-next-app
+        cert: wildcard
+    spec:
+      containers:
+        - image: 'redis:6.0.5-alpine3.12'
+          livenessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          name: redis
+          ports:
+            - containerPort: 6379
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
+          startupProbe:
+            failureThreshold: 12
+            periodSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: redis
+    application: v1-2-3-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: redis
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  ports:
+    - port: 80
+      targetPort: 6379
+  selector:
+    app: redis
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
     app: www
     application: preprod-sample-next-app
     owner: sample-next-app
