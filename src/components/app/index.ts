@@ -27,6 +27,7 @@ export type AppConfig = DeploymentParams &
     subDomainPrefix: string;
     domain: string;
     labels: Record<string, string>;
+    ingress: boolean;
   };
 export const create = (
   name: string,
