@@ -145,36 +145,6 @@ kind: Service
 ---
 metadata:
   annotations:
-    kubernetes.io/ingress.class: nginx
-    app.gitlab.com/app: socialgouv-sample-next-app
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
-  labels:
-    app: hasura
-    application: preprod-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
-    cert: wildcard
-  name: hasura
-  namespace: sample-next-app-24-preprod-dev2
-spec:
-  rules:
-    - host: hasura-preprod-sample-next-app.dev.fabrique.social.gouv.fr
-      http:
-        paths:
-          - backend:
-              serviceName: hasura
-              servicePort: 80
-            path: /
-  tls:
-    - hosts:
-        - hasura-preprod-sample-next-app.dev.fabrique.social.gouv.fr
-      secretName: wildcard-crt
-apiVersion: extensions/v1beta1
-kind: Ingress
----
-metadata:
-  annotations:
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -296,6 +266,257 @@ spec:
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: pgweb
+    application: v1-2-3-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: pgweb
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgweb
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: pgweb
+        application: v1-2-3-sample-next-app
+        owner: sample-next-app
+        team: sample-next-app
+        cert: wildcard
+    spec:
+      containers:
+        - image: 'sosedoff/pgweb:latest'
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+          name: pgweb
+          ports:
+            - containerPort: 8081
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: azure-pg-user
+      initContainers:
+        - name: wait-for-postgres
+          image: 'postgres:10'
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 5m
+              memory: 16Mi
+            limits:
+              cpu: 20m
+              memory: 32Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-user
+          command:
+            - sh
+            - '-c'
+            - >
+
+              retry=120; # 5s * (12 * 10) = 10min
+
+              while ! psql -c \\"SELECT VERSION();\\" > /dev/null 2> /dev/null && [[
+              $(( retry-- )) -gt 0 ]];
+                do
+                  echo \\"Waiting for Postgres to go Green ($(( retry )))\\" ; sleep 5s ; done ;
+              echo Ready;
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: pgweb
+    application: v1-2-3-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: pgweb
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  ports:
+    - port: 80
+      targetPort: 8081
+  selector:
+    app: pgweb
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: pgweb
+    application: v1-2-3-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: pgweb
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  rules:
+    - host: pgweb-v1-2-3-sample-next-app.dev.fabrique.social.gouv.fr
+      http:
+        paths:
+          - backend:
+              serviceName: pgweb
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - pgweb-v1-2-3-sample-next-app.dev.fabrique.social.gouv.fr
+      secretName: wildcard-crt
+apiVersion: extensions/v1beta1
+kind: Ingress
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: redis
+    application: v1-2-3-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: redis
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: redis
+        application: v1-2-3-sample-next-app
+        owner: sample-next-app
+        team: sample-next-app
+        cert: wildcard
+    spec:
+      containers:
+        - image: 'redis:6.0.5-alpine3.12'
+          livenessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          name: redis
+          ports:
+            - containerPort: 6379
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
+          startupProbe:
+            failureThreshold: 12
+            periodSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: redis
+    application: v1-2-3-sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: redis
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  ports:
+    - port: 80
+      targetPort: 6379
+  selector:
+    app: redis
+  type: ClusterIP
+apiVersion: v1
+kind: Service
 ---
 metadata:
   annotations:
