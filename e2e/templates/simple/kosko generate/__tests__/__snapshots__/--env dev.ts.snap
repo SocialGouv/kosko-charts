@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/hasura:123456789
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/hasura:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -90,7 +90,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-undefined
+                name: azure-pg-user-8843083
       initContainers:
         - name: wait-for-postgres
           image: 'postgres:10'
@@ -104,7 +104,7 @@ spec:
               memory: 32Mi
           envFrom:
             - secretRef:
-                name: azure-pg-user-undefined
+                name: azure-pg-user-8843083
           command:
             - sh
             - '-c'
@@ -206,7 +206,7 @@ spec:
     spec:
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/app:123456789
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/app:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -366,7 +366,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-undefined
+                name: azure-pg-user-8843083
       initContainers:
         - name: wait-for-postgres
           image: 'postgres:10'
@@ -380,7 +380,7 @@ spec:
               memory: 32Mi
           envFrom:
             - secretRef:
-                name: azure-pg-user-undefined
+                name: azure-pg-user-8843083
           command:
             - sh
             - '-c'
@@ -484,7 +484,7 @@ spec:
     spec:
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/www:123456789
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/www:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
