@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/SocialGouv/kosko-charts/compare/v2.1.4...v2.2.0) (2020-08-02)
+
+
+### Features
+
+* add components and options ([#100](https://github.com/SocialGouv/kosko-charts/issues/100)) ([517f684](https://github.com/SocialGouv/kosko-charts/commit/517f6844f54e232b51afa50092f45391c52a4523))
+
 ## [2.1.4](https://github.com/SocialGouv/kosko-charts/compare/v2.1.3...v2.1.4) (2020-07-31)
 
 
