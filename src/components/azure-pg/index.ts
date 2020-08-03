@@ -53,22 +53,19 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
 
   /* SEALED-SECRET */
   // in dev, the secret is created dynamically (by create-db), no nead to read a local sealed secret
-  if (env.env !== "dev") {
-    // try to import environment sealed-secret
-    const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (sealedSecret) {
-      // add gitlab annotations
-      updateMetadata(sealedSecret, {
-        annotations: envParams.annotations ?? {},
-        labels: envParams.labels ?? {},
-        namespace: envParams.namespace,
-      });
-      manifests.push(sealedSecret);
-    } else {
-      console.warn("WARN: Missing pg.sealed-secret.yaml");
-    }
+  // try to import environment sealed-secret
+  const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (!sealedSecret) {
+    throw Error("WARN: Missing pg.sealed-secret.yaml");
   }
+  // add gitlab annotations
+  updateMetadata(sealedSecret, {
+    annotations: envParams.annotations ?? {},
+    labels: envParams.labels ?? {},
+    namespace: envParams.namespace,
+  });
+  manifests.push(sealedSecret);
 
   const job = createDbJob(defaultParams);
   updateMetadata(job, {

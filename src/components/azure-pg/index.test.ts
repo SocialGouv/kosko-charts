@@ -16,6 +16,7 @@ const gitlabEnv = {
 
 test("should throw because of a missing CI_PROJECT_NAME", () => {
   const env = new Environment("/tmp");
+  env.env = "prod";
   expect(() => create({ env })).toThrowError(
     "Missing process.env.CI_PROJECT_NAME"
   );
@@ -24,12 +25,14 @@ test("should throw because of a missing CI_PROJECT_NAME", () => {
 test("should throw because of a missing envs", () => {
   process.env.CI_PROJECT_NAME = "sample-next-app";
   const env = new Environment("/tmp");
+  env.env = "dev";
   expect(() => create({ env })).toThrowErrorMatchingSnapshot();
 });
 
 test("should throw because of a missing pg.sealed-secret.yaml", () => {
   Object.assign(process.env, gitlabEnv);
   const env = new Environment("/tmp");
+  env.env = "prod";
   expect(() => create({ env })).toThrowError("Missing pg.sealed-secret.yaml");
 });
 
