@@ -42,6 +42,7 @@ interface CreateParams {
 
 export const create = ({ env, config = {} }: CreateParams): unknown[] => {
   const defaultParams = getDefaultPgParams();
+  const manifests = [];
 
   // kosko component env values
   const envParams = {
@@ -51,16 +52,23 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
   };
 
   /* SEALED-SECRET */
-  // try to import environment sealed-secret
-  const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
-  ok(sealedSecret, "Missing pg.sealed-secret.yaml");
-  // add gitlab annotations
-  updateMetadata(sealedSecret, {
-    annotations: envParams.annotations ?? {},
-    labels: envParams.labels ?? {},
-    namespace: envParams.namespace,
-  });
-  // add to deployment.envFrom
+  // in dev, the secret is created dynamically (by create-db), no nead to read a local sealed secret
+  if (env.env !== "dev") {
+    // try to import environment sealed-secret
+    const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (sealedSecret) {
+      // add gitlab annotations
+      updateMetadata(sealedSecret, {
+        annotations: envParams.annotations ?? {},
+        labels: envParams.labels ?? {},
+        namespace: envParams.namespace,
+      });
+      manifests.push(sealedSecret);
+    } else {
+      console.warn("WARN: Missing pg.sealed-secret.yaml");
+    }
+  }
 
   const job = createDbJob(defaultParams);
   updateMetadata(job, {
@@ -69,6 +77,7 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
     namespace: envParams.namespace,
   });
+  manifests.push(job);
 
   const secret = createSecret(envParams);
   updateMetadata(secret, {
@@ -77,5 +86,7 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
-  return [sealedSecret, job, secret];
+  manifests.push(secret);
+
+  return manifests;
 };
