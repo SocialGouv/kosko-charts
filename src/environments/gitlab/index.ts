@@ -20,6 +20,7 @@ const GitlabProcessEnv = pipe(
       CI_COMMIT_TAG: NonEmptyString,
       CI_REPOSITORY_URL: NonEmptyString,
       PRODUCTION: D.string,
+      PRODUCTION_NAMESPACE: D.string,
       RANCHER_PROJECT_ID: NonEmptyString,
     })
   )
@@ -38,6 +39,7 @@ const mapper = ({
   KUBE_INGRESS_BASE_DOMAIN,
   KUBE_NAMESPACE,
   PRODUCTION,
+  PRODUCTION_NAMESPACE,
   RANCHER_PROJECT_ID,
 }: GitlabProcessEnv): GlobalEnvironment => {
   const isProductionCluster = Boolean(PRODUCTION);
@@ -46,6 +48,10 @@ const mapper = ({
     : CI_COMMIT_TAG
     ? `${CI_COMMIT_TAG.replace(/\./g, "-")}-${CI_PROJECT_NAME}`
     : `${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}`;
+
+  const namespaceName = isProductionCluster
+    ? PRODUCTION_NAMESPACE || CI_PROJECT_NAME
+    : KUBE_NAMESPACE;
 
   return {
     annotations: {
@@ -66,7 +72,7 @@ const mapper = ({
       ...(CI_ENVIRONMENT_NAME.endsWith("-dev2") ? { cert: "wildcard" } : {}),
     },
     namespace: {
-      name: isProductionCluster ? CI_PROJECT_NAME : KUBE_NAMESPACE,
+      name: namespaceName,
     },
     rancherId: RANCHER_PROJECT_ID ?? "",
     subdomain: isProductionCluster ? CI_PROJECT_NAME : application,
