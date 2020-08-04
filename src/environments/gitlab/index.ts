@@ -50,7 +50,7 @@ const mapper = ({
     : `${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}`;
 
   const namespaceName = isProductionCluster
-    ? PRODUCTION_NAMESPACE || CI_PROJECT_NAME
+    ? PRODUCTION_NAMESPACE ?? CI_PROJECT_NAME
     : KUBE_NAMESPACE;
 
   return {
