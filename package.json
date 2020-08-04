@@ -11,7 +11,7 @@
     "io-ts": "2.2.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.0",
+    "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
     "@kosko/env": "^0.5.2",
