@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/SocialGouv/kosko-charts/compare/v2.2.0...v2.2.1) (2020-08-04)
+
+
+### Bug Fixes
+
+* **namespace:** use PRODUCTION_NAMESPACE when provided ([#104](https://github.com/SocialGouv/kosko-charts/issues/104)) ([a0f1124](https://github.com/SocialGouv/kosko-charts/commit/a0f1124c8bcb5a238352eda7b1b065951ea1e5b7))
+
 # [2.2.0](https://github.com/SocialGouv/kosko-charts/compare/v2.1.4...v2.2.0) (2020-08-02)
 
 
