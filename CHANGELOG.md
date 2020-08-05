@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/SocialGouv/kosko-charts/compare/v2.2.2...v2.3.0) (2020-08-05)
+
+
+### Features
+
+* add utils: getIngressHost and getManifestByKind ([#108](https://github.com/SocialGouv/kosko-charts/issues/108)) ([ce60a79](https://github.com/SocialGouv/kosko-charts/commit/ce60a7919312464b0f208cfb8f1df690ab489d73))
+
 ## [2.2.2](https://github.com/SocialGouv/kosko-charts/compare/v2.2.1...v2.2.2) (2020-08-04)
 
 
