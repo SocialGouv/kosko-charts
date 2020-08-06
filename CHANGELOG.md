@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/SocialGouv/kosko-charts/compare/v2.3.0...v2.4.0) (2020-08-06)
+
+
+### Features
+
+* **pg-secret:** add DB_URI and PGRST_DB_URI ([#112](https://github.com/SocialGouv/kosko-charts/issues/112)) ([2bf576b](https://github.com/SocialGouv/kosko-charts/commit/2bf576b09b9161f33bfc0306c07c3ec7c5c35aa8))
+
 # [2.3.0](https://github.com/SocialGouv/kosko-charts/compare/v2.2.2...v2.3.0) (2020-08-05)
 
 
