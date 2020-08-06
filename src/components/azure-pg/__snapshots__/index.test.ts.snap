@@ -33,7 +33,7 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "create-db-job-undefined",
+      "name": "create-db-job-abcdefg",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
@@ -60,15 +60,15 @@ Array [
               "env": Array [
                 Object {
                   "name": "NEW_DB_NAME",
-                  "value": "autodevops_undefined",
+                  "value": "autodevops_abcdefg",
                 },
                 Object {
                   "name": "NEW_USER",
-                  "value": "user_undefined",
+                  "value": "user_abcdefg",
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_undefined",
+                  "value": "password_abcdefg",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -116,17 +116,19 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "azure-pg-user-undefined",
+      "name": "azure-pg-user-abcdefg",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
-      "DATABASE_URL": "postgresql://user_undefined%40sampledevserver.postgres.database.azure.com:password_undefined@sampledevserver.postgres.database.azure.com/autodevops_undefined?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_undefined%40sampledevserver.postgres.database.azure.com:password_undefined@sampledevserver.postgres.database.azure.com/autodevops_undefined?sslmode=require",
-      "PGDATABASE": "autodevops_undefined",
+      "DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "PGDATABASE": "autodevops_abcdefg",
       "PGHOST": "sampledevserver.postgres.database.azure.com",
-      "PGPASSWORD": "password_undefined",
+      "PGPASSWORD": "password_abcdefg",
+      "PGRST_DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
       "PGSSLMODE": "require",
-      "PGUSER": "user_undefined@sampledevserver.postgres.database.azure.com",
+      "PGUSER": "user_abcdefg@sampledevserver.postgres.database.azure.com",
     },
   },
 ]

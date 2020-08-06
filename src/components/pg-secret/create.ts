@@ -16,10 +16,12 @@ export const createSecret = ({
     },
     stringData: {
       DATABASE_URL: connectionString,
+      DB_URI: connectionString,
       HASURA_GRAPHQL_DATABASE_URL: connectionString,
       PGDATABASE: database,
       PGHOST: host,
       PGPASSWORD: password,
+      PGRST_DB_URI: connectionString,
       PGSSLMODE: sslmode,
       PGUSER: `${user}@${host}`,
     },
