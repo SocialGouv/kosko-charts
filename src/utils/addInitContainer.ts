@@ -12,7 +12,12 @@ export const addInitContainer = (
       deployment.spec.template = { spec: {} };
     }
     //@ts-expect-error
-    deployment.spec.template.spec.initContainers = [initContainer];
+    if (!deployment.spec.template.spec.initContainers) {
+      //@ts-expect-error
+      deployment.spec.template.spec.initContainers = [];
+    }
+    //@ts-expect-error
+    deployment.spec.template.spec.initContainers.push(initContainer);
   }
 
   return deployment;
