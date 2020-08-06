@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/SocialGouv/kosko-charts/compare/v2.4.0...v2.5.0) (2020-08-06)
+
+
+### Features
+
+* add addWaitForService ([#113](https://github.com/SocialGouv/kosko-charts/issues/113)) ([3af46b6](https://github.com/SocialGouv/kosko-charts/commit/3af46b63ae6c2210853e19f5b327f165f6d4c246))
+
 # [2.4.0](https://github.com/SocialGouv/kosko-charts/compare/v2.3.0...v2.4.0) (2020-08-06)
 
 
