@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Environment } from "@kosko/env";
 import { promises } from "fs";
 import { directory } from "tempy";
@@ -45,4 +46,18 @@ test("should return create an job", async () => {
     "---\napiVersion: v1\nkind: ConfigMap"
   );
   expect(create({ env })).toMatchSnapshot();
+});
+
+test("should use custom pgHost", async () => {
+  process.env.CI_PROJECT_NAME = "sample-next-app";
+  const env = new Environment("/tmp/xxx");
+  env.env = "dev";
+  await promises.mkdir(`/tmp/xxx/environments/dev`, { recursive: true });
+  await promises.writeFile(
+    `/tmp/xxx/environments/dev/pg.sealed-secret.yaml`,
+    "---\napiVersion: v1\nkind: ConfigMap"
+  );
+  expect(
+    create({ env, config: { pgHost: "pouetpouet.com" } })
+  ).toMatchSnapshot();
 });
