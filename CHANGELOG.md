@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/SocialGouv/kosko-charts/compare/v2.5.2...v2.6.0) (2020-08-07)
+
+
+### Features
+
+* **pg:** add config.pgHost ([#116](https://github.com/SocialGouv/kosko-charts/issues/116)) ([5400c9a](https://github.com/SocialGouv/kosko-charts/commit/5400c9a529dfb68fe4ff23e0c9a1ede1438c67b3))
+
 ## [2.5.2](https://github.com/SocialGouv/kosko-charts/compare/v2.5.1...v2.5.2) (2020-08-07)
 
 
