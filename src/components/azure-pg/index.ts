@@ -19,21 +19,25 @@ interface PgParams {
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const getDefaultPgParams = (): PgParams => {
+export const getDefaultPgParams = (
+  config: Partial<CreateConfig> = {}
+): PgParams => {
   ok(process.env.CI_PROJECT_NAME, "Missing process.env.CI_PROJECT_NAME");
   const sha = process.env.CI_COMMIT_SHORT_SHA;
   const projectName = process.env.CI_PROJECT_NAME;
 
   return {
     database: `autodevops_${sha}`,
-    host: getPgServerHostname(projectName, "dev"),
+    host: config.pgHost ?? getPgServerHostname(projectName, "dev"),
     name: `azure-pg-user-${sha}`,
     password: `password_${sha}`,
     user: `user_${sha}`,
   };
 };
 
-export type CreateConfig = DeploymentParams;
+export interface CreateConfig extends DeploymentParams {
+  pgHost?: string;
+}
 
 interface CreateParams {
   env: Environment;
@@ -41,7 +45,7 @@ interface CreateParams {
 }
 
 export const create = ({ env, config = {} }: CreateParams): unknown[] => {
-  const defaultParams = getDefaultPgParams();
+  const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
   const envParams = {
