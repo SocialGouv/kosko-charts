@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/SocialGouv/kosko-charts/compare/v2.5.1...v2.5.2) (2020-08-07)
+
+
+### Bug Fixes
+
+* **k8s:** restore waitForPg delays ([#115](https://github.com/SocialGouv/kosko-charts/issues/115)) ([f4bdd1b](https://github.com/SocialGouv/kosko-charts/commit/f4bdd1b62aa77c86a09f7c448c343e35ca60de56))
+
 ## [2.5.1](https://github.com/SocialGouv/kosko-charts/compare/v2.5.0...v2.5.1) (2020-08-07)
 
 
