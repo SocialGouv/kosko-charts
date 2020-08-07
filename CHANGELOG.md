@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/SocialGouv/kosko-charts/compare/v2.5.0...v2.5.1) (2020-08-07)
+
+
+### Bug Fixes
+
+* **wait-for-pg:** handle postgres shell and return exit status on error ([#114](https://github.com/SocialGouv/kosko-charts/issues/114)) ([09cbadb](https://github.com/SocialGouv/kosko-charts/commit/09cbadba42a9724e36da533e991a8063c497a49d))
+
 # [2.5.0](https://github.com/SocialGouv/kosko-charts/compare/v2.4.0...v2.5.0) (2020-08-06)
 
 
