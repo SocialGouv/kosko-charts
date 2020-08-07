@@ -7,11 +7,18 @@ interface WaitForPostgresParams {
 }
 
 const script = `
-retry=120; # 5s * (12 * 10) = 10min
-while ! psql -c "SELECT VERSION();" > /dev/null 2> /dev/null && [[ $(( retry-- )) -gt 0 ]];
+retry=5; # 5s * (12 * 10) = 10min
+while ! psql -c "SELECT VERSION();" > /dev/null 2> /dev/null && [ $retry -gt 0 ];
   do
-    echo "Waiting for Postgres to go Green ($(( retry )))" ; sleep 5s ; done ;
-echo Ready;
+    echo "Waiting for Postgres to go Green ($(( retry )))" ;
+    retry=$(( $retry-1 ));
+    sleep 1s ;
+  done ;
+if [ $retry -eq 0 ]; then
+    echo "Not Ready";
+    exit 2
+fi
+echo "Ready";
 `;
 
 export const waitForPostgres = ({
