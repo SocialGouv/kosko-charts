@@ -25,7 +25,7 @@
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.22.0",
     "execa": "^4.0.3",
-    "jest": "^26.3.0",
+    "jest": "^26.4.0",
     "jest-file-snapshot": "^0.3.8",
     "kosko": "^0.9.2",
     "kubernetes-models": "^0.8.1",
