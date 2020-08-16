@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/SocialGouv/kosko-charts/compare/v2.6.0...v2.6.1) (2020-08-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sindresorhus/is to ^3.1.1 ([#124](https://github.com/SocialGouv/kosko-charts/issues/124)) ([1b306d5](https://github.com/SocialGouv/kosko-charts/commit/1b306d5869018c415b40edfb0c2d236bc7761e6e))
+
 # [2.6.0](https://github.com/SocialGouv/kosko-charts/compare/v2.5.2...v2.6.0) (2020-08-07)
 
 
