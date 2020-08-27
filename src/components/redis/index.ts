@@ -5,6 +5,7 @@ import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
+import { DeploymentParams } from "../../utils/createDeployment";
 import { AppConfig, create as createApp } from "../app";
 
 type CreateResult = unknown[];
@@ -12,7 +13,15 @@ type CreateResult = unknown[];
 // todo: persistent volume ?
 export const create = (
   // eslint-disable-next-line @typescript-eslint/ban-types
-  { env, config = {} }: { env: Environment; config?: Partial<AppConfig> }
+  {
+    env,
+    config = {},
+    deployment,
+  }: {
+    env: Environment;
+    config?: Partial<AppConfig>;
+    deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
+  }
 ): CreateResult => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
@@ -46,21 +55,23 @@ export const create = (
       config
     ),
     env,
+    deployment,
   });
 
   // DEV: add secret to access DB
-  const deployment = manifests.find(
+  const redisDeployment = manifests.find(
     (manifest): manifest is Deployment => manifest.kind === "Deployment"
   );
-  ok(deployment);
-  ok(deployment.spec);
-  ok(deployment.spec.template.spec);
-  ok(deployment.spec.template.spec.containers[0].livenessProbe);
-  ok(deployment.spec.template.spec.containers[0].readinessProbe);
-  ok(deployment.spec.template.spec.containers[0].startupProbe);
-  delete deployment.spec.template.spec.containers[0].livenessProbe.httpGet;
-  delete deployment.spec.template.spec.containers[0].readinessProbe.httpGet;
-  delete deployment.spec.template.spec.containers[0].startupProbe.httpGet;
+  ok(redisDeployment);
+  ok(redisDeployment.spec);
+  ok(redisDeployment.spec.template.spec);
+  ok(redisDeployment.spec.template.spec.containers[0].livenessProbe);
+  ok(redisDeployment.spec.template.spec.containers[0].readinessProbe);
+  ok(redisDeployment.spec.template.spec.containers[0].startupProbe);
+  delete redisDeployment.spec.template.spec.containers[0].livenessProbe.httpGet;
+  delete redisDeployment.spec.template.spec.containers[0].readinessProbe
+    .httpGet;
+  delete redisDeployment.spec.template.spec.containers[0].startupProbe.httpGet;
 
   //
 
