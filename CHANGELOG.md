@@ -1,3 +1,10 @@
+## [2.6.4](https://github.com/SocialGouv/kosko-charts/compare/v2.6.3...v2.6.4) (2020-08-27)
+
+
+### Bug Fixes
+
+* **redis:** accept optional deployment params fix ([#149](https://github.com/SocialGouv/kosko-charts/issues/149)) ([08e8c02](https://github.com/SocialGouv/kosko-charts/commit/08e8c02d84c8b1281492be279655ac40bae7c58a)), closes [#146](https://github.com/SocialGouv/kosko-charts/issues/146)
+
 ## [2.6.3](https://github.com/SocialGouv/kosko-charts/compare/v2.6.2...v2.6.3) (2020-08-24)
 
 
