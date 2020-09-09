@@ -7,32 +7,32 @@ metadata:
     field.cattle.io/creatorId: gitlab
     field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
     git/branch: e2e-branch
-    git/remote: 'git@github.com:SocialGouv/sample-next-app.git'
-    app.gitlab.com/app: socialgouv-sample-next-app
+    git/remote: 'git@github.com:SocialGouv/sample-kosko.git'
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
-  name: sample-next-app-24-e2e-branch-42
+  name: sample-kosko-24-e2e-branch-42
 apiVersion: v1
 kind: Namespace
 ---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: hasura
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: hasura
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   replicas: 1
   selector:
@@ -41,21 +41,21 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: hasura
-        application: e2e-branch-42-sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
         cert: wildcard
     spec:
       imagePullSecrets:
         - name: regcred
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/hasura:8843083edb7f873cad1d1420731a60773594ffae
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/hasura:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -133,16 +133,16 @@ kind: Deployment
 metadata:
   labels:
     app: hasura
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: hasura
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
     - port: 80
@@ -155,17 +155,17 @@ kind: Service
 ---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: pgweb
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: pgweb
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   replicas: 1
   selector:
@@ -174,14 +174,14 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: pgweb
-        application: e2e-branch-42-sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
         cert: wildcard
     spec:
       containers:
@@ -263,16 +263,16 @@ kind: Deployment
 metadata:
   labels:
     app: pgweb
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: pgweb
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
     - port: 80
@@ -286,20 +286,20 @@ kind: Service
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: pgweb
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: pgweb
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   rules:
-    - host: pgweb-e2e-branch-42-sample-next-app.dev2.fabrique.social.gouv.fr
+    - host: pgweb-e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -308,24 +308,24 @@ spec:
             path: /
   tls:
     - hosts:
-        - pgweb-e2e-branch-42-sample-next-app.dev2.fabrique.social.gouv.fr
+        - pgweb-e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress
 ---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: redis
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: redis
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   replicas: 1
   selector:
@@ -334,14 +334,14 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: redis
-        application: e2e-branch-42-sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
         cert: wildcard
     spec:
       containers:
@@ -392,16 +392,16 @@ kind: Deployment
 metadata:
   labels:
     app: redis
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: redis
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
     - port: 80
@@ -414,18 +414,18 @@ kind: Service
 ---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: www
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
     component: next
   name: www
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   replicas: 1
   selector:
@@ -434,14 +434,14 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: www
-        application: e2e-branch-42-sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
         cert: wildcard
         component: next
     spec:
@@ -449,7 +449,7 @@ spec:
         - name: some-secret
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/www:8843083edb7f873cad1d1420731a60773594ffae
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/www:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -490,16 +490,16 @@ kind: Deployment
 metadata:
   labels:
     app: www
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: www
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
     - port: 80
@@ -513,20 +513,20 @@ kind: Service
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: www
-    application: e2e-branch-42-sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     cert: wildcard
   name: www
-  namespace: sample-next-app-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   rules:
-    - host: e2e-branch-42-sample-next-app.dev2.fabrique.social.gouv.fr
+    - host: e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -535,7 +535,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - e2e-branch-42-sample-next-app.dev2.fabrique.social.gouv.fr
+        - e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress"

@@ -4,16 +4,16 @@ exports[`--env prod : should generate prod manifest 1`] = `
 "---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
   labels:
     app: hasura
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: hasura
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   replicas: 1
   selector:
@@ -22,20 +22,20 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
       labels:
         app: hasura
-        application: sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
     spec:
       imagePullSecrets:
         - name: regcred
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/hasura:1.2.3
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/hasura:1.2.3
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -113,15 +113,15 @@ kind: Deployment
 metadata:
   labels:
     app: hasura
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: hasura
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   ports:
     - port: 80
@@ -134,16 +134,16 @@ kind: Service
 ---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
   labels:
     app: pgweb
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: pgweb
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   replicas: 1
   selector:
@@ -152,14 +152,14 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
       labels:
         app: pgweb
-        application: sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
     spec:
       containers:
         - image: 'sosedoff/pgweb:latest'
@@ -240,15 +240,15 @@ kind: Deployment
 metadata:
   labels:
     app: pgweb
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: pgweb
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   ports:
     - port: 80
@@ -264,19 +264,19 @@ metadata:
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/tls-acme: 'true'
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
   labels:
     app: pgweb
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: pgweb
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   rules:
-    - host: pgweb.sample-next-app.fabrique.social.gouv.fr
+    - host: pgweb.sample-kosko.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -285,23 +285,23 @@ spec:
             path: /
   tls:
     - hosts:
-        - pgweb.sample-next-app.fabrique.social.gouv.fr
+        - pgweb.sample-kosko.fabrique.social.gouv.fr
       secretName: pgweb-crt
 apiVersion: extensions/v1beta1
 kind: Ingress
 ---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
   labels:
     app: redis
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: redis
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   replicas: 1
   selector:
@@ -310,14 +310,14 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
       labels:
         app: redis
-        application: sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
     spec:
       containers:
         - image: 'redis:6.0.5-alpine3.12'
@@ -367,15 +367,15 @@ kind: Deployment
 metadata:
   labels:
     app: redis
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: redis
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   ports:
     - port: 80
@@ -388,17 +388,17 @@ kind: Service
 ---
 metadata:
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
   labels:
     app: www
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
     component: next
   name: www
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   replicas: 1
   selector:
@@ -407,21 +407,21 @@ spec:
   template:
     metadata:
       annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
       labels:
         app: www
-        application: sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
+        application: sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
         component: next
     spec:
       imagePullSecrets:
         - name: some-secret
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/www:1.2.3
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/www:1.2.3
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -462,15 +462,15 @@ kind: Deployment
 metadata:
   labels:
     app: www
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: www
   annotations:
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   ports:
     - port: 80
@@ -486,19 +486,19 @@ metadata:
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/tls-acme: 'true'
-    app.gitlab.com/app: socialgouv-sample-next-app
+    app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
   labels:
     app: www
-    application: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
   name: www
-  namespace: sample-next-app
+  namespace: sample-kosko
 spec:
   rules:
-    - host: sample-next-app.fabrique.social.gouv.fr
+    - host: sample-kosko.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -507,7 +507,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - sample-next-app.fabrique.social.gouv.fr
+        - sample-kosko.fabrique.social.gouv.fr
       secretName: www-crt
 apiVersion: extensions/v1beta1
 kind: Ingress"

@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
@@ -17,7 +18,7 @@ export const create = ({
   ok(process.env.CI_ENVIRONMENT_URL);
   ok(process.env.CI_PROJECT_NAME);
 
-  const manifests = createApp("app", {
+  const manifests = createApp("nginx", {
     config: merge(
       {
         container: {
