@@ -18,6 +18,11 @@ const manifests = create("www", {
     containerPort: 8080,
   },
   deployment: {
+    imagePullSecrets: [
+      {
+        name: "some-secret",
+      },
+    ],
     labels: {
       component: "next",
     },
