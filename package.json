@@ -31,7 +31,7 @@
     "kubernetes-models": "^0.8.1",
     "lint-staged": "^10.3.0",
     "prettier": "^2.1.1",
-    "tempy": "^0.6.0",
+    "tempy": "^0.7.0",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
