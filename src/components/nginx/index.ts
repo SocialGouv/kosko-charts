@@ -18,7 +18,8 @@ export const create = ({
   ok(process.env.CI_ENVIRONMENT_URL);
   ok(process.env.CI_PROJECT_NAME);
 
-  const manifests = createApp("nginx", {
+  // todo: atm we use "app" as a convention.
+  const manifests = createApp("app", {
     config: merge(
       {
         container: {
