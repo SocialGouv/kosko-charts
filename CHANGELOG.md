@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/SocialGouv/kosko-charts/compare/v2.6.4...v2.7.0) (2020-09-15)
+
+
+### Features
+
+* add params.imagePullSecrets ([#169](https://github.com/SocialGouv/kosko-charts/issues/169)) ([fda70c1](https://github.com/SocialGouv/kosko-charts/commit/fda70c1960821b94b7bb7b8094e93666e9155e29))
+
 ## [2.6.4](https://github.com/SocialGouv/kosko-charts/compare/v2.6.3...v2.6.4) (2020-08-27)
 
 
