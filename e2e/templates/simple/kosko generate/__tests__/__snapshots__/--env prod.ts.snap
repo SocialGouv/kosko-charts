@@ -553,6 +553,8 @@ spec:
         cert: wildcard
         component: next
     spec:
+      imagePullSecrets:
+        - name: some-secret
       containers:
         - image: >-
             registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/www:1.2.3
