@@ -33,6 +33,8 @@ spec:
         team: sample-next-app
         cert: wildcard
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - image: >-
             registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/hasura:1.2.3

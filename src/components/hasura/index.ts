@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/sort */
 import { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
@@ -6,12 +7,21 @@ import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 import { AppConfig, create as createApp } from "../app";
+import { DeploymentParams } from "../../utils/createDeployment";
 
 type CreateResult = unknown[];
 
 export const create = (
   // eslint-disable-next-line @typescript-eslint/ban-types
-  { env, config = {} }: { env: Environment; config?: Partial<AppConfig> }
+  {
+    env,
+    config = {},
+    deployment = {},
+  }: {
+    env: Environment;
+    config?: Partial<AppConfig>;
+    deployment?: Partial<DeploymentParams>;
+  }
 ): CreateResult => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
@@ -46,18 +56,19 @@ export const create = (
       },
       config
     ),
+    deployment,
     env,
   });
 
   // DEV: add secret to access DB
-  const deployment = manifests.find(
+  const hasuraDeployment = manifests.find(
     (manifest): manifest is Deployment => manifest.kind === "Deployment"
   );
-  ok(deployment);
+  ok(hasuraDeployment);
 
-  addPostgresUserSecret(deployment);
+  addPostgresUserSecret(hasuraDeployment);
 
-  addWaitForPostgres(deployment);
+  addWaitForPostgres(hasuraDeployment);
 
   //
 
