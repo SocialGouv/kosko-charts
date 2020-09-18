@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/SocialGouv/kosko-charts/compare/v2.7.0...v2.7.1) (2020-09-18)
+
+
+### Bug Fixes
+
+* **hasura:** handle deployment options ([#184](https://github.com/SocialGouv/kosko-charts/issues/184)) ([3ed8f4a](https://github.com/SocialGouv/kosko-charts/commit/3ed8f4a41ad52058cff7f534dfdabe3679382fcd))
+
 # [2.7.0](https://github.com/SocialGouv/kosko-charts/compare/v2.6.4...v2.7.0) (2020-09-15)
 
 
