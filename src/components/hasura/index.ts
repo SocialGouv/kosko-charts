@@ -55,8 +55,8 @@ export const create = (
       },
       config
     ),
-    env,
     deployment,
+    env,
   });
 
   // DEV: add secret to access DB
