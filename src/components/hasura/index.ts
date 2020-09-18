@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/sort */
 import { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
