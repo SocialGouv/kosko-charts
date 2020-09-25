@@ -22,6 +22,8 @@ test(
           ...gitlabEnv,
           CI_COMMIT_TAG: "v1.2.3",
           KUBE_NAMESPACE: "sample-next-app-24-preprod-dev2",
+          CI_ENVIRONMENT_NAME: "preprod-dev2",
+          CI_ENVIRONMENT_SLUG: "preprod-dev2",
         },
       }
     );

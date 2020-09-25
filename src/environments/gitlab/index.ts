@@ -43,11 +43,18 @@ const mapper = ({
   RANCHER_PROJECT_ID,
 }: GitlabProcessEnv): GlobalEnvironment => {
   const isProductionCluster = Boolean(PRODUCTION);
+  const isPreProduction = CI_ENVIRONMENT_NAME === "preprod-dev2";
   const application = isProductionCluster
     ? CI_PROJECT_NAME
     : CI_COMMIT_TAG
     ? `${CI_COMMIT_TAG.replace(/\./g, "-")}-${CI_PROJECT_NAME}`
     : `${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}`;
+
+  const subdomain = isProductionCluster
+    ? CI_PROJECT_NAME
+    : isPreProduction
+    ? `preprod-${CI_PROJECT_NAME}`
+    : application;
 
   const namespaceName = isProductionCluster
     ? PRODUCTION_NAMESPACE ?? CI_PROJECT_NAME
@@ -75,7 +82,7 @@ const mapper = ({
       name: namespaceName,
     },
     rancherId: RANCHER_PROJECT_ID ?? "",
-    subdomain: isProductionCluster ? CI_PROJECT_NAME : application,
+    subdomain,
   };
 };
 

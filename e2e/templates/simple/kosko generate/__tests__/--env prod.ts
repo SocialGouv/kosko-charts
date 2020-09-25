@@ -18,7 +18,14 @@ test(
       ["generate", "--env", "prod", "!(_*)"],
       {
         cwd,
-        env: { ...gitlabEnv, CI_COMMIT_TAG: "v1.2.3", PRODUCTION: "true" },
+        env: {
+          ...gitlabEnv,
+          CI_COMMIT_TAG: "v1.2.3",
+          PRODUCTION: "true",
+          CI_ENVIRONMENT_NAME: "prod2",
+          CI_ENVIRONMENT_SLUG: "prod2",
+          KUBE_INGRESS_BASE_DOMAIN: "fabrique.social.gouv.fr",
+        },
       }
     );
 
