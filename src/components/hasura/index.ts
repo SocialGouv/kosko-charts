@@ -2,7 +2,6 @@
 import { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { AppConfig, create as createApp } from "../app";
 import { DeploymentParams } from "../../utils/createDeployment";
