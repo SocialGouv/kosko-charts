@@ -1,3 +1,13 @@
+# [3.0.0](https://github.com/SocialGouv/kosko-charts/compare/v2.7.2...v3.0.0) (2020-09-30)
+
+
+* feat(gitlab)!: use preprod-${CI_PROJECT_NAME} ingress for preprod-dev2 (#192) ([0fb15b4](https://github.com/SocialGouv/kosko-charts/commit/0fb15b407886358455d2f25fe398f5e88b6bc1e3)), closes [#192](https://github.com/SocialGouv/kosko-charts/issues/192)
+
+
+### BREAKING CHANGES
+
+* preprod URLs will start with `preprod-*` instead of `vX-Y-Z-*` by default
+
 ## [2.7.2](https://github.com/SocialGouv/kosko-charts/compare/v2.7.1...v2.7.2) (2020-09-22)
 
 
