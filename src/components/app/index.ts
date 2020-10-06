@@ -22,6 +22,11 @@ import { merge } from "../../utils/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 
+type AliasParams = {
+  hosts: string[];
+  destination: string;
+};
+
 export type AppConfig = DeploymentParams &
   ServiceParams &
   IngressParams & {
@@ -31,6 +36,7 @@ export type AppConfig = DeploymentParams &
     labels: Record<string, string>;
     ingress: boolean;
     withPostgres: boolean;
+    withRedirections?: AliasParams;
   };
 export const create = (
   name: string,
@@ -73,9 +79,24 @@ export const create = (
   });
   manifests.push(deployment);
 
+  // add postgres secret and initContainer
   if (envParams.withPostgres) {
     addPostgresUserSecret(deployment);
     addWaitForPostgres(deployment);
+  }
+
+  // add a redirection ingresses, production only
+  if (env.env === "prod" && envParams.withRedirections) {
+    const { hosts, destination } = envParams.withRedirections;
+    const redirectIngress = createIngress({
+      name: `${name}-redirects`,
+      hosts,
+      secretName: `${name}-redirects`,
+      annotations: {
+        "nginx.ingress.kubernetes.io/permanent-redirect": `https://${destination}$request_uri`,
+      },
+    });
+    manifests.push(redirectIngress);
   }
 
   /* SEALED-SECRET */
