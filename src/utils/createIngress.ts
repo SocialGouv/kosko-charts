@@ -6,7 +6,7 @@ export interface IngressConfig {
   serviceName?: string;
   servicePort?: number;
   secretName?: string;
-  annotations?: object;
+  annotations?: Record<string, unknown>;
 }
 
 const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
