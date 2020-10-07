@@ -27,7 +27,7 @@ export default (params: IngressConfig): Ingress => {
   const hosts = params.hosts;
   const annotations: Record<string, string> = {
     "kubernetes.io/ingress.class": "nginx",
-    ...(params.annotations || {}),
+    ...(params.annotations ?? {}),
   };
   if (process.env.PRODUCTION) {
     annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
