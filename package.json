@@ -7,7 +7,7 @@
   "dependencies": {
     "@kubernetes-models/sealed-secrets": "^0.1.4",
     "@sindresorhus/is": "^3.1.2",
-    "fp-ts": "^2.8.3",
+    "fp-ts": "^2.8.4",
     "io-ts": "2.2.7"
   },
   "devDependencies": {
