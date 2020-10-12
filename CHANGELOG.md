@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/SocialGouv/kosko-charts/compare/v3.0.1...v3.0.2) (2020-10-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sindresorhus/is to v4 ([#220](https://github.com/SocialGouv/kosko-charts/issues/220)) ([4d5430c](https://github.com/SocialGouv/kosko-charts/commit/4d5430c49e774e422e231d58d3b5596beabd774f))
+
 ## [3.0.1](https://github.com/SocialGouv/kosko-charts/compare/v3.0.0...v3.0.1) (2020-10-12)
 
 
