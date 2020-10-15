@@ -3,7 +3,6 @@ import { create } from "@socialgouv/kosko-charts/components/app";
 
 const manifests = create("www", {
   config: {
-    withPostgres: true,
     container: {
       resources: {
         limits: {
@@ -17,6 +16,7 @@ const manifests = create("www", {
       },
     },
     containerPort: 8080,
+    withPostgres: true,
   },
   deployment: {
     imagePullSecrets: [

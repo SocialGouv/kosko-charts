@@ -27,7 +27,6 @@ export const create = (
   const manifests = createApp("hasura", {
     config: merge(
       {
-        withPostgres: true,
         container: {
           livenessProbe: {
             initialDelaySeconds: 60,
@@ -49,8 +48,9 @@ export const create = (
           },
         },
         containerPort: 80,
-
         subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
+
+        withPostgres: true,
       },
       config
     ),

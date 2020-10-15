@@ -32,11 +32,6 @@ export const create = ({
               path: "/index.html",
             },
           },
-          startupProbe: {
-            httpGet: {
-              path: "/index.html",
-            },
-          },
           // eslint-disable-next-line sort-keys-fix/sort-keys-fix
           // eslint-disable-next-line sort-keys
           resources: {
@@ -47,6 +42,12 @@ export const create = ({
             requests: {
               cpu: "5m",
               memory: "32Mi",
+            },
+          },
+
+          startupProbe: {
+            httpGet: {
+              path: "/index.html",
             },
           },
         },

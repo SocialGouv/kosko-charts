@@ -5,10 +5,10 @@ const manifests = create({
   config: {
     ingress: false,
   },
-  env,
   deployment: {
     imagePullSecrets: [{ name: "regcred" }],
   },
+  env,
 });
 
 export default manifests;
