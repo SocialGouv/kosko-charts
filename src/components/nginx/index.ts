@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
@@ -17,6 +18,7 @@ export const create = ({
   ok(process.env.CI_ENVIRONMENT_URL);
   ok(process.env.CI_PROJECT_NAME);
 
+  // todo: atm we use "app" as a convention.
   const manifests = createApp("app", {
     config: merge(
       {
