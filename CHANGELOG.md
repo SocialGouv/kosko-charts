@@ -1,3 +1,10 @@
+# [3.1.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v3.0.5...v3.1.0-alpha.1) (2020-10-15)
+
+
+### Features
+
+* **withPostgres:** add config.withPostgres ([#199](https://github.com/SocialGouv/kosko-charts/issues/199)) ([e68fe75](https://github.com/SocialGouv/kosko-charts/commit/e68fe7568d2f55d9d190da4b071f510d55dcd69a))
+
 ## [3.0.5](https://github.com/SocialGouv/kosko-charts/compare/v3.0.4...v3.0.5) (2020-10-15)
 
 
