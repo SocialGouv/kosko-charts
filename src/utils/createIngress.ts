@@ -3,21 +3,41 @@ import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
 export interface IngressConfig {
   name: string;
   hosts: string[];
-  serviceName: string;
-  servicePort: number;
+  serviceName?: string;
+  servicePort?: number;
   secretName?: string;
+  annotations?: Record<string, unknown>;
 }
+
+const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
+  http: {
+    paths: [
+      {
+        backend: {
+          serviceName,
+          servicePort,
+        },
+        path: "/",
+      },
+    ],
+  },
+});
 
 export default (params: IngressConfig): Ingress => {
   const hosts = params.hosts;
   const annotations: Record<string, string> = {
     "kubernetes.io/ingress.class": "nginx",
+    ...(params.annotations ?? {}),
   };
   if (process.env.PRODUCTION) {
     annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
     annotations["kubernetes.io/tls-acme"] = "true";
   }
-  return new Ingress({
+  const isRedirectionIngress = !!annotations[
+    "nginx.ingress.kubernetes.io/permanent-redirect"
+  ];
+
+  const ingressDefinition = {
     metadata: {
       annotations,
       labels: {
@@ -28,17 +48,13 @@ export default (params: IngressConfig): Ingress => {
     spec: {
       rules: hosts.map((host) => ({
         host,
-        http: {
-          paths: [
-            {
-              backend: {
-                serviceName: params.serviceName,
-                servicePort: params.servicePort,
-              },
-              path: "/",
-            },
-          ],
-        },
+        // when redirecting, we dont need to map the service
+        ...(isRedirectionIngress
+          ? {}
+          : getHostService({
+              serviceName: params.serviceName,
+              servicePort: params.servicePort,
+            })),
       })),
       tls: [
         {
@@ -49,5 +65,7 @@ export default (params: IngressConfig): Ingress => {
         },
       ],
     },
-  });
+  };
+
+  return new Ingress(ingressDefinition);
 };

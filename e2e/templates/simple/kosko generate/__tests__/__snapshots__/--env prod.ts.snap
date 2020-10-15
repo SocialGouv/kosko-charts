@@ -449,6 +449,27 @@ apiVersion: apps/v1
 kind: Deployment
 ---
 metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/permanent-redirect: 'https://www.website.fr$request_uri'
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: 'true'
+  labels:
+    app: www-redirects
+  name: www-redirects
+spec:
+  rules:
+    - host: website.fr
+    - host: old-website.com
+  tls:
+    - hosts:
+        - website.fr
+        - old-website.com
+      secretName: www-redirects
+apiVersion: extensions/v1beta1
+kind: Ingress
+---
+metadata:
   labels:
     app: www
     application: sample-kosko
