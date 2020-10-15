@@ -1,3 +1,10 @@
+# [3.1.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0-alpha.1...v3.1.0-alpha.2) (2020-10-15)
+
+
+### Features
+
+* **waitForPostgres:** use socialgouv/docker/wait-for-postgres:2.0.0 ([a09c4ac](https://github.com/SocialGouv/kosko-charts/commit/a09c4acec182235b97ac1fe7ddc443a4b8eeebfd))
+
 # [3.1.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v3.0.5...v3.1.0-alpha.1) (2020-10-15)
 
 
