@@ -1,3 +1,12 @@
+# [3.1.0](https://github.com/SocialGouv/kosko-charts/compare/v3.0.5...v3.1.0) (2020-10-15)
+
+
+### Features
+
+* **waitForPostgres:** use socialgouv/docker/wait-for-postgres:2.0.0 ([a09c4ac](https://github.com/SocialGouv/kosko-charts/commit/a09c4acec182235b97ac1fe7ddc443a4b8eeebfd))
+* **withPostgres:** add config.withPostgres ([#199](https://github.com/SocialGouv/kosko-charts/issues/199)) ([e68fe75](https://github.com/SocialGouv/kosko-charts/commit/e68fe7568d2f55d9d190da4b071f510d55dcd69a))
+* **withRedirections:** add config.withRedirections ([#209](https://github.com/SocialGouv/kosko-charts/issues/209)) ([406943b](https://github.com/SocialGouv/kosko-charts/commit/406943b3b69469cb39b30f209ef9870a8acc8edd))
+
 # [3.1.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0-alpha.2...v3.1.0-alpha.3) (2020-10-15)
 
 
