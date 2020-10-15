@@ -11,7 +11,7 @@ export const waitForPostgres = ({
 }: WaitForPostgresParams): IIoK8sApiCoreV1Container => {
   return {
     name: "wait-for-postgres",
-    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:1.60.0`,
+    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0`,
     imagePullPolicy: "Always",
     resources: {
       requests: {
