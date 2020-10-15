@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/SocialGouv/kosko-charts/compare/v3.0.4...v3.0.5) (2020-10-15)
+
+
+### Bug Fixes
+
+* **template:** add missing .gitlab.env file ([#167](https://github.com/SocialGouv/kosko-charts/issues/167)) ([0083e3f](https://github.com/SocialGouv/kosko-charts/commit/0083e3f3dd04b65d4bbb6159e5927aad36dd9dfe))
+
 ## [3.0.4](https://github.com/SocialGouv/kosko-charts/compare/v3.0.3...v3.0.4) (2020-10-13)
 
 
