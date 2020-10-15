@@ -16,7 +16,7 @@
     "generate": "kosko generate",
     "generate:dev": "kosko generate  --env dev",
     "generate:prod": "kosko generate  --env dev",
-    "gitlab": "DOTENV_CONFIG_PATH=../../e2e/.gitlab.env kosko generate --require dotenv/config",
+    "gitlab": "DOTENV_CONFIG_PATH=./environments/.gitlab.env kosko generate --require dotenv/config",
     "gitlab:dev": "yarn --silent gitlab --env dev",
     "gitlab:prod": "yarn --silent gitlab --env prod"
   }
