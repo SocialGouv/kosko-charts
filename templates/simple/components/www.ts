@@ -16,6 +16,11 @@ const manifests = create("www", {
       },
     },
     containerPort: 8080,
+    withPostgres: true,
+    withRedirections: {
+      destination: "www.website.fr",
+      hosts: ["website.fr", "old-website.com"],
+    },
   },
   deployment: {
     imagePullSecrets: [

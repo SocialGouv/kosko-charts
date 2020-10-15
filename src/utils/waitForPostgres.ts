@@ -2,31 +2,16 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
-interface WaitForPostgresParams {
+export interface WaitForPostgresParams {
   secretRefName: string;
 }
-
-const script = `
-retry=120; # 5s * (12 * 10) = 10min
-while ! psql -c "SELECT VERSION();" > /dev/null 2> /dev/null && [ $retry -gt 0 ];
-  do
-    echo "Waiting for Postgres to go Green ($(( retry )))" ;
-    retry=$(( $retry-1 ));
-    sleep 5s ;
-  done ;
-if [ $retry -eq 0 ]; then
-    echo "Not Ready";
-    exit 2
-fi
-echo "Ready";
-`;
 
 export const waitForPostgres = ({
   secretRefName = "azure-pg-user",
 }: WaitForPostgresParams): IIoK8sApiCoreV1Container => {
   return {
     name: "wait-for-postgres",
-    image: `postgres:10`,
+    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0`,
     imagePullPolicy: "Always",
     resources: {
       requests: {
@@ -45,6 +30,11 @@ export const waitForPostgres = ({
         },
       },
     ],
-    command: ["sh", "-c", script],
+    env: [
+      {
+        name: "WAIT_FOR_RETRIES",
+        value: "24", // = (2min x 60s) / 5s
+      },
+    ],
   };
 };
