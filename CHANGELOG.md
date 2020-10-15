@@ -1,3 +1,10 @@
+# [3.1.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0-alpha.2...v3.1.0-alpha.3) (2020-10-15)
+
+
+### Features
+
+* **withRedirections:** add config.withRedirections ([#209](https://github.com/SocialGouv/kosko-charts/issues/209)) ([406943b](https://github.com/SocialGouv/kosko-charts/commit/406943b3b69469cb39b30f209ef9870a8acc8edd))
+
 # [3.1.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0-alpha.1...v3.1.0-alpha.2) (2020-10-15)
 
 
