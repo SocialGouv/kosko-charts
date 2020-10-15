@@ -3,10 +3,7 @@
 import { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
-import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
-import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 import { AppConfig, create as createApp } from "../app";
 
 type CreateResult = unknown[];
@@ -23,6 +20,7 @@ export const create = (
     config: merge(
       {
         image: "sosedoff/pgweb:latest",
+        withPostgres: true,
         container: {
           livenessProbe: {
             httpGet: {
@@ -59,16 +57,6 @@ export const create = (
     ),
     env,
   });
-
-  // DEV: add secret to access DB
-  const deployment = manifests.find(
-    (manifest): manifest is Deployment => manifest.kind === "Deployment"
-  );
-  ok(deployment);
-
-  addPostgresUserSecret(deployment);
-
-  addWaitForPostgres(deployment);
 
   //
 

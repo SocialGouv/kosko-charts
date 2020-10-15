@@ -16,6 +16,7 @@ const manifests = create("www", {
       },
     },
     containerPort: 8080,
+    withPostgres: true,
   },
   deployment: {
     imagePullSecrets: [

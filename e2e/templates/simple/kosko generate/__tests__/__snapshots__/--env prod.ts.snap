@@ -75,7 +75,8 @@ spec:
                 name: azure-pg-user
       initContainers:
         - name: wait-for-postgres
-          image: 'postgres:10'
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:1.60.0
           imagePullPolicy: Always
           resources:
             requests:
@@ -87,26 +88,9 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
-          command:
-            - sh
-            - '-c'
-            - >
-
-              retry=120; # 5s * (12 * 10) = 10min
-
-              while ! psql -c \\"SELECT VERSION();\\" > /dev/null 2> /dev/null && [
-              $retry -gt 0 ];
-                do
-                  echo \\"Waiting for Postgres to go Green ($(( retry )))\\" ;
-                  retry=$(( $retry-1 ));
-                  sleep 5s ;
-                done ;
-              if [ $retry -eq 0 ]; then
-                  echo \\"Not Ready\\";
-                  exit 2
-              fi
-
-              echo \\"Ready\\";
+          env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -202,7 +186,8 @@ spec:
                 name: azure-pg-user
       initContainers:
         - name: wait-for-postgres
-          image: 'postgres:10'
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:1.60.0
           imagePullPolicy: Always
           resources:
             requests:
@@ -214,26 +199,9 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
-          command:
-            - sh
-            - '-c'
-            - >
-
-              retry=120; # 5s * (12 * 10) = 10min
-
-              while ! psql -c \\"SELECT VERSION();\\" > /dev/null 2> /dev/null && [
-              $retry -gt 0 ];
-                do
-                  echo \\"Waiting for Postgres to go Green ($(( retry )))\\" ;
-                  retry=$(( $retry-1 ));
-                  sleep 5s ;
-                done ;
-              if [ $retry -eq 0 ]; then
-                  echo \\"Not Ready\\";
-                  exit 2
-              fi
-
-              echo \\"Ready\\";
+          env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -456,6 +424,27 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: azure-pg-user
+      initContainers:
+        - name: wait-for-postgres
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:1.60.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 5m
+              memory: 16Mi
+            limits:
+              cpu: 20m
+              memory: 32Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-user
+          env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
 apiVersion: apps/v1
 kind: Deployment
 ---

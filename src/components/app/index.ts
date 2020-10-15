@@ -19,6 +19,8 @@ import createService, {
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/merge";
+import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
+import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 
 export type AppConfig = DeploymentParams &
   ServiceParams &
@@ -28,6 +30,7 @@ export type AppConfig = DeploymentParams &
     domain: string;
     labels: Record<string, string>;
     ingress: boolean;
+    withPostgres: boolean;
   };
 export const create = (
   name: string,
@@ -69,6 +72,11 @@ export const create = (
     name,
   });
   manifests.push(deployment);
+
+  if (envParams.withPostgres) {
+    addPostgresUserSecret(deployment);
+    addWaitForPostgres(deployment);
+  }
 
   /* SEALED-SECRET */
   // try to import environment sealed-secret
