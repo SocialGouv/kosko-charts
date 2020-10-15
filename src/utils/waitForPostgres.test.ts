@@ -1,7 +1,11 @@
 import { waitForPostgres, WaitForPostgresParams } from "./waitForPostgres";
 
 test("should succeed validating a valid value", () => {
-  expect(waitForPostgres({} as WaitForPostgresParams)).toMatchInlineSnapshot(`
+  expect(waitForPostgres({} as WaitForPostgresParams)).toMatchInlineSnapshot(
+    {
+      image: expect.any(String),
+    },
+    `
     Object {
       "env": Array [
         Object {
@@ -16,7 +20,7 @@ test("should succeed validating a valid value", () => {
           },
         },
       ],
-      "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:1.60.0",
+      "image": Any<String>,
       "imagePullPolicy": "Always",
       "name": "wait-for-postgres",
       "resources": Object {
@@ -30,11 +34,19 @@ test("should succeed validating a valid value", () => {
         },
       },
     }
-  `);
+  `
+  );
+  expect(waitForPostgres({} as WaitForPostgresParams).image).toMatch(
+    "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:"
+  );
 });
 
 test("should generate an container with secretRefName named foobar", () => {
-  expect(waitForPostgres({ secretRefName: "foobar" })).toMatchInlineSnapshot(`
+  expect(waitForPostgres({ secretRefName: "foobar" })).toMatchInlineSnapshot(
+    {
+      image: expect.any(String),
+    },
+    `
     Object {
       "env": Array [
         Object {
@@ -49,7 +61,7 @@ test("should generate an container with secretRefName named foobar", () => {
           },
         },
       ],
-      "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:1.60.0",
+      "image": Any<String>,
       "imagePullPolicy": "Always",
       "name": "wait-for-postgres",
       "resources": Object {
@@ -63,5 +75,9 @@ test("should generate an container with secretRefName named foobar", () => {
         },
       },
     }
-  `);
+  `
+  );
+  expect(waitForPostgres({} as WaitForPostgresParams).image).toMatch(
+    "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:"
+  );
 });
