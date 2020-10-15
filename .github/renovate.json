@@ -1,6 +1,10 @@
 {
-  "extends": [
-    "github>SocialGouv/renovate-config",
-    ":automergeAll"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>SocialGouv/renovate-config", ":automergeAll"],
+  "packageRules": [
+    {
+      "paths": ["templates"],
+      "ignoreDeps": ["@socialgouv/kosko-charts"]
+    }
   ]
 }
