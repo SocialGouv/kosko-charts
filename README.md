@@ -45,7 +45,7 @@ $ yarn --cwd .k8s
 # on GitLab
 $ yarn --cwd .k8s kosko generate --env dev
 # locally
-$ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require dotenv/config
+$ DOTENV_CONFIG_PATH=environments/.gitlab.env yarn --cwd .k8s dev --require dotenv/config
 ```
 
 <br>
@@ -100,7 +100,19 @@ The SocialGouv default components
 
 #### [`@socialgouv/kosko-charts/components/app`](./src/components/app)
 
+#### [`@socialgouv/kosko-charts/components/azure-pg`](./src/components/azure-pg)
+
+#### [`@socialgouv/kosko-charts/components/hasura`](./src/components/hasura)
+
 #### [`@socialgouv/kosko-charts/components/namespace`](./src/components/namespace)
+
+#### [`@socialgouv/kosko-charts/components/nginx`](./src/components/nginx)
+
+#### [`@socialgouv/kosko-charts/components/pg-secret`](./src/components/pg-secret)
+
+#### [`@socialgouv/kosko-charts/components/pgweb`](./src/components/pgweb)
+
+#### [`@socialgouv/kosko-charts/components/redis`](./src/components/redis)
 
 ### Environments
 
