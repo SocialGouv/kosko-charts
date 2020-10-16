@@ -1,12 +1,12 @@
 import { ServiceMonitor } from "@kubernetes-models/prometheus-operator/monitoring.coreos.com/v1/ServiceMonitor";
 
-export type ServiceMonitorParams = {
+export interface ServiceMonitorParams {
   path?: string;
   interval?: string;
   port?: string;
   namespace: string;
   appName: string;
-};
+}
 
 export const getServiceMonitor = ({
   path = "/metrics",
