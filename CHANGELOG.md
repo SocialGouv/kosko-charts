@@ -1,3 +1,19 @@
+# [4.0.0-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.2...v4.0.0-beta.3) (2020-10-16)
+
+
+* refactor(components)!: remove io-ts from pg-secret (#238) ([1f8d1ab](https://github.com/SocialGouv/kosko-charts/commit/1f8d1ab924da2ba5fc163bfd1ac32819980205e9)), closes [#238](https://github.com/SocialGouv/kosko-charts/issues/238)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kubernetes-models/sealed-secrets to ^1.0.1 ([#232](https://github.com/SocialGouv/kosko-charts/issues/232)) ([ed3cad2](https://github.com/SocialGouv/kosko-charts/commit/ed3cad23f6d0cbd85a3af9001afe40efd9d44ebb))
+* **deps:** update dependency kubernetes-models to ^1.0.1 ([#233](https://github.com/SocialGouv/kosko-charts/issues/233)) ([2dccee3](https://github.com/SocialGouv/kosko-charts/commit/2dccee3766241430eea5538a061ff5a99e17e743))
+
+
+### BREAKING CHANGES
+
+* might break empty string pg secret generation
+
 # [4.0.0-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2020-10-16)
 
 
