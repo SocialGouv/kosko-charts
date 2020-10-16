@@ -13,7 +13,7 @@ const gitlabEnv = {
   CI_PROJECT_NAME: "sample",
   CI_PROJECT_PATH_SLUG: "socialgouv-sample",
   CI_REGISTRY_IMAGE: "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
-  KUBE_INGRESS_BASE_DOMAIN: "dev.fabrique.social.gouv.fr",
+  KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
   KUBE_NAMESPACE: "sample-42-my-test",
 };
 

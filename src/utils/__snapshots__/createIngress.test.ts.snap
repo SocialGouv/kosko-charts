@@ -16,7 +16,7 @@ Object {
   "spec": Object {
     "rules": Array [
       Object {
-        "host": "sample.dev.fabrique.social.gouv.fr",
+        "host": "sample.dev2.fabrique.social.gouv.fr",
         "http": Object {
           "paths": Array [
             Object {
@@ -33,7 +33,7 @@ Object {
     "tls": Array [
       Object {
         "hosts": Array [
-          "sample.dev.fabrique.social.gouv.fr",
+          "sample.dev2.fabrique.social.gouv.fr",
         ],
         "secretName": "wildcard-crt",
       },
@@ -60,7 +60,7 @@ Object {
   "spec": Object {
     "rules": Array [
       Object {
-        "host": "sample.dev.fabrique.social.gouv.fr",
+        "host": "sample.dev2.fabrique.social.gouv.fr",
         "http": Object {
           "paths": Array [
             Object {
@@ -77,7 +77,7 @@ Object {
     "tls": Array [
       Object {
         "hosts": Array [
-          "sample.dev.fabrique.social.gouv.fr",
+          "sample.dev2.fabrique.social.gouv.fr",
         ],
         "secretName": "my-ingress-crt",
       },
@@ -102,7 +102,7 @@ Object {
   "spec": Object {
     "rules": Array [
       Object {
-        "host": "sample.dev.fabrique.social.gouv.fr",
+        "host": "sample.dev2.fabrique.social.gouv.fr",
         "http": Object {
           "paths": Array [
             Object {
@@ -116,7 +116,7 @@ Object {
         },
       },
       Object {
-        "host": "www.sample.dev.fabrique.social.gouv.fr",
+        "host": "www.sample.dev2.fabrique.social.gouv.fr",
         "http": Object {
           "paths": Array [
             Object {
@@ -133,8 +133,8 @@ Object {
     "tls": Array [
       Object {
         "hosts": Array [
-          "sample.dev.fabrique.social.gouv.fr",
-          "www.sample.dev.fabrique.social.gouv.fr",
+          "sample.dev2.fabrique.social.gouv.fr",
+          "www.sample.dev2.fabrique.social.gouv.fr",
         ],
         "secretName": "wildcard-crt",
       },
