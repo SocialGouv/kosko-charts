@@ -1,43 +1,53 @@
-import { create, Params } from "./index";
+//
 
-test.each([
-  ["because of missing variables", {} as Params],
-  [
-    "because the namespace name is emptys",
-    {
-      namespace: { name: "" },
-    } as Params,
-  ],
-])("should throw %s", (_: string, params: Params) => {
-  expect(() => create(params)).toThrowErrorMatchingSnapshot();
+const gitlabMock = {
+  git: {},
+  namespace: { name: "sample-42-my-test" },
+};
+
+const gitlabModuleMock = {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  __esModule: true,
+  default: () => gitlabMock,
+};
+
+beforeEach(() => {
+  jest.resetModules();
 });
 
-const validParams: Params = {
-  domain: "",
-  git: {
-    branch: "",
-    remote: "",
-  },
-  namespace: { name: "sample-42-my-test" },
-  subdomain: "",
-};
-test.each([
-  ["a namespace", {}],
-  [
-    "a namespace with extra labels and annotations",
-    {
-      annotations: {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
-      labels: {
-        application: "sample",
-        owner: "sample",
-        team: "sample",
-      },
-      namespace: { name: "sample-42-my-test" },
+test("should create a namespace", async () => {
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
+
+  const { createNamespace } = await import("./index");
+  const namespace = createNamespace();
+  expect(namespace).toMatchSnapshot();
+});
+
+test("should create a namespace with extra labels and annotations", async () => {
+  Object.assign(gitlabMock, {
+    annotations: {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
     },
-  ],
-])("should return %s", (_: string, params: Partial<Params>) => {
-  expect(create({ ...validParams, ...params })).toMatchSnapshot();
+    git: {
+      branch: "my-branch",
+      remote: "my-origin",
+    },
+    labels: {
+      application: "sample",
+      owner: "sample",
+      team: "sample",
+    },
+    rancherId: "rancherId",
+  });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
+  const { createNamespace } = await import("./index");
+  const namespace = createNamespace();
+  expect(namespace).toMatchSnapshot();
 });
