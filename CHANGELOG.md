@@ -1,3 +1,18 @@
+# [4.0.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0...v4.0.0-beta.1) (2020-10-16)
+
+
+* refactor(component)!: move createNamespace to components/ (#231) ([fb4e4e0](https://github.com/SocialGouv/kosko-charts/commit/fb4e4e0f95c93cd86d353838e0f0088fa3476ac6)), closes [#231](https://github.com/SocialGouv/kosko-charts/issues/231)
+
+
+### BREAKING CHANGES
+
+* the namespace is now created through import { createNamespace } from "@socialgouv/kosko-charts/components/namespace"
+
+```diff
+- import { createNamespace } from "@socialgouv/kosko-charts/utils/createNamespace";
++ import { createNamespace } from "@socialgouv/kosko-charts/components/namespace";
+```
+
 # [3.1.0](https://github.com/SocialGouv/kosko-charts/compare/v3.0.5...v3.1.0) (2020-10-15)
 
 
