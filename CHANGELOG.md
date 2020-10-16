@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0...v3.1.1) (2020-10-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kubernetes-models/sealed-secrets to ^1.0.1 ([#232](https://github.com/SocialGouv/kosko-charts/issues/232)) ([ed3cad2](https://github.com/SocialGouv/kosko-charts/commit/ed3cad23f6d0cbd85a3af9001afe40efd9d44ebb))
+
 # [3.1.0](https://github.com/SocialGouv/kosko-charts/compare/v3.0.5...v3.1.0) (2020-10-15)
 
 
