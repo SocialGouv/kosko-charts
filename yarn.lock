@@ -1186,6 +1186,16 @@
     is-plain-object "^5.0.0"
     tslib "^2.0.3"
 
+"@kubernetes-models/prometheus-operator@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/prometheus-operator/-/prometheus-operator-1.0.0.tgz#0a0b9797afee5c4e27380efc6bd9a8038958deb7"
+  integrity sha512-52XOweZ/UPxMRXYgoRbZR9llTY3IIJEl6i4pAXzi/KUox0ico2p4QDJwdJCoCuRPG/45hFhnskDNHV7eAwpDkg==
+  dependencies:
+    "@kubernetes-models/base" "^1.0.0"
+    "@kubernetes-models/validate" "^1.0.0"
+    kubernetes-models "^1.0.1"
+    tslib "^1.10.0"
+
 "@kubernetes-models/sealed-secrets@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@kubernetes-models/sealed-secrets/-/sealed-secrets-1.0.0.tgz#12f48d70d4c140fb235e19a8c9193dfef1881a65"

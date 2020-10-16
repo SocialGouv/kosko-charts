@@ -21,6 +21,10 @@ import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
+import {
+  ServiceMonitorParams,
+  getServiceMonitor,
+} from "../../utils/getServiceMonitor";
 
 type AliasParams = {
   hosts: string[];
@@ -36,8 +40,12 @@ export type AppConfig = DeploymentParams &
     labels: Record<string, string>;
     ingress: boolean;
     withPostgres: boolean;
+    withServiceMonitor:
+      | boolean
+      | Omit<ServiceMonitorParams, "appName" | "namespace">;
     withRedirections?: AliasParams;
   };
+
 export const create = (
   name: string,
   {
@@ -83,6 +91,17 @@ export const create = (
   if (envParams.withPostgres) {
     addPostgresUserSecret(deployment);
     addWaitForPostgres(deployment);
+  }
+
+  if (envParams.withServiceMonitor) {
+    const monitor = getServiceMonitor({
+      namespace: envParams.namespace.name,
+      appName: name,
+      ...(typeof envParams.withServiceMonitor === "object"
+        ? envParams.withServiceMonitor
+        : {}),
+    });
+    manifests.push(monitor);
   }
 
   // add a redirection ingresses, production only

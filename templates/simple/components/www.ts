@@ -16,6 +16,10 @@ const manifests = create("www", {
       },
     },
     containerPort: 8080,
+    withMonitor: {
+      path: "/path/to/metrics",
+      interval: "30s",
+    },
     withPostgres: true,
     withRedirections: {
       destination: "www.website.fr",

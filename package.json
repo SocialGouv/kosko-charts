@@ -5,6 +5,7 @@
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
+    "@kubernetes-models/prometheus-operator": "^1.0.0",
     "@kubernetes-models/sealed-secrets": "^1.0.0",
     "@sindresorhus/is": "^4.0.0",
     "fp-ts": "^2.8.4",
