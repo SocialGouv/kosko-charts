@@ -4071,7 +4071,7 @@ kosko@^0.9.2:
     "@kosko/cli" "^0.9.2"
     import-local "^3.0.2"
 
-kubernetes-models@^1.0.0, kubernetes-models@^1.0.1:
+kubernetes-models@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/kubernetes-models/-/kubernetes-models-1.0.1.tgz#f4fa48968db34f1d33f1e8f7ecbcd1098a4f1ebd"
   integrity sha512-aWhuzVT4xwREq6NcQA6hGxL7R1TESc3p6nyKc7LsB3fjKiqdZLTowoPKRrcPIO8jWD3R0Dp1sB/8nQHnakKpoQ==
@@ -4106,10 +4106,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@^10.4.0:
-  version "10.4.0"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.4.0.tgz#d18628f737328e0bbbf87d183f4020930e9a984e"
-  integrity sha512-uaiX4U5yERUSiIEQc329vhCTDDwUcSvKdRLsNomkYLRzijk3v8V9GWm2Nz0RMVB87VcuzLvtgy6OsjoH++QHIg==
+lint-staged@^10.4.1:
+  version "10.4.1"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.4.1.tgz#579069caf6451296e37bdd19769028b1f976c469"
+  integrity sha512-E2Y6Mu1haUD3ZefzwBG8tqy3QDQ9udWRS946YcuDCU8Mi22RjwxrEhLrqTLszxl80DG/sCtKdGCArzEkTsBzJQ==
   dependencies:
     chalk "^4.1.0"
     cli-truncate "^2.1.0"
