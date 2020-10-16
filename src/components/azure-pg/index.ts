@@ -8,7 +8,7 @@ import { DeploymentParams } from "../../utils/createDeployment";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
-import { createSecret } from "../pg-secret/create";
+import { createSecret } from "../pg-secret";
 import { createDbJob } from "./create-db.job";
 
 interface PgParams {
