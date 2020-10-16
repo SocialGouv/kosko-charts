@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/SocialGouv/kosko-charts/compare/v3.1.1...v3.1.2) (2020-10-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency kubernetes-models to ^1.0.1 ([#233](https://github.com/SocialGouv/kosko-charts/issues/233)) ([2dccee3](https://github.com/SocialGouv/kosko-charts/commit/2dccee3766241430eea5538a061ff5a99e17e743))
+
 ## [3.1.1](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0...v3.1.1) (2020-10-16)
 
 
