@@ -1186,14 +1186,14 @@
     is-plain-object "^5.0.0"
     tslib "^2.0.3"
 
-"@kubernetes-models/sealed-secrets@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kubernetes-models/sealed-secrets/-/sealed-secrets-1.0.0.tgz#12f48d70d4c140fb235e19a8c9193dfef1881a65"
-  integrity sha512-yzpY4xvR95eIUh9WsF/FebRmck+eC9xEBCxbP/g5tBmM6TpFkzaAvA6RmlMW+bTJy2ms2Hu8z0Gjs90eJagBYQ==
+"@kubernetes-models/sealed-secrets@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/sealed-secrets/-/sealed-secrets-1.0.1.tgz#2d887f4f33483c69bd155e82979d5db185d9832e"
+  integrity sha512-FMh6DwD78rBU5Y3kDy27vq3nfcw/QPpOE8WwyPy/E/GV8iFZQKtz9z2mZdFgHzG1Uc/0qqkwoDu+eX9+X4lcWA==
   dependencies:
     "@kubernetes-models/base" "^1.0.0"
     "@kubernetes-models/validate" "^1.0.0"
-    kubernetes-models "^1.0.0"
+    kubernetes-models "^1.0.1"
     tslib "^2.0.3"
 
 "@kubernetes-models/validate@^1.0.0":
@@ -4072,10 +4072,10 @@ kosko@^0.9.2:
     "@kosko/cli" "^0.9.2"
     import-local "^3.0.2"
 
-kubernetes-models@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/kubernetes-models/-/kubernetes-models-1.0.0.tgz#04224c82e8439121aa48205e08e17f2d97e1ad0b"
-  integrity sha512-iqCnh9hQUc+Nwy7b23T5RZO6yPowcHDnNW+a9/eDwX0MWpVbJI/VeQrGpqptNYnFOSCx10UL2qJsUZQtw/XHXA==
+kubernetes-models@^1.0.0, kubernetes-models@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/kubernetes-models/-/kubernetes-models-1.0.1.tgz#f4fa48968db34f1d33f1e8f7ecbcd1098a4f1ebd"
+  integrity sha512-aWhuzVT4xwREq6NcQA6hGxL7R1TESc3p6nyKc7LsB3fjKiqdZLTowoPKRrcPIO8jWD3R0Dp1sB/8nQHnakKpoQ==
   dependencies:
     "@kubernetes-models/base" "^1.0.0"
     "@kubernetes-models/validate" "^1.0.0"
