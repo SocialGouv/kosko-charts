@@ -1,3 +1,13 @@
+# [4.0.0-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2020-10-16)
+
+
+* refactor(environments)!: remove io-ts from gitlab env (#235) ([e955437](https://github.com/SocialGouv/kosko-charts/commit/e955437e5711ef5987c672c93b548fcd125b414c)), closes [#235](https://github.com/SocialGouv/kosko-charts/issues/235)
+
+
+### BREAKING CHANGES
+
+* might impact all component at runtime
+
 # [4.0.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0...v4.0.0-beta.1) (2020-10-16)
 
 
