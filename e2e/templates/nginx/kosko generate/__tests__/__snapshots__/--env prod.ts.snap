@@ -33,27 +33,24 @@ spec:
         team: sample-kosko
         component: nginx
     spec:
-      imagePullSecrets:
-        - name: some-secret
       containers:
-        - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/www:1.2.3
+        - image: 'nginx:latest'
           livenessProbe:
             failureThreshold: 6
             httpGet:
-              path: /healthz
+              path: /index.html
               port: http
             initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
           name: www
           ports:
-            - containerPort: 8080
+            - containerPort: 80
               name: http
           readinessProbe:
             failureThreshold: 15
             httpGet:
-              path: /healthz
+              path: /index.html
               port: http
             initialDelaySeconds: 0
             periodSeconds: 5
@@ -61,61 +58,19 @@ spec:
             timeoutSeconds: 1
           resources:
             limits:
-              cpu: 50m
+              cpu: 500m
               memory: 128Mi
             requests:
-              cpu: 1m
-              memory: 64Mi
+              cpu: 5m
+              memory: 32Mi
           startupProbe:
             failureThreshold: 12
             httpGet:
-              path: /healthz
+              path: /index.html
               port: http
             periodSeconds: 5
-          envFrom:
-            - secretRef:
-                name: azure-pg-user
-      initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
-            limits:
-              cpu: 20m
-              memory: 32Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-user
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
 apiVersion: apps/v1
 kind: Deployment
----
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/permanent-redirect: 'https://www.website.fr$request_uri'
-    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/tls-acme: 'true'
-  labels:
-    app: www-redirects
-  name: www-redirects
-spec:
-  rules:
-    - host: website.fr
-    - host: old-website.com
-  tls:
-    - hosts:
-        - website.fr
-        - old-website.com
-      secretName: www-redirects
-apiVersion: extensions/v1beta1
-kind: Ingress
 ---
 metadata:
   labels:
@@ -132,7 +87,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
   selector:
     app: www
   type: ClusterIP

@@ -1,63 +1,72 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Environment } from "@kosko/env";
+import { DeploymentParams } from "@socialgouv/kosko-charts/utils/createDeployment";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
-import { ok } from "assert";
 
 import { AppConfig, create as createApp } from "../app";
 
 type CreateResult = unknown[];
 
-export const create = ({
-  env,
-  config = {},
-}: {
-  env: Environment;
-  config?: Partial<AppConfig>;
-}): CreateResult => {
-  ok(process.env.CI_REGISTRY_IMAGE);
-  ok(process.env.CI_ENVIRONMENT_URL);
-  ok(process.env.CI_PROJECT_NAME);
-
-  // todo: atm we use "app" as a convention.
-  const manifests = createApp("app", {
-    config: merge(
-      {
-        container: {
-          livenessProbe: {
-            httpGet: {
-              path: "/index.html",
-            },
-            initialDelaySeconds: 30,
-          },
-          readinessProbe: {
-            httpGet: {
-              path: "/index.html",
-            },
-          },
-          // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-          // eslint-disable-next-line sort-keys
-          resources: {
-            limits: {
-              cpu: "500m",
-              memory: "128Mi",
-            },
-            requests: {
-              cpu: "5m",
-              memory: "32Mi",
-            },
-          },
-
-          startupProbe: {
-            httpGet: {
-              path: "/index.html",
-            },
-          },
-        },
-        containerPort: 80,
+const nginxConfig: Partial<AppConfig> = {
+  container: {
+    livenessProbe: {
+      httpGet: {
+        port: "http",
+        path: "/index.html",
       },
-      config
-    ),
+      initialDelaySeconds: 30,
+    },
+    readinessProbe: {
+      httpGet: {
+        port: "http",
+        path: "/index.html",
+      },
+    },
+
+    resources: {
+      limits: {
+        cpu: "500m",
+        memory: "128Mi",
+      },
+      requests: {
+        cpu: "5m",
+        memory: "32Mi",
+      },
+    },
+
+    startupProbe: {
+      httpGet: {
+        port: "http",
+        path: "/index.html",
+      },
+    },
+  },
+  containerPort: 80,
+};
+
+const nginxDeployment = {
+  labels: {
+    component: "nginx",
+  },
+};
+
+export const create = (
+  name: string,
+  {
     env,
+    config = {},
+    deployment = {},
+  }: {
+    env: Environment;
+    config?: Partial<AppConfig>;
+    deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
+  }
+): CreateResult => {
+  // todo: atm we use "app" as a convention.
+  const manifests = createApp(name, {
+    config: merge(nginxConfig, config),
+    env,
+    deployment: merge(nginxDeployment, deployment),
   });
 
   //

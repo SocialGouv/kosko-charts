@@ -5,7 +5,7 @@ exports[`--env preprod : should generate dev manifest 1`] = `
 metadata:
   annotations:
     field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
+    field.cattle.io/projectId: ''
     git/branch: e2e-branch
     git/remote: 'git@github.com:SocialGouv/sample-kosko.git'
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -53,27 +53,24 @@ spec:
         cert: wildcard
         component: nginx
     spec:
-      imagePullSecrets:
-        - name: some-secret
       containers:
-        - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/www:1.2.3
+        - image: 'nginx:latest'
           livenessProbe:
             failureThreshold: 6
             httpGet:
-              path: /healthz
+              path: /index.html
               port: http
             initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
           name: www
           ports:
-            - containerPort: 8080
+            - containerPort: 80
               name: http
           readinessProbe:
             failureThreshold: 15
             httpGet:
-              path: /healthz
+              path: /index.html
               port: http
             initialDelaySeconds: 0
             periodSeconds: 5
@@ -81,38 +78,17 @@ spec:
             timeoutSeconds: 1
           resources:
             limits:
-              cpu: 50m
+              cpu: 500m
               memory: 128Mi
             requests:
-              cpu: 1m
-              memory: 64Mi
+              cpu: 5m
+              memory: 32Mi
           startupProbe:
             failureThreshold: 12
             httpGet:
-              path: /healthz
+              path: /index.html
               port: http
             periodSeconds: 5
-          envFrom:
-            - secretRef:
-                name: azure-pg-user
-      initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
-            limits:
-              cpu: 20m
-              memory: 32Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-user
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -132,7 +108,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
   selector:
     app: www
   type: ClusterIP
@@ -155,7 +131,7 @@ metadata:
   namespace: sample-next-app-24-preprod-dev2
 spec:
   rules:
-    - host: preprod-sample-kosko.dev.fabrique.social.gouv.fr
+    - host: preprod-sample-kosko.dev2.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -164,7 +140,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - preprod-sample-kosko.dev.fabrique.social.gouv.fr
+        - preprod-sample-kosko.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress"
