@@ -12,6 +12,7 @@ metadata:
     application: sample-kosko
     owner: sample-kosko
     team: sample-kosko
+    component: pgweb
   name: pgweb
   namespace: sample-kosko
 spec:
@@ -30,6 +31,7 @@ spec:
         application: sample-kosko
         owner: sample-kosko
         team: sample-kosko
+        component: pgweb
     spec:
       containers:
         - image: 'sosedoff/pgweb:latest'

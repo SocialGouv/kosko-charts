@@ -53,8 +53,8 @@ const nginxDeployment = {
 export const create: createFn = (name, { env, config, deployment }) => {
   // todo: atm we use "app" as a convention.
   const manifests = createApp(name, {
-    config: merge(nginxConfig, config),
-    deployment: merge(nginxDeployment, deployment),
+    config: merge(nginxConfig, config ?? {}),
+    deployment: merge(nginxDeployment, deployment ?? {}),
     env,
   });
 

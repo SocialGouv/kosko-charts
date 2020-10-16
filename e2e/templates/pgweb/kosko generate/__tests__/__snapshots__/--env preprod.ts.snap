@@ -31,6 +31,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
+    component: pgweb
   name: pgweb
   namespace: sample-next-app-24-preprod-dev2
 spec:
@@ -50,6 +51,7 @@ spec:
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
+        component: pgweb
     spec:
       containers:
         - image: 'sosedoff/pgweb:latest'

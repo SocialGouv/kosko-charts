@@ -1,60 +1,62 @@
-/* eslint-disable sort-keys */
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-import { Environment } from "@kosko/env";
+import {
+  AppConfig,
+  create as createApp,
+  createFn,
+} from "@socialgouv/kosko-charts/components/app";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
-import { ok } from "assert";
 
-import { AppConfig, create as createApp } from "../app";
+const pgwebConfig: Partial<AppConfig> = {
+  container: {
+    livenessProbe: {
+      httpGet: {
+        path: "/",
+        port: "http",
+      },
+      initialDelaySeconds: 5,
+      timeoutSeconds: 3,
+    },
+    readinessProbe: {
+      httpGet: {
+        path: "/",
+        port: "http",
+      },
+      initialDelaySeconds: 5,
+      timeoutSeconds: 3,
+    },
+    resources: {
+      limits: {
+        cpu: "500m",
+        memory: "256Mi",
+      },
+      requests: {
+        cpu: "100m",
+        memory: "64Mi",
+      },
+    },
+  },
+  containerPort: 8081,
+  image: "sosedoff/pgweb:latest",
+  subDomainPrefix: process.env.PRODUCTION ? `pgweb.` : "pgweb-",
 
-type CreateResult = unknown[];
+  withPostgres: true,
+};
 
-export const create = (
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  { env, config = {} }: { env: Environment; config?: Partial<AppConfig> }
-): CreateResult => {
-  ok(process.env.CI_REGISTRY_IMAGE);
-  ok(process.env.CI_ENVIRONMENT_URL);
-  ok(process.env.CI_PROJECT_NAME);
+const pgwebDeployment = {
+  labels: {
+    component: "pgweb",
+  },
+};
 
-  const manifests = createApp("pgweb", {
+export const create: createFn = (name, { env, config, deployment }) => {
+  const manifests = createApp(name, {
     config: merge(
+      pgwebConfig,
       {
-        image: "sosedoff/pgweb:latest",
-        withPostgres: true,
-        container: {
-          livenessProbe: {
-            httpGet: {
-              path: "/",
-              port: "http",
-            },
-            initialDelaySeconds: 5,
-            timeoutSeconds: 3,
-          },
-          readinessProbe: {
-            httpGet: {
-              path: "/",
-              port: "http",
-            },
-            initialDelaySeconds: 5,
-            timeoutSeconds: 3,
-          },
-          resources: {
-            limits: {
-              cpu: "500m",
-              memory: "256Mi",
-            },
-            requests: {
-              cpu: "100m",
-              memory: "64Mi",
-            },
-          },
-        },
-        containerPort: 8081,
-
         subDomainPrefix: process.env.PRODUCTION ? `pgweb.` : "pgweb-",
       },
-      config
+      config ?? {}
     ),
+    deployment: merge(pgwebDeployment, deployment ?? {}),
     env,
   });
 
