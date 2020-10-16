@@ -1270,6 +1270,7 @@
 
 "@socialgouv/kosko-charts@link:./src":
   version "0.0.0"
+  uid ""
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.10"
@@ -4075,6 +4076,15 @@ kubernetes-models@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/kubernetes-models/-/kubernetes-models-1.0.0.tgz#04224c82e8439121aa48205e08e17f2d97e1ad0b"
   integrity sha512-iqCnh9hQUc+Nwy7b23T5RZO6yPowcHDnNW+a9/eDwX0MWpVbJI/VeQrGpqptNYnFOSCx10UL2qJsUZQtw/XHXA==
+  dependencies:
+    "@kubernetes-models/base" "^1.0.0"
+    "@kubernetes-models/validate" "^1.0.0"
+    tslib "^2.0.3"
+
+kubernetes-models@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/kubernetes-models/-/kubernetes-models-1.0.1.tgz#f4fa48968db34f1d33f1e8f7ecbcd1098a4f1ebd"
+  integrity sha512-aWhuzVT4xwREq6NcQA6hGxL7R1TESc3p6nyKc7LsB3fjKiqdZLTowoPKRrcPIO8jWD3R0Dp1sB/8nQHnakKpoQ==
   dependencies:
     "@kubernetes-models/base" "^1.0.0"
     "@kubernetes-models/validate" "^1.0.0"
