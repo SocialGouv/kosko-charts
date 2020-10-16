@@ -38,7 +38,7 @@ export type AppConfig = DeploymentParams &
     withPostgres: boolean;
     withRedirections?: AliasParams;
   };
-export const create = (
+export type createFn = (
   name: string,
   {
     env,
@@ -49,7 +49,12 @@ export const create = (
     config?: Partial<AppConfig>;
     deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
   }
-): { kind: string }[] => {
+) => { kind: string }[];
+
+export const create: createFn = (
+  name,
+  { env, config, deployment: deploymentParams }
+) => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
   const manifests = [];
