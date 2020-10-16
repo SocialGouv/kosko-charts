@@ -1,0 +1,531 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`--env dev : should generate dev manifest 1`] = `
+"---
+metadata:
+  annotations:
+    field.cattle.io/creatorId: gitlab
+    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
+    git/branch: e2e-branch
+    git/remote: 'git@github.com:SocialGouv/sample-kosko.git'
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: sample-kosko-24-e2e-branch-42
+apiVersion: v1
+kind: Namespace
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: hasura
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: hasura
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hasura
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: hasura
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/hasura:8843083edb7f873cad1d1420731a60773594ffae
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 20
+            timeoutSeconds: 5
+          name: hasura
+          ports:
+            - containerPort: 80
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 20
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+      initContainers:
+        - name: wait-for-postgres
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 5m
+              memory: 16Mi
+            limits:
+              cpu: 20m
+              memory: 32Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+          env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: hasura
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: hasura
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: hasura
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: pgweb
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: pgweb
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgweb
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: pgweb
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+    spec:
+      containers:
+        - image: 'sosedoff/pgweb:latest'
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+          name: pgweb
+          ports:
+            - containerPort: 8081
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+      initContainers:
+        - name: wait-for-postgres
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 5m
+              memory: 16Mi
+            limits:
+              cpu: 20m
+              memory: 32Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+          env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: pgweb
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: pgweb
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  ports:
+    - port: 80
+      targetPort: 8081
+  selector:
+    app: pgweb
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: pgweb
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: pgweb
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  rules:
+    - host: pgweb-e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
+      http:
+        paths:
+          - backend:
+              serviceName: pgweb
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - pgweb-e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
+      secretName: wildcard-crt
+apiVersion: extensions/v1beta1
+kind: Ingress
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: redis
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: redis
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: redis
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+    spec:
+      containers:
+        - image: 'redis:6.0.5-alpine3.12'
+          livenessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          name: redis
+          ports:
+            - containerPort: 6379
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
+          startupProbe:
+            failureThreshold: 12
+            periodSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: redis
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: redis
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  ports:
+    - port: 80
+      targetPort: 6379
+  selector:
+    app: redis
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: www
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+    component: next
+  name: www
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: www
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: www
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+        component: next
+    spec:
+      imagePullSecrets:
+        - name: some-secret
+      containers:
+        - image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/www:8843083edb7f873cad1d1420731a60773594ffae
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+          name: www
+          ports:
+            - containerPort: 8080
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 50m
+              memory: 128Mi
+            requests:
+              cpu: 1m
+              memory: 64Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+      initContainers:
+        - name: wait-for-postgres
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 5m
+              memory: 16Mi
+            limits:
+              cpu: 20m
+              memory: 32Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+          env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: www
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: www
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: www
+  type: ClusterIP
+apiVersion: v1
+kind: Service
+---
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: www
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: www
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  rules:
+    - host: e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
+      http:
+        paths:
+          - backend:
+              serviceName: www
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
+      secretName: wildcard-crt
+apiVersion: extensions/v1beta1
+kind: Ingress"
+`;
