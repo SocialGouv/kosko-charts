@@ -1,18 +1,18 @@
 import env from "./index";
 
 test.each([
-  ["because of missing variables", {}],
+  ["because of missing variables", undefined],
   [
     "because of empty strings",
     {
-      CI_COMMIT_TAG: "",
-      CI_ENVIRONMENT_NAME: "",
-      CI_ENVIRONMENT_SLUG: "",
-      CI_PROJECT_NAME: "",
-      CI_PROJECT_PATH_SLUG: "",
-      KUBE_INGRESS_BASE_DOMAIN: "",
-      KUBE_NAMESPACE: "",
-      PRODUCTION: "",
+      CI_COMMIT_TAG: " ",
+      CI_ENVIRONMENT_NAME: " ",
+      CI_ENVIRONMENT_SLUG: " ",
+      CI_PROJECT_NAME: " ",
+      CI_PROJECT_PATH_SLUG: " ",
+      KUBE_INGRESS_BASE_DOMAIN: " ",
+      KUBE_NAMESPACE: " ",
+      PRODUCTION: " ",
     },
   ],
 ])("should throw %s", (_: string, testEnv?: NodeJS.ProcessEnv) => {

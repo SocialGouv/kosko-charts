@@ -16,15 +16,28 @@ const gitlabEnv = {
   KUBE_NAMESPACE: "sample-42-my-test",
 };
 
-test("should throw because of a missing CI_PROJECT_NAME", () => {
-  const env = new Environment("/tmp");
-  expect(() => create({ env })).toThrowError(
-    "Missing process.env.CI_PROJECT_NAME"
-  );
+jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  __esModule: true,
+  default: () => ({
+    annotations: {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+    },
+    labels: {
+      application: "sample",
+      owner: "sample",
+      team: "sample",
+    },
+    namespace: { name: "sample-42-my-test" },
+  }),
+}));
+
+beforeEach(() => {
+  jest.resetModules();
 });
 
 test("should throw because of a missing envs", () => {
-  process.env.CI_PROJECT_NAME = "sample-next-app";
   const env = new Environment("/tmp");
   expect(() => create({ env })).toThrowErrorMatchingSnapshot();
 });

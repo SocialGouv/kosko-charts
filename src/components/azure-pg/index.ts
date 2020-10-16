@@ -1,8 +1,9 @@
 import { Environment } from "@kosko/env";
 import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 import { ok } from "assert";
 
-import gitlab from "../../environments/gitlab";
 import { DeploymentParams } from "../../utils/createDeployment";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
@@ -18,13 +19,20 @@ interface PgParams {
   name: string;
 }
 
+const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
+
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
-  ok(process.env.CI_PROJECT_NAME, "Missing process.env.CI_PROJECT_NAME");
-  const sha = process.env.CI_COMMIT_SHORT_SHA;
-  const projectName = process.env.CI_PROJECT_NAME;
+  assert(process.env);
+
+  const {
+    CI_COMMIT_SHORT_SHA: sha,
+    CI_PROJECT_NAME: projectName,
+    // NOTE(douglasduteil): enforce defined string in process.env
+    // Those env variables are asserted to be defined above
+  } = process.env as Record<string, string>;
 
   return {
     database: `autodevops_${sha}`,
