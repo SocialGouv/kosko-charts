@@ -1,9 +1,11 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Environment } from "@kosko/env";
+import {
+  AppConfig,
+  create as createApp,
+} from "@socialgouv/kosko-charts/components/app";
 import { DeploymentParams } from "@socialgouv/kosko-charts/utils/createDeployment";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
-
-import { AppConfig, create as createApp } from "../app";
 
 type CreateResult = unknown[];
 

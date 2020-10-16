@@ -31,6 +31,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
+    component: nginx
   name: www
   namespace: sample-kosko-24-e2e-branch-42
 spec:
@@ -50,6 +51,7 @@ spec:
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
+        component: nginx
     spec:
       containers:
         - image: 'nginx:latest'
