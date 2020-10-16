@@ -1,48 +1,28 @@
-import {
-  GlobalEnvironment,
-  NamespaceComponentEnvironment,
-} from "@socialgouv/kosko-charts/types";
-import { NonEmptyString } from "@socialgouv/kosko-charts/utils/NonEmptyString";
-import { onDecodeError } from "@socialgouv/kosko-charts/utils/onDecodeError";
-import { fold } from "fp-ts/lib/Either";
-import { pipe } from "fp-ts/lib/pipeable";
-import * as D from "io-ts/lib/Decoder";
-import { Namespace } from "kubernetes-models/v1/Namespace";
+import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import { merge } from "@socialgouv/kosko-charts/utils/merge";
+import { Namespace as K8SNamespace } from "kubernetes-models/v1/Namespace";
 
-export type Params = NamespaceComponentEnvironment & GlobalEnvironment;
-
-const NamespaceComponentParams = pipe(
-  D.type({
-    namespace: D.type({
-      name: NonEmptyString,
-    }),
-  }),
-  D.intersect(
-    D.partial({
-      annotations: D.record(D.string),
-      labels: D.record(D.string),
-    })
-  )
-);
-type NamespaceComponentParams = D.TypeOf<typeof NamespaceComponentParams>;
-
-const mapper = ({
-  namespace,
-  labels,
-  annotations,
-}: Params): { namespace: Namespace } => ({
-  namespace: new Namespace({
-    metadata: {
-      annotations,
-      labels: { app: namespace.name, ...labels },
-      name: namespace.name,
-    },
-  }),
-});
-
-export const create = (params: Params): { namespace: Namespace } =>
-  pipe(
-    params,
-    NamespaceComponentParams.decode,
-    fold(onDecodeError, () => mapper(params))
+export const createNamespace = (
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  config: object = {}
+): K8SNamespace => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  const envParams = merge(
+    gitlab(process.env),
+    config // create options
   );
+  const namespace = new K8SNamespace({
+    metadata: {
+      annotations: {
+        "field.cattle.io/creatorId": "gitlab",
+        "field.cattle.io/projectId": envParams.rancherId ?? "",
+        "git/branch": envParams.git.branch ?? "",
+        "git/remote": envParams.git.remote ?? "",
+        ...envParams.annotations,
+      },
+      labels: envParams.labels,
+      name: envParams.namespace.name,
+    },
+  });
+  return namespace;
+};
