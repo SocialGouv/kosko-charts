@@ -1,4 +1,5 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
+//
+
 import { Environment } from "@kosko/env";
 import { promises } from "fs";
 import { directory } from "tempy";
@@ -71,6 +72,6 @@ test("should use custom pgHost", async () => {
     "---\napiVersion: v1\nkind: ConfigMap"
   );
   expect(
-    create({ env, config: { pgHost: "pouetpouet.com" } })
+    create({ config: { pgHost: "pouetpouet.com" }, env })
   ).toMatchSnapshot();
 });
