@@ -39,7 +39,7 @@ export const create = (
           resources: {
             limits: {
               cpu: "500m",
-              memory: "256Mi",
+              memory: "512Mi",
             },
             requests: {
               cpu: "100m",
