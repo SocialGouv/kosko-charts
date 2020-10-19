@@ -73,4 +73,7 @@ $ yarn --silent --cwd templates/nginx gitlab:dev
 # Generate and apply the manifest
 $ yarn --silent --cwd templates/nginx gitlab:dev | kubectl apply -f -
 # Go to https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr ?
+
+# When you done, clean up
+$ yarn --silent --cwd templates/nginx gitlab:dev | kubectl delete -f -
 ```
