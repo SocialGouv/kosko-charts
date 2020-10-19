@@ -1,3 +1,10 @@
+# [4.0.0-beta.4](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.3...v4.0.0-beta.4) (2020-10-19)
+
+
+### Bug Fixes
+
+* **hasura:** increase RAM limits ([#248](https://github.com/SocialGouv/kosko-charts/issues/248)) ([3fcc455](https://github.com/SocialGouv/kosko-charts/commit/3fcc4555d60424edc1c730b2bdc17fcb384f762e))
+
 # [4.0.0-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.2...v4.0.0-beta.3) (2020-10-16)
 
 - refactor(components)!: remove io-ts from pg-secret (#238) ([1f8d1ab](https://github.com/SocialGouv/kosko-charts/commit/1f8d1ab924da2ba5fc163bfd1ac32819980205e9)), closes [#238](https://github.com/SocialGouv/kosko-charts/issues/238)
