@@ -12,10 +12,6 @@ export interface Params {
   portName?: string;
 }
 
-const defaultParams = {
-  portName: "http",
-};
-
 export default (params: Params): Service => {
   //  const metadata = metadataFromParams(params);
 
@@ -31,7 +27,7 @@ export default (params: Params): Service => {
         {
           port: params.servicePort,
           targetPort: params.containerPort,
-          name: params.portName || "http",
+          name: params.portName ?? "http",
         },
       ],
       selector: params.selector,
