@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/SocialGouv/kosko-charts/compare/v3.1.2...v3.1.3) (2020-10-19)
+
+
+### Bug Fixes
+
+* **hasura:** increase RAM limits ([#248](https://github.com/SocialGouv/kosko-charts/issues/248)) ([3fcc455](https://github.com/SocialGouv/kosko-charts/commit/3fcc4555d60424edc1c730b2bdc17fcb384f762e))
+
 ## [3.1.2](https://github.com/SocialGouv/kosko-charts/compare/v3.1.1...v3.1.2) (2020-10-16)
 
 
