@@ -5,7 +5,7 @@ exports[`--env preprod : should generate dev manifest 1`] = `
 metadata:
   annotations:
     field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
+    field.cattle.io/projectId: ''
     git/branch: e2e-branch
     git/remote: 'git@github.com:SocialGouv/sample-kosko.git'
     app.gitlab.com/app: socialgouv-sample-kosko

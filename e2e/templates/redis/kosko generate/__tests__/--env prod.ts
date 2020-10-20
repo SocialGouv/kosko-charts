@@ -1,6 +1,7 @@
 //
 
-import { gitlabEnv, KOSKO_BIN, template, TIMEOUT } from "e2e/helpers";
+import { config } from "dotenv";
+import { KOSKO_BIN, template, TIMEOUT } from "e2e/helpers";
 // eslint-disable-next-line import/default
 import execa from "execa";
 import { basename, resolve } from "path";
@@ -13,6 +14,9 @@ test(
   "--env prod : should generate prod manifest",
   async () => {
     // Required to allow seemless integration code example
+    const gitlabEnv = config({
+      path: resolve(cwd, "./environments/.gitlab.env"),
+    }).parsed;
     const result = await execa.node(
       KOSKO_BIN,
       ["generate", "--env", "prod", "!(_*)"],
