@@ -1,26 +1,21 @@
-//import { metadataFromParams } from "@socialgouv/kosko-charts/components/app/metadata";
 import { Job } from "kubernetes-models/batch/v1/Job";
-
-//import { Params } from "../azure-db/params";
 
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
 
-// needs azure-pg-admin-user secret
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createDbJob = ({
-  //@ts-expect-error
   database,
-  //@ts-expect-error
-  user,
-  //@ts-expect-error
-  password,
   extensions = DEFAULT_EXTENSIONS,
+  password,
   secretRefName = `azure-pg-admin-user`,
+  user,
+}: {
+  database: string;
+  extensions?: string;
+  password: string;
+  secretRefName?: string;
+  user: string;
 }): Job => {
   const job = new Job({
-    metadata: {
-      //  ...metadataFromParams(params),
-    },
     spec: {
       backoffLimit: 0,
       template: {

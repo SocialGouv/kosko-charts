@@ -10,18 +10,10 @@ import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { createSecret } from "../pg-secret";
 import { createDbJob } from "./create-db.job";
-
-interface PgParams {
-  database: string;
-  host: string;
-  user: string;
-  password: string;
-  name: string;
-}
+import type { PgParams } from "./types";
 
 const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
