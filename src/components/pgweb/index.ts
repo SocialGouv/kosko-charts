@@ -5,6 +5,9 @@ import {
 } from "@socialgouv/kosko-charts/components/app";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
+// renovate: datasource=docker depName=sosedoff/pgweb versioning=0.11.7
+const PGWEB_VERSION = "0.11.7";
+
 const pgwebConfig: Partial<AppConfig> = {
   container: {
     livenessProbe: {
@@ -35,7 +38,8 @@ const pgwebConfig: Partial<AppConfig> = {
     },
   },
   containerPort: 8081,
-  image: "sosedoff/pgweb:latest",
+
+  image: `sosedoff/pgweb:${PGWEB_VERSION}`,
 
   withPostgres: true,
 };

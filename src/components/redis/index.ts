@@ -1,15 +1,15 @@
 //
 
-import { Environment } from "@kosko/env";
 import {
-  AppConfig,
   create as createApp,
+  createFn,
 } from "@socialgouv/kosko-charts/components/app";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
 import { DeploymentParams } from "../../utils/createDeployment";
 
-type CreateResult = unknown[];
+// renovate: datasource=docker depName=redis versioning=6.0.5-alpine3.12
+const REDIS_VERSION = "6.0.5-alpine3.12";
 
 const redisDeploymentParams: Partial<Omit<
   DeploymentParams,
@@ -20,18 +20,10 @@ const redisDeploymentParams: Partial<Omit<
   },
 };
 
-export const create = (
+export const create: createFn = (
   name: string,
-  {
-    env,
-    config = {},
-    deployment = {},
-  }: {
-    env: Environment;
-    config?: Partial<AppConfig>;
-    deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
-  }
-): CreateResult => {
+  { env, config = {}, deployment = {} }
+) => {
   const manifests = createApp(name, {
     config: merge(
       {
@@ -56,7 +48,7 @@ export const create = (
           },
         },
         containerPort: 6379,
-        image: "redis:6.0.5-alpine3.12",
+        image: `redis:${REDIS_VERSION}`,
         ingress: false,
         subDomainPrefix: process.env.PRODUCTION ? `redis.` : "redis-",
       },
