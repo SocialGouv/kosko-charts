@@ -36,7 +36,6 @@ const pgwebConfig: Partial<AppConfig> = {
   },
   containerPort: 8081,
   image: "sosedoff/pgweb:latest",
-  subDomainPrefix: process.env.PRODUCTION ? `pgweb.` : "pgweb-",
 
   withPostgres: true,
 };
