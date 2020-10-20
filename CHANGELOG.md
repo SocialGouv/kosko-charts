@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/SocialGouv/kosko-charts/compare/v3.1.3...v3.1.4) (2020-10-20)
+
+
+### Bug Fixes
+
+* **service:** add default service.port.name=http ([#249](https://github.com/SocialGouv/kosko-charts/issues/249)) ([2a287bd](https://github.com/SocialGouv/kosko-charts/commit/2a287bdea1d1aa7f5c13e2eabe8bd68d89a5174d))
+
 ## [3.1.3](https://github.com/SocialGouv/kosko-charts/compare/v3.1.2...v3.1.3) (2020-10-19)
 
 
