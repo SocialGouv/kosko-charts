@@ -2,6 +2,34 @@
 
 exports[`--env prod : should generate prod manifest 1`] = `
 "---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: prod2
+    app.gitlab.com/env.name: prod2
+  name: azure-pg-user
+  namespace: sample-kosko
+  labels:
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+spec:
+  encryptedData: null
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: prod2
+        app.gitlab.com/env.name: prod2
+      name: azure-pg-user
+      labels:
+        application: sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+    type: Opaque
+---
 metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -109,6 +137,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8081
+      name: http
   selector:
     app: pgweb
   type: ClusterIP

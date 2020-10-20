@@ -20,6 +20,123 @@ metadata:
 apiVersion: v1
 kind: Namespace
 ---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: 'true'
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  name: azure-pg-admin-user
+  labels:
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  encryptedData: null
+  template:
+    metadata:
+      annotations:
+        sealedsecrets.bitnami.com/cluster-wide: 'true'
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      name: azure-pg-admin-user
+      labels:
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+    type: Opaque
+---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-job-8843083
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - command:
+            - create-db-user
+          env:
+            - name: NEW_DB_NAME
+              value: autodevops_8843083
+            - name: NEW_USER
+              value: user_8843083
+            - name: NEW_PASSWORD
+              value: password_8843083
+            - name: NEW_DB_EXTENSIONS
+              value: hstore pgcrypto citext
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0
+          imagePullPolicy: IfNotPresent
+          name: create-db-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+      restartPolicy: Never
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+apiVersion: batch/v1
+kind: Job
+---
+stringData:
+  DATABASE_URL: >-
+    postgresql://user_8843083%40samplekoskodevserver.postgres.database.azure.com:password_8843083@samplekoskodevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
+  DB_URI: >-
+    postgresql://user_8843083%40samplekoskodevserver.postgres.database.azure.com:password_8843083@samplekoskodevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
+  HASURA_GRAPHQL_DATABASE_URL: >-
+    postgresql://user_8843083%40samplekoskodevserver.postgres.database.azure.com:password_8843083@samplekoskodevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
+  PGDATABASE: autodevops_8843083
+  PGHOST: samplekoskodevserver.postgres.database.azure.com
+  PGPASSWORD: password_8843083
+  PGRST_DB_URI: >-
+    postgresql://user_8843083%40samplekoskodevserver.postgres.database.azure.com:password_8843083@samplekoskodevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
+  PGSSLMODE: require
+  PGUSER: user_8843083@samplekoskodevserver.postgres.database.azure.com
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: azure-pg-user-8843083
+  namespace: sample-kosko-24-e2e-branch-42
+---
 metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -130,6 +247,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8081
+      name: http
   selector:
     app: pgweb
   type: ClusterIP

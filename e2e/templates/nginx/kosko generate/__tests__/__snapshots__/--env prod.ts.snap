@@ -88,6 +88,7 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+      name: http
   selector:
     app: www
   type: ClusterIP

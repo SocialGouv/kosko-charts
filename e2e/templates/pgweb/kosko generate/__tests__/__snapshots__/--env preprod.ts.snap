@@ -20,6 +20,38 @@ metadata:
 apiVersion: v1
 kind: Namespace
 ---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: 'true'
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: preprod-dev2
+    app.gitlab.com/env.name: preprod-dev2
+  name: azure-pg-user
+  labels:
+    application: v1-2-3-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  namespace: sample-next-app-24-preprod-dev2
+spec:
+  encryptedData: null
+  template:
+    metadata:
+      annotations:
+        sealedsecrets.bitnami.com/cluster-wide: 'true'
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: preprod-dev2
+        app.gitlab.com/env.name: preprod-dev2
+      name: azure-pg-user
+      labels:
+        application: v1-2-3-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+    type: Opaque
+---
 metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -130,6 +162,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8081
+      name: http
   selector:
     app: pgweb
   type: ClusterIP
