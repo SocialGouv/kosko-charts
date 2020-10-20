@@ -1,3 +1,16 @@
+# [4.0.0-beta.5](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.4...v4.0.0-beta.5) (2020-10-20)
+
+
+### Bug Fixes
+
+* **service:** add default service.port.name=http ([#249](https://github.com/SocialGouv/kosko-charts/issues/249)) ([2a287bd](https://github.com/SocialGouv/kosko-charts/commit/2a287bdea1d1aa7f5c13e2eabe8bd68d89a5174d))
+* **utils:** loadYaml can return undefined too ([6f1a815](https://github.com/SocialGouv/kosko-charts/commit/6f1a815151de72c8b146059fabf4b49bdcbb4066))
+
+
+### Features
+
+* **template:** add dummy pg component ([66b5565](https://github.com/SocialGouv/kosko-charts/commit/66b5565776658ad15f53473269f8e36e3af573f8))
+
 ## [3.1.4](https://github.com/SocialGouv/kosko-charts/compare/v3.1.3...v3.1.4) (2020-10-20)
 
 
