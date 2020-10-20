@@ -9,6 +9,7 @@ export interface Params {
   servicePort: number;
   containerPort: number;
   selector: { [key: string]: string };
+  portName?: string;
 }
 
 export default (params: Params): Service => {
@@ -26,6 +27,7 @@ export default (params: Params): Service => {
         {
           port: params.servicePort,
           targetPort: params.containerPort,
+          name: params.portName ?? "http",
         },
       ],
       selector: params.selector,
