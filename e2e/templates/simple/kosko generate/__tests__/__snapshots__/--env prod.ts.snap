@@ -449,6 +449,25 @@ apiVersion: apps/v1
 kind: Deployment
 ---
 metadata:
+  labels:
+    app: www
+  name: www-monitor
+  namespace: sample-kosko
+spec:
+  endpoints:
+    - path: /path/to/metrics
+      port: http
+      interval: 30s
+  namespaceSelector:
+    matchNames:
+      - sample-kosko
+  selector:
+    matchLabels:
+      app: www
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+---
+metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/permanent-redirect: 'https://www.website.fr$request_uri'

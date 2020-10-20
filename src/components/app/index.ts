@@ -93,7 +93,8 @@ export const create = (
     addWaitForPostgres(deployment);
   }
 
-  if (envParams.withServiceMonitor) {
+  // add a service monitor in production
+  if (env.env === "prod" && envParams.withServiceMonitor) {
     const monitor = getServiceMonitor({
       namespace: envParams.namespace.name,
       appName: name,

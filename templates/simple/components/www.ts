@@ -16,7 +16,7 @@ const manifests = create("www", {
       },
     },
     containerPort: 8080,
-    withMonitor: {
+    withServiceMonitor: {
       path: "/path/to/metrics",
       interval: "30s",
     },
