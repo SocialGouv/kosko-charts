@@ -31,6 +31,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
+    component: redis
   name: redis
   namespace: sample-next-app-24-preprod-dev2
 spec:
@@ -50,6 +51,7 @@ spec:
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
+        component: redis
     spec:
       containers:
         - image: 'redis:6.0.5-alpine3.12'
@@ -111,7 +113,8 @@ metadata:
   namespace: sample-next-app-24-preprod-dev2
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 6379
   selector:
     app: redis

@@ -76,4 +76,5 @@ $ yarn --silent --cwd templates/nginx gitlab:dev | kubectl apply -f -
 
 # When you done, clean up
 $ yarn --silent --cwd templates/nginx gitlab:dev | kubectl delete -f -
+$ rm -rf templates/*/node_modules
 ```

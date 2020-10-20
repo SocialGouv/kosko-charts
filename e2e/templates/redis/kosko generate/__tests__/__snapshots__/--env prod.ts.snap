@@ -12,6 +12,7 @@ metadata:
     application: sample-kosko
     owner: sample-kosko
     team: sample-kosko
+    component: redis
   name: redis
   namespace: sample-kosko
 spec:
@@ -30,6 +31,7 @@ spec:
         application: sample-kosko
         owner: sample-kosko
         team: sample-kosko
+        component: redis
     spec:
       containers:
         - image: 'redis:6.0.5-alpine3.12'
@@ -90,7 +92,8 @@ metadata:
   namespace: sample-kosko
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 6379
   selector:
     app: redis
