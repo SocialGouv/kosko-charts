@@ -62,7 +62,7 @@ export function koskoMigrateLoader(id: string): string {
 }
 
 // TODO: export to kosko-charts
-export function loadYaml<T>(env: Environment, path: string): T {
+export function loadYaml<T>(env: Environment, path: string): T | undefined {
   const [obj] = getEnvironmentComponent(env, path, {
     loader: koskoMigrateLoader,
   });
