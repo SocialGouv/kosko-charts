@@ -52,18 +52,6 @@ spec:
         cert: wildcard
     type: Opaque
 ---
-metadata:
-  annotations:
-    app.gitlab.com/app: socialgouv-sample-kosko
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
-  labels:
-    application: e2e-branch-42-sample-kosko
-    owner: sample-kosko
-    team: sample-kosko
-    cert: wildcard
-  name: create-db-job-8843083
-  namespace: sample-kosko-24-e2e-branch-42
 spec:
   backoffLimit: 0
   template:
@@ -107,6 +95,18 @@ spec:
         cert: wildcard
 apiVersion: batch/v1
 kind: Job
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-job-8843083
+  namespace: sample-kosko-24-e2e-branch-42
 ---
 stringData:
   DATABASE_URL: >-
