@@ -131,6 +131,7 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+      name: http
   selector:
     app: hasura
   type: ClusterIP
@@ -245,6 +246,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8081
+      name: http
   selector:
     app: pgweb
   type: ClusterIP
@@ -374,6 +376,7 @@ spec:
   ports:
     - port: 80
       targetPort: 6379
+      name: http
   selector:
     app: redis
   type: ClusterIP
@@ -493,6 +496,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8080
+      name: http
   selector:
     app: www
   type: ClusterIP
