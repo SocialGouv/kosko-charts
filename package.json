@@ -8,7 +8,7 @@
     "@kubernetes-models/sealed-secrets": "^1.0.1",
     "@sindresorhus/is": "^4.0.0",
     "fp-ts": "^2.8.5",
-    "io-ts": "2.2.7"
+    "io-ts": "2.2.12"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
