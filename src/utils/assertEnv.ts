@@ -46,13 +46,13 @@ export function isNotEmptyString(value: unknown): string | false {
 // └─ cannot decode undefined, should be string
 export function assertEnv(keys: string[]) {
   return function assertFn(env = process.env): void | never {
-    const errors = keys.reduce<AssertEnvErrorKey[]>((errors, key) => {
+    const errors = keys.reduce<AssertEnvErrorKey[]>((memo, key) => {
       const reason =
         isNotDefined(env[key]) ||
         isNotAString(env[key]) ||
         isNotEmptyString(env[key]);
 
-      return reason ? [...errors, { name: key, reason }] : errors;
+      return reason ? [...memo, { name: key, reason }] : memo;
     }, []);
 
     if (errors.length) throw AssertEnvError.format(errors);

@@ -1,10 +1,10 @@
-import { Environment } from "@kosko/env";
-import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+import type { Environment } from "@kosko/env";
+import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 import { ok } from "assert";
 
-import { DeploymentParams } from "../../utils/createDeployment";
+import type { DeploymentParams } from "../../utils/createDeployment";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";

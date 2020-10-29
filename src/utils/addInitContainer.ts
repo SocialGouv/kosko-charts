@@ -1,5 +1,5 @@
-import { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
+import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 export const addInitContainer = (
   deployment: Deployment,

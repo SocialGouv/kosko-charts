@@ -1,4 +1,4 @@
-import { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
+import type { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
 import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 
 const assert = assertEnv([

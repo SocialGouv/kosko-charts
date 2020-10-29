@@ -1,5 +1,5 @@
-import { Ingress } from "kubernetes-models/api/networking/v1beta1/Ingress";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { Ingress } from "kubernetes-models/api/networking/v1beta1/Ingress";
+import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 type ManifestType = Deployment | Ingress;
 

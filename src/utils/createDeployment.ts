@@ -1,7 +1,7 @@
 /* eslint-disable simple-import-sort/sort */
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
-import { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
+import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
+import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
 
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 

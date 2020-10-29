@@ -1,4 +1,4 @@
-import { NamespaceComponentEnvironment } from "@socialgouv/kosko-charts/types";
+import type { NamespaceComponentEnvironment } from "@socialgouv/kosko-charts/types";
 
 export default (env = process.env): NamespaceComponentEnvironment => {
   return {
