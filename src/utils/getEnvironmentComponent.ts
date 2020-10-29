@@ -1,4 +1,4 @@
-import { Environment } from "@kosko/env";
+import type { Environment } from "@kosko/env";
 // eslint-disable-next-line
 // @ts-expect-error
 import { formatPath } from "@kosko/env/dist/paths.js";
@@ -36,10 +36,10 @@ export function getEnvironmentComponent(
   // env => [base, env args]
   // env => [env args]
   // env => ?
-  const legitEnv = envs.reverse().find((env) => {
+  const legitEnv = envs.reverse().find((environment) => {
     const path = formatPath(component, {
       component: filename,
-      environment: env,
+      environment,
     });
     return existsSync(join(cwd, path));
   });

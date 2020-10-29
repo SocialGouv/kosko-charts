@@ -6,7 +6,7 @@ export interface Params {
   name: string;
   servicePort: number;
   containerPort: number;
-  selector: { [key: string]: string };
+  selector: Record<string, string>;
   portName?: string;
 }
 

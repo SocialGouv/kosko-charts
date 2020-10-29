@@ -1,5 +1,5 @@
 import env from "@kosko/env";
-import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import { create } from "@socialgouv/kosko-charts/components/azure-pg";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";

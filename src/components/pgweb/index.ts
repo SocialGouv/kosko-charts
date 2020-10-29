@@ -1,8 +1,8 @@
-import {
+import type {
   AppConfig,
-  create as createApp,
   createFn,
 } from "@socialgouv/kosko-charts/components/app";
+import { create as createApp } from "@socialgouv/kosko-charts/components/app";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
 // renovate: datasource=docker depName=sosedoff/pgweb versioning=0.11.7

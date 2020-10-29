@@ -1,12 +1,10 @@
 //
 
-import {
-  create as createApp,
-  createFn,
-} from "@socialgouv/kosko-charts/components/app";
+import type { createFn } from "@socialgouv/kosko-charts/components/app";
+import { create as createApp } from "@socialgouv/kosko-charts/components/app";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
-import { DeploymentParams } from "../../utils/createDeployment";
+import type { DeploymentParams } from "../../utils/createDeployment";
 
 // renovate: datasource=docker depName=redis versioning=6.0.5-alpine3.12
 const REDIS_VERSION = "6.0.5-alpine3.12";
