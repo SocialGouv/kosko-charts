@@ -1,3 +1,10 @@
+## [3.1.6](https://github.com/SocialGouv/kosko-charts/compare/v3.1.5...v3.1.6) (2020-11-03)
+
+
+### Bug Fixes
+
+* **azure-db:** run create-db jobs in project secret namespace ([#273](https://github.com/SocialGouv/kosko-charts/issues/273)) ([3d34b10](https://github.com/SocialGouv/kosko-charts/commit/3d34b106408d8b8d289e6728a72799d5a7aa47bb))
+
 ## [3.1.5](https://github.com/SocialGouv/kosko-charts/compare/v3.1.4...v3.1.5) (2020-10-28)
 
 
