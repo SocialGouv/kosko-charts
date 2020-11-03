@@ -1,14 +1,15 @@
 import { Environment } from "@kosko/env";
 import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { ok } from "assert";
 
-import gitlab from "../../environments/gitlab";
 import { DeploymentParams } from "../../utils/createDeployment";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { createSecret } from "../pg-secret/create";
 import { createDbJob } from "./create-db.job";
+import { getDevDatabaseParameters } from "./params";
 
 interface PgParams {
   database: string;
@@ -22,16 +23,25 @@ interface PgParams {
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
+  ok(
+    process.env.CI_COMMIT_SHORT_SHA,
+    "Missing process.env.CI_COMMIT_SHORT_SHA"
+  );
   ok(process.env.CI_PROJECT_NAME, "Missing process.env.CI_PROJECT_NAME");
-  const sha = process.env.CI_COMMIT_SHORT_SHA;
-  const projectName = process.env.CI_PROJECT_NAME;
+
+  const {
+    CI_COMMIT_SHORT_SHA: sha,
+    CI_PROJECT_NAME: projectName,
+    // NOTE(douglasduteil): enforce defined string in process.env
+    // Those env variables are asserted to be defined above
+  } = process.env as Record<string, string>;
 
   return {
-    database: `autodevops_${sha}`,
+    ...getDevDatabaseParameters({
+      suffix: sha,
+    }),
     host: config.pgHost ?? getPgServerHostname(projectName, "dev"),
     name: `azure-pg-user-${sha}`,
-    password: `password_${sha}`,
-    user: `user_${sha}`,
   };
 };
 
@@ -66,12 +76,14 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
   });
   // add to deployment.envFrom
 
+  const secretNamespace = { name: `${process.env.CI_PROJECT_NAME}-secret` };
+
   const job = createDbJob(defaultParams);
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
     name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
-    namespace: envParams.namespace,
+    namespace: secretNamespace,
   });
 
   const secret = createSecret(envParams);

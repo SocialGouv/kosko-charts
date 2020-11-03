@@ -16,10 +16,10 @@ const gitlabEnv = {
   KUBE_NAMESPACE: "sample-42-my-test",
 };
 
-test("should throw because of a missing CI_PROJECT_NAME", () => {
+test("should throw because of a missing CI_COMMIT_SHORT_SHA", () => {
   const env = new Environment("/tmp");
   expect(() => create({ env })).toThrowError(
-    "Missing process.env.CI_PROJECT_NAME"
+    "Missing process.env.CI_COMMIT_SHORT_SHA"
   );
 });
 

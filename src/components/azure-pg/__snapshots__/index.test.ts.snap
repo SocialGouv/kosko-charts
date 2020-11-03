@@ -34,7 +34,7 @@ Array [
         "team": "sample",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-secret",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -134,18 +134,7 @@ Array [
 ]
 `;
 
-exports[`should throw because of a missing envs 1`] = `
-"BadArgument:required property \\"CI_ENVIRONMENT_NAME\\"
-└─ cannot decode undefined, should be string
-required property \\"CI_ENVIRONMENT_SLUG\\"
-└─ cannot decode undefined, should be string
-required property \\"CI_PROJECT_PATH_SLUG\\"
-└─ cannot decode undefined, should be string
-required property \\"KUBE_INGRESS_BASE_DOMAIN\\"
-└─ cannot decode undefined, should be string
-required property \\"KUBE_NAMESPACE\\"
-└─ cannot decode undefined, should be string"
-`;
+exports[`should throw because of a missing envs 1`] = `"Missing process.env.CI_COMMIT_SHORT_SHA"`;
 
 exports[`should use custom pgHost 1`] = `
 Array [
@@ -181,7 +170,7 @@ Array [
         "team": "sample-next-app",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-next-app-secret",
     },
     "spec": Object {
       "backoffLimit": 0,
