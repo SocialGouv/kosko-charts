@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should use default secret for running drop-autodevops-dbs 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "drop-azure-autodevops-dbs-undefined",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "drop-autodevops-dbs",
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "azure-pg-admin-user",
+                },
+              },
+            ],
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "drop-autodevops-dbs",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "256Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;
+
+exports[`should use some-secret for running drop-autodevops-dbs 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "drop-azure-autodevops-dbs-undefined",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "drop-autodevops-dbs",
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "some-secret",
+                },
+              },
+            ],
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "drop-autodevops-dbs",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "256Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;

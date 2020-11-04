@@ -1,8 +1,12 @@
 import { Job } from "kubernetes-models/batch/v1/Job";
 
+type DropAutodevopsDbsJobArgs = {
+  secretRefName?: string;
+};
+
 export const dropAutodevopsDbsJob = ({
   secretRefName = `azure-pg-admin-user`,
-}): Job => {
+}: DropAutodevopsDbsJobArgs = {}): Job => {
   return new Job({
     metadata: {
       name: `drop-azure-autodevops-dbs-${process.env.CI_COMMIT_SHORT_SHA}`,
