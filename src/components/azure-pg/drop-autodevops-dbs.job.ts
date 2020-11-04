@@ -1,8 +1,8 @@
 import { Job } from "kubernetes-models/batch/v1/Job";
 
-type DropAutodevopsDbsJobArgs = {
+interface DropAutodevopsDbsJobArgs {
   secretRefName?: string;
-};
+}
 
 export const dropAutodevopsDbsJob = ({
   secretRefName = `azure-pg-admin-user`,
