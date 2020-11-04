@@ -1,10 +1,6 @@
 import { Job } from "kubernetes-models/batch/v1/Job";
 
 export const dropAutodevopsDbsJob = ({
-  //@ts-expect-error
-  database,
-  //@ts-expect-error
-  user,
   secretRefName = `azure-pg-admin-user`,
 }): Job => {
   return new Job({
