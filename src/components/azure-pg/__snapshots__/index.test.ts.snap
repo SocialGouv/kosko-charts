@@ -100,6 +100,7 @@ Array [
           "restartPolicy": "Never",
         },
       },
+      "ttlSecondsAfterFinished": 86400,
     },
   },
   Object {
@@ -236,6 +237,7 @@ Array [
           "restartPolicy": "Never",
         },
       },
+      "ttlSecondsAfterFinished": 86400,
     },
   },
   Object {
