@@ -1,10 +1,8 @@
 import { Environment } from "@kosko/env";
-import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { ok } from "assert";
 
 import { DeploymentParams } from "../../utils/createDeployment";
-import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { createSecret } from "../pg-secret/create";
@@ -54,7 +52,7 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-export const create = ({ env, config = {} }: CreateParams): unknown[] => {
+export const create = ({ config = {} }: CreateParams): unknown[] => {
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
@@ -63,18 +61,6 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     ...gitlab(process.env),
     ...config, // create options
   };
-
-  /* SEALED-SECRET */
-  // try to import environment sealed-secret
-  const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
-  ok(sealedSecret, "Missing pg.sealed-secret.yaml");
-  // add gitlab annotations
-  updateMetadata(sealedSecret, {
-    annotations: envParams.annotations ?? {},
-    labels: envParams.labels ?? {},
-    namespace: envParams.namespace,
-  });
-  // add to deployment.envFrom
 
   const secretNamespace = { name: `${process.env.CI_PROJECT_NAME}-secret` };
 
@@ -93,5 +79,5 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
-  return [sealedSecret, job, secret];
+  return [job, secret];
 };

@@ -29,12 +29,6 @@ test("should throw because of a missing envs", () => {
   expect(() => create({ env })).toThrowErrorMatchingSnapshot();
 });
 
-test("should throw because of a missing pg.sealed-secret.yaml", () => {
-  Object.assign(process.env, gitlabEnv);
-  const env = new Environment("/tmp");
-  expect(() => create({ env })).toThrowError("Missing pg.sealed-secret.yaml");
-});
-
 test("should return create an job", async () => {
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
