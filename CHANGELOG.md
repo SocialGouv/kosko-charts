@@ -1,3 +1,11 @@
+## [3.2.1](https://github.com/SocialGouv/kosko-charts/compare/v3.2.0...v3.2.1) (2020-11-05)
+
+
+### Bug Fixes
+
+* **azure-pg:** dont try to load admin secret ([#276](https://github.com/SocialGouv/kosko-charts/issues/276)) ([9f995bf](https://github.com/SocialGouv/kosko-charts/commit/9f995bf95fe8a81a02d2ece30a89c6a9862d6373))
+* **azure-pg:** set spec.ttlSecondsAfterFinished to 24h ([#277](https://github.com/SocialGouv/kosko-charts/issues/277)) ([e4d5748](https://github.com/SocialGouv/kosko-charts/commit/e4d574890e3a833b26f0914ac1b41acf05983ef4))
+
 # [3.2.0](https://github.com/SocialGouv/kosko-charts/compare/v3.1.6...v3.2.0) (2020-11-05)
 
 
