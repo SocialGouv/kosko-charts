@@ -1,10 +1,8 @@
 import { Environment } from "@kosko/env";
-import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { ok } from "assert";
 
 import { DeploymentParams } from "../../utils/createDeployment";
-import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { createSecret } from "../pg-secret/create";
@@ -54,7 +52,7 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-export const create = ({ env, config = {} }: CreateParams): unknown[] => {
+export const create = ({ config = {} }: CreateParams): unknown[] => {
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
