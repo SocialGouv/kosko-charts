@@ -3,7 +3,7 @@ import { Job } from "kubernetes-models/batch/v1/Job";
 
 //import { Params } from "../azure-db/params";
 
-const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
+const DEFAULT_EXTENSIONS = "hstore pgcrypto citext uuid-ossp";
 
 // needs azure-pg-admin-user secret
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
