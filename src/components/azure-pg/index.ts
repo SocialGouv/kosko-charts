@@ -64,18 +64,6 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     ...config, // create options
   };
 
-  /* SEALED-SECRET */
-  // try to import environment sealed-secret
-  const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
-  ok(sealedSecret, "Missing pg.sealed-secret.yaml");
-  // add gitlab annotations
-  updateMetadata(sealedSecret, {
-    annotations: envParams.annotations ?? {},
-    labels: envParams.labels ?? {},
-    namespace: envParams.namespace,
-  });
-  // add to deployment.envFrom
-
   const secretNamespace = { name: `${process.env.CI_PROJECT_NAME}-secret` };
 
   const job = createDbJob(defaultParams);
@@ -93,5 +81,5 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
-  return [sealedSecret, job, secret];
+  return [job, secret];
 };
