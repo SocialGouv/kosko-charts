@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/SocialGouv/kosko-charts/compare/v3.2.1...v3.2.2) (2020-11-05)
+
+
+### Bug Fixes
+
+* **azure-db:** upgrade docker deps ([#278](https://github.com/SocialGouv/kosko-charts/issues/278)) ([d618868](https://github.com/SocialGouv/kosko-charts/commit/d618868cc2440b4b8b21e6fa757404029e7d7880))
+
 ## [3.2.1](https://github.com/SocialGouv/kosko-charts/compare/v3.2.0...v3.2.1) (2020-11-05)
 
 
