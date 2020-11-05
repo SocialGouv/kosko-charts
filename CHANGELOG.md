@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/SocialGouv/kosko-charts/compare/v3.1.6...v3.2.0) (2020-11-05)
+
+
+### Features
+
+* **azure-pg:** add drop-autodevops-dbs job ([#274](https://github.com/SocialGouv/kosko-charts/issues/274)) ([c149410](https://github.com/SocialGouv/kosko-charts/commit/c149410205d37f909341a07654b2abbd71fcd486))
+
 ## [3.1.6](https://github.com/SocialGouv/kosko-charts/compare/v3.1.5...v3.1.6) (2020-11-03)
 
 
