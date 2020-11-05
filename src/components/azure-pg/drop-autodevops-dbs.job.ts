@@ -27,7 +27,7 @@ export const dropAutodevopsDbsJob = ({
                 },
               ],
               image:
-                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
+                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
               imagePullPolicy: "IfNotPresent",
               name: "drop-autodevops-dbs",
               resources: {
