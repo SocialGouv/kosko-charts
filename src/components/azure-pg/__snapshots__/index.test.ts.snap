@@ -3,23 +3,6 @@
 exports[`should return create an job 1`] = `
 Array [
   Object {
-    "apiVersion": "v1",
-    "kind": "ConfigMap",
-    "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-        "app.gitlab.com/env.name": "fabrique-dev",
-      },
-      "labels": Object {
-        "application": "my-test-sample",
-        "owner": "sample",
-        "team": "sample",
-      },
-      "namespace": "sample-42-my-test",
-    },
-  },
-  Object {
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
@@ -138,23 +121,6 @@ exports[`should throw because of a missing envs 1`] = `"Missing process.env.CI_C
 
 exports[`should use custom pgHost 1`] = `
 Array [
-  Object {
-    "apiVersion": "v1",
-    "kind": "ConfigMap",
-    "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-        "app.gitlab.com/env.name": "fabrique-dev",
-      },
-      "labels": Object {
-        "application": "my-test-sample-next-app",
-        "owner": "sample-next-app",
-        "team": "sample-next-app",
-      },
-      "namespace": "sample-42-my-test",
-    },
-  },
   Object {
     "apiVersion": "batch/v1",
     "kind": "Job",
