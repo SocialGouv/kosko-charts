@@ -5,7 +5,7 @@ Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
   "metadata": Object {
-    "name": "drop-azure-autodevops-dbs-undefined",
+    "name": "drop-azure-autodevops-dbs-b123a99",
   },
   "spec": Object {
     "backoffLimit": 0,
@@ -51,7 +51,7 @@ Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
   "metadata": Object {
-    "name": "drop-azure-autodevops-dbs-undefined",
+    "name": "drop-azure-autodevops-dbs-b123a99",
   },
   "spec": Object {
     "backoffLimit": 0,
