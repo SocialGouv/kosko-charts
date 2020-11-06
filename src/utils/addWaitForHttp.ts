@@ -8,7 +8,7 @@ export const addWaitForHttp = (
   url: string
 ): Deployment => {
   const initContainer = waitForHttp({
-    name: deployment?.metadata?.name ?? "waiter",
+    name: deployment.metadata?.name ?? "waiter",
     url,
   });
 
