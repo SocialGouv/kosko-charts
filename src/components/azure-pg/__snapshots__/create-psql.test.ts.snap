@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create a psql job 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {},
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "psql",
+              "--dbname",
+              "some-db",
+              "-c",
+              "SELECT VERSION();",
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "some-secret",
+                },
+              },
+            ],
+            "image": "postgres:10",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "psql-job",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "256Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+    "ttlSecondsAfterFinished": 86400,
+  },
+}
+`;
+
+exports[`should use admin secret as default 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {},
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "psql",
+              "--dbname",
+              "some-db2",
+              "-c",
+              "SELECT VERSION();",
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "azure-pg-admin-user",
+                },
+              },
+            ],
+            "image": "postgres:10",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "psql-job",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "256Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+    "ttlSecondsAfterFinished": 86400,
+  },
+}
+`;

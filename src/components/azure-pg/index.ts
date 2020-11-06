@@ -7,6 +7,7 @@ import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { createSecret } from "../pg-secret/create";
 import { createDbJob } from "./create-db.job";
+import { createPsqlJob } from "./create-psql.job";
 import { getDevDatabaseParameters } from "./params";
 
 interface PgParams {
@@ -45,6 +46,7 @@ export const getDefaultPgParams = (
 
 export interface CreateConfig extends DeploymentParams {
   pgHost?: string;
+  prepareScript?: string;
 }
 
 interface CreateParams {
@@ -71,6 +73,19 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
     name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
     namespace: secretNamespace,
   });
+
+  if (config.prepareScript) {
+    const job = createPsqlJob({
+      database: `autodevops_${process.env.CI_COMMIT_SHORT_SHA}`,
+      script: config.prepareScript,
+    });
+    updateMetadata(job, {
+      annotations: envParams.annotations ?? {},
+      labels: envParams.labels ?? {},
+      name: `prepare-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
+      namespace: secretNamespace,
+    });
+  }
 
   const secret = createSecret(envParams);
   updateMetadata(secret, {
