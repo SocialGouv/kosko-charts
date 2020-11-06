@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should succeed validating a valid value 1`] = `
+Object {
+  "command": Array [
+    "sh",
+    "-c",
+    "
+retry=120;
+while ! curl -sSfL 'http://service:4242' && [[ $(( retry-- )) -gt 0 ]];
+do
+  echo 'Waiting for some-service to be available on http://service:4242 ($(( retry )))' ; sleep 5s ;
+done ;
+[[ $(( retry )) -lt 1 ]] && exit 128;
+echo Ready;
+",
+  ],
+  "image": "curlimages/curl:7.73.0",
+  "imagePullPolicy": "Always",
+  "name": "wait-for-some-service",
+  "resources": Object {
+    "limits": Object {
+      "cpu": "20m",
+      "memory": "32Mi",
+    },
+    "requests": Object {
+      "cpu": "5m",
+      "memory": "16Mi",
+    },
+  },
+}
+`;
