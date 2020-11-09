@@ -1,17 +1,15 @@
 import { Environment } from "@kosko/env";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { ok } from "assert";
+import { IoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
 import { DeploymentParams } from "../../utils/createDeployment";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
-import { addInitContainer } from "../../utils/addInitContainer";
-import { waitForPostgres } from "../../utils/waitForPostgres";
 import { createSecret } from "../pg-secret/create";
 import { createDbJob } from "./create-db.job";
 import { createPsqlJob } from "./create-psql.job";
 import { getDevDatabaseParameters } from "./params";
-import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 interface PgParams {
   database: string;
@@ -57,8 +55,6 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-import { IoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
-
 export const create = ({ config = {} }: CreateParams): unknown[] => {
   const defaultParams = getDefaultPgParams(config);
 
@@ -91,9 +87,6 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
 
     // add an initContainer to wait for the create-db job to be complete
     const initContainer = new IoK8sApiCoreV1Container({
-      image:
-        "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/kubectl:2.2.0",
-      name: `init-prepare-db-${process.env.CI_COMMIT_SHORT_SHA}`,
       command: [
         "kubectl",
         "wait",
@@ -104,6 +97,9 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
         "--for=condition=complete",
         `jobs/create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
       ],
+      image:
+        "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/kubectl:2.2.0",
+      name: `init-prepare-db-${process.env.CI_COMMIT_SHORT_SHA}`,
     });
 
     ok(prepareJob.spec);

@@ -129,9 +129,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
-      name: http
   selector:
     app: hasura
   type: ClusterIP
@@ -151,7 +151,6 @@ metadata:
   name: create-db-job-8843083
   namespace: sample-kosko-secret
 spec:
-  ttlSecondsAfterFinished: 86400
   backoffLimit: 0
   template:
     spec:
@@ -192,6 +191,7 @@ spec:
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
+  ttlSecondsAfterFinished: 86400
 apiVersion: batch/v1
 kind: Job
 ---
@@ -208,7 +208,6 @@ metadata:
   name: prepare-db-job-8843083
   namespace: sample-kosko-secret
 spec:
-  ttlSecondsAfterFinished: 86400
   backoffLimit: 0
   template:
     spec:
@@ -238,16 +237,18 @@ spec:
               memory: 64Mi
       restartPolicy: Never
       initContainers:
-        - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/kubectl:2.2.0
-          name: init-prepare-db-8843083
-          command:
+        - command:
             - kubectl
             - wait
+            - '--timeout'
+            - '120'
             - '--namespace'
             - sample-kosko-secret
             - '--for=condition=complete'
             - jobs/create-db-job-8843083
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/kubectl:2.2.0
+          name: init-prepare-db-8843083
     metadata:
       annotations:
         app.gitlab.com/app: socialgouv-sample-kosko
@@ -258,6 +259,7 @@ spec:
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
+  ttlSecondsAfterFinished: 86400
 apiVersion: batch/v1
 kind: Job
 ---
@@ -396,9 +398,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8081
-      name: http
   selector:
     app: pgweb
   type: ClusterIP
@@ -526,9 +528,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 6379
-      name: http
   selector:
     app: redis
   type: ClusterIP
@@ -646,9 +648,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8080
-      name: http
   selector:
     app: www
   type: ClusterIP

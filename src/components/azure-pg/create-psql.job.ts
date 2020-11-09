@@ -1,11 +1,10 @@
 import { Job } from "kubernetes-models/batch/v1/Job";
-import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
-type PsqlJobParams = {
+interface PsqlJobParams {
   secretRefName?: string;
   database: string;
   script: string;
-};
+}
 // needs azure-pg-admin-user secret
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createPsqlJob = ({
@@ -16,7 +15,6 @@ export const createPsqlJob = ({
   const job = new Job({
     metadata: {},
     spec: {
-      ttlSecondsAfterFinished: 86400,
       backoffLimit: 0,
       template: {
         spec: {
@@ -48,6 +46,7 @@ export const createPsqlJob = ({
           restartPolicy: "Never",
         },
       },
+      ttlSecondsAfterFinished: 86400,
     },
   });
   return job;

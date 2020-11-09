@@ -108,9 +108,9 @@ metadata:
   namespace: sample-kosko
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
-      name: http
   selector:
     app: hasura
   type: ClusterIP
@@ -220,9 +220,9 @@ metadata:
   namespace: sample-kosko
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8081
-      name: http
   selector:
     app: pgweb
   type: ClusterIP
@@ -348,9 +348,9 @@ metadata:
   namespace: sample-kosko
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 6379
-      name: http
   selector:
     app: redis
   type: ClusterIP
@@ -486,9 +486,9 @@ metadata:
   namespace: sample-kosko
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8080
-      name: http
   selector:
     app: www
   type: ClusterIP
