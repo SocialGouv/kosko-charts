@@ -1,14 +1,18 @@
 import { Job } from "kubernetes-models/batch/v1/Job";
+import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
+type PsqlJobParams = {
+  secretRefName?: string;
+  database: string;
+  script: string;
+};
 // needs azure-pg-admin-user secret
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createPsqlJob = ({
-  //@ts-expect-error
   script,
-  //@ts-expect-error
   database,
   secretRefName = `azure-pg-admin-user`,
-}): Job => {
+}: PsqlJobParams): Job => {
   const job = new Job({
     metadata: {},
     spec: {
