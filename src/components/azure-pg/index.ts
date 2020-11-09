@@ -55,6 +55,33 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
+type WaitForJobInitContainer = {
+  name: string;
+  namespace: string;
+  jobId: string;
+};
+
+const waitForJobInitContainer = ({
+  name,
+  namespace,
+  jobId,
+}: WaitForJobInitContainer): IoK8sApiCoreV1Container =>
+  new IoK8sApiCoreV1Container({
+    command: [
+      "kubectl",
+      "wait",
+      "--timeout",
+      "120",
+      "--namespace",
+      namespace,
+      "--for=condition=complete",
+      `jobs/${jobId}`,
+    ],
+    image:
+      "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/kubectl:2.2.0",
+    name,
+  });
+
 export const create = ({ config = {} }: CreateParams): unknown[] => {
   const defaultParams = getDefaultPgParams(config);
 
@@ -86,20 +113,10 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
     });
 
     // add an initContainer to wait for the create-db job to be complete
-    const initContainer = new IoK8sApiCoreV1Container({
-      command: [
-        "kubectl",
-        "wait",
-        "--timeout",
-        "120",
-        "--namespace",
-        secretNamespace.name,
-        "--for=condition=complete",
-        `jobs/create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
-      ],
-      image:
-        "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/kubectl:2.2.0",
+    const initContainer = waitForJobInitContainer({
+      jobId: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
       name: `init-prepare-db-${process.env.CI_COMMIT_SHORT_SHA}`,
+      namespace: secretNamespace.name,
     });
 
     ok(prepareJob.spec);

@@ -1,5 +1,209 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should add prepareDb job 1`] = `
+Array [
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "app.gitlab.com/env.name": "fabrique-dev",
+      },
+      "labels": Object {
+        "application": "my-test-sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "create-db-job-abcdefg",
+      "namespace": "sample-secret",
+    },
+    "spec": Object {
+      "backoffLimit": 0,
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "app.gitlab.com/env.name": "fabrique-dev",
+          },
+          "labels": Object {
+            "application": "my-test-sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "create-db-user",
+              ],
+              "env": Array [
+                Object {
+                  "name": "NEW_DB_NAME",
+                  "value": "autodevops_abcdefg",
+                },
+                Object {
+                  "name": "NEW_USER",
+                  "value": "user_abcdefg",
+                },
+                Object {
+                  "name": "NEW_PASSWORD",
+                  "value": "password_abcdefg",
+                },
+                Object {
+                  "name": "NEW_DB_EXTENSIONS",
+                  "value": "hstore pgcrypto citext",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user",
+                  },
+                },
+              ],
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "create-db-user",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "256Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
+                },
+              },
+            },
+          ],
+          "restartPolicy": "Never",
+        },
+      },
+      "ttlSecondsAfterFinished": 86400,
+    },
+  },
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "app.gitlab.com/env.name": "fabrique-dev",
+      },
+      "labels": Object {
+        "application": "my-test-sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "prepare-db-job-abcdefg",
+      "namespace": "sample-secret",
+    },
+    "spec": Object {
+      "backoffLimit": 0,
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "app.gitlab.com/env.name": "fabrique-dev",
+          },
+          "labels": Object {
+            "application": "my-test-sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "psql",
+                "--dbname",
+                "autodevops_abcdefg",
+                "-c",
+                "select VERSION();",
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user",
+                  },
+                },
+              ],
+              "image": "postgres:10",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "psql-job",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "256Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
+                },
+              },
+            },
+          ],
+          "initContainers": Array [
+            Object {
+              "command": Array [
+                "kubectl",
+                "wait",
+                "--timeout",
+                "120",
+                "--namespace",
+                "sample-secret",
+                "--for=condition=complete",
+                "jobs/create-db-job-abcdefg",
+              ],
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/kubectl:2.2.0",
+              "name": "init-prepare-db-abcdefg",
+            },
+          ],
+          "restartPolicy": "Never",
+        },
+      },
+      "ttlSecondsAfterFinished": 86400,
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Secret",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "app.gitlab.com/env.name": "fabrique-dev",
+      },
+      "labels": Object {
+        "application": "my-test-sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "azure-pg-user-abcdefg",
+      "namespace": "sample-42-my-test",
+    },
+    "stringData": Object {
+      "DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "PGDATABASE": "autodevops_abcdefg",
+      "PGHOST": "sampledevserver.postgres.database.azure.com",
+      "PGPASSWORD": "password_abcdefg",
+      "PGRST_DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "PGSSLMODE": "require",
+      "PGUSER": "user_abcdefg@sampledevserver.postgres.database.azure.com",
+    },
+  },
+]
+`;
+
 exports[`should return create an job 1`] = `
 Array [
   Object {

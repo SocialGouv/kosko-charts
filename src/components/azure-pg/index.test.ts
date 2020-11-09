@@ -55,3 +55,13 @@ test("should use custom pgHost", async () => {
     create({ env, config: { pgHost: "pouetpouet.com" } })
   ).toMatchSnapshot();
 });
+
+test("should add prepareDb job", async () => {
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = new Environment(cwd);
+  env.env = "dev";
+  expect(
+    create({ env, config: { prepareScript: "select VERSION();" } })
+  ).toMatchSnapshot();
+});
