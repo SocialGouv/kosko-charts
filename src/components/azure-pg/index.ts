@@ -55,11 +55,11 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-type WaitForJobInitContainer = {
+interface WaitForJobInitContainer {
   name: string;
   namespace: string;
   jobId: string;
-};
+}
 
 const waitForJobInitContainer = ({
   name,

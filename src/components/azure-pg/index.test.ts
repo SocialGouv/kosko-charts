@@ -56,7 +56,7 @@ test("should use custom pgHost", async () => {
   ).toMatchSnapshot();
 });
 
-test("should add prepareDb job", async () => {
+test("should add prepareDb job", () => {
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
   const env = new Environment(cwd);
