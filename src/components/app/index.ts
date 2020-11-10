@@ -21,6 +21,8 @@ import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
+import { addCreateDbInitContainer } from "../../utils/addCreateDbInitContainer";
+import { addPrepareDbInitContainer } from "../../utils/addPrepareDbInitContainer";
 
 type AliasParams = {
   hosts: string[];
@@ -81,8 +83,12 @@ export const create = (
 
   // add postgres secret and initContainer
   if (envParams.withPostgres) {
-    addPostgresUserSecret(deployment);
-    addWaitForPostgres(deployment);
+    // createPostgresUserSecret();
+    addPostgresUserSecret(deployment); // anticipate db/user creation
+    if (env.env === "dev") {
+      addCreateDbInitContainer(deployment, env);
+      addPrepareDbInitContainer(deployment, env);
+    }
   }
 
   // add a redirection ingresses, production only

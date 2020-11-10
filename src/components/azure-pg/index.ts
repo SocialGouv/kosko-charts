@@ -62,16 +62,6 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
     ...config, // create options
   };
 
-  const secretNamespace = { name: `${process.env.CI_PROJECT_NAME}-secret` };
-
-  const job = createDbJob(defaultParams);
-  updateMetadata(job, {
-    annotations: envParams.annotations ?? {},
-    labels: envParams.labels ?? {},
-    name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
-    namespace: secretNamespace,
-  });
-
   const secret = createSecret(envParams);
   updateMetadata(secret, {
     annotations: envParams.annotations ?? {},
@@ -79,5 +69,5 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
-  return [job, secret];
+  return [secret];
 };

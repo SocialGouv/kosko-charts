@@ -94,23 +94,86 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
       initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
+        - image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: create-db
           resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
             limits:
-              cpu: 20m
-              memory: 32Mi
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
+                name: azure-pg-admin-user
+          command:
+            - sh
+            - '-c'
+            - >-
+              psql -e --dbname postgres -c \\"CREATE DATABASE
+              \\"autodevops_8843083\\";\\"; exit 0
+        - image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: create-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          command:
+            - psql
+            - '-e'
+            - '--dbname'
+            - autodevops_8843083
+            - '-c'
+            - |
+
+              DO
+              $do$
+              BEGIN
+                 IF NOT EXISTS (
+                    SELECT FROM pg_catalog.pg_roles WHERE  rolname = 'user_8843083') THEN
+
+                    SET timezone TO 'Europe/Paris';
+                    CREATE USER \\"user_8843083\\" WITH PASSWORD 'password_8843083';
+                    GRANT ALL PRIVILEGES ON DATABASE \\"autodevops_8843083\\" TO \\"user_8843083\\";
+                    GRANT USAGE ON SCHEMA public TO \\"user_8843083\\";
+                    GRANT ALL ON ALL TABLES IN SCHEMA public TO \\"user_8843083\\";
+                    GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO \\"user_8843083\\";
+                    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO \\"user_8843083\\";
+
+                    CREATE EXTENSION IF NOT EXISTS \\"pgcrypto\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"hstore\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"uuid-ossp\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"citext\\";
+                 END IF;
+              END
+              $do$;
+        - command:
+            - psql
+            - '--dbname'
+            - autodevops_8843083
+            - '-c'
+            - SELECT VERSION();
+          image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: prepare-db
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -209,23 +272,86 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
       initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
+        - image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: create-db
           resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
             limits:
-              cpu: 20m
-              memory: 32Mi
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
+                name: azure-pg-admin-user
+          command:
+            - sh
+            - '-c'
+            - >-
+              psql -e --dbname postgres -c \\"CREATE DATABASE
+              \\"autodevops_8843083\\";\\"; exit 0
+        - image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: create-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          command:
+            - psql
+            - '-e'
+            - '--dbname'
+            - autodevops_8843083
+            - '-c'
+            - |
+
+              DO
+              $do$
+              BEGIN
+                 IF NOT EXISTS (
+                    SELECT FROM pg_catalog.pg_roles WHERE  rolname = 'user_8843083') THEN
+
+                    SET timezone TO 'Europe/Paris';
+                    CREATE USER \\"user_8843083\\" WITH PASSWORD 'password_8843083';
+                    GRANT ALL PRIVILEGES ON DATABASE \\"autodevops_8843083\\" TO \\"user_8843083\\";
+                    GRANT USAGE ON SCHEMA public TO \\"user_8843083\\";
+                    GRANT ALL ON ALL TABLES IN SCHEMA public TO \\"user_8843083\\";
+                    GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO \\"user_8843083\\";
+                    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO \\"user_8843083\\";
+
+                    CREATE EXTENSION IF NOT EXISTS \\"pgcrypto\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"hstore\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"uuid-ossp\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"citext\\";
+                 END IF;
+              END
+              $do$;
+        - command:
+            - psql
+            - '--dbname'
+            - autodevops_8843083
+            - '-c'
+            - SELECT VERSION();
+          image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: prepare-db
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -459,23 +585,86 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
       initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
+        - image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: create-db
           resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
             limits:
-              cpu: 20m
-              memory: 32Mi
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
+                name: azure-pg-admin-user
+          command:
+            - sh
+            - '-c'
+            - >-
+              psql -e --dbname postgres -c \\"CREATE DATABASE
+              \\"autodevops_8843083\\";\\"; exit 0
+        - image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: create-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          command:
+            - psql
+            - '-e'
+            - '--dbname'
+            - autodevops_8843083
+            - '-c'
+            - |
+
+              DO
+              $do$
+              BEGIN
+                 IF NOT EXISTS (
+                    SELECT FROM pg_catalog.pg_roles WHERE  rolname = 'user_8843083') THEN
+
+                    SET timezone TO 'Europe/Paris';
+                    CREATE USER \\"user_8843083\\" WITH PASSWORD 'password_8843083';
+                    GRANT ALL PRIVILEGES ON DATABASE \\"autodevops_8843083\\" TO \\"user_8843083\\";
+                    GRANT USAGE ON SCHEMA public TO \\"user_8843083\\";
+                    GRANT ALL ON ALL TABLES IN SCHEMA public TO \\"user_8843083\\";
+                    GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO \\"user_8843083\\";
+                    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO \\"user_8843083\\";
+
+                    CREATE EXTENSION IF NOT EXISTS \\"pgcrypto\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"hstore\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"uuid-ossp\\";
+                    CREATE EXTENSION IF NOT EXISTS \\"citext\\";
+                 END IF;
+              END
+              $do$;
+        - command:
+            - psql
+            - '--dbname'
+            - autodevops_8843083
+            - '-c'
+            - SELECT VERSION();
+          image: 'postgres:10'
+          imagePullPolicy: IfNotPresent
+          name: prepare-db
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
 apiVersion: apps/v1
 kind: Deployment
 ---

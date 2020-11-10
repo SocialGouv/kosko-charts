@@ -73,24 +73,6 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
-      initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
-            limits:
-              cpu: 20m
-              memory: 32Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-user
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -185,24 +167,6 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
-      initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
-            limits:
-              cpu: 20m
-              memory: 32Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-user
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -430,24 +394,6 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
-      initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
-            limits:
-              cpu: 20m
-              memory: 32Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-user
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
 apiVersion: apps/v1
 kind: Deployment
 ---

@@ -3,7 +3,26 @@ import { Job } from "kubernetes-models/batch/v1/Job";
 
 //import { Params } from "../azure-db/params";
 
-const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
+const DEFAULT_EXTENSIONS = "hstore pgcrypto citext uuid-ossp";
+
+export const createDbContainer = (props: Object) => ({
+  command: ["create-db-user"],
+  image:
+    "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
+  imagePullPolicy: "IfNotPresent",
+  name: "create-db-user",
+  resources: {
+    limits: {
+      cpu: "300m",
+      memory: "256Mi",
+    },
+    requests: {
+      cpu: "100m",
+      memory: "64Mi",
+    },
+  },
+  ...props,
+});
 
 // needs azure-pg-admin-user secret
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -27,8 +46,7 @@ export const createDbJob = ({
       template: {
         spec: {
           containers: [
-            {
-              command: ["create-db-user"],
+            createDbContainer({
               env: [
                 {
                   name: "NEW_DB_NAME",
@@ -54,21 +72,7 @@ export const createDbJob = ({
                   },
                 },
               ],
-              image:
-                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
-              imagePullPolicy: "IfNotPresent",
-              name: "create-db-user",
-              resources: {
-                limits: {
-                  cpu: "300m",
-                  memory: "256Mi",
-                },
-                requests: {
-                  cpu: "100m",
-                  memory: "64Mi",
-                },
-              },
-            },
+            }),
           ],
           restartPolicy: "Never",
         },
