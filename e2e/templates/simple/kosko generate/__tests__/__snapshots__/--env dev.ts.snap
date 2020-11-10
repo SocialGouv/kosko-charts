@@ -94,7 +94,10 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
       initContainers:
-        - image: 'postgres:10'
+        - envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: 'postgres:10'
           imagePullPolicy: IfNotPresent
           name: create-db
           resources:
@@ -104,16 +107,16 @@ spec:
             requests:
               cpu: 100m
               memory: 64Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-admin-user
           command:
             - sh
             - '-c'
             - >-
               psql -e --dbname postgres -c \\"CREATE DATABASE
-              \\"autodevops_8843083\\";\\"; exit 0
-        - image: 'postgres:10'
+              autodevops_8843083;\\"; exit 0
+        - envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: 'postgres:10'
           imagePullPolicy: IfNotPresent
           name: create-user
           resources:
@@ -123,9 +126,6 @@ spec:
             requests:
               cpu: 100m
               memory: 64Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-admin-user
           command:
             - psql
             - '-e'
@@ -192,9 +192,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
-      name: http
   selector:
     app: hasura
   type: ClusterIP
@@ -272,7 +272,10 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
       initContainers:
-        - image: 'postgres:10'
+        - envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: 'postgres:10'
           imagePullPolicy: IfNotPresent
           name: create-db
           resources:
@@ -282,16 +285,16 @@ spec:
             requests:
               cpu: 100m
               memory: 64Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-admin-user
           command:
             - sh
             - '-c'
             - >-
               psql -e --dbname postgres -c \\"CREATE DATABASE
-              \\"autodevops_8843083\\";\\"; exit 0
-        - image: 'postgres:10'
+              autodevops_8843083;\\"; exit 0
+        - envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: 'postgres:10'
           imagePullPolicy: IfNotPresent
           name: create-user
           resources:
@@ -301,9 +304,6 @@ spec:
             requests:
               cpu: 100m
               memory: 64Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-admin-user
           command:
             - psql
             - '-e'
@@ -370,9 +370,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8081
-      name: http
   selector:
     app: pgweb
   type: ClusterIP
@@ -500,9 +500,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 6379
-      name: http
   selector:
     app: redis
   type: ClusterIP
@@ -585,7 +585,10 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
       initContainers:
-        - image: 'postgres:10'
+        - envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: 'postgres:10'
           imagePullPolicy: IfNotPresent
           name: create-db
           resources:
@@ -595,16 +598,16 @@ spec:
             requests:
               cpu: 100m
               memory: 64Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-admin-user
           command:
             - sh
             - '-c'
             - >-
               psql -e --dbname postgres -c \\"CREATE DATABASE
-              \\"autodevops_8843083\\";\\"; exit 0
-        - image: 'postgres:10'
+              autodevops_8843083;\\"; exit 0
+        - envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: 'postgres:10'
           imagePullPolicy: IfNotPresent
           name: create-user
           resources:
@@ -614,9 +617,6 @@ spec:
             requests:
               cpu: 100m
               memory: 64Mi
-          envFrom:
-            - secretRef:
-                name: azure-pg-admin-user
           command:
             - psql
             - '-e'
@@ -683,9 +683,9 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8080
-      name: http
   selector:
     app: www
   type: ClusterIP
