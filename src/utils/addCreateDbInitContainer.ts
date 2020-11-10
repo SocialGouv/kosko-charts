@@ -1,13 +1,8 @@
+import { getDevDatabaseParameters } from "@socialgouv/kosko-charts/components/azure-pg/params";
+import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
 import { ok } from "assert";
-import fs from "fs";
-import path from "path";
-
 import { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
-import { Environment } from "@kosko/env";
-
-import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
-import { getDevDatabaseParameters } from "@socialgouv/kosko-charts/components/azure-pg/params";
 
 ok(process.env.CI_COMMIT_SHORT_SHA);
 
@@ -15,6 +10,13 @@ const getPostgresContainer = (
   props?: IIoK8sApiCoreV1Container
 ): IIoK8sApiCoreV1Container => {
   return {
+    envFrom: [
+      {
+        secretRef: {
+          name: `azure-pg-admin-user`,
+        },
+      },
+    ],
     image: "postgres:10",
     imagePullPolicy: "IfNotPresent",
     name: "postgres",
@@ -28,13 +30,6 @@ const getPostgresContainer = (
         memory: "64Mi",
       },
     },
-    envFrom: [
-      {
-        secretRef: {
-          name: `azure-pg-admin-user`,
-        },
-      },
-    ],
     ...props,
   };
 };
@@ -72,8 +67,7 @@ $do$;
 `;
 
 export const addCreateDbInitContainer = (
-  deployment: Deployment,
-  env: Environment
+  deployment: Deployment
 ): Deployment => {
   ok(process.env.CI_COMMIT_SHORT_SHA);
   const databaseParameters = getDevDatabaseParameters({
@@ -81,16 +75,15 @@ export const addCreateDbInitContainer = (
   });
 
   const createDbContainer = getPostgresContainer({
-    name: "create-db",
     command: [
       "sh",
       "-c",
-      `psql -e --dbname postgres -c "CREATE DATABASE \"${databaseParameters.database}\";"; exit 0`,
+      `psql -e --dbname postgres -c "CREATE DATABASE \\"${databaseParameters.database}\\";"; exit 0`,
     ],
+    name: "create-db",
   });
 
   const createUserContainer = getPostgresContainer({
-    name: "create-user",
     command: [
       "psql",
       "-e",
@@ -99,6 +92,7 @@ export const addCreateDbInitContainer = (
       "-c",
       getSqlCreateUser(databaseParameters),
     ],
+    name: "create-user",
   });
 
   // create the database

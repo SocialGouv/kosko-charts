@@ -1,14 +1,8 @@
+import { getDevDatabaseParameters } from "@socialgouv/kosko-charts/components/azure-pg/params";
+import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
 import { ok } from "assert";
-
 import { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
-import { EnvVar } from "kubernetes-models/v1/EnvVar";
-
-import { Environment } from "@kosko/env";
-
-import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
-import { createDbContainer } from "@socialgouv/kosko-charts/components/azure-pg/create-db.job";
-import { getDevDatabaseParameters } from "@socialgouv/kosko-charts/components/azure-pg/params";
 
 interface AllPrepareCommandArgs extends IIoK8sApiCoreV1Container {
   sql: string;
@@ -42,15 +36,13 @@ const prepareDbContainer = ({
 });
 
 export const addPrepareDbInitContainer = (
-  deployment: Deployment,
-  env: Environment
+  deployment: Deployment
 ): Deployment => {
   ok(process.env.CI_COMMIT_SHORT_SHA);
   const databaseParameters = getDevDatabaseParameters({
     suffix: process.env.CI_COMMIT_SHORT_SHA,
   });
   const initContainer = prepareDbContainer({
-    sql: "SELECT VERSION();",
     database: databaseParameters.database,
     envFrom: [
       {
@@ -59,6 +51,7 @@ export const addPrepareDbInitContainer = (
         },
       },
     ],
+    sql: "SELECT VERSION();",
   });
 
   addInitContainer(deployment, initContainer);

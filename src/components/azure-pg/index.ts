@@ -6,7 +6,6 @@ import { DeploymentParams } from "../../utils/createDeployment";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { createSecret } from "../pg-secret/create";
-import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 
 interface PgParams {

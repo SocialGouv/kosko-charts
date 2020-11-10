@@ -86,8 +86,8 @@ export const create = (
     // createPostgresUserSecret();
     addPostgresUserSecret(deployment); // anticipate db/user creation
     if (env.env === "dev") {
-      addCreateDbInitContainer(deployment, env);
-      addPrepareDbInitContainer(deployment, env);
+      addCreateDbInitContainer(deployment);
+      addPrepareDbInitContainer(deployment);
     }
   }
 
