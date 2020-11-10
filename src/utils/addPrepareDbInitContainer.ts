@@ -18,7 +18,7 @@ const prepareDbContainer = ({
   sql,
   ...props
 }: PrepareCommandArgs): IIoK8sApiCoreV1Container => ({
-  command: ["psql", "--dbname", database, "-c", sql],
+  command: ["psql", "-e", "--dbname", database, "-c", sql],
   image: "postgres:10",
   imagePullPolicy: "IfNotPresent",
   name: "prepare-db",
@@ -36,7 +36,8 @@ const prepareDbContainer = ({
 });
 
 export const addPrepareDbInitContainer = (
-  deployment: Deployment
+  deployment: Deployment,
+  sql = "SELECT VERSION();"
 ): Deployment => {
   ok(process.env.CI_COMMIT_SHORT_SHA);
   const databaseParameters = getDevDatabaseParameters({
@@ -51,7 +52,7 @@ export const addPrepareDbInitContainer = (
         },
       },
     ],
-    sql: "SELECT VERSION();",
+    sql,
   });
 
   addInitContainer(deployment, initContainer);

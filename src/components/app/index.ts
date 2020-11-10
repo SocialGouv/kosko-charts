@@ -29,6 +29,12 @@ type AliasParams = {
   destination: string;
 };
 
+type WithPostgresParams =
+  | boolean
+  | {
+      prepare: string;
+    };
+
 export type AppConfig = DeploymentParams &
   ServiceParams &
   IngressParams & {
@@ -37,7 +43,7 @@ export type AppConfig = DeploymentParams &
     domain: string;
     labels: Record<string, string>;
     ingress: boolean;
-    withPostgres: boolean;
+    withPostgres?: WithPostgresParams;
     withRedirections?: AliasParams;
   };
 export const create = (
@@ -87,7 +93,14 @@ export const create = (
     addPostgresUserSecret(deployment); // anticipate db/user creation
     if (env.env === "dev") {
       addCreateDbInitContainer(deployment);
-      addPrepareDbInitContainer(deployment);
+      if (
+        typeof envParams.withPostgres === "object" &&
+        envParams.withPostgres.prepare
+      ) {
+        addPrepareDbInitContainer(deployment, envParams.withPostgres.prepare);
+      } else {
+        addPrepareDbInitContainer(deployment);
+      }
     }
   }
 

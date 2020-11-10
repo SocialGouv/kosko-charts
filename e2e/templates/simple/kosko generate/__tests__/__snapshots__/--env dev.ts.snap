@@ -157,6 +157,7 @@ spec:
               $do$;
         - command:
             - psql
+            - '-e'
             - '--dbname'
             - autodevops_8843083
             - '-c'
@@ -335,6 +336,7 @@ spec:
               $do$;
         - command:
             - psql
+            - '-e'
             - '--dbname'
             - autodevops_8843083
             - '-c'
@@ -648,6 +650,7 @@ spec:
               $do$;
         - command:
             - psql
+            - '-e'
             - '--dbname'
             - autodevops_8843083
             - '-c'
