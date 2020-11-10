@@ -78,7 +78,7 @@ export const addCreateDbInitContainer = (
     command: [
       "sh",
       "-c",
-      `psql -e --dbname postgres -c "CREATE DATABASE \\"${databaseParameters.database}\\";"; exit 0`,
+      `psql -e --dbname postgres -c "CREATE DATABASE ${databaseParameters.database};"; exit 0`,
     ],
     name: "create-db",
   });
