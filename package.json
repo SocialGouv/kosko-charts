@@ -6,13 +6,13 @@
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
     "@kubernetes-models/sealed-secrets": "^1.0.1",
-    "@sindresorhus/is": "^4.0.0"
+    "@sindresorhus/is": "^4.0.0",
+    "@kosko/env": "^0.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
-    "@kosko/env": "^0.5.2",
     "@socialgouv/eslint-config-recommended": "^1.46.0",
     "@socialgouv/eslint-config-typescript": "^1.46.0",
     "@socialgouv/kosko-charts": "link:./src",

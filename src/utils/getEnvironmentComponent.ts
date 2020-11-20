@@ -1,12 +1,11 @@
 import type { Environment } from "@kosko/env";
-// eslint-disable-next-line
-// @ts-expect-error
-import { formatPath } from "@kosko/env/dist/paths.js";
 import { migrateString } from "@kosko/migrate";
 import { existsSync, readFileSync } from "fs";
 import { Module } from "module";
 import { join } from "path";
 import { runInThisContext } from "vm";
+
+import { formatPath } from "./@kosko/env/paths";
 
 export function tryRequireComponent(
   cwd: string,
