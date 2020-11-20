@@ -3,22 +3,6 @@
 exports[`should return create an job 1`] = `
 Array [
   Object {
-    "apiVersion": "v1",
-    "kind": "ConfigMap",
-    "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
-      "labels": Object {
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
-      },
-      "namespace": "sample-42-my-test",
-    },
-  },
-  Object {
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
@@ -32,7 +16,7 @@ Array [
         "team": "sample",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-secret",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -79,7 +63,7 @@ Array [
                   },
                 },
               ],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
               "imagePullPolicy": "IfNotPresent",
               "name": "create-db-user",
               "resources": Object {
@@ -97,6 +81,7 @@ Array [
           "restartPolicy": "Never",
         },
       },
+      "ttlSecondsAfterFinished": 86400,
     },
   },
   Object {
@@ -140,22 +125,6 @@ required \\"CI_PROJECT_NAME\\": \\"undefined\\" should be defined
 exports[`should use custom pgHost 1`] = `
 Array [
   Object {
-    "apiVersion": "v1",
-    "kind": "ConfigMap",
-    "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
-      "labels": Object {
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
-      },
-      "namespace": "sample-42-my-test",
-    },
-  },
-  Object {
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
@@ -169,7 +138,7 @@ Array [
         "team": "sample",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-next-app-secret",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -216,7 +185,7 @@ Array [
                   },
                 },
               ],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
               "imagePullPolicy": "IfNotPresent",
               "name": "create-db-user",
               "resources": Object {
@@ -234,6 +203,7 @@ Array [
           "restartPolicy": "Never",
         },
       },
+      "ttlSecondsAfterFinished": 86400,
     },
   },
   Object {

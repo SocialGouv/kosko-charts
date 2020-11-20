@@ -1,15 +1,13 @@
 import type { Environment } from "@kosko/env";
-import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
-import { ok } from "assert";
 
 import type { DeploymentParams } from "../../utils/createDeployment";
-import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { createSecret } from "../pg-secret";
 import { createDbJob } from "./create-db.job";
+import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
 
 const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
@@ -27,11 +25,11 @@ export const getDefaultPgParams = (
   } = process.env as Record<string, string>;
 
   return {
-    database: `autodevops_${sha}`,
+    ...getDevDatabaseParameters({
+      suffix: sha,
+    }),
     host: config.pgHost ?? getPgServerHostname(projectName, "dev"),
     name: `azure-pg-user-${sha}`,
-    password: `password_${sha}`,
-    user: `user_${sha}`,
   };
 };
 
@@ -44,7 +42,7 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-export const create = ({ env, config = {} }: CreateParams): unknown[] => {
+export const create = ({ config = {} }: CreateParams): unknown[] => {
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
@@ -54,24 +52,14 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     ...config, // create options
   };
 
-  /* SEALED-SECRET */
-  // try to import environment sealed-secret
-  const sealedSecret = loadYaml<SealedSecret>(env, `pg.sealed-secret.yaml`);
-  ok(sealedSecret, "Missing pg.sealed-secret.yaml");
-  // add gitlab annotations
-  updateMetadata(sealedSecret, {
-    annotations: envParams.annotations ?? {},
-    labels: envParams.labels ?? {},
-    namespace: envParams.namespace,
-  });
-  // add to deployment.envFrom
+  const secretNamespace = { name: `${process.env.CI_PROJECT_NAME}-secret` };
 
   const job = createDbJob(defaultParams);
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
     name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
-    namespace: envParams.namespace,
+    namespace: secretNamespace,
   });
 
   const secret = createSecret(envParams);
@@ -81,5 +69,5 @@ export const create = ({ env, config = {} }: CreateParams): unknown[] => {
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
-  return [sealedSecret, job, secret];
+  return [job, secret];
 };

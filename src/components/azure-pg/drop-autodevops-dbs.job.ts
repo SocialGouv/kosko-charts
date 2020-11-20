@@ -1,21 +1,15 @@
-import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 import { Job } from "kubernetes-models/batch/v1/Job";
 
-const assert = assertEnv(["CI_COMMIT_SHORT_SHA"]);
-export const dropDbJob = ({
-  database,
-  secretRefName = `azure-pg-admin-user`,
-  user,
-}: {
-  database: string;
+interface DropAutodevopsDbsJobArgs {
   secretRefName?: string;
-  user: string;
-}): Job => {
-  assert();
+}
 
+export const dropAutodevopsDbsJob = ({
+  secretRefName = `azure-pg-admin-user`,
+}: DropAutodevopsDbsJobArgs = {}): Job => {
   return new Job({
     metadata: {
-      name: `drop-azure-db-${process.env.CI_COMMIT_SHORT_SHA}`,
+      name: `drop-azure-autodevops-dbs-${process.env.CI_COMMIT_SHORT_SHA}`,
     },
     spec: {
       backoffLimit: 0,
@@ -24,17 +18,7 @@ export const dropDbJob = ({
         spec: {
           containers: [
             {
-              command: ["drop-db-user"],
-              env: [
-                {
-                  name: "DROP_DATABASE",
-                  value: database,
-                },
-                {
-                  name: "DROP_USER",
-                  value: user,
-                },
-              ],
+              command: ["drop-autodevops-dbs"],
               envFrom: [
                 {
                   secretRef: {
@@ -45,7 +29,7 @@ export const dropDbJob = ({
               image:
                 "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
               imagePullPolicy: "IfNotPresent",
-              name: "drop-db-user",
+              name: "drop-autodevops-dbs",
               resources: {
                 limits: {
                   cpu: "300m",

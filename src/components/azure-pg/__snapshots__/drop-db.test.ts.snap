@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should customize secret and extensions when running drop-db 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "drop-azure-db-b123a99",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "drop-db-user",
+            ],
+            "env": Array [
+              Object {
+                "name": "DROP_DATABASE",
+                "value": "some-db",
+              },
+              Object {
+                "name": "DROP_USER",
+                "value": "some-user",
+              },
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "some-secret",
+                },
+              },
+            ],
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "drop-db-user",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "256Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;
+
+exports[`should use defaults when running drop-db 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "drop-azure-db-b123a99",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "drop-db-user",
+            ],
+            "env": Array [
+              Object {
+                "name": "DROP_DATABASE",
+                "value": "some-db",
+              },
+              Object {
+                "name": "DROP_USER",
+                "value": "some-user",
+              },
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "azure-pg-admin-user",
+                },
+              },
+            ],
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "drop-db-user",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "256Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;

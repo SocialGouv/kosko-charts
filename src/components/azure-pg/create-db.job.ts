@@ -17,6 +17,7 @@ export const createDbJob = ({
 }): Job => {
   const job = new Job({
     spec: {
+      ttlSecondsAfterFinished: 86400,
       backoffLimit: 0,
       template: {
         spec: {
@@ -49,7 +50,7 @@ export const createDbJob = ({
                 },
               ],
               image:
-                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:0.28.0",
+                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
               imagePullPolicy: "IfNotPresent",
               name: "create-db-user",
               resources: {
