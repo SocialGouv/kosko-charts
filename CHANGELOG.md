@@ -1,3 +1,11 @@
+# [4.0.0-beta.8](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.7...v4.0.0-beta.8) (2020-11-20)
+
+
+### Features
+
+* **utils:** add @kosko/env/dist/paths.js wrapper ([11fb2ed](https://github.com/SocialGouv/kosko-charts/commit/11fb2ed1b02c808593d16b18b78742af6f20d502))
+* **utils:** add @kosko/env/dist/paths.js wrapper (2) ([b8bf057](https://github.com/SocialGouv/kosko-charts/commit/b8bf05754100119faa0c4f1a52bc2d6a077ae4fb))
+
 # [4.0.0-beta.7](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.6...v4.0.0-beta.7) (2020-11-20)
 
 
