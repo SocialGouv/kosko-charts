@@ -1,3 +1,4 @@
+import { IIoK8sApiAppsV1DeploymentSpec } from "kubernetes-models/_definitions/IoK8sApiAppsV1DeploymentSpec";
 import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1/ObjectMeta";
 
 import { merge } from "./merge";
@@ -9,12 +10,18 @@ interface Metadatas {
   name?: string;
 }
 
+function isIIoK8sApiAppsV1DeploymentSpecLike(
+  spec: unknown
+): spec is IIoK8sApiAppsV1DeploymentSpec {
+  return Boolean(spec && (spec as { template: unknown }).template);
+}
+
 // apply some data to a manifest : annotations, labels, namespace
 export const updateMetadata = (
   manifest:
     | {
         metadata?: IObjectMeta;
-        spec?: { template?: { metadata?: IObjectMeta } };
+        spec?: IIoK8sApiAppsV1DeploymentSpec | unknown;
       }
     | undefined,
   metadata: Metadatas
@@ -35,7 +42,7 @@ export const updateMetadata = (
 
   if (name) manifest.metadata.name = name;
 
-  if (manifest.spec && manifest.spec.template) {
+  if (isIIoK8sApiAppsV1DeploymentSpecLike(manifest.spec)) {
     manifest.spec.template.metadata = merge(
       manifest.spec.template.metadata ?? {},
       {
