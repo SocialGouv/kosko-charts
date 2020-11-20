@@ -1,3 +1,18 @@
+# [4.0.0-beta.7](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.6...v4.0.0-beta.7) (2020-11-20)
+
+
+### Bug Fixes
+
+* **azure-db:** run create-db jobs in project secret namespace ([#273](https://github.com/SocialGouv/kosko-charts/issues/273)) ([3d34b10](https://github.com/SocialGouv/kosko-charts/commit/3d34b106408d8b8d289e6728a72799d5a7aa47bb))
+* **azure-db:** upgrade docker deps ([#278](https://github.com/SocialGouv/kosko-charts/issues/278)) ([d618868](https://github.com/SocialGouv/kosko-charts/commit/d618868cc2440b4b8b21e6fa757404029e7d7880))
+* **azure-pg:** dont try to load admin secret ([#276](https://github.com/SocialGouv/kosko-charts/issues/276)) ([9f995bf](https://github.com/SocialGouv/kosko-charts/commit/9f995bf95fe8a81a02d2ece30a89c6a9862d6373))
+* **azure-pg:** set spec.ttlSecondsAfterFinished to 24h ([#277](https://github.com/SocialGouv/kosko-charts/issues/277)) ([e4d5748](https://github.com/SocialGouv/kosko-charts/commit/e4d574890e3a833b26f0914ac1b41acf05983ef4))
+
+
+### Features
+
+* **azure-pg:** add drop-autodevops-dbs job ([#274](https://github.com/SocialGouv/kosko-charts/issues/274)) ([c149410](https://github.com/SocialGouv/kosko-charts/commit/c149410205d37f909341a07654b2abbd71fcd486))
+
 ## [3.2.2](https://github.com/SocialGouv/kosko-charts/compare/v3.2.1...v3.2.2) (2020-11-05)
 
 
