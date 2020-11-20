@@ -42,7 +42,7 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-export const create = ({ config = {} }: CreateParams): unknown[] => {
+export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
@@ -69,5 +69,6 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
+
   return [job, secret];
 };
