@@ -7,7 +7,6 @@ export const getManifestByKind = (
   manifests: { kind: string }[],
   manifestType: ManifestType
 ): Deployment | Ingress | undefined =>
-  //@ts-expect-error
   manifests.find(
     (manifest: { kind: string }) => manifest.kind === manifestType.kind
   );

@@ -1,11 +1,12 @@
-/* eslint-disable simple-import-sort/sort */
+//
+
 import type { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
 
+import type { DeploymentParams } from "../../utils/createDeployment";
 import type { AppConfig } from "../app";
 import { create as createApp } from "../app";
-import type { DeploymentParams } from "../../utils/createDeployment";
 
 type CreateResult = unknown[];
 

@@ -31,8 +31,6 @@ spec:
         owner: sample-kosko
         team: sample-kosko
     spec:
-      imagePullSecrets:
-        - name: regcred
       containers:
         - image: >-
             registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/hasura:1.2.3
@@ -73,24 +71,26 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
+      imagePullSecrets:
+        - name: regcred
       initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
-            limits:
-              cpu: 20m
-              memory: 32Mi
+        - env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
           envFrom:
             - secretRef:
                 name: azure-pg-user
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+          imagePullPolicy: Always
+          name: wait-for-postgres
+          resources:
+            limits:
+              cpu: 20m
+              memory: 32Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
 apiVersion: apps/v1
 kind: Deployment
 ---
@@ -148,8 +148,6 @@ spec:
         team: sample-kosko
         component: next
     spec:
-      imagePullSecrets:
-        - name: some-secret
       containers:
         - image: >-
             registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/www:1.2.3
@@ -190,24 +188,26 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
+      imagePullSecrets:
+        - name: some-secret
       initContainers:
-        - name: wait-for-postgres
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              cpu: 5m
-              memory: 16Mi
-            limits:
-              cpu: 20m
-              memory: 32Mi
+        - env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
           envFrom:
             - secretRef:
                 name: azure-pg-user
-          env:
-            - name: WAIT_FOR_RETRIES
-              value: '24'
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+          imagePullPolicy: Always
+          name: wait-for-postgres
+          resources:
+            limits:
+              cpu: 20m
+              memory: 32Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
 apiVersion: apps/v1
 kind: Deployment
 ---
