@@ -5,7 +5,7 @@ import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
 
-export default () => {
+export default (): { kind: string }[] => {
   if (env.env === "dev") {
     return create({
       env,
