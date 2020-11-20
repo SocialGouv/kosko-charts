@@ -17,7 +17,6 @@ export const createDbJob = ({
 }): Job => {
   const job = new Job({
     spec: {
-      ttlSecondsAfterFinished: 86400,
       backoffLimit: 0,
       template: {
         spec: {
@@ -68,6 +67,7 @@ export const createDbJob = ({
           restartPolicy: "Never",
         },
       },
+      ttlSecondsAfterFinished: 86400,
     },
   });
   return job;

@@ -6,8 +6,8 @@ test("should customize secret and extensions when running drop-db", () => {
   expect(
     dropDbJob({
       database: "some-db",
-      user: "some-user",
       secretRefName: "some-secret",
+      user: "some-user",
     })
   ).toMatchSnapshot();
 });

@@ -9,10 +9,9 @@ import type { DeploymentParams } from "../../utils/createDeployment";
 // renovate: datasource=docker depName=redis versioning=6.0.5-alpine3.12
 const REDIS_VERSION = "6.0.5-alpine3.12";
 
-const redisDeploymentParams: Partial<Omit<
-  DeploymentParams,
-  "containerPort"
->> = {
+const redisDeploymentParams: Partial<
+  Omit<DeploymentParams, "containerPort">
+> = {
   labels: {
     component: "redis",
   },
