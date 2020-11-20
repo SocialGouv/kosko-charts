@@ -5,7 +5,7 @@ exports[`--env preprod : should generate dev manifest 1`] = `
 metadata:
   annotations:
     field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
+    field.cattle.io/projectId: 'c-bd7z2:p-7ms8p'
     git/branch: e2e-branch
     git/remote: 'git@github.com:SocialGouv/sample-kosko.git'
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -274,7 +274,7 @@ metadata:
   namespace: sample-next-app-24-preprod-dev2
 spec:
   rules:
-    - host: preprod-sample-kosko.dev.fabrique.social.gouv.fr
+    - host: preprod-sample-kosko.dev2.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -283,7 +283,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - preprod-sample-kosko.dev.fabrique.social.gouv.fr
+        - preprod-sample-kosko.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress"

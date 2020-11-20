@@ -71,8 +71,6 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user
-      imagePullSecrets:
-        - name: regcred
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES

@@ -5,7 +5,7 @@ exports[`--env dev : should generate dev manifest 1`] = `
 metadata:
   annotations:
     field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-kk8xm:p-4fxg8'
+    field.cattle.io/projectId: 'c-bd7z2:p-7ms8p'
     git/branch: e2e-branch
     git/remote: 'git@github.com:SocialGouv/sample-kosko.git'
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -274,7 +274,7 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   rules:
-    - host: e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
+    - host: e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -283,7 +283,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - e2e-branch-42-sample-kosko.dev.fabrique.social.gouv.fr
+        - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt
 apiVersion: extensions/v1beta1
 kind: Ingress"

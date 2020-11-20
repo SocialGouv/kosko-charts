@@ -25,16 +25,12 @@ test("should create app with pgweb config", () => {
                 "path": "/",
                 "port": "http",
               },
-              "initialDelaySeconds": 5,
-              "timeoutSeconds": 3,
             },
             "readinessProbe": Object {
               "httpGet": Object {
                 "path": "/",
                 "port": "http",
               },
-              "initialDelaySeconds": 5,
-              "timeoutSeconds": 3,
             },
             "resources": Object {
               "limits": Object {
@@ -44,6 +40,12 @@ test("should create app with pgweb config", () => {
               "requests": Object {
                 "cpu": "100m",
                 "memory": "64Mi",
+              },
+            },
+            "startupProbe": Object {
+              "httpGet": Object {
+                "path": "/",
+                "port": "http",
               },
             },
           },
@@ -94,16 +96,12 @@ test("should create app with pgweb config for production", () => {
                 "path": "/",
                 "port": "http",
               },
-              "initialDelaySeconds": 5,
-              "timeoutSeconds": 3,
             },
             "readinessProbe": Object {
               "httpGet": Object {
                 "path": "/",
                 "port": "http",
               },
-              "initialDelaySeconds": 5,
-              "timeoutSeconds": 3,
             },
             "resources": Object {
               "limits": Object {
@@ -113,6 +111,12 @@ test("should create app with pgweb config for production", () => {
               "requests": Object {
                 "cpu": "100m",
                 "memory": "64Mi",
+              },
+            },
+            "startupProbe": Object {
+              "httpGet": Object {
+                "path": "/",
+                "port": "http",
               },
             },
           },

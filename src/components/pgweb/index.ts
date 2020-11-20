@@ -15,16 +15,12 @@ const pgwebConfig: Partial<AppConfig> = {
         path: "/",
         port: "http",
       },
-      initialDelaySeconds: 5,
-      timeoutSeconds: 3,
     },
     readinessProbe: {
       httpGet: {
         path: "/",
         port: "http",
       },
-      initialDelaySeconds: 5,
-      timeoutSeconds: 3,
     },
     resources: {
       limits: {
@@ -34,6 +30,12 @@ const pgwebConfig: Partial<AppConfig> = {
       requests: {
         cpu: "100m",
         memory: "64Mi",
+      },
+    },
+    startupProbe: {
+      httpGet: {
+        path: "/",
+        port: "http",
       },
     },
   },
