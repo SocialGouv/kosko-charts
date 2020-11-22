@@ -1083,15 +1083,15 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@kosko/cli@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kosko/cli/-/cli-1.0.0.tgz#39451a308dee9c4f2755ea4b6e0c9abaee022f2d"
-  integrity sha512-c9hSf7PbFX1KUcN2JAKcewLDTocHTY9lvpovp0k/3ZgXeZ3mQbPRPMxESl4Aln/UjHucHJStd+1PJVV2AemNTQ==
+"@kosko/cli@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kosko/cli/-/cli-1.0.1.tgz#67e947067b8126fe3fdbe3f2e10162d9534dd2a2"
+  integrity sha512-VNX6ds6KcOEySvnE25R22iDl9MLW9rfHahpX1x6fEQ+agOU2SgaY4/jEs27yy9jYXRdlxIuBiuL0U+DUkPcWfQ==
   dependencies:
-    "@kosko/config" "^1.0.0"
-    "@kosko/generate" "^1.0.0"
-    "@kosko/migrate" "^1.0.0"
-    "@kosko/require" "^1.0.0"
+    "@kosko/config" "^1.0.1"
+    "@kosko/generate" "^1.0.1"
+    "@kosko/migrate" "^1.0.1"
+    "@kosko/require" "^1.0.1"
     chalk "^4.1.0"
     clean-stack "^3.0.0"
     debug "^4.2.0"
@@ -1104,10 +1104,10 @@
     tslib "^2.0.3"
     yargs "^16.1.0"
 
-"@kosko/config@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kosko/config/-/config-1.0.0.tgz#3f0efd1e2b256e17fa478ee8b81144fa443bcd91"
-  integrity sha512-jJes2EfoShgI86ZBFKpBzkBfoUT/GU3GE0zpXrzBaiXlbS3QIblqyy9q5c8Jnnq3GRTmZjM9vEXl/sArnFBvMQ==
+"@kosko/config@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kosko/config/-/config-1.0.1.tgz#363d2f35cf780b53d98e35c5b42caccfd9d5f942"
+  integrity sha512-scS7rk/yJ6WwUEksaWmgXY65BPK+brKRxUoR1sIv0+UT0ks1xl/IcyEt9i171beL6NQnT0lM5fDMUKgxAqbPGg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     debug "^4.2.0"
@@ -1124,27 +1124,27 @@
     is-plain-object "^5.0.0"
     tslib "^2.0.3"
 
-"@kosko/generate@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kosko/generate/-/generate-1.0.0.tgz#9d28ec0d9cddd5b57672145abd535b20bb87cf41"
-  integrity sha512-Rqkp/xGAV5sqdgmh0Y26UEI83pJrlv6u+78ZguVDLn7zvIxbvOswn5BOJSFZLOwzFVcea/RYga1jVHK6vvC+uw==
+"@kosko/generate@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kosko/generate/-/generate-1.0.1.tgz#d3f3487fe5f5e9040a91ad2ace3e82330baf4d46"
+  integrity sha512-w8oPRZ8NUCBifq4fAaMsdLudGjvZ9dGQIkXRUvRTeOnMj2M2ut1gNjLr34dXeagjkQa666Jz82v7ioWIRVFsAA==
   dependencies:
-    "@kosko/require" "^1.0.0"
+    "@kosko/require" "^1.0.1"
     debug "^4.2.0"
     fast-glob "^3.2.4"
     js-yaml "^3.14.0"
     tslib "^2.0.3"
 
-"@kosko/migrate@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kosko/migrate/-/migrate-1.0.0.tgz#07b216e0e5e12e1c378b1ac34138e7298044bea0"
-  integrity sha512-gTCppt5xVf6o/1CgihPkLutuTxHtpB0qeA06ZTa4NAXDnhiJzt7aOSHO6bWO09m5oVGyWr09PdjnXFgWkQlePg==
+"@kosko/migrate@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kosko/migrate/-/migrate-1.0.1.tgz#cd9403c7629e6a41ac804c4a7e47ec7af7e73b20"
+  integrity sha512-RzcxMfiPgZsz5s5qJI03Vkj2gN9+b1g/zbwVOdlrrJybNa6lQ+pnpk7HJ80nZ+Tu1IA77MrTE1R/3K+qLXyVwQ==
   dependencies:
-    "@kosko/yaml" "^0.1.0"
+    "@kosko/yaml" "^0.1.1"
     camelcase "^6.1.0"
     tslib "^2.0.3"
 
-"@kosko/require@^1.0.0", "@kosko/require@^1.0.1":
+"@kosko/require@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@kosko/require/-/require-1.0.1.tgz#423d985bc38cc6017e4e12ea762d74bcf21d9a50"
   integrity sha512-5ZXKIEDd6YSxih35YeVt8rmin3P5NcAl7OrcIrUyuMlnozqjCxOXCmZ8H0Stmpmt3T4UfKtU+C9p84xY56QwOw==
@@ -1152,10 +1152,10 @@
     resolve "^1.17.0"
     tslib "^2.0.3"
 
-"@kosko/yaml@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@kosko/yaml/-/yaml-0.1.0.tgz#9ec8fd0f5cda7b48906cfac095382041a1446a74"
-  integrity sha512-ovV8s7ATiFwi5Cti1OQKEygHeZ5TysnbxyUgv1B/W0u7ZphdYSEfGq5gBjFhzlAuqTXZu9rUq9befFqSncWWHA==
+"@kosko/yaml@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@kosko/yaml/-/yaml-0.1.1.tgz#e2e7a97a4dec9f353c30f5182aec91567dc84f27"
+  integrity sha512-W4G+RGoi/yKaWR5VD97zSWBZGF7qnLXsYjXmgPv33A8YBpt3yHgg075t6FP1OJzt2kMLu8tNf+DzJHHrKGa9sA==
   dependencies:
     debug "^4.2.0"
     js-yaml "^3.14.0"
@@ -4021,12 +4021,12 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-kosko@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/kosko/-/kosko-1.0.0.tgz#367f25cbad48a596163a8f58692c245a8cf97c52"
-  integrity sha512-msKCZx6QVj3RE3E8sr1I5p89NmzJXA9P8fHiSDABw9c66cJucYgW3FF7DOWhKKT0LBQBT0tNrj6Sz1MoiuiVEw==
+kosko@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/kosko/-/kosko-1.0.1.tgz#7db58ae70a89d0262a6d3607a50614c1bedfccdb"
+  integrity sha512-GoawARYscFNzuusUPvL6cVNrFLvRmDGPpAR1nbTCgUzCyp1P/SfxvLm/ALj2G+Mp+SIIoYZ68PHOyYurg412dA==
   dependencies:
-    "@kosko/cli" "^1.0.0"
+    "@kosko/cli" "^1.0.1"
     import-local "^3.0.2"
 
 kubernetes-models@^1.0.1:
