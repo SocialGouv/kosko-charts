@@ -1,14 +1,18 @@
-//import env from "@kosko/env";
-//import { metadataFromParams } from "@socialgouv/kosko-charts/components/app/metadata";
+import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 import { Job } from "kubernetes-models/batch/v1/Job";
 
+const assert = assertEnv(["CI_COMMIT_SHORT_SHA"]);
 export const dropDbJob = ({
-  //@ts-expect-error
   database,
-  //@ts-expect-error
-  user,
   secretRefName = `azure-pg-admin-user`,
+  user,
+}: {
+  database: string;
+  secretRefName?: string;
+  user: string;
 }): Job => {
+  assert();
+
   return new Job({
     metadata: {
       name: `drop-azure-db-${process.env.CI_COMMIT_SHORT_SHA}`,

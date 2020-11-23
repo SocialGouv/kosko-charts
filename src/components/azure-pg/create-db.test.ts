@@ -6,10 +6,10 @@ test("should customize secret and extensions when running create-db", () => {
   expect(
     createDbJob({
       database: "some-db",
-      user: "some-user",
+      extensions: "some-extension",
       password: "some-password",
       secretRefName: "some-secret",
-      extensions: "some-extension",
+      user: "some-user",
     })
   ).toMatchSnapshot();
 });
@@ -18,8 +18,8 @@ test("should use defaults when running create-db", () => {
   expect(
     createDbJob({
       database: "some-db",
-      user: "some-user",
       password: "some-password",
+      user: "some-user",
     })
   ).toMatchSnapshot();
 });

@@ -1,12 +1,11 @@
-import { Environment } from "@kosko/env";
-// eslint-disable-next-line
-// @ts-expect-error
-import { formatPath } from "@kosko/env/dist/paths.js";
+import type { Environment } from "@kosko/env";
 import { migrateString } from "@kosko/migrate";
 import { existsSync, readFileSync } from "fs";
 import { Module } from "module";
 import { join } from "path";
 import { runInThisContext } from "vm";
+
+import { formatPath } from "./@kosko/env/paths";
 
 export function tryRequireComponent(
   cwd: string,
@@ -36,10 +35,10 @@ export function getEnvironmentComponent(
   // env => [base, env args]
   // env => [env args]
   // env => ?
-  const legitEnv = envs.reverse().find((env) => {
+  const legitEnv = envs.reverse().find((environment) => {
     const path = formatPath(component, {
       component: filename,
-      environment: env,
+      environment,
     });
     return existsSync(join(cwd, path));
   });
@@ -62,7 +61,7 @@ export function koskoMigrateLoader(id: string): string {
 }
 
 // TODO: export to kosko-charts
-export function loadYaml<T>(env: Environment, path: string): T {
+export function loadYaml<T>(env: Environment, path: string): T | undefined {
   const [obj] = getEnvironmentComponent(env, path, {
     loader: koskoMigrateLoader,
   });

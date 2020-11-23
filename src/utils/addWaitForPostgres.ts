@@ -1,4 +1,4 @@
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { getDefaultPgParams } from "../components/azure-pg";
 import { addInitContainer } from "./addInitContainer";

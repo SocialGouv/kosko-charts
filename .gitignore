@@ -1,6 +1,7 @@
 /components
 /environments
 /lib
+/templates/*/yarn.lock
 /tsconfig.build.tsbuildinfo
 /types
 /utils

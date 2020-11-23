@@ -6,6 +6,7 @@ const ignorePatterns = [
   "<rootDir>/e2e",
   "<rootDir>/environments",
   "<rootDir>/types",
+  "<rootDir>/templates",
 ];
 
 module.exports = {

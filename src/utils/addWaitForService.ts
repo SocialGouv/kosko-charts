@@ -1,4 +1,4 @@
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { addInitContainer } from "./addInitContainer";
 import { waitForService } from "./waitForService";
