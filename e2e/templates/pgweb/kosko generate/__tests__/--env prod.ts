@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line import/default
 import { config } from "dotenv";
-import { KOSKO_BIN, template, TIMEOUT } from "e2e/helpers";
+import { KOSKO_BIN, template, TIMEOUT } from "e2e/templates/helpers";
 import execa from "execa";
 import { basename, resolve } from "path";
 
