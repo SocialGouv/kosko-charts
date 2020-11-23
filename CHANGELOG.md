@@ -1,3 +1,17 @@
+# [4.0.0-beta.9](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.8...v4.0.0-beta.9) (2020-11-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kosko/env to v1 ([#294](https://github.com/SocialGouv/kosko-charts/issues/294)) ([99c19ba](https://github.com/SocialGouv/kosko-charts/commit/99c19bad8acc4945e00a41c2efb387a23b286c98))
+* **deps:** update dependency fp-ts to ^2.8.6 ([#289](https://github.com/SocialGouv/kosko-charts/issues/289)) ([8565dd7](https://github.com/SocialGouv/kosko-charts/commit/8565dd7c477a7a9623f70321fb793775fda72a27))
+* **deps:** update dependency fp-ts to ^2.9.0 ([#296](https://github.com/SocialGouv/kosko-charts/issues/296)) ([5788eb9](https://github.com/SocialGouv/kosko-charts/commit/5788eb9a28b10f1c43604578bc517685f8bb6c9b))
+
+
+### Reverts
+
+* downgrade of @kosko/env ([4bbaf6c](https://github.com/SocialGouv/kosko-charts/commit/4bbaf6ceb7ec81c2e05ade2c3f823b26724afca5))
+
 ## [3.2.5](https://github.com/SocialGouv/kosko-charts/compare/v3.2.4...v3.2.5) (2020-11-23)
 
 
