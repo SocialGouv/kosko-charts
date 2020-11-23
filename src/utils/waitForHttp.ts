@@ -12,7 +12,7 @@ export const waitForHttp = ({
   const retries = 120; // 5s * (120) = 10min
   return {
     name: `wait-for-${name}`,
-    image: "curlimages/curl:7.73.0",
+    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http:2.0.0`,
     imagePullPolicy: "Always",
     resources: {
       requests: {
@@ -24,18 +24,6 @@ export const waitForHttp = ({
         memory: "32Mi",
       },
     },
-    command: [
-      "sh",
-      "-c",
-      `
-retry=${retries};
-while ! curl -sSfL '${url}' && [[ $(( retry-- )) -gt 0 ]];
-do
-  echo 'Waiting for ${name} to be available on ${url} ($(( retry )))' ; sleep 5s ;
-done ;
-[[ $(( retry )) -lt 1 ]] && exit 128;
-echo Ready;
-`,
-    ],
+    args: [url],
   };
 };
