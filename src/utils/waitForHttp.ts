@@ -9,7 +9,6 @@ export const waitForHttp = ({
   name,
   url,
 }: WaitForHttpParams): IIoK8sApiCoreV1Container => {
-  const retries = 120; // 5s * (120) = 10min
   return {
     name: `wait-for-${name}`,
     image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http:2.0.0`,
