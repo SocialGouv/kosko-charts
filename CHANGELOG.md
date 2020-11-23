@@ -1,3 +1,10 @@
+# [4.0.0-beta.11](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.10...v4.0.0-beta.11) (2020-11-23)
+
+
+### Reverts
+
+* Revert "ci(github): build before lint" ([809583d](https://github.com/SocialGouv/kosko-charts/commit/809583d78801ab5c2cd93d8899e0c856f98f18e9))
+
 # [4.0.0-beta.10](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.9...v4.0.0-beta.10) (2020-11-23)
 
 
