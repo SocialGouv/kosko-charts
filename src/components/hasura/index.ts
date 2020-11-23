@@ -30,14 +30,6 @@ export const create = (
     config: merge(
       {
         container: {
-          livenessProbe: {
-            initialDelaySeconds: 60,
-            periodSeconds: 20,
-          },
-          readinessProbe: {
-            initialDelaySeconds: 60,
-            periodSeconds: 20,
-          },
           resources: {
             limits: {
               cpu: "500m",

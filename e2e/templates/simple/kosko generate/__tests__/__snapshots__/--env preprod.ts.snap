@@ -59,8 +59,8 @@ spec:
             httpGet:
               path: /healthz
               port: http
-            initialDelaySeconds: 60
-            periodSeconds: 20
+            initialDelaySeconds: 30
+            periodSeconds: 5
             timeoutSeconds: 5
           name: hasura
           ports:
@@ -71,8 +71,8 @@ spec:
             httpGet:
               path: /healthz
               port: http
-            initialDelaySeconds: 60
-            periodSeconds: 20
+            initialDelaySeconds: 0
+            periodSeconds: 5
             successThreshold: 1
             timeoutSeconds: 1
           resources:
