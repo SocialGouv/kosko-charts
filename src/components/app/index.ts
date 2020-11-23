@@ -68,9 +68,9 @@ export const create: createFn = (
   // kosko component env values
   const envParams = merge(
     defaultEnvParams, // set name as default if not provided
-    gitlab(process.env),
+    config ?? {}, // create options
     env.component(name) as AppConfig, // kosko env overrides
-    config ?? {} // create options
+    gitlab(process.env),
   );
 
   const { containerPort, servicePort } = envParams;
