@@ -40,7 +40,6 @@ spec:
         app.gitlab.com/app: socialgouv-sample-next-app
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
-        sealedsecrets.bitnami.com/cluster-wide: 'true'
       creationTimestamp: null
       labels:
         application: sample-next-app
