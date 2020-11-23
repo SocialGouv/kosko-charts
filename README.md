@@ -40,7 +40,7 @@ Providing a common Kubernetes (k8s) configuration to SocialGouv apps is a tricky
 Powered by [Kosko](https://github.com/tommy351/kosko), in this lib we provide default SocialGouv components and environments. We expect project to use and extend them at will.
 
 ```sh
-$ npx degit "SocialGouv/kosko-charts/templates/simple#v4.0.0-beta.9" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/simple#v4.0.0-beta.10" .k8s
 $ yarn --cwd .k8s
 # on GitLab
 $ yarn --cwd .k8s kosko generate --env dev
@@ -58,7 +58,7 @@ $ DOTENV_CONFIG_PATH=environments/.gitlab.env yarn --cwd .k8s dev --require dote
 We use [degit](https://github.com/Rich-Harris/degit) to scaffold the deployment config.
 
 ```sh
-$ npx degit "SocialGouv/kosko-charts/templates/simple#v4.0.0-beta.9" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/simple#v4.0.0-beta.10" .k8s
 ```
 
 `.k8s` is the target deployment config package folder.

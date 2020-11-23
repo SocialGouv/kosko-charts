@@ -1,3 +1,22 @@
+# [4.0.0-beta.10](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.9...v4.0.0-beta.10) (2020-11-23)
+
+
+### Features
+
+* **components:** change envParams precedence ([a0a5b56](https://github.com/SocialGouv/kosko-charts/commit/a0a5b560be1f82c32297315aaccca759dfbf6e56))
+
+
+### BREAKING CHANGES
+
+* **components:** The local config is now the lowers in the priority
+
+We merge the params from
+
+1. local app components params
+1. the defined config in the components folder
+1. the defined config in the environement folder
+1. the process env
+
 # [4.0.0-beta.9](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.8...v4.0.0-beta.9) (2020-11-23)
 
 
