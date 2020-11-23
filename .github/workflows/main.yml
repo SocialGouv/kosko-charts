@@ -48,6 +48,9 @@ jobs:
       - name: Installing
         run: yarn --frozen-lockfile --perfer-offline --link-duplicates
 
+      - name: Build
+        run: yarn build --outDir lib
+
       - name: Lint
         run: yarn lint
 
@@ -57,9 +60,6 @@ jobs:
       - name: Send test coverage to codecov
         continue-on-error: true
         uses: codecov/codecov-action@v1
-
-      - name: Build
-        run: yarn build --outDir lib
 
       - name: Archive lib components
         uses: actions/upload-artifact@v2
