@@ -10,7 +10,7 @@
     "@sindresorhus/is": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.7",
+    "@babel/core": "^7.12.8",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-typescript": "^7.12.7",
     "@socialgouv/eslint-config-recommended": "^1.40.0",
