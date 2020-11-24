@@ -1,6 +1,6 @@
 const { defaults } = require("jest-config");
 
-const ignorePatterns = ["<rootDir>/src"];
+const ignorePatterns = ["<rootDir>/src", "__manifest_snapshots__"];
 
 module.exports = {
   rootDir: "../",
