@@ -140,6 +140,27 @@ $ npx degit "SocialGouv/kosko-charts/templates/pgweb#v4.0.0-beta.11" .k8s
 $ npx degit "SocialGouv/kosko-charts/templates/redis#v4.0.0-beta.11" .k8s
 ```
 
+### Testing
+
+`@socialgouv/kosko-charts` provides a snapshot testing strategy through [Jest](https://jestjs.io/).
+
+```
+# At the root of your kosko context
+$ cd .k8s
+$ npx jest --config @socialgouv/kosko-charts/testing/cases/jest.config.js
+```
+
+Our [`src/testing/cases/jest.config.ts`] will run default testing cases :
+
+- [kosko generate --env dev](src/testing/cases/kosko generate --env dev.ts)
+- [kosko generate --env preprod](src/testing/cases/kosko generate --env preprod.ts)
+- [kosko generate --env prod](src/testing/cases/kosko generate --env prod.ts)
+
+Using the global `environments/.gitlab.env` (if exists in your kosko context).
+In addition, it will try to load and merge it with `environments/<env>/.gitlab.env`.
+
+You wiil find a special snapshot directory named `__manifest_snapshots__` in your project to keep track of the tests result.
+
 <br>
 <br>
 <br>
