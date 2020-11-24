@@ -1,3 +1,10 @@
+# [3.3.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v3.2.5...v3.3.0-alpha.1) (2020-11-24)
+
+
+### Features
+
+* **testing:** add testing helper config ([86dbd17](https://github.com/SocialGouv/kosko-charts/commit/86dbd17a679427d64c47f6b96926ae1467bf55c1))
+
 # [4.0.0-beta.11](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.10...v4.0.0-beta.11) (2020-11-23)
 
 
