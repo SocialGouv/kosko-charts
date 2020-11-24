@@ -25,6 +25,8 @@ jobs:
           echo "::set-output name=yarn_cache::$(yarn cache dir)"
           #
           echo "Node $(node --version)"
+          echo "NPM $(npm --version)"
+          echo "Npx $(npx --version)"
           echo "Yarn $(yarn --version)"
           #
           # https://github.com/nodejs/node-v0.x-archive/issues/3911
