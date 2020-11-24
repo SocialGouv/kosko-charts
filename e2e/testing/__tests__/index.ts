@@ -1,5 +1,4 @@
 import { TIMEOUT } from "e2e/templates/helpers";
-// eslint-disable-next-line import/default
 import execa from "execa";
 import { resolve } from "path";
 
