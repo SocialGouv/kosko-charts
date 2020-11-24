@@ -1,7 +1,6 @@
 //
 import { config } from "dotenv";
 import { KOSKO_BIN, template, TIMEOUT } from "e2e/templates/helpers";
-// eslint-disable-next-line import/default
 import execa from "execa";
 import { basename, resolve } from "path";
 

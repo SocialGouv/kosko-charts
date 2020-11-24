@@ -1,6 +1,7 @@
 /components
 /environments
 /lib
+/testing
 /types
 /utils
 coverage

@@ -8,6 +8,7 @@ const ignorePatterns = [
   "<rootDir>/templates",
   "<rootDir>/testing",
   "<rootDir>/types",
+  "<rootDir>/templates",
 ];
 
 module.exports = {

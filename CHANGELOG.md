@@ -1,3 +1,17 @@
+# [3.3.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v3.2.5...v3.3.0-alpha.1) (2020-11-24)
+
+
+### Features
+
+* **testing:** add testing helper config ([86dbd17](https://github.com/SocialGouv/kosko-charts/commit/86dbd17a679427d64c47f6b96926ae1467bf55c1))
+
+# [4.0.0-beta.11](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.10...v4.0.0-beta.11) (2020-11-23)
+
+
+### Reverts
+
+* Revert "ci(github): build before lint" ([809583d](https://github.com/SocialGouv/kosko-charts/commit/809583d78801ab5c2cd93d8899e0c856f98f18e9))
+
 # [4.0.0-beta.10](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.9...v4.0.0-beta.10) (2020-11-23)
 
 
@@ -155,6 +169,7 @@ We merge the params from
 - **deps:** update dependency kubernetes-models to ^1.0.1 ([#233](https://github.com/SocialGouv/kosko-charts/issues/233)) ([2dccee3](https://github.com/SocialGouv/kosko-charts/commit/2dccee3766241430eea5538a061ff5a99e17e743))
 
 ### BREAKING CHANGES
+<<<<<<< HEAD
 
 - might break empty string pg secret generation
 
@@ -166,6 +181,19 @@ We merge the params from
 
 - might impact all component at runtime
 
+=======
+
+- might break empty string pg secret generation
+
+# [4.0.0-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2020-10-16)
+
+- refactor(environments)!: remove io-ts from gitlab env (#235) ([e955437](https://github.com/SocialGouv/kosko-charts/commit/e955437e5711ef5987c672c93b548fcd125b414c)), closes [#235](https://github.com/SocialGouv/kosko-charts/issues/235)
+
+### BREAKING CHANGES
+
+- might impact all component at runtime
+
+>>>>>>> SAVE-alpha
 # [4.0.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v3.1.0...v4.0.0-beta.1) (2020-10-16)
 
 - refactor(component)!: move createNamespace to components/ (#231) ([fb4e4e0](https://github.com/SocialGouv/kosko-charts/commit/fb4e4e0f95c93cd86d353838e0f0088fa3476ac6)), closes [#231](https://github.com/SocialGouv/kosko-charts/issues/231)
