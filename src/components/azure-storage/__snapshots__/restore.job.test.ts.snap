@@ -1,0 +1,441 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create restore job from dev to dev 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "restore-container-b123a99",
+    "namespace": "some-cool-project-secret",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "
+
+[ ! -z $SOURCE_CONTAINER ] || (echo \\"No SOURCE_CONTAINER\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_NAME ] || (echo \\"No SOURCE_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_KEY ] || (echo \\"No SOURCE_ACCOUNT_KEY\\"; exit 1)
+[ ! -z $DESTINATION_CONTAINER ] || (echo \\"No DESTINATION_CONTAINER\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_NAME ] || (echo \\"No DESTINATION_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_KEY ] || (echo \\"No DESTINATION_ACCOUNT_KEY\\"; exit 1)
+
+
+echo \\"starting restore container $SOURCE_CONTAINER into $DESTINATION_CONTAINER\\"
+
+# copy container
+az storage copy -r   --source-account-name \\"$SOURCE_ACCOUNT_NAME\\"   --source-account-key \\"$SOURCE_ACCOUNT_KEY\\"   --source-container \\"$SOURCE_CONTAINER\\"   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --destination-container \\"$DESTINATION_CONTAINER\\"
+
+# get original permission
+PUBLIC_ACCESS=\`az storage container show-permission   --account-name \\"$SOURCE_ACCOUNT_NAME\\"   --account-key \\"$SOURCE_ACCOUNT_KEY\\"   --name $SOURCE_CONTAINER | jq -r \\".publicAccess\\"\`
+
+# set original permission
+az storage container set-permission   --name $DESTINATION_CONTAINER   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --public-access $PUBLIC_ACCESS
+
+",
+            ],
+            "env": Array [
+              Object {
+                "name": "SOURCE_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_CONTAINER",
+                "value": "dev-files1",
+              },
+              Object {
+                "name": "DESTINATION_CONTAINER",
+                "value": "dev-files2",
+              },
+            ],
+            "envFrom": Array [],
+            "image": "mcr.microsoft.com/azure-cli:2.15.1",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "restore-db",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "512Mi",
+              },
+              "requests": Object {
+                "cpu": "50m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;
+
+exports[`should create restore job from dev to prod 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "restore-container-b123a99",
+    "namespace": "some-cool-project-secret",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "
+
+[ ! -z $SOURCE_CONTAINER ] || (echo \\"No SOURCE_CONTAINER\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_NAME ] || (echo \\"No SOURCE_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_KEY ] || (echo \\"No SOURCE_ACCOUNT_KEY\\"; exit 1)
+[ ! -z $DESTINATION_CONTAINER ] || (echo \\"No DESTINATION_CONTAINER\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_NAME ] || (echo \\"No DESTINATION_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_KEY ] || (echo \\"No DESTINATION_ACCOUNT_KEY\\"; exit 1)
+
+
+echo \\"starting restore container $SOURCE_CONTAINER into $DESTINATION_CONTAINER\\"
+
+# copy container
+az storage copy -r   --source-account-name \\"$SOURCE_ACCOUNT_NAME\\"   --source-account-key \\"$SOURCE_ACCOUNT_KEY\\"   --source-container \\"$SOURCE_CONTAINER\\"   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --destination-container \\"$DESTINATION_CONTAINER\\"
+
+# get original permission
+PUBLIC_ACCESS=\`az storage container show-permission   --account-name \\"$SOURCE_ACCOUNT_NAME\\"   --account-key \\"$SOURCE_ACCOUNT_KEY\\"   --name $SOURCE_CONTAINER | jq -r \\".publicAccess\\"\`
+
+# set original permission
+az storage container set-permission   --name $DESTINATION_CONTAINER   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --public-access $PUBLIC_ACCESS
+
+",
+            ],
+            "env": Array [
+              Object {
+                "name": "SOURCE_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_CONTAINER",
+                "value": "dev-files1",
+              },
+              Object {
+                "name": "DESTINATION_CONTAINER",
+                "value": "prod-files2",
+              },
+            ],
+            "envFrom": Array [],
+            "image": "mcr.microsoft.com/azure-cli:2.15.1",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "restore-db",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "512Mi",
+              },
+              "requests": Object {
+                "cpu": "50m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;
+
+exports[`should create restore job from prod to dev 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "restore-container-b123a99",
+    "namespace": "some-cool-project-secret",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "
+
+[ ! -z $SOURCE_CONTAINER ] || (echo \\"No SOURCE_CONTAINER\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_NAME ] || (echo \\"No SOURCE_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_KEY ] || (echo \\"No SOURCE_ACCOUNT_KEY\\"; exit 1)
+[ ! -z $DESTINATION_CONTAINER ] || (echo \\"No DESTINATION_CONTAINER\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_NAME ] || (echo \\"No DESTINATION_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_KEY ] || (echo \\"No DESTINATION_ACCOUNT_KEY\\"; exit 1)
+
+
+echo \\"starting restore container $SOURCE_CONTAINER into $DESTINATION_CONTAINER\\"
+
+# copy container
+az storage copy -r   --source-account-name \\"$SOURCE_ACCOUNT_NAME\\"   --source-account-key \\"$SOURCE_ACCOUNT_KEY\\"   --source-container \\"$SOURCE_CONTAINER\\"   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --destination-container \\"$DESTINATION_CONTAINER\\"
+
+# get original permission
+PUBLIC_ACCESS=\`az storage container show-permission   --account-name \\"$SOURCE_ACCOUNT_NAME\\"   --account-key \\"$SOURCE_ACCOUNT_KEY\\"   --name $SOURCE_CONTAINER | jq -r \\".publicAccess\\"\`
+
+# set original permission
+az storage container set-permission   --name $DESTINATION_CONTAINER   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --public-access $PUBLIC_ACCESS
+
+",
+            ],
+            "env": Array [
+              Object {
+                "name": "SOURCE_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectdev-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_CONTAINER",
+                "value": "prod-files1",
+              },
+              Object {
+                "name": "DESTINATION_CONTAINER",
+                "value": "dev-files2",
+              },
+            ],
+            "envFrom": Array [],
+            "image": "mcr.microsoft.com/azure-cli:2.15.1",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "restore-db",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "512Mi",
+              },
+              "requests": Object {
+                "cpu": "50m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;
+
+exports[`should create restore job from prod to prod 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "restore-container-b123a99",
+    "namespace": "some-cool-project-secret",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "
+
+[ ! -z $SOURCE_CONTAINER ] || (echo \\"No SOURCE_CONTAINER\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_NAME ] || (echo \\"No SOURCE_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $SOURCE_ACCOUNT_KEY ] || (echo \\"No SOURCE_ACCOUNT_KEY\\"; exit 1)
+[ ! -z $DESTINATION_CONTAINER ] || (echo \\"No DESTINATION_CONTAINER\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_NAME ] || (echo \\"No DESTINATION_ACCOUNT_NAME\\"; exit 1)
+[ ! -z $DESTINATION_ACCOUNT_KEY ] || (echo \\"No DESTINATION_ACCOUNT_KEY\\"; exit 1)
+
+
+echo \\"starting restore container $SOURCE_CONTAINER into $DESTINATION_CONTAINER\\"
+
+# copy container
+az storage copy -r   --source-account-name \\"$SOURCE_ACCOUNT_NAME\\"   --source-account-key \\"$SOURCE_ACCOUNT_KEY\\"   --source-container \\"$SOURCE_CONTAINER\\"   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --destination-container \\"$DESTINATION_CONTAINER\\"
+
+# get original permission
+PUBLIC_ACCESS=\`az storage container show-permission   --account-name \\"$SOURCE_ACCOUNT_NAME\\"   --account-key \\"$SOURCE_ACCOUNT_KEY\\"   --name $SOURCE_CONTAINER | jq -r \\".publicAccess\\"\`
+
+# set original permission
+az storage container set-permission   --name $DESTINATION_CONTAINER   --account-name \\"$DESTINATION_ACCOUNT_NAME\\"   --account-key \\"$DESTINATION_ACCOUNT_KEY\\"   --public-access $PUBLIC_ACCESS
+
+",
+            ],
+            "env": Array [
+              Object {
+                "name": "SOURCE_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_NAME",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountname",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "DESTINATION_ACCOUNT_KEY",
+                "valueFrom": Object {
+                  "secretKeyRef": Object {
+                    "key": "azurestorageaccountkey",
+                    "name": "azure-somecoolprojectprod-volume",
+                  },
+                },
+              },
+              Object {
+                "name": "SOURCE_CONTAINER",
+                "value": "prod-files1",
+              },
+              Object {
+                "name": "DESTINATION_CONTAINER",
+                "value": "prod-files2",
+              },
+            ],
+            "envFrom": Array [],
+            "image": "mcr.microsoft.com/azure-cli:2.15.1",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "restore-db",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "512Mi",
+              },
+              "requests": Object {
+                "cpu": "50m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;
