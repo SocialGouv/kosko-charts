@@ -28,7 +28,7 @@ jobs:
           echo "Yarn $(yarn --version)"
           #
           # https://github.com/nodejs/node-v0.x-archive/issues/3911
-          ln -s /usr/bin/nodejs /usr/bin/node
+          # ln -s /usr/bin/nodejs /usr/bin/node
 
       - uses: actions/checkout@v2
 
