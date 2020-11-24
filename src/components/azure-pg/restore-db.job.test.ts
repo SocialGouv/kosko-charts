@@ -7,7 +7,6 @@ process.env.CI_COMMIT_SHORT_SHA = "b123a99";
 test("should create restore DB job", () => {
   expect(
     restoreDbJob({
-      project: "some-classy-project",
       env: [
         new EnvVar({
           name: "PGUSER",
@@ -34,6 +33,7 @@ test("should create restore DB job", () => {
           value: "target-file.psql.gz",
         }),
       ],
+      project: "some-classy-project",
     })
   ).toMatchSnapshot();
 });

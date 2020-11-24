@@ -1,7 +1,7 @@
+import ok from "assert";
 import { Job } from "kubernetes-models/batch/v1/Job";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 import { EnvVar } from "kubernetes-models/v1/EnvVar";
-import ok from "assert";
 
 interface RestoreDbJobArgs {
   project: string;
@@ -67,22 +67,15 @@ export const restoreDbJob = ({
       template: {
         metadata: {},
         spec: {
-          restartPolicy: "OnFailure",
           containers: [
             {
+              command: ["sh", "-c", restoreScript],
+              env,
+              envFrom,
               image:
                 "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
               imagePullPolicy: "IfNotPresent",
               name: "restore-db",
-              command: ["sh", "-c", restoreScript],
-              volumeMounts: [
-                {
-                  mountPath: "/mnt/data",
-                  name: "backups",
-                },
-              ],
-              env,
-              envFrom,
               resources: {
                 limits: {
                   cpu: "300m",
@@ -93,16 +86,23 @@ export const restoreDbJob = ({
                   memory: "64Mi",
                 },
               },
+              volumeMounts: [
+                {
+                  mountPath: "/mnt/data",
+                  name: "backups",
+                },
+              ],
             },
           ],
+          restartPolicy: "OnFailure",
           volumes: [
             {
-              name: "backups",
               azureFile: {
                 readOnly: true,
                 secretName: azureSecretName,
                 shareName: azureShareName,
               },
+              name: "backups",
             },
           ],
         },

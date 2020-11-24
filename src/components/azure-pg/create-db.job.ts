@@ -22,7 +22,6 @@ export const createDbJob = ({
       //  ...metadataFromParams(params),
     },
     spec: {
-      ttlSecondsAfterFinished: 86400,
       backoffLimit: 0,
       template: {
         spec: {
@@ -73,6 +72,7 @@ export const createDbJob = ({
           restartPolicy: "Never",
         },
       },
+      ttlSecondsAfterFinished: 86400,
     },
   });
   return job;

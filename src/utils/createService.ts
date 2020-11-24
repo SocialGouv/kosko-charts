@@ -25,9 +25,9 @@ export default (params: Params): Service => {
     spec: {
       ports: [
         {
+          name: params.portName ?? "http",
           port: params.servicePort,
           targetPort: params.containerPort,
-          name: params.portName ?? "http",
         },
       ],
       selector: params.selector,
