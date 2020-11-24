@@ -1,3 +1,10 @@
+# [4.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.1...v4.0.0-alpha.2) (2020-11-24)
+
+
+### Bug Fixes
+
+* **pkg:** add missing testing files ([a2928b9](https://github.com/SocialGouv/kosko-charts/commit/a2928b96ab722ca294fbe0f1a5631e2add3b476d))
+
 # [4.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v3.3.0-alpha.1...v4.0.0-alpha.1) (2020-11-24)
 
 
