@@ -61,12 +61,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Archive lib components
-        uses: actions/upload-artifact@v2
-        with:
-          name: components
-          path: lib/
-
       - name: Functional tests
         run: yarn e2e
 
