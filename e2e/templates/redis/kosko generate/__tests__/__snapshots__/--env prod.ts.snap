@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`--env prod : should generate prod manifest 1`] = `
+"---
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: prod2
+    app.gitlab.com/env.name: prod2
+  labels:
+    app: redis
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    component: redis
+  name: redis
+  namespace: sample-kosko
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: prod2
+        app.gitlab.com/env.name: prod2
+      labels:
+        app: redis
+        application: sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        component: redis
+    spec:
+      containers:
+        - image: 'redis:6.0.5-alpine3.12'
+          livenessProbe:
+            failureThreshold: 6
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          name: redis
+          ports:
+            - containerPort: 6379
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
+          startupProbe:
+            failureThreshold: 12
+            periodSeconds: 5
+            exec:
+              command:
+                - sh
+                - '-c'
+                - redis-cli ping
+apiVersion: apps/v1
+kind: Deployment
+---
+metadata:
+  labels:
+    app: redis
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+  name: redis
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: prod2
+    app.gitlab.com/env.name: prod2
+  namespace: sample-kosko
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 6379
+  selector:
+    app: redis
+  type: ClusterIP
+apiVersion: v1
+kind: Service"
+`;

@@ -1,10 +1,12 @@
-/* eslint-disable simple-import-sort/sort */
-import { Environment } from "@kosko/env";
+//
+
+import type { Environment } from "@kosko/env";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { ok } from "assert";
 
-import { AppConfig, create as createApp } from "../app";
-import { DeploymentParams } from "../../utils/createDeployment";
+import type { DeploymentParams } from "../../utils/createDeployment";
+import type { AppConfig } from "../app";
+import { create as createApp } from "../app";
 
 type CreateResult = unknown[];
 
@@ -28,14 +30,6 @@ export const create = (
     config: merge(
       {
         container: {
-          livenessProbe: {
-            initialDelaySeconds: 60,
-            periodSeconds: 20,
-          },
-          readinessProbe: {
-            initialDelaySeconds: 60,
-            periodSeconds: 20,
-          },
           resources: {
             limits: {
               cpu: "500m",
@@ -48,6 +42,7 @@ export const create = (
           },
         },
         containerPort: 80,
+        ingress: false,
         subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
 
         withPostgres: true,

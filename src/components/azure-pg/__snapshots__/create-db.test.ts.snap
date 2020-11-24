@@ -4,7 +4,6 @@ exports[`should customize secret and extensions when running create-db 1`] = `
 Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
-  "metadata": Object {},
   "spec": Object {
     "backoffLimit": 0,
     "template": Object {
@@ -66,7 +65,6 @@ exports[`should use defaults when running create-db 1`] = `
 Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
-  "metadata": Object {},
   "spec": Object {
     "backoffLimit": 0,
     "template": Object {

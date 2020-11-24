@@ -1,6 +1,6 @@
 import { assert } from "@sindresorhus/is";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
-import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
+import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
 interface AddToContainerParams {
   deployment: Deployment;

@@ -1,4 +1,5 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
+//
+
 import { Environment } from "@kosko/env";
 import { promises } from "fs";
 import { directory } from "tempy";
@@ -12,19 +13,32 @@ const gitlabEnv = {
   CI_PROJECT_NAME: "sample",
   CI_PROJECT_PATH_SLUG: "socialgouv-sample",
   CI_REGISTRY_IMAGE: "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
-  KUBE_INGRESS_BASE_DOMAIN: "dev.fabrique.social.gouv.fr",
+  KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
   KUBE_NAMESPACE: "sample-42-my-test",
 };
 
-test("should throw because of a missing CI_COMMIT_SHORT_SHA", () => {
-  const env = new Environment("/tmp");
-  expect(() => create({ env })).toThrowError(
-    "Missing process.env.CI_COMMIT_SHORT_SHA"
-  );
+jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  __esModule: true,
+  default: () => ({
+    annotations: {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+    },
+    labels: {
+      application: "sample",
+      owner: "sample",
+      team: "sample",
+    },
+    namespace: { name: "sample-42-my-test" },
+  }),
+}));
+
+beforeEach(() => {
+  jest.resetModules();
 });
 
 test("should throw because of a missing envs", () => {
-  process.env.CI_PROJECT_NAME = "sample-next-app";
   const env = new Environment("/tmp");
   expect(() => create({ env })).toThrowErrorMatchingSnapshot();
 });
@@ -52,6 +66,6 @@ test("should use custom pgHost", async () => {
     "---\napiVersion: v1\nkind: ConfigMap"
   );
   expect(
-    create({ env, config: { pgHost: "pouetpouet.com" } })
+    create({ config: { pgHost: "pouetpouet.com" }, env })
   ).toMatchSnapshot();
 });
