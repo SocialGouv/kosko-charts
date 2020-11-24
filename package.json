@@ -29,7 +29,7 @@
     "jest-file-snapshot": "^0.5.0",
     "kosko": "^1.0.1",
     "kubernetes-models": "^1.0.1",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "prettier": "^2.2.0",
     "tempy": "^1.0.0",
     "ts-node": "^9.0.0",
