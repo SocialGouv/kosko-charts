@@ -1,3 +1,10 @@
+# [4.0.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.2...v4.0.0-alpha.3) (2020-11-24)
+
+
+### Bug Fixes
+
+* **testing:** add mystic haste config, allow tests from node_modules ([b6709d8](https://github.com/SocialGouv/kosko-charts/commit/b6709d8ad5c8b9cca2cc40daef47567c07be2723))
+
 # [4.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.1...v4.0.0-alpha.2) (2020-11-24)
 
 
