@@ -40,6 +40,7 @@
     "components",
     "environments",
     "templates",
+    "testing",
     "types",
     "utils"
   ],
