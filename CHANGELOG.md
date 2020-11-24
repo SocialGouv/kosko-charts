@@ -1,3 +1,49 @@
+# [4.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v3.3.0-alpha.1...v4.0.0-alpha.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* force path version ([7fa418a](https://github.com/SocialGouv/kosko-charts/commit/7fa418a3dc6b38b680f30df18026dfcef15a39e3))
+* **utils:** loadYaml can return undefined too ([6f1a815](https://github.com/SocialGouv/kosko-charts/commit/6f1a815151de72c8b146059fabf4b49bdcbb4066))
+
+
+### Features
+
+* **components:** change envParams precedence ([a0a5b56](https://github.com/SocialGouv/kosko-charts/commit/a0a5b560be1f82c32297315aaccca759dfbf6e56))
+* **template:** add dummy pg component ([66b5565](https://github.com/SocialGouv/kosko-charts/commit/66b5565776658ad15f53473269f8e36e3af573f8))
+* **utils:** add @kosko/env/dist/paths.js wrapper ([11fb2ed](https://github.com/SocialGouv/kosko-charts/commit/11fb2ed1b02c808593d16b18b78742af6f20d502))
+* **utils:** add @kosko/env/dist/paths.js wrapper (2) ([b8bf057](https://github.com/SocialGouv/kosko-charts/commit/b8bf05754100119faa0c4f1a52bc2d6a077ae4fb))
+
+
+### Reverts
+
+* downgrade of @kosko/env ([4bbaf6c](https://github.com/SocialGouv/kosko-charts/commit/4bbaf6ceb7ec81c2e05ade2c3f823b26724afca5))
+
+
+* refactor(components)!: remove io-ts from pg-secret (#238) ([1f8d1ab](https://github.com/SocialGouv/kosko-charts/commit/1f8d1ab924da2ba5fc163bfd1ac32819980205e9)), closes [#238](https://github.com/SocialGouv/kosko-charts/issues/238)
+* refactor(environments)!: remove io-ts from gitlab env (#235) ([e955437](https://github.com/SocialGouv/kosko-charts/commit/e955437e5711ef5987c672c93b548fcd125b414c)), closes [#235](https://github.com/SocialGouv/kosko-charts/issues/235)
+* refactor(component)!: move createNamespace to components/ (#231) ([fb4e4e0](https://github.com/SocialGouv/kosko-charts/commit/fb4e4e0f95c93cd86d353838e0f0088fa3476ac6)), closes [#231](https://github.com/SocialGouv/kosko-charts/issues/231)
+
+
+### BREAKING CHANGES
+
+* **components:** The local config is now the lowers in the priority
+
+We merge the params from
+
+1. local app components params
+1. the defined config in the components folder
+1. the defined config in the environement folder
+1. the process env
+* might break empty string pg secret generation
+* might impact all component at runtime
+* the namespace is now created through import { createNamespace } from "@socialgouv/kosko-charts/components/namespace"
+
+```diff
+- import { createNamespace } from "@socialgouv/kosko-charts/utils/createNamespace";
++ import { createNamespace } from "@socialgouv/kosko-charts/components/namespace";
+```
+
 # [3.3.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v3.2.5...v3.3.0-alpha.1) (2020-11-24)
 
 
