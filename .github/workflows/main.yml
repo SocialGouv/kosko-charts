@@ -59,7 +59,7 @@ jobs:
         uses: codecov/codecov-action@v1
 
       - name: Build
-        run: yarn build --outDir lib
+        run: yarn build
 
       - name: Archive lib components
         uses: actions/upload-artifact@v2
@@ -69,6 +69,15 @@ jobs:
 
       - name: Functional tests
         run: yarn e2e
+
+      - name: Build to lib folder for archives
+        run: yarn build --outDir lib
+
+      - name: Archive lib components
+        uses: actions/upload-artifact@v2
+        with:
+          name: components
+          path: lib/
 
   release:
     needs:
