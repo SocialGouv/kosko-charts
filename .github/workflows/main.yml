@@ -29,7 +29,10 @@ jobs:
           echo "Npx $(npx --version)"
           echo "Yarn $(yarn --version)"
           #
-          # https://github.com/nodejs/node-v0.x-archive/issues/3911
+          # HACK(douglasduteil): symlink node to /usr/bin/node
+          # Avoid the npx jest error on e2e tests
+          #   /usr/bin/env: 'node': No such file or directory
+          # see https://github.com/nodejs/node-v0.x-archive/issues/3911
           sudo ln -s $(which node) /usr/bin/node
 
       - uses: actions/checkout@v2
