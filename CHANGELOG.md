@@ -1,3 +1,10 @@
+# [4.0.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.4...v4.0.0-alpha.5) (2020-11-25)
+
+
+### Bug Fixes
+
+* **testing:** try running kosko from npx no install ([05cd088](https://github.com/SocialGouv/kosko-charts/commit/05cd088ff8f716a116f19ac0dec470c5fca3c927))
+
 # [4.0.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.3...v4.0.0-alpha.4) (2020-11-25)
 
 
