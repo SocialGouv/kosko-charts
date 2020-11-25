@@ -1,3 +1,10 @@
+# [4.0.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.3...v4.0.0-alpha.4) (2020-11-25)
+
+
+### Bug Fixes
+
+* **testing:** remove mystic haste config ([2d47559](https://github.com/SocialGouv/kosko-charts/commit/2d4755950fdc619638423119367be4716e0607d6))
+
 # [4.0.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.2...v4.0.0-alpha.3) (2020-11-24)
 
 
