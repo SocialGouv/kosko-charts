@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create restore DB job 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "name": "restore-container-b123a99",
+    "namespace": "some-cool-project-secret",
+  },
+  "spec": Object {
+    "backoffLimit": 0,
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "
+
+echo \\"starting restore container $SOURCE_CONTAINER into $DESTINATION_CONTAINER\\"
+
+# copy container
+az storage copy -r    --source-connection-string \\"$SOURCE_CONNECTION_STRING\\"    --source-container \\"$SOURCE_CONTAINER\\"    --connection-string \\"$DESTINATION_CONNECTION_STRING\\"    --destination-container \\"$DESTINATION_CONTAINER\\"
+
+# get original permission
+PUBLIC_ACCESS=\`az storage container show-permission   --connection-string $SOURCE_CONNECTION_STRING   --name $SOURCE_CONTAINER | jq -r \\".publicAccess\\"\`
+
+# set original permission
+az storage container set-permission   --name $DESTINATION_CONTAINER   --connection-string $DESTINATION_CONNECTION_STRING   --public-access $PUBLIC_ACCESS
+",
+            ],
+            "env": Array [
+              Object {
+                "name": "SOURCE_CONNECTION_STRING",
+                "value": "DefaultEndpointsProtocol=https;AccountName=coolprod;AccountKey=SomeKey;EndpointSuffix=core.windows.net",
+              },
+              Object {
+                "name": "SOURCE_CONTAINER",
+                "value": "source-container",
+              },
+              Object {
+                "name": "DESTINATION_CONNECTION_STRING",
+                "value": "DefaultEndpointsProtocol=https;AccountName=cooldev;AccountKey=SomeOtherKey;EndpointSuffix=core.windows.net",
+              },
+              Object {
+                "name": "DESTINATION_CONTAINER",
+                "value": "destination-container",
+              },
+            ],
+            "envFrom": Array [],
+            "image": "mcr.microsoft.com/azure-cli:2.15.1",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "restore-db",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "512Mi",
+              },
+              "requests": Object {
+                "cpu": "50m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+  },
+}
+`;
