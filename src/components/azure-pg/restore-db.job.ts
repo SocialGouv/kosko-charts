@@ -71,7 +71,14 @@ export const restoreDbJob = ({
             {
               command: ["sh", "-c", restoreScript],
               env,
-              envFrom,
+              envFrom: [
+                new EnvFromSource({
+                  secretRef: {
+                    name: "azure-pg-admin-user-dev",
+                  },
+                }),
+                ...envFrom,
+              ],
               image:
                 "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
               imagePullPolicy: "IfNotPresent",

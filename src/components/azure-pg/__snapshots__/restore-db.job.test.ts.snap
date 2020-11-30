@@ -67,7 +67,13 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 "value": "target-file.psql.gz",
               },
             ],
-            "envFrom": Array [],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "azure-pg-admin-user-dev",
+                },
+              },
+            ],
             "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
             "imagePullPolicy": "IfNotPresent",
             "name": "restore-db",
