@@ -151,11 +151,11 @@ $ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/__tests__#v4.0.0-a
 $ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/babel.config.js#v4.0.0-alpha.4" .k8s/babel.config.js
 ```
 
-Our [`e2e/testing/__fixtures__/__tests__`] will run default testing cases :
+Our [`e2e/testing/__fixtures__/__tests__`](./e2e/testing/__fixtures__/__tests__) will run default testing cases :
 
-- [kosko generate --env dev](e2e/testing/__fixtures__/__tests__/kosko generate --env dev.ts)
-- [kosko generate --env preprod](e2e/testing/__fixtures__/__tests__/kosko generate --env preprod.ts)
-- [kosko generate --env prod](e2e/testing/__fixtures__/__tests__/kosko generate --env prod.ts)
+- [kosko generate --env dev](./e2e/testing/__fixtures__/__tests__/kosko generate --env dev.ts)
+- [kosko generate --env preprod](./e2e/testing/__fixtures__/__tests__/kosko generate --env preprod.ts)
+- [kosko generate --env prod](./e2e/testing/__fixtures__/__tests__/kosko generate --env prod.ts)
 
 Using the global `environments/.gitlab.env` (if exists in your kosko context).
 In addition, it will try to load and merge it with `environments/<env>/.gitlab.env`.
