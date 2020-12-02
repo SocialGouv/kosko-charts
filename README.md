@@ -147,8 +147,8 @@ $ npx degit "SocialGouv/kosko-charts/templates/redis#v4.0.0-alpha.5" .k8s
 ```
 # At the root of your kosko context
 $ cd .k8s
-$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/__tests__#v4.0.0-alpha.4" .k8s/__tests__
-$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/babel.config.js#v4.0.0-alpha.4" .k8s/babel.config.js
+$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/__tests__#v4.0.0-alpha.5" .k8s/__tests__
+$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/babel.config.js#v4.0.0-alpha.5" .k8s/babel.config.js
 ```
 
 Our [`e2e/testing/__fixtures__/__tests__`](./e2e/testing/__fixtures__/__tests__) will run default testing cases.  
