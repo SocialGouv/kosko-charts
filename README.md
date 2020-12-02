@@ -147,19 +147,18 @@ $ npx degit "SocialGouv/kosko-charts/templates/redis#v4.0.0-alpha.5" .k8s
 ```
 # At the root of your kosko context
 $ cd .k8s
-$ npx jest --config @socialgouv/kosko-charts/testing/cases/jest.config.js
+$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/__tests__#v4.0.0-alpha.4" .k8s/__tests__
+$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/babel.config.js#v4.0.0-alpha.4" .k8s/babel.config.js
 ```
 
-Our [`src/testing/cases/jest.config.ts`] will run default testing cases :
+Our [`e2e/testing/__fixtures__/__tests__`] will run default testing cases :
 
-- [kosko generate --env dev](src/testing/cases/kosko generate --env dev.ts)
-- [kosko generate --env preprod](src/testing/cases/kosko generate --env preprod.ts)
-- [kosko generate --env prod](src/testing/cases/kosko generate --env prod.ts)
+- [kosko generate --env dev](e2e/testing/__fixtures__/__tests__/kosko generate --env dev.ts)
+- [kosko generate --env preprod](e2e/testing/__fixtures__/__tests__/kosko generate --env preprod.ts)
+- [kosko generate --env prod](e2e/testing/__fixtures__/__tests__/kosko generate --env prod.ts)
 
 Using the global `environments/.gitlab.env` (if exists in your kosko context).
 In addition, it will try to load and merge it with `environments/<env>/.gitlab.env`.
-
-You wiil find a special snapshot directory named `__manifest_snapshots__` in your project to keep track of the tests result.
 
 <br>
 <br>
