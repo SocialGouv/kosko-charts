@@ -4,9 +4,13 @@ import { resolve } from "path";
 
 import { execAsync } from "./execAsync";
 
-export const getEnvManifests = async (envName: string): Promise<string> => {
+export const getEnvManifests = async (
+  envName = "",
+  koskoArgs = ""
+): Promise<string> => {
+  const koskoEnvArgs = envName ? `--env ${envName}` : "";
   const { stdout } = await execAsync(
-    `npx --no-install kosko generate --env ${envName}`,
+    `npx --no-install kosko generate ${koskoEnvArgs} ${koskoArgs}`.trim(),
     {
       cwd: process.cwd(),
       env: merge(
