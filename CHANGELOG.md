@@ -1,3 +1,10 @@
+# [4.0.0-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.5...v4.0.0-alpha.6) (2020-12-03)
+
+
+### Bug Fixes
+
+* rename file ([1d8593f](https://github.com/SocialGouv/kosko-charts/commit/1d8593ff5e68de35249c367847dd675e350d9dd9))
+
 # [4.0.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.4...v4.0.0-alpha.5) (2020-11-25)
 
 
