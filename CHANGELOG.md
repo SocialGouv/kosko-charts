@@ -1,3 +1,15 @@
+# [4.0.0-alpha.7](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.6...v4.0.0-alpha.7) (2020-12-03)
+
+
+### Bug Fixes
+
+* **testing:** do not try to load unknown env if not defined ([8c1345f](https://github.com/SocialGouv/kosko-charts/commit/8c1345f8e41091933dbf01da3170c72864d3dd4c))
+
+
+### Features
+
+* **testing:** add extra kosko args ([04f8336](https://github.com/SocialGouv/kosko-charts/commit/04f83365828550358caf19b6e677fe40438149ad))
+
 # [4.0.0-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.5...v4.0.0-alpha.6) (2020-12-03)
 
 
