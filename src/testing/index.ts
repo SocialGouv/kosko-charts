@@ -23,9 +23,16 @@ export const getEnvManifests = async (
           path: resolve(process.cwd(), "environments", ".gitlab.env"),
         }).parsed ?? {},
         // Env env
-        config({
-          path: resolve(process.cwd(), "environments", envName, ".gitlab.env"),
-        }).parsed ?? {}
+        (envName &&
+          config({
+            path: resolve(
+              process.cwd(),
+              "environments",
+              envName,
+              ".gitlab.env"
+            ),
+          }).parsed) ??
+          {}
       ),
     }
   );
