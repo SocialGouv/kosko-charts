@@ -52,14 +52,12 @@ export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
     ...config, // create options
   };
 
-  const secretNamespace = { name: `${process.env.CI_PROJECT_NAME}-secret` };
-
   const job = createDbJob(defaultParams);
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
     name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
-    namespace: secretNamespace,
+    namespace: envParams.namespace,
   });
 
   const secret = createSecret(envParams);
