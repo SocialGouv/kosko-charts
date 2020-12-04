@@ -11,7 +11,7 @@ export const waitForHttp = ({
 }: WaitForHttpParams): IIoK8sApiCoreV1Container => {
   return {
     name: `wait-for-${name}`,
-    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http:2.0.0`,
+    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http:2.4.0`,
     imagePullPolicy: "Always",
     resources: {
       requests: {
