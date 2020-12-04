@@ -16,7 +16,7 @@ Array [
         "team": "sample",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-secret",
+      "namespace": "sample-42-my-test",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -138,7 +138,7 @@ Array [
         "team": "sample",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-next-app-secret",
+      "namespace": "sample-42-my-test",
     },
     "spec": Object {
       "backoffLimit": 0,
