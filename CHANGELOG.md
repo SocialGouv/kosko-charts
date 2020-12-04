@@ -1,3 +1,10 @@
+# [4.0.0-alpha.9](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.8...v4.0.0-alpha.9) (2020-12-04)
+
+
+### Features
+
+* **namespace:** add azure-pg-admin-user label ([#309](https://github.com/SocialGouv/kosko-charts/issues/309)) ([fe7aa12](https://github.com/SocialGouv/kosko-charts/commit/fe7aa12d3617d297888d4bed69687b3fc70ebc9c))
+
 # [4.0.0-alpha.8](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.7...v4.0.0-alpha.8) (2020-12-04)
 
 
