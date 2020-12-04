@@ -1,3 +1,15 @@
+# [4.0.0-alpha.11](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.10...v4.0.0-alpha.11) (2020-12-04)
+
+
+### Bug Fixes
+
+* **create-db:** create-db job is back in project namespace with kubed ([#312](https://github.com/SocialGouv/kosko-charts/issues/312)) ([29337a7](https://github.com/SocialGouv/kosko-charts/commit/29337a7426723cadf0f1be90b737baae789adbd1))
+
+
+### Features
+
+* **azure-pg:** add uuid-ossp extension on create ([#280](https://github.com/SocialGouv/kosko-charts/issues/280)) ([e65eae9](https://github.com/SocialGouv/kosko-charts/commit/e65eae96313440d206dfadc86c5bd9bf82345461))
+
 # [4.0.0-alpha.10](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.9...v4.0.0-alpha.10) (2020-12-04)
 
 
