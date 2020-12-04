@@ -243,7 +243,7 @@ metadata:
     team: sample-next-app
     cert: wildcard
   name: create-db-job-8843083
-  namespace: sample-next-app-secret
+  namespace: sample-next-app-24-e2e-branch-42
 ---
 stringData:
   DATABASE_URL: >-
