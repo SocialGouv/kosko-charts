@@ -11,6 +11,7 @@ Object {
       "git/branch": "",
       "git/remote": "",
     },
+    "labels": Object {},
     "name": "sample-42-my-test",
   },
 }
@@ -31,6 +32,7 @@ Object {
     },
     "labels": Object {
       "application": "sample",
+      "azure-pg-admin-user": "sample",
       "owner": "sample",
       "team": "sample",
     },

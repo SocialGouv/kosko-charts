@@ -1,23 +1,24 @@
 //
 
-export interface GlobalEnvironment {
+export interface MetadataEntries {
   annotations?: Record<string, string>;
+  labels?: Record<string, string>;
+}
+
+export interface NamespaceComponentEnvironment extends MetadataEntries {
+  namespace: { name: string };
+  rancherId?: string;
+  git: { branch?: string; remote?: string };
+}
+
+export interface GlobalEnvironment extends NamespaceComponentEnvironment {
   domain: string;
   ingress?: {
     annotations?: Record<string, string | undefined>;
   };
-  git: { branch?: string; remote?: string };
-  labels?: Record<string, string>;
-  namespace: { name: string };
-  rancherId?: string;
   subdomain: string;
 }
 
 export interface NamedComponentEnvironment {
   name: string;
-}
-
-export interface NamespaceComponentEnvironment {
-  annotations?: Record<string, string>;
-  labels?: Record<string, string>;
 }
