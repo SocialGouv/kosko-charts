@@ -5,6 +5,9 @@ import { Job } from "kubernetes-models/batch/v1/Job";
 
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
 
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.5.0
+const SOCIALGOUV_DOCKER_AZURE_DB = "2.5.0";
+
 // needs azure-pg-admin-user secret
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createDbJob = ({
@@ -22,7 +25,6 @@ export const createDbJob = ({
       //  ...metadataFromParams(params),
     },
     spec: {
-      ttlSecondsAfterFinished: 86400,
       backoffLimit: 0,
       template: {
         spec: {
@@ -55,7 +57,8 @@ export const createDbJob = ({
                 },
               ],
               image:
-                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.5.0",
+                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:" +
+                SOCIALGOUV_DOCKER_AZURE_DB,
               imagePullPolicy: "IfNotPresent",
               name: "create-db-user",
               resources: {
@@ -73,6 +76,7 @@ export const createDbJob = ({
           restartPolicy: "Never",
         },
       },
+      ttlSecondsAfterFinished: 86400,
     },
   });
   return job;

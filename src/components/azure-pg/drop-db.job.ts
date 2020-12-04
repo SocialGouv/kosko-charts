@@ -2,6 +2,9 @@
 //import { metadataFromParams } from "@socialgouv/kosko-charts/components/app/metadata";
 import { Job } from "kubernetes-models/batch/v1/Job";
 
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.1.0
+const SOCIALGOUV_DOCKER_AZURE_DB = "2.1.0";
+
 export const dropDbJob = ({
   //@ts-expect-error
   database,
@@ -39,7 +42,8 @@ export const dropDbJob = ({
                 },
               ],
               image:
-                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
+                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:" +
+                SOCIALGOUV_DOCKER_AZURE_DB,
               imagePullPolicy: "IfNotPresent",
               name: "drop-db-user",
               resources: {
