@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/SocialGouv/kosko-charts/compare/v3.3.0...v3.3.1) (2020-12-04)
+
+
+### Bug Fixes
+
+* **azure-db:** upgrade create-db docker image ([#311](https://github.com/SocialGouv/kosko-charts/issues/311)) ([c49aa89](https://github.com/SocialGouv/kosko-charts/commit/c49aa89bc495632fdcf240862e3b4cb5e90cd0d2))
+
 # [3.3.0](https://github.com/SocialGouv/kosko-charts/compare/v3.2.5...v3.3.0) (2020-12-04)
 
 * **utils:** add wait for http ([#281](https://github.com/SocialGouv/kosko-charts/issues/281)) ([2a46485](https://github.com/SocialGouv/kosko-charts/commit/2a464857df95db17aa7655eef7ddb9b8609112e7))
