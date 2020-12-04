@@ -12,7 +12,7 @@ test(
   "kosko generate --env dev : should generate a kitchen sink dev manifest",
   async () => {
     const gitlabEnv = config({
-      path: resolve(cwd, "./environments/.gitlab.env"),
+      path: resolve(cwd, "./environments/.gitlab-ci.env"),
     }).parsed;
     // Required to allow seemless integration code example
     const result = await execa.node(KOSKO_BIN, ["generate", "--env", "dev"], {

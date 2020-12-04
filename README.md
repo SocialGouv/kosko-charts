@@ -45,7 +45,7 @@ $ yarn --cwd .k8s
 # on GitLab
 $ yarn --cwd .k8s kosko generate --env dev
 # locally
-$ DOTENV_CONFIG_PATH=environments/.gitlab.env yarn --cwd .k8s dev --require dotenv/config
+$ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require dotenv/config
 ```
 
 <br>
@@ -152,8 +152,8 @@ $ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/babel.config.js#v4
 ```
 
 Our [`e2e/testing/__fixtures__/__tests__`](./e2e/testing/__fixtures__/__tests__) will run default testing cases.  
-Using the global `environments/.gitlab.env` (if exists in your kosko context).
-In addition, it will try to load and merge it with `environments/<env>/.gitlab.env`.
+Using the global `environments/.gitlab-ci.env` (if exists in your kosko context).
+In addition, it will try to load and merge it with `environments/<env>/.gitlab-ci.env`.
 
 <br>
 <br>
