@@ -23,7 +23,7 @@ export const createNamespace = (
       labels: {
         ...(owner
           ? {
-              "kubed.appscode.com/sync": owner,
+              "azure-pg-admin-user": owner,
             }
           : {}),
         ...envParams.labels,
