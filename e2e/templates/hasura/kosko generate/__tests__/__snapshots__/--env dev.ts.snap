@@ -204,7 +204,7 @@ spec:
             - name: NEW_PASSWORD
               value: password_8843083
             - name: NEW_DB_EXTENSIONS
-              value: hstore pgcrypto citext
+              value: hstore pgcrypto citext uuid-ossp
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user
