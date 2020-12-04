@@ -5,8 +5,8 @@ import { Job } from "kubernetes-models/batch/v1/Job";
 
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
 
-// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.1.0
-const SOCIALGOUV_DOCKER_AZURE_DB = "2.1.0";
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.5.0
+const SOCIALGOUV_DOCKER_AZURE_DB = "2.5.0";
 
 // needs azure-pg-admin-user secret
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
