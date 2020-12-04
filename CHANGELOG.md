@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/SocialGouv/kosko-charts/compare/v3.2.5...v3.3.0) (2020-12-04)
+
+
+### Features
+
+* **utils:** add wait for http ([#281](https://github.com/SocialGouv/kosko-charts/issues/281)) ([2a46485](https://github.com/SocialGouv/kosko-charts/commit/2a464857df95db17aa7655eef7ddb9b8609112e7))
+
 ## [3.2.5](https://github.com/SocialGouv/kosko-charts/compare/v3.2.4...v3.2.5) (2020-11-23)
 
 
