@@ -3,7 +3,7 @@ import { Job } from "kubernetes-models/batch/v1/Job";
 
 //import { Params } from "../azure-db/params";
 
-const DEFAULT_EXTENSIONS = "hstore pgcrypto citext";
+const DEFAULT_EXTENSIONS = "hstore pgcrypto citext uuid-ossp";
 
 // renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.5.0
 const SOCIALGOUV_DOCKER_AZURE_DB = "2.5.0";
