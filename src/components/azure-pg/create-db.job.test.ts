@@ -41,7 +41,7 @@ test("should create a pg secret", () => {
                   },
                   Object {
                     "name": "NEW_DB_EXTENSIONS",
-                    "value": "hstore pgcrypto citext",
+                    "value": "hstore pgcrypto citext uuid-ossp",
                   },
                 ],
                 "envFrom": Array [
