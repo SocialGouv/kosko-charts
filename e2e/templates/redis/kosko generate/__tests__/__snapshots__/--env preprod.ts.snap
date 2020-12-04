@@ -12,6 +12,7 @@ metadata:
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
   labels:
+    azure-pg-admin-user: sample-kosko
     application: v1-2-3-sample-kosko
     owner: sample-kosko
     team: sample-kosko

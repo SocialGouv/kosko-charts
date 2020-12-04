@@ -28,7 +28,7 @@ export default (params: DeploymentParams): Deployment => {
         {
           app: params.name,
         },
-        params.labels
+        params.labels ?? {}
       ),
       name: params.name,
     },
@@ -46,7 +46,7 @@ export default (params: DeploymentParams): Deployment => {
             {
               app: params.name,
             },
-            params.labels
+            params.labels ?? {}
           ),
         },
         spec: {
@@ -107,7 +107,7 @@ export default (params: DeploymentParams): Deployment => {
                   periodSeconds: 5,
                 },
               },
-              params.container
+              params.container ?? {}
             ),
           ],
           imagePullSecrets: params.imagePullSecrets,

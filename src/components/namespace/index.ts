@@ -1,16 +1,16 @@
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import type { NamespaceComponentEnvironment } from "@socialgouv/kosko-charts/types";
 import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { Namespace as K8SNamespace } from "kubernetes-models/v1/Namespace";
 
 export const createNamespace = (
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  config: object = {}
+  config?: NamespaceComponentEnvironment
 ): K8SNamespace => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const envParams = merge(
-    gitlab(process.env),
-    config // create options
-  );
+  const gitlabEnv = gitlab(process.env);
+  const owner = gitlabEnv.labels?.owner;
+
+  const envParams = merge(gitlab(process.env), config ?? {});
+
   const namespace = new K8SNamespace({
     metadata: {
       annotations: {
@@ -20,7 +20,14 @@ export const createNamespace = (
         "git/remote": envParams.git.remote ?? "",
         ...envParams.annotations,
       },
-      labels: envParams.labels,
+      labels: {
+        ...(owner
+          ? {
+              "azure-pg-admin-user": owner,
+            }
+          : {}),
+        ...envParams.labels,
+      },
       name: envParams.namespace.name,
     },
   });

@@ -12,6 +12,7 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
+    azure-pg-admin-user: sample-next-app
     application: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
@@ -208,7 +209,7 @@ spec:
             - secretRef:
                 name: azure-pg-admin-user
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.5.0
           imagePullPolicy: IfNotPresent
           name: create-db-user
           resources:

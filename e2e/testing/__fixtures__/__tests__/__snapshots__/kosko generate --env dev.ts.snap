@@ -12,6 +12,7 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
+    azure-pg-admin-user: sample-kosko
     application: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
