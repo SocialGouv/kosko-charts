@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/SocialGouv/kosko-charts/compare/v3.3.1...v3.4.0) (2020-12-04)
+
+
+### Features
+
+* **azure-pg:** add uuid-ossp extension on create ([#280](https://github.com/SocialGouv/kosko-charts/issues/280)) ([e65eae9](https://github.com/SocialGouv/kosko-charts/commit/e65eae96313440d206dfadc86c5bd9bf82345461))
+
 ## [3.3.1](https://github.com/SocialGouv/kosko-charts/compare/v3.3.0...v3.3.1) (2020-12-04)
 
 
