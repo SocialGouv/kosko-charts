@@ -1,3 +1,15 @@
+# [4.0.0-alpha.8](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.7...v4.0.0-alpha.8) (2020-12-04)
+
+
+### Features
+
+* **templates:** rename .gitlab.env to .gitlab-ci.env ([#310](https://github.com/SocialGouv/kosko-charts/issues/310)) ([5d53ef4](https://github.com/SocialGouv/kosko-charts/commit/5d53ef455212fb4ddf6de0376719b7d5dde050b3))
+
+
+### BREAKING CHANGES
+
+* **templates:** You will need to rename your env file... sorry
+
 # [4.0.0-alpha.7](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.6...v4.0.0-alpha.7) (2020-12-03)
 
 
