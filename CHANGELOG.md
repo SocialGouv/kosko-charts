@@ -1,3 +1,10 @@
+# [4.0.0-alpha.13](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.12...v4.0.0-alpha.13) (2020-12-09)
+
+
+### Bug Fixes
+
+* fix config overrides ([#317](https://github.com/SocialGouv/kosko-charts/issues/317)) ([dfd25c7](https://github.com/SocialGouv/kosko-charts/commit/dfd25c789d3ec6b84fd6d61d937abee3a2fbdd1b))
+
 # [4.0.0-alpha.12](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.11...v4.0.0-alpha.12) (2020-12-09)
 
 
