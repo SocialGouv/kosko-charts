@@ -3,7 +3,7 @@ import type {
   createFn,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
-import { merge } from "@socialgouv/kosko-charts/utils/merge";
+import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 // renovate: datasource=docker depName=sosedoff/pgweb versioning=0.11.7
 const PGWEB_VERSION = "0.11.7";

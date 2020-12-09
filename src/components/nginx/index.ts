@@ -5,7 +5,7 @@ import type {
   createFn,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
-import { merge } from "@socialgouv/kosko-charts/utils/merge";
+import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 const nginxConfig: Partial<AppConfig> = {
   container: {

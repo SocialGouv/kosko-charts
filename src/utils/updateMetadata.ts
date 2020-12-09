@@ -1,7 +1,7 @@
 import type { IIoK8sApiAppsV1DeploymentSpec } from "kubernetes-models/_definitions/IoK8sApiAppsV1DeploymentSpec";
 import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1/ObjectMeta";
 
-import { merge } from "./merge";
+import { merge } from "./@kosko/env/merge";
 
 interface Metadatas {
   annotations?: Record<string, string>;

@@ -5,11 +5,9 @@
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
-    "@kosko/env": "^0.5.2",
+    "@kosko/env": "^1.0.1",
     "@kubernetes-models/sealed-secrets": "^1.0.1",
     "@sindresorhus/is": "^4.0.0",
-    "deepmerge": "^4.2.2",
-    "is-plain-object": "^5.0.0",
     "kubernetes-models": "^1.0.1"
   },
   "devDependencies": {

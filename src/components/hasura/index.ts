@@ -1,7 +1,7 @@
 //
 
 import type { Environment } from "@kosko/env";
-import { merge } from "@socialgouv/kosko-charts/utils/merge";
+import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import { ok } from "assert";
 
 import type { DeploymentParams } from "../../utils/createDeployment";

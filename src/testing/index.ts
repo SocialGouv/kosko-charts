@@ -1,4 +1,4 @@
-import { merge } from "@socialgouv/kosko-charts/utils/merge";
+import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import { config } from "dotenv";
 import { resolve } from "path";
 

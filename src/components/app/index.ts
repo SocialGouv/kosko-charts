@@ -18,7 +18,7 @@ import createService, {
 } from "../../utils/createService";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
-import { merge } from "../../utils/merge";
+import { merge } from "../../utils/@kosko/env/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 
