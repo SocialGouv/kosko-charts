@@ -42,7 +42,7 @@ Array [
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -216,7 +216,7 @@ Array [
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -307,7 +307,9 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
         "kubernetes.io/ingress.class": "nginx",
+        "kubernetes.io/tls-acme": "true",
       },
       "labels": Object {
         "app": "app",
@@ -340,7 +342,7 @@ Array [
           "hosts": Array [
             "sample.fabrique.social.gouv.fr",
           ],
-          "secretName": "wildcard-crt",
+          "secretName": "app-crt",
         },
       ],
     },
@@ -390,7 +392,7 @@ Array [
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
