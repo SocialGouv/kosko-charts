@@ -1,3 +1,10 @@
+# [4.0.0-alpha.14](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.13...v4.0.0-alpha.14) (2020-12-09)
+
+
+### Bug Fixes
+
+* **utils:** explicite utils dependencies ([5b0596e](https://github.com/SocialGouv/kosko-charts/commit/5b0596e7fbfe75b4b333b1ced3fd380a4e09c8ca))
+
 # [4.0.0-alpha.13](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.12...v4.0.0-alpha.13) (2020-12-09)
 
 
