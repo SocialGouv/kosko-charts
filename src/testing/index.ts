@@ -3,9 +3,12 @@ import { config } from "dotenv";
 import { resolve } from "path";
 
 import { execAsync } from "./execAsync";
+import { getGitlabEnv } from "./getGitlabEnv";
+
+type EnvName = "dev" | "preprod" | "prod";
 
 export const getEnvManifests = async (
-  envName = "",
+  envName: EnvName = "dev",
   koskoArgs = ""
 ): Promise<string> => {
   const koskoEnvArgs = envName ? `--env ${envName}` : "";
@@ -18,21 +21,10 @@ export const getEnvManifests = async (
         {
           FORCE_COLOR: "0",
         },
-        // Global env
-        config({
-          path: resolve(process.cwd(), "environments", ".gitlab-ci.env"),
-        }).parsed ?? {},
-        // Env env
-        (envName &&
-          config({
-            path: resolve(
-              process.cwd(),
-              "environments",
-              envName,
-              ".gitlab-ci.env"
-            ),
-          }).parsed) ??
-          {}
+        getGitlabEnv({
+          project: "your-app",
+          env: envName,
+        })
       ),
     }
   );
