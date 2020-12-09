@@ -1,3 +1,10 @@
+# [4.0.0-alpha.15](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.14...v4.0.0-alpha.15) (2020-12-09)
+
+
+### Bug Fixes
+
+* **utils:** wrap the merge utils function ([915ce0c](https://github.com/SocialGouv/kosko-charts/commit/915ce0caae55d743b3e6f47d77b7c8adc3e4aaa6))
+
 # [4.0.0-alpha.14](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.13...v4.0.0-alpha.14) (2020-12-09)
 
 
