@@ -1,3 +1,10 @@
+# [4.0.0-alpha.12](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.11...v4.0.0-alpha.12) (2020-12-09)
+
+
+### Features
+
+* **testing:** add gitlab.env faker ([#323](https://github.com/SocialGouv/kosko-charts/issues/323)) ([36d3ddc](https://github.com/SocialGouv/kosko-charts/commit/36d3ddc0693939746d0bbb17ad317f1752722acd))
+
 # [4.0.0-alpha.11](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.10...v4.0.0-alpha.11) (2020-12-04)
 
 
