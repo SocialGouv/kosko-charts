@@ -8,6 +8,8 @@
     "@kosko/env": "^0.5.2",
     "@kubernetes-models/sealed-secrets": "^1.0.1",
     "@sindresorhus/is": "^4.0.0",
+    "deepmerge": "^4.2.2",
+    "is-plain-object": "^5.0.0",
     "kubernetes-models": "^1.0.1"
   },
   "devDependencies": {
