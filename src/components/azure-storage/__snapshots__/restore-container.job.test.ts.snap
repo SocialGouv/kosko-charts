@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create restore DB job 1`] = `
+exports[`should create restore container job 1`] = `
 Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
@@ -19,7 +19,6 @@ Object {
               "sh",
               "-c",
               "
-
 
 [ ! -z $SOURCE_CONTAINER ] || (echo \\"No SOURCE_CONTAINER\\"; exit 1)
 [ ! -z $SOURCE_ACCOUNT_NAME ] || (echo \\"No SOURCE_ACCOUNT_NAME\\"; exit 1)
@@ -43,42 +42,6 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
 ",
             ],
             "env": Array [
-              Object {
-                "name": "DESTINATION_ACCOUNT_NAME",
-                "valueFrom": Object {
-                  "secretKeyRef": Object {
-                    "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectdev-volume",
-                  },
-                },
-              },
-              Object {
-                "name": "DESTINATION_ACCOUNT_KEY",
-                "valueFrom": Object {
-                  "secretKeyRef": Object {
-                    "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectdev-volume",
-                  },
-                },
-              },
-              Object {
-                "name": "SOURCE_ACCOUNT_NAME",
-                "valueFrom": Object {
-                  "secretKeyRef": Object {
-                    "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectprod-volume",
-                  },
-                },
-              },
-              Object {
-                "name": "SOURCE_ACCOUNT_KEY",
-                "valueFrom": Object {
-                  "secretKeyRef": Object {
-                    "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectprod-volume",
-                  },
-                },
-              },
               Object {
                 "name": "SOURCE_CONTAINER",
                 "value": "prod-files",
