@@ -11,8 +11,8 @@
     "io-ts": "2.2.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/preset-env": "^7.12.7",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@kosko/env": "^1.0.1",
     "@socialgouv/eslint-config-recommended": "^1.40.0",
