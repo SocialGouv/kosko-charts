@@ -9,31 +9,19 @@ test("should create restore DB job", () => {
     restoreDbJob({
       env: [
         new EnvVar({
-          name: "PGUSER",
-          value: "pg-admin-user",
-        }),
-        new EnvVar({
-          name: "PGHOST",
-          value: "pg-host",
-        }),
-        new EnvVar({
-          name: "PGPASSWORD",
-          value: "pg-password",
-        }),
-        new EnvVar({
           name: "PGDATABASE",
-          value: "target-bdd",
+          value: "db_64105",
         }),
         new EnvVar({
           name: "OWNER",
-          value: "target-owner",
+          value: "user_64105",
         }),
         new EnvVar({
           name: "FILE",
-          value: "target-file.psql.gz",
+          value: "product_prod_db.psql.gz",
         }),
       ],
-      project: "some-classy-project",
+      project: "sample-next-app",
     })
   ).toMatchSnapshot();
 });

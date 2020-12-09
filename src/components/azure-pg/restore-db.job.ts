@@ -1,7 +1,7 @@
 import ok from "assert";
 import { Job } from "kubernetes-models/batch/v1/Job";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
-import { EnvVar } from "kubernetes-models/v1/EnvVar";
+import type { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 interface RestoreDbJobArgs {
   project: string;

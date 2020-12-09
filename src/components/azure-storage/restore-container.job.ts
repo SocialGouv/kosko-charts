@@ -1,6 +1,6 @@
 import ok from "assert";
 import { Job } from "kubernetes-models/batch/v1/Job";
-import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
+import type { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 interface RestoreJobArgs {
@@ -9,12 +9,6 @@ interface RestoreJobArgs {
   envFrom?: EnvFromSource[];
   from: "prod" | "dev";
   to: "prod" | "dev";
-}
-
-interface RestoreContainerJobArgs {
-  project: string;
-  env: EnvVar[]; // todo: env must have DESTINATION_CONTAINER and DESTINATION_CONTAINER
-  envFrom?: EnvFromSource[];
 }
 
 const getProjectSecretNamespace = (project: string) => `${project}-secret`;
@@ -55,40 +49,19 @@ az storage container set-permission \
 
 `;
 
-export const restoreJob = ({
+export const restoreContainerJob = ({
   project,
   env = [],
   envFrom = [],
   from,
   to,
 }: RestoreJobArgs): Job => {
+  ok(process.env.CI_COMMIT_SHORT_SHA);
+  const secretNamespace = getProjectSecretNamespace(project);
   const projectSlug = project.replace(/-/g, "");
   const jobEnv = [];
   // create needed env vars depending on the environemnt
-  if (from === "dev") {
-    jobEnv.push(
-      new EnvVar({
-        name: "SOURCE_ACCOUNT_NAME",
-        valueFrom: {
-          secretKeyRef: {
-            name: `azure-${projectSlug}dev-volume`,
-            key: "azurestorageaccountname",
-          },
-        },
-      })
-    );
-    jobEnv.push(
-      new EnvVar({
-        name: "SOURCE_ACCOUNT_KEY",
-        valueFrom: {
-          secretKeyRef: {
-            name: `azure-${projectSlug}dev-volume`,
-            key: "azurestorageaccountkey",
-          },
-        },
-      })
-    );
-  } else if (from === "prod") {
+  if (from === "prod") {
     jobEnv.push(
       new EnvVar({
         name: "SOURCE_ACCOUNT_NAME",
@@ -111,11 +84,10 @@ export const restoreJob = ({
         },
       })
     );
-  }
-  if (to === "dev") {
+  } else {
     jobEnv.push(
       new EnvVar({
-        name: "DESTINATION_ACCOUNT_NAME",
+        name: "SOURCE_ACCOUNT_NAME",
         valueFrom: {
           secretKeyRef: {
             name: `azure-${projectSlug}dev-volume`,
@@ -126,7 +98,7 @@ export const restoreJob = ({
     );
     jobEnv.push(
       new EnvVar({
-        name: "DESTINATION_ACCOUNT_KEY",
+        name: "SOURCE_ACCOUNT_KEY",
         valueFrom: {
           secretKeyRef: {
             name: `azure-${projectSlug}dev-volume`,
@@ -135,7 +107,8 @@ export const restoreJob = ({
         },
       })
     );
-  } else if (to === "prod") {
+  }
+  if (to === "prod") {
     jobEnv.push(
       new EnvVar({
         name: "DESTINATION_ACCOUNT_NAME",
@@ -158,22 +131,31 @@ export const restoreJob = ({
         },
       })
     );
+  } else {
+    jobEnv.push(
+      new EnvVar({
+        name: "DESTINATION_ACCOUNT_NAME",
+        valueFrom: {
+          secretKeyRef: {
+            name: `azure-${projectSlug}dev-volume`,
+            key: "azurestorageaccountname",
+          },
+        },
+      })
+    );
+    jobEnv.push(
+      new EnvVar({
+        name: "DESTINATION_ACCOUNT_KEY",
+        valueFrom: {
+          secretKeyRef: {
+            name: `azure-${projectSlug}dev-volume`,
+            key: "azurestorageaccountkey",
+          },
+        },
+      })
+    );
   }
 
-  return restoreContainerJob({
-    project,
-    envFrom,
-    env: [...jobEnv, ...env],
-  });
-};
-
-export const restoreContainerJob = ({
-  project,
-  env = [],
-  envFrom = [],
-}: RestoreContainerJobArgs): Job => {
-  ok(process.env.CI_COMMIT_SHORT_SHA);
-  const secretNamespace = getProjectSecretNamespace(project);
   return new Job({
     metadata: {
       name: `restore-container-${process.env.CI_COMMIT_SHORT_SHA}`,
@@ -187,7 +169,7 @@ export const restoreContainerJob = ({
           containers: [
             {
               command: ["sh", "-c", restoreScript],
-              env,
+              env: [...jobEnv, ...env],
               envFrom,
               image: "mcr.microsoft.com/azure-cli:2.15.1",
               imagePullPolicy: "IfNotPresent",
