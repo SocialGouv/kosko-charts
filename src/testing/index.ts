@@ -6,7 +6,8 @@ import { execAsync } from "./execAsync";
 
 export const getEnvManifests = async (
   envName = "",
-  koskoArgs = ""
+  koskoArgs = "",
+  env: Record<string, string> = {}
 ): Promise<string> => {
   const koskoEnvArgs = envName ? `--env ${envName}` : "";
   const { stdout } = await execAsync(
@@ -18,6 +19,7 @@ export const getEnvManifests = async (
         {
           FORCE_COLOR: "0",
         },
+        env,
         // Global env
         config({
           path: resolve(process.cwd(), "environments", ".gitlab-ci.env"),
