@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/SocialGouv/kosko-charts/compare/v4.0.1...v4.0.2) (2020-12-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.14.12 ([#332](https://github.com/SocialGouv/kosko-charts/issues/332)) ([8fc0998](https://github.com/SocialGouv/kosko-charts/commit/8fc0998e49db95c3bb1fdb724026980a3c6c505b))
+
 ## [4.0.1](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0...v4.0.1) (2020-12-11)
 
 
