@@ -1,3 +1,10 @@
+# [4.0.0-alpha.16](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.15...v4.0.0-alpha.16) (2020-12-11)
+
+
+### Features
+
+* **template:** add testing template ([8659465](https://github.com/SocialGouv/kosko-charts/commit/8659465717ea68b6905d60f2f4e02b3a7c11a53c))
+
 # [4.0.0-alpha.15](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.14...v4.0.0-alpha.15) (2020-12-09)
 
 
