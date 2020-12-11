@@ -5,17 +5,12 @@
 ```sh
 $ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v4.X.Y" .k8s/__tests__
 $ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v4.X.Y" .k8s/package.json
-# or if the v4 is still in alpha version
-$ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#alpha" .k8s/__tests__
-$ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#alpha" .k8s/package.json
 
 #
 
 $ cd .k8s
 $ yarn
-$ yarn upgrade @socialgouv/kosko-charts 
-# or if the v4 is still in alpha version
-$ yarn upgrade @socialgouv/kosko-charts@alpha 
+$ yarn upgrade @socialgouv/kosko-charts
 ```
 
 ## Depencencies change
@@ -32,7 +27,7 @@ Your `package.json` shoudl look like that :
   "dependencies": {
     "@kosko/env": "^1.0.1",
     "@kubernetes-models/sealed-secrets": "^1.0.1",
-    "@socialgouv/kosko-charts": "^4.0.0-alpha.15",
+    "@socialgouv/kosko-charts": "^4.0.0",
     "@types/node": "^14.14.11",
     "kosko": "^1.0.1",
     "kubernetes-models": "^1.0.1",
@@ -88,11 +83,11 @@ Your `package.json` shoudl look like that :
 
 ## K8S testing 
 
-Copie that tests files from the latest update (here `v4.0.0-alpha.15`) 
+Copie that tests files from the latest update (here `v4.0.0`)
 
 ```sh
-$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/__tests__#v4.0.0-alpha.15" __tests__
-$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/babel.config.js#v4.0.0-alpha.15" babel.config.js
+$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/__tests__#v4.0.0" __tests__
+$ npx degit "SocialGouv/kosko-charts/e2e/testing/__fixtures__/babel.config.js#v4.0.0" babel.config.js
 ```
 
 Add a `test` script in the `.k8s/package.json`
@@ -110,4 +105,11 @@ Add a `test` script in the `.k8s/package.json`
 ```sh
 $ yarn test 
 $ yarn test -u # to update the snapshots
+```
+
+## Components update
+
+```diff
+-import { createNamespace } from "@socialgouv/kosko-charts/utils/createNamespace";
++import { createNamespace } from "@socialgouv/kosko-charts/components/namespace";
 ```
