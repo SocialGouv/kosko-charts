@@ -1,48 +1,35 @@
-import {
-  GlobalEnvironment,
-  NamespaceComponentEnvironment,
-} from "@socialgouv/kosko-charts/types";
-import { NonEmptyString } from "@socialgouv/kosko-charts/utils/NonEmptyString";
-import { onDecodeError } from "@socialgouv/kosko-charts/utils/onDecodeError";
-import { fold } from "fp-ts/lib/Either";
-import { pipe } from "fp-ts/lib/pipeable";
-import * as D from "io-ts/lib/Decoder";
-import { Namespace } from "kubernetes-models/v1/Namespace";
+import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import type { NamespaceComponentEnvironment } from "@socialgouv/kosko-charts/types";
+import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
+import { Namespace as K8SNamespace } from "kubernetes-models/v1/Namespace";
 
-export type Params = NamespaceComponentEnvironment & GlobalEnvironment;
+export const createNamespace = (
+  config?: NamespaceComponentEnvironment
+): K8SNamespace => {
+  const gitlabEnv = gitlab(process.env);
+  const owner = gitlabEnv.labels?.owner;
 
-const NamespaceComponentParams = pipe(
-  D.type({
-    namespace: D.type({
-      name: NonEmptyString,
-    }),
-  }),
-  D.intersect(
-    D.partial({
-      annotations: D.record(D.string),
-      labels: D.record(D.string),
-    })
-  )
-);
-type NamespaceComponentParams = D.TypeOf<typeof NamespaceComponentParams>;
+  const envParams = merge(gitlab(process.env), config ?? {});
 
-const mapper = ({
-  namespace,
-  labels,
-  annotations,
-}: Params): { namespace: Namespace } => ({
-  namespace: new Namespace({
+  const namespace = new K8SNamespace({
     metadata: {
-      annotations,
-      labels: { app: namespace.name, ...labels },
-      name: namespace.name,
+      annotations: {
+        "field.cattle.io/creatorId": "gitlab",
+        "field.cattle.io/projectId": envParams.rancherId ?? "",
+        "git/branch": envParams.git.branch ?? "",
+        "git/remote": envParams.git.remote ?? "",
+        ...envParams.annotations,
+      },
+      labels: {
+        ...(owner
+          ? {
+              "azure-pg-admin-user": owner,
+            }
+          : {}),
+        ...envParams.labels,
+      },
+      name: envParams.namespace.name,
     },
-  }),
-});
-
-export const create = (params: Params): { namespace: Namespace } =>
-  pipe(
-    params,
-    NamespaceComponentParams.decode,
-    fold(onDecodeError, () => mapper(params))
-  );
+  });
+  return namespace;
+};

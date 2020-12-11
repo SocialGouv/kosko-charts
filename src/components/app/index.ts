@@ -18,7 +18,7 @@ import createService, {
 } from "../../utils/createService";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
-import { merge } from "../../utils/merge";
+import { merge } from "../../utils/@kosko/env/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 
@@ -38,7 +38,7 @@ export type AppConfig = DeploymentParams &
     withPostgres: boolean;
     withRedirections?: AliasParams;
   };
-export const create = (
+export type createFn = (
   name: string,
   {
     env,
@@ -49,7 +49,12 @@ export const create = (
     config?: Partial<AppConfig>;
     deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
   }
-): { kind: string }[] => {
+) => { kind: string }[];
+
+export const create: createFn = (
+  name,
+  { env, config, deployment: deploymentParams }
+) => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
   const manifests = [];
@@ -64,8 +69,8 @@ export const create = (
   const envParams = merge(
     defaultEnvParams, // set name as default if not provided
     gitlab(process.env),
+    config ?? {}, // create options
     env.component(name) as AppConfig, // kosko env overrides
-    config ?? {} // create options
   );
 
   const { containerPort, servicePort } = envParams;

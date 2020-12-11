@@ -1,39 +1,54 @@
-import { merge } from "./merge";
+import type { IIoK8sApiAppsV1DeploymentSpec } from "kubernetes-models/_definitions/IoK8sApiAppsV1DeploymentSpec";
+import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1/ObjectMeta";
+
+import { merge } from "./@kosko/env/merge";
 
 interface Metadatas {
-  annotations: Record<string, string>;
-  labels: Record<string, string>;
+  annotations?: Record<string, string>;
+  labels?: Record<string, string>;
   namespace: { name: string };
   name?: string;
 }
 
+function isIIoK8sApiAppsV1DeploymentSpecLike(
+  spec: unknown
+): spec is IIoK8sApiAppsV1DeploymentSpec {
+  return Boolean(spec && (spec as { template: unknown }).template);
+}
+
 // apply some data to a manifest : annotations, labels, namespace
 export const updateMetadata = (
-  //@ts-expect-error
-  manifest,
+  manifest:
+    | {
+        metadata?: IObjectMeta;
+        spec?: IIoK8sApiAppsV1DeploymentSpec | unknown;
+      }
+    | undefined,
   metadata: Metadatas
 ): void => {
-  if (manifest) {
-    if (!manifest.metadata) {
-      manifest.metadata = {};
-    }
+  if (!manifest) {
+    return;
+  }
 
-    manifest.metadata = merge(manifest.metadata, metadata);
+  if (!manifest.metadata) {
+    manifest.metadata = {};
+  }
 
-    const { annotations = {}, labels = {}, namespace, name } = metadata;
+  manifest.metadata = merge(manifest.metadata, metadata);
 
-    manifest.metadata.namespace = namespace.name;
+  const { annotations = {}, labels = {}, namespace, name } = metadata;
 
-    if (name) manifest.metadata.name = name;
+  manifest.metadata.namespace = namespace.name;
 
-    if (manifest.spec && manifest.spec.template) {
-      manifest.spec.template.metadata = merge(
-        manifest.spec.template.metadata || {},
-        {
-          annotations,
-          labels,
-        }
-      );
-    }
+  if (name) manifest.metadata.name = name;
+
+  if (isIIoK8sApiAppsV1DeploymentSpecLike(manifest.spec)) {
+    manifest.spec.template.metadata = merge(
+      manifest.spec.template.metadata ?? {},
+      {
+        annotations,
+        labels,
+      }
+    );
   }
 };

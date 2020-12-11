@@ -5,7 +5,10 @@ const ignorePatterns = [
   "<rootDir>/coverage",
   "<rootDir>/e2e",
   "<rootDir>/environments",
+  "<rootDir>/templates",
+  "<rootDir>/testing",
   "<rootDir>/types",
+  "<rootDir>/templates",
 ];
 
 module.exports = {

@@ -1,23 +1,22 @@
 {
   "name": "@socialgouv/kosko-charts",
   "description": "Kosko charts for the SocialGouv needs",
-  "version": "3.4.0",
+  "version": "4.0.0-alpha.17",
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
+    "@kosko/env": "^1.0.1",
     "@kubernetes-models/sealed-secrets": "^1.0.1",
     "@sindresorhus/is": "^4.0.0",
-    "fp-ts": "^2.9.0",
-    "io-ts": "2.2.7"
+    "kubernetes-models": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
-    "@kosko/env": "^1.0.1",
     "@socialgouv/eslint-config-recommended": "^1.40.0",
     "@socialgouv/eslint-config-typescript": "^1.40.0",
-    "@socialgouv/kosko-charts": "link:./src",
+    "@socialgouv/kosko-charts": "link:./",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.12",
     "babel-plugin-module-resolver": "^4.0.0",
@@ -25,6 +24,7 @@
     "eslint": "^7.15.0",
     "eslint-plugin-import": "^2.22.1",
     "execa": "^5.0.0",
+    "husky": "^4.3.0",
     "jest": "^26.6.3",
     "jest-file-snapshot": "^0.5.0",
     "kosko": "^1.0.1",
@@ -39,6 +39,7 @@
     "components",
     "environments",
     "templates",
+    "testing",
     "types",
     "utils"
   ],

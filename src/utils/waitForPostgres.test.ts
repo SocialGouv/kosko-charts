@@ -1,4 +1,5 @@
-import { waitForPostgres, WaitForPostgresParams } from "./waitForPostgres";
+import type { WaitForPostgresParams } from "./waitForPostgres";
+import { waitForPostgres } from "./waitForPostgres";
 
 test("should succeed validating a valid value", () => {
   expect(waitForPostgres({} as WaitForPostgresParams)).toMatchInlineSnapshot(

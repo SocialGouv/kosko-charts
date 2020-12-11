@@ -1,5 +1,5 @@
 import { addToEnvFrom } from "@socialgouv/kosko-charts/utils/addToEnvFrom";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
 export const addPostgresUserSecret = (deployment?: Deployment): void => {

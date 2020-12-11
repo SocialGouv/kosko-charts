@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@kosko/env": "^1.0.1",
+    "kubernetes-models": "^1.0.1"
+  },
+  "devDependencies": {
+    "@socialgouv/kosko-charts": "^4.0.0-alpha.17",
+    "@types/node": "^13.13.4",
+    "dotenv": "^8.2.0",
+    "kosko": "^1.0.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "generate": "kosko generate",
+    "generate:dev": "kosko generate  --env dev",
+    "generate:prod": "kosko generate  --env dev",
+    "gitlab": "DOTENV_CONFIG_PATH=./environments/.gitlab-ci.env kosko generate --require dotenv/config",
+    "gitlab:dev": "yarn --silent gitlab --env dev",
+    "gitlab:prod": "yarn --silent gitlab --env prod"
+  }
+}

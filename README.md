@@ -40,7 +40,7 @@ Providing a common Kubernetes (k8s) configuration to SocialGouv apps is a tricky
 Powered by [Kosko](https://github.com/tommy351/kosko), in this lib we provide default SocialGouv components and environments. We expect project to use and extend them at will.
 
 ```sh
-$ npx degit "SocialGouv/kosko-charts/templates/simple#v3.4.0" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/sample#v4.0.0-alpha.17" .k8s
 $ yarn --cwd .k8s
 # on GitLab
 $ yarn --cwd .k8s kosko generate --env dev
@@ -58,7 +58,7 @@ $ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require d
 We use [degit](https://github.com/Rich-Harris/degit) to scaffold the deployment config.
 
 ```sh
-$ npx degit "SocialGouv/kosko-charts/templates/simple#v3.4.0" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/sample#v4.0.0-alpha.17" .k8s
 ```
 
 `.k8s` is the target deployment config package folder.
@@ -100,13 +100,59 @@ The SocialGouv default components
 
 #### [`@socialgouv/kosko-charts/components/app`](./src/components/app)
 
+#### [`@socialgouv/kosko-charts/components/azure-pg`](./src/components/azure-pg)
+
+#### [`@socialgouv/kosko-charts/components/hasura`](./src/components/hasura)
+
 #### [`@socialgouv/kosko-charts/components/namespace`](./src/components/namespace)
+
+#### [`@socialgouv/kosko-charts/components/nginx`](./src/components/nginx)
+
+#### [`@socialgouv/kosko-charts/components/pg-secret`](./src/components/pg-secret)
+
+#### [`@socialgouv/kosko-charts/components/pgweb`](./src/components/pgweb)
+
+#### [`@socialgouv/kosko-charts/components/redis`](./src/components/redis)
 
 ### Environments
 
 The SocialGouv default components
 
 #### [`@socialgouv/kosko-charts/components/gitlab`](./src/components/gitlab)
+
+### Templates
+
+In addition to the `sample` template inspired by the [SocialGouv/sample-next-app](https://github.com/SocialGouv/sample-next-app/), you will find addtional templates you can use to bootstrap your `.k8s` folder.
+
+
+
+```sh
+# For [hasura](https://hasura.io/)
+$ npx degit "SocialGouv/kosko-charts/templates/hasura#v4.0.0-alpha.17" .k8s
+
+# For [nginx](https://nginx.org/)
+$ npx degit "SocialGouv/kosko-charts/templates/nginx#v4.0.0-alpha.17" .k8s
+
+# For [pgweb](https://sosedoff.github.io/pgweb/)
+$ npx degit "SocialGouv/kosko-charts/templates/pgweb#v4.0.0-alpha.17" .k8s
+
+# For [redis](https://redislabs.com/)
+$ npx degit "SocialGouv/kosko-charts/templates/redis#v4.0.0-alpha.17" .k8s
+```
+
+### Testing
+
+`@socialgouv/kosko-charts` provides a snapshot testing strategy through [Jest](https://jestjs.io/).
+
+```
+# At the root of your kosko context
+$ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v4.0.0-alpha.17" .k8s/__tests__
+$ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v4.0.0-alpha.17" .k8s/package.json
+```
+Then update the `.k8s/__tests__` file to match your project.  
+Our [`e2e/testing/__fixtures__/__tests__`](./e2e/testing/__fixtures__/__tests__) will run default testing cases.  
+Using the global `environments/.gitlab-ci.env` (if exists in your kosko context).
+In addition, it will try to load and merge it with `environments/<env>/.gitlab-ci.env`.
 
 <br>
 <br>

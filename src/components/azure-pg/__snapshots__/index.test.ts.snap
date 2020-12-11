@@ -9,15 +9,14 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "app.gitlab.com/env.name": "fabrique-dev",
       },
       "labels": Object {
-        "application": "my-test-sample",
+        "application": "sample",
         "owner": "sample",
         "team": "sample",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-secret",
+      "namespace": "sample-42-my-test",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -26,10 +25,9 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
-            "app.gitlab.com/env.name": "fabrique-dev",
           },
           "labels": Object {
-            "application": "my-test-sample",
+            "application": "sample",
             "owner": "sample",
             "team": "sample",
           },
@@ -93,10 +91,9 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "app.gitlab.com/env.name": "fabrique-dev",
       },
       "labels": Object {
-        "application": "my-test-sample",
+        "application": "sample",
         "owner": "sample",
         "team": "sample",
       },
@@ -118,7 +115,12 @@ Array [
 ]
 `;
 
-exports[`should throw because of a missing envs 1`] = `"Missing process.env.CI_COMMIT_SHORT_SHA"`;
+exports[`should throw because of a missing envs 1`] = `
+"Wrong environment variables
+required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
+required \\"CI_PROJECT_NAME\\": \\"undefined\\" should be defined
+"
+`;
 
 exports[`should use custom pgHost 1`] = `
 Array [
@@ -129,15 +131,14 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "app.gitlab.com/env.name": "fabrique-dev",
       },
       "labels": Object {
-        "application": "my-test-sample-next-app",
-        "owner": "sample-next-app",
-        "team": "sample-next-app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
       },
       "name": "create-db-job-abcdefg",
-      "namespace": "sample-next-app-secret",
+      "namespace": "sample-42-my-test",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -146,12 +147,11 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
-            "app.gitlab.com/env.name": "fabrique-dev",
           },
           "labels": Object {
-            "application": "my-test-sample-next-app",
-            "owner": "sample-next-app",
-            "team": "sample-next-app",
+            "application": "sample",
+            "owner": "sample",
+            "team": "sample",
           },
         },
         "spec": Object {
@@ -213,12 +213,11 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "app.gitlab.com/env.name": "fabrique-dev",
       },
       "labels": Object {
-        "application": "my-test-sample-next-app",
-        "owner": "sample-next-app",
-        "team": "sample-next-app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
       },
       "name": "azure-pg-user-abcdefg",
       "namespace": "sample-42-my-test",

@@ -1,31 +1,21 @@
-import { Environment } from "@kosko/env";
+import type { Environment } from "@kosko/env";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
-import { ok } from "assert";
+import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 
-import { DeploymentParams } from "../../utils/createDeployment";
+import type { DeploymentParams } from "../../utils/createDeployment";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
 import { updateMetadata } from "../../utils/updateMetadata";
-import { createSecret } from "../pg-secret/create";
+import { createSecret } from "../pg-secret";
 import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
+import type { PgParams } from "./types";
 
-interface PgParams {
-  database: string;
-  host: string;
-  user: string;
-  password: string;
-  name: string;
-}
+const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
-  ok(
-    process.env.CI_COMMIT_SHORT_SHA,
-    "Missing process.env.CI_COMMIT_SHORT_SHA"
-  );
-  ok(process.env.CI_PROJECT_NAME, "Missing process.env.CI_PROJECT_NAME");
+  assert(process.env);
 
   const {
     CI_COMMIT_SHORT_SHA: sha,
@@ -52,7 +42,7 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-export const create = ({ config = {} }: CreateParams): unknown[] => {
+export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
@@ -62,14 +52,12 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
     ...config, // create options
   };
 
-  const secretNamespace = { name: `${process.env.CI_PROJECT_NAME}-secret` };
-
   const job = createDbJob(defaultParams);
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
     name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
-    namespace: secretNamespace,
+    namespace: envParams.namespace,
   });
 
   const secret = createSecret(envParams);
@@ -79,5 +67,6 @@ export const create = ({ config = {} }: CreateParams): unknown[] => {
     name: defaultParams.name,
     namespace: envParams.namespace,
   });
+
   return [job, secret];
 };

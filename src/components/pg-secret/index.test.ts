@@ -1,42 +1,66 @@
-import { GlobalEnvironment } from "@socialgouv/kosko-charts/types";
+import { createSecret } from "./index";
 
-import { create } from "./index";
-import { Params, PostresSecretParameters } from "./params";
-
-test.each([
-  ["because of missing variables", {} as Params],
-  ["because of missing variables", { user: "zorro" } as Params],
-  [
-    "because of missing variables",
-    { database: "", host: "pouet.com", password: "", user: "" } as Params,
-  ],
-])("should throw %s", (_: string, params: Params) => {
-  expect(() => create(params)).toThrowErrorMatchingSnapshot();
+test("should create a pg secret", () => {
+  const secret = createSecret({
+    database: "some-db",
+    host: "pouet.com",
+    password: "passw0rd",
+    user: "tester",
+  });
+  expect(secret).toMatchInlineSnapshot(`
+    Object {
+      "apiVersion": "v1",
+      "kind": "Secret",
+      "stringData": Object {
+        "DATABASE_URL": "postgresql://tester%40pouet.com:passw0rd@pouet.com/some-db?sslmode=require",
+        "DB_URI": "postgresql://tester%40pouet.com:passw0rd@pouet.com/some-db?sslmode=require",
+        "HASURA_GRAPHQL_DATABASE_URL": "postgresql://tester%40pouet.com:passw0rd@pouet.com/some-db?sslmode=require",
+        "PGDATABASE": "some-db",
+        "PGHOST": "pouet.com",
+        "PGPASSWORD": "passw0rd",
+        "PGRST_DB_URI": "postgresql://tester%40pouet.com:passw0rd@pouet.com/some-db?sslmode=require",
+        "PGSSLMODE": "require",
+        "PGUSER": "tester@pouet.com",
+      },
+    }
+  `);
 });
 
-const validParams: PostresSecretParameters = {
-  database: "some-db",
-  host: "pouet.com",
-  name: "test-job",
-  password: "passw0rd",
-  user: "tester",
-};
-
-const globalParams: GlobalEnvironment = {
-  domain: "",
-  git: {
-    branch: "",
-    remote: "",
-  },
-  namespace: { name: "sample-42-my-test" },
-  subdomain: "",
-};
-
-test.skip("should return a new PG secret", () => {
-  expect(
-    create({
-      ...globalParams,
-      ...validParams,
+test("fails because of empty values", () => {
+  expect(() =>
+    createSecret({
+      database: "",
+      host: "",
+      password: "",
+      sslmode: "",
+      user: "",
     })
-  ).toMatchSnapshot();
+  ).toThrowErrorMatchingInlineSnapshot(`"A database should be defined"`);
+  expect(() =>
+    createSecret({
+      database: "database",
+      host: "",
+      password: "",
+      sslmode: "",
+      user: "",
+    })
+  ).toThrowErrorMatchingInlineSnapshot(`"A user should be defined"`);
+  expect(() =>
+    createSecret({
+      database: "database",
+      host: "",
+      password: "password",
+      sslmode: "",
+      user: "user",
+    })
+  ).toThrowErrorMatchingInlineSnapshot(`"A host should be defined"`);
+  expect(() =>
+    createSecret({
+      database: "database",
+      host: "host",
+      password: "",
+      sslmode: "",
+      user: "user",
+    })
+  ).toThrowErrorMatchingInlineSnapshot(`"A password should be defined"`);
 });

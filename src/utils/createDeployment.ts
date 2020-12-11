@@ -1,11 +1,8 @@
-/* eslint-disable simple-import-sort/sort */
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-import { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
-import { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
-
+import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
+import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
-import { merge } from "./merge";
+import { merge } from "./@kosko/env/merge";
 
 export interface DeploymentParams {
   annotations?: Record<string, string>;
@@ -53,7 +50,6 @@ export default (params: DeploymentParams): Deployment => {
           ),
         },
         spec: {
-          imagePullSecrets: params.imagePullSecrets,
           containers: [
             merge(
               {
@@ -114,6 +110,7 @@ export default (params: DeploymentParams): Deployment => {
               params.container ?? {}
             ),
           ],
+          imagePullSecrets: params.imagePullSecrets,
         },
       },
     },

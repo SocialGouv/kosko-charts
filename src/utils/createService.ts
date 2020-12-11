@@ -1,20 +1,16 @@
-import { Service } from "kubernetes-models/v1/Service";
+//
 
-//import { matchLabelsFromParams } from "./matchLabels";
-//import { metadataFromParams } from "./metadata";
-//import { Params } from "./params";
+import { Service } from "kubernetes-models/v1/Service";
 
 export interface Params {
   name: string;
   servicePort: number;
   containerPort: number;
-  selector: { [key: string]: string };
+  selector: Record<string, string>;
   portName?: string;
 }
 
 export default (params: Params): Service => {
-  //  const metadata = metadataFromParams(params);
-
   return new Service({
     metadata: {
       labels: {
@@ -25,9 +21,9 @@ export default (params: Params): Service => {
     spec: {
       ports: [
         {
+          name: params.portName ?? "http",
           port: params.servicePort,
           targetPort: params.containerPort,
-          name: params.portName ?? "http",
         },
       ],
       selector: params.selector,
