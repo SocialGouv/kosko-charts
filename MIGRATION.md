@@ -3,6 +3,14 @@
 ## Package update
 
 ```sh
+$ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v4.X.Y" .k8s/__tests__
+$ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v4.X.Y" .k8s/package.json
+# or if the v4 is still in alpha version
+$ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#alpha" .k8s/__tests__
+$ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#alpha" .k8s/package.json
+
+#
+
 $ cd .k8s
 $ yarn
 $ yarn upgrade @socialgouv/kosko-charts 
@@ -41,6 +49,43 @@ Your `package.json` shoudl look like that :
 }
 ```
 
+## Override "foo" project
+
+- `.k8s/__tests__/kosko generate --env dev.ts`
+
+```diff
+     await getEnvManifests("dev", "", {
+-       ..project("foo").dev,
++      ...project("sample-next-app").dev,
+-      KUBE_NAMESPACE: "foo-XYZ-master-dev2",
++      KUBE_NAMESPACE: "sample-next-app-85-master-dev2",
+-      RANCHER_PROJECT_ID: "c-bar:p-foo",
++      RANCHER_PROJECT_ID: "c-bd7z2:p-7ms8p",
+     })
+```
+
+- `.k8s/__tests__/kosko generate --env preprod.ts`
+
+```diff
+     await getEnvManifests("preprod", "", {
+-       ..project("foo").preprod,
++      ...project("sample-next-app").preprod,
+-      KUBE_NAMESPACE: "foo-XYZ-preprod-dev2",
++      KUBE_NAMESPACE: "sample-next-app-85-preprod-dev2",
+-      RANCHER_PROJECT_ID: "c-bar:p-foo",
++      RANCHER_PROJECT_ID: "c-bd7z2:p-7ms8p",
+     })
+```
+
+- `.k8s/__tests__/kosko generate --env preprod.ts`
+
+```diff
+     await getEnvManifests("preprod", "", {
+-      ...project("foo").prod,
++      ...project("sample-next-app").prod,
+     })
+```
+
 ## K8S testing 
 
 Copie that tests files from the latest update (here `v4.0.0-alpha.15`) 
@@ -66,4 +111,3 @@ Add a `test` script in the `.k8s/package.json`
 $ yarn test 
 $ yarn test -u # to update the snapshots
 ```
-
