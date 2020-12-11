@@ -1,3 +1,10 @@
+# [4.0.0-alpha.17](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.16...v4.0.0-alpha.17) (2020-12-11)
+
+
+### Features
+
+* **gitlab:** remove -dev2 suffix on application name ([5e99bb0](https://github.com/SocialGouv/kosko-charts/commit/5e99bb056c50288bfac3ab2edeb17db21e7650cb))
+
 # [4.0.0-alpha.16](https://github.com/SocialGouv/kosko-charts/compare/v4.0.0-alpha.15...v4.0.0-alpha.16) (2020-12-11)
 
 
