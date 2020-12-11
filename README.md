@@ -149,7 +149,7 @@ $ npx degit "SocialGouv/kosko-charts/templates/redis#v4.0.0-alpha.16" .k8s
 $ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v4.0.0-alpha.16" .k8s/__tests__
 $ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v4.0.0-alpha.16" .k8s/package.json
 ```
-
+Then update the `.k8s/__tests__` file to match your project.  
 Our [`e2e/testing/__fixtures__/__tests__`](./e2e/testing/__fixtures__/__tests__) will run default testing cases.  
 Using the global `environments/.gitlab-ci.env` (if exists in your kosko context).
 In addition, it will try to load and merge it with `environments/<env>/.gitlab-ci.env`.
