@@ -146,7 +146,6 @@ $ npx degit "SocialGouv/kosko-charts/templates/redis#v4.0.0-alpha.15" .k8s
 
 ```
 # At the root of your kosko context
-$ cd .k8s
 $ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v4.0.0-alpha.15" .k8s/__tests__
 $ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v4.0.0-alpha.15" .k8s/package.json
 ```
