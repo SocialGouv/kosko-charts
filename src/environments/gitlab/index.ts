@@ -37,7 +37,7 @@ export default (env = process.env): GlobalEnvironment => {
     ? CI_PROJECT_NAME
     : CI_COMMIT_TAG
     ? `${CI_COMMIT_TAG.replace(/\./g, "-")}-${CI_PROJECT_NAME}`
-    : `${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}`;
+    : `${CI_ENVIRONMENT_SLUG.replace("-dev2", "")}-${CI_PROJECT_NAME}`;
 
   const subdomain = isProductionCluster
     ? CI_PROJECT_NAME
