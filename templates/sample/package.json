@@ -9,7 +9,7 @@
     "dotenv": "^8.2.0",
     "kosko": "^1.0.1",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   },
   "license": "Apache-2.0",
   "scripts": {
