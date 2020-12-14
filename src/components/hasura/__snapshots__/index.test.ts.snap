@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create hasura dev config 1`] = `
+Array [
+  "hasura",
+  Object {
+    "config": Object {
+      "container": Object {
+        "resources": Object {
+          "limits": Object {
+            "cpu": "500m",
+            "memory": "512Mi",
+          },
+          "requests": Object {
+            "cpu": "100m",
+            "memory": "64Mi",
+          },
+        },
+      },
+      "containerPort": 80,
+      "ingress": false,
+      "subDomainPrefix": "hasura-",
+      "withPostgres": true,
+    },
+    "deployment": Object {},
+    "env": Environment {
+      "cwd": "/tmp",
+      "paths": Object {
+        "component": "environments/#{environment}/#{component}",
+        "global": "environments/#{environment}",
+      },
+      "reducers": Array [
+        Object {
+          "name": "global",
+          "reduce": [Function],
+        },
+        Object {
+          "name": "component",
+          "reduce": [Function],
+        },
+      ],
+    },
+  },
+]
+`;

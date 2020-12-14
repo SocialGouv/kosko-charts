@@ -44,7 +44,6 @@ export const create = (
         containerPort: 80,
         ingress: false,
         subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
-
         withPostgres: true,
       },
       config
