@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/SocialGouv/kosko-charts/compare/v4.0.5...v4.1.0) (2020-12-14)
+
+
+### Features
+
+* **azure-storage:** restore container and DB ([#324](https://github.com/SocialGouv/kosko-charts/issues/324)) ([4b0afa9](https://github.com/SocialGouv/kosko-charts/commit/4b0afa92334fd4b858a125ca915308f2706646c3))
+
 ## [4.0.5](https://github.com/SocialGouv/kosko-charts/compare/v4.0.4...v4.0.5) (2020-12-12)
 
 
