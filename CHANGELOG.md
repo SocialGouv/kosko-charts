@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/SocialGouv/kosko-charts/compare/v4.1.0...v4.1.1) (2020-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update kosko monorepo to ^1.0.2 ([#339](https://github.com/SocialGouv/kosko-charts/issues/339)) ([13eb56d](https://github.com/SocialGouv/kosko-charts/commit/13eb56d61f38caf628d92f4e51e73c15069d5e23))
+
 # [4.1.0](https://github.com/SocialGouv/kosko-charts/compare/v4.0.5...v4.1.0) (2020-12-14)
 
 
