@@ -1,8 +1,8 @@
 import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 import { Job } from "kubernetes-models/batch/v1/Job";
 
-// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.1.0
-const SOCIALGOUV_DOCKER_AZURE_DB = "2.1.0";
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.6.1
+const SOCIALGOUV_DOCKER_AZURE_DB = "2.6.1";
 
 const assert = assertEnv(["CI_COMMIT_SHORT_SHA"]);
 export const dropDbJob = ({

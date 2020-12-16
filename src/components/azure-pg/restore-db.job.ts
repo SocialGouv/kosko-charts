@@ -9,6 +9,9 @@ interface RestoreDbJobArgs {
   envFrom?: EnvFromSource[];
 }
 
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.6.1
+const SOCIALGOUV_DOCKER_AZURE_DB = "2.6.1";
+
 const restoreScript = `
 
 echo "starting restore into $PGHOST/$PGDATABASE"
@@ -79,8 +82,7 @@ export const restoreDbJob = ({
                 }),
                 ...envFrom,
               ],
-              image:
-                "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.1.0",
+              image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:${SOCIALGOUV_DOCKER_AZURE_DB}`,
               imagePullPolicy: "IfNotPresent",
               name: "restore-db",
               resources: {
