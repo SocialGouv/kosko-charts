@@ -110,4 +110,9 @@ jobs:
           author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
           author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
           message: "chore(:robot:): ${{ needs.Act.outputs.TRAILING_LINE }}"
-          push: true
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
