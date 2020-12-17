@@ -1,3 +1,16 @@
+## [4.1.3](https://github.com/SocialGouv/kosko-charts/compare/v4.1.2...v4.1.3) (2020-12-17)
+
+
+### Bug Fixes
+
+* upgrade docker/azure-db ([#343](https://github.com/SocialGouv/kosko-charts/issues/343)) ([709e08a](https://github.com/SocialGouv/kosko-charts/commit/709e08aa2a271d3deec880b88e99f804f121ec22))
+
+
+### Reverts
+
+* **gitlab:** remove -dev2 suffix on application name ([#344](https://github.com/SocialGouv/kosko-charts/issues/344)) ([0405496](https://github.com/SocialGouv/kosko-charts/commit/0405496c3453665fab6e1333372aaf5719c1af8f))
+* **renovate:** multi registryUrls on docker datasource ([7e73a93](https://github.com/SocialGouv/kosko-charts/commit/7e73a93047b8b658c3cdc56d2334a22a4a798ccd))
+
 ## [4.1.2](https://github.com/SocialGouv/kosko-charts/compare/v4.1.1...v4.1.2) (2020-12-15)
 
 
