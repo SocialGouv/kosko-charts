@@ -34,7 +34,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ github.event.comment.id }}
-          comment-author: 'SocialGroovyBot'
           reaction-type: eyes
 
       - name: Create comment
@@ -67,7 +66,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.client_payload.ref }}
 
       - name: Get yarn cache directory path
         id: init
@@ -113,7 +112,6 @@ jobs:
           HUSKY_SKIP_HOOKS: "true"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          add: "."
           author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
           author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
           message: "chore(:robot:): ${{ needs.Act.outputs.TRAILING_LINE }}"
@@ -122,4 +120,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: ${{ github.event.client_payload.ref }}
