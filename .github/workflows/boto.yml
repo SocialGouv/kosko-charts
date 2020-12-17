@@ -25,7 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
       - name: debug
-        run: echo ${{ toJson(github) }}}
+        run: echo '${{ toJson(github) }}'
 
       - name: Create URL to the run output
         id: vars
@@ -68,7 +68,7 @@ jobs:
           node-version: 14.x
 
       - name: debug
-        run: echo ${{ toJson(github) }}}
+        run: echo '${{ toJson(github) }}'
 
       - uses: actions/checkout@v2
         with:
