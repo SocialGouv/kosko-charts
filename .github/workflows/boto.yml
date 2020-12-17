@@ -44,8 +44,7 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           comment-author: 'SocialGroovyBot'
           body: |
-            [Running `${{ steps.prcomm.outputs.TRAILING_LINE }}`][1]
-            [1]: ${{ steps.vars.outputs.run-url }}
+            [Running `${{ steps.prcomm.outputs.TRAILING_LINE }}`](${{ steps.vars.outputs.run-url }})
 
   Yarn:
     needs:
