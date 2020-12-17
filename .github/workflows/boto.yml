@@ -24,6 +24,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
+      - name: debug
+        run: echo ${{ toJson(github) }}}
+
       - name: Create URL to the run output
         id: vars
         run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
@@ -63,6 +66,9 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: 14.x
+
+      - name: debug
+        run: echo ${{ toJson(github) }}}
 
       - uses: actions/checkout@v2
         with:
