@@ -4,7 +4,7 @@
   "packageRules": [
     {
       "datasources": ["docker"],
-      "registryUrls": ["https://index.docker.io", "https://registry.gitlab.factory.social.gouv.fr"]
+      "registryUrls": ["https://registry.gitlab.factory.social.gouv.fr"]
     },
     {
       "paths": ["templates"],
@@ -15,7 +15,7 @@
     {
       "fileMatch": [".ts$"],
       "matchStrings": [
-        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sconst .*?_VERSION = \"(?<currentValue>.*)\";\\s"
+        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?( versioning=(?<versioning>.*?))?\\sconst .*?_VERSION = \"(?<currentValue>.*)\";\\s"
       ],
       "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
     }
