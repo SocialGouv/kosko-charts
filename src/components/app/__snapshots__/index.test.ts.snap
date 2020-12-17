@@ -3,7 +3,7 @@
 exports[`should return dev manifests 1`] = `
 Array [
   Object {
-    "apiVersion": "apps/v1",
+    "apiVersion": "apps/v",
     "kind": "Deployment",
     "metadata": Object {
       "annotations": Object {
