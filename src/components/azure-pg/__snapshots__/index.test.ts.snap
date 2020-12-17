@@ -63,7 +63,7 @@ Array [
                   },
                 },
               ],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.5.0",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1",
               "imagePullPolicy": "IfNotPresent",
               "name": "create-db-user",
               "resources": Object {
@@ -185,7 +185,7 @@ Array [
                   },
                 },
               ],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.5.0",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1",
               "imagePullPolicy": "IfNotPresent",
               "name": "create-db-user",
               "resources": Object {
