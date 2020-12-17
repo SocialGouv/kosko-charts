@@ -110,7 +110,7 @@ jobs:
 
       - name: Run
         run: |
-          yarn ${{ needs.Act.outputs.TRAILING_LINE }}
+          ${{ needs.Act.outputs.TRAILING_LINE }}
 
       - uses: EndBug/add-and-commit@v5
         env:
