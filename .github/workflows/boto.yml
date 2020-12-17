@@ -11,6 +11,7 @@ jobs:
       BOOL_TRIGGERED: ${{ steps.prcomm.outputs.BOOL_TRIGGERED }}
       TRAILING_TOKEN : ${{ steps.prcomm.outputs.TRAILING_TOKEN  }}
       TRAILING_LINE : ${{ steps.prcomm.outputs.TRAILING_LINE  }}
+      RUN_URL : ${{ steps.vars.outputs.run-url  }}
 
     steps:
       - name: Listen for PR Comments
@@ -21,38 +22,89 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
+      - name: Create URL to the run output
+        id: vars
+        run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+      
       - run: |
            echo "BOOL_TRIGGERED : ${{ steps.prcomm.outputs.BOOL_TRIGGERED }}"
            echo "TRAILING_TOKEN : ${{ steps.prcomm.outputs.TRAILING_TOKEN }}"
            echo "TRAILING_LINE : ${{ steps.prcomm.outputs.TRAILING_LINE }}"
-           echo "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+           echo "RUN_URL : ${{ steps.vars.outputs.run-url }}"
 
       - name: Add reaction
+        if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
         uses: peter-evans/create-or-update-comment@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ github.event.comment.id }}
           reaction-type: eyes
 
-  Snapshot:
+      - name: Create comment
+        if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            Hello @${{ github.event.client_payload.github.actor }}!
+            [Click here to see the command run output][1]
+            [1]: ${{ steps.vars.outputs.run-url }}
+
+  Yarn:
     needs:
       - Act
 
     if: |
       (
-        needs.Act.outputs.BOOL_TRIGGERED == 'true'
+        needs.Act.outputs.BOOL_TRIGGERED == 'True'
         &&
-        needs.Act.outputs.TRAILING_TOKEN == 'jest --updateSnapshot'
+        needs.Act.outputs.TRAILING_TOKEN == 'yarn'
       )
 
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up Node.js 14.x
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14.x
+
       - uses: actions/checkout@v2
-      - name: Work
-        if: steps.prcomm.outputs.BOOL_TRIGGERED == 'true'
+
+      - name: Get yarn cache directory path
+        id: init
+        shell: bash
         run: |
-          jest --updateSnapshot
+          echo "::set-output name=yarn_cache::$(yarn cache dir)"
+          #
+          echo "Node $(node --version)"
+          echo "NPM $(npm --version)"
+          echo "Npx $(npx --version)"
+          echo "Yarn $(yarn --version)"
+          
+      - name: Cache Yarn packages
+        id: yarn_cache_packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.init.outputs.yarn_cache }}
+          key: ${{ runner.os }}-yarn_cache-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn_cache-
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Installing
+        run: yarn --frozen-lockfile --perfer-offline --link-duplicates
+
+      - name: Run
+        run: |
+          yarn ${{ needs.Act.outputs.TRAILING_LINE }}
 
       - uses: EndBug/add-and-commit@v5
         env:
@@ -61,4 +113,4 @@ jobs:
         with:
           author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
           author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
-          message: "test: update snapshots"
+          message: "chore(:robot:): ${{ needs.Act.outputs.TRAILING_LINE }}"
