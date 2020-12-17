@@ -52,8 +52,7 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           comment-author: 'SocialGroovyBot'
           body: |
-            Hello @${{ github.event.github.actor }}!
-            [Click here to see the command run output][1]
+            [Running `${{ needs.Act.outputs.TRAILING_LINE }}`][1]
             [1]: ${{ steps.vars.outputs.run-url }}
 
   Yarn:
