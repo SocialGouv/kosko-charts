@@ -1,0 +1,51 @@
+name: Boto
+
+on:
+  - issue_comment
+
+jobs:
+  Act:
+    runs-on: ubuntu-latest
+
+    outputs:
+      BOOL_TRIGGERED: ${{ steps.prcomm.outputs.BOOL_TRIGGERED }}
+      TRAILING_TOKEN : ${{ steps.prcomm.outputs.TRAILING_TOKEN  }}
+      TRAILING_LINE : ${{ steps.prcomm.outputs.TRAILING_LINE  }}
+
+    steps:
+      - name: Listen for PR Comments
+        id: prcomm
+        uses: machine-learning-apps/actions-chatops@master
+        with:
+          TRIGGER_PHRASE: "@SocialGroovyBot"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  Snapshot:
+    needs:
+      - Act
+
+    if: |
+      (
+        needs.Act.outputs.BOOL_TRIGGERED == 'true'
+        &&
+        needs.Act.outputs.TRAILING_TOKEN == 'jest --updateSnapshot'
+      )
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Work
+        if: steps.prcomm.outputs.BOOL_TRIGGERED == 'true'
+        run: |
+          jest --updateSnapshot
+
+      - uses: EndBug/add-and-commit@v5
+        env:
+          HUSKY_SKIP_HOOKS: "true"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
+          author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
+          message: "test: update snapshots"
