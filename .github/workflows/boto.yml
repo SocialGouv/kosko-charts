@@ -27,14 +27,6 @@ jobs:
       - name: Create URL to the run output
         id: vars
         run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-      
-      - run: |
-           echo "BOOL_TRIGGERED : ${{ steps.prcomm.outputs.BOOL_TRIGGERED }}"
-           echo "TRAILING_TOKEN : ${{ steps.prcomm.outputs.TRAILING_TOKEN }}"
-           echo "TRAILING_LINE : ${{ steps.prcomm.outputs.TRAILING_LINE }}"
-           echo "RUN_URL : ${{ steps.vars.outputs.run-url }}"
-           echo "github.event.comment.id : ${{ github.event.comment.id }}"
-           echo "github.event.issue.number : ${{ github.event.issue.number }}"
 
       - name: Add reaction
         if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
@@ -52,7 +44,7 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           comment-author: 'SocialGroovyBot'
           body: |
-            [Running `${{ steps.vars.outputs.TRAILING_LINE }}`][1]
+            [Running `${{ steps.prcomm.outputs.TRAILING_LINE }}`][1]
             [1]: ${{ steps.vars.outputs.run-url }}
 
   Yarn:
