@@ -44,7 +44,7 @@ jobs:
         if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
         uses: peter-evans/create-or-update-comment@v1
         with:
-          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          issue-number: ${{ github.event.pull_request.number }}
           body: |
             Hello @${{ github.event.client_payload.github.actor }}!
             [Click here to see the command run output][1]
