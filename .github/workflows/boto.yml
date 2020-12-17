@@ -20,6 +20,19 @@ jobs:
           TRIGGER_PHRASE: "@SocialGroovyBot"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
+      - run: |
+           echo "BOOL_TRIGGERED : ${{ steps.prcomm.outputs.BOOL_TRIGGERED }}"
+           echo "TRAILING_TOKEN : ${{ steps.prcomm.outputs.TRAILING_TOKEN }}"
+           echo "TRAILING_LINE : ${{ steps.prcomm.outputs.TRAILING_LINE }}"
+           echo "https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+
+      - name: Add reaction
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ github.event.comment.id }}
+          reaction-type: eyes
 
   Snapshot:
     needs:
