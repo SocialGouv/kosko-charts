@@ -3,10 +3,6 @@
   "extends": ["github>SocialGouv/renovate-config", ":automergeAll"],
   "packageRules": [
     {
-      "datasources": ["docker"],
-      "registryUrls": ["https://registry.gitlab.factory.social.gouv.fr"]
-    },
-    {
       "paths": ["templates"],
       "ignoreDeps": ["@socialgouv/kosko-charts"]
     }
