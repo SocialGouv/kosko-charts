@@ -4,7 +4,7 @@ interface DropAutodevopsDbsJobArgs {
   secretRefName?: string;
 }
 
-// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.1.0
+// renovate: datasource=docker depName=socialgouv/docker/azure-db versioning=2.1.0
 const SOCIALGOUV_DOCKER_AZURE_DB = "2.1.0";
 
 export const dropAutodevopsDbsJob = ({
