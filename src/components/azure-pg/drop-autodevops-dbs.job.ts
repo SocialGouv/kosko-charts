@@ -5,7 +5,7 @@ interface DropAutodevopsDbsJobArgs {
 }
 
 // renovate: datasource=docker depName=socialgouv/docker/azure-db registryUrl=registry.gitlab.factory.social.gouv.fr versioning=2.1.0
-const SOCIALGOUV_DOCKER_AZURE_DB = "2.1.0";
+const SOCIALGOUV_DOCKER_AZURE_DB_VERSION  = "2.1.0";
 
 export const dropAutodevopsDbsJob = ({
   secretRefName = `azure-pg-admin-user`,
@@ -31,7 +31,7 @@ export const dropAutodevopsDbsJob = ({
               ],
               image:
                 "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:" +
-                SOCIALGOUV_DOCKER_AZURE_DB,
+                SOCIALGOUV_DOCKER_AZURE_DB_VERSION,
               imagePullPolicy: "IfNotPresent",
               name: "drop-autodevops-dbs",
               resources: {
