@@ -67,13 +67,13 @@ jobs:
       - name: Get upstream commit branch
         id: comment
         run: |
-          echo "::set-output name=branch::$(
-              curl
-                -H "Accept: application/vnd.github.sailor-v-preview+json"
-                -u ${{ secrets.GITHUB_TOKEN }}
-                ${{ github.event.issue.pull_request.url }}
-            | jq '.head.ref'
-            | sed 's/\"//g'
+          echo "::set-output name=branch::$( \
+              curl \
+                -H "Accept: application/vnd.github.sailor-v-preview+json" \
+                -u ${{ secrets.GITHUB_TOKEN }} \
+                ${{ github.event.issue.pull_request.url }} \
+            | jq '.head.ref' \
+            | sed 's/\"//g' \
           )"
       - name: Checkout upstream repo
         uses: actions/checkout@v2
