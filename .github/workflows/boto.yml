@@ -23,25 +23,6 @@ jobs:
           TRIGGER_PHRASE: "@SocialGroovyBot"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
- 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: get pullrequest url
-        run: |
-          echo ${{ github.event.issue.pull_request.url }}
-      - name: get upstream branch
-        id: upstreambranch
-        run: |
-          echo "::set-output name=branchname::$(curl -v -H "Accept: application/vnd.github.sailor-v-preview+json" -u ${{ secrets.GITHUB_TOKEN }} ${{ github.event.issue.pull_request.url }} | jq '.head.ref' | sed 's/\"//g')"
-      - name: echo upstream branch
-        run: |
-          echo ${{ steps.upstreambranch.outputs.branchname }}
-      - name: Checkout upstream repo
-        uses: actions/checkout@v2
-        with:
-           ref: ${{ steps.upstreambranch.outputs.branchname }}
 
       - name: Create URL to the run output
         id: vars
@@ -83,24 +64,21 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: get pullrequest url
+      - name: Get upstream commit branch
+        id: comment
         run: |
-          echo ${{ github.event.issue.pull_request.url }}
-      - name: get upstream branch
-        id: upstreambranch
-        run: |
-          echo "::set-output name=branchname::$(curl -v -H "Accept: application/vnd.github.sailor-v-preview+json" -u ${{ secrets.GITHUB_TOKEN }} ${{ github.event.issue.pull_request.url }} | jq '.head.ref' | sed 's/\"//g')"
-      - name: echo upstream branch
-        run: |
-          echo ${{ steps.upstreambranch.outputs.branchname }}
+          echo "::set-output name=branch::$(
+              curl
+                -H "Accept: application/vnd.github.sailor-v-preview+json"
+                -u ${{ secrets.GITHUB_TOKEN }}
+                ${{ github.event.issue.pull_request.url }}
+            | jq '.head.ref'
+            | sed 's/\"//g'
+          )"
       - name: Checkout upstream repo
         uses: actions/checkout@v2
         with:
-           ref: ${{ steps.upstreambranch.outputs.branchname }}
+           ref: ${{ steps.comment.outputs.branch }}
 
       - name: Get yarn cache directory path
         id: init
@@ -112,7 +90,7 @@ jobs:
           echo "NPM $(npm --version)"
           echo "Npx $(npx --version)"
           echo "Yarn $(yarn --version)"
-          
+
       - name: Cache Yarn packages
         id: yarn_cache_packages
         uses: actions/cache@v2
@@ -146,12 +124,8 @@ jobs:
           HUSKY_SKIP_HOOKS: "true"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
           author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
+          author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
+          branch: ${{ steps.comment.outputs.branch }}
           message: "chore(:robot:): ${{ needs.Act.outputs.TRAILING_LINE }}"
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.event.client_payload.ref }}
