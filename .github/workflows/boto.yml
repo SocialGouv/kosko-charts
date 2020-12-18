@@ -24,8 +24,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
-      - name: debug
-        run: echo '${{ toJson(github) }}'
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: get pullrequest url
+        run: |
+          echo ${{ github.event.issue.pull_request.url }}
+      - name: get upstream branch
+        id: upstreambranch
+        run: |
+          echo "::set-output name=branchname::$(curl -v -H "Accept: application/vnd.github.sailor-v-preview+json" -u ${{ secrets.GITHUB_TOKEN }} ${{ github.event.issue.pull_request.url }} | jq '.head.ref' | sed 's/\"//g')"
+      - name: echo upstream branch
+        run: |
+          echo ${{ steps.upstreambranch.outputs.branchname }}
+      - name: Checkout upstream repo
+        uses: actions/checkout@v2
+        with:
+           ref: ${{ steps.upstreambranch.outputs.branchname }}
 
       - name: Create URL to the run output
         id: vars
@@ -67,12 +83,24 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: debug
-        run: echo '${{ toJson(github) }}'
-
-      - uses: actions/checkout@v2
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: get pullrequest url
+        run: |
+          echo ${{ github.event.issue.pull_request.url }}
+      - name: get upstream branch
+        id: upstreambranch
+        run: |
+          echo "::set-output name=branchname::$(curl -v -H "Accept: application/vnd.github.sailor-v-preview+json" -u ${{ secrets.GITHUB_TOKEN }} ${{ github.event.issue.pull_request.url }} | jq '.head.ref' | sed 's/\"//g')"
+      - name: echo upstream branch
+        run: |
+          echo ${{ steps.upstreambranch.outputs.branchname }}
+      - name: Checkout upstream repo
+        uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.client_payload.ref }}
+           ref: ${{ steps.upstreambranch.outputs.branchname }}
 
       - name: Get yarn cache directory path
         id: init
