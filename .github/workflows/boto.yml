@@ -14,6 +14,7 @@ jobs:
       TRAILING_TOKEN : ${{ steps.prcomm.outputs.TRAILING_TOKEN  }}
       TRAILING_LINE : ${{ steps.prcomm.outputs.TRAILING_LINE  }}
       RUN_URL : ${{ steps.vars.outputs.run-url  }}
+      RUN_COMMENT_ID : ${{ steps.runcomm.outputs.comment-id  }}
 
     steps:
       - name: Listen for PR Comments
@@ -32,14 +33,16 @@ jobs:
         if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
         uses: peter-evans/create-or-update-comment@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           comment-id: ${{ github.event.comment.id }}
           reaction-type: eyes
 
       - name: Create comment
+        id: runcomm
         if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
         uses: peter-evans/create-or-update-comment@v1
         with:
+          token: ${{ secrets.GH_PAT }}
           issue-number: ${{ github.event.issue.number }}
           comment-author: 'SocialGroovyBot'
           body: |
@@ -122,10 +125,24 @@ jobs:
       - uses: EndBug/add-and-commit@v5
         env:
           HUSKY_SKIP_HOOKS: "true"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:
           author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
           author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
           branch: ${{ steps.comment.outputs.branch }}
           message: "chore(:robot:): ${{ needs.Act.outputs.TRAILING_LINE }}"
 
+      - name: Add success reaction
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GH_PAT }}
+          comment-id: ${{ needs.Act.outputs.RUN_COMMENT_ID }}
+          reaction-type: "+1"
+
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GH_PAT }}
+          comment-id: ${{ needs.Act.outputs.RUN_COMMENT_ID }}
+          reaction-type: "-1"
