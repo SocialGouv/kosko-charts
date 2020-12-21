@@ -4,8 +4,8 @@ interface DropAutodevopsDbsJobArgs {
   secretRefName?: string;
 }
 
-// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.6.1
-const SOCIALGOUV_DOCKER_AZURE_DB_VERSION = "2.6.1";
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.8.1
+const SOCIALGOUV_DOCKER_AZURE_DB_VERSION = "2.8.1";
 
 export const dropAutodevopsDbsJob = ({
   secretRefName = `azure-pg-admin-user`,
