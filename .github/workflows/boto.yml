@@ -1,0 +1,148 @@
+name: Boto
+
+on:
+  - issue_comment
+
+jobs:
+  Act:
+    if: ${{ github.event.issue.pull_request }}
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      BOOL_TRIGGERED: ${{ steps.prcomm.outputs.BOOL_TRIGGERED }}
+      TRAILING_TOKEN : ${{ steps.prcomm.outputs.TRAILING_TOKEN  }}
+      TRAILING_LINE : ${{ steps.prcomm.outputs.TRAILING_LINE  }}
+      RUN_URL : ${{ steps.vars.outputs.run-url  }}
+      RUN_COMMENT_ID : ${{ steps.runcomm.outputs.comment-id  }}
+
+    steps:
+      - name: Listen for PR Comments
+        id: prcomm
+        uses: machine-learning-apps/actions-chatops@master
+        with:
+          TRIGGER_PHRASE: "@SocialGroovyBot"
+        env:
+          GITHUB_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+
+      - name: Create URL to the run output
+        id: vars
+        run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+      - name: Add reaction
+        if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          comment-id: ${{ github.event.comment.id }}
+          reaction-type: eyes
+
+      - name: Create comment
+        id: runcomm
+        if: steps.prcomm.outputs.BOOL_TRIGGERED == 'True'
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            [Running `${{ steps.prcomm.outputs.TRAILING_LINE }}`](${{ steps.vars.outputs.run-url }})
+
+  Yarn:
+    needs:
+      - Act
+
+    if: |
+      (
+        needs.Act.outputs.BOOL_TRIGGERED == 'True'
+        &&
+        needs.Act.outputs.TRAILING_TOKEN == 'yarn'
+      )
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Node.js 14.x
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14.x
+
+      - name: Get upstream commit branch
+        id: comment
+        run: |
+          echo "::set-output name=branch::$( \
+              curl \
+                -H "Accept: application/vnd.github.sailor-v-preview+json" \
+                -u ${{ secrets.GITHUB_TOKEN }} \
+                ${{ github.event.issue.pull_request.url }} \
+            | jq '.head.ref' \
+            | sed 's/\"//g' \
+          )"
+      - name: Checkout upstream repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          ref: ${{ steps.comment.outputs.branch }}
+
+      - name: Get yarn cache directory path
+        id: init
+        shell: bash
+        run: |
+          echo "::set-output name=yarn_cache::$(yarn cache dir)"
+          #
+          echo "Node $(node --version)"
+          echo "NPM $(npm --version)"
+          echo "Npx $(npx --version)"
+          echo "Yarn $(yarn --version)"
+
+      - name: Cache Yarn packages
+        id: yarn_cache_packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.init.outputs.yarn_cache }}
+          key: ${{ runner.os }}-yarn_cache-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn_cache-
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Installing
+        run: yarn --frozen-lockfile --perfer-offline --link-duplicates
+
+      - name: Run
+        run: |
+          ${{ needs.Act.outputs.TRAILING_LINE }}
+
+      - name: Status
+        run: |
+          git status
+
+      - uses: EndBug/add-and-commit@v5
+        env:
+          HUSKY_SKIP_HOOKS: "true"
+          GITHUB_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+        with:
+          author_email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
+          author_name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
+          branch: ${{ steps.comment.outputs.branch }}
+          message: "chore(:robot:): ${{ needs.Act.outputs.TRAILING_LINE }}"
+
+      - name: Add success reaction
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          comment-id: ${{ needs.Act.outputs.RUN_COMMENT_ID }}
+          reaction-type: "+1"
+
+      - name: Add failure reaction
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          comment-id: ${{ needs.Act.outputs.RUN_COMMENT_ID }}
+          reaction-type: "-1"
