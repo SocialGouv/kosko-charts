@@ -24,7 +24,7 @@ Object {
                 },
               },
             ],
-            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.8.1",
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1",
             "imagePullPolicy": "IfNotPresent",
             "name": "drop-autodevops-dbs",
             "resources": Object {
