@@ -81,7 +81,8 @@ jobs:
       - name: Checkout upstream repo
         uses: actions/checkout@v2
         with:
-           ref: ${{ steps.comment.outputs.branch }}
+          github_token: ${{ secrets.GH_PAT }}
+          ref: ${{ steps.comment.outputs.branch }}
 
       - name: Get yarn cache directory path
         id: init
