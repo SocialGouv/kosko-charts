@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create metabase dev config 1`] = `
+Array [
+  "metabase",
+  Object {
+    "config": Object {
+      "containerPort": 3000,
+      "image": "metabase/metabase:v0.37.4",
+      "subDomainPrefix": "metabase-",
+    },
+    "deployment": Object {
+      "container": Object {
+        "livenessProbe": Object {
+          "httpGet": Object {
+            "path": "/api/health",
+            "port": "http",
+          },
+        },
+        "readinessProbe": Object {
+          "httpGet": Object {
+            "path": "/api/health",
+            "port": "http",
+          },
+        },
+        "resources": Object {
+          "limits": Object {
+            "cpu": "500m",
+            "memory": "1024Mi",
+          },
+          "requests": Object {
+            "cpu": "100m",
+            "memory": "256Mi",
+          },
+        },
+        "startupProbe": Object {
+          "httpGet": Object {
+            "path": "/api/health",
+            "port": "http",
+          },
+          "initialDelaySeconds": 240,
+          "periodSeconds": 10,
+          "successThreshold": 1,
+          "timeoutSeconds": 10,
+        },
+      },
+    },
+    "env": Environment {
+      "cwd": "/tmp",
+      "paths": Object {
+        "component": "environments/#{environment}/#{component}",
+        "global": "environments/#{environment}",
+      },
+      "reducers": Array [
+        Object {
+          "name": "global",
+          "reduce": [Function],
+        },
+        Object {
+          "name": "component",
+          "reduce": [Function],
+        },
+      ],
+    },
+  },
+]
+`;
