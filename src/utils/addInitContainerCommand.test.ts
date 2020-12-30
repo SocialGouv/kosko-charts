@@ -2,6 +2,24 @@ import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { addInitContainerCommand } from "./addInitContainerCommand";
 
+test("should addInitContainerCommand default to deployment", () => {
+  const deployment = new Deployment({
+    spec: {
+      template: {
+        spec: {
+          containers: [
+            {
+              image: "test:42",
+            },
+          ],
+        },
+      },
+    },
+  });
+  addInitContainerCommand(deployment, {});
+  expect(deployment).toMatchSnapshot();
+});
+
 test("should addInitContainerCommand to deployment", () => {
   const deployment = new Deployment({
     spec: {
