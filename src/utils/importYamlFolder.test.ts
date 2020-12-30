@@ -1,5 +1,6 @@
-import { importYamlFolder } from "./importYamlFolder";
 import fs from "fs";
+
+import { importYamlFolder } from "./importYamlFolder";
 
 jest.mock("fs");
 
@@ -15,11 +16,10 @@ test("should load manifests fom /yaml folder", async () => {
   process.env.KUBE_NAMESPACE = "some-namespace";
   fs.existsSync.mockReturnValue(true);
   fs.readdirSync.mockReturnValue(["file1.ts", "file2.yaml", "file3.yml"]);
-  fs.readFile.mockImplementation((path, _, callback) =>
-    callback(null, Buffer.from(getYaml(path)))
+  fs.readFile.mockImplementation(
+    (path, _, callback) => callback(null, getYaml(path)) as string
   );
 
-  // loadString.mockReturnValue(sampleYaml);
-  const manifests = await Promise.all(importYamlFolder("/tmp/yaml"));
+  const manifests = await importYamlFolder("/tmp/yaml");
   expect(manifests).toMatchSnapshot();
 });
