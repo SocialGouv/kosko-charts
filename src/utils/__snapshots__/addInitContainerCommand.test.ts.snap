@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should addInitContainerCommand default to deployment 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "spec": Object {
+    "selector": Object {
+      "matchLabels": Object {
+        "component": "app",
+      },
+    },
+    "template": Object {
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "test:42",
+            "name": "some-container",
+          },
+        ],
+        "initContainers": Array [
+          Object {
+            "args": Array [
+              "init-db",
+            ],
+            "command": Array [
+              "yarn",
+            ],
+            "image": "test:42",
+            "imagePullPolicy": "Always",
+            "name": "init",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "512Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "128Mi",
+              },
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
