@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/SocialGouv/kosko-charts/compare/v4.1.5...v4.2.0) (2020-12-31)
+
+
+### Features
+
+* add utils/addInitContainerCommand ([#352](https://github.com/SocialGouv/kosko-charts/issues/352)) ([af9611b](https://github.com/SocialGouv/kosko-charts/commit/af9611bb1772a57de7bbd91cd08986df7ff52079))
+
 ## [4.1.5](https://github.com/SocialGouv/kosko-charts/compare/v4.1.4...v4.1.5) (2020-12-30)
 
 
