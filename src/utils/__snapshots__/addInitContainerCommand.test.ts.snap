@@ -5,56 +5,23 @@ Object {
   "apiVersion": "apps/v1",
   "kind": "Deployment",
   "spec": Object {
-    "template": Object {
-      "spec": Object {
-        "containers": Array [
-          Object {
-            "image": "test:42",
-          },
-        ],
-        "initContainers": Array [
-          Object {
-            "args": Array [],
-            "command": Array [
-              "/bin/bash",
-            ],
-            "image": "test:42",
-            "imagePullPolicy": "Always",
-            "name": "init",
-            "resources": Object {
-              "limits": Object {
-                "cpu": "500m",
-                "memory": "512Mi",
-              },
-              "requests": Object {
-                "cpu": "100m",
-                "memory": "128Mi",
-              },
-            },
-          },
-        ],
+    "selector": Object {
+      "matchLabels": Object {
+        "component": "app",
       },
     },
-  },
-}
-`;
-
-exports[`should addInitContainerCommand to deployment 1`] = `
-Object {
-  "apiVersion": "apps/v1",
-  "kind": "Deployment",
-  "spec": Object {
     "template": Object {
       "spec": Object {
         "containers": Array [
           Object {
             "image": "test:42",
+            "name": "some-container",
           },
         ],
         "initContainers": Array [
           Object {
             "args": Array [
-              "migrate-db",
+              "init-db",
             ],
             "command": Array [
               "yarn",

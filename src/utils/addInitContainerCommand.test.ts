@@ -5,38 +5,43 @@ import { addInitContainerCommand } from "./addInitContainerCommand";
 test("should addInitContainerCommand default to deployment", () => {
   const deployment = new Deployment({
     spec: {
+      selector: { matchLabels: { component: "app" } },
       template: {
         spec: {
           containers: [
             {
               image: "test:42",
+              name: "some-container",
             },
           ],
         },
       },
     },
   });
-  addInitContainerCommand(deployment, {});
+  addInitContainerCommand(deployment, { args: ["init-db"], command: ["yarn"] });
   expect(deployment).toMatchSnapshot();
 });
 
-test("should addInitContainerCommand to deployment", () => {
+test("should fail when no command specified", () => {
   const deployment = new Deployment({
     spec: {
+      selector: { matchLabels: { component: "app" } },
       template: {
         spec: {
           containers: [
             {
               image: "test:42",
+              name: "some-container",
             },
           ],
         },
       },
     },
   });
-  addInitContainerCommand(deployment, {
-    args: ["migrate-db"],
-    command: ["yarn"],
-  });
-  expect(deployment).toMatchSnapshot();
+
+  expect(() => {
+    addInitContainerCommand(deployment, {
+      name: "failing",
+    });
+  }).toThrow();
 });

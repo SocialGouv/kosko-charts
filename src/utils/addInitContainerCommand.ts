@@ -12,12 +12,15 @@ export const addInitContainerCommand = (
   ok(deployment.spec);
   ok(deployment.spec.template);
   ok(deployment.spec.template.spec);
+  ok(container);
+  ok(container.command);
+  ok(container.command.length);
   const image = deployment.spec.template.spec.containers[0].image;
   const initContainer = new Container(
     merge(
       {
         args: [],
-        command: ["/bin/bash"], // dummy
+        command: container.command,
         image,
         imagePullPolicy: "Always",
         name: "init",
