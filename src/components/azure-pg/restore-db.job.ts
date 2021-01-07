@@ -1,3 +1,4 @@
+import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg";
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils/waitForPostgres";
 import ok from "assert";
@@ -159,6 +160,33 @@ export const restoreDbJob = ({
   const initContainer = waitForPostgres({
     secretRefName: "azure-pg-admin-user-dev",
   });
+
+  initContainer.envFrom = [];
+  const defaultParams = getDefaultPgParams({
+    suffix: process.env.CI_COMMIT_SHA,
+  });
+  initContainer.env = [
+    {
+      name: "PGHOST",
+      value: defaultParams.host,
+    },
+    {
+      name: "PGDATABASE",
+      value: defaultParams.database,
+    },
+    {
+      name: "PGPASSWORD",
+      value: defaultParams.password,
+    },
+    {
+      name: "PGUSER",
+      value: defaultParams.user,
+    },
+    {
+      name: "PGSSLMODE",
+      value: "require",
+    },
+  ];
 
   addInitContainer(job, initContainer);
 

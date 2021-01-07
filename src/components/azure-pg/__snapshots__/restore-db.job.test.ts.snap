@@ -89,17 +89,27 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
             Object {
               "env": Array [
                 Object {
-                  "name": "WAIT_FOR_RETRIES",
-                  "value": "24",
+                  "name": "PGHOST",
+                  "value": "someappdevserver.postgres.database.azure.com",
                 },
-              ],
-              "envFrom": Array [
                 Object {
-                  "secretRef": Object {
-                    "name": "azure-pg-admin-user-dev",
-                  },
+                  "name": "PGDATABASE",
+                  "value": "autodevops_b123a99",
+                },
+                Object {
+                  "name": "PGPASSWORD",
+                  "value": "password_b123a99",
+                },
+                Object {
+                  "name": "PGUSER",
+                  "value": "user_b123a99",
+                },
+                Object {
+                  "name": "PGSSLMODE",
+                  "value": "require",
                 },
               ],
+              "envFrom": Array [],
               "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
@@ -237,17 +247,27 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
             Object {
               "env": Array [
                 Object {
-                  "name": "WAIT_FOR_RETRIES",
-                  "value": "24",
+                  "name": "PGHOST",
+                  "value": "someappdevserver.postgres.database.azure.com",
                 },
-              ],
-              "envFrom": Array [
                 Object {
-                  "secretRef": Object {
-                    "name": "azure-pg-admin-user-dev",
-                  },
+                  "name": "PGDATABASE",
+                  "value": "autodevops_b123a99",
+                },
+                Object {
+                  "name": "PGPASSWORD",
+                  "value": "password_b123a99",
+                },
+                Object {
+                  "name": "PGUSER",
+                  "value": "user_b123a99",
+                },
+                Object {
+                  "name": "PGSSLMODE",
+                  "value": "require",
                 },
               ],
+              "envFrom": Array [],
               "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
