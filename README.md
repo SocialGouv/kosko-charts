@@ -104,6 +104,8 @@ The SocialGouv default components
 
 #### [`@socialgouv/kosko-charts/components/hasura`](./src/components/hasura)
 
+#### [`@socialgouv/kosko-charts/components/metabase`](./src/components/metabase)
+
 #### [`@socialgouv/kosko-charts/components/namespace`](./src/components/namespace)
 
 #### [`@socialgouv/kosko-charts/components/nginx`](./src/components/nginx)
@@ -123,8 +125,6 @@ The SocialGouv default components
 ### Templates
 
 In addition to the `sample` template inspired by the [SocialGouv/sample-next-app](https://github.com/SocialGouv/sample-next-app/), you will find addtional templates you can use to bootstrap your `.k8s` folder.
-
-
 
 ```sh
 # For [hasura](https://hasura.io/)
@@ -149,6 +149,7 @@ $ npx degit "SocialGouv/kosko-charts/templates/redis#v4.2.2" .k8s
 $ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v4.2.2" .k8s/__tests__
 $ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v4.2.2" .k8s/package.json
 ```
+
 Then update the `.k8s/__tests__` file to match your project.  
 Our [`e2e/testing/__fixtures__/__tests__`](./e2e/testing/__fixtures__/__tests__) will run default testing cases.  
 Using the global `environments/.gitlab-ci.env` (if exists in your kosko context).
