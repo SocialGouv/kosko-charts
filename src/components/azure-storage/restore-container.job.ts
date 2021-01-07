@@ -67,8 +67,8 @@ export const restoreContainerJob = ({
         name: "SOURCE_ACCOUNT_NAME",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}prod-volume`,
             key: "azurestorageaccountname",
+            name: `azure-${projectSlug}prod-volume`,
           },
         },
       })
@@ -78,8 +78,8 @@ export const restoreContainerJob = ({
         name: "SOURCE_ACCOUNT_KEY",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}prod-volume`,
             key: "azurestorageaccountkey",
+            name: `azure-${projectSlug}prod-volume`,
           },
         },
       })
@@ -90,8 +90,8 @@ export const restoreContainerJob = ({
         name: "SOURCE_ACCOUNT_NAME",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}dev-volume`,
             key: "azurestorageaccountname",
+            name: `azure-${projectSlug}dev-volume`,
           },
         },
       })
@@ -101,8 +101,8 @@ export const restoreContainerJob = ({
         name: "SOURCE_ACCOUNT_KEY",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}dev-volume`,
             key: "azurestorageaccountkey",
+            name: `azure-${projectSlug}dev-volume`,
           },
         },
       })
@@ -114,8 +114,8 @@ export const restoreContainerJob = ({
         name: "DESTINATION_ACCOUNT_NAME",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}prod-volume`,
             key: "azurestorageaccountname",
+            name: `azure-${projectSlug}prod-volume`,
           },
         },
       })
@@ -125,8 +125,8 @@ export const restoreContainerJob = ({
         name: "DESTINATION_ACCOUNT_KEY",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}prod-volume`,
             key: "azurestorageaccountkey",
+            name: `azure-${projectSlug}prod-volume`,
           },
         },
       })
@@ -137,8 +137,8 @@ export const restoreContainerJob = ({
         name: "DESTINATION_ACCOUNT_NAME",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}dev-volume`,
             key: "azurestorageaccountname",
+            name: `azure-${projectSlug}dev-volume`,
           },
         },
       })
@@ -148,8 +148,8 @@ export const restoreContainerJob = ({
         name: "DESTINATION_ACCOUNT_KEY",
         valueFrom: {
           secretKeyRef: {
-            name: `azure-${projectSlug}dev-volume`,
             key: "azurestorageaccountkey",
+            name: `azure-${projectSlug}dev-volume`,
           },
         },
       })

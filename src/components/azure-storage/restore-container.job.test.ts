@@ -17,8 +17,8 @@ test("should create restore job from dev to dev", () => {
           value: "dev-files2",
         }),
       ],
-      project: "some-cool-project",
       from: "dev",
+      project: "some-cool-project",
       to: "dev",
     })
   ).toMatchSnapshot();
@@ -37,8 +37,8 @@ test("should create restore job from dev to prod", () => {
           value: "prod-files2",
         }),
       ],
-      project: "some-cool-project",
       from: "dev",
+      project: "some-cool-project",
       to: "prod",
     })
   ).toMatchSnapshot();
@@ -57,8 +57,8 @@ test("should create restore job from prod to prod", () => {
           value: "prod-files2",
         }),
       ],
-      project: "some-cool-project",
       from: "prod",
+      project: "some-cool-project",
       to: "prod",
     })
   ).toMatchSnapshot();
@@ -77,8 +77,8 @@ test("should create restore job from prod to dev", () => {
           value: "dev-files2",
         }),
       ],
-      project: "some-cool-project",
       from: "prod",
+      project: "some-cool-project",
       to: "dev",
     })
   ).toMatchSnapshot();
