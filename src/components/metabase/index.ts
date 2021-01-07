@@ -8,7 +8,7 @@ import { create as createApp } from "../app";
 type CreateResult = unknown[];
 
 // renovate: datasource=docker depName=metabase/metabase versioning=v0.37.4
-const DOCKER_METABASE_TAG= "v0.37.4";
+const DOCKER_METABASE_TAG = "v0.37.4";
 
 export const create = (
   // eslint-disable-next-line @typescript-eslint/ban-types
