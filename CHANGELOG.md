@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/SocialGouv/kosko-charts/compare/v4.2.2...v4.3.0) (2021-01-07)
+
+
+### Features
+
+* add metabase component ([#351](https://github.com/SocialGouv/kosko-charts/issues/351)) ([5778efe](https://github.com/SocialGouv/kosko-charts/commit/5778efe5fe3018b81bca9dab21d5a14f67e5736d))
+
 ## [4.2.2](https://github.com/SocialGouv/kosko-charts/compare/v4.2.1...v4.2.2) (2021-01-05)
 
 
