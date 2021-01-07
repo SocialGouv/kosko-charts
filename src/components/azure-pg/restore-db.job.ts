@@ -162,9 +162,7 @@ export const restoreDbJob = ({
   });
 
   initContainer.envFrom = [];
-  const defaultParams = getDefaultPgParams({
-    suffix: process.env.CI_COMMIT_SHA,
-  });
+  const defaultParams = getDefaultPgParams();
   initContainer.env = [
     {
       name: "PGHOST",
