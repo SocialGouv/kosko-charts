@@ -18,5 +18,11 @@
     "target": "ES2019",
     "types": ["dotenv", "jest", "node"]
   },
-  "exclude": ["components", "coverage", "environments", "types", "utils"]
+  "exclude": ["components", "coverage", "environments", "types", "utils"],
+  "typedocOptions": {
+    "entryPoints": ["src/utils/index.ts", "node_modules/kubernetes-models"],
+    "exclude": ["src/utils/@kosko", "**/*.test.ts"],
+    "out": "docs",
+    "theme": "default"
+  }
 }

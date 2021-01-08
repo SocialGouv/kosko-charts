@@ -1,6 +1,26 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
+/**
+ *
+ * This function will add an initContainer to a given [[Deployment]]
+ *
+ * ```typescript
+ * import { addInitContainer } from "@socialgouv/kosko-charts/utils"
+ * import { Container } from "kubernetes-models/v1/Container";
+ *
+ * const initContainer = new Container({
+ *   args: ["http://www.free.fr"],
+ *   image: `registry.pouet.org/wait-for-http:2.4.0`,
+ *   imagePullPolicy: "Always",
+ *   name: `wait-for-free`,
+ * });
+ *
+ * addInitContainer(deployment, initContainer);
+ * ```
+ * @category utils
+ * @return {Deployment}
+ */
 export const addInitContainer = (
   deployment: Deployment,
   initContainer: IIoK8sApiCoreV1Container

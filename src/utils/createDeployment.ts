@@ -4,17 +4,40 @@ import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { merge } from "./@kosko/env/merge";
 
+/** Parameters to create a [[Deployment]] with [[createDeployment]] */
 export interface DeploymentParams {
+  /** kubernetes annotations */
   annotations?: Record<string, string>;
+  /** container params */
   container?: Omit<IIoK8sApiCoreV1Container, "name" | "image">;
+  /** default container port */
   containerPort: number;
+  /** deployment docker image */
   image: string;
+  /** kubernetes labels */
   labels?: Record<string, string>;
+  /** deployment name **/
   name: string;
+  /** docker registry secrets */
   imagePullSecrets?: IIoK8sApiCoreV1LocalObjectReference[];
 }
 
-export default (params: DeploymentParams): Deployment => {
+/**
+ *
+ * This function will return a [[Deployment]] with some defaults
+ *
+ * ```typescript
+ * import { createDeployment } from "@socialgouv/kosko-charts/utils"
+ *
+ * const deployment = createDeployment({
+ *   name: "app";
+ *   image: "containous/whoami:latest"
+ * });
+ * ```
+ * @category utils
+ * @return {Deployment}
+ */
+export const createDeployment = (params: DeploymentParams): Deployment => {
   const tag = process.env.CI_COMMIT_TAG
     ? process.env.CI_COMMIT_TAG.slice(1)
     : process.env.CI_COMMIT_SHA;
@@ -116,3 +139,5 @@ export default (params: DeploymentParams): Deployment => {
     },
   });
 };
+
+export default createDeployment;

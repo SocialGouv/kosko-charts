@@ -13,9 +13,7 @@ import createDeployment, {
 import createIngress, {
   IngressConfig as IngressParams,
 } from "../../utils/createIngress";
-import createService, {
-  Params as ServiceParams,
-} from "../../utils/createService";
+import createService, { CreateServiceParams } from "../../utils/createService";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/@kosko/env/merge";
@@ -28,7 +26,7 @@ type AliasParams = {
 };
 
 export type AppConfig = DeploymentParams &
-  ServiceParams &
+  CreateServiceParams &
   IngressParams & {
     subdomain: string;
     subDomainPrefix: string;
@@ -70,7 +68,7 @@ export const create: createFn = (
     defaultEnvParams, // set name as default if not provided
     gitlab(process.env),
     config ?? {}, // create options
-    env.component(name) as AppConfig, // kosko env overrides
+    env.component(name) as AppConfig // kosko env overrides
   );
 
   const { containerPort, servicePort } = envParams;
