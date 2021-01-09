@@ -5,10 +5,30 @@ import { Container } from "kubernetes-models/v1/Container";
 
 import { merge } from "./@kosko/env/merge";
 
+/**
+ *
+ * This function will add an initContainer with the given params to a given [[Deployment]]
+ *
+ * By default the initContainer will use the [[Deployment]] first [[Container]] image as image
+ *
+ * ```typescript
+ * import { addInitContainerCommand } from "@socialgouv/kosko-charts/utils"
+ *
+ * const initContainerCommand = {
+ *   command: ["yarn"],
+ *   args: ["init-db"],
+ *   name: `yarn-init-db`,
+ * };
+ *
+ * addInitContainerCommand(deployment, initContainerCommand);
+ * ```
+ * @category utils
+ * @return {Deployment}
+ */
 export const addInitContainerCommand = (
   deployment: Deployment,
   container: Partial<Container>
-) => {
+): Deployment => {
   ok(deployment.spec);
   ok(deployment.spec.template);
   ok(deployment.spec.template.spec);

@@ -2,6 +2,19 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
+/**
+ * This creates a [[Container]] that runs until `nslookup` resolve for the given service in the current kube namespace
+ *
+ * ```typescript
+ * import { waitForService } from "@socialgouv/kosko-charts/utils"
+ *
+ * const container = waitForService({
+ *   name: "hasura"
+ * });
+ * ```
+ * @category utils
+ * @return {IIoK8sApiCoreV1Container}
+ */
 export const waitForService = (name: string): IIoK8sApiCoreV1Container => {
   return {
     name: `wait-for-${name}`,
