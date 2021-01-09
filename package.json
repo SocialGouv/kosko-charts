@@ -30,6 +30,7 @@
     "kosko": "^1.0.1",
     "kubernetes-models": "^1.0.2",
     "lint-staged": "^10.5.3",
+    "onchange": "^7.1.0",
     "prettier": "^2.2.1",
     "tempy": "^1.0.0",
     "ts-node": "^9.1.1",
@@ -73,6 +74,8 @@
     "lint": "eslint .",
     "precommit": "lint-staged",
     "test": "jest",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "typedoc": "typedoc --tsconfig tsconfig.json",
+    "typedoc-watch": "onchange 'src/**/*.ts' 'docs/*' -- yarn typedoc --tsconfig tsconfig.json"
   }
 }

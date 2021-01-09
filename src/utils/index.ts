@@ -13,7 +13,6 @@ export * from "./getDeployment";
 export * from "./getIngressHost";
 export * from "./getManifestByKind";
 export * from "./getPgServerHostname";
-
 export * from "./waitForHttp";
 export * from "./waitForPostgres";
 export * from "./waitForService";

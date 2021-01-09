@@ -3,7 +3,7 @@ import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import type { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
 /** Parameters for the [[addToEnvFrom]] function */
-interface AddToEnvFromParams {
+export interface AddToEnvFromParams {
   /** [[Deployment]] to add env for */
   deployment: Deployment;
   /** The [[EnvFromSource]] to add */
@@ -15,6 +15,8 @@ interface AddToEnvFromParams {
 /**
  *
  * This function will add an [[EnvFromSource]] to the first container of a given [[Deployment]]
+ *
+ * Useful to get all variables from a [[ConfigMap]] or a [[Secret]]
  *
  * ```typescript
  * import { addToEnvFrom } from "@socialgouv/kosko-charts/utils"
