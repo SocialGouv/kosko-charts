@@ -28,7 +28,7 @@ test("should load manifests fom /yaml folder", async () => {
     ) =>
       jest.fn().mockResolvedValueOnce(transform(loadString(getYaml(file))[0])),
   }));
-  const { importYamlFolder } = await import("./importYamlFolder");
+  const { importYamlFolder } = await import(".");
   const manifests = await importYamlFolder("/tmp/yaml");
   expect(manifests).toMatchSnapshot();
 });

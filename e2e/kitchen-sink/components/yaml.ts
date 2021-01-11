@@ -1,5 +1,5 @@
 import env from "@kosko/env";
-import { importYamlFolder } from "@socialgouv/kosko-charts/utils/importYamlFolder";
+import { importYamlFolder } from "@socialgouv/kosko-charts/components/yaml";
 import path from "path";
 
 const manifests = importYamlFolder(
