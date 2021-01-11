@@ -1,0 +1,11 @@
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+  labels:
+    application: some-application
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: kitchen-sink-imported-namespace
+apiVersion: v1
+kind: Namespace

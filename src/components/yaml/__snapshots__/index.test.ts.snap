@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should load manifests fom /yaml folder 1`] = `
+Array [
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "name": "mock",
+      "namespace": "some-namespace",
+      "path": "/tmp/yaml/file2.yaml",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "name": "mock",
+      "namespace": "some-namespace",
+      "path": "/tmp/yaml/file3.yml",
+    },
+  },
+]
+`;
