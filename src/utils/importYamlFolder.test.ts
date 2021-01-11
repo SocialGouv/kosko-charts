@@ -10,8 +10,6 @@ metadata:
 `;
 
 beforeEach(() => {
-  //
-
   jest.clearAllMocks();
 });
 test("should load manifests fom /yaml folder", async () => {
