@@ -1,19 +1,19 @@
-import type { Manifest } from "@kosko/generate";
+import type { Manifest } from "@kosko/yaml";
 import { loadFile } from "@kosko/yaml";
 import fs from "fs";
 import path from "path";
 
 export const importYamlFolder = async (
   folderPath: string
-): Promise<Manifest[]> => {
+): Promise<readonly Manifest[]> => {
   if (!fs.existsSync(folderPath)) {
     return [];
   }
   const files = fs.readdirSync(folderPath);
-  return Promise.all(
+  const manifests = await Promise.all(
     files
       .filter((file: string) => /\.ya?ml$/.exec(file))
-      .map(async (file: string) =>
+      .map(async (file) =>
         loadFile(path.join(folderPath, file), {
           transform: (manifest: Manifest) => {
             // force namespace on imported ressources
@@ -23,4 +23,5 @@ export const importYamlFolder = async (
         })()
       )
   );
+  return manifests.flat();
 };

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kosko generate --env prod : should generate a kitchen sink prod manifest 1`] = `
+"metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+  labels:
+    application: some-application
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: kitchen-sink-imported-namespace
+  namespace: sample-kosko-24-e2e-branch-42
+apiVersion: v1
+kind: Namespace"
+`;
