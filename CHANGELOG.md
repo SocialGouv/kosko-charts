@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/SocialGouv/kosko-charts/compare/v4.3.0...v4.4.0) (2021-01-11)
+
+
+### Features
+
+* utils. importYamlFolder : load external yamls ([#328](https://github.com/SocialGouv/kosko-charts/issues/328)) ([5c5051b](https://github.com/SocialGouv/kosko-charts/commit/5c5051b7566ab402723ec080c4a1f8804e40aa47))
+
 # [4.3.0](https://github.com/SocialGouv/kosko-charts/compare/v4.2.2...v4.3.0) (2021-01-07)
 
 
