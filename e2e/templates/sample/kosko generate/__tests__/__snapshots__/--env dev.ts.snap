@@ -102,7 +102,7 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.6.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -330,7 +330,7 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.6.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:

@@ -1,5 +1,8 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres versioning=2.6.1
+const SOCIALGOUV_DOCKER_WAIT_FOR_PG_VERSION = "2.6.1";
+
 /** params for the [[waitForPostgres]] function */
 export interface WaitForPostgresParams {
   /** name of the secret to use to check the PG connection */
@@ -36,7 +39,7 @@ export const waitForPostgres = ({
         },
       },
     ],
-    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0`,
+    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:${SOCIALGOUV_DOCKER_WAIT_FOR_PG_VERSION}`,
     imagePullPolicy: "Always",
     name: "wait-for-postgres",
     resources: {
