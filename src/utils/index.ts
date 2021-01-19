@@ -10,6 +10,7 @@ export * from "./createDeployment";
 export * from "./createIngress";
 export * from "./createService";
 export * from "./getDeployment";
+export * from "./getHarborImagePath";
 export * from "./getIngressHost";
 export * from "./getManifestByKind";
 export * from "./getPgServerHostname";
