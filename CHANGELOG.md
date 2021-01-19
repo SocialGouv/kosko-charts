@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/SocialGouv/kosko-charts/compare/v4.5.0...v4.5.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **waitForPostgres:** use renovate friendly version ([#361](https://github.com/SocialGouv/kosko-charts/issues/361)) ([95e99ad](https://github.com/SocialGouv/kosko-charts/commit/95e99adc630bff94d93eb12c2ed2140cf275572f))
+
 # [4.5.0](https://github.com/SocialGouv/kosko-charts/compare/v4.4.1...v4.5.0) (2021-01-19)
 
 
