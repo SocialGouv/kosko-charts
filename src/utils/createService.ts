@@ -1,16 +1,37 @@
-//
-
 import { Service } from "kubernetes-models/v1/Service";
 
-export interface Params {
+/** Parameters to create a [[Service]] with [[createService]] */
+export interface CreateServiceParams {
   name: string;
   servicePort: number;
   containerPort: number;
+  /** target selector (deployment labels) */
   selector: Record<string, string>;
+  /** name of the port, default=http */
   portName?: string;
 }
 
-export default (params: Params): Service => {
+/**
+ *
+ * This function will return a [[Service]] with some defaults
+ *
+ * ```typescript
+ * import { createService } from "@socialgouv/kosko-charts/utils"
+ *
+ * const service = createService({
+ *   name: "app",
+ *   servicePort: 80,
+ *   containerPort: 3000,
+ *   selector: 80,
+ *   selector: {
+ *     app: "my-target-app"
+ *   }
+ * });
+ * ```
+ * @category utils
+ * @return {Service}
+ */
+export const createService = (params: CreateServiceParams): Service => {
   return new Service({
     metadata: {
       labels: {
@@ -31,3 +52,5 @@ export default (params: Params): Service => {
     },
   });
 };
+
+export default createService;

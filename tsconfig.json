@@ -18,5 +18,15 @@
     "target": "ES2019",
     "types": ["dotenv", "jest", "node"]
   },
-  "exclude": ["components", "coverage", "environments", "types", "utils"]
+  "exclude": ["components", "coverage", "environments", "types", "utils"],
+  "typedocOptions": {
+    "name": "@socialgouv/kosko-charts",
+    "includeVersion": true,
+    "listInvalidSymbolLinks": true,
+    "entryPoints": ["src/utils/index.ts", "node_modules/kubernetes-models"],
+    "exclude": ["src/utils/@kosko", "**/*.test.ts"],
+    "out": "docs-build",
+    "theme": "default",
+    "readme": "docs/index.md"
+  }
 }

@@ -3,10 +3,25 @@ import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/Io
 // renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres versioning=2.6.1
 const SOCIALGOUV_DOCKER_WAIT_FOR_PG_VERSION = "2.6.1";
 
+/** params for the [[waitForPostgres]] function */
 export interface WaitForPostgresParams {
+  /** name of the secret to use to check the PG connection */
   secretRefName: string;
 }
 
+/**
+ * This creates a [[Container]] using the [wait-for-postgres](https://github.com/SocialGouv/docker/tree/master/wait-for-postgres) docker image
+ *
+ * ```typescript
+ * import { waitForPostgres } from "@socialgouv/kosko-charts/utils"
+ *
+ * const container = waitForPostgres({
+ *   secretRefName: "some-secret"
+ * });
+ * ```
+ * @category utils
+ * @return {IIoK8sApiCoreV1Container}
+ */
 export const waitForPostgres = ({
   secretRefName = "azure-pg-user",
 }: WaitForPostgresParams): IIoK8sApiCoreV1Container => {

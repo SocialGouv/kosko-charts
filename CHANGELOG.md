@@ -1,3 +1,17 @@
+## [4.4.1](https://github.com/SocialGouv/kosko-charts/compare/v4.4.0...v4.4.1) (2021-01-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.14.21 ([#366](https://github.com/SocialGouv/kosko-charts/issues/366)) ([b898858](https://github.com/SocialGouv/kosko-charts/commit/b89885801c821ee59dd257c226db6cf9e1a6ddc6))
+
+# [4.4.0](https://github.com/SocialGouv/kosko-charts/compare/v4.3.0...v4.4.0) (2021-01-11)
+
+
+### Features
+
+* utils. importYamlFolder : load external yamls ([#328](https://github.com/SocialGouv/kosko-charts/issues/328)) ([5c5051b](https://github.com/SocialGouv/kosko-charts/commit/5c5051b7566ab402723ec080c4a1f8804e40aa47))
+
 # [4.3.0](https://github.com/SocialGouv/kosko-charts/compare/v4.2.2...v4.3.0) (2021-01-07)
 
 
