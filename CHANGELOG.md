@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/SocialGouv/kosko-charts/compare/v4.4.1...v4.5.0) (2021-01-19)
+
+
+### Features
+
+* add utils.getHarborImagePath ([#371](https://github.com/SocialGouv/kosko-charts/issues/371)) ([3184dc6](https://github.com/SocialGouv/kosko-charts/commit/3184dc64a6a9296056d583ac8564b0f6ab8e87c1))
+
 ## [4.4.1](https://github.com/SocialGouv/kosko-charts/compare/v4.4.0...v4.4.1) (2021-01-14)
 
 
