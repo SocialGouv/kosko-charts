@@ -27,6 +27,8 @@ kind: FooManifest
 ---
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev2
     app.gitlab.com/env.name: master-dev2
@@ -47,6 +49,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-nxt-app
         app.gitlab.com/env: master-dev2
         app.gitlab.com/env.name: master-dev2
@@ -106,6 +110,8 @@ metadata:
     cert: wildcard
   name: www
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev2
     app.gitlab.com/env.name: master-dev2
@@ -124,6 +130,8 @@ kind: Service
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev2
     app.gitlab.com/env.name: master-dev2

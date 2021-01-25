@@ -23,6 +23,8 @@ kind: Namespace
 ---
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -42,6 +44,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -124,6 +128,8 @@ metadata:
     cert: wildcard
   name: hasura
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -141,6 +147,8 @@ kind: Service
 ---
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -161,6 +169,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -244,6 +254,8 @@ metadata:
     cert: wildcard
   name: www
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -262,6 +274,8 @@ kind: Service
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
