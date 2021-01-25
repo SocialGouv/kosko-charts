@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/SocialGouv/kosko-charts/compare/v4.5.2...v4.6.0) (2021-01-25)
+
+
+### Features
+
+* **app:** add kapp annotations by default ([#381](https://github.com/SocialGouv/kosko-charts/issues/381)) ([b249eb0](https://github.com/SocialGouv/kosko-charts/commit/b249eb05430da842554b0a51998041181c275a1c))
+
 ## [4.5.2](https://github.com/SocialGouv/kosko-charts/compare/v4.5.1...v4.5.2) (2021-01-20)
 
 
