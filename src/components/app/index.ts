@@ -61,6 +61,10 @@ export const create: createFn = (
     containerPort: 3000,
     name,
     servicePort: 80,
+    annotations: {
+      "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      "kapp.k14s.io/disable-default-label-scoping-rules": "",
+    },
   };
 
   // kosko component env values

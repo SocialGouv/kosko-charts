@@ -23,6 +23,8 @@ kind: Namespace
 ---
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
@@ -42,6 +44,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-next-app
         app.gitlab.com/env: preprod-dev2
         app.gitlab.com/env.name: preprod-dev2
@@ -118,6 +122,8 @@ kind: Deployment
 metadata:
   name: hasura-configmap
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
@@ -146,6 +152,8 @@ metadata:
     cert: wildcard
   name: hasura
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
@@ -214,6 +222,8 @@ spec:
 ---
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
@@ -234,6 +244,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-next-app
         app.gitlab.com/env: preprod-dev2
         app.gitlab.com/env.name: preprod-dev2
@@ -311,6 +323,8 @@ kind: Deployment
 metadata:
   name: app-configmap
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
@@ -335,6 +349,8 @@ metadata:
     cert: wildcard
   name: www
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
@@ -353,6 +369,8 @@ kind: Service
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
