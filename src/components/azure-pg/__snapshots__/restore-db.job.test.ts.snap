@@ -96,6 +96,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         ],
       },
     },
+    "ttlSecondsAfterFinished": 86400,
   },
 }
 `;

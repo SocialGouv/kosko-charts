@@ -106,6 +106,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
         "restartPolicy": "Never",
       },
     },
+    "ttlSecondsAfterFinished": 86400,
   },
 }
 `;
@@ -216,6 +217,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
         "restartPolicy": "Never",
       },
     },
+    "ttlSecondsAfterFinished": 86400,
   },
 }
 `;
@@ -326,6 +328,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
         "restartPolicy": "Never",
       },
     },
+    "ttlSecondsAfterFinished": 86400,
   },
 }
 `;
@@ -436,6 +439,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
         "restartPolicy": "Never",
       },
     },
+    "ttlSecondsAfterFinished": 86400,
   },
 }
 `;

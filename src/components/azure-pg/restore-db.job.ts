@@ -116,6 +116,7 @@ export const restoreDbJob = ({
           ],
         },
       },
+      ttlSecondsAfterFinished: 86400,
     },
   });
 };

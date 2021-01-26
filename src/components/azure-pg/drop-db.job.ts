@@ -65,6 +65,7 @@ export const dropDbJob = ({
           restartPolicy: "Never",
         },
       },
+      ttlSecondsAfterFinished: 86400,
     },
   });
 };
