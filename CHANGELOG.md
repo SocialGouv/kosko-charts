@@ -1,3 +1,10 @@
+## [4.6.1](https://github.com/SocialGouv/kosko-charts/compare/v4.6.0...v4.6.1) (2021-01-26)
+
+
+### Bug Fixes
+
+* **jobs:** add ttlSecondsAfterFinished ([#383](https://github.com/SocialGouv/kosko-charts/issues/383)) ([a2509b2](https://github.com/SocialGouv/kosko-charts/commit/a2509b234ee36213bb754083bd56feaa652364f1))
+
 # [4.6.0](https://github.com/SocialGouv/kosko-charts/compare/v4.5.2...v4.6.0) (2021-01-25)
 
 
