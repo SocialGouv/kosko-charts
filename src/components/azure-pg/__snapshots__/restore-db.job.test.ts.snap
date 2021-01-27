@@ -1,24 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should create restore DB job 1`] = `
-Object {
-  "apiVersion": "batch/v1",
-  "kind": "Job",
-  "metadata": Object {
-    "name": "restore-db-b123a99",
-    "namespace": "sample-next-app-secret",
-  },
-  "spec": Object {
-    "backoffLimit": 0,
-    "template": Object {
-      "metadata": Object {},
-      "spec": Object {
-        "containers": Array [
-          Object {
-            "command": Array [
-              "sh",
-              "-c",
-              "
+Array [
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "name": "restore-db-b123a99",
+      "namespace": "sample-next-app-secret",
+    },
+    "spec": Object {
+      "backoffLimit": 0,
+      "template": Object {
+        "metadata": Object {},
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "sh",
+                "-c",
+                "
 
 echo \\"starting restore into $PGHOST/$PGDATABASE\\"
 
@@ -39,64 +40,270 @@ pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --no-owner   --role
 
 psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
 
+[ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
 ",
-            ],
-            "env": Array [
-              Object {
-                "name": "PGDATABASE",
-                "value": "db_64105",
-              },
-              Object {
-                "name": "OWNER",
-                "value": "user_64105",
-              },
-              Object {
-                "name": "FILE",
-                "value": "product_prod_db.psql.gz",
-              },
-            ],
-            "envFrom": Array [
-              Object {
-                "secretRef": Object {
-                  "name": "azure-pg-admin-user-dev",
+              ],
+              "env": Array [
+                Object {
+                  "name": "PGDATABASE",
+                  "value": "db_64105",
+                },
+                Object {
+                  "name": "OWNER",
+                  "value": "user_64105",
+                },
+                Object {
+                  "name": "FILE",
+                  "value": "product_prod_db.psql.gz",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user-dev",
+                  },
+                },
+              ],
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "restore-db",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "512Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
                 },
               },
-            ],
-            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1",
-            "imagePullPolicy": "IfNotPresent",
-            "name": "restore-db",
-            "resources": Object {
-              "limits": Object {
-                "cpu": "300m",
-                "memory": "512Mi",
-              },
-              "requests": Object {
-                "cpu": "100m",
-                "memory": "64Mi",
+              "volumeMounts": Array [
+                Object {
+                  "mountPath": "/mnt/data",
+                  "name": "backups",
+                },
+              ],
+            },
+          ],
+          "initContainers": Array [
+            Object {
+              "env": Array [
+                Object {
+                  "name": "PGHOST",
+                  "value": "someappdevserver.postgres.database.azure.com",
+                },
+                Object {
+                  "name": "PGDATABASE",
+                  "value": "autodevops_b123a99",
+                },
+                Object {
+                  "name": "PGPASSWORD",
+                  "value": "password_b123a99",
+                },
+                Object {
+                  "name": "PGUSER",
+                  "value": "user_b123a99",
+                },
+                Object {
+                  "name": "PGSSLMODE",
+                  "value": "require",
+                },
+              ],
+              "envFrom": Array [],
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0",
+              "imagePullPolicy": "Always",
+              "name": "wait-for-postgres",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "20m",
+                  "memory": "32Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
               },
             },
-            "volumeMounts": Array [
-              Object {
-                "mountPath": "/mnt/data",
-                "name": "backups",
+          ],
+          "restartPolicy": "OnFailure",
+          "volumes": Array [
+            Object {
+              "azureFile": Object {
+                "readOnly": true,
+                "secretName": "azure-samplenextappprod-volume",
+                "shareName": "sample-next-app-backup-restore",
               },
-            ],
-          },
-        ],
-        "restartPolicy": "OnFailure",
-        "volumes": Array [
-          Object {
-            "azureFile": Object {
-              "readOnly": true,
-              "secretName": "azure-samplenextappprod-volume",
-              "shareName": "sample-next-app-backup-restore",
+              "name": "backups",
             },
-            "name": "backups",
-          },
-        ],
+          ],
+        },
+      },
+    },
+  },
+]
+`;
+
+exports[`should create restore DB job with post-restore script 1`] = `
+Array [
+  Object {
+    "apiVersion": "v1",
+    "data": Object {
+      "post-restore.sql": "DELETE * from users;",
+    },
+    "kind": "ConfigMap",
+    "metadata": Object {
+      "name": "post-restore-script-configmap-b123a99",
+      "namespace": "sample-next-app-secret",
+    },
+  },
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "name": "restore-db-b123a99",
+      "namespace": "sample-next-app-secret",
+    },
+    "spec": Object {
+      "backoffLimit": 0,
+      "template": Object {
+        "metadata": Object {},
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "sh",
+                "-c",
+                "
+
+echo \\"starting restore into $PGHOST/$PGDATABASE\\"
+
+[ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
+[ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
+[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
+[ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
+[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
+
+# get latest backup folder
+LATEST=$(ls -1Fr /mnt/data | head -n 1);
+DUMP=\\"/mnt/data/\${LATEST}\${FILE}\\"
+echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
+
+pg_isready;
+
+pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
+
+psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
+
+[ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
+",
+              ],
+              "env": Array [
+                Object {
+                  "name": "PGDATABASE",
+                  "value": "db_64105",
+                },
+                Object {
+                  "name": "OWNER",
+                  "value": "user_64105",
+                },
+                Object {
+                  "name": "FILE",
+                  "value": "product_prod_db.psql.gz",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user-dev",
+                  },
+                },
+              ],
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "restore-db",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "512Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
+                },
+              },
+              "volumeMounts": Array [
+                Object {
+                  "mountPath": "/mnt/data",
+                  "name": "backups",
+                },
+                Object {
+                  "mountPath": "/mnt/scripts",
+                  "name": "scripts",
+                },
+              ],
+            },
+          ],
+          "initContainers": Array [
+            Object {
+              "env": Array [
+                Object {
+                  "name": "PGHOST",
+                  "value": "someappdevserver.postgres.database.azure.com",
+                },
+                Object {
+                  "name": "PGDATABASE",
+                  "value": "autodevops_b123a99",
+                },
+                Object {
+                  "name": "PGPASSWORD",
+                  "value": "password_b123a99",
+                },
+                Object {
+                  "name": "PGUSER",
+                  "value": "user_b123a99",
+                },
+                Object {
+                  "name": "PGSSLMODE",
+                  "value": "require",
+                },
+              ],
+              "envFrom": Array [],
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0",
+              "imagePullPolicy": "Always",
+              "name": "wait-for-postgres",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "20m",
+                  "memory": "32Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+            },
+          ],
+          "restartPolicy": "OnFailure",
+          "volumes": Array [
+            Object {
+              "azureFile": Object {
+                "readOnly": true,
+                "secretName": "azure-samplenextappprod-volume",
+                "shareName": "sample-next-app-backup-restore",
+              },
+              "name": "backups",
+            },
+            Object {
+              "configMap": Object {
+                "name": "post-restore-script-configmap-b123a99",
+              },
+              "name": "scripts",
+            },
+          ],
+        },
       },
     },
     "ttlSecondsAfterFinished": 86400,
   },
-}
+]
 `;
