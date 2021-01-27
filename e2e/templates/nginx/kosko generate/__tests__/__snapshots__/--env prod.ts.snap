@@ -2,6 +2,8 @@
 
 exports[`--env prod : should generate prod manifest 1`] = `
 "---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
@@ -38,7 +40,7 @@ spec:
         component: nginx
     spec:
       containers:
-        - image: 'nginx:latest'
+        - image: nginx:latest
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -73,9 +75,9 @@ spec:
               path: /index.html
               port: http
             periodSeconds: 5
-apiVersion: apps/v1
-kind: Deployment
 ---
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: www
@@ -98,9 +100,9 @@ spec:
   selector:
     app: www
   type: ClusterIP
-apiVersion: v1
-kind: Service
 ---
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
@@ -130,7 +132,5 @@ spec:
   tls:
     - hosts:
         - sample-kosko.fabrique.social.gouv.fr
-      secretName: www-crt
-apiVersion: extensions/v1beta1
-kind: Ingress"
+      secretName: www-crt"
 `;
