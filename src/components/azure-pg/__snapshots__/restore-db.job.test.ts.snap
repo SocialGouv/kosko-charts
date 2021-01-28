@@ -110,7 +110,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
               ],
               "envFrom": Array [],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.6.1",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
               "resources": Object {
@@ -138,6 +138,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           ],
         },
       },
+      "ttlSecondsAfterFinished": 86400,
     },
   },
 ]
@@ -268,7 +269,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
               ],
               "envFrom": Array [],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.6.1",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
               "resources": Object {
@@ -302,8 +303,8 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           ],
         },
       },
+      "ttlSecondsAfterFinished": 86400,
     },
-    "ttlSecondsAfterFinished": 86400,
   },
 ]
 `;

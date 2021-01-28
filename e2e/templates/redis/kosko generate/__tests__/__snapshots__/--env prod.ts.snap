@@ -2,6 +2,8 @@
 
 exports[`--env prod : should generate prod manifest 1`] = `
 "---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
@@ -38,7 +40,7 @@ spec:
         component: redis
     spec:
       containers:
-        - image: 'redis:6.0.9-alpine3.12'
+        - image: redis:6.0.9-alpine3.12
           livenessProbe:
             failureThreshold: 6
             initialDelaySeconds: 30
@@ -79,9 +81,9 @@ spec:
                 - sh
                 - '-c'
                 - redis-cli ping
-apiVersion: apps/v1
-kind: Deployment
 ---
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: redis
@@ -103,7 +105,5 @@ spec:
       targetPort: 6379
   selector:
     app: redis
-  type: ClusterIP
-apiVersion: v1
-kind: Service"
+  type: ClusterIP"
 `;
