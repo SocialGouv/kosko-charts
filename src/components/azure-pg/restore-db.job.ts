@@ -56,7 +56,7 @@ const getAzureProdVolumeSecretName = (project: string) =>
 const getAzureBackupShareName = (project: string) =>
   `${project}-backup-restore`;
 
-type Manifest = Job | ConfigMap;
+type Manifest = ConfigMap | Job;
 
 export const restoreDbJob = ({
   project,

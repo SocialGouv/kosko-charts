@@ -9,7 +9,7 @@ export interface DeploymentParams {
   /** kubernetes annotations */
   annotations?: Record<string, string>;
   /** container params */
-  container?: Omit<IIoK8sApiCoreV1Container, "name" | "image">;
+  container?: Omit<IIoK8sApiCoreV1Container, "image" | "name">;
   /** default container port */
   containerPort: number;
   /** deployment docker image */

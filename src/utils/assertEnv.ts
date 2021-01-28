@@ -45,7 +45,7 @@ export function isNotEmptyString(value: unknown): string | false {
 // required property \\"CI_ENVIRONMENT_NAME\\"
 // └─ cannot decode undefined, should be string
 export function assertEnv(keys: string[]) {
-  return function assertFn(env = process.env): void | never {
+  return function assertFn(env = process.env): never | void {
     const errors = keys.reduce<AssertEnvErrorKey[]>((memo, key) => {
       const reason =
         isNotDefined(env[key]) ||
