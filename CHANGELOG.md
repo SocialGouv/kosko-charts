@@ -1,3 +1,15 @@
+# [4.7.0](https://github.com/SocialGouv/kosko-charts/compare/v4.6.1...v4.7.0) (2021-01-28)
+
+
+### Bug Fixes
+
+* **deps:** update kosko monorepo ([#362](https://github.com/SocialGouv/kosko-charts/issues/362)) ([10a9d0a](https://github.com/SocialGouv/kosko-charts/commit/10a9d0a4f869174a4311d572c32f7086e2dbde37))
+
+
+### Features
+
+* **restore-db-job:** add post-restore script ([#359](https://github.com/SocialGouv/kosko-charts/issues/359)) ([69c2643](https://github.com/SocialGouv/kosko-charts/commit/69c264367ff9ecbb8b16cd1a60fb525b6359a7a7))
+
 ## [4.6.1](https://github.com/SocialGouv/kosko-charts/compare/v4.6.0...v4.6.1) (2021-01-26)
 
 
