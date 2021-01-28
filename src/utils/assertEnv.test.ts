@@ -2,7 +2,9 @@ import { assertEnv } from "./assertEnv";
 
 test("should assert FOO variable in env", () => {
   const assert = assertEnv(["FOO"]);
-  expect(() => assert({ FOO: "BAR" })).not.toThrow();
+  expect(() => {
+    assert({ FOO: "BAR" });
+  }).not.toThrow();
 });
 
 test("fails as FOO variable unset", () => {
@@ -16,8 +18,9 @@ test("fails as FOO variable unset", () => {
 
 test("fails as FOO variable is not a string", () => {
   const assert = assertEnv(["FOO"]);
-  expect(() => assert({ FOO: (42 as unknown) as string }))
-    .toThrowErrorMatchingInlineSnapshot(`
+  expect(() => {
+    assert({ FOO: (42 as unknown) as string });
+  }).toThrowErrorMatchingInlineSnapshot(`
     "Wrong environment variables
     required \\"FOO\\": \\"42\\" should be string
     "
@@ -26,7 +29,9 @@ test("fails as FOO variable is not a string", () => {
 
 test("fails as FOO variable is an empty string", () => {
   const assert = assertEnv(["FOO"]);
-  expect(() => assert({ FOO: " " })).toThrowErrorMatchingInlineSnapshot(`
+  expect(() => {
+    assert({ FOO: " " });
+  }).toThrowErrorMatchingInlineSnapshot(`
     "Wrong environment variables
     required \\"FOO\\": \\" \\" should not be an empty string
     "

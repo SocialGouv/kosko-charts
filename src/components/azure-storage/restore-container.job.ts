@@ -7,8 +7,8 @@ interface RestoreJobArgs {
   project: string;
   env: EnvVar[]; // todo: env must have DESTINATION_CONTAINER and DESTINATION_CONTAINER
   envFrom?: EnvFromSource[];
-  from: "prod" | "dev";
-  to: "prod" | "dev";
+  from: "dev" | "prod";
+  to: "dev" | "prod";
 }
 
 const getProjectSecretNamespace = (project: string) => `${project}-secret`;
