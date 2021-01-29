@@ -64,11 +64,11 @@ test("should update metadata with default", () => {
 });
 
 test("should do nothing if undefined", () => {
-  expect(
+  expect(() => {
     updateMetadata(undefined, {
       annotations: {},
       labels: {},
       namespace: { name: "foo" },
-    })
-  ).toBeUndefined();
+    });
+  }).not.toThrow();
 });

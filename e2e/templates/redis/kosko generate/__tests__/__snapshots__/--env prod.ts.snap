@@ -2,8 +2,12 @@
 
 exports[`--env prod : should generate prod manifest 1`] = `
 "---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -23,6 +27,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
@@ -34,7 +40,7 @@ spec:
         component: redis
     spec:
       containers:
-        - image: 'redis:6.0.10-alpine3.12'
+        - image: redis:6.0.10-alpine3.12
           livenessProbe:
             failureThreshold: 6
             initialDelaySeconds: 30
@@ -75,9 +81,9 @@ spec:
                 - sh
                 - '-c'
                 - redis-cli ping
-apiVersion: apps/v1
-kind: Deployment
 ---
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: redis
@@ -86,6 +92,8 @@ metadata:
     team: sample-kosko
   name: redis
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -97,7 +105,5 @@ spec:
       targetPort: 6379
   selector:
     app: redis
-  type: ClusterIP
-apiVersion: v1
-kind: Service"
+  type: ClusterIP"
 `;

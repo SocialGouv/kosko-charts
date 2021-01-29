@@ -2,12 +2,14 @@
 
 exports[`--env dev : should generate dev manifest 1`] = `
 "---
+apiVersion: v1
+kind: Namespace
 metadata:
   annotations:
     field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-bd7z2:p-7ms8p'
+    field.cattle.io/projectId: c-bd7z2:p-7ms8p
     git/branch: e2e-branch
-    git/remote: 'git@github.com:SocialGouv/sample-next-app.git'
+    git/remote: git@github.com:SocialGouv/sample-next-app.git
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -18,11 +20,13 @@ metadata:
     team: sample-next-app
     cert: wildcard
   name: sample-next-app-24-e2e-branch-42
-apiVersion: v1
-kind: Namespace
 ---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -42,6 +46,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-next-app
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -53,7 +59,7 @@ spec:
         cert: wildcard
     spec:
       containers:
-        - image: 'hasura/graphql-engine:latest'
+        - image: hasura/graphql-engine:latest
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -101,7 +107,7 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.2.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -111,12 +117,14 @@ spec:
             requests:
               cpu: 5m
               memory: 16Mi
-apiVersion: apps/v1
-kind: Deployment
 ---
+apiVersion: v1
+kind: ConfigMap
 metadata:
   name: hasura-configmap
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -128,13 +136,13 @@ metadata:
   namespace: sample-next-app-24-e2e-branch-42
 data:
   HASURA_GRAPHQL_ENABLE_CONSOLE: 'true'
-  HASURA_GRAPHQL_ENABLED_LOG_TYPES: 'startup, http-log, webhook-log, websocket-log, query-log'
+  HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
   HASURA_GRAPHQL_LOG_LEVEL: debug
   HASURA_GRAPHQL_NO_OF_RETRIES: '5'
   HASURA_GRAPHQL_SERVER_PORT: '80'
-apiVersion: v1
-kind: ConfigMap
 ---
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: hasura
@@ -144,6 +152,8 @@ metadata:
     cert: wildcard
   name: hasura
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -156,12 +166,14 @@ spec:
   selector:
     app: hasura
   type: ClusterIP
-apiVersion: v1
-kind: Service
 ---
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -186,9 +198,9 @@ spec:
     - hosts:
         - hasura-e2e-branch-42-sample-next-app.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt
-apiVersion: extensions/v1beta1
-kind: Ingress
 ---
+apiVersion: batch/v1
+kind: Job
 spec:
   backoffLimit: 0
   template:
@@ -231,8 +243,6 @@ spec:
         team: sample-next-app
         cert: wildcard
   ttlSecondsAfterFinished: 86400
-apiVersion: batch/v1
-kind: Job
 metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-next-app
@@ -246,6 +256,8 @@ metadata:
   name: create-db-job-8843083
   namespace: sample-next-app-24-e2e-branch-42
 ---
+apiVersion: v1
+kind: Secret
 stringData:
   DATABASE_URL: >-
     postgresql://user_8843083%40samplenextappdevserver.postgres.database.azure.com:password_8843083@samplenextappdevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
@@ -260,8 +272,6 @@ stringData:
     postgresql://user_8843083%40samplenextappdevserver.postgres.database.azure.com:password_8843083@samplenextappdevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
   PGSSLMODE: require
   PGUSER: user_8843083@samplenextappdevserver.postgres.database.azure.com
-apiVersion: v1
-kind: Secret
 metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-next-app

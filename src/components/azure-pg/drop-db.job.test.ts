@@ -64,6 +64,7 @@ test("should create a pg secret", () => {
             "restartPolicy": "Never",
           },
         },
+        "ttlSecondsAfterFinished": 86400,
       },
     }
   `

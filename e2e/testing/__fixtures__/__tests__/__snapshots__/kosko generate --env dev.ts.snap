@@ -2,10 +2,12 @@
 
 exports[`kosko generate --dev 1`] = `
 "---
+apiVersion: v1
+kind: Namespace
 metadata:
   annotations:
     field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-bd7z2:p-7ms8p'
+    field.cattle.io/projectId: c-bd7z2:p-7ms8p
     git/branch: master
     git/remote: >-
       https://gitlab-ci-token:[MASKED]@gitlab.factory.social.gouv.fr/SocialGouv/sample-nxt-app.git
@@ -19,14 +21,16 @@ metadata:
     team: sample-nxt-app
     cert: wildcard
   name: sample-nxt-app-85-master-dev2
-apiVersion: v1
-kind: Namespace
 ---
 apiVersion: v1
 kind: FooManifest
 ---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev2
     app.gitlab.com/env.name: master-dev2
@@ -47,6 +51,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-nxt-app
         app.gitlab.com/env: master-dev2
         app.gitlab.com/env.name: master-dev2
@@ -59,7 +65,7 @@ spec:
         component: nginx
     spec:
       containers:
-        - image: 'nginx:latest'
+        - image: nginx:latest
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -94,9 +100,9 @@ spec:
               path: /index.html
               port: http
             periodSeconds: 5
-apiVersion: apps/v1
-kind: Deployment
 ---
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: www
@@ -106,6 +112,8 @@ metadata:
     cert: wildcard
   name: www
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev2
     app.gitlab.com/env.name: master-dev2
@@ -118,12 +126,14 @@ spec:
   selector:
     app: www
   type: ClusterIP
-apiVersion: v1
-kind: Service
 ---
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev2
     app.gitlab.com/env.name: master-dev2
@@ -148,7 +158,5 @@ spec:
     - hosts:
         - master-dev2-sample-nxt-app.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt
-apiVersion: extensions/v1beta1
-kind: Ingress
 "
 `;

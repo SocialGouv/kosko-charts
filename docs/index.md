@@ -57,6 +57,7 @@ See [kosko documentation](https://kosko.dev/docs/) for more usage examples
 - [[createIngress]]
 - [[createService]]
 - [[getDeployment]]
+- [[getHarborImagePath]]
 - [[getIngressHost]]
 - [[getManifestByKind]]
 - [[getPgServerHostname]]

@@ -1,5 +1,8 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { Job } from "kubernetes-models/batch/v1/Job";
+
+type Manifest = Deployment | Job;
 
 /**
  *
@@ -22,9 +25,9 @@ import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
  * @return {Deployment}
  */
 export const addInitContainer = (
-  deployment: Deployment,
+  deployment: Manifest,
   initContainer: IIoK8sApiCoreV1Container
-): Deployment => {
+): Manifest => {
   if (!deployment.spec?.template) {
     return deployment;
   }

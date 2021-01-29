@@ -2,12 +2,14 @@
 
 exports[`kosko generate --env dev : should generate a kitchen sink dev manifest 1`] = `
 "---
+apiVersion: v1
+kind: Namespace
 metadata:
   annotations:
     field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: 'c-bd7z2:p-7ms8p'
+    field.cattle.io/projectId: c-bd7z2:p-7ms8p
     git/branch: e2e-branch
-    git/remote: 'git@github.com:SocialGouv/sample-kosko.git'
+    git/remote: git@github.com:SocialGouv/sample-kosko.git
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -18,11 +20,13 @@ metadata:
     team: sample-kosko
     cert: wildcard
   name: sample-kosko-24-e2e-branch-42
-apiVersion: v1
-kind: Namespace
 ---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -42,6 +46,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -102,7 +108,7 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.2.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -112,9 +118,9 @@ spec:
             requests:
               cpu: 5m
               memory: 16Mi
-apiVersion: apps/v1
-kind: Deployment
 ---
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: hasura
@@ -124,6 +130,8 @@ metadata:
     cert: wildcard
   name: hasura
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -136,11 +144,13 @@ spec:
   selector:
     app: hasura
   type: ClusterIP
-apiVersion: v1
-kind: Service
 ---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -161,6 +171,8 @@ spec:
   template:
     metadata:
       annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -222,7 +234,7 @@ spec:
             - secretRef:
                 name: azure-pg-user-8843083
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:2.0.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.2.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -232,9 +244,9 @@ spec:
             requests:
               cpu: 5m
               memory: 16Mi
-apiVersion: apps/v1
-kind: Deployment
 ---
+apiVersion: v1
+kind: Service
 metadata:
   labels:
     app: www
@@ -244,6 +256,8 @@ metadata:
     cert: wildcard
   name: www
   annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -256,12 +270,14 @@ spec:
   selector:
     app: www
   type: ClusterIP
-apiVersion: v1
-kind: Service
 ---
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -285,7 +301,5 @@ spec:
   tls:
     - hosts:
         - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
-      secretName: wildcard-crt
-apiVersion: extensions/v1beta1
-kind: Ingress"
+      secretName: wildcard-crt"
 `;

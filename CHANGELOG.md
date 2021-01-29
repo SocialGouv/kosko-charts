@@ -1,3 +1,57 @@
+# [4.7.0](https://github.com/SocialGouv/kosko-charts/compare/v4.6.1...v4.7.0) (2021-01-28)
+
+
+### Bug Fixes
+
+* **deps:** update kosko monorepo ([#362](https://github.com/SocialGouv/kosko-charts/issues/362)) ([10a9d0a](https://github.com/SocialGouv/kosko-charts/commit/10a9d0a4f869174a4311d572c32f7086e2dbde37))
+
+
+### Features
+
+* **restore-db-job:** add post-restore script ([#359](https://github.com/SocialGouv/kosko-charts/issues/359)) ([69c2643](https://github.com/SocialGouv/kosko-charts/commit/69c264367ff9ecbb8b16cd1a60fb525b6359a7a7))
+
+## [4.6.1](https://github.com/SocialGouv/kosko-charts/compare/v4.6.0...v4.6.1) (2021-01-26)
+
+
+### Bug Fixes
+
+* **jobs:** add ttlSecondsAfterFinished ([#383](https://github.com/SocialGouv/kosko-charts/issues/383)) ([a2509b2](https://github.com/SocialGouv/kosko-charts/commit/a2509b234ee36213bb754083bd56feaa652364f1))
+
+# [4.6.0](https://github.com/SocialGouv/kosko-charts/compare/v4.5.2...v4.6.0) (2021-01-25)
+
+
+### Features
+
+* **app:** add kapp annotations by default ([#381](https://github.com/SocialGouv/kosko-charts/issues/381)) ([b249eb0](https://github.com/SocialGouv/kosko-charts/commit/b249eb05430da842554b0a51998041181c275a1c))
+
+## [4.5.2](https://github.com/SocialGouv/kosko-charts/compare/v4.5.1...v4.5.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.14.22 ([#372](https://github.com/SocialGouv/kosko-charts/issues/372)) ([ea23085](https://github.com/SocialGouv/kosko-charts/commit/ea23085791bca129a6b8dbe5d5168931408bcb2e))
+
+## [4.5.1](https://github.com/SocialGouv/kosko-charts/compare/v4.5.0...v4.5.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **waitForPostgres:** use renovate friendly version ([#361](https://github.com/SocialGouv/kosko-charts/issues/361)) ([95e99ad](https://github.com/SocialGouv/kosko-charts/commit/95e99adc630bff94d93eb12c2ed2140cf275572f))
+
+# [4.5.0](https://github.com/SocialGouv/kosko-charts/compare/v4.4.1...v4.5.0) (2021-01-19)
+
+
+### Features
+
+* add utils.getHarborImagePath ([#371](https://github.com/SocialGouv/kosko-charts/issues/371)) ([3184dc6](https://github.com/SocialGouv/kosko-charts/commit/3184dc64a6a9296056d583ac8564b0f6ab8e87c1))
+
+## [4.4.1](https://github.com/SocialGouv/kosko-charts/compare/v4.4.0...v4.4.1) (2021-01-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.14.21 ([#366](https://github.com/SocialGouv/kosko-charts/issues/366)) ([b898858](https://github.com/SocialGouv/kosko-charts/commit/b89885801c821ee59dd257c226db6cf9e1a6ddc6))
+
 # [4.4.0](https://github.com/SocialGouv/kosko-charts/compare/v4.3.0...v4.4.0) (2021-01-11)
 
 
