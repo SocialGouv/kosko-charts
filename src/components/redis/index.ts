@@ -6,8 +6,8 @@ import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 import type { DeploymentParams } from "../../utils/createDeployment";
 
-// renovate: datasource=docker depName=redis versioning=6.0.10
-const REDIS_VERSION = "6.0.10";
+// renovate: datasource=docker depName=redis versioning=6.0.10-alpine3.12
+const REDIS_VERSION = "6.0.10-alpine3.12";
 
 const redisDeploymentParams: Partial<
   Omit<DeploymentParams, "containerPort">
