@@ -179,7 +179,7 @@ export const restoreDbJob = ({
     },
     {
       name: "PGUSER",
-      value: defaultParams.user,
+      value: `${defaultParams.user}@${defaultParams.host}`,
     },
     {
       name: "PGSSLMODE",

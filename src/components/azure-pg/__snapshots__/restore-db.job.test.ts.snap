@@ -102,7 +102,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_b123a99",
+                  "value": "user_b123a99@someappdevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",
@@ -261,7 +261,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_b123a99",
+                  "value": "user_b123a99@someappdevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",
