@@ -11,9 +11,9 @@
     "kubernetes-models": "^1.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-typescript": "^7.12.7",
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.13",
     "@socialgouv/eslint-config-recommended": "^1.49.0",
     "@socialgouv/eslint-config-typescript": "^1.49.0",
     "@socialgouv/kosko-charts": "link:./",
