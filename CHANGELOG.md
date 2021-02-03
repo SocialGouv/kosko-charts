@@ -1,3 +1,10 @@
+## [4.7.2](https://github.com/SocialGouv/kosko-charts/compare/v4.7.1...v4.7.2) (2021-02-03)
+
+
+### Bug Fixes
+
+* fix wait user on restore initContainer ([#391](https://github.com/SocialGouv/kosko-charts/issues/391)) ([ee29548](https://github.com/SocialGouv/kosko-charts/commit/ee2954867e78c23107438e71e2400886ae21d481))
+
 ## [4.7.1](https://github.com/SocialGouv/kosko-charts/compare/v4.7.0...v4.7.1) (2021-01-31)
 
 
