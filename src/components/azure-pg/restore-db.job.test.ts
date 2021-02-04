@@ -4,6 +4,7 @@ import { restoreDbJob } from "./restore-db.job";
 
 process.env.CI_COMMIT_SHORT_SHA = "b123a99";
 process.env.CI_PROJECT_NAME = "some-app";
+process.env.CI_JOB_ID = "123456789";
 
 test("should create restore DB job", () => {
   expect(

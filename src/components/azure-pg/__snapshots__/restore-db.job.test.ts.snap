@@ -6,7 +6,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-b123a99",
+      "name": "restore-db-123456789",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
@@ -161,7 +161,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-b123a99",
+      "name": "restore-db-123456789",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
