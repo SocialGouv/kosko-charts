@@ -145,7 +145,7 @@ export const restoreDbJob = ({
 
   const job = new Job({
     metadata: {
-      name: `restore-db-${process.env.CI_COMMIT_SHORT_SHA}`,
+      name: `restore-db-${process.env.CI_JOB_ID}`,
       namespace: secretNamespace,
     },
     spec: {
