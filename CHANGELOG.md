@@ -1,3 +1,10 @@
+## [4.7.5](https://github.com/SocialGouv/kosko-charts/compare/v4.7.4...v4.7.5) (2021-02-05)
+
+
+### Bug Fixes
+
+* **restore:** enable multiple calls to job ([#394](https://github.com/SocialGouv/kosko-charts/issues/394)) ([d773932](https://github.com/SocialGouv/kosko-charts/commit/d773932e1262c1b71562851cdfc19b959d7bf27c))
+
 ## [4.7.4](https://github.com/SocialGouv/kosko-charts/compare/v4.7.3...v4.7.4) (2021-02-04)
 
 
