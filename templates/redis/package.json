@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@kosko/env": "^1.0.3",
-    "kubernetes-models": "^1.0.3"
+    "kubernetes-models": "^1.1.0"
   },
   "devDependencies": {
     "@socialgouv/kosko-charts": "^4.7.5",
