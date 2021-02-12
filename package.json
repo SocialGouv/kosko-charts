@@ -18,7 +18,7 @@
     "@socialgouv/eslint-config-typescript": "^1.50.0",
     "@socialgouv/kosko-charts": "link:./",
     "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.25",
+    "@types/node": "^14.14.26",
     "babel-plugin-module-resolver": "^4.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.19.0",
