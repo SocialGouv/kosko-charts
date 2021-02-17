@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Listen for PR Comments
         id: prcomm
-        uses: machine-learning-apps/actions-chatops@master
+        uses: machine-learning-apps/actions-chatops@1.4.1
         with:
           TRIGGER_PHRASE: "@SocialGroovyBot"
         env:
