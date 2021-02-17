@@ -1,7 +1,7 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
-// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http versioning=2.4.0
-const SOCIALGOUV_DOCKER_WAIT_FOR_HTTP_VERSION = "2.4.0";
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http versioning=4.5.4
+const SOCIALGOUV_DOCKER_WAIT_FOR_HTTP_VERSION = "4.5.4";
 
 /** params for the [[waitForHttp]] function */
 export interface WaitForHttpParams {
