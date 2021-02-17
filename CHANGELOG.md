@@ -1,3 +1,10 @@
+# [4.8.0](https://github.com/SocialGouv/kosko-charts/compare/v4.7.11...v4.8.0) (2021-02-17)
+
+
+### Features
+
+* **deps:** update registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http docker tag to v4 ([#416](https://github.com/SocialGouv/kosko-charts/issues/416)) ([b702ed1](https://github.com/SocialGouv/kosko-charts/commit/b702ed1b4b3929eb769cfb3eac045a815ff3ec99))
+
 ## [4.7.11](https://github.com/SocialGouv/kosko-charts/compare/v4.7.10...v4.7.11) (2021-02-14)
 
 
