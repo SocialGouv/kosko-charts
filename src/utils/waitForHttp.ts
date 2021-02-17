@@ -1,5 +1,8 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http versioning=2.4.0
+const SOCIALGOUV_DOCKER_WAIT_FOR_HTTP_VERSION = "2.4.0";
+
 /** params for the [[waitForHttp]] function */
 export interface WaitForHttpParams {
   /** name of the container */
@@ -28,7 +31,7 @@ export const waitForHttp = ({
 }: WaitForHttpParams): IIoK8sApiCoreV1Container => {
   return {
     args: [url],
-    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http:2.4.0`,
+    image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-http:${SOCIALGOUV_DOCKER_WAIT_FOR_HTTP_VERSION}`,
     imagePullPolicy: "Always",
     name: `wait-for-${name}`,
     resources: {
