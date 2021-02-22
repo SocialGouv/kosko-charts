@@ -10,7 +10,11 @@ import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
 
-const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
+const assert = assertEnv([
+  "CI_COMMIT_REF_SLUG",
+  "CI_COMMIT_SHORT_SHA",
+  "CI_PROJECT_NAME",
+]);
 
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
@@ -18,6 +22,7 @@ export const getDefaultPgParams = (
   assert(process.env);
 
   const {
+    CI_COMMIT_REF_SLUG: branch,
     CI_COMMIT_SHORT_SHA: sha,
     CI_PROJECT_NAME: projectName,
     // NOTE(douglasduteil): enforce defined string in process.env
@@ -26,10 +31,10 @@ export const getDefaultPgParams = (
 
   return {
     ...getDevDatabaseParameters({
-      suffix: sha,
+      suffix: branch,
     }),
     host: config.pgHost ?? getPgServerHostname(projectName, "dev"),
-    name: `azure-pg-user-${sha}`,
+    name: `azure-pg-user-${branch}`,
   };
 };
 
@@ -56,7 +61,7 @@ export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
-    name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
+    name: `create-db-job-${process.env.CI_COMMIT_REF_SLUG}`,
     namespace: envParams.namespace,
   });
 

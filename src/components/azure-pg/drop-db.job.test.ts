@@ -2,6 +2,7 @@ import { dropDbJob } from "./drop-db.job";
 
 test("should create a pg secret", () => {
   process.env.CI_COMMIT_SHORT_SHA = "1234567";
+  process.env.CI_COMMIT_REF_SLUG = "some-branch";
   const job = dropDbJob({
     database: "some-db",
     user: "tester",

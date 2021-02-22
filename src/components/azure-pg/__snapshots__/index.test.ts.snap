@@ -15,7 +15,7 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "create-db-job-abcdefg",
+      "name": "create-db-job-some-branch",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
@@ -41,15 +41,15 @@ Array [
               "env": Array [
                 Object {
                   "name": "NEW_DB_NAME",
-                  "value": "autodevops_abcdefg",
+                  "value": "autodevops_some-branch",
                 },
                 Object {
                   "name": "NEW_USER",
-                  "value": "user_abcdefg",
+                  "value": "user_some-branch",
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_abcdefg",
+                  "value": "password_some-branch",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -97,19 +97,19 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "azure-pg-user-abcdefg",
+      "name": "azure-pg-user-some-branch",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
-      "DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
-      "DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
-      "PGDATABASE": "autodevops_abcdefg",
+      "DATABASE_URL": "postgresql://user_some-branch%40sampledevserver.postgres.database.azure.com:password_some-branch@sampledevserver.postgres.database.azure.com/autodevops_some-branch?sslmode=require",
+      "DB_URI": "postgresql://user_some-branch%40sampledevserver.postgres.database.azure.com:password_some-branch@sampledevserver.postgres.database.azure.com/autodevops_some-branch?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_some-branch%40sampledevserver.postgres.database.azure.com:password_some-branch@sampledevserver.postgres.database.azure.com/autodevops_some-branch?sslmode=require",
+      "PGDATABASE": "autodevops_some-branch",
       "PGHOST": "sampledevserver.postgres.database.azure.com",
-      "PGPASSWORD": "password_abcdefg",
-      "PGRST_DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "PGPASSWORD": "password_some-branch",
+      "PGRST_DB_URI": "postgresql://user_some-branch%40sampledevserver.postgres.database.azure.com:password_some-branch@sampledevserver.postgres.database.azure.com/autodevops_some-branch?sslmode=require",
       "PGSSLMODE": "require",
-      "PGUSER": "user_abcdefg@sampledevserver.postgres.database.azure.com",
+      "PGUSER": "user_some-branch@sampledevserver.postgres.database.azure.com",
     },
   },
 ]
@@ -117,6 +117,7 @@ Array [
 
 exports[`should throw because of a missing envs 1`] = `
 "Wrong environment variables
+required \\"CI_COMMIT_REF_SLUG\\": \\"undefined\\" should be defined
 required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
 required \\"CI_PROJECT_NAME\\": \\"undefined\\" should be defined
 "
@@ -137,7 +138,7 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "create-db-job-abcdefg",
+      "name": "create-db-job-some-branch",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
@@ -163,15 +164,15 @@ Array [
               "env": Array [
                 Object {
                   "name": "NEW_DB_NAME",
-                  "value": "autodevops_abcdefg",
+                  "value": "autodevops_some-branch",
                 },
                 Object {
                   "name": "NEW_USER",
-                  "value": "user_abcdefg",
+                  "value": "user_some-branch",
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_abcdefg",
+                  "value": "password_some-branch",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -219,19 +220,19 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "azure-pg-user-abcdefg",
+      "name": "azure-pg-user-some-branch",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
-      "DATABASE_URL": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
-      "DB_URI": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
-      "PGDATABASE": "autodevops_abcdefg",
+      "DATABASE_URL": "postgresql://user_some-branch%40pouetpouet.com:password_some-branch@pouetpouet.com/autodevops_some-branch?sslmode=require",
+      "DB_URI": "postgresql://user_some-branch%40pouetpouet.com:password_some-branch@pouetpouet.com/autodevops_some-branch?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_some-branch%40pouetpouet.com:password_some-branch@pouetpouet.com/autodevops_some-branch?sslmode=require",
+      "PGDATABASE": "autodevops_some-branch",
       "PGHOST": "pouetpouet.com",
-      "PGPASSWORD": "password_abcdefg",
-      "PGRST_DB_URI": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
+      "PGPASSWORD": "password_some-branch",
+      "PGRST_DB_URI": "postgresql://user_some-branch%40pouetpouet.com:password_some-branch@pouetpouet.com/autodevops_some-branch?sslmode=require",
       "PGSSLMODE": "require",
-      "PGUSER": "user_abcdefg@pouetpouet.com",
+      "PGUSER": "user_some-branch@pouetpouet.com",
     },
   },
 ]
