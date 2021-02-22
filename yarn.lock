@@ -1161,32 +1161,31 @@
     js-yaml "^4.0.0"
     node-fetch "^2.6.1"
 
-"@kubernetes-models/base@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@kubernetes-models/base/-/base-1.2.0.tgz#638ecca63c45be9cb8afea817247d0107baa2f49"
-  integrity sha512-q/P9B8TbRuMog77wCqQTTFt2QSrFuljX4GtgWzl17Th9OIEJVb0VFlMCsSXJc8qbCQCHByPHk4j09lno0amb3A==
+"@kubernetes-models/base@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/base/-/base-1.3.0.tgz#6626fdd48c691cfa80cab5c718c11930c6278f98"
+  integrity sha512-jqBkyy3zE3tqo1Xc2gV0wo7Ag/RHUINzCcP4IzubeMLiIt8JpiwPuVb9Jj/mXCO/5wPHKEuE421Npo2LFl84mA==
   dependencies:
-    "@kubernetes-models/validate" "^1.1.0"
+    "@kubernetes-models/validate" "^1.2.0"
     is-plain-object "^5.0.0"
     tslib "^2.0.3"
 
-"@kubernetes-models/sealed-secrets@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@kubernetes-models/sealed-secrets/-/sealed-secrets-1.1.0.tgz#adc42adea283ee074674b8ce80a93f4ec1b032c6"
-  integrity sha512-JZ6dJbwBctAkRXQyIHgdKIl5hJx/erXmqAdtQja5YHhaQ56LEcd4cRLTYl/XvO8Br7FA1s/SFT9/QQbylqZcng==
+"@kubernetes-models/sealed-secrets@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/sealed-secrets/-/sealed-secrets-1.2.0.tgz#014f695d403335778fc2aee7fadc7f8ec679f99d"
+  integrity sha512-TkmZQ6j3djrA/dZ2iadtnmadzov1puDEaxzD70SB+/dFF1pp/Vmm2jayk4UjMfTzWpV0DhKUl0t4IdyN5DRw3Q==
   dependencies:
-    "@kubernetes-models/base" "^1.2.0"
-    "@kubernetes-models/validate" "^1.1.0"
-    kubernetes-models "^1.1.0"
+    "@kubernetes-models/base" "^1.3.0"
+    "@kubernetes-models/validate" "^1.2.0"
+    kubernetes-models "^1.2.0"
     tslib "^2.0.3"
 
-"@kubernetes-models/validate@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@kubernetes-models/validate/-/validate-1.1.0.tgz#2357fa1eb8b0ebfa2453e51f6d157e689bbbfa09"
-  integrity sha512-IQ5aknZgZh/ZyyFiyjRb2ncMva/hoK1O7C9FudZInYB5ql94eM0vD6m/iKnmKXtY0VBX6sYYlAl3oXU9AA7+Qw==
+"@kubernetes-models/validate@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/validate/-/validate-1.2.0.tgz#f316bb47cdb055ef47472b880e389ab1edc42653"
+  integrity sha512-rr4z4mHLzAJM5SwPM36w3Y8fWbS4lNJJp9J3Wc8MGWfXZ7+w8Ozr0H0wh222rxZm8BHQvSer4rMopVDNCqiHhQ==
   dependencies:
     ajv "^6.12.6"
-    big-integer "^1.6.48"
     tslib "^2.0.3"
 
 "@nodelib/fs.scandir@2.1.4":
@@ -1754,11 +1753,6 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
-
-big-integer@^1.6.48:
-  version "1.6.48"
-  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.48.tgz#8fd88bd1632cba4a1c8c3e3d7159f08bb95b4b9e"
-  integrity sha512-j51egjPa7/i+RdiRuJbPdJ2FIUYYPhvYLjzoYbcMMm62ooO6F94fETG4MTs46zPAF9Brs04OajboA/qTGuz78w==
 
 binary-extensions@^2.0.0:
   version "2.2.0"
@@ -4083,13 +4077,13 @@ kosko@^1.0.3:
     "@kosko/cli" "^1.1.1"
     import-local "^3.0.2"
 
-kubernetes-models@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/kubernetes-models/-/kubernetes-models-1.1.0.tgz#0e60c91d2960ff33a1dbb31f65ac0c26f172e631"
-  integrity sha512-FB5Jo5Q2jBTl1eTEqkI/4Ohgy8/yAnRbo2axDaXLISL+LwvofCRdoBChYXWUvEC61UwdbBo7OCdAF+Bzb4nvUw==
+kubernetes-models@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/kubernetes-models/-/kubernetes-models-1.2.0.tgz#96885523af6eeed2c400ed728bd5feb7f415086d"
+  integrity sha512-HLuQ8Ehb73P/SneYVcxtYFB6+5flPCiHtBEAY6Cuup+Q+uEjRFY+3PKo7oUEbNxRSYWt8UUA7OM0mS3NBfmRKA==
   dependencies:
-    "@kubernetes-models/base" "^1.2.0"
-    "@kubernetes-models/validate" "^1.1.0"
+    "@kubernetes-models/base" "^1.3.0"
+    "@kubernetes-models/validate" "^1.2.0"
     tslib "^2.0.3"
 
 leven@^3.1.0:
