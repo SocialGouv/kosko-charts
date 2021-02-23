@@ -23,7 +23,6 @@ export const getDefaultPgParams = (
 
   const {
     CI_COMMIT_REF_SLUG: branch,
-    CI_COMMIT_SHORT_SHA: sha,
     CI_PROJECT_NAME: projectName,
     // NOTE(douglasduteil): enforce defined string in process.env
     // Those env variables are asserted to be defined above

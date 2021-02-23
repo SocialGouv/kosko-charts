@@ -7,8 +7,8 @@ import { directory } from "tempy";
 import { create } from "./index";
 
 const gitlabEnv = {
-  CI_COMMIT_SHORT_SHA: "abcdefg",
   CI_COMMIT_REF_SLUG: "some-branch",
+  CI_COMMIT_SHORT_SHA: "abcdefg",
   CI_ENVIRONMENT_NAME: "fabrique-dev",
   CI_ENVIRONMENT_SLUG: "my-test",
   CI_PROJECT_NAME: "sample",
