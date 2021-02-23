@@ -11,7 +11,7 @@
     "kubernetes-models": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.0",
+    "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.13.0",
     "@babel/preset-typescript": "^7.13.0",
     "@socialgouv/eslint-config-recommended": "^1.52.0",
