@@ -67,10 +67,12 @@ export const create: createFn = (
     },
   };
 
+  const gitlabEnv = gitlab(process.env);
+
   // kosko component env values
   const envParams = merge(
     defaultEnvParams, // set name as default if not provided
-    gitlab(process.env),
+    gitlabEnv,
     config ?? {}, // create options
     env.component(name) as AppConfig // kosko env overrides
   );
@@ -173,11 +175,20 @@ export const create: createFn = (
 
   /* INGRESS */
   if (envParams.ingress !== false) {
-    const hosts = envParams.hosts || [
-      `${(envParams.subDomainPrefix || "") + envParams.subdomain}.${
-        envParams.domain
+    let hosts = [
+      `${(envParams.subDomainPrefix || "") + gitlabEnv.subdomain}.${
+        gitlabEnv.domain
       }`,
     ];
+
+    if (env.env === "prod") {
+      hosts = [
+        `${(envParams.subDomainPrefix || "") + envParams.subdomain}.${
+          envParams.domain
+        }`,
+      ];
+    }
+
     const ingress = createIngress({
       name,
       hosts,
