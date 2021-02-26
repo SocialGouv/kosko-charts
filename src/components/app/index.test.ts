@@ -53,6 +53,23 @@ test("should return prod manifests", async () => {
   expect(create("app", { env })).toMatchSnapshot();
 });
 
+test("should return preprod manifests with NO custom subdomain", async () => {
+  const gitlabEnv = project("sample").preprod;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = new Environment(cwd);
+  env.env = "preprod";
+  await promises.mkdir(`${cwd}/environments/preprod`, { recursive: true });
+  expect(
+    create("app", {
+      config: {
+        subdomain: "another",
+      },
+      env,
+    })
+  ).toMatchSnapshot();
+});
+
 test("should return prod manifests with custom subdomain", async () => {
   const gitlabEnv = project("sample").prod;
   Object.assign(process.env, gitlabEnv);
