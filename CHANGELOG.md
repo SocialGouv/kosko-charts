@@ -1,3 +1,10 @@
+## [4.9.2](https://github.com/SocialGouv/kosko-charts/compare/v4.9.1...v4.9.2) (2021-02-26)
+
+
+### Bug Fixes
+
+* **subdomain:** only override when env=prod ([#439](https://github.com/SocialGouv/kosko-charts/issues/439)) ([bb3775c](https://github.com/SocialGouv/kosko-charts/commit/bb3775c2f9268b26ceef4a557e4d90627783c432))
+
 ## [4.9.1](https://github.com/SocialGouv/kosko-charts/compare/v4.9.0...v4.9.1) (2021-02-24)
 
 
