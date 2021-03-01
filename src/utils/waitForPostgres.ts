@@ -1,7 +1,7 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
-// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres versioning=4.6.0
-const SOCIALGOUV_DOCKER_WAIT_FOR_PG_VERSION = "4.6.0";
+// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres versioning=4.7.1
+const SOCIALGOUV_DOCKER_WAIT_FOR_PG_VERSION = "4.7.1";
 
 /** params for the [[waitForPostgres]] function */
 export interface WaitForPostgresParams {
