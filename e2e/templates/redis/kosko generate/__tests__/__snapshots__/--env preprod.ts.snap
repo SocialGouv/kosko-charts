@@ -61,7 +61,7 @@ spec:
         component: redis
     spec:
       containers:
-        - image: redis:6.0.10-alpine3.12
+        - image: redis:6.2.0-alpine3.12
           livenessProbe:
             failureThreshold: 6
             initialDelaySeconds: 30
