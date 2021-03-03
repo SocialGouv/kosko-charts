@@ -98,16 +98,16 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user-e2e-branch
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user-e2e-branch
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.6.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.3.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -187,11 +187,11 @@ spec:
             - create-db-user
           env:
             - name: NEW_DB_NAME
-              value: autodevops_8843083
+              value: autodevops_e2e-branch
             - name: NEW_USER
-              value: user_8843083
+              value: user_e2e-branch
             - name: NEW_PASSWORD
-              value: password_8843083
+              value: password_e2e-branch
             - name: NEW_DB_EXTENSIONS
               value: hstore pgcrypto citext uuid-ossp
           envFrom:
@@ -230,25 +230,25 @@ metadata:
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-  name: create-db-job-8843083
+  name: create-db-job-e2e-branch
   namespace: sample-next-app-24-e2e-branch-42
 ---
 apiVersion: v1
 kind: Secret
 stringData:
   DATABASE_URL: >-
-    postgresql://user_8843083%40samplenextappdevserver.postgres.database.azure.com:password_8843083@samplenextappdevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
+    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   DB_URI: >-
-    postgresql://user_8843083%40samplenextappdevserver.postgres.database.azure.com:password_8843083@samplenextappdevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
+    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   HASURA_GRAPHQL_DATABASE_URL: >-
-    postgresql://user_8843083%40samplenextappdevserver.postgres.database.azure.com:password_8843083@samplenextappdevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
-  PGDATABASE: autodevops_8843083
+    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+  PGDATABASE: autodevops_e2e-branch
   PGHOST: samplenextappdevserver.postgres.database.azure.com
-  PGPASSWORD: password_8843083
+  PGPASSWORD: password_e2e-branch
   PGRST_DB_URI: >-
-    postgresql://user_8843083%40samplenextappdevserver.postgres.database.azure.com:password_8843083@samplenextappdevserver.postgres.database.azure.com/autodevops_8843083?sslmode=require
+    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   PGSSLMODE: require
-  PGUSER: user_8843083@samplenextappdevserver.postgres.database.azure.com
+  PGUSER: user_e2e-branch@samplenextappdevserver.postgres.database.azure.com
 metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-next-app
@@ -259,6 +259,6 @@ metadata:
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-  name: azure-pg-user-8843083
+  name: azure-pg-user-e2e-branch
   namespace: sample-next-app-24-e2e-branch-42"
 `;

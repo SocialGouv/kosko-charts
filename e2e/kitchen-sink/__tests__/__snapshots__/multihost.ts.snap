@@ -97,7 +97,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user-e2e-branch
       imagePullSecrets:
         - name: regcred
       initContainers:
@@ -106,9 +106,9 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user-e2e-branch
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.6.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.3.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -223,7 +223,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user-e2e-branch
       imagePullSecrets:
         - name: some-secret
       initContainers:
@@ -232,9 +232,9 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user-e2e-branch
           image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.6.0
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:4.3.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
