@@ -1,3 +1,10 @@
+## [4.9.3](https://github.com/SocialGouv/kosko-charts/compare/v4.9.2...v4.9.3) (2021-03-04)
+
+
+### Bug Fixes
+
+* **app:** handle empty subdomain config ([#453](https://github.com/SocialGouv/kosko-charts/issues/453)) ([2033f88](https://github.com/SocialGouv/kosko-charts/commit/2033f88661a2b8f8c9364677d01f64cb255f7660))
+
 ## [4.9.2](https://github.com/SocialGouv/kosko-charts/compare/v4.9.1...v4.9.2) (2021-02-26)
 
 
