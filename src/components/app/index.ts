@@ -183,9 +183,10 @@ export const create: createFn = (
 
     if (env.env === "prod") {
       hosts = [
-        `${(envParams.subDomainPrefix || "") + envParams.subdomain}.${
-          envParams.domain
-        }`,
+        `${
+          (envParams.subDomainPrefix || "") +
+          (envParams.subdomain || gitlabEnv.subdomain)
+        }.${envParams.domain || gitlabEnv.domain}`,
       ];
     }
 
