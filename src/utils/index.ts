@@ -1,4 +1,5 @@
 export * from "./addEnv";
+export * from "./addEnvs";
 export * from "./addInitContainer";
 export * from "./addInitContainerCommand";
 export * from "./addPostgresUserSecret";
