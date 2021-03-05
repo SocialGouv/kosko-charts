@@ -1,12 +1,9 @@
-import { assert } from "@sindresorhus/is";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 import { addEnv } from "./addEnv";
 
-type AnyObject = {
-  [any: string]: any;
-};
+type AnyObject = Record<string, string>;
 
 /** Parameters for the [[addEnvs]] function */
 interface AddEnvsParams {
@@ -30,7 +27,7 @@ interface AddEnvsParams {
  *   deployment,
  *   data: {
  *     NODE_ENV: "production",
- *     TEST: 42
+ *     TEST: "42"
  *   }
  * })
  * ```
@@ -44,9 +41,9 @@ export const addEnvs = ({
 }: AddEnvsParams) => {
   Object.keys(data).forEach((key) => {
     addEnv({
-      deployment,
-      data: new EnvVar({ name: key, value: data[key] }),
       containerIndex,
+      data: new EnvVar({ name: key, value: data[key] }),
+      deployment,
     });
   });
 };

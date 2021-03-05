@@ -1,7 +1,6 @@
-import assert from "assert";
+import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { addEnvs } from "./addEnvs";
-import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 test("should add HELLO and ANSWER variables in deployment env", () => {
   const deployment = new Deployment({
@@ -11,6 +10,6 @@ test("should add HELLO and ANSWER variables in deployment env", () => {
       template: { spec: { containers: [{ name: "container1" }] } },
     },
   });
-  addEnvs({ deployment, data: { HELLO: "world", ANSWER: 42 } });
+  addEnvs({ data: { ANSWER: "42", HELLO: "world" }, deployment });
   expect(deployment).toMatchSnapshot();
 });
