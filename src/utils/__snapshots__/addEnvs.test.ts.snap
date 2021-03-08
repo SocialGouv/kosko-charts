@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should assert FOO variable in env 1`] = `
+exports[`should add HELLO and ANSWER variables in deployment env 1`] = `
 Object {
   "apiVersion": "apps/v1",
   "kind": "Deployment",
@@ -15,12 +15,12 @@ Object {
           Object {
             "env": Array [
               Object {
-                "name": "HELLO",
-                "value": "world",
+                "name": "ANSWER",
+                "value": "42",
               },
               Object {
-                "name": "ANSWER",
-                "value": 42,
+                "name": "HELLO",
+                "value": "world",
               },
             ],
             "name": "container1",
