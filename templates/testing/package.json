@@ -10,7 +10,7 @@
     "@kosko/env": "^1.0.3",
     "@kubernetes-models/sealed-secrets": "^1.2.0",
     "@socialgouv/kosko-charts": "^4.10.0",
-    "@types/node": "^14.14.32",
+    "@types/node": "^14.14.33",
     "kosko": "^1.0.3",
     "kubernetes-models": "^1.2.0",
     "ts-node": "^9.1.1",
