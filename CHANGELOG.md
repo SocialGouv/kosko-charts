@@ -1,3 +1,10 @@
+# [4.10.0](https://github.com/SocialGouv/kosko-charts/compare/v4.9.5...v4.10.0) (2021-03-09)
+
+
+### Features
+
+* utils.addEnvs ([#458](https://github.com/SocialGouv/kosko-charts/issues/458)) ([96b231c](https://github.com/SocialGouv/kosko-charts/commit/96b231c3ff95c04bb6245543767014b75795ad11))
+
 ## [4.9.5](https://github.com/SocialGouv/kosko-charts/compare/v4.9.4...v4.9.5) (2021-03-07)
 
 
