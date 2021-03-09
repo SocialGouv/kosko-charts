@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add HELLO and ANSWER variables in deployment env 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "name": "test1",
+  },
+  "spec": Object {
+    "selector": Object {},
+    "template": Object {
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "env": Array [
+              Object {
+                "name": "ANSWER",
+                "value": "42",
+              },
+              Object {
+                "name": "HELLO",
+                "value": "world",
+              },
+            ],
+            "name": "container1",
+          },
+        ],
+      },
+    },
+  },
+}
+`;

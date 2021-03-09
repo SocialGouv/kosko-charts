@@ -19,10 +19,13 @@ export interface AddEnvParams {
  * ```typescript
  * import { addEnv } from "@socialgouv/kosko-charts/utils"
  *
- * addEnv(deployment, new EnvVar({
- *   name: "MY_VARIABLE",
- *   value: "some value"
- * }))
+ * addEnv({
+ *   deployment,
+ *   data: new EnvVar({
+ *     name: "MY_VARIABLE",
+ *     value: "some value"
+ *   })
+ * })
  * ```
  * @category utils
  * @return {void}
