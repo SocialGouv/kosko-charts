@@ -56,8 +56,12 @@ test("should create app with nginx config", () => {
             "component": "nginx",
           },
         },
-        "env": Environment {
+        "env": SyncEnvironment {
           "cwd": "/tmp",
+          "extensions": Array [
+            "cjs",
+            "mjs",
+          ],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",

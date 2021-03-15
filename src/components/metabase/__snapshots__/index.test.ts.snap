@@ -45,8 +45,12 @@ Array [
         },
       },
     },
-    "env": Environment {
+    "env": SyncEnvironment {
       "cwd": "/tmp",
+      "extensions": Array [
+        "cjs",
+        "mjs",
+      ],
       "paths": Object {
         "component": "environments/#{environment}/#{component}",
         "global": "environments/#{environment}",

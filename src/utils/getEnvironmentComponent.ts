@@ -56,7 +56,7 @@ export function getEnvironmentComponent(
   );
 }
 
-export function koskoMigrateLoader(id: string): string {
+export async function koskoMigrateLoader(id: string): Promise<string> {
   return migrateString(readFileSync(id, "utf-8"));
 }
 
