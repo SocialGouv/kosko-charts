@@ -20,3 +20,15 @@ test("should create hasura dev config", async () => {
   });
   expect(manifest).toMatchSnapshot();
 });
+
+test("should create hasura prod config", async () => {
+  const env = new Environment("/tmp");
+  process.env.CI_REGISTRY_IMAGE = "/path/to/docker/image";
+  process.env.CI_ENVIRONMENT_URL = "https://path/to/env";
+  process.env.CI_PROJECT_NAME = "some-project";
+  process.env.PRODUCTION = "true";
+  const manifest = await create("hasura", {
+    env,
+  });
+  expect(manifest).toMatchSnapshot();
+});
