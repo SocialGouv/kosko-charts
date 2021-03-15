@@ -13,10 +13,9 @@ export const importYamlFolder = async (
   const manifests = await Promise.all(
     files
       .filter((file: string) => /\.ya?ml$/.exec(file))
-      .map(async (file) =>
+      .flatMap(async (file) =>
         loadFile(path.join(folderPath, file), {
-          transform: (manifest: Manifest) => {
-            // force namespace on imported ressources
+          transform(manifest: Manifest) {
             manifest.metadata.namespace = process.env.KUBE_NAMESPACE;
             return manifest;
           },

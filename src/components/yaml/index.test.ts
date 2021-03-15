@@ -1,5 +1,8 @@
-import type { Manifest } from "@kosko/yaml";
-import { loadString } from "@kosko/yaml";
+import { rmdirSync, writeFileSync } from "fs";
+import { join } from "path";
+import { directory } from "tempy";
+
+import { importYamlFolder } from "./index";
 
 const getYaml = (path: string) => `
 kind: Ingress
@@ -9,26 +12,19 @@ metadata:
   path: ${path}
 `;
 
+let tempDir = "";
+
 beforeEach(() => {
-  jest.clearAllMocks();
+  tempDir = directory({ prefix: `kosko-chart-test-` });
+  writeFileSync(join(tempDir, "file1.ts"), "// /tmp/yaml/file1.ts");
+  writeFileSync(join(tempDir, "file2.yaml"), getYaml("/tmp/yaml/file2.yaml"));
+  writeFileSync(join(tempDir, "file3.yml"), getYaml("/tmp/yaml/file3.yml"));
+});
+afterEach(() => {
+  rmdirSync(tempDir, { recursive: true });
 });
 test("should load manifests fom /yaml folder", async () => {
   process.env.KUBE_NAMESPACE = "some-namespace";
-
-  jest.doMock("fs", () => ({
-    existsSync: jest.fn().mockReturnValue(true),
-    readdirSync: jest
-      .fn()
-      .mockReturnValue(["file1.ts", "file2.yaml", "file3.yml"]),
-  }));
-  jest.doMock("@kosko/yaml", () => ({
-    loadFile: (
-      file: string,
-      { transform }: { transform: (manifest: Manifest) => Manifest }
-    ) =>
-      jest.fn().mockResolvedValueOnce(transform(loadString(getYaml(file))[0])),
-  }));
-  const { importYamlFolder } = await import(".");
-  const manifests = await importYamlFolder("/tmp/yaml");
+  const manifests = await importYamlFolder(tempDir);
   expect(manifests).toMatchSnapshot();
 });
