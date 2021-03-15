@@ -1282,6 +1282,7 @@
 
 "@socialgouv/kosko-charts@link:.":
   version "0.0.0"
+  uid ""
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.12"
