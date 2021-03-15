@@ -18,6 +18,6 @@ type UnionToIntersection<T> = (T extends any ? (k: T) => void : never) extends (
 
 export const merge: <T extends any[]>(
   ...data: T
-) => UnionToIntersection<T[number]> =
+) => UnionToIntersection<T[number]> = (...data) =>
   // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-  require("@kosko/env/dist/merge.js").merge;
+  require("@kosko/env/dist/merge.js").merge([...data]);

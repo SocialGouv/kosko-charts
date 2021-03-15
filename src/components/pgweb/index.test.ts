@@ -59,8 +59,12 @@ test("should create app with pgweb config", () => {
             "component": "pgweb",
           },
         },
-        "env": Environment {
+        "env": SyncEnvironment {
           "cwd": "/tmp",
+          "extensions": Array [
+            "cjs",
+            "mjs",
+          ],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",
@@ -130,8 +134,12 @@ test("should create app with pgweb config for production", () => {
             "component": "pgweb",
           },
         },
-        "env": Environment {
+        "env": SyncEnvironment {
           "cwd": "/tmp",
+          "extensions": Array [
+            "cjs",
+            "mjs",
+          ],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",

@@ -61,8 +61,12 @@ test("should create app with redis config", () => {
             "component": "redis",
           },
         },
-        "env": Environment {
+        "env": SyncEnvironment {
           "cwd": "/tmp",
+          "extensions": Array [
+            "cjs",
+            "mjs",
+          ],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",
@@ -134,8 +138,12 @@ test("should create app with pgweb config for production", () => {
             "component": "redis",
           },
         },
-        "env": Environment {
+        "env": SyncEnvironment {
           "cwd": "/tmp",
+          "extensions": Array [
+            "cjs",
+            "mjs",
+          ],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",
