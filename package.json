@@ -46,12 +46,6 @@
     "utils"
   ],
   "homepage": "https://github.com/SocialGouv/kosko-charts#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": " yarn lint && yarn typecheck && yarn test && yarn build && yarn e2e"
-    }
-  },
   "keywords": [],
   "license": "Apache-2.0",
   "lint-staged": {
@@ -73,6 +67,7 @@
     "e2e": "jest -c ./e2e/jest.config.js",
     "lint": "eslint .",
     "precommit": "lint-staged",
+    "prepare": "husky install",
     "test": "jest",
     "typecheck": "tsc",
     "typedoc": "typedoc --tsconfig tsconfig.json",
