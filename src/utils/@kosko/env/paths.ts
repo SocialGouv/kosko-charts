@@ -1,5 +1,7 @@
 //
 
+import { join } from "path";
+
 // HACK(douglasduteil): wrap internal @kosko/env/dist/paths.js
 // As the paths API is internal (not exported) in @kosko/env
 // This is code will wrap and expose it for our needs.
@@ -11,4 +13,4 @@ export const formatPath: (
   data: Record<string, unknown>
 ) => string =
   // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-  require("@kosko/env/dist/paths.js").formatPath;
+  require(join(require.resolve("@kosko/env"), "../paths.js")).formatPath;

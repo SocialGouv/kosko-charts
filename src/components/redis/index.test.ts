@@ -11,9 +11,9 @@ beforeEach(() => {
   delete process.env.PRODUCTION;
 });
 
-test("should create app with redis config", () => {
+test("should create app with redis config", async () => {
   const env = new Environment("/tmp");
-  const manifest = create("redis", { env });
+  const manifest = await create("redis", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
       "redis",
@@ -87,10 +87,10 @@ test("should create app with redis config", () => {
   `);
 });
 
-test("should create app with pgweb config for production", () => {
+test("should create app with pgweb config for production", async () => {
   process.env.PRODUCTION = "true";
   const env = new Environment("/tmp");
-  const manifest = create("redis", { env });
+  const manifest = await create("redis", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
       "redis",

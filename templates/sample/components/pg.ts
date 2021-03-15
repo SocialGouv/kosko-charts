@@ -5,7 +5,7 @@ import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
 
-export default (): { kind: string }[] => {
+export default async (): Promise<{ kind: string }[]> => {
   if (env.env === "dev") {
     return create({
       env,
@@ -13,7 +13,10 @@ export default (): { kind: string }[] => {
   }
 
   // in prod/preprod, we try to add a fixed sealed-secret
-  const secret = loadYaml<SealedSecret>(env, `pg-user.sealed-secret.yaml`);
+  const secret = await loadYaml<SealedSecret>(
+    env,
+    `pg-user.sealed-secret.yaml`
+  );
   if (!secret) {
     return [];
   }

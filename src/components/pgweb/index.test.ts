@@ -11,9 +11,9 @@ beforeEach(() => {
   delete process.env.PRODUCTION;
 });
 
-test("should create app with pgweb config", () => {
+test("should create app with pgweb config", async () => {
   const env = new Environment("/tmp");
-  const manifest = create("pgweb", { env });
+  const manifest = await create("pgweb", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
       "pgweb",
@@ -85,10 +85,10 @@ test("should create app with pgweb config", () => {
   `);
 });
 
-test("should create app with pgweb config for production", () => {
+test("should create app with pgweb config for production", async () => {
   process.env.PRODUCTION = "true";
   const env = new Environment("/tmp");
-  const manifest = create("pgweb", { env });
+  const manifest = await create("pgweb", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
       "pgweb",

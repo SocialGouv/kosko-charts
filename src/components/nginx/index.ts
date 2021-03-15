@@ -2,9 +2,10 @@
 
 import type {
   AppConfig,
-  createFn,
+  CreateFn,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
+import type { DeploymentParams } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 const nginxConfig: Partial<AppConfig> = {
@@ -44,21 +45,15 @@ const nginxConfig: Partial<AppConfig> = {
   containerPort: 80,
 };
 
-const nginxDeployment = {
+const nginxDeployment: Partial<Omit<DeploymentParams, "containerPort">> = {
   labels: {
     component: "nginx",
   },
 };
 
-export const create: createFn = (name, { env, config, deployment }) => {
-  // todo: atm we use "app" as a convention.
-  const manifests = createApp(name, {
+export const create: CreateFn = async (name, { env, config, deployment }) =>
+  createApp(name, {
     config: merge(nginxConfig, config ?? {}),
     deployment: merge(nginxDeployment, deployment ?? {}),
     env,
   });
-
-  //
-
-  return manifests;
-};

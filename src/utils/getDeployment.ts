@@ -19,5 +19,5 @@ type ManifestType = DeploymentType | Ingress | Service;
  * @category utils
  * @return {Deployment}
  */
-export const getDeployment = (manifests: ManifestType[]) =>
+export const getDeployment = (manifests: ManifestType[]): Deployment =>
   manifests.find((manifest) => manifest.kind === "Deployment") as Deployment;
