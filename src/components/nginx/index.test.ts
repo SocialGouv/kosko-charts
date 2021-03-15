@@ -10,9 +10,9 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test("should create app with nginx config", () => {
+test("should create app with nginx config", async () => {
   const env = new Environment("/tmp");
-  const manifest = create("www", { env });
+  const manifest = await create("www", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
       "www",

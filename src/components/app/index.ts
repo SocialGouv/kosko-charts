@@ -36,20 +36,21 @@ export type AppConfig = DeploymentParams &
     withPostgres: boolean;
     withRedirections?: AliasParams;
   };
-export type createFn = (
-  name: string,
-  {
-    env,
-    config,
-    deployment: deploymentParams,
-  }: {
-    env: Environment;
-    config?: Partial<AppConfig>;
-    deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
-  }
-) => { apiVersion: string, kind: string }[];
 
-export const create: createFn = (
+export type CreateFnDeploymentArgs = Partial<
+  Omit<DeploymentParams, "containerPort">
+>;
+export type CreateFnArgs = {
+  env: Environment;
+  config?: Partial<AppConfig>;
+  deployment?: CreateFnDeploymentArgs;
+};
+export type CreateFn = (
+  name: string,
+  { env, config, deployment: deploymentParams }: CreateFnArgs
+) => Promise<{ kind: string }[]>;
+
+export const create: CreateFn = async (
   name,
   { env, config, deployment: deploymentParams }
 ) => {
@@ -110,7 +111,10 @@ export const create: createFn = (
 
   /* SEALED-SECRET */
   // try to import environment sealed-secret
-  const secret = loadYaml<SealedSecret>(env, `${name}.sealed-secret.yaml`);
+  const secret = await loadYaml<SealedSecret>(
+    env,
+    `${name}.sealed-secret.yaml`
+  );
   if (secret) {
     // add gitlab annotations
     updateMetadata(secret, {
@@ -134,7 +138,7 @@ export const create: createFn = (
 
   /* CONFIGMAP */
   // try to import configmap
-  const configMap = loadYaml<ConfigMap>(env, `${name}.configmap.yaml`);
+  const configMap = await loadYaml<ConfigMap>(env, `${name}.configmap.yaml`);
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (configMap) {
     // add gitlab annotations

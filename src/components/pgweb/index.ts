@@ -1,8 +1,9 @@
 import type {
   AppConfig,
-  createFn,
+  CreateFn,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
+import type { DeploymentParams } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 // renovate: datasource=docker depName=sosedoff/pgweb versioning=0.11.7
@@ -46,14 +47,14 @@ const pgwebConfig: Partial<AppConfig> = {
   withPostgres: true,
 };
 
-const pgwebDeployment = {
+const pgwebDeployment: Partial<Omit<DeploymentParams, "containerPort">> = {
   labels: {
     component: "pgweb",
   },
 };
 
-export const create: createFn = (name, { env, config, deployment }) => {
-  const manifests = createApp(name, {
+export const create: CreateFn = async (name, { env, config, deployment }) =>
+  createApp(name, {
     config: merge(
       pgwebConfig,
       {
@@ -64,8 +65,3 @@ export const create: createFn = (name, { env, config, deployment }) => {
     deployment: merge(pgwebDeployment, deployment ?? {}),
     env,
   });
-
-  //
-
-  return manifests;
-};

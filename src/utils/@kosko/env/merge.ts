@@ -3,6 +3,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { join } from "path";
+
 // HACK(douglasduteil): wrap internal @kosko/env/dist/merge.js
 // As the paths API is internal (not exported) in @kosko/env
 // This is code will wrap and expose it for our needs.
@@ -20,4 +22,4 @@ export const merge: <T extends any[]>(
   ...data: T
 ) => UnionToIntersection<T[number]> = (...data) =>
   // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-  require("@kosko/env/dist/merge.js").merge([...data]);
+  require(join(require.resolve("@kosko/env"), "../merge.js")).merge([...data]);

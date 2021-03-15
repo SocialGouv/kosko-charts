@@ -28,9 +28,11 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test("should throw because of a missing envs", () => {
+test("should throw because of a missing envs", async () => {
   const env = new Environment("/tmp");
-  expect(() => create("app", { env })).toThrowErrorMatchingSnapshot();
+  await expect(async () =>
+    create("app", { env })
+  ).rejects.toThrowErrorMatchingSnapshot();
 });
 
 test("should return dev manifests", async () => {
@@ -40,7 +42,7 @@ test("should return dev manifests", async () => {
   const env = new Environment(cwd);
   env.env = "dev";
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
-  expect(create("app", { env })).toMatchSnapshot();
+  expect(await create("app", { env })).toMatchSnapshot();
 });
 
 test("should return prod manifests", async () => {
@@ -50,7 +52,7 @@ test("should return prod manifests", async () => {
   const env = new Environment(cwd);
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
-  expect(create("app", { env })).toMatchSnapshot();
+  expect(await create("app", { env })).toMatchSnapshot();
 });
 
 test("should return preprod manifests with NO custom subdomain", async () => {
@@ -61,7 +63,7 @@ test("should return preprod manifests with NO custom subdomain", async () => {
   env.env = "preprod";
   await promises.mkdir(`${cwd}/environments/preprod`, { recursive: true });
   expect(
-    create("app", {
+    await create("app", {
       config: {
         subdomain: "another",
       },
@@ -78,7 +80,7 @@ test("should return prod manifests with custom subdomain", async () => {
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
-    create("app", {
+    await create("app", {
       config: {
         subdomain: "another",
       },
@@ -95,7 +97,7 @@ test("should return prod manifests without custom subdomain if undefined", async
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
-    create("app", {
+    await create("app", {
       config: {
         subdomain: undefined,
       },
