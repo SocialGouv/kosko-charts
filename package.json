@@ -5,15 +5,14 @@
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
-    "@kosko/env": "^1.0.3",
-    "@kubernetes-models/sealed-secrets": "^1.2.0",
-    "@sindresorhus/is": "^4.0.0",
-    "kubernetes-models": "^1.2.0"
+    "@sindresorhus/is": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
+    "@kosko/env": "^1.0.3",
+    "@kubernetes-models/sealed-secrets": "^1.2.0",
     "@socialgouv/eslint-config-recommended": "^1.61.0",
     "@socialgouv/eslint-config-typescript": "^1.61.0",
     "@socialgouv/kosko-charts": "link:./",
@@ -56,6 +55,7 @@
   },
   "peerDependencies": {
     "@kosko/env": "1",
+    "@kubernetes-models/sealed-secrets": "1",
     "kubernetes-models": "1"
   },
   "publishConfig": {
