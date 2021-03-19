@@ -67,7 +67,6 @@
     "e2e": "jest -c ./e2e/jest.config.js",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "prepare": "husky install",
     "test": "jest",
     "typecheck": "tsc",
     "typedoc": "typedoc --tsconfig tsconfig.json",
