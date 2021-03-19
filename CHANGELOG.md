@@ -1,3 +1,30 @@
+# [5.0.0](https://github.com/SocialGouv/kosko-charts/compare/v4.10.3...v5.0.0) (2021-03-19)
+
+
+* docs!: @kosko/cli@>=1.1.0 is broken :( ([c35ffa1](https://github.com/SocialGouv/kosko-charts/commit/c35ffa13439c3a18bd53603e33d4da141b68713a))
+* feat(pkg)!: make all kosko dependencies peerDependencies (#477) ([3022609](https://github.com/SocialGouv/kosko-charts/commit/30226095ba1b5841a72ea1f50867adf1e41866e5)), closes [#477](https://github.com/SocialGouv/kosko-charts/issues/477)
+
+
+### Bug Fixes
+
+* **release:** husky conflict with npm during releases ([19f851a](https://github.com/SocialGouv/kosko-charts/commit/19f851a14b28d83686775aaf1a2adf1b264ab68c))
+
+
+### BREAKING CHANGES
+
+* One must add a manual resolution for @kosko/cli
+
+```json title="package.json"
+{
+ "resolutions": {
+    "@kosko/cli": "1.1.0"
+  },
+}
+```
+* You will now need to manually install your kosko related dependencies !
+
+As `kosko`, `@kosko/env`, etc... can have breaking version, we chose to put the versioning responsibility on the user side.
+
 # [5.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v5.0.0-alpha.1...v5.0.0-alpha.2) (2021-03-19)
 
 
