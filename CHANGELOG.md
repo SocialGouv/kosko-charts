@@ -1,3 +1,10 @@
+# [5.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v5.0.0-alpha.1...v5.0.0-alpha.2) (2021-03-19)
+
+
+### Bug Fixes
+
+* **release:** husky conflict with npm during releases ([19f851a](https://github.com/SocialGouv/kosko-charts/commit/19f851a14b28d83686775aaf1a2adf1b264ab68c))
+
 # [5.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v4.10.3...v5.0.0-alpha.1) (2021-03-19)
 
 
