@@ -1,3 +1,15 @@
+# [5.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v4.10.3...v5.0.0-alpha.1) (2021-03-19)
+
+
+* feat(pkg)!: make all kosko dependencies peerDependencies (#477) ([3022609](https://github.com/SocialGouv/kosko-charts/commit/30226095ba1b5841a72ea1f50867adf1e41866e5)), closes [#477](https://github.com/SocialGouv/kosko-charts/issues/477)
+
+
+### BREAKING CHANGES
+
+* You will now need to manually install your kosko related dependencies !
+
+As `kosko`, `@kosko/env`, etc... can have breaking version, we chose to put the versioning responsibility on the user side.
+
 ## [4.10.3](https://github.com/SocialGouv/kosko-charts/compare/v4.10.2...v4.10.3) (2021-03-16)
 
 
