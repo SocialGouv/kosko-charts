@@ -1,5 +1,7 @@
 import env from "@kosko/env";
 import { create } from "@socialgouv/kosko-charts/components/app";
+import { createAutoscale } from "@socialgouv/kosko-charts/components/autoscale";
+import { getDeployment } from "@socialgouv/kosko-charts/utils";
 
 const manifests = create("www", {
   config: {
@@ -35,4 +37,7 @@ const manifests = create("www", {
   env,
 });
 
-export default manifests;
+const deployment = getDeployment(manifests);
+const hpa = createAutoscale(deployment);
+
+export default [manifests, hpa];

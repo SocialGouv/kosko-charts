@@ -1,11 +1,9 @@
-import type { Ingress } from "kubernetes-models/api/networking/v1beta1/Ingress";
-import type {
-  Deployment,
-  Deployment as DeploymentType,
-} from "kubernetes-models/apps/v1/Deployment";
-import type { Service } from "kubernetes-models/v1/Service";
+import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
-type ManifestType = DeploymentType | Ingress | Service;
+interface ManifestType {
+  apiVersion: string;
+  kind: string;
+}
 
 /**
  *
@@ -19,5 +17,5 @@ type ManifestType = DeploymentType | Ingress | Service;
  * @category utils
  * @return {Deployment}
  */
-export const getDeployment = (manifests: ManifestType[]) =>
+export const getDeployment = (manifests: ManifestType[]): Deployment =>
   manifests.find((manifest) => manifest.kind === "Deployment") as Deployment;

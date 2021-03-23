@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create an autoscale for a deployment 1`] = `
+Object {
+  "apiVersion": "autoscaling/v2beta2",
+  "kind": "HorizontalPodAutoscaler",
+  "metadata": Object {
+    "name": "foo",
+    "namespace": "foo-namespace",
+  },
+  "spec": Object {
+    "maxReplicas": 10,
+    "metrics": Array [
+      Object {
+        "resource": Object {
+          "name": "cpu",
+          "target": Object {
+            "averageUtilization": 100,
+            "type": "Utilization",
+          },
+        },
+        "type": "Resource",
+      },
+      Object {
+        "resource": Object {
+          "name": "memory",
+          "target": Object {
+            "averageUtilization": 100,
+            "type": "Utilization",
+          },
+        },
+        "type": "Resource",
+      },
+    ],
+    "minReplicas": 1,
+    "scaleTargetRef": Object {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "name": "foo",
+    },
+  },
+}
+`;
+
+exports[`should create an autoscale with custom spec 1`] = `
+Object {
+  "apiVersion": "autoscaling/v2beta2",
+  "kind": "HorizontalPodAutoscaler",
+  "metadata": Object {
+    "name": "foo",
+    "namespace": "foo-namespace",
+  },
+  "spec": Object {
+    "maxReplicas": 4,
+    "metrics": Array [
+      Object {
+        "resource": Object {
+          "name": "cpu",
+          "target": Object {
+            "averageUtilization": 50,
+            "type": "Utilization",
+          },
+        },
+        "type": "Resource",
+      },
+    ],
+    "minReplicas": 2,
+    "scaleTargetRef": Object {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "name": "foo",
+    },
+  },
+}
+`;
