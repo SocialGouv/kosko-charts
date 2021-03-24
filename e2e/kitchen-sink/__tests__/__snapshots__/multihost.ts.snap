@@ -301,5 +301,31 @@ spec:
   tls:
     - hosts:
         - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
-      secretName: wildcard-crt"
+      secretName: wildcard-crt
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: www
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  maxReplicas: 10
+  metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 100
+          type: Utilization
+      type: Resource
+    - resource:
+        name: memory
+        target:
+          averageUtilization: 100
+          type: Utilization
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: www"
 `;

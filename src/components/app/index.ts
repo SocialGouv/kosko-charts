@@ -47,7 +47,7 @@ export type createFn = (
     config?: Partial<AppConfig>;
     deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
   }
-) => { kind: string }[];
+) => { apiVersion: string, kind: string }[];
 
 export const create: createFn = (
   name,
