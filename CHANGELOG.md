@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/SocialGouv/kosko-charts/compare/v5.0.0...v5.1.0) (2021-03-24)
+
+
+### Features
+
+* **autoscale:** add autoscale component ([#481](https://github.com/SocialGouv/kosko-charts/issues/481)) ([f54faa2](https://github.com/SocialGouv/kosko-charts/commit/f54faa2cb93b615b760784b7ae05850abaaed301))
+
 # [5.0.0](https://github.com/SocialGouv/kosko-charts/compare/v4.10.3...v5.0.0) (2021-03-19)
 
 
