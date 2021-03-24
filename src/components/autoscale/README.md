@@ -19,7 +19,7 @@ const hpa = createAutoscale(deployment);
 export default [deployment, hpa];
 ```
 
-Will output :
+`hpa` component will produce the following manifest :
 
 ```yaml
 ---
