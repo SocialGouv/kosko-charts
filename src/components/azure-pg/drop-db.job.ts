@@ -21,6 +21,8 @@ export const dropDbJob = ({
       annotations: {
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        // see https://carvel.dev/kapp/docs/latest/apply/#kappk14siononce
+        "kapp.k14s.io/nonce": "",
         // see https://carvel.dev/kapp/docs/latest/apply/#kappk14sioupdate-strategy
         "kapp.k14s.io/update-strategy": "fallback-on-replace",
       },
@@ -29,7 +31,12 @@ export const dropDbJob = ({
     spec: {
       backoffLimit: 0,
       template: {
-        metadata: {},
+        metadata: {
+          annotations: {
+            // see https://carvel.dev/kapp/docs/latest/apply/#kappk14siodeploy-logs
+            "kapp.k14s.io/deploy-logs": "",
+          },
+        },
         spec: {
           containers: [
             {

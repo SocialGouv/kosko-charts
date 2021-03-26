@@ -20,6 +20,7 @@ test("should create a pg secret", () => {
         "annotations": Object {
           "kapp.k14s.io/disable-default-label-scoping-rules": "",
           "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          "kapp.k14s.io/nonce": "",
           "kapp.k14s.io/update-strategy": "fallback-on-replace",
         },
         "name": "drop-azure-db-1234567",
@@ -27,7 +28,11 @@ test("should create a pg secret", () => {
       "spec": Object {
         "backoffLimit": 0,
         "template": Object {
-          "metadata": Object {},
+          "metadata": Object {
+            "annotations": Object {
+              "kapp.k14s.io/deploy-logs": "",
+            },
+          },
           "spec": Object {
             "containers": Array [
               Object {
