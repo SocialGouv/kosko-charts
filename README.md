@@ -53,6 +53,26 @@ $ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require d
 <br>
 <br>
 
+## Autodevops template
+
+You can use [our CI ready SocialGouv Autodevops components](templates/autodevops)
+
+```sh
+$ yarn global add degit
+$ yarn exec degit "SocialGouv/kosko-charts/templates/autodevops#v5.2.0-alpha.1" .k8s
+$ yarn --cwd .k8s --production --frozen-lockfile --prefer-offline --link-duplicates
+# on GitLab
+$ yarn --silent --cwd .k8s dropdb > manifest.yaml
+$ kubectl apply -f manifest.yaml
+# locally
+$ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require dotenv/config
+```
+
+<br>
+<br>
+<br>
+<br>
+
 ## Installation
 
 We use [degit](https://github.com/Rich-Harris/degit) to scaffold the deployment config.

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`--env dev : should generate dev manifest 1`] = `
+exports[`yarn --silent dropdb : should generate a dropdb manifest 1`] = `
 "apiVersion: batch/v1
 kind: Job
 metadata:

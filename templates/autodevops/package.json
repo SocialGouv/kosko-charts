@@ -13,6 +13,6 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "start": "kosko generate --dev"
+    "dropdb": "kosko generate jobs/dropdb"
   }
 }
