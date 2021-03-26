@@ -18,6 +18,12 @@ export const dropDbJob = ({
 
   return new Job({
     metadata: {
+      annotations: {
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        // see https://carvel.dev/kapp/docs/latest/apply/#kappk14sioupdate-strategy
+        "kapp.k14s.io/update-strategy": "fallback-on-replace",
+      },
       name: `drop-azure-db-${process.env.CI_COMMIT_SHORT_SHA}`,
     },
     spec: {

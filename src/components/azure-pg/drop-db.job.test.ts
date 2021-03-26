@@ -17,6 +17,11 @@ test("should create a pg secret", () => {
       "apiVersion": "batch/v1",
       "kind": "Job",
       "metadata": Object {
+        "annotations": Object {
+          "kapp.k14s.io/disable-default-label-scoping-rules": "",
+          "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          "kapp.k14s.io/update-strategy": "fallback-on-replace",
+        },
         "name": "drop-azure-db-1234567",
       },
       "spec": Object {
