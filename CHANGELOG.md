@@ -1,3 +1,10 @@
+# [5.2.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.3...v5.2.0-alpha.4) (2021-03-26)
+
+
+### Features
+
+* **drop-db:** allow kapp to delete and recreate the job ([f2edfd1](https://github.com/SocialGouv/kosko-charts/commit/f2edfd1817645255e3bafe796a5d7546ae902640))
+
 # [5.2.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.2...v5.2.0-alpha.3) (2021-03-26)
 
 
