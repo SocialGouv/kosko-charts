@@ -1,3 +1,10 @@
+# [5.2.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.4...v5.2.0-alpha.5) (2021-03-26)
+
+
+### Features
+
+* **drop-db:** allow kapp to log the job output ([1dc2e73](https://github.com/SocialGouv/kosko-charts/commit/1dc2e735eff42f9437824754d899fa2daf32568a))
+
 # [5.2.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.3...v5.2.0-alpha.4) (2021-03-26)
 
 
