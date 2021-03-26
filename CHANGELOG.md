@@ -1,3 +1,11 @@
+# [5.2.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.1...v5.2.0-alpha.2) (2021-03-26)
+
+
+### Bug Fixes
+
+* **autodevops:** rename template to just autodevops ([7806391](https://github.com/SocialGouv/kosko-charts/commit/7806391fd8a63b302248d56483a520450a65588b))
+* **autodevops:** rename template to just autodevops ([ce38e81](https://github.com/SocialGouv/kosko-charts/commit/ce38e81976082e5ecf333768c6051cbb3dc376f8))
+
 # [5.2.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v5.1.1...v5.2.0-alpha.1) (2021-03-26)
 
 
