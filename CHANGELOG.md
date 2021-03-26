@@ -1,3 +1,10 @@
+# [5.2.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.2...v5.2.0-alpha.3) (2021-03-26)
+
+
+### Bug Fixes
+
+* **autodevops:** update dependencies ([3535e9b](https://github.com/SocialGouv/kosko-charts/commit/3535e9b612fa17c9941d7c0f15aae7017800f001))
+
 # [5.2.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.1...v5.2.0-alpha.2) (2021-03-26)
 
 
