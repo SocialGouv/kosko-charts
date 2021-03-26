@@ -1,3 +1,10 @@
+# [5.2.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v5.1.1...v5.2.0-alpha.1) (2021-03-26)
+
+
+### Features
+
+* **template:** add autodevops-dropdb template ([fc1d23e](https://github.com/SocialGouv/kosko-charts/commit/fc1d23eea9a26e55c00d75a01cc6789a885e904b))
+
 ## [5.1.1](https://github.com/SocialGouv/kosko-charts/compare/v5.1.0...v5.1.1) (2021-03-25)
 
 
