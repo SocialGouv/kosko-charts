@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`--env dev : should generate dev manifest 1`] = `
+"apiVersion: batch/v1
+kind: Job
+metadata:
+  name: drop-azure-db-8843083e
+spec:
+  backoffLimit: 0
+  template:
+    metadata: {}
+    spec:
+      containers:
+        - command:
+            - drop-db-user
+          env:
+            - name: DROP_DATABASE
+              value: autodevops_e2ebranch42
+            - name: DROP_USER
+              value: user_e2ebranch42
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: >-
+            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1
+          imagePullPolicy: IfNotPresent
+          name: drop-db-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+      restartPolicy: Never
+  ttlSecondsAfterFinished: 86400"
+`;
