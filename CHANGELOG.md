@@ -1,3 +1,10 @@
+# [5.2.0-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.5...v5.2.0-alpha.6) (2021-03-29)
+
+
+### Features
+
+* **ingress:** update to networking.k8s.io/v1 api ([8c200b3](https://github.com/SocialGouv/kosko-charts/commit/8c200b396ada1825d6fb5c4f49acf2ec68d9a67d))
+
 # [5.2.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0-alpha.4...v5.2.0-alpha.5) (2021-03-26)
 
 

@@ -40,7 +40,7 @@ Providing a common Kubernetes (k8s) configuration to SocialGouv apps is a tricky
 Powered by [Kosko](https://github.com/tommy351/kosko), in this lib we provide default SocialGouv components and environments. We expect project to use and extend them at will.
 
 ```sh
-$ npx degit "SocialGouv/kosko-charts/templates/sample#v5.2.0-alpha.5" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/sample#v5.2.0-alpha.6" .k8s
 $ yarn --cwd .k8s
 # on GitLab
 $ yarn --cwd .k8s kosko generate --env dev
@@ -59,7 +59,7 @@ You can use [our CI ready SocialGouv Autodevops components](templates/autodevops
 
 ```sh
 $ yarn global add degit
-$ yarn exec degit "SocialGouv/kosko-charts/templates/autodevops#v5.2.0-alpha.5" .k8s
+$ yarn exec degit "SocialGouv/kosko-charts/templates/autodevops#v5.2.0-alpha.6" .k8s
 $ yarn --cwd .k8s --production --frozen-lockfile --prefer-offline --link-duplicates
 # on GitLab
 $ yarn --silent --cwd .k8s dropdb > manifest.yaml
@@ -78,7 +78,7 @@ $ DOTENV_CONFIG_PATH=environments/.gitlab-ci.env yarn --cwd .k8s dev --require d
 We use [degit](https://github.com/Rich-Harris/degit) to scaffold the deployment config.
 
 ```sh
-$ npx degit "SocialGouv/kosko-charts/templates/sample#v5.2.0-alpha.5" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/sample#v5.2.0-alpha.6" .k8s
 ```
 
 `.k8s` is the target deployment config package folder.
@@ -148,16 +148,16 @@ In addition to the `sample` template inspired by the [SocialGouv/sample-next-app
 
 ```sh
 # For [hasura](https://hasura.io/)
-$ npx degit "SocialGouv/kosko-charts/templates/hasura#v5.2.0-alpha.5" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/hasura#v5.2.0-alpha.6" .k8s
 
 # For [nginx](https://nginx.org/)
-$ npx degit "SocialGouv/kosko-charts/templates/nginx#v5.2.0-alpha.5" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/nginx#v5.2.0-alpha.6" .k8s
 
 # For [pgweb](https://sosedoff.github.io/pgweb/)
-$ npx degit "SocialGouv/kosko-charts/templates/pgweb#v5.2.0-alpha.5" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/pgweb#v5.2.0-alpha.6" .k8s
 
 # For [redis](https://redislabs.com/)
-$ npx degit "SocialGouv/kosko-charts/templates/redis#v5.2.0-alpha.5" .k8s
+$ npx degit "SocialGouv/kosko-charts/templates/redis#v5.2.0-alpha.6" .k8s
 ```
 
 ### Testing
@@ -166,8 +166,8 @@ $ npx degit "SocialGouv/kosko-charts/templates/redis#v5.2.0-alpha.5" .k8s
 
 ```
 # At the root of your kosko context
-$ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v5.2.0-alpha.5" .k8s/__tests__
-$ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v5.2.0-alpha.5" .k8s/package.json
+$ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v5.2.0-alpha.6" .k8s/__tests__
+$ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v5.2.0-alpha.6" .k8s/package.json
 ```
 
 Then update the `.k8s/__tests__` file to match your project.  
