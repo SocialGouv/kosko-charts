@@ -133,7 +133,7 @@ Array [
     },
   },
   Object {
-    "apiVersion": "extensions/v1beta1",
+    "apiVersion": "networking.k8s.io/v1",
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
@@ -160,8 +160,13 @@ Array [
             "paths": Array [
               Object {
                 "backend": Object {
-                  "serviceName": "app",
-                  "servicePort": 80,
+                  "service": Object {
+                    "name": "app",
+                    "port": Object {
+                      "name": "http",
+                      "number": 80,
+                    },
+                  },
                 },
                 "path": "/",
               },
@@ -315,7 +320,7 @@ Array [
     },
   },
   Object {
-    "apiVersion": "extensions/v1beta1",
+    "apiVersion": "networking.k8s.io/v1",
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
@@ -342,8 +347,13 @@ Array [
             "paths": Array [
               Object {
                 "backend": Object {
-                  "serviceName": "app",
-                  "servicePort": 80,
+                  "service": Object {
+                    "name": "app",
+                    "port": Object {
+                      "name": "http",
+                      "number": 80,
+                    },
+                  },
                 },
                 "path": "/",
               },
@@ -497,7 +507,7 @@ Array [
     },
   },
   Object {
-    "apiVersion": "extensions/v1beta1",
+    "apiVersion": "networking.k8s.io/v1",
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
@@ -526,8 +536,13 @@ Array [
             "paths": Array [
               Object {
                 "backend": Object {
-                  "serviceName": "app",
-                  "servicePort": 80,
+                  "service": Object {
+                    "name": "app",
+                    "port": Object {
+                      "name": "http",
+                      "number": 80,
+                    },
+                  },
                 },
                 "path": "/",
               },
@@ -681,7 +696,7 @@ Array [
     },
   },
   Object {
-    "apiVersion": "extensions/v1beta1",
+    "apiVersion": "networking.k8s.io/v1",
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
@@ -710,8 +725,13 @@ Array [
             "paths": Array [
               Object {
                 "backend": Object {
-                  "serviceName": "app",
-                  "servicePort": 80,
+                  "service": Object {
+                    "name": "app",
+                    "port": Object {
+                      "name": "http",
+                      "number": 80,
+                    },
+                  },
                 },
                 "path": "/",
               },
@@ -865,7 +885,7 @@ Array [
     },
   },
   Object {
-    "apiVersion": "extensions/v1beta1",
+    "apiVersion": "networking.k8s.io/v1",
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
@@ -894,8 +914,13 @@ Array [
             "paths": Array [
               Object {
                 "backend": Object {
-                  "serviceName": "app",
-                  "servicePort": 80,
+                  "service": Object {
+                    "name": "app",
+                    "port": Object {
+                      "name": "http",
+                      "number": 80,
+                    },
+                  },
                 },
                 "path": "/",
               },

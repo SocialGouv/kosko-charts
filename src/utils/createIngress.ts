@@ -1,4 +1,5 @@
-import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
+import type { IIoK8sApiNetworkingV1IngressRule } from "kubernetes-models/_definitions/IoK8sApiNetworkingV1IngressRule";
+import { Ingress } from "kubernetes-models/networking.k8s.io/v1/Ingress";
 
 /** Parameters to create an [[Ingress]] with [[createDeployment]] */
 export interface IngressConfig {
@@ -16,13 +17,21 @@ export interface IngressConfig {
   annotations?: Record<string, unknown>;
 }
 
-const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
+const getHostService = ({
+  serviceName = "www",
+  servicePort = 80,
+}): IIoK8sApiNetworkingV1IngressRule => ({
   http: {
     paths: [
       {
         backend: {
-          serviceName,
-          servicePort,
+          service: {
+            name: serviceName,
+            port: {
+              name: "http",
+              number: servicePort,
+            },
+          },
         },
         path: "/",
       },
@@ -65,7 +74,7 @@ export const createIngress = (params: IngressConfig): Ingress => {
     "nginx.ingress.kubernetes.io/permanent-redirect"
   ];
 
-  const ingressDefinition = {
+  return new Ingress({
     metadata: {
       annotations,
       labels: {
@@ -93,9 +102,7 @@ export const createIngress = (params: IngressConfig): Ingress => {
         },
       ],
     },
-  };
-
-  return new Ingress(ingressDefinition);
+  });
 };
 
 export default createIngress;
