@@ -22,9 +22,9 @@ spec:
             - drop-db-user
           env:
             - name: DROP_DATABASE
-              value: autodevops_e2ebranch42
+              value: autodevops_e2ebranchlong2qpo35
             - name: DROP_USER
-              value: user_e2ebranch42
+              value: user_e2ebranchlong2qpo35
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user
