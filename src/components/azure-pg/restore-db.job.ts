@@ -37,6 +37,7 @@ pg_isready;
 pg_restore \
   --dbname \${PGDATABASE} \
   --clean --if-exists \
+  --exclude-schema=audit \
   --no-owner \
   --role \${OWNER} \
   --no-acl \
