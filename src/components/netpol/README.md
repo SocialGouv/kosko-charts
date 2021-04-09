@@ -1,6 +1,6 @@
 # netpol Component (network policy)
 
-Add a network policy to protect a given namespace
+Add a basic network policy to protect a given namespace
 
 ## Usage
 
