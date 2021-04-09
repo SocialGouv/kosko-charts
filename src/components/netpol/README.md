@@ -1,4 +1,4 @@
-# Namespace Component
+# netpol Component (network policy)
 
 Add a network policy to protect a given namespace
 
