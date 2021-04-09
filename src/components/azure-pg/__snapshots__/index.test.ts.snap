@@ -19,7 +19,7 @@ Array [
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
-      "backoffLimit": 0,
+      "backoffLimit": 5,
       "template": Object {
         "metadata": Object {
           "annotations": Object {
@@ -141,7 +141,7 @@ Array [
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
-      "backoffLimit": 0,
+      "backoffLimit": 5,
       "template": Object {
         "metadata": Object {
           "annotations": Object {

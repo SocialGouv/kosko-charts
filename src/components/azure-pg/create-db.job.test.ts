@@ -18,7 +18,7 @@ test("should create a pg secret", () => {
       "apiVersion": "batch/v1",
       "kind": "Job",
       "spec": Object {
-        "backoffLimit": 0,
+        "backoffLimit": 5,
         "template": Object {
           "spec": Object {
             "containers": Array [
