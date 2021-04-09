@@ -145,9 +145,8 @@ $ npx degit "SocialGouv/kosko-charts/templates/redis#v5.1.3" .k8s
 `@socialgouv/kosko-charts` provides a snapshot testing strategy through [Jest](https://jestjs.io/).
 
 ```
-# At the root of your kosko context
-$ npx degit "SocialGouv/kosko-charts/templates/testing/__tests__#v5.1.3" .k8s/__tests__
-$ npx degit "SocialGouv/kosko-charts/templates/testing/package.json#v5.1.3" .k8s/package.json
+# At the root of your project
+$ npx degit "SocialGouv/kosko-charts/templates/testing#v5.1.3" .k8s
 ```
 
 Then update the `.k8s/__tests__` file to match your project.  
