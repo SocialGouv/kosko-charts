@@ -108,6 +108,8 @@ The SocialGouv default components
 
 #### [`@socialgouv/kosko-charts/components/namespace`](./src/components/namespace)
 
+#### [`@socialgouv/kosko-charts/components/netpol`](./src/components/netpol)
+
 #### [`@socialgouv/kosko-charts/components/nginx`](./src/components/nginx)
 
 #### [`@socialgouv/kosko-charts/components/pg-secret`](./src/components/pg-secret)
