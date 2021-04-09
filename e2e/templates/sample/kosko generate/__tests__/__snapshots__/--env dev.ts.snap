@@ -296,7 +296,7 @@ spec:
     spec:
       containers:
         - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/www:8843083edb7f873cad1d1420731a60773594ffae
+            harbor.fabrique.social.gouv.fr/some-harbor-project/www:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:

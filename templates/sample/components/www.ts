@@ -1,5 +1,6 @@
 import env from "@kosko/env";
 import { create } from "@socialgouv/kosko-charts/components/app";
+import { getHarborImagePath } from "@socialgouv/kosko-charts/utils/getHarborImagePath";
 
 const manifests = create("www", {
   config: {
@@ -19,6 +20,7 @@ const manifests = create("www", {
     withPostgres: true,
   },
   deployment: {
+    image: getHarborImagePath({ name: "www" }),
     labels: {
       component: "next",
     },
