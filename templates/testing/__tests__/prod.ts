@@ -8,6 +8,7 @@ test("kosko generate --prod", async () => {
   expect(
     await getEnvManifests("prod", "'!(_*)'", {
       ...project("foo").prod,
+      HARBOR_PROJECT: "foo",
     })
   ).toMatchSnapshot();
 });
