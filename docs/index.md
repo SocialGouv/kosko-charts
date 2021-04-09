@@ -38,6 +38,7 @@ See [kosko documentation](https://kosko.dev/docs/) for more usage examples
 - **hasura**: hasura.io with [[Deployment]], [[Service]] and optionnal [[Ingress]]
 - **metabase**: metabase.com with [[Deployment]], [[Service]] and [[Ingress]]
 - **namespace**: Namespace creation
+- **netpol**: [[NetworkPolicy]]
 - **nginx**: Nginx with [[Deployment]], [[Service]] and [[Ingress]]
 - **pg-secret**: Postgres secrets creation
 - **pgweb**: PGweb with [[Deployment]], [[Service]] and [[Ingress]]
