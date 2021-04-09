@@ -1,3 +1,10 @@
+## [5.1.4](https://github.com/SocialGouv/kosko-charts/compare/v5.1.3...v5.1.4) (2021-04-09)
+
+
+### Bug Fixes
+
+* **template:** use harbor ([#505](https://github.com/SocialGouv/kosko-charts/issues/505)) ([dba7513](https://github.com/SocialGouv/kosko-charts/commit/dba75130cda7900e808e95aea3ce1b692341fa9e))
+
 ## [5.1.3](https://github.com/SocialGouv/kosko-charts/compare/v5.1.2...v5.1.3) (2021-04-07)
 
 
