@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/SocialGouv/kosko-charts/compare/v5.1.4...v5.2.0) (2021-04-09)
+
+
+### Features
+
+* add components.netpol ([#507](https://github.com/SocialGouv/kosko-charts/issues/507)) ([f46970a](https://github.com/SocialGouv/kosko-charts/commit/f46970aaf065c49d16a02c630e72cc80291768b9))
+
 ## [5.1.4](https://github.com/SocialGouv/kosko-charts/compare/v5.1.3...v5.1.4) (2021-04-09)
 
 
