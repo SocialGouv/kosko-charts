@@ -18,6 +18,8 @@
 
 > [Kosko](https://github.com/tommy351/kosko) charts for the SocialGouv needs
 
+See also : the [API Documentation](https://socialgouv.github.io/kosko-charts/)
+
 ## Problem
 
 Providing a common Kubernetes (k8s) configuration to SocialGouv apps is a tricky task. We want to provide
@@ -107,6 +109,8 @@ The SocialGouv default components
 #### [`@socialgouv/kosko-charts/components/metabase`](./src/components/metabase)
 
 #### [`@socialgouv/kosko-charts/components/namespace`](./src/components/namespace)
+
+#### [`@socialgouv/kosko-charts/components/netpol`](./src/components/netpol)
 
 #### [`@socialgouv/kosko-charts/components/nginx`](./src/components/nginx)
 

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create a network policy 1`] = `
+Object {
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": Object {
+    "name": "default",
+    "namespace": "some-app",
+  },
+  "spec": Object {
+    "ingress": Array [
+      Object {
+        "from": Array [
+          Object {
+            "namespaceSelector": Object {
+              "matchLabels": Object {
+                "network-policy/namespace": "some-app",
+              },
+            },
+          },
+        ],
+      },
+      Object {
+        "from": Array [
+          Object {
+            "namespaceSelector": Object {
+              "matchLabels": Object {
+                "network-policy/source": "ingress-controller",
+              },
+            },
+          },
+        ],
+      },
+      Object {
+        "from": Array [
+          Object {
+            "namespaceSelector": Object {
+              "matchLabels": Object {
+                "network-policy/source": "monitoring",
+              },
+            },
+          },
+        ],
+      },
+    ],
+    "podSelector": Object {},
+    "policyTypes": Array [
+      "Ingress",
+    ],
+  },
+}
+`;
