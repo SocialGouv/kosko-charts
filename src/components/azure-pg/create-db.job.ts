@@ -19,7 +19,7 @@ export const createDbJob = ({
 }): Job => {
   const job = new Job({
     spec: {
-      backoffLimit: 0,
+      backoffLimit: 5,
       template: {
         spec: {
           containers: [
