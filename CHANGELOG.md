@@ -1,3 +1,15 @@
+# [5.3.0](https://github.com/SocialGouv/kosko-charts/compare/v5.2.0...v5.3.0) (2021-04-10)
+
+
+### Bug Fixes
+
+* **create-db:** sert backoffLimit to 5 ([#495](https://github.com/SocialGouv/kosko-charts/issues/495)) ([c8957d7](https://github.com/SocialGouv/kosko-charts/commit/c8957d7bdbe93ac108015a2bfc23dc0766530eb9))
+
+
+### Features
+
+* **pg-restore:** exclude audit schema ([#497](https://github.com/SocialGouv/kosko-charts/issues/497)) ([b9a9566](https://github.com/SocialGouv/kosko-charts/commit/b9a9566928e93a44b3d89e8b56cffa97bca0fb41))
+
 # [5.2.0](https://github.com/SocialGouv/kosko-charts/compare/v5.1.4...v5.2.0) (2021-04-09)
 
 
