@@ -36,7 +36,7 @@ echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
 
 pg_isready;
 
-pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
+pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --exclude-schema=audit   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
 
 psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
 
@@ -191,7 +191,7 @@ echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
 
 pg_isready;
 
-pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
+pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --exclude-schema=audit   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
 
 psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
 
