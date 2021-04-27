@@ -32,7 +32,7 @@ export default (env = process.env): GlobalEnvironment => {
     RANCHER_PROJECT_ID,
   } = env;
   const isProductionCluster = Boolean(PRODUCTION);
-  const isPreProduction = CI_ENVIRONMENT_NAME === "preprod-dev2";
+  const isPreProduction = Boolean(CI_COMMIT_TAG) && !isProductionCluster;
   const application = isProductionCluster
     ? CI_PROJECT_NAME
     : CI_COMMIT_TAG
