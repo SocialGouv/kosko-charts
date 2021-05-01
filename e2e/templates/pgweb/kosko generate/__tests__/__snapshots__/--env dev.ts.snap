@@ -106,8 +106,7 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user-8843083
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:5.0.1
+          image: ghcr.io/socialgouv/docker/wait-for-postgres:6.0.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -197,8 +196,7 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user
-          image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:2.6.1
+          image: ghcr.io/socialgouv/docker/azure-db:6.0.1
           imagePullPolicy: IfNotPresent
           name: create-db-user
           resources:
