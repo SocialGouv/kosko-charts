@@ -38,7 +38,7 @@ test("should succeed validating a valid value", () => {
   `
   );
   expect(waitForPostgres({} as WaitForPostgresParams).image).toMatch(
-    "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:"
+    "ghcr.io/socialgouv/docker/wait-for-postgres:"
   );
 });
 
@@ -79,6 +79,6 @@ test("should generate an container with secretRefName named foobar", () => {
   `
   );
   expect(waitForPostgres({} as WaitForPostgresParams).image).toMatch(
-    "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/wait-for-postgres:"
+    "ghcr.io/socialgouv/docker/wait-for-postgres:"
   );
 });
