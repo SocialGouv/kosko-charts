@@ -14,8 +14,9 @@ interface RestoreDbJobArgs {
   postRestoreScript?: string;
 }
 
-// renovate: datasource=docker depName=registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db versioning=2.6.1
-const SOCIALGOUV_DOCKER_AZURE_DB = "2.6.1";
+const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.0.1
+const SOCIALGOUV_DOCKER_VERSION = "6.0.1";
 
 const restoreScript = `
 
@@ -85,7 +86,7 @@ export const restoreDbJob = ({
           }),
           ...envFrom,
         ],
-        image: `registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:${SOCIALGOUV_DOCKER_AZURE_DB}`,
+        image: `${SOCIALGOUV_DOCKER_IMAGE}:${SOCIALGOUV_DOCKER_VERSION}`,
         imagePullPolicy: "IfNotPresent",
         name: "restore-db",
         resources: {

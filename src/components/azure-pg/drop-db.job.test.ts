@@ -70,7 +70,7 @@ test("should create a pg secret", () => {
   `
   );
   expect(job.spec?.template.spec?.containers[0].image).toMatch(
-    "registry.gitlab.factory.social.gouv.fr/socialgouv/docker/azure-db:"
+    "ghcr.io/socialgouv/docker/azure-db:"
   );
 });
 
