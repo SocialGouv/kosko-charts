@@ -1,3 +1,10 @@
+## [5.3.4](https://github.com/SocialGouv/kosko-charts/compare/v5.3.3...v5.3.4) (2021-05-06)
+
+
+### Bug Fixes
+
+* use ghcr.io container registry ([#520](https://github.com/SocialGouv/kosko-charts/issues/520)) ([26401bf](https://github.com/SocialGouv/kosko-charts/commit/26401bfa9056067997dd99d4a48a0c3b0f784e78))
+
 ## [5.3.3](https://github.com/SocialGouv/kosko-charts/compare/v5.3.2...v5.3.3) (2021-04-15)
 
 
