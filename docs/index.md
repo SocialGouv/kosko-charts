@@ -47,6 +47,7 @@ See [kosko documentation](https://kosko.dev/docs/) for more usage examples
 ## Utils
 
 - [[addEnv]]
+- [[addEnvs]]
 - [[addInitContainer]]
 - [[addInitContainerCommand]]
 - [[addPostgresUserSecret]]
