@@ -1,3 +1,10 @@
+## [5.3.5](https://github.com/SocialGouv/kosko-charts/compare/v5.3.4...v5.3.5) (2021-05-10)
+
+
+### Bug Fixes
+
+* **redis:** bump version ([#522](https://github.com/SocialGouv/kosko-charts/issues/522)) ([eedeba6](https://github.com/SocialGouv/kosko-charts/commit/eedeba616ffb80bfdec9753cb1c3cd33a994df41))
+
 ## [5.3.4](https://github.com/SocialGouv/kosko-charts/compare/v5.3.3...v5.3.4) (2021-05-06)
 
 
