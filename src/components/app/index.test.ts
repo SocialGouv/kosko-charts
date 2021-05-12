@@ -1,28 +1,28 @@
 import { Environment } from "@kosko/env";
-import { project } from "@socialgouv/kosko-charts/testing/fake/gitlab-ci.env";
+import { project } from "@socialgouv/kosko-charts/testing/fake/github-actions.env";
 import { promises } from "fs";
 import { directory } from "tempy";
 
 import { create } from "./index";
 
-jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  __esModule: true,
-  default: () => ({
-    annotations: {
-      "app.gitlab.com/app": "socialgouv-sample",
-      "app.gitlab.com/env": "my-test",
-    },
-    domain: "fabrique.social.gouv.fr",
-    labels: {
-      application: "sample",
-      owner: "sample",
-      team: "sample",
-    },
-    namespace: { name: "sample-42-my-test" },
-    subdomain: "sample",
-  }),
-}));
+// jest.mock("@socialgouv/kosko-charts/environments/github", () => ({
+//   // eslint-disable-next-line @typescript-eslint/naming-convention
+//   __esModule: true,
+//   default: () => ({
+//     annotations: {
+//       "app.gitlab.com/app": "socialgouv-sample",
+//       "app.gitlab.com/env": "my-test",
+//     },
+//     domain: "fabrique.social.gouv.fr",
+//     labels: {
+//       application: "sample",
+//       owner: "sample",
+//       team: "sample",
+//     },
+//     namespace: { name: "sample-42-my-test" },
+//     subdomain: "sample",
+//   }),
+// }));
 
 beforeEach(() => {
   jest.resetModules();
@@ -34,8 +34,8 @@ test("should throw because of a missing envs", () => {
 });
 
 test("should return dev manifests", async () => {
-  const gitlabEnv = project("sample").dev;
-  Object.assign(process.env, gitlabEnv);
+  const githubEnv = project("sample-next-app").dev;
+  Object.assign(process.env, githubEnv);
   const cwd = directory();
   const env = new Environment(cwd);
   env.env = "dev";
@@ -44,8 +44,8 @@ test("should return dev manifests", async () => {
 });
 
 test("should return prod manifests", async () => {
-  const gitlabEnv = project("sample").prod;
-  Object.assign(process.env, gitlabEnv);
+  const githubEnv = project("sample-next-app").prod;
+  Object.assign(process.env, githubEnv);
   const cwd = directory();
   const env = new Environment(cwd);
   env.env = "prod";
@@ -54,8 +54,8 @@ test("should return prod manifests", async () => {
 });
 
 test("should return preprod manifests with NO custom subdomain", async () => {
-  const gitlabEnv = project("sample").preprod;
-  Object.assign(process.env, gitlabEnv);
+  const githubEnv = project("sample-next-app").preprod;
+  Object.assign(process.env, githubEnv);
   const cwd = directory();
   const env = new Environment(cwd);
   env.env = "preprod";
@@ -71,8 +71,8 @@ test("should return preprod manifests with NO custom subdomain", async () => {
 });
 
 test("should return prod manifests with custom subdomain", async () => {
-  const gitlabEnv = project("sample").prod;
-  Object.assign(process.env, gitlabEnv);
+  const githubEnv = project("sample-next-app").prod;
+  Object.assign(process.env, githubEnv);
   const cwd = directory();
   const env = new Environment(cwd);
   env.env = "prod";
@@ -88,8 +88,8 @@ test("should return prod manifests with custom subdomain", async () => {
 });
 
 test("should return prod manifests without custom subdomain if undefined", async () => {
-  const gitlabEnv = project("sample").prod;
-  Object.assign(process.env, gitlabEnv);
+  const githubEnv = project("sample-next-app").prod;
+  Object.assign(process.env, githubEnv);
   const cwd = directory();
   const env = new Environment(cwd);
   env.env = "prod";

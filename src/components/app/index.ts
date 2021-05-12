@@ -5,7 +5,7 @@ import { ok } from "assert";
 import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
-import gitlab from "../../environments/gitlab";
+import github from "../../environments/github";
 import { addToEnvFrom } from "../../utils/addToEnvFrom";
 import createDeployment, {
   DeploymentParams,
@@ -53,8 +53,8 @@ export const create: createFn = (
   name,
   { env, config, deployment: deploymentParams }
 ) => {
-  ok(process.env.CI_REGISTRY_IMAGE);
-  ok(process.env.CI_ENVIRONMENT_URL);
+  //ok(process.env.CI_REGISTRY_IMAGE);
+  //ok(process.env.CI_ENVIRONMENT_URL);
   const manifests = [];
 
   const defaultEnvParams: Partial<AppConfig> = {
@@ -67,12 +67,12 @@ export const create: createFn = (
     },
   };
 
-  const gitlabEnv = gitlab(process.env);
+  const githubEnv = github(process.env);
 
   // kosko component env values
   const envParams = merge(
     defaultEnvParams, // set name as default if not provided
-    gitlabEnv,
+    githubEnv,
     config ?? {}, // create options
     env.component(name) as AppConfig // kosko env overrides
   );
@@ -112,7 +112,7 @@ export const create: createFn = (
   // try to import environment sealed-secret
   const secret = loadYaml<SealedSecret>(env, `${name}.sealed-secret.yaml`);
   if (secret) {
-    // add gitlab annotations
+    // add annotations
     updateMetadata(secret, {
       annotations: envParams.annotations || {},
       labels: envParams.labels || {},
@@ -137,7 +137,7 @@ export const create: createFn = (
   const configMap = loadYaml<ConfigMap>(env, `${name}.configmap.yaml`);
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (configMap) {
-    // add gitlab annotations
+    // add annotations
     updateMetadata(configMap, {
       annotations: envParams.annotations || {},
       labels: envParams.labels || {},
@@ -164,7 +164,7 @@ export const create: createFn = (
     servicePort,
     selector: { app: name },
   });
-  // add gitlab annotations
+  // add annotations
   updateMetadata(service, {
     annotations: envParams.annotations || {},
     labels: envParams.labels || {},
@@ -176,8 +176,8 @@ export const create: createFn = (
   /* INGRESS */
   if (envParams.ingress !== false) {
     let hosts = [
-      `${(envParams.subDomainPrefix || "") + gitlabEnv.subdomain}.${
-        gitlabEnv.domain
+      `${(envParams.subDomainPrefix || "") + githubEnv.subdomain}.${
+        githubEnv.domain
       }`,
     ];
 
@@ -185,8 +185,8 @@ export const create: createFn = (
       hosts = [
         `${
           (envParams.subDomainPrefix || "") +
-          (envParams.subdomain || gitlabEnv.subdomain)
-        }.${envParams.domain || gitlabEnv.domain}`,
+          (envParams.subdomain || githubEnv.subdomain)
+        }.${envParams.domain || githubEnv.domain}`,
       ];
     }
 

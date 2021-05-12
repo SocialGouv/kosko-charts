@@ -22,7 +22,7 @@ type Manifest = Deployment | Job;
 export const addWaitForPostgres = (deployment: Manifest): Manifest => {
   const defaultParams = getDefaultPgParams();
 
-  const secretRefName = process.env.CI_COMMIT_TAG
+  const secretRefName = process.env.GITHUB_REF?.match(/^v[\d\.]+/)
     ? `azure-pg-user`
     : defaultParams.name;
 

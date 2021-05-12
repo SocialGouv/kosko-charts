@@ -22,7 +22,7 @@ export const getEnvManifests = async (
         env,
         // Global env
         config({
-          path: resolve(process.cwd(), "environments", ".gitlab-ci.env"),
+          path: resolve(process.cwd(), "environments", ".github-actions.env"),
         }).parsed ?? {},
         // Env env
         (envName &&
@@ -31,7 +31,7 @@ export const getEnvManifests = async (
               process.cwd(),
               "environments",
               envName,
-              ".gitlab-ci.env"
+              ".github-actions.env"
             ),
           }).parsed) ??
           {}

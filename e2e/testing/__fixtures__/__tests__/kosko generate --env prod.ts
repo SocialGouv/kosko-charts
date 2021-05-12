@@ -1,11 +1,11 @@
 //
 
 import { getEnvManifests } from "@socialgouv/kosko-charts/testing";
-import { project } from "@socialgouv/kosko-charts/testing/fake/gitlab-ci.env";
+import { project } from "@socialgouv/kosko-charts/testing/fake/github-actions.env";
 
 jest.setTimeout(1000 * 60);
 test("kosko generate --prod", async () => {
   expect(
-    await getEnvManifests("prod", "'!(_*)'", project("sample-nxt-app").prod)
+    await getEnvManifests("prod", "'!(_*)'", project("sample-next-app").prod)
   ).toMatchSnapshot();
 });
