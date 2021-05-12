@@ -11,6 +11,5 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: kitchen-sink-imported-namespace
-  namespace: sample-kosko-24-e2e-branch-42"
+  name: kitchen-sink-imported-namespace"
 `;

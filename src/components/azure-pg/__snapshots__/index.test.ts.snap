@@ -115,12 +115,7 @@ Array [
 ]
 `;
 
-exports[`should throw because of a missing envs 1`] = `
-"Wrong environment variables
-required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
-required \\"CI_PROJECT_NAME\\": \\"undefined\\" should be defined
-"
-`;
+exports[`should throw because of a missing envs 1`] = `"Cannot read property 'slice' of undefined"`;
 
 exports[`should use custom pgHost 1`] = `
 Array [

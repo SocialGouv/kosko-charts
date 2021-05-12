@@ -10,19 +10,20 @@ import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
 
-const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
+//const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
 
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
-  assert(process.env);
+  //assert(process.env);
 
-  const {
-    CI_COMMIT_SHORT_SHA: sha,
-    CI_PROJECT_NAME: projectName,
-    // NOTE(douglasduteil): enforce defined string in process.env
-    // Those env variables are asserted to be defined above
-  } = process.env as Record<string, string>;
+  const { GITHUB_SHA, GITHUB_REPOSITORY } = process.env as Record<
+    string,
+    string
+  >;
+
+  const sha = GITHUB_SHA.slice(0, 7);
+  const projectName = GITHUB_REPOSITORY.split("/")[1];
 
   return {
     ...getDevDatabaseParameters({
@@ -56,7 +57,7 @@ export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
-    name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
+    name: `create-db-job-${process.env.GITHUB_SHA?.slice(0, 7)}`,
     namespace: envParams.namespace,
   });
 

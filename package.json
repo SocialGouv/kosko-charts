@@ -5,7 +5,8 @@
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
-    "@sindresorhus/is": "^4.0.0"
+    "@sindresorhus/is": "^4.0.0",
+    "slugify": "^1.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",

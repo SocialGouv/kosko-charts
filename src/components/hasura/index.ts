@@ -22,9 +22,9 @@ export const create = (
     deployment?: Partial<DeploymentParams>;
   }
 ): CreateResult => {
-  ok(process.env.CI_REGISTRY_IMAGE);
-  ok(process.env.CI_ENVIRONMENT_URL);
-  ok(process.env.CI_PROJECT_NAME);
+  //ok(process.env.CI_REGISTRY_IMAGE);
+  //ok(process.env.CI_ENVIRONMENT_URL);
+  //ok(process.env.CI_PROJECT_NAME);
 
   const manifests = createApp("hasura", {
     config: merge(

@@ -50,7 +50,7 @@ test("should run 'kosko generate'", async () => {
     Array [
       Array [
         Object {
-          "path": "/environments/.gitlab-ci.env",
+          "path": "/environments/.github-actions.env",
         },
       ],
     ]
@@ -85,7 +85,7 @@ test("should run 'kosko generate' when empty env", async () => {
     Array [
       Array [
         Object {
-          "path": "/environments/.gitlab-ci.env",
+          "path": "/environments/.github-actions.env",
         },
       ],
     ]
@@ -120,12 +120,12 @@ test("should run 'kosko generate --env dev'", async () => {
     Array [
       Array [
         Object {
-          "path": "/environments/.gitlab-ci.env",
+          "path": "/environments/.github-actions.env",
         },
       ],
       Array [
         Object {
-          "path": "/environments/dev/.gitlab-ci.env",
+          "path": "/environments/dev/.github-actions.env",
         },
       ],
     ]
@@ -160,12 +160,12 @@ test("should run 'kosko generate --env prod'", async () => {
     Array [
       Array [
         Object {
-          "path": "/environments/.gitlab-ci.env",
+          "path": "/environments/.github-actions.env",
         },
       ],
       Array [
         Object {
-          "path": "/environments/prod/.gitlab-ci.env",
+          "path": "/environments/prod/.github-actions.env",
         },
       ],
     ]
@@ -200,12 +200,12 @@ test('should run "kosko generate --env prod "!(_*)""', async () => {
     Array [
       Array [
         Object {
-          "path": "/environments/.gitlab-ci.env",
+          "path": "/environments/.github-actions.env",
         },
       ],
       Array [
         Object {
-          "path": "/environments/prod/.gitlab-ci.env",
+          "path": "/environments/prod/.github-actions.env",
         },
       ],
     ]

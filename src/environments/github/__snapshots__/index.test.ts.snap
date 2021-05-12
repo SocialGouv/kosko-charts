@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return preproproduction github global env 1`] = `
+Object {
+  "annotations": Object {},
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": "v4.12.2",
+    "remote": "socialgouv/sample-next-app",
+  },
+  "labels": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "v4.12.2",
+    "app.github.com/repo": "socialgouv/sample-next-app",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "abcdef",
+  },
+  "namespace": Object {
+    "name": "v4.12.2-sample-next-app",
+  },
+  "subdomain": "v4.12.2-sample-next-app",
+}
+`;
+
+exports[`should return production github global env 1`] = `
+Object {
+  "annotations": Object {},
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": "v4.12.2",
+    "remote": "socialgouv/sample-next-app",
+  },
+  "labels": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "v4.12.2",
+    "app.github.com/repo": "socialgouv/sample-next-app",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "abcdef",
+  },
+  "namespace": Object {
+    "name": "v4.12.2-sample-next-app",
+  },
+  "subdomain": "v4.12.2-sample-next-app",
+}
+`;
+
+exports[`should return tagged github global env 1`] = `
+Object {
+  "annotations": Object {},
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": "some-branch",
+    "remote": "socialgouv/sample-next-app",
+  },
+  "labels": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "some-branch",
+    "app.github.com/repo": "socialgouv/sample-next-app",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "abcdef",
+  },
+  "namespace": Object {
+    "name": "some-branch-sample-next-app",
+  },
+  "subdomain": "some-branch-sample-next-app",
+}
+`;
+
+exports[`should return the github global env 1`] = `
+Object {
+  "annotations": Object {},
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": "socialgouv/sample-next-app",
+  },
+  "labels": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": undefined,
+    "app.github.com/repo": "socialgouv/sample-next-app",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "abcdef",
+  },
+  "namespace": Object {
+    "name": "abcdef-sample-next-app",
+  },
+  "subdomain": "abcdef-sample-next-app",
+}
+`;
+
+exports[`should throw because of empty strings 1`] = `
+"Wrong environment variables
+required \\"GITHUB_RUN_ID\\": \\" \\" should not be an empty string
+required \\"GITHUB_JOB\\": \\" \\" should not be an empty string
+required \\"GITHUB_REPOSITORY\\": \\" \\" should not be an empty string
+required \\"GITHUB_SHA\\": \\" \\" should not be an empty string
+required \\"SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN\\": \\" \\" should not be an empty string
+"
+`;
+
+exports[`should throw because of missing variables 1`] = `
+"Wrong environment variables
+required \\"GITHUB_RUN_ID\\": \\"undefined\\" should be defined
+required \\"GITHUB_JOB\\": \\"undefined\\" should be defined
+required \\"GITHUB_REPOSITORY\\": \\"undefined\\" should be defined
+required \\"GITHUB_SHA\\": \\"undefined\\" should be defined
+required \\"SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN\\": \\"undefined\\" should be defined
+"
+`;
