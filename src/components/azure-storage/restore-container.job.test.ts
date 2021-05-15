@@ -2,7 +2,7 @@ import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 import { restoreContainerJob } from "./restore-container.job";
 
-process.env.CI_COMMIT_SHORT_SHA = "b123a99";
+process.env.GITHUB_SHA = "b123a99";
 
 test("should create restore job from dev to dev", () => {
   expect(

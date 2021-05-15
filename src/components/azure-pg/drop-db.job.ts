@@ -5,7 +5,7 @@ const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
 // renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.0.1
 const SOCIALGOUV_DOCKER_VERSION = "6.0.1";
 
-const assert = assertEnv(["CI_COMMIT_SHORT_SHA"]);
+const assert = assertEnv(["GITHUB_SHA"]);
 export const dropDbJob = ({
   database,
   secretRefName = `azure-pg-admin-user`,
@@ -16,10 +16,11 @@ export const dropDbJob = ({
   user: string;
 }): Job => {
   assert();
+  const sha = process.env.GITHUB_SHA?.slice(0,7)
 
   return new Job({
     metadata: {
-      name: `drop-azure-db-${process.env.CI_COMMIT_SHORT_SHA}`,
+      name: `drop-azure-db-${sha}`,
     },
     spec: {
       backoffLimit: 0,

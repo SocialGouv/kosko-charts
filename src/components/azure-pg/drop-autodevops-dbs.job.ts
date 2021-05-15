@@ -1,3 +1,4 @@
+import { ok } from "assert";
 import { Job } from "kubernetes-models/batch/v1/Job";
 
 interface DropAutodevopsDbsJobArgs {
@@ -11,9 +12,11 @@ const SOCIALGOUV_DOCKER_VERSION = "6.0.1";
 export const dropAutodevopsDbsJob = ({
   secretRefName = `azure-pg-admin-user`,
 }: DropAutodevopsDbsJobArgs = {}): Job => {
+  ok(process.env.GITHUB_SHA);
+  const sha = process.env.GITHUB_SHA.slice(0, 7);
   return new Job({
     metadata: {
-      name: `drop-azure-autodevops-dbs-${process.env.CI_COMMIT_SHORT_SHA}`,
+      name: `drop-azure-autodevops-dbs-${sha}`,
     },
     spec: {
       backoffLimit: 0,

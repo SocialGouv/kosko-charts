@@ -1,6 +1,6 @@
 import { createDbJob } from "./create-db.job";
 
-process.env.CI_COMMIT_SHORT_SHA = "b123a99";
+process.env.GITHUB_SHA = "b123a99";
 
 test("should customize secret and extensions when running create-db", () => {
   expect(

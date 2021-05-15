@@ -13,6 +13,12 @@ const gitlabModuleMock = {
 
 beforeEach(() => {
   jest.resetModules();
+  process.env.GITHUB_RUN_ID = "123456";
+  process.env.GITHUB_JOB = "9879786";
+  process.env.GITHUB_REPOSITORY = "some-org/some-app";
+  process.env.GITHUB_SHA = "a23b784cd23";
+  process.env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN =
+    "dev2.fabrique.social.gouv.fr";
 });
 
 test("should create a namespace", async () => {

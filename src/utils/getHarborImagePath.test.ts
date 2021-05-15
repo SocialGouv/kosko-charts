@@ -3,7 +3,7 @@ import { getHarborImagePath } from "./getHarborImagePath";
 beforeEach(() => {
   process.env.HARBOR_PREGISTRY = "default-registry";
   process.env.HARBOR_PROJECT = "default-project";
-  process.env.CI_COMMIT_SHA = "2780ce341781678fe1f460742e87312fbabd827f";
+  process.env.GITHUB_SHA = "2780ce341781678fe1f460742e87312fbabd827f";
 });
 
 test("default harbor path with commit sha", () => {
@@ -43,7 +43,7 @@ test("custom params with commit sha", () => {
 test("custom registry with tag", () => {
   process.env.HARBOR_PROJECT = "another-project";
   process.env.HARBOR_REGISTRY = "another-registry";
-  process.env.CI_COMMIT_TAG = "v1.2.3";
+  process.env.GITHUB_REF = "v1.2.3";
   expect(getHarborImagePath({ name: "frontend" })).toStrictEqual(
     "another-registry/another-project/frontend:1.2.3"
   );

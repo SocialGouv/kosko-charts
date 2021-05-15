@@ -6,10 +6,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
+      "annotations": Object {},
       "labels": Object {
         "application": "sample",
         "owner": "sample",
@@ -22,10 +19,7 @@ Array [
       "backoffLimit": 5,
       "template": Object {
         "metadata": Object {
-          "annotations": Object {
-            "app.gitlab.com/app": "socialgouv-sample",
-            "app.gitlab.com/env": "my-test",
-          },
+          "annotations": Object {},
           "labels": Object {
             "application": "sample",
             "owner": "sample",
@@ -88,10 +82,7 @@ Array [
     "apiVersion": "v1",
     "kind": "Secret",
     "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
+      "annotations": Object {},
       "labels": Object {
         "application": "sample",
         "owner": "sample",
@@ -123,10 +114,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
+      "annotations": Object {},
       "labels": Object {
         "application": "sample",
         "owner": "sample",
@@ -139,10 +127,7 @@ Array [
       "backoffLimit": 5,
       "template": Object {
         "metadata": Object {
-          "annotations": Object {
-            "app.gitlab.com/app": "socialgouv-sample",
-            "app.gitlab.com/env": "my-test",
-          },
+          "annotations": Object {},
           "labels": Object {
             "application": "sample",
             "owner": "sample",
@@ -205,10 +190,7 @@ Array [
     "apiVersion": "v1",
     "kind": "Secret",
     "metadata": Object {
-      "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
+      "annotations": Object {},
       "labels": Object {
         "application": "sample",
         "owner": "sample",

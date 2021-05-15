@@ -12,9 +12,6 @@ beforeEach(() => {
 
 test("should create metabase dev config", () => {
   const env = new Environment("/tmp");
-  process.env.CI_REGISTRY_IMAGE = "/path/to/docker/image";
-  process.env.CI_ENVIRONMENT_URL = "https://path/to/env";
-  process.env.CI_PROJECT_NAME = "some-project";
   const manifest = create({
     env,
   });

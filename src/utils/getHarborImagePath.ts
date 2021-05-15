@@ -10,7 +10,7 @@ export interface HarborProjectImageProps {
 
 /**
  *
- * This function will return the full path for a given docker image based on `CI_COMMIT_TAG` or `CI_COMMIT_SHA`
+ * This function will return the full path for a given docker image based on `GITHUB_REF` or `GITHUB_SHA`
  *
  * ```typescript
  * import { getHarborImagePath } from "@socialgouv/kosko-charts/utils"
