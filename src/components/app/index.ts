@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { Environment } from "@kosko/env";
 import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
-import { ok } from "assert";
 import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
@@ -53,8 +52,6 @@ export const create: createFn = (
   name,
   { env, config, deployment: deploymentParams }
 ) => {
-  //ok(process.env.CI_REGISTRY_IMAGE);
-  //ok(process.env.CI_ENVIRONMENT_URL);
   const manifests = [];
 
   const defaultEnvParams: Partial<AppConfig> = {

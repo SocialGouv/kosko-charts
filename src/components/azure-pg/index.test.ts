@@ -6,15 +6,10 @@ import { directory } from "tempy";
 
 import { create } from "./index";
 
-const gitlabEnv = {
-  CI_COMMIT_SHORT_SHA: "abcdefg",
-  CI_ENVIRONMENT_NAME: "fabrique-dev",
-  CI_ENVIRONMENT_SLUG: "my-test",
-  CI_PROJECT_NAME: "sample",
-  CI_PROJECT_PATH_SLUG: "socialgouv-sample",
-  CI_REGISTRY_IMAGE: "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
-  KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
-  KUBE_NAMESPACE: "sample-42-my-test",
+const githubEnv = {
+  GITHUB_SHA: "abcdefg",
+  GITHUB_REPOSITORY: "some-org/sample",
+  SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
 };
 
 jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
@@ -22,8 +17,8 @@ jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
   __esModule: true,
   default: () => ({
     annotations: {
-      "app.gitlab.com/app": "socialgouv-sample",
-      "app.gitlab.com/env": "my-test",
+      // "app.gitlab.com/app": "socialgouv-sample",
+      // "app.gitlab.com/env": "my-test",
     },
     labels: {
       application: "sample",
@@ -44,7 +39,7 @@ test("should throw because of a missing envs", () => {
 });
 
 test("should return create an job", async () => {
-  Object.assign(process.env, gitlabEnv);
+  Object.assign(process.env, githubEnv);
   const cwd = directory();
   const env = new Environment(cwd);
   env.env = "dev";
@@ -57,7 +52,6 @@ test("should return create an job", async () => {
 });
 
 test("should use custom pgHost", async () => {
-  process.env.CI_PROJECT_NAME = "sample-next-app";
   const env = new Environment("/tmp/xxx");
   env.env = "dev";
   await promises.mkdir(`/tmp/xxx/environments/dev`, { recursive: true });

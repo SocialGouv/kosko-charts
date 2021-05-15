@@ -66,7 +66,9 @@ export const restoreDbJob = ({
   envFrom = [],
   postRestoreScript,
 }: RestoreDbJobArgs): Manifest[] => {
-  ok(process.env.CI_COMMIT_SHORT_SHA);
+  ok(process.env.GITHUB_SHA)
+  const sha = process.env.GITHUB_SHA?.slice(0,7)
+  ok(sha);
   const secretNamespace = getProjectSecretNamespace(project);
   const azureSecretName = getAzureProdVolumeSecretName(project);
   const azureShareName = getAzureBackupShareName(project);
@@ -128,7 +130,7 @@ export const restoreDbJob = ({
     jobSpec.volumes.push({
       //@ts-expect-error
       configMap: {
-        name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
+        name: `post-restore-script-configmap-${sha}`,
       },
 
       name: "scripts",
@@ -138,7 +140,7 @@ export const restoreDbJob = ({
         "post-restore.sql": postRestoreScript,
       },
       metadata: {
-        name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
+        name: `post-restore-script-configmap-${sha}`,
         namespace: secretNamespace,
       },
     });
@@ -147,7 +149,7 @@ export const restoreDbJob = ({
 
   const job = new Job({
     metadata: {
-      name: `restore-db-${process.env.CI_JOB_ID}`,
+      name: `restore-db-${process.env.GITHUB_JOB}`,
       namespace: secretNamespace,
     },
     spec: {

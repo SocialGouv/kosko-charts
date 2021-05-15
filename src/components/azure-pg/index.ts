@@ -1,6 +1,5 @@
 import type { Environment } from "@kosko/env";
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
-import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
 
 import type { DeploymentParams } from "../../utils/createDeployment";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
@@ -10,12 +9,10 @@ import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
 
-//const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
 
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
-  //assert(process.env);
 
   const { GITHUB_SHA, GITHUB_REPOSITORY } = process.env as Record<
     string,

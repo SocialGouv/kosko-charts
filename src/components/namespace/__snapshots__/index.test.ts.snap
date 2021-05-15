@@ -6,13 +6,18 @@ Object {
   "kind": "Namespace",
   "metadata": Object {
     "annotations": Object {
-      "field.cattle.io/creatorId": "gitlab",
+      "field.cattle.io/creatorId": "github",
       "field.cattle.io/projectId": "",
       "git/branch": "",
-      "git/remote": "",
+      "git/remote": "some-org/some-app",
     },
-    "labels": Object {},
-    "name": "sample-42-my-test",
+    "labels": Object {
+      "app.github.com/job": "9879786",
+      "app.github.com/repo": "some-org/some-app",
+      "app.github.com/run": "123456",
+      "app.github.com/sha": "a23b784",
+    },
+    "name": "a23b784-some-app",
   },
 }
 `;
@@ -23,20 +28,18 @@ Object {
   "kind": "Namespace",
   "metadata": Object {
     "annotations": Object {
-      "app.gitlab.com/app": "socialgouv-sample",
-      "app.gitlab.com/env": "my-test",
-      "field.cattle.io/creatorId": "gitlab",
-      "field.cattle.io/projectId": "rancherId",
-      "git/branch": "my-branch",
-      "git/remote": "my-origin",
+      "field.cattle.io/creatorId": "github",
+      "field.cattle.io/projectId": "",
+      "git/branch": "",
+      "git/remote": "some-org/some-app",
     },
     "labels": Object {
-      "application": "sample",
-      "azure-pg-admin-user": "sample",
-      "owner": "sample",
-      "team": "sample",
+      "app.github.com/job": "9879786",
+      "app.github.com/repo": "some-org/some-app",
+      "app.github.com/run": "123456",
+      "app.github.com/sha": "a23b784",
     },
-    "name": "sample-42-my-test",
+    "name": "a23b784-some-app",
   },
 }
 `;

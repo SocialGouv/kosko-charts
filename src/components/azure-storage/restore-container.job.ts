@@ -56,7 +56,8 @@ export const restoreContainerJob = ({
   from,
   to,
 }: RestoreJobArgs): Job => {
-  ok(process.env.CI_COMMIT_SHORT_SHA);
+  ok(process.env.GITHUB_SHA);
+  const sha = process.env.GITHUB_SHA?.slice(0,7)
   const secretNamespace = getProjectSecretNamespace(project);
   const projectSlug = project.replace(/-/g, "");
   const jobEnv = [];
@@ -158,7 +159,7 @@ export const restoreContainerJob = ({
 
   return new Job({
     metadata: {
-      name: `restore-container-${process.env.CI_COMMIT_SHORT_SHA}`,
+      name: `restore-container-${sha}`,
       namespace: secretNamespace,
     },
     spec: {

@@ -1,7 +1,7 @@
 import { createDbJob } from "./create-db.job";
 
 test("should create a pg secret", () => {
-  process.env.CI_COMMIT_SHORT_SHA = "1234567";
+  process.env.GITHUB_SHA = "1234567";
   const job = createDbJob({
     database: "some-db",
     password: "my-password",

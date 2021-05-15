@@ -1,7 +1,7 @@
 import { dropDbJob } from "./drop-db.job";
 
 test("should create a pg secret", () => {
-  process.env.CI_COMMIT_SHORT_SHA = "1234567";
+  process.env.GITHUB_SHA = "1234567";
   const job = dropDbJob({
     database: "some-db",
     user: "tester",
@@ -74,8 +74,8 @@ test("should create a pg secret", () => {
   );
 });
 
-test("fails because of missing CI_COMMIT_SHORT_SHA", () => {
-  delete process.env.CI_COMMIT_SHORT_SHA;
+test("fails because of missing GITHUB_SHA", () => {
+  delete process.env.GITHUB_SHA;
   expect(() =>
     dropDbJob({
       database: "some-db",
@@ -83,7 +83,7 @@ test("fails because of missing CI_COMMIT_SHORT_SHA", () => {
     })
   ).toThrowErrorMatchingInlineSnapshot(`
     "Wrong environment variables
-    required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
+    required \\"GITHUB_SHA\\": \\"undefined\\" should be defined
     "
   `);
 });

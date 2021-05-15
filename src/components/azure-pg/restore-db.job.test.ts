@@ -2,9 +2,10 @@ import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 import { restoreDbJob } from "./restore-db.job";
 
-process.env.CI_COMMIT_SHORT_SHA = "b123a99";
-process.env.CI_PROJECT_NAME = "some-app";
-process.env.CI_JOB_ID = "123456789";
+process.env.GITHUB_RUN_ID = "123456";
+process.env.GITHUB_SHA = "b123a99";
+process.env.GITHUB_JOB = "123456789";
+process.env.GITHUB_REPOSITORY = "some-org/some-app";
 
 test("should create restore DB job", () => {
   expect(
