@@ -1,9 +1,9 @@
 //
 
 import type { Environment } from "@kosko/env";
-import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import { ok } from "assert";
 
+import { merge } from "../../utils/merge";
 import type { DeploymentParams } from "../../utils/createDeployment";
 import type { AppConfig } from "../app";
 import { create as createApp } from "../app";
@@ -27,7 +27,7 @@ export const create = (
   ok(process.env.CI_PROJECT_NAME);
 
   const manifests = createApp("hasura", {
-    config: merge(
+    config: merge([
       {
         container: {
           resources: {
@@ -47,7 +47,7 @@ export const create = (
         withPostgres: true,
       },
       config
-    ),
+    ]),
     deployment,
     env,
   });

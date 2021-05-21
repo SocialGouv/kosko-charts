@@ -1,7 +1,7 @@
 import type { IIoK8sApiAppsV1DeploymentSpec } from "kubernetes-models/_definitions/IoK8sApiAppsV1DeploymentSpec";
 import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1/ObjectMeta";
 
-import { merge } from "./@kosko/env/merge";
+import { merge } from "./merge";
 
 interface Metadatas {
   annotations?: Record<string, string>;
@@ -34,7 +34,7 @@ export const updateMetadata = (
     manifest.metadata = {};
   }
 
-  manifest.metadata = merge(manifest.metadata, metadata);
+  manifest.metadata = merge([manifest.metadata, metadata])
 
   const { annotations = {}, labels = {}, namespace, name } = metadata;
 
@@ -43,12 +43,12 @@ export const updateMetadata = (
   if (name) manifest.metadata.name = name;
 
   if (isIIoK8sApiAppsV1DeploymentSpecLike(manifest.spec)) {
-    manifest.spec.template.metadata = merge(
+    manifest.spec.template.metadata = merge([
       manifest.spec.template.metadata ?? {},
       {
         annotations,
         labels,
       }
-    );
+    ]);
   }
 };

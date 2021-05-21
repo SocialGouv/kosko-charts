@@ -16,7 +16,7 @@ import createIngress, {
 import createService, { CreateServiceParams } from "../../utils/createService";
 import { loadYaml } from "../../utils/getEnvironmentComponent";
 import { updateMetadata } from "../../utils/updateMetadata";
-import { merge } from "../../utils/@kosko/env/merge";
+import { merge } from "../../utils/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 
@@ -70,16 +70,16 @@ export const create: createFn = (
   const gitlabEnv = gitlab(process.env);
 
   // kosko component env values
-  const envParams = merge(
+  const envParams = merge([
     defaultEnvParams, // set name as default if not provided
     gitlabEnv,
     config ?? {}, // create options
     env.component(name) as AppConfig // kosko env overrides
-  );
+  ]);
 
   const { containerPort, servicePort } = envParams;
 
-  const deployment = createDeployment(merge(envParams, deploymentParams || {}));
+  const deployment = createDeployment(merge([envParams, deploymentParams || {}]));
   updateMetadata(deployment, {
     annotations: envParams.annotations || {},
     labels: envParams.labels || {},

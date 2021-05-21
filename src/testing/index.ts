@@ -1,7 +1,7 @@
-import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import { config } from "dotenv";
 import { resolve } from "path";
 
+import { merge } from "../utils/merge";
 import { execAsync } from "./execAsync";
 
 export const getEnvManifests = async (
@@ -14,7 +14,7 @@ export const getEnvManifests = async (
     `npx --no-install kosko generate ${koskoEnvArgs} ${koskoArgs}`.trim(),
     {
       cwd: process.cwd(),
-      env: merge(
+      env: merge([
         process.env,
         {
           FORCE_COLOR: "0",
@@ -35,7 +35,7 @@ export const getEnvManifests = async (
             ),
           }).parsed) ??
           {}
-      ),
+      ]),
     }
   );
 

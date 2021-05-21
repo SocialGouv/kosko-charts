@@ -2,7 +2,7 @@
 
 import type { createFn } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
-import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
+import { merge } from "@socialgouv/kosko-charts/utils/merge";
 
 import type { DeploymentParams } from "../../utils/createDeployment";
 
@@ -22,7 +22,7 @@ export const create: createFn = (
   { env, config = {}, deployment = {} }
 ) => {
   const manifests = createApp(name, {
-    config: merge(
+    config: merge([
       {
         container: {
           livenessProbe: {
@@ -49,9 +49,9 @@ export const create: createFn = (
         ingress: false,
         subDomainPrefix: process.env.PRODUCTION ? `redis.` : "redis-",
       },
-      config
-    ),
-    deployment: merge(redisDeploymentParams, deployment),
+      config,
+    ]),
+    deployment: merge([redisDeploymentParams, deployment]),
     env,
   });
 

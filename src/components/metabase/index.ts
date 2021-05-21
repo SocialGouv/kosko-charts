@@ -1,7 +1,7 @@
 import type { Environment } from "@kosko/env";
-import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 import type { DeploymentParams } from "../../utils/createDeployment";
+import { merge } from "../../utils/merge";
 import type { AppConfig } from "../app";
 import { create as createApp } from "../app";
 
@@ -23,15 +23,15 @@ export const create = (
   }
 ): CreateResult =>
   createApp("metabase", {
-    config: merge(
+    config: merge([
       {
         containerPort: 3000,
         image: `metabase/metabase:${DOCKER_METABASE_TAG}`,
         subDomainPrefix: "metabase-",
       },
-      config
-    ),
-    deployment: merge(
+      config,
+    ]),
+    deployment: merge([
       {
         container: {
           livenessProbe: {
@@ -68,7 +68,7 @@ export const create = (
           },
         },
       },
-      deployment
-    ),
+      deployment,
+    ]),
     env,
   });

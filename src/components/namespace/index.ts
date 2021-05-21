@@ -1,6 +1,6 @@
 import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import type { NamespaceComponentEnvironment } from "@socialgouv/kosko-charts/types";
-import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
+import { merge } from "@socialgouv/kosko-charts/utils/merge";
 import { Namespace as K8SNamespace } from "kubernetes-models/v1/Namespace";
 
 export const createNamespace = (
@@ -9,7 +9,7 @@ export const createNamespace = (
   const gitlabEnv = gitlab(process.env);
   const owner = gitlabEnv.labels?.owner;
 
-  const envParams = merge(gitlab(process.env), config ?? {});
+  const envParams = merge([gitlab(process.env), config ?? {}]);
 
   const namespace = new K8SNamespace({
     metadata: {

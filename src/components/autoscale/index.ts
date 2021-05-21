@@ -1,8 +1,9 @@
-import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import { ok } from "assert";
 import type { IIoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerSpec } from "kubernetes-models/_definitions/IoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerSpec";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { HorizontalPodAutoscaler } from "kubernetes-models/autoscaling/v2beta2/HorizontalPodAutoscaler";
+
+import { merge } from "../../utils/merge";
 
 type TargetType = Deployment;
 export const createAutoscale = (
@@ -52,7 +53,7 @@ export const createAutoscale = (
       name: target.metadata.name,
       namespace: target.metadata.namespace,
     },
-    spec: merge(defaultSpec, spec ?? {}),
+    spec: merge([defaultSpec, spec ?? {}]),
   });
 
   return hpa;

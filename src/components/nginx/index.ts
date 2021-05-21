@@ -5,7 +5,8 @@ import type {
   createFn,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
-import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
+
+import { merge } from "../../utils/merge";
 
 const nginxConfig: Partial<AppConfig> = {
   container: {
@@ -53,8 +54,8 @@ const nginxDeployment = {
 export const create: createFn = (name, { env, config, deployment }) => {
   // todo: atm we use "app" as a convention.
   const manifests = createApp(name, {
-    config: merge(nginxConfig, config ?? {}),
-    deployment: merge(nginxDeployment, deployment ?? {}),
+    config: merge([nginxConfig, config ?? {}]),
+    deployment: merge([nginxDeployment, deployment ?? {}]),
     env,
   });
 

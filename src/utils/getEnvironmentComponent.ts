@@ -5,7 +5,7 @@ import { Module } from "module";
 import { join } from "path";
 import { runInThisContext } from "vm";
 
-import { formatPath } from "./@kosko/env/paths";
+import { formatPath } from "./paths";
 
 export function tryRequireComponent(
   cwd: string,

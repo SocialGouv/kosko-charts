@@ -2,7 +2,7 @@ import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/Io
 import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
-import { merge } from "./@kosko/env/merge";
+import { merge } from "./merge";
 
 /** Parameters to create a [[Deployment]] with [[createDeployment]] */
 export interface DeploymentParams {
@@ -47,12 +47,12 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
   return new Deployment({
     metadata: {
       annotations: params.annotations,
-      labels: merge(
+      labels: merge([
         {
           app: params.name,
         },
         params.labels ?? {}
-      ),
+      ]),
       name: params.name,
     },
     spec: {
@@ -65,16 +65,16 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
       template: {
         metadata: {
           annotations: {},
-          labels: merge(
+          labels: merge([
             {
               app: params.name,
             },
             params.labels ?? {}
-          ),
+          ]),
         },
         spec: {
           containers: [
-            merge(
+            merge([
               {
                 image,
                 livenessProbe: {
@@ -131,7 +131,7 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
                 },
               },
               params.container ?? {}
-            ),
+            ]),
           ],
           imagePullSecrets: params.imagePullSecrets,
         },

@@ -22,11 +22,11 @@ test("should load manifests fom /yaml folder", async () => {
       .mockReturnValue(["file1.ts", "file2.yaml", "file3.yml"]),
   }));
   jest.doMock("@kosko/yaml", () => ({
-    loadFile: (
+    loadFile: async (
       file: string,
       { transform }: { transform: (manifest: Manifest) => Manifest }
     ) =>
-      jest.fn().mockResolvedValueOnce(transform(loadString(getYaml(file))[0])),
+      jest.fn().mockResolvedValueOnce(transform((await loadString(getYaml(file)))[0])),
   }));
   const { importYamlFolder } = await import(".");
   const manifests = await importYamlFolder("/tmp/yaml");

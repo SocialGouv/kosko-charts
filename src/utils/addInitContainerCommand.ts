@@ -3,7 +3,7 @@ import { ok } from "assert";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { Container } from "kubernetes-models/v1/Container";
 
-import { merge } from "./@kosko/env/merge";
+import { merge } from "./merge";
 
 /**
  *
@@ -37,7 +37,7 @@ export const addInitContainerCommand = (
   ok(container.command.length);
   const image = deployment.spec.template.spec.containers[0].image;
   const initContainer = new Container(
-    merge(
+    merge([
       {
         args: [],
         command: container.command,
@@ -55,8 +55,8 @@ export const addInitContainerCommand = (
           },
         },
       },
-      container
-    )
+      container,
+    ])
   );
 
   addInitContainer(deployment, initContainer);
