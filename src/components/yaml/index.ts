@@ -14,13 +14,13 @@ export const importYamlFolder = async (
     files
       .filter((file: string) => /\.ya?ml$/.exec(file))
       .map(async (file) =>
-        (await loadFile(path.join(folderPath, file), {
+        loadFile(path.join(folderPath, file), {
           transform: (manifest: Manifest) => {
             // force namespace on imported ressources
             manifest.metadata.namespace = process.env.KUBE_NAMESPACE;
             return manifest;
           },
-        }))()
+        })()
       )
   );
   return manifests.flat();

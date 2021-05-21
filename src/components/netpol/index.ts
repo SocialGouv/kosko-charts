@@ -10,8 +10,6 @@ export const create = (namespace: string): NetworkPolicy =>
   new NetworkPolicy({
     metadata: { name: "default", namespace },
     spec: {
-      podSelector: {},
-      policyTypes: ["Ingress"],
       ingress: [
         {
           from: [
@@ -45,5 +43,7 @@ export const create = (namespace: string): NetworkPolicy =>
           ],
         },
       ],
+      podSelector: {},
+      policyTypes: ["Ingress"],
     },
   });

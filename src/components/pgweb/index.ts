@@ -60,7 +60,7 @@ export const create: createFn = (name, { env, config, deployment }) => {
       {
         subDomainPrefix: process.env.PRODUCTION ? `pgweb.` : "pgweb-",
       },
-      config ?? {}
+      config ?? {},
     ]),
     deployment: merge([pgwebDeployment, deployment ?? {}]),
     env,

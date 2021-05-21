@@ -34,7 +34,7 @@ export const getEnvManifests = async (
               ".gitlab-ci.env"
             ),
           }).parsed) ??
-          {}
+          {},
       ]),
     }
   );

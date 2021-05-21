@@ -56,7 +56,7 @@ export const addInitContainerCommand = (
         },
       },
       container,
-    ])
+    ]) as Container
   );
 
   addInitContainer(deployment, initContainer);

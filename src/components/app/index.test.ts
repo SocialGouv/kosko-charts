@@ -1,5 +1,4 @@
 import { createNodeCJSEnvironment } from "@kosko/env";
-
 import { project } from "@socialgouv/kosko-charts/testing/fake/gitlab-ci.env";
 import { promises } from "fs";
 import { directory } from "tempy";

@@ -3,8 +3,8 @@
 import type { Environment } from "@kosko/env";
 import { ok } from "assert";
 
-import { merge } from "../../utils/merge";
 import type { DeploymentParams } from "../../utils/createDeployment";
+import { merge } from "../../utils/merge";
 import type { AppConfig } from "../app";
 import { create as createApp } from "../app";
 
@@ -46,7 +46,7 @@ export const create = (
         subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
         withPostgres: true,
       },
-      config
+      config,
     ]),
     deployment,
     env,

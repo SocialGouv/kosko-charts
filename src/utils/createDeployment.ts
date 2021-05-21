@@ -51,7 +51,7 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
         {
           app: params.name,
         },
-        params.labels ?? {}
+        params.labels ?? {},
       ]),
       name: params.name,
     },
@@ -69,7 +69,7 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
             {
               app: params.name,
             },
-            params.labels ?? {}
+            params.labels ?? {},
           ]),
         },
         spec: {
@@ -130,7 +130,7 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
                   periodSeconds: 5,
                 },
               },
-              params.container ?? {}
+              params.container ?? {},
             ]),
           ],
           imagePullSecrets: params.imagePullSecrets,

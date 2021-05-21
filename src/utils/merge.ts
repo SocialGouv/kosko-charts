@@ -1,3 +1,4 @@
+/* eslint-disable */
 // https://github.com/tommy351/kosko/blob/master/packages/env/src/merge.ts
 
 import deepMerge from "deepmerge";

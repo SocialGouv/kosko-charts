@@ -34,7 +34,7 @@ export const updateMetadata = (
     manifest.metadata = {};
   }
 
-  manifest.metadata = merge([manifest.metadata, metadata])
+  manifest.metadata = merge([manifest.metadata, metadata]);
 
   const { annotations = {}, labels = {}, namespace, name } = metadata;
 
@@ -48,7 +48,7 @@ export const updateMetadata = (
       {
         annotations,
         labels,
-      }
+      },
     ]);
   }
 };
