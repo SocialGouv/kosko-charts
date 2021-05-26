@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/SocialGouv/kosko-charts/compare/v5.3.5...v5.4.0) (2021-05-26)
+
+
+### Features
+
+* Add util to forge ghcr.io registry URLs. ([#525](https://github.com/SocialGouv/kosko-charts/issues/525)) ([161af38](https://github.com/SocialGouv/kosko-charts/commit/161af38b74c377201a5081380125561af83f2cbf))
+
 ## [5.3.5](https://github.com/SocialGouv/kosko-charts/compare/v5.3.4...v5.3.5) (2021-05-10)
 
 
