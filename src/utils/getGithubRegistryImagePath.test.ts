@@ -14,7 +14,7 @@ test("custom harbor project with param with commit sha", () => {
 
 test("custom registry with tag", () => {
   process.env.CI_COMMIT_TAG = "v1.2.3";
-  expect(getGithubRegistryImagePath({ name: "frontend", project: "some-project" })).toStrictEqual(
-    "ghcr.io/socialgouv/some-project/frontend:1.2.3"
-  );
+  expect(
+    getGithubRegistryImagePath({ name: "frontend", project: "some-project" })
+  ).toStrictEqual("ghcr.io/socialgouv/some-project/frontend:1.2.3");
 });
