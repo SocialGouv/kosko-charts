@@ -1,8 +1,11 @@
 import { addToEnvFrom } from "@socialgouv/kosko-charts/utils/addToEnvFrom";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { StatefulSet } from "kubernetes-models/apps/v1/StatefulSet";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
 import { getDefaultPgParams } from "../components/azure-pg";
+
+type Manifest = Deployment | StatefulSet;
 
 /**
  *
@@ -18,7 +21,7 @@ import { getDefaultPgParams } from "../components/azure-pg";
  * @category utils
  * @return {void}
  */
-export const addPostgresUserSecret = (deployment?: Deployment): void => {
+export const addPostgresUserSecret = (deployment?: Manifest): void => {
   if (!deployment) {
     return;
   }

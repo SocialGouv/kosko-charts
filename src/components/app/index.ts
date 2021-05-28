@@ -10,6 +10,9 @@ import { addToEnvFrom } from "../../utils/addToEnvFrom";
 import createDeployment, {
   DeploymentParams,
 } from "../../utils/createDeployment";
+import createStatefulSet, {
+  StatefulSetParams,
+} from "../../utils/createStatefulSet";
 import createIngress, {
   IngressConfig as IngressParams,
 } from "../../utils/createIngress";
@@ -25,7 +28,7 @@ type AliasParams = {
   destination: string;
 };
 
-export type AppConfig = DeploymentParams &
+export type AppConfig = DeploymentParams & StatefulSetParams &
   CreateServiceParams &
   IngressParams & {
     subdomain: string;
@@ -36,6 +39,7 @@ export type AppConfig = DeploymentParams &
     withPostgres: boolean;
     withRedirections?: AliasParams;
   };
+
 export type createFn = (
   name: string,
   {
@@ -45,13 +49,15 @@ export type createFn = (
   }: {
     env: Environment;
     config?: Partial<AppConfig>;
-    deployment?: Partial<Omit<DeploymentParams, "containerPort">>;
-  }
+    deployment?: Partial<Omit<DeploymentParams | StatefulSetParams, "containerPort">>;
+  },
+  stateful?: boolean
 ) => { apiVersion: string, kind: string }[];
 
 export const create: createFn = (
   name,
-  { env, config, deployment: deploymentParams }
+  { env, config, deployment: deploymentParams },
+  stateful = false
 ) => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
@@ -79,13 +85,17 @@ export const create: createFn = (
 
   const { containerPort, servicePort } = envParams;
 
-  const deployment = createDeployment(merge(envParams, deploymentParams || {}));
+  const deployment = (
+    stateful ? createStatefulSet : createDeployment
+  )(merge(envParams, deploymentParams || {}));
+
   updateMetadata(deployment, {
     annotations: envParams.annotations || {},
     labels: envParams.labels || {},
     namespace: envParams.namespace,
     name,
   });
+
   manifests.push(deployment);
 
   // add postgres secret and initContainer

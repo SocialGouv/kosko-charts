@@ -1,6 +1,5 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
-// import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { StatefulSet } from "kubernetes-models/apps/v1/StatefulSet";
 
 import { merge } from "./@kosko/env/merge";

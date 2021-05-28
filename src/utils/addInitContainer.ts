@@ -1,8 +1,9 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { StatefulSet } from "kubernetes-models/apps/v1/StatefulSet";
 import type { Job } from "kubernetes-models/batch/v1/Job";
 
-type Manifest = Deployment | Job;
+type Manifest = Deployment | Job | StatefulSet;
 
 /**
  *
