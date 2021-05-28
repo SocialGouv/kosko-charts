@@ -1,3 +1,15 @@
+# [5.5.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v5.5.0-beta.1) (2021-05-28)
+
+
+### Bug Fixes
+
+* Allow stateful app creation. ([42e1f57](https://github.com/SocialGouv/kosko-charts/commit/42e1f5731ee7ef89b39ebf5733d8dd67a5043457))
+
+
+### Features
+
+* Add StatefulSet manifest kind. ([27d8f75](https://github.com/SocialGouv/kosko-charts/commit/27d8f75bb0eb95625f3ecedf898c486b135fbd29))
+
 # [5.4.0](https://github.com/SocialGouv/kosko-charts/compare/v5.3.5...v5.4.0) (2021-05-26)
 
 
