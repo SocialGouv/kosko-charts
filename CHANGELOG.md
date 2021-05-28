@@ -1,3 +1,10 @@
+# [5.5.0-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.1...v5.5.0-beta.2) (2021-05-28)
+
+
+### Bug Fixes
+
+* Add missing StatefulSet type references. ([faa6a85](https://github.com/SocialGouv/kosko-charts/commit/faa6a850a513ee559cd2adbefd9bd2b86e78ae9e))
+
 # [5.5.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v5.5.0-beta.1) (2021-05-28)
 
 
