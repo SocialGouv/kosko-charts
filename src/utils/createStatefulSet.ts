@@ -56,13 +56,13 @@ export const createStatefulSet = (params: StatefulSetParams): StatefulSet => {
       name: params.name,
     },
     spec: {
-      serviceName: params.name,
       replicas: 1,
       selector: {
         matchLabels: {
           app: params.name,
         },
       },
+      serviceName: params.name,
       template: {
         metadata: {
           annotations: {},
