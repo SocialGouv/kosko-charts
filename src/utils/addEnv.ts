@@ -1,11 +1,12 @@
 import { assert } from "@sindresorhus/is";
 import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { StatefulSet } from "kubernetes-models/apps/v1/StatefulSet";
 import type { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 /** Parameters for the [[addEnv]] function */
 export interface AddEnvParams {
   /** [[Deployment]] to add env for */
-  deployment: Deployment;
+  deployment: Deployment | StatefulSet;
   /** The [[EnvVar]] to add */
   data: EnvVar;
   /** The container index for which to add the env var, default=0 */

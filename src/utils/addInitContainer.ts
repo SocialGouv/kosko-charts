@@ -23,7 +23,7 @@ type Manifest = Deployment | Job | StatefulSet;
  * addInitContainer(deployment, initContainer);
  * ```
  * @category utils
- * @return {Deployment}
+ * @return {Manifest}
  */
 export const addInitContainer = (
   deployment: Manifest,
