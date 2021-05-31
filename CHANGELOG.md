@@ -1,3 +1,10 @@
+# [5.5.0-beta.4](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.3...v5.5.0-beta.4) (2021-05-31)
+
+
+### Bug Fixes
+
+* Usage desciption. ([49bf4d2](https://github.com/SocialGouv/kosko-charts/commit/49bf4d2cd1a061b76cea60e5d9f91e963e5ed07a))
+
 # [5.5.0-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.2...v5.5.0-beta.3) (2021-05-31)
 
 
