@@ -30,7 +30,7 @@ export interface DeploymentParams {
  * import { createDeployment } from "@socialgouv/kosko-charts/utils"
  *
  * const deployment = createDeployment({
- *   name: "app";
+ *   name: "app",
  *   image: "containous/whoami:latest"
  * });
  * ```

@@ -32,7 +32,7 @@ export interface StatefulSetParams {
  * import { createStatefulSet } from "@socialgouv/kosko-charts/utils"
  *
  * const deployment = createStatefulSet({
- *   name: "app";
+ *   name: "app",
  *   image: "containous/whoami:latest",
  *   volumes: [{
  *     name: "data",
