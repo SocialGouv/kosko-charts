@@ -20,6 +20,8 @@ export interface StatefulSetParams {
   name: string;
   /** docker registry secrets */
   imagePullSecrets?: IIoK8sApiCoreV1LocalObjectReference[];
+  /** volumes to attach to the deployment */
+  volumes?: [];
 }
 
 /**
@@ -27,11 +29,16 @@ export interface StatefulSetParams {
  * This function will return a [[Deployment]] with some defaults
  *
  * ```typescript
- * import { createDeployment } from "@socialgouv/kosko-charts/utils"
+ * import { createStatefulSet } from "@socialgouv/kosko-charts/utils"
  *
- * const deployment = createDeployment({
+ * const deployment = createStatefulSet({
  *   name: "app";
- *   image: "containous/whoami:latest"
+ *   image: "containous/whoami:latest",
+ *   volumes: [{
+ *     name: "data",
+ *     size: "10Gi"
+ *     mountPath: "/mnt/data",
+ *   }]
  * });
  * ```
  * @category utils
@@ -41,8 +48,14 @@ export const createStatefulSet = (params: StatefulSetParams): StatefulSet => {
   const tag = process.env.CI_COMMIT_TAG
     ? process.env.CI_COMMIT_TAG.slice(1)
     : process.env.CI_COMMIT_SHA;
+
   const image =
     params.image || `${process.env.CI_REGISTRY_IMAGE}/${params.name}:${tag}`;
+
+  const volumes = params.volumes?.map(({ name }) => ({
+    name,
+    persistentVolumeClaim: { claimName: name },
+  }));
 
   return new StatefulSet({
     metadata: {
@@ -130,11 +143,13 @@ export const createStatefulSet = (params: StatefulSetParams): StatefulSet => {
                   },
                   periodSeconds: 5,
                 },
+                volumeMounts: params.volumes,
               },
               params.container ?? {}
             ),
           ],
           imagePullSecrets: params.imagePullSecrets,
+          volumes,
         },
       },
     },

@@ -22,11 +22,18 @@ import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/@kosko/env/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
+import { PersistentVolumeClaim } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolumeClaim";
 
 type AliasParams = {
   hosts: string[];
   destination: string;
 };
+
+export type Volume = {
+  mountPath: string;
+  name: string;
+  size: string;
+}
 
 export type AppConfig = DeploymentParams & StatefulSetParams &
   CreateServiceParams &
@@ -46,18 +53,18 @@ export type createFn = (
     env,
     config,
     deployment: deploymentParams,
+    volumes,
   }: {
     env: Environment;
     config?: Partial<AppConfig>;
     deployment?: Partial<Omit<DeploymentParams | StatefulSetParams, "containerPort">>;
-  },
-  stateful?: boolean
+    volumes?: Volume[]
+  }
 ) => { apiVersion: string, kind: string }[];
 
 export const create: createFn = (
   name,
-  { env, config, deployment: deploymentParams },
-  stateful = false
+  { env, config, deployment: deploymentParams, volumes },
 ) => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
@@ -85,9 +92,9 @@ export const create: createFn = (
 
   const { containerPort, servicePort } = envParams;
 
-  const deployment = (
-    stateful ? createStatefulSet : createDeployment
-  )(merge(envParams, deploymentParams || {}));
+  const deployment = volumes
+    ? createStatefulSet(merge(envParams, deploymentParams || {}, { volumes }))
+    : createDeployment(merge(envParams, deploymentParams || {}));
 
   updateMetadata(deployment, {
     annotations: envParams.annotations || {},
@@ -206,6 +213,7 @@ export const create: createFn = (
       serviceName: name,
       servicePort,
     });
+
     // add gitlab annotations
     updateMetadata(ingress, {
       annotations: envParams.annotations || {},
@@ -213,7 +221,29 @@ export const create: createFn = (
       namespace: envParams.namespace,
       name,
     });
+
     manifests.push(ingress);
+  }
+
+  if (envParams.volumes) {
+    volumes?.map(volume => {
+      const pvc = new PersistentVolumeClaim({
+        metadata: {
+          name,
+          namespace: envParams.namespace.name
+        },
+        spec: {
+          accessModes: ["ReadWriteOnce"],
+          resources: {
+            requests: {
+              storage: volume.size
+            }
+          }
+        }
+      });
+  
+      manifests.push(pvc)
+    })
   }
 
   return manifests;

@@ -30,5 +30,7 @@ export const getGithubRegistryImagePath = ({
     ? process.env.CI_COMMIT_TAG.slice(1)
     : process.env.CI_COMMIT_SHA;
 
-  return `ghcr.io/socialgouv/${project}/${name}:sha-${tag}`;
+  const prefix = tag?.includes(".") ? "" : "sha-";
+
+  return `ghcr.io/socialgouv/${project}/${name}:${prefix}${tag}`;
 };
