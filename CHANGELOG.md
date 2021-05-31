@@ -1,3 +1,10 @@
+# [5.5.0-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.2...v5.5.0-beta.3) (2021-05-31)
+
+
+### Bug Fixes
+
+* Github registry tag name. ([66f872e](https://github.com/SocialGouv/kosko-charts/commit/66f872e996d64fb64d0affb3e427251d71283e96))
+
 # [5.5.0-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.1...v5.5.0-beta.2) (2021-05-28)
 
 
