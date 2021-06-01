@@ -25,6 +25,8 @@ import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
 import { PersistentVolume } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolume";
 import { PersistentVolumeClaim } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolumeClaim";
 
+import { IoK8sApiCoreV1AzureFilePersistentVolumeSource } from "kubernetes-models/_definitions/IoK8sApiCoreV1AzureFilePersistentVolumeSource"
+
 type AliasParams = {
   hosts: string[];
   destination: string;
@@ -34,7 +36,12 @@ export type Volume = {
   name: string;
   size: string;
   mountPath: string;
-  secretName?: string;
+  azureFile?: {
+    shareName: string;
+    secretName: string;
+    // shareName: IoK8sApiCoreV1AzureFilePersistentVolumeSource["shareName"];
+    // secretName?: IoK8sApiCoreV1AzureFilePersistentVolumeSource["secretName"];
+  }
   // emptyDir?: Record<string, string>;
 }
 
@@ -231,24 +238,26 @@ export const create: createFn = (
   }
 
   if (volumes && (env.env === "prod" || env.env === "preprod")) {
-    volumes?.map(({name, secretName, size}) => {
-      const pv = new PersistentVolume({
-        metadata: {
-          name: `pv-${name}`,
-          labels: { usage: `pv-${name}`}
-        },
-        spec: {
+    volumes?.map(({azureFile, name, size}) => {
+      const spec = azureFile ? {
           storageClassName: name,
           accessModes: ["ReadWriteMany"],
           capacity: { storage: size },
           persistentVolumeReclaimPolicy: "Delete",
-          azureFile: {
-            shareName: name,
-            secretName: secretName || "",
-            secretNamespace: envParams.namespace.name,
-          }
-        }
-      });
+          azureFile: {...azureFile, secretNamespace: envParams.namespace.name},
+      } : {
+          storageClassName: name,
+          accessModes: ["ReadWriteMany"],
+          capacity: { storage: size },
+          persistentVolumeReclaimPolicy: "Delete",
+      };
+
+      const metadata = {
+        name: `pv-${name}`,
+        labels: { usage: `pv-${name}`}
+      };
+
+      const pv = new PersistentVolume({ metadata, spec });
 
       manifests.push(pv)
       // const pvc = new PersistentVolumeClaim({

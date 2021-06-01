@@ -7,9 +7,12 @@ import { create } from "../app/index";
 
 const volumes = [
   {
+    azureFile: {
+      secretName: "my-volume-secret",
+      shareName: "my-azure-file-shares",
+    },
     mountPath: "/mnt/my_volume",
     name: "my_volume",
-    secretName: "my-volume-secret",
     size: "10Gi",
   },
 ];

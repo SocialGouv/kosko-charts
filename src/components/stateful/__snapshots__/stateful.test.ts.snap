@@ -415,7 +415,7 @@ Array [
       "azureFile": Object {
         "secretName": "my-volume-secret",
         "secretNamespace": "sample-42-my-test",
-        "shareName": "my_volume",
+        "shareName": "my-azure-file-shares",
       },
       "capacity": Object {
         "storage": "10Gi",
@@ -651,7 +651,7 @@ Array [
       "azureFile": Object {
         "secretName": "my-volume-secret",
         "secretNamespace": "sample-42-my-test",
-        "shareName": "my_volume",
+        "shareName": "my-azure-file-shares",
       },
       "capacity": Object {
         "storage": "10Gi",
