@@ -28,7 +28,6 @@ Array [
           "app": "app",
         },
       },
-      "serviceName": "app",
       "template": Object {
         "metadata": Object {
           "annotations": Object {

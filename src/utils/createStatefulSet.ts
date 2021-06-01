@@ -158,7 +158,20 @@ export const createStatefulSet = (
         },
   };
 
+  // const spec = {
+  //   replicas: 1,
+  //   selector,
+  //   serviceName: params.name,
+  //   template,
+  // };
+
   const spec = {
+    replicas: 1,
+    selector,
+    template,
+  };
+
+  const statefulSpec = {
     replicas: 1,
     selector,
     serviceName: params.name,
@@ -177,8 +190,10 @@ export const createStatefulSet = (
   };
 
   const config = { metadata, spec };
+  const statefulConfig = { metadata, spec: statefulSpec };
 
-  return new (stateful ? StatefulSet : Deployment)(config);
+  return stateful ? new StatefulSet(statefulConfig) : new Deployment(config);
+  // return new (stateful ? StatefulSet : Deployment)(config);
 };
 
 export default createStatefulSet;
