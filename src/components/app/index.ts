@@ -31,9 +31,9 @@ type AliasParams = {
 
 export type Volume = {
   name: string;
-  size?: string;
-  mountPath?: string;
-  emptyDir?: Record<string, string>;
+  size: string;
+  mountPath: string;
+  // emptyDir?: Record<string, string>;
 }
 
 export type AppConfig = DeploymentParams & StatefulSetParams &
@@ -94,8 +94,10 @@ export const create: createFn = (
   const { containerPort, servicePort } = envParams;
 
   const deployment = volumes
-    ? createStatefulSet(merge(envParams, deploymentParams || {}, { volumes }))
-    : createDeployment(merge(envParams, deploymentParams || {}));
+    ? (env.env === "prod" || env.env === "preprod")
+    ? createStatefulSet(merge(envParams, deploymentParams || {}, { volumes }), true)
+    : createStatefulSet(merge(envParams, deploymentParams || {}, { volumes }))
+    : createStatefulSet(merge(envParams, deploymentParams || {}));
 
   updateMetadata(deployment, {
     annotations: envParams.annotations || {},
@@ -226,18 +228,18 @@ export const create: createFn = (
     manifests.push(ingress);
   }
 
-  if (envParams.volumes) {
+  if (volumes && (env.env === "prod" || env.env === "preprod")) {
     volumes?.map(volume => {
       const pvc = new PersistentVolumeClaim({
         metadata: {
-          name,
+          name: `${name}-${volume.name}`,
           namespace: envParams.namespace.name
         },
         spec: {
           accessModes: ["ReadWriteOnce"],
           resources: {
             requests: {
-              storage: volume.size || "2Gi"
+              storage: volume.size
             }
           }
         }

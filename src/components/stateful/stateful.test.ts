@@ -7,8 +7,8 @@ import { create } from "../app/index";
 
 const volumes = [
   {
-    mountPath: "/mnt/files",
-    name: "domifa-volume",
+    mountPath: "/mnt/my_volume",
+    name: "my_volume",
     size: "10Gi",
   },
 ];
@@ -48,6 +48,16 @@ test("should return dev manifests", async () => {
   const env = new Environment(cwd);
   env.env = "dev";
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
+  expect(create("app", { env, volumes })).toMatchSnapshot();
+});
+
+test("should return preprod manifests", async () => {
+  const gitlabEnv = project("sample").preprod;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = new Environment(cwd);
+  env.env = "preprod";
+  await promises.mkdir(`${cwd}/environments/preprod`, { recursive: true });
   expect(create("app", { env, volumes })).toMatchSnapshot();
 });
 
