@@ -22,6 +22,7 @@ import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/@kosko/env/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
+import { PersistentVolume } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolume";
 import { PersistentVolumeClaim } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolumeClaim";
 
 type AliasParams = {
@@ -33,6 +34,7 @@ export type Volume = {
   name: string;
   size: string;
   mountPath: string;
+  secretName?: string;
   // emptyDir?: Record<string, string>;
 }
 
@@ -229,23 +231,42 @@ export const create: createFn = (
   }
 
   if (volumes && (env.env === "prod" || env.env === "preprod")) {
-    volumes?.map(volume => {
-      const pvc = new PersistentVolumeClaim({
+    volumes?.map(({name, secretName, size}) => {
+      const pv = new PersistentVolume({
         metadata: {
-          name: `${name}-${volume.name}`,
-          namespace: envParams.namespace.name
+          name: `pv-${name}`,
+          labels: { usage: `pv-${name}`}
         },
         spec: {
-          accessModes: ["ReadWriteOnce"],
-          resources: {
-            requests: {
-              storage: volume.size
-            }
+          storageClassName: name,
+          accessModes: ["ReadWriteMany"],
+          capacity: { storage: size },
+          persistentVolumeReclaimPolicy: "Delete",
+          azureFile: {
+            shareName: name,
+            secretName: secretName || "",
+            secretNamespace: envParams.namespace.name,
           }
         }
       });
+
+      manifests.push(pv)
+      // const pvc = new PersistentVolumeClaim({
+      //   metadata: {
+      //     name: `${name}-${volume.name}`,
+      //     namespace: envParams.namespace.name
+      //   },
+      //   spec: {
+      //     accessModes: ["ReadWriteOnce"],
+      //     resources: {
+      //       requests: {
+      //         storage: volume.size
+      //       }
+      //     }
+      //   }
+      // });
   
-      manifests.push(pvc)
+      // manifests.push(pvc)
     })
   }
 

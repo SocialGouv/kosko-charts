@@ -1,5 +1,6 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
+import { IoK8sApiCoreV1PersistentVolumeClaim } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolumeClaim";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { StatefulSet } from "kubernetes-models/apps/v1/StatefulSet";
 
@@ -121,15 +122,19 @@ export const createStatefulSet = (
       },
       periodSeconds: 5,
     },
-    // volumeMounts: params.volumes,
   };
+
+  const volumeMounts = params.volumes?.map(({ name, mountPath }) => ({
+    mountPath,
+    name,
+  }));
 
   const containers = [
     merge(
       params.volumes
         ? {
             ...container,
-            ...{ volumeMounts: params.volumes },
+            ...{ volumeMounts },
           }
         : container,
       params.container ?? {}
@@ -146,36 +151,17 @@ export const createStatefulSet = (
         params.labels ?? {}
       ),
     },
-    spec: volumes
-      ? {
-          containers,
-          imagePullSecrets: params.imagePullSecrets,
-          volumes,
-        }
-      : {
-          containers,
-          imagePullSecrets: params.imagePullSecrets,
-        },
-  };
-
-  // const spec = {
-  //   replicas: 1,
-  //   selector,
-  //   serviceName: params.name,
-  //   template,
-  // };
-
-  const spec = {
-    replicas: 1,
-    selector,
-    template,
-  };
-
-  const statefulSpec = {
-    replicas: 1,
-    selector,
-    serviceName: params.name,
-    template,
+    spec:
+      volumes && !stateful
+        ? {
+            containers,
+            imagePullSecrets: params.imagePullSecrets,
+            volumes,
+          }
+        : {
+            containers,
+            imagePullSecrets: params.imagePullSecrets,
+          },
   };
 
   const metadata = {
@@ -189,11 +175,33 @@ export const createStatefulSet = (
     name: params.name,
   };
 
-  const config = { metadata, spec };
-  const statefulConfig = { metadata, spec: statefulSpec };
+  if (stateful) {
+    const volumeClaimTemplates = params.volumes?.map(({ name, size }) => ({
+      apiVersion: IoK8sApiCoreV1PersistentVolumeClaim.apiVersion,
+      kind: IoK8sApiCoreV1PersistentVolumeClaim.kind,
+      metadata: { name },
+      spec: {
+        accessModes: ["ReadWriteMany"],
+        resources: { requests: { storage: size } },
+        storageClassName: name,
+      },
+    }));
 
-  return stateful ? new StatefulSet(statefulConfig) : new Deployment(config);
-  // return new (stateful ? StatefulSet : Deployment)(config);
+    const spec = {
+      replicas: 1,
+      selector,
+      serviceName: params.name,
+      template,
+      volumeClaimTemplates,
+    };
+
+    const config = { metadata, spec: spec };
+    return new StatefulSet(config);
+  } else {
+    const spec = { replicas: 1, selector, template };
+    const config = { metadata, spec };
+    return new Deployment(config);
+  }
 };
 
 export default createStatefulSet;

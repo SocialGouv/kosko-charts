@@ -9,6 +9,7 @@ const volumes = [
   {
     mountPath: "/mnt/my_volume",
     name: "my_volume",
+    secretName: "my-volume-secret",
     size: "10Gi",
   },
 ];

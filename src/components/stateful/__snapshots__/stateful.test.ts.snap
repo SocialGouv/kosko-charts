@@ -97,7 +97,6 @@ Array [
                 Object {
                   "mountPath": "/mnt/my_volume",
                   "name": "my_volume",
-                  "size": "10Gi",
                 },
               ],
             },
@@ -292,21 +291,32 @@ Array [
                 Object {
                   "mountPath": "/mnt/my_volume",
                   "name": "my_volume",
-                  "size": "10Gi",
                 },
               ],
             },
           ],
-          "volumes": Array [
-            Object {
-              "name": "my_volume",
-              "persistentVolumeClaim": Object {
-                "claimName": "app-my_volume",
-              },
-            },
-          ],
         },
       },
+      "volumeClaimTemplates": Array [
+        Object {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "metadata": Object {
+            "name": "my_volume",
+          },
+          "spec": Object {
+            "accessModes": Array [
+              "ReadWriteMany",
+            ],
+            "resources": Object {
+              "requests": Object {
+                "storage": "10Gi",
+              },
+            },
+            "storageClassName": "my_volume",
+          },
+        },
+      ],
     },
   },
   Object {
@@ -391,20 +401,27 @@ Array [
   },
   Object {
     "apiVersion": "v1",
-    "kind": "PersistentVolumeClaim",
+    "kind": "PersistentVolume",
     "metadata": Object {
-      "name": "app-my_volume",
-      "namespace": "sample-42-my-test",
+      "labels": Object {
+        "usage": "pv-my_volume",
+      },
+      "name": "pv-my_volume",
     },
     "spec": Object {
       "accessModes": Array [
-        "ReadWriteOnce",
+        "ReadWriteMany",
       ],
-      "resources": Object {
-        "requests": Object {
-          "storage": "10Gi",
-        },
+      "azureFile": Object {
+        "secretName": "my-volume-secret",
+        "secretNamespace": "sample-42-my-test",
+        "shareName": "my_volume",
       },
+      "capacity": Object {
+        "storage": "10Gi",
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "my_volume",
     },
   },
 ]
@@ -508,21 +525,32 @@ Array [
                 Object {
                   "mountPath": "/mnt/my_volume",
                   "name": "my_volume",
-                  "size": "10Gi",
                 },
               ],
             },
           ],
-          "volumes": Array [
-            Object {
-              "name": "my_volume",
-              "persistentVolumeClaim": Object {
-                "claimName": "app-my_volume",
-              },
-            },
-          ],
         },
       },
+      "volumeClaimTemplates": Array [
+        Object {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "metadata": Object {
+            "name": "my_volume",
+          },
+          "spec": Object {
+            "accessModes": Array [
+              "ReadWriteMany",
+            ],
+            "resources": Object {
+              "requests": Object {
+                "storage": "10Gi",
+              },
+            },
+            "storageClassName": "my_volume",
+          },
+        },
+      ],
     },
   },
   Object {
@@ -609,20 +637,27 @@ Array [
   },
   Object {
     "apiVersion": "v1",
-    "kind": "PersistentVolumeClaim",
+    "kind": "PersistentVolume",
     "metadata": Object {
-      "name": "app-my_volume",
-      "namespace": "sample-42-my-test",
+      "labels": Object {
+        "usage": "pv-my_volume",
+      },
+      "name": "pv-my_volume",
     },
     "spec": Object {
       "accessModes": Array [
-        "ReadWriteOnce",
+        "ReadWriteMany",
       ],
-      "resources": Object {
-        "requests": Object {
-          "storage": "10Gi",
-        },
+      "azureFile": Object {
+        "secretName": "my-volume-secret",
+        "secretNamespace": "sample-42-my-test",
+        "shareName": "my_volume",
       },
+      "capacity": Object {
+        "storage": "10Gi",
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "my_volume",
     },
   },
 ]
