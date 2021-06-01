@@ -1,3 +1,10 @@
+# [5.5.0-beta.8](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.7...v5.5.0-beta.8) (2021-06-01)
+
+
+### Bug Fixes
+
+* Get Azure file shares from volume config. ([0900095](https://github.com/SocialGouv/kosko-charts/commit/09000950729605937094d368ffe9ee61c1b663ba))
+
 # [5.5.0-beta.7](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.6...v5.5.0-beta.7) (2021-06-01)
 
 
