@@ -1,3 +1,10 @@
+# [5.5.0-beta.7](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.6...v5.5.0-beta.7) (2021-06-01)
+
+
+### Bug Fixes
+
+* Use PersistentVolume. ([3f8726d](https://github.com/SocialGouv/kosko-charts/commit/3f8726d8c78db4a02e494149d7c3cf5d4face6ac))
+
 # [5.5.0-beta.6](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.5...v5.5.0-beta.6) (2021-06-01)
 
 
