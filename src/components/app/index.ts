@@ -30,9 +30,10 @@ type AliasParams = {
 };
 
 export type Volume = {
-  mountPath: string;
   name: string;
-  size: string;
+  size?: string;
+  mountPath?: string;
+  emptyDir?: Record<string, string>;
 }
 
 export type AppConfig = DeploymentParams & StatefulSetParams &
@@ -236,7 +237,7 @@ export const create: createFn = (
           accessModes: ["ReadWriteOnce"],
           resources: {
             requests: {
-              storage: volume.size
+              storage: volume.size || "2Gi"
             }
           }
         }
