@@ -1,3 +1,11 @@
+# [5.5.0-beta.6](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.5...v5.5.0-beta.6) (2021-06-01)
+
+
+### Bug Fixes
+
+* Add stateful flag. ([f7f0597](https://github.com/SocialGouv/kosko-charts/commit/f7f05971d98e3787475feb5690e340ba9d66e3b7))
+* Remove Deployment serviceName. ([93b3c63](https://github.com/SocialGouv/kosko-charts/commit/93b3c636205e76cbee61c8e9943b383c95e4a5d4))
+
 # [5.5.0-beta.5](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.4...v5.5.0-beta.5) (2021-06-01)
 
 
