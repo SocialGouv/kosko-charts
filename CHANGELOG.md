@@ -1,3 +1,10 @@
+# [5.5.0-beta.5](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.4...v5.5.0-beta.5) (2021-06-01)
+
+
+### Bug Fixes
+
+* Volume type definition. ([fb566b6](https://github.com/SocialGouv/kosko-charts/commit/fb566b623d16cf211952f2572040f4b75bc0f08c))
+
 # [5.5.0-beta.4](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.3...v5.5.0-beta.4) (2021-05-31)
 
 
