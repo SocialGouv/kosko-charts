@@ -1,8 +1,8 @@
 import { Environment } from "@kosko/env";
-import { project } from "@socialgouv/kosko-charts/testing/fake/github-actions.env";
 import { promises } from "fs";
 import { directory } from "tempy";
 
+import { project } from "./../../../testing/fake/github-actions.env";
 import { create } from "./index";
 
 // jest.mock("@socialgouv/kosko-charts/environments/github", () => ({
