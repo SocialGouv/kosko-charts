@@ -7,9 +7,9 @@ export const project = (
   prod: Record<string, string>;
 } => {
   const base = {
-    GITHUB_RUN_ID: "1234",
     GITHUB_JOB: "5678",
-    GITHUB_REPOSITORY: "socialgouv/sample-next-app",
+    GITHUB_REPOSITORY: `socialgouv/${projectName}`,
+    GITHUB_RUN_ID: "1234",
     GITHUB_SHA: "0123456789abcdefghijklmnopqrstuvwxyz0123",
     // Additional
     SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
@@ -21,8 +21,8 @@ export const project = (
 
   const preprod = {
     ...base,
-    SOCIALGOUV_PREPRODUCTION: "true",
     GITHUB_REF: "v1.2.3",
+    SOCIALGOUV_PREPRODUCTION: "true",
   };
 
   const prod = {

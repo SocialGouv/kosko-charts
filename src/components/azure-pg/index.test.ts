@@ -7,8 +7,8 @@ import { directory } from "tempy";
 import { create } from "./index";
 
 const githubEnv = {
-  GITHUB_SHA: "abcdefg",
   GITHUB_REPOSITORY: "some-org/sample",
+  GITHUB_SHA: "abcdefg",
   SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
 };
 

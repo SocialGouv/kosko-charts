@@ -9,11 +9,9 @@ import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
 
-
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
-
   const { GITHUB_SHA, GITHUB_REPOSITORY } = process.env as Record<
     string,
     string

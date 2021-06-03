@@ -57,7 +57,7 @@ export const restoreContainerJob = ({
   to,
 }: RestoreJobArgs): Job => {
   ok(process.env.GITHUB_SHA);
-  const sha = process.env.GITHUB_SHA?.slice(0,7)
+  const sha = process.env.GITHUB_SHA.slice(0, 7);
   const secretNamespace = getProjectSecretNamespace(project);
   const projectSlug = project.replace(/-/g, "");
   const jobEnv = [];

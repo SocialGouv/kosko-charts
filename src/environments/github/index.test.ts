@@ -5,11 +5,11 @@ test.each([
   [
     "because of empty strings",
     {
-      GITHUB_RUN_ID: " ",
       GITHUB_JOB: " ",
-      GITHUB_REPOSITORY: " ",
-      GITHUB_SHA: " ",
       GITHUB_REF: " ",
+      GITHUB_REPOSITORY: " ",
+      GITHUB_RUN_ID: " ",
+      GITHUB_SHA: " ",
       SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: " ",
     },
   ],
@@ -18,10 +18,10 @@ test.each([
 });
 
 const validEnv = {
-  GITHUB_RUN_ID: "1234",
   GITHUB_JOB: "5678",
-  GITHUB_SHA: "abcdef",
   GITHUB_REPOSITORY: "socialgouv/sample-next-app",
+  GITHUB_RUN_ID: "1234",
+  GITHUB_SHA: "abcdef",
   SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
 };
 test.each([

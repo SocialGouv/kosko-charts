@@ -25,7 +25,7 @@ export const addPostgresUserSecret = (deployment?: Deployment): void => {
 
   const defaultParams = getDefaultPgParams();
 
-  const secretRefName = process.env.GITHUB_REF?.match(/^v[\d\.]+/)
+  const secretRefName = process.env.GITHUB_REF?.match(/^v[\d.]+/)
     ? `azure-pg-user`
     : defaultParams.name;
 

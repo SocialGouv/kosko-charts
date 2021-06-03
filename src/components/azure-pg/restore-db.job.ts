@@ -66,8 +66,8 @@ export const restoreDbJob = ({
   envFrom = [],
   postRestoreScript,
 }: RestoreDbJobArgs): Manifest[] => {
-  ok(process.env.GITHUB_SHA)
-  const sha = process.env.GITHUB_SHA?.slice(0,7)
+  ok(process.env.GITHUB_SHA);
+  const sha = process.env.GITHUB_SHA.slice(0, 7);
   ok(sha);
   const secretNamespace = getProjectSecretNamespace(project);
   const azureSecretName = getAzureProdVolumeSecretName(project);

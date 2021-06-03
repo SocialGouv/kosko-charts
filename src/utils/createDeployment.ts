@@ -38,10 +38,14 @@ export interface DeploymentParams {
  * @return {Deployment}
  */
 export const createDeployment = (params: DeploymentParams): Deployment => {
-  const tag = process.env.GITHUB_REF && process.env.GITHUB_REF.match(/v[\d\.]+/) && process.env.GITHUB_REF.slice(1)
-  const version = tag || process.env.GITHUB_SHA;
+  const tag =
+    process.env.GITHUB_REF &&
+    /v[\d.]+/.exec(process.env.GITHUB_REF) &&
+    process.env.GITHUB_REF.slice(1);
+  const version = tag ?? process.env.GITHUB_SHA;
   const image =
-    params.image || `ghcr.io/${process.env.GITHUB_REPOSITORY}/${params.name}:${version}`;
+    params.image ||
+    `ghcr.io/${process.env.GITHUB_REPOSITORY}/${params.name}:${version}`;
 
   return new Deployment({
     metadata: {

@@ -16,7 +16,7 @@ export const dropDbJob = ({
   user: string;
 }): Job => {
   assert();
-  const sha = process.env.GITHUB_SHA?.slice(0,7)
+  const sha = process.env.GITHUB_SHA?.slice(0, 7);
 
   return new Job({
     metadata: {

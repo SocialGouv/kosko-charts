@@ -25,7 +25,7 @@ export default (env = process.env): GlobalEnvironment => {
     SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN,
     SOCIALGOUV_PRODUCTION_NAMESPACE,
     SOCIALGOUV_PRODUCTION,
-    SOCIALGOUV_PREPRODUCTION
+    SOCIALGOUV_PREPRODUCTION,
   } = env as Record<string, string>;
 
   const shortSha = GITHUB_SHA.slice(0, 7);
@@ -38,7 +38,7 @@ export default (env = process.env): GlobalEnvironment => {
 
   const devNamespace = `${environmentSlug}-${projectName}`;
   const preProductionNamespace = `preprod-${projectName}`;
-  const productionNamespace = SOCIALGOUV_PRODUCTION_NAMESPACE ?? projectName;
+  const productionNamespace = SOCIALGOUV_PRODUCTION_NAMESPACE || projectName;
 
   const namespaceName = isProduction
     ? productionNamespace
@@ -56,11 +56,11 @@ export default (env = process.env): GlobalEnvironment => {
       remote: GITHUB_REPOSITORY,
     },
     labels: {
-      "app.github.com/run": GITHUB_RUN_ID,
       "app.github.com/job": GITHUB_JOB,
-      "app.github.com/repo": GITHUB_REPOSITORY,
-      "app.github.com/sha": shortSha,
       "app.github.com/ref": GITHUB_REF,
+      "app.github.com/repo": GITHUB_REPOSITORY,
+      "app.github.com/run": GITHUB_RUN_ID,
+      "app.github.com/sha": shortSha,
     },
     namespace: {
       name: namespaceName,
