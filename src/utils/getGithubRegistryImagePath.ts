@@ -1,4 +1,4 @@
-import { getTag } from "./../environments";
+import { getProject, getTag } from "./../environments";
 
 /** Parameters to get a valid `registry/project/image:tag` harbor path */
 export interface GithubRegistryImageProps {
@@ -26,7 +26,7 @@ export interface GithubRegistryImageProps {
  */
 export const getGithubRegistryImagePath = ({
   name,
-  project = process.env.HARBOR_PROJECT,
+  project = getProject(),
 }: GithubRegistryImageProps): string => {
   return `ghcr.io/socialgouv/${project}/${name}:${getTag()}`;
 };

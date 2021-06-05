@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return production gitlab global env 1`] = `
+Object {
+  "annotations": Object {},
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": "vX.Y.Z",
+    "remote": "socialgouv/sample",
+  },
+  "labels": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "vX.Y.Z",
+    "app.github.com/repo": "socialgouv/sample",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "0123456",
+  },
+  "namespace": Object {
+    "name": "sample",
+  },
+  "subdomain": "sample",
+}
+`;
+
+exports[`should return tagged gitlab global env 1`] = `
+Object {
+  "annotations": Object {},
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": "vX.Y.Z",
+    "remote": "socialgouv/sample",
+  },
+  "labels": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "vX.Y.Z",
+    "app.github.com/repo": "socialgouv/sample",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "0123456",
+  },
+  "namespace": Object {
+    "name": "vX.Y.Z-sample",
+  },
+  "subdomain": "vX.Y.Z-sample",
+}
+`;
+
+exports[`should return the gitlab global env 1`] = `
+Object {
+  "annotations": Object {},
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": "socialgouv/sample",
+  },
+  "labels": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": undefined,
+    "app.github.com/repo": "socialgouv/sample",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "0123456",
+  },
+  "namespace": Object {
+    "name": "0123456-sample",
+  },
+  "subdomain": "0123456-sample",
+}
+`;
+
+exports[`should throw because of empty strings 1`] = `
+"Wrong environment variables
+required \\"GITHUB_RUN_ID\\": \\" \\" should not be an empty string
+required \\"GITHUB_JOB\\": \\" \\" should not be an empty string
+required \\"GITHUB_REPOSITORY\\": \\" \\" should not be an empty string
+required \\"GITHUB_SHA\\": \\" \\" should not be an empty string
+required \\"SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN\\": \\" \\" should not be an empty string
+"
+`;
+
+exports[`should throw because of missing variables 1`] = `
+"Wrong environment variables
+required \\"GITHUB_RUN_ID\\": \\"undefined\\" should be defined
+required \\"GITHUB_JOB\\": \\"undefined\\" should be defined
+required \\"GITHUB_REPOSITORY\\": \\"undefined\\" should be defined
+required \\"GITHUB_SHA\\": \\"undefined\\" should be defined
+required \\"SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN\\": \\"undefined\\" should be defined
+"
+`;
