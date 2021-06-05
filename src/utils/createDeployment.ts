@@ -4,7 +4,7 @@ import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { merge } from "./@kosko/env/merge";
 // import { getHarborImagePath } from "./getHarborImagePath";
-import { getImagePath } from "./getImagePath";
+import { getGitlabRegistryImagePath } from "./getGitlabRegistryImagePath";
 
 /** Parameters to create a [[Deployment]] with [[createDeployment]] */
 export interface DeploymentParams {
@@ -47,7 +47,8 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
   //   params.image || `${process.env.CI_REGISTRY_IMAGE}/${params.name}:${tag}`;
   // console.log("process.env.CI_PROJECT_NAME", process.env.CI_PROJECT_NAME);
 
-  const image = params.image || getImagePath({ name: params.name });
+  const image =
+    params.image || getGitlabRegistryImagePath({ name: params.name });
   // const image = params.image || getHarborImagePath({ name: params.name });
 
   return new Deployment({

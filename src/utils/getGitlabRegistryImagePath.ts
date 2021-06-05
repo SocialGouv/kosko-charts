@@ -5,7 +5,7 @@ export interface GithubRegistryImageProps {
   /** name of the docker image */
   name: string;
   /** name of the project */
-  // project?: string;
+  project?: string;
   /** registry if not `registry.gitlab.factory.social.gouv.fr` */
   registry?: string;
 }
@@ -28,7 +28,8 @@ export interface GithubRegistryImageProps {
  */
 export const getGitlabRegistryImagePath = ({
   name,
+  project = getProject(),
   registry = "registry.gitlab.factory.social.gouv.fr",
 }: GithubRegistryImageProps): string => {
-  return `${registry}/${getProject()}/${name}:${getTag()}`;
+  return `${registry}/${project}/${name}:${getTag()}`;
 };
