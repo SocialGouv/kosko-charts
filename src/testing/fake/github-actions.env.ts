@@ -12,10 +12,9 @@ export const project = (
     GITHUB_RUN_ID: "1234",
     GITHUB_SHA: "0123456789abcdefghijklmnopqrstuvwxyz0123",
     // Additional
-    SOCIALGOUV_PRODUCTION: "",
-    SOCIALGOUV_PREPRODUCTION: "",
-    // HARBOR_PROJECT: "socialgouv/sample",
     SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
+    SOCIALGOUV_PREPRODUCTION: "",
+    SOCIALGOUV_PRODUCTION: "",
   };
 
   const dev = {

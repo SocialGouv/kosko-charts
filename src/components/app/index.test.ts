@@ -24,8 +24,11 @@ jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
   }),
 }));
 
+const OLD_ENV = process.env;
+
 beforeEach(() => {
   jest.resetModules();
+  process.env = { ...OLD_ENV };
 });
 
 test("should throw because of a missing envs", () => {
