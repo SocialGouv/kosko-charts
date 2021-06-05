@@ -4,9 +4,10 @@ import github from "./github";
 import gitlab from "./gitlab";
 
 export const getEnv = (env = process.env): GlobalEnvironment => {
-  if (process.env.CI_PROJECT_NAME) {
+  console.log("ENV:", env);
+  if (env.CI_PROJECT_NAME) {
     return gitlab(env);
-  } else if (process.env.GITHUB_RUN_ID) {
+  } else if (env.GITHUB_RUN_ID) {
     return github(env);
   } else {
     // TODO: Irrelevant error message to match snapshots, must be changed.
