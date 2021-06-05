@@ -4,10 +4,10 @@ import github from "./github";
 import gitlab from "./gitlab";
 
 export const getEnv = (env = process.env): GlobalEnvironment => {
-  console.log("ENV:", env);
-  if (env.CI_PROJECT_NAME) {
+  // console.log("ENV:", env);
+  if (env.KUBE_INGRESS_BASE_DOMAIN) {
     return gitlab(env);
-  } else if (env.GITHUB_RUN_ID) {
+  } else if (env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN) {
     return github(env);
   } else {
     // TODO: Irrelevant error message to match snapshots, must be changed.
