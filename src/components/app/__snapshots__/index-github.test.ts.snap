@@ -1,0 +1,919 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return dev manifests 1`] = `
+Array [
+  Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "app",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/disable-default-label-scoping-rules": "",
+            "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          },
+          "labels": Object {
+            "app": "app",
+            "application": "sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
+              "livenessProbe": Object {
+                "failureThreshold": 6,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 30,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
+              "name": "app",
+              "ports": Array [
+                Object {
+                  "containerPort": 3000,
+                  "name": "http",
+                },
+              ],
+              "readinessProbe": Object {
+                "failureThreshold": 15,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 0,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
+              },
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "500m",
+                  "memory": "128Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "name": "http",
+          "port": 80,
+          "targetPort": 3000,
+        },
+      ],
+      "selector": Object {
+        "app": "app",
+      },
+      "type": "ClusterIP",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        "kubernetes.io/ingress.class": "nginx",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "sample.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "app",
+                  "servicePort": 80,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "sample.fabrique.social.gouv.fr",
+          ],
+          "secretName": "wildcard-crt",
+        },
+      ],
+    },
+  },
+]
+`;
+
+exports[`should return preprod manifests with NO custom subdomain 1`] = `
+Array [
+  Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "app",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/disable-default-label-scoping-rules": "",
+            "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          },
+          "labels": Object {
+            "app": "app",
+            "application": "sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "livenessProbe": Object {
+                "failureThreshold": 6,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 30,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
+              "name": "app",
+              "ports": Array [
+                Object {
+                  "containerPort": 3000,
+                  "name": "http",
+                },
+              ],
+              "readinessProbe": Object {
+                "failureThreshold": 15,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 0,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
+              },
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "500m",
+                  "memory": "128Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "name": "http",
+          "port": 80,
+          "targetPort": 3000,
+        },
+      ],
+      "selector": Object {
+        "app": "app",
+      },
+      "type": "ClusterIP",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        "kubernetes.io/ingress.class": "nginx",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "sample.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "app",
+                  "servicePort": 80,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "sample.fabrique.social.gouv.fr",
+          ],
+          "secretName": "wildcard-crt",
+        },
+      ],
+    },
+  },
+]
+`;
+
+exports[`should return prod manifests 1`] = `
+Array [
+  Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "app",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/disable-default-label-scoping-rules": "",
+            "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          },
+          "labels": Object {
+            "app": "app",
+            "application": "sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "livenessProbe": Object {
+                "failureThreshold": 6,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 30,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
+              "name": "app",
+              "ports": Array [
+                Object {
+                  "containerPort": 3000,
+                  "name": "http",
+                },
+              ],
+              "readinessProbe": Object {
+                "failureThreshold": 15,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 0,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
+              },
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "500m",
+                  "memory": "128Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "name": "http",
+          "port": 80,
+          "targetPort": 3000,
+        },
+      ],
+      "selector": Object {
+        "app": "app",
+      },
+      "type": "ClusterIP",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        "kubernetes.io/ingress.class": "nginx",
+        "kubernetes.io/tls-acme": "true",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "sample.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "app",
+                  "servicePort": 80,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "sample.fabrique.social.gouv.fr",
+          ],
+          "secretName": "app-crt",
+        },
+      ],
+    },
+  },
+]
+`;
+
+exports[`should return prod manifests with custom subdomain 1`] = `
+Array [
+  Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "app",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/disable-default-label-scoping-rules": "",
+            "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          },
+          "labels": Object {
+            "app": "app",
+            "application": "sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "livenessProbe": Object {
+                "failureThreshold": 6,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 30,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
+              "name": "app",
+              "ports": Array [
+                Object {
+                  "containerPort": 3000,
+                  "name": "http",
+                },
+              ],
+              "readinessProbe": Object {
+                "failureThreshold": 15,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 0,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
+              },
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "500m",
+                  "memory": "128Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "name": "http",
+          "port": 80,
+          "targetPort": 3000,
+        },
+      ],
+      "selector": Object {
+        "app": "app",
+      },
+      "type": "ClusterIP",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        "kubernetes.io/ingress.class": "nginx",
+        "kubernetes.io/tls-acme": "true",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "another.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "app",
+                  "servicePort": 80,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "another.fabrique.social.gouv.fr",
+          ],
+          "secretName": "app-crt",
+        },
+      ],
+    },
+  },
+]
+`;
+
+exports[`should return prod manifests without custom subdomain if undefined 1`] = `
+Array [
+  Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "app",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "socialgouv-sample",
+            "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/disable-default-label-scoping-rules": "",
+            "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          },
+          "labels": Object {
+            "app": "app",
+            "application": "sample",
+            "owner": "sample",
+            "team": "sample",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "livenessProbe": Object {
+                "failureThreshold": 6,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 30,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
+              "name": "app",
+              "ports": Array [
+                Object {
+                  "containerPort": 3000,
+                  "name": "http",
+                },
+              ],
+              "readinessProbe": Object {
+                "failureThreshold": 15,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 0,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
+              },
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "500m",
+                  "memory": "128Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/healthz",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "name": "http",
+          "port": 80,
+          "targetPort": 3000,
+        },
+      ],
+      "selector": Object {
+        "app": "app",
+      },
+      "type": "ClusterIP",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        "kubernetes.io/ingress.class": "nginx",
+        "kubernetes.io/tls-acme": "true",
+      },
+      "labels": Object {
+        "app": "app",
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "app",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "sample.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "app",
+                  "servicePort": 80,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "sample.fabrique.social.gouv.fr",
+          ],
+          "secretName": "app-crt",
+        },
+      ],
+    },
+  },
+]
+`;
+
+exports[`should throw because of a missing envs 1`] = `"undefined == true"`;

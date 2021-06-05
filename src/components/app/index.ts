@@ -5,7 +5,11 @@ import { ok } from "assert";
 import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
-import gitlab from "../../environments/gitlab";
+// import gitlab from "../../environments/gitlab";
+// import github from "../../environments/github";
+
+import { getEnv } from "../../environments";
+
 import { addToEnvFrom } from "../../utils/addToEnvFrom";
 import createDeployment, {
   DeploymentParams,
@@ -53,8 +57,9 @@ export const create: createFn = (
   name,
   { env, config, deployment: deploymentParams }
 ) => {
-  ok(process.env.CI_REGISTRY_IMAGE);
-  ok(process.env.CI_ENVIRONMENT_URL);
+  // ok(process.env.CI_REGISTRY_IMAGE);
+  // ok(process.env.CI_ENVIRONMENT_URL);
+  // CI();
   const manifests = [];
 
   const defaultEnvParams: Partial<AppConfig> = {
@@ -67,12 +72,13 @@ export const create: createFn = (
     },
   };
 
-  const gitlabEnv = gitlab(process.env);
+  // const gitlabEnv = gitlab(process.env);
+  const ciEnv = getEnv(process.env);
 
   // kosko component env values
   const envParams = merge(
     defaultEnvParams, // set name as default if not provided
-    gitlabEnv,
+    ciEnv,
     config ?? {}, // create options
     env.component(name) as AppConfig // kosko env overrides
   );
@@ -176,8 +182,8 @@ export const create: createFn = (
   /* INGRESS */
   if (envParams.ingress !== false) {
     let hosts = [
-      `${(envParams.subDomainPrefix || "") + gitlabEnv.subdomain}.${
-        gitlabEnv.domain
+      `${(envParams.subDomainPrefix || "") + ciEnv.subdomain}.${
+        ciEnv.domain
       }`,
     ];
 
@@ -185,8 +191,8 @@ export const create: createFn = (
       hosts = [
         `${
           (envParams.subDomainPrefix || "") +
-          (envParams.subdomain || gitlabEnv.subdomain)
-        }.${envParams.domain || gitlabEnv.domain}`,
+          (envParams.subdomain || ciEnv.subdomain)
+        }.${envParams.domain || ciEnv.domain}`,
       ];
     }
 

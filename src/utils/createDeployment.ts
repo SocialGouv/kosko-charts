@@ -3,6 +3,8 @@ import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_def
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
 import { merge } from "./@kosko/env/merge";
+// import { getHarborImagePath } from "./getHarborImagePath";
+import { getImagePath } from "./getImagePath";
 
 /** Parameters to create a [[Deployment]] with [[createDeployment]] */
 export interface DeploymentParams {
@@ -38,11 +40,15 @@ export interface DeploymentParams {
  * @return {Deployment}
  */
 export const createDeployment = (params: DeploymentParams): Deployment => {
-  const tag = process.env.CI_COMMIT_TAG
-    ? process.env.CI_COMMIT_TAG.slice(1)
-    : process.env.CI_COMMIT_SHA;
-  const image =
-    params.image || `${process.env.CI_REGISTRY_IMAGE}/${params.name}:${tag}`;
+  // const tag = process.env.CI_COMMIT_TAG
+  //   ? process.env.CI_COMMIT_TAG.slice(1)
+  //   : process.env.CI_COMMIT_SHA;
+  // const image =
+  //   params.image || `${process.env.CI_REGISTRY_IMAGE}/${params.name}:${tag}`;
+  // console.log("process.env.CI_PROJECT_NAME", process.env.CI_PROJECT_NAME);
+
+  const image = params.image || getImagePath({ name: params.name });
+  // const image = params.image || getHarborImagePath({ name: params.name });
 
   return new Deployment({
     metadata: {

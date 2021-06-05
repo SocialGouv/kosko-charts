@@ -1,9 +1,11 @@
+import { getTag } from "./../environments";
+
 /** Parameters to get a valid `registry/project/image:tag` harbor path */
 export interface GithubRegistryImageProps {
   /** name of the docker image */
   name: string;
   /** name of the project */
-  project: string;
+  project?: string;
 }
 
 /**
@@ -24,11 +26,7 @@ export interface GithubRegistryImageProps {
  */
 export const getGithubRegistryImagePath = ({
   name,
-  project,
+  project = process.env.HARBOR_PROJECT,
 }: GithubRegistryImageProps): string => {
-  const tag = process.env.CI_COMMIT_TAG
-    ? process.env.CI_COMMIT_TAG.slice(1)
-    : process.env.CI_COMMIT_SHA;
-
-  return `ghcr.io/socialgouv/${project}/${name}:${tag}`;
+  return `ghcr.io/socialgouv/${project}/${name}:${getTag()}`;
 };

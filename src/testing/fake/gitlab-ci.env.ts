@@ -27,8 +27,10 @@ export const project = (
     CI_PROJECT_URL: `https://gitlab.factory.social.gouv.fr/SocialGouv/${CI_PROJECT_NAME}`,
     CI_PROJECT_VISIBILITY: "public",
     CI_REGISTRY_IMAGE: `registry.gitlab.factory.social.gouv.fr/socialgouv/${CI_PROJECT_NAME}`,
+    // CI_REGISTRY_IMAGE: `registry.gitlab.factory.social.gouv.fr/socialgouv`,
     CI_REGISTRY_USER: "gitlab-ci-token",
     CI_REPOSITORY_URL: `https://gitlab-ci-token:[MASKED]@gitlab.factory.social.gouv.fr/SocialGouv/${CI_PROJECT_NAME}.git`,
+    // HARBOR_PROJECT: "socialgouv/sample",
   };
 
   const dev = {
