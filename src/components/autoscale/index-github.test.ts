@@ -2,15 +2,15 @@
 
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 
-const gitlabMock = {
+const githubMock = {
   git: {},
   namespace: { name: "sample-42-my-test" },
 };
 
-const gitlabModuleMock = {
+const githubModuleMock = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   __esModule: true,
-  default: () => gitlabMock,
+  default: () => githubMock,
 };
 
 beforeEach(() => {
@@ -19,8 +19,8 @@ beforeEach(() => {
 
 test("should create an autoscale for a deployment", async () => {
   jest.doMock(
-    "@socialgouv/kosko-charts/environments/gitlab",
-    () => gitlabModuleMock
+    "@socialgouv/kosko-charts/environments/github",
+    () => githubModuleMock
   );
 
   const deployment = new Deployment({
@@ -39,8 +39,8 @@ test("should create an autoscale for a deployment", async () => {
 
 test("should create an autoscale with custom spec", async () => {
   jest.doMock(
-    "@socialgouv/kosko-charts/environments/gitlab",
-    () => gitlabModuleMock
+    "@socialgouv/kosko-charts/environments/github",
+    () => githubModuleMock
   );
 
   const deployment = new Deployment({

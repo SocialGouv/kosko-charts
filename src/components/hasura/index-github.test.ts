@@ -10,11 +10,11 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test("should create metabase dev config", () => {
+test("should create hasura dev config", () => {
   const env = new Environment("/tmp");
-  // process.env.CI_REGISTRY_IMAGE = "/path/to/docker/image";
-  // process.env.CI_ENVIRONMENT_URL = "https://path/to/env";
-  // process.env.CI_PROJECT_NAME = "some-project";
+  // process.env.CI_REGISTRY_IMAGE = "CI_REGISTRY_IMAGE";
+  // process.env.CI_ENVIRONMENT_URL = "CI_ENVIRONMENT_URL";
+  // process.env.CI_PROJECT_NAME = "CI_PROJECT_NAME";
   const manifest = create({
     env,
   });

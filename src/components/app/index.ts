@@ -59,7 +59,7 @@ export const create: createFn = (
 ) => {
   // ok(process.env.CI_REGISTRY_IMAGE);
   // ok(process.env.CI_ENVIRONMENT_URL);
-  // CI();
+
   const manifests = [];
 
   const defaultEnvParams: Partial<AppConfig> = {

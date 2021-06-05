@@ -1,15 +1,15 @@
 //
-import { project } from "@socialgouv/kosko-charts/testing/fake/gitlab-ci.env";
+import { project } from "@socialgouv/kosko-charts/testing/fake/github-actions.env";
 
-const gitlabMock = {
+const githubMock = {
   git: {},
   namespace: { name: "sample-42-my-test" },
 };
 
-const gitlabModuleMock = {
+const githubModuleMock = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   __esModule: true,
-  default: () => gitlabMock,
+  default: () => githubMock,
 };
 
 beforeEach(() => {
@@ -18,8 +18,8 @@ beforeEach(() => {
 
 test("should create a namespace", async () => {
   jest.doMock(
-    "@socialgouv/kosko-charts/environments/gitlab",
-    () => gitlabModuleMock
+    "@socialgouv/kosko-charts/environments/github",
+    () => githubModuleMock
   );
 
   const githubEnv = project("sample").dev;
@@ -31,7 +31,7 @@ test("should create a namespace", async () => {
 });
 
 test("should create a namespace with extra labels and annotations", async () => {
-  Object.assign(gitlabMock, {
+  Object.assign(githubMock, {
     annotations: {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",
@@ -48,8 +48,8 @@ test("should create a namespace with extra labels and annotations", async () => 
     rancherId: "rancherId",
   });
   jest.doMock(
-    "@socialgouv/kosko-charts/environments/gitlab",
-    () => gitlabModuleMock
+    "@socialgouv/kosko-charts/environments/github",
+    () => githubModuleMock
   );
   const { createNamespace } = await import("./index");
   const namespace = createNamespace();

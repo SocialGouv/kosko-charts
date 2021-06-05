@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create a namespace 1`] = `
+Object {
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": Object {
+    "annotations": Object {
+      "field.cattle.io/creatorId": "gitlab",
+      "field.cattle.io/projectId": "",
+      "git/branch": "",
+      "git/remote": "",
+    },
+    "labels": Object {},
+    "name": "sample-42-my-test",
+  },
+}
+`;
+
+exports[`should create a namespace with extra labels and annotations 1`] = `
+Object {
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": Object {
+    "annotations": Object {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+      "field.cattle.io/creatorId": "gitlab",
+      "field.cattle.io/projectId": "rancherId",
+      "git/branch": "my-branch",
+      "git/remote": "my-origin",
+    },
+    "labels": Object {
+      "application": "sample",
+      "azure-pg-admin-user": "sample",
+      "owner": "sample",
+      "team": "sample",
+    },
+    "name": "sample-42-my-test",
+  },
+}
+`;

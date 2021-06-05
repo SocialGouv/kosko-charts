@@ -1,9 +1,10 @@
 //
 
 import type { Environment } from "@kosko/env";
+import { isProduction } from "@socialgouv/kosko-charts/environments";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
-import { ok } from "assert";
 
+// import { ok } from "assert";
 import type { DeploymentParams } from "../../utils/createDeployment";
 import type { AppConfig } from "../app";
 import { create as createApp } from "../app";
@@ -22,9 +23,9 @@ export const create = (
     deployment?: Partial<DeploymentParams>;
   }
 ): CreateResult => {
-  ok(process.env.CI_REGISTRY_IMAGE);
-  ok(process.env.CI_ENVIRONMENT_URL);
-  ok(process.env.CI_PROJECT_NAME);
+  // ok(process.env.CI_REGISTRY_IMAGE);
+  // ok(process.env.CI_ENVIRONMENT_URL);
+  // ok(process.env.CI_PROJECT_NAME);
 
   const manifests = createApp("hasura", {
     config: merge(
@@ -43,7 +44,7 @@ export const create = (
         },
         containerPort: 80,
         ingress: false,
-        subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
+        subDomainPrefix: isProduction() ? `hasura.` : "hasura-",
         withPostgres: true,
       },
       config
