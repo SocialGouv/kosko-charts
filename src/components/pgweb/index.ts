@@ -3,6 +3,7 @@ import type {
   createFn,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
+import { isProduction } from "@socialgouv/kosko-charts/environments";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 // renovate: datasource=docker depName=sosedoff/pgweb versioning=0.11.7
@@ -57,7 +58,7 @@ export const create: createFn = (name, { env, config, deployment }) => {
     config: merge(
       pgwebConfig,
       {
-        subDomainPrefix: process.env.PRODUCTION ? `pgweb.` : "pgweb-",
+        subDomainPrefix: isProduction() ? `pgweb.` : "pgweb-",
       },
       config ?? {}
     ),

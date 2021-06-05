@@ -2,6 +2,7 @@
 
 import type { createFn } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
+import { isProduction } from "@socialgouv/kosko-charts/environments";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
 import type { DeploymentParams } from "../../utils/createDeployment";
@@ -47,7 +48,7 @@ export const create: createFn = (
         containerPort: 6379,
         image: `redis:${REDIS_VERSION}`,
         ingress: false,
-        subDomainPrefix: process.env.PRODUCTION ? `redis.` : "redis-",
+        subDomainPrefix: isProduction() ? `redis.` : "redis-",
       },
       config
     ),
