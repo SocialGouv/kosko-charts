@@ -1,3 +1,10 @@
+## [5.6.3](https://github.com/SocialGouv/kosko-charts/compare/v5.6.2...v5.6.3) (2021-06-06)
+
+
+### Bug Fixes
+
+* Annotations and labels. ([0781462](https://github.com/SocialGouv/kosko-charts/commit/0781462262019ed501df00865c6b1967ef487413))
+
 ## [5.6.2](https://github.com/SocialGouv/kosko-charts/compare/v5.6.1...v5.6.2) (2021-06-06)
 
 
