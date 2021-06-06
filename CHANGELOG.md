@@ -1,3 +1,10 @@
+## [5.6.2](https://github.com/SocialGouv/kosko-charts/compare/v5.6.1...v5.6.2) (2021-06-06)
+
+
+### Bug Fixes
+
+* Extract dev branch name. ([2567d32](https://github.com/SocialGouv/kosko-charts/commit/2567d3233440a8825ba52ccf3045ea2c15fac6c5))
+
 ## [5.6.1](https://github.com/SocialGouv/kosko-charts/compare/v5.6.0...v5.6.1) (2021-06-06)
 
 
