@@ -49,20 +49,20 @@ Object {
   "annotations": Object {},
   "domain": "dev2.fabrique.social.gouv.fr",
   "git": Object {
-    "branch": undefined,
+    "branch": "refs/heads/mybranch",
     "remote": "socialgouv/sample",
   },
   "labels": Object {
     "app.github.com/job": "5678",
-    "app.github.com/ref": undefined,
+    "app.github.com/ref": "refs/heads/mybranch",
     "app.github.com/repo": "socialgouv/sample",
     "app.github.com/run": "1234",
     "app.github.com/sha": "0123456",
   },
   "namespace": Object {
-    "name": "0123456-sample",
+    "name": "mybranch-sample",
   },
-  "subdomain": "0123456-sample",
+  "subdomain": "mybranch-sample",
 }
 `;
 

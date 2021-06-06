@@ -19,6 +19,7 @@ export const project = (
 
   const dev = {
     ...base,
+    GITHUB_REF: "refs/heads/mybranch",
   };
 
   const preprod = {

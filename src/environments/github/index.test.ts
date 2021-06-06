@@ -18,6 +18,7 @@ test.each([
 
 const validEnv = {
   GITHUB_JOB: "5678",
+  GITHUB_REF: "refs/heads/mybranch",
   GITHUB_REPOSITORY: "socialgouv/sample",
   GITHUB_RUN_ID: "1234",
   GITHUB_SHA: "0123456789abcdefghijklmnopqrstuvwxyz0123",
