@@ -46,7 +46,7 @@ Array [
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
+              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:sha-0123456789abcdefghijklmnopqrstuvwxyz0123",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {

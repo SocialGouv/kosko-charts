@@ -26,7 +26,7 @@ export const getTag = (): string | undefined => {
       /v([\d.]+)/.exec(process.env.GITHUB_REF) &&
       process.env.GITHUB_REF.slice(1);
 
-    return tag ?? process.env.GITHUB_SHA;
+    return tag ?? `sha-${process.env.GITHUB_SHA}`;
   }
 };
 
