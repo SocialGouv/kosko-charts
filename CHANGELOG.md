@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0...v5.6.0) (2021-06-06)
+
+
+### Features
+
+* Bump version. ([d23766b](https://github.com/SocialGouv/kosko-charts/commit/d23766bc561b587872256ee0228382537a4f6cc5))
+
 # [5.5.0](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v5.5.0) (2021-06-06)
 
 
