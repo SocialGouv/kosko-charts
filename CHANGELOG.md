@@ -1,3 +1,15 @@
+# [5.5.0](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v5.5.0) (2021-06-06)
+
+
+### Bug Fixes
+
+* Bump version. ([c707bc2](https://github.com/SocialGouv/kosko-charts/commit/c707bc224ecba597ddc71ba9edb41c96a9c1da18))
+
+
+### Features
+
+* Generate manifests from Github actions. ([5d16931](https://github.com/SocialGouv/kosko-charts/commit/5d1693100c4b42f1d3e41f45fafebfcf9894e2a2))
+
 # [5.5.0](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v5.5.0) (2021-06-05)
 
 
