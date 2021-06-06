@@ -1,3 +1,10 @@
+## [5.6.1](https://github.com/SocialGouv/kosko-charts/compare/v5.6.0...v5.6.1) (2021-06-06)
+
+
+### Bug Fixes
+
+* Prefix image github sha. ([6c228a1](https://github.com/SocialGouv/kosko-charts/commit/6c228a18d36e92475dece0962479d2ad08ee116e))
+
 # [5.6.0](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0...v5.6.0) (2021-06-06)
 
 
