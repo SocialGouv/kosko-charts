@@ -2,18 +2,22 @@
 
 exports[`should return production gitlab global env 1`] = `
 Object {
-  "annotations": Object {},
+  "annotations": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "vX.Y.Z",
+    "app.github.com/repo": "socialgouv/sample",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "0123456",
+  },
   "domain": "dev2.fabrique.social.gouv.fr",
   "git": Object {
     "branch": "vX.Y.Z",
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "app.github.com/job": "5678",
-    "app.github.com/ref": "vX.Y.Z",
-    "app.github.com/repo": "socialgouv/sample",
-    "app.github.com/run": "1234",
-    "app.github.com/sha": "0123456",
+    "application": "vX.Y.Z-prod-sample",
+    "owner": "sample",
+    "team": "sample",
   },
   "namespace": Object {
     "name": "sample",
@@ -24,18 +28,23 @@ Object {
 
 exports[`should return tagged gitlab global env 1`] = `
 Object {
-  "annotations": Object {},
+  "annotations": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "vX.Y.Z",
+    "app.github.com/repo": "socialgouv/sample",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "0123456",
+  },
   "domain": "dev2.fabrique.social.gouv.fr",
   "git": Object {
     "branch": "vX.Y.Z",
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "app.github.com/job": "5678",
-    "app.github.com/ref": "vX.Y.Z",
-    "app.github.com/repo": "socialgouv/sample",
-    "app.github.com/run": "1234",
-    "app.github.com/sha": "0123456",
+    "application": "vX.Y.Z-dev2-sample",
+    "cert": "wildcard",
+    "owner": "sample",
+    "team": "sample",
   },
   "namespace": Object {
     "name": "vX.Y.Z-sample",
@@ -46,18 +55,23 @@ Object {
 
 exports[`should return the gitlab global env 1`] = `
 Object {
-  "annotations": Object {},
+  "annotations": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "refs/heads/mybranch",
+    "app.github.com/repo": "socialgouv/sample",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "0123456",
+  },
   "domain": "dev2.fabrique.social.gouv.fr",
   "git": Object {
     "branch": "refs/heads/mybranch",
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "app.github.com/job": "5678",
-    "app.github.com/ref": "refs/heads/mybranch",
-    "app.github.com/repo": "socialgouv/sample",
-    "app.github.com/run": "1234",
-    "app.github.com/sha": "0123456",
+    "application": "mybranch-dev2-sample",
+    "cert": "wildcard",
+    "owner": "sample",
+    "team": "sample",
   },
   "namespace": Object {
     "name": "mybranch-sample",

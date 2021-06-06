@@ -29,7 +29,8 @@ export default (env = process.env): GlobalEnvironment => {
   } = env as Record<string, string>;
 
   const shortSha = GITHUB_SHA.slice(0, 7);
-  const environmentSlug = slugify(GITHUB_REF.split("/").pop() ?? shortSha);
+  const branchName = GITHUB_REF.split("/").pop();
+  const environmentSlug = slugify(branchName ?? shortSha);
   const domain = SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN;
   const projectName = GITHUB_REPOSITORY.split("/")[1];
 
@@ -48,19 +49,28 @@ export default (env = process.env): GlobalEnvironment => {
 
   const subdomain = isProduction ? projectName : devNamespace;
 
+  const clusterEnv = SOCIALGOUV_PRODUCTION ? "prod" : "dev2";
+
+  const application = `${branchName}-${clusterEnv}-${projectName}`;
+
   return {
-    annotations: {},
+    annotations: {
+      "app.github.com/job": GITHUB_JOB,
+      "app.github.com/ref": GITHUB_REF,
+      "app.github.com/repo": GITHUB_REPOSITORY,
+      "app.github.com/run": GITHUB_RUN_ID,
+      "app.github.com/sha": shortSha,
+    },
     domain,
     git: {
       branch: GITHUB_REF,
       remote: GITHUB_REPOSITORY,
     },
     labels: {
-      "app.github.com/job": GITHUB_JOB,
-      "app.github.com/ref": GITHUB_REF,
-      "app.github.com/repo": GITHUB_REPOSITORY,
-      "app.github.com/run": GITHUB_RUN_ID,
-      "app.github.com/sha": shortSha,
+      application,
+      owner: projectName,
+      team: projectName,
+      ...(clusterEnv === "dev2" ? { cert: "wildcard" } : {}),
     },
     namespace: {
       name: namespaceName,
