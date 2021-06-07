@@ -37,8 +37,8 @@ export default (env = process.env): GlobalEnvironment => {
   const isProduction = Boolean(SOCIALGOUV_PRODUCTION);
   const isPreProduction = Boolean(SOCIALGOUV_PREPRODUCTION);
 
-  const devNamespace = `${environmentSlug}-${projectName}`;
-  const preProductionNamespace = `preprod-${projectName}`;
+  const devNamespace = `${projectName}-${environmentSlug}`;
+  const preProductionNamespace = `${projectName}-preprod`;
   const productionNamespace = SOCIALGOUV_PRODUCTION_NAMESPACE || projectName;
 
   const namespaceName = isProduction
@@ -49,9 +49,9 @@ export default (env = process.env): GlobalEnvironment => {
 
   const subdomain = isProduction ? projectName : devNamespace;
 
-  const clusterEnv = SOCIALGOUV_PRODUCTION ? "prod" : "dev2";
+  const clusterEnv = SOCIALGOUV_PRODUCTION ? "prod2" : "dev2";
 
-  const application = `${branchName}-${clusterEnv}-${projectName}`;
+  const application = `${projectName}-${clusterEnv}-${branchName}`;
 
   return {
     annotations: {
