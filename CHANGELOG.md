@@ -1,3 +1,11 @@
+## [5.6.4](https://github.com/SocialGouv/kosko-charts/compare/v5.6.3...v5.6.4) (2021-06-07)
+
+
+### Bug Fixes
+
+* Swap project and branch name. ([33bbd7f](https://github.com/SocialGouv/kosko-charts/commit/33bbd7fb62142b2729324c5a7d21026a5284d5ea))
+* Update tests snapshots. ([a9016f4](https://github.com/SocialGouv/kosko-charts/commit/a9016f445dc9b485b26740a9de0833182a465c6e))
+
 ## [5.6.3](https://github.com/SocialGouv/kosko-charts/compare/v5.6.2...v5.6.3) (2021-06-06)
 
 
