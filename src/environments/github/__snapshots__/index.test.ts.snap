@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should return preproduction gitlab global env 1`] = `
+Object {
+  "annotations": Object {
+    "app.github.com/job": "5678",
+    "app.github.com/ref": "vX.Y.Z",
+    "app.github.com/repo": "socialgouv/sample",
+    "app.github.com/run": "1234",
+    "app.github.com/sha": "0123456",
+  },
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": "vX.Y.Z",
+    "remote": "socialgouv/sample",
+  },
+  "labels": Object {
+    "application": "sample-dev2-vX.Y.Z",
+    "cert": "wildcard",
+    "owner": "sample",
+    "team": "sample",
+  },
+  "namespace": Object {
+    "name": "sample-preprod",
+  },
+  "subdomain": "sample-vX.Y.Z",
+}
+`;
+
 exports[`should return production gitlab global env 1`] = `
 Object {
   "annotations": Object {
@@ -15,7 +42,7 @@ Object {
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "application": "vX.Y.Z-prod-sample",
+    "application": "sample-prod2-vX.Y.Z",
     "owner": "sample",
     "team": "sample",
   },
@@ -41,15 +68,15 @@ Object {
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "application": "vX.Y.Z-dev2-sample",
+    "application": "sample-dev2-vX.Y.Z",
     "cert": "wildcard",
     "owner": "sample",
     "team": "sample",
   },
   "namespace": Object {
-    "name": "vX.Y.Z-sample",
+    "name": "sample-vX.Y.Z",
   },
-  "subdomain": "vX.Y.Z-sample",
+  "subdomain": "sample-vX.Y.Z",
 }
 `;
 
@@ -68,15 +95,15 @@ Object {
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "application": "mybranch-dev2-sample",
+    "application": "sample-dev2-mybranch",
     "cert": "wildcard",
     "owner": "sample",
     "team": "sample",
   },
   "namespace": Object {
-    "name": "mybranch-sample",
+    "name": "sample-mybranch",
   },
-  "subdomain": "mybranch-sample",
+  "subdomain": "sample-mybranch",
 }
 `;
 

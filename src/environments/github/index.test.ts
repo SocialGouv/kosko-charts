@@ -36,6 +36,14 @@ test.each([
     },
   ],
   [
+    "preproduction gitlab global env",
+    {
+      ...validEnv,
+      GITHUB_REF: "vX.Y.Z",
+      SOCIALGOUV_PREPRODUCTION: "true",
+    },
+  ],
+  [
     "production gitlab global env",
     {
       ...validEnv,
