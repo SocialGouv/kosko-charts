@@ -1,4 +1,4 @@
-import { Environment } from "@kosko/env";
+import { createNodeCJSEnvironment } from "@kosko/env";
 
 import { create } from "./index";
 
@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 test("should create metabase dev config", async () => {
-  const env = new Environment("/tmp");
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   process.env.CI_REGISTRY_IMAGE = "/path/to/docker/image";
   process.env.CI_ENVIRONMENT_URL = "https://path/to/env";
   process.env.CI_PROJECT_NAME = "some-project";

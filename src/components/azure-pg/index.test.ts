@@ -1,6 +1,6 @@
 //
 
-import { Environment } from "@kosko/env";
+import { createNodeCJSEnvironment } from "@kosko/env";
 import { promises } from "fs";
 import { directory } from "tempy";
 
@@ -39,14 +39,14 @@ beforeEach(() => {
 });
 
 test("should throw because of a missing envs", () => {
-  const env = new Environment("/tmp");
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   expect(() => create({ env })).toThrowErrorMatchingSnapshot();
 });
 
 test("should return create an job", async () => {
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
-  const env = new Environment(cwd);
+  const env = createNodeCJSEnvironment({ cwd });
   env.env = "dev";
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
   await promises.writeFile(
@@ -58,7 +58,7 @@ test("should return create an job", async () => {
 
 test("should use custom pgHost", async () => {
   process.env.CI_PROJECT_NAME = "sample-next-app";
-  const env = new Environment("/tmp/xxx");
+  const env = createNodeCJSEnvironment({ cwd: "/tmp/xxx" });
   env.env = "dev";
   await promises.mkdir(`/tmp/xxx/environments/dev`, { recursive: true });
   await promises.writeFile(

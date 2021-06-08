@@ -1,4 +1,4 @@
-import { Environment } from "@kosko/env";
+import { createNodeCJSEnvironment } from "@kosko/env";
 
 import { create } from "./index";
 
@@ -12,7 +12,7 @@ beforeEach(() => {
 });
 
 test("should create app with pgweb config", async () => {
-  const env = new Environment("/tmp");
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   const manifest = await create("pgweb", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
@@ -59,26 +59,20 @@ test("should create app with pgweb config", async () => {
             "component": "pgweb",
           },
         },
-        "env": SyncEnvironment {
+        "env": Object {
+          "component": [Function],
           "cwd": "/tmp",
           "extensions": Array [
             "cjs",
             "mjs",
           ],
+          "global": [Function],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",
           },
-          "reducers": Array [
-            Object {
-              "name": "global",
-              "reduce": [Function],
-            },
-            Object {
-              "name": "component",
-              "reduce": [Function],
-            },
-          ],
+          "resetReducers": [Function],
+          "setReducers": [Function],
         },
       },
     ]
@@ -87,7 +81,7 @@ test("should create app with pgweb config", async () => {
 
 test("should create app with pgweb config for production", async () => {
   process.env.PRODUCTION = "true";
-  const env = new Environment("/tmp");
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   const manifest = await create("pgweb", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
@@ -134,26 +128,20 @@ test("should create app with pgweb config for production", async () => {
             "component": "pgweb",
           },
         },
-        "env": SyncEnvironment {
+        "env": Object {
+          "component": [Function],
           "cwd": "/tmp",
           "extensions": Array [
             "cjs",
             "mjs",
           ],
+          "global": [Function],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",
           },
-          "reducers": Array [
-            Object {
-              "name": "global",
-              "reduce": [Function],
-            },
-            Object {
-              "name": "component",
-              "reduce": [Function],
-            },
-          ],
+          "resetReducers": [Function],
+          "setReducers": [Function],
         },
       },
     ]

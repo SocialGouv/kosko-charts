@@ -1,5 +1,5 @@
 import { ok } from "assert";
-import { Ingress } from "kubernetes-models/api/networking/v1beta1/Ingress";
+import { Ingress } from "kubernetes-models/networking.k8s.io/v1/Ingress";
 
 import { getManifestByKind } from "./getManifestByKind";
 
@@ -15,12 +15,13 @@ import { getManifestByKind } from "./getManifestByKind";
  * @category utils
  * @return {string}
  */
-export const getIngressHost = (manifests: { kind: string }[]) => {
+export const getIngressHost = (manifests: { kind: string }[]): string => {
   //@ts-expect-error
   const ingress = getManifestByKind(manifests, Ingress) as Ingress;
   ok(ingress);
   ok(ingress.spec);
   ok(ingress.spec.rules);
   ok(ingress.spec.rules[0]);
+  ok(ingress.spec.rules[0].host);
   return ingress.spec.rules[0].host;
 };
