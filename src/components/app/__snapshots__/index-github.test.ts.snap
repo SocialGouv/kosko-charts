@@ -7,19 +7,23 @@ Array [
     "kind": "Deployment",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "refs/heads/mybranch",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
       "labels": Object {
         "app": "app",
         "application": "sample",
+        "cert": "wildcard",
         "owner": "sample",
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-mybranch",
     },
     "spec": Object {
       "replicas": 1,
@@ -31,14 +35,18 @@ Array [
       "template": Object {
         "metadata": Object {
           "annotations": Object {
-            "app.gitlab.com/app": "socialgouv-sample",
-            "app.gitlab.com/env": "my-test",
+            "app.github.com/job": "5678",
+            "app.github.com/ref": "refs/heads/mybranch",
+            "app.github.com/repo": "socialgouv/sample",
+            "app.github.com/run": "1234",
+            "app.github.com/sha": "0123456",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
           "labels": Object {
             "app": "app",
             "application": "sample",
+            "cert": "wildcard",
             "owner": "sample",
             "team": "sample",
           },
@@ -104,19 +112,23 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "refs/heads/mybranch",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
       "labels": Object {
         "app": "app",
         "application": "sample",
+        "cert": "wildcard",
         "owner": "sample",
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-mybranch",
     },
     "spec": Object {
       "ports": Array [
@@ -137,8 +149,11 @@ Array [
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "refs/heads/mybranch",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -146,16 +161,17 @@ Array [
       "labels": Object {
         "app": "app",
         "application": "sample",
+        "cert": "wildcard",
         "owner": "sample",
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-mybranch",
     },
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "sample-mybranch.dev2.fabrique.social.gouv.fr",
           "http": Object {
             "paths": Array [
               Object {
@@ -172,7 +188,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "sample-mybranch.dev2.fabrique.social.gouv.fr",
           ],
           "secretName": "wildcard-crt",
         },
@@ -189,19 +205,23 @@ Array [
     "kind": "Deployment",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
       "labels": Object {
         "app": "app",
         "application": "sample",
+        "cert": "wildcard",
         "owner": "sample",
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-preprod",
     },
     "spec": Object {
       "replicas": 1,
@@ -213,14 +233,18 @@ Array [
       "template": Object {
         "metadata": Object {
           "annotations": Object {
-            "app.gitlab.com/app": "socialgouv-sample",
-            "app.gitlab.com/env": "my-test",
+            "app.github.com/job": "5678",
+            "app.github.com/ref": "v1.2.3",
+            "app.github.com/repo": "socialgouv/sample",
+            "app.github.com/run": "1234",
+            "app.github.com/sha": "0123456",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
           "labels": Object {
             "app": "app",
             "application": "sample",
+            "cert": "wildcard",
             "owner": "sample",
             "team": "sample",
           },
@@ -286,19 +310,23 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
       "labels": Object {
         "app": "app",
         "application": "sample",
+        "cert": "wildcard",
         "owner": "sample",
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-preprod",
     },
     "spec": Object {
       "ports": Array [
@@ -319,8 +347,11 @@ Array [
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -328,16 +359,17 @@ Array [
       "labels": Object {
         "app": "app",
         "application": "sample",
+        "cert": "wildcard",
         "owner": "sample",
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample-preprod",
     },
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "sample-preprod.dev2.fabrique.social.gouv.fr",
           "http": Object {
             "paths": Array [
               Object {
@@ -354,7 +386,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "sample-preprod.dev2.fabrique.social.gouv.fr",
           ],
           "secretName": "wildcard-crt",
         },
@@ -371,8 +403,11 @@ Array [
     "kind": "Deployment",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -383,7 +418,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "replicas": 1,
@@ -395,8 +430,11 @@ Array [
       "template": Object {
         "metadata": Object {
           "annotations": Object {
-            "app.gitlab.com/app": "socialgouv-sample",
-            "app.gitlab.com/env": "my-test",
+            "app.github.com/job": "5678",
+            "app.github.com/ref": "v1.2.3",
+            "app.github.com/repo": "socialgouv/sample",
+            "app.github.com/run": "1234",
+            "app.github.com/sha": "0123456",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -468,8 +506,11 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -480,7 +521,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "ports": Array [
@@ -501,8 +542,11 @@ Array [
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
@@ -516,7 +560,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "rules": Array [
@@ -555,8 +599,11 @@ Array [
     "kind": "Deployment",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -567,7 +614,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "replicas": 1,
@@ -579,8 +626,11 @@ Array [
       "template": Object {
         "metadata": Object {
           "annotations": Object {
-            "app.gitlab.com/app": "socialgouv-sample",
-            "app.gitlab.com/env": "my-test",
+            "app.github.com/job": "5678",
+            "app.github.com/ref": "v1.2.3",
+            "app.github.com/repo": "socialgouv/sample",
+            "app.github.com/run": "1234",
+            "app.github.com/sha": "0123456",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -652,8 +702,11 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -664,7 +717,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "ports": Array [
@@ -685,8 +738,11 @@ Array [
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
@@ -700,7 +756,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "rules": Array [
@@ -739,8 +795,11 @@ Array [
     "kind": "Deployment",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -751,7 +810,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "replicas": 1,
@@ -763,8 +822,11 @@ Array [
       "template": Object {
         "metadata": Object {
           "annotations": Object {
-            "app.gitlab.com/app": "socialgouv-sample",
-            "app.gitlab.com/env": "my-test",
+            "app.github.com/job": "5678",
+            "app.github.com/ref": "v1.2.3",
+            "app.github.com/repo": "socialgouv/sample",
+            "app.github.com/run": "1234",
+            "app.github.com/sha": "0123456",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -836,8 +898,11 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -848,7 +913,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "ports": Array [
@@ -869,8 +934,11 @@ Array [
     "kind": "Ingress",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
+        "app.github.com/job": "5678",
+        "app.github.com/ref": "v1.2.3",
+        "app.github.com/repo": "socialgouv/sample",
+        "app.github.com/run": "1234",
+        "app.github.com/sha": "0123456",
         "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
@@ -884,7 +952,7 @@ Array [
         "team": "sample",
       },
       "name": "app",
-      "namespace": "sample-42-my-test",
+      "namespace": "sample",
     },
     "spec": Object {
       "rules": Array [

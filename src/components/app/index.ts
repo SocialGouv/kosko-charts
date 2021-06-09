@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { Environment } from "@kosko/env";
 import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
-import { ok } from "assert";
+// import { ok } from "assert";
 import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
@@ -74,6 +74,7 @@ export const create: createFn = (
 
   // const gitlabEnv = gitlab(process.env);
   const ciEnv = getEnv(process.env);
+  
 
   // kosko component env values
   const envParams = merge(

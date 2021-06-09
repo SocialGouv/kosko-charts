@@ -5,30 +5,30 @@ import { directory } from "tempy";
 
 import { create } from "./index";
 
-jest.mock("@socialgouv/kosko-charts/environments/github", () => ({
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  __esModule: true,
-  default: () => ({
-    annotations: {
-      "app.gitlab.com/app": "socialgouv-sample",
-      "app.gitlab.com/env": "my-test",
-    },
-    domain: "fabrique.social.gouv.fr",
-    labels: {
-      application: "sample",
-      owner: "sample",
-      team: "sample",
-    },
-    namespace: { name: "sample-42-my-test" },
-    subdomain: "sample",
-  }),
-}));
+// jest.mock("@socialgouv/kosko-charts/environments/github", () => ({
+//   // eslint-disable-next-line @typescript-eslint/naming-convention
+//   __esModule: true,
+//   default: () => ({
+//     annotations: {
+//       "app.gitlab.com/app": "socialgouv-sample",
+//       "app.gitlab.com/env": "my-test",
+//     },
+//     domain: "fabrique.social.gouv.fr",
+//     labels: {
+//       application: "sample",
+//       owner: "sample",
+//       team: "sample",
+//     },
+//     namespace: { name: "sample-42-my-test" },
+//     subdomain: "sample",
+//   }),
+// }));
 
-const OLD_ENV = process.env;
+// const OLD_ENV = process.env;
 
 beforeEach(() => {
   jest.resetModules();
-  process.env = { ...OLD_ENV };
+  // process.env = { ...OLD_ENV };
 });
 
 test("should throw because of a missing envs", () => {

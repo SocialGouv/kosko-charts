@@ -40,16 +40,8 @@ export interface DeploymentParams {
  * @return {Deployment}
  */
 export const createDeployment = (params: DeploymentParams): Deployment => {
-  // const tag = process.env.CI_COMMIT_TAG
-  //   ? process.env.CI_COMMIT_TAG.slice(1)
-  //   : process.env.CI_COMMIT_SHA;
-  // const image =
-  //   params.image || `${process.env.CI_REGISTRY_IMAGE}/${params.name}:${tag}`;
-  // console.log("process.env.CI_PROJECT_NAME", process.env.CI_PROJECT_NAME);
-
   const image =
     params.image || getGitlabRegistryImagePath({ name: params.name });
-  // const image = params.image || getHarborImagePath({ name: params.name });
 
   return new Deployment({
     metadata: {

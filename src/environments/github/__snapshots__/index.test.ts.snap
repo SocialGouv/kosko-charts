@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return preproduction gitlab global env 1`] = `
+exports[`should return preproduction github global env 1`] = `
 Object {
   "annotations": Object {
     "app.github.com/job": "5678",
@@ -15,7 +15,7 @@ Object {
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "application": "sample-dev2-vX.Y.Z",
+    "application": "sample",
     "cert": "wildcard",
     "owner": "sample",
     "team": "sample",
@@ -23,11 +23,11 @@ Object {
   "namespace": Object {
     "name": "sample-preprod",
   },
-  "subdomain": "sample-vX.Y.Z",
+  "subdomain": "sample-preprod",
 }
 `;
 
-exports[`should return production gitlab global env 1`] = `
+exports[`should return production github global env 1`] = `
 Object {
   "annotations": Object {
     "app.github.com/job": "5678",
@@ -42,7 +42,7 @@ Object {
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "application": "sample-prod2-vX.Y.Z",
+    "application": "sample",
     "owner": "sample",
     "team": "sample",
   },
@@ -53,7 +53,7 @@ Object {
 }
 `;
 
-exports[`should return tagged gitlab global env 1`] = `
+exports[`should return tagged github global env 1`] = `
 Object {
   "annotations": Object {
     "app.github.com/job": "5678",
@@ -68,7 +68,7 @@ Object {
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "application": "sample-dev2-vX.Y.Z",
+    "application": "sample",
     "cert": "wildcard",
     "owner": "sample",
     "team": "sample",
@@ -80,7 +80,7 @@ Object {
 }
 `;
 
-exports[`should return the gitlab global env 1`] = `
+exports[`should return the github global env 1`] = `
 Object {
   "annotations": Object {
     "app.github.com/job": "5678",
@@ -95,7 +95,7 @@ Object {
     "remote": "socialgouv/sample",
   },
   "labels": Object {
-    "application": "sample-dev2-mybranch",
+    "application": "sample",
     "cert": "wildcard",
     "owner": "sample",
     "team": "sample",

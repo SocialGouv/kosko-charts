@@ -38,4 +38,7 @@ export const getProject = (): string | undefined => {
 };
 
 export const isProduction = (): boolean =>
-  process.env.PRODUCTION || process.env.SOCIALGOUV_PRODUCTION ? true : false;
+  !!(process.env.PRODUCTION ?? process.env.SOCIALGOUV_PRODUCTION);
+
+export const isPreproduction = (): boolean =>
+  !!process.env.SOCIALGOUV_PREPRODUCTION;

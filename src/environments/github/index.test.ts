@@ -27,16 +27,16 @@ const validEnv = {
   SOCIALGOUV_PRODUCTION: "",
 };
 test.each([
-  ["the gitlab global env", { ...validEnv }],
+  ["the github global env", { ...validEnv }],
   [
-    "tagged gitlab global env",
+    "tagged github global env",
     {
       ...validEnv,
       GITHUB_REF: "vX.Y.Z",
     },
   ],
   [
-    "preproduction gitlab global env",
+    "preproduction github global env",
     {
       ...validEnv,
       GITHUB_REF: "vX.Y.Z",
@@ -44,7 +44,7 @@ test.each([
     },
   ],
   [
-    "production gitlab global env",
+    "production github global env",
     {
       ...validEnv,
       GITHUB_REF: "vX.Y.Z",
