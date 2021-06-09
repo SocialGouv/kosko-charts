@@ -1,4 +1,4 @@
-import { Environment } from "@kosko/env";
+import { createNodeCJSEnvironment } from "@kosko/env";
 import { project } from "@socialgouv/kosko-charts/testing/fake/gitlab-ci.env";
 import { promises } from "fs";
 import { directory } from "tempy";
@@ -28,40 +28,42 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test("should throw because of a missing envs", () => {
-  const env = new Environment("/tmp");
-  expect(() => create("app", { env })).toThrowErrorMatchingSnapshot();
+test("should throw because of a missing envs", async () => {
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
+  await expect(async () =>
+    create("app", { env })
+  ).rejects.toThrowErrorMatchingSnapshot();
 });
 
 test("should return dev manifests", async () => {
   const gitlabEnv = project("sample").dev;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
-  const env = new Environment(cwd);
+  const env = createNodeCJSEnvironment({ cwd });
   env.env = "dev";
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
-  expect(create("app", { env })).toMatchSnapshot();
+  expect(await create("app", { env })).toMatchSnapshot();
 });
 
 test("should return prod manifests", async () => {
   const gitlabEnv = project("sample").prod;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
-  const env = new Environment(cwd);
+  const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
-  expect(create("app", { env })).toMatchSnapshot();
+  expect(await create("app", { env })).toMatchSnapshot();
 });
 
 test("should return preprod manifests with NO custom subdomain", async () => {
   const gitlabEnv = project("sample").preprod;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
-  const env = new Environment(cwd);
+  const env = createNodeCJSEnvironment({ cwd });
   env.env = "preprod";
   await promises.mkdir(`${cwd}/environments/preprod`, { recursive: true });
   expect(
-    create("app", {
+    await create("app", {
       config: {
         subdomain: "another",
       },
@@ -74,11 +76,11 @@ test("should return prod manifests with custom subdomain", async () => {
   const gitlabEnv = project("sample").prod;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
-  const env = new Environment(cwd);
+  const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
-    create("app", {
+    await create("app", {
       config: {
         subdomain: "another",
       },
@@ -91,11 +93,11 @@ test("should return prod manifests without custom subdomain if undefined", async
   const gitlabEnv = project("sample").prod;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
-  const env = new Environment(cwd);
+  const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
-    create("app", {
+    await create("app", {
       config: {
         subdomain: undefined,
       },

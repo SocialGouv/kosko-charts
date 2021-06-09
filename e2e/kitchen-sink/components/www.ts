@@ -3,7 +3,7 @@ import { create } from "@socialgouv/kosko-charts/components/app";
 import { createAutoscale } from "@socialgouv/kosko-charts/components/autoscale";
 import { getDeployment } from "@socialgouv/kosko-charts/utils";
 
-const manifests = create("www", {
+const asyncManifests = create("www", {
   config: {
     container: {
       resources: {
@@ -37,7 +37,9 @@ const manifests = create("www", {
   env,
 });
 
-const deployment = getDeployment(manifests);
-const hpa = createAutoscale(deployment);
-
-export default [manifests, hpa];
+export default async (): Promise<{ kind: string }[]> => {
+  const manifests = await asyncManifests;
+  const deployment = getDeployment(manifests);
+  const hpa = createAutoscale(deployment);
+  return [...manifests, hpa];
+};

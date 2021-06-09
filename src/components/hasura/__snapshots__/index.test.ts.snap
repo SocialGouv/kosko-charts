@@ -23,22 +23,62 @@ Array [
       "withPostgres": true,
     },
     "deployment": Object {},
-    "env": Environment {
+    "env": Object {
+      "component": [Function],
       "cwd": "/tmp",
+      "extensions": Array [
+        "cjs",
+        "mjs",
+      ],
+      "global": [Function],
       "paths": Object {
         "component": "environments/#{environment}/#{component}",
         "global": "environments/#{environment}",
       },
-      "reducers": Array [
-        Object {
-          "name": "global",
-          "reduce": [Function],
+      "resetReducers": [Function],
+      "setReducers": [Function],
+    },
+  },
+]
+`;
+
+exports[`should create hasura prod config 1`] = `
+Array [
+  "hasura",
+  Object {
+    "config": Object {
+      "container": Object {
+        "resources": Object {
+          "limits": Object {
+            "cpu": "500m",
+            "memory": "512Mi",
+          },
+          "requests": Object {
+            "cpu": "100m",
+            "memory": "64Mi",
+          },
         },
-        Object {
-          "name": "component",
-          "reduce": [Function],
-        },
+      },
+      "containerPort": 80,
+      "ingress": false,
+      "subDomainPrefix": "hasura.",
+      "withPostgres": true,
+    },
+    "deployment": Object {},
+    "env": Object {
+      "component": [Function],
+      "cwd": "/tmp",
+      "extensions": Array [
+        "cjs",
+        "mjs",
       ],
+      "global": [Function],
+      "paths": Object {
+        "component": "environments/#{environment}/#{component}",
+        "global": "environments/#{environment}",
+      },
+      "resetReducers": [Function],
+      "setReducers": [Function],
     },
   },
 ]

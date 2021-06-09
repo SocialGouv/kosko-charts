@@ -1,58 +1,38 @@
 //
 
-import type { Environment } from "@kosko/env";
+import type { DeploymentParams } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
-import { ok } from "assert";
 
-import type { DeploymentParams } from "../../utils/createDeployment";
-import type { AppConfig } from "../app";
+import type { AppConfig, CreateFn } from "../app";
 import { create as createApp } from "../app";
 
-type CreateResult = unknown[];
-
-export const create = (
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  {
-    env,
-    config = {},
-    deployment = {},
-  }: {
-    env: Environment;
-    config?: Partial<AppConfig>;
-    deployment?: Partial<DeploymentParams>;
-  }
-): CreateResult => {
-  ok(process.env.CI_REGISTRY_IMAGE);
-  ok(process.env.CI_ENVIRONMENT_URL);
-  ok(process.env.CI_PROJECT_NAME);
-
-  const manifests = createApp("hasura", {
-    config: merge(
-      {
-        container: {
-          resources: {
-            limits: {
-              cpu: "500m",
-              memory: "512Mi",
-            },
-            requests: {
-              cpu: "100m",
-              memory: "64Mi",
-            },
-          },
-        },
-        containerPort: 80,
-        ingress: false,
-        subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
-        withPostgres: true,
+const hasuraConfig: Partial<AppConfig> = {
+  container: {
+    resources: {
+      limits: {
+        cpu: "500m",
+        memory: "512Mi",
       },
-      config
+      requests: {
+        cpu: "100m",
+        memory: "64Mi",
+      },
+    },
+  },
+  containerPort: 80,
+  ingress: false,
+  withPostgres: true,
+};
+const hasuraDeployment: Partial<Omit<DeploymentParams, "containerPort">> = {};
+export const create: CreateFn = async (name, { env, config, deployment }) =>
+  createApp(name, {
+    config: merge(
+      hasuraConfig,
+      {
+        subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
+      },
+      config ?? {}
     ),
-    deployment,
+    deployment: merge(hasuraDeployment, deployment ?? {}),
     env,
   });
-
-  //
-
-  return manifests;
-};

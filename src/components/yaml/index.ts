@@ -1,22 +1,21 @@
 import type { Manifest } from "@kosko/yaml";
 import { loadFile } from "@kosko/yaml";
-import fs from "fs";
+import { pathExists, readdir } from "fs-extra";
 import path from "path";
 
 export const importYamlFolder = async (
   folderPath: string
 ): Promise<readonly Manifest[]> => {
-  if (!fs.existsSync(folderPath)) {
+  if (!(await pathExists(folderPath))) {
     return [];
   }
-  const files = fs.readdirSync(folderPath);
+  const files = await readdir(folderPath);
   const manifests = await Promise.all(
     files
       .filter((file: string) => /\.ya?ml$/.exec(file))
-      .map(async (file) =>
+      .flatMap(async (file) =>
         loadFile(path.join(folderPath, file), {
-          transform: (manifest: Manifest) => {
-            // force namespace on imported ressources
+          transform(manifest: Manifest) {
             manifest.metadata.namespace = process.env.KUBE_NAMESPACE;
             return manifest;
           },
