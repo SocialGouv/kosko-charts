@@ -31,6 +31,10 @@ const validEnv = {
 test.each([
   ["the gitlab global env", { ...validEnv }],
   [
+    "the gitlab global env of the cluster dev2",
+    { ...validEnv, CI_ENVIRONMENT_NAME: "fabrique-dev2" },
+  ],
+  [
     "tagged gitlab global env",
     {
       ...validEnv,
@@ -42,6 +46,7 @@ test.each([
     {
       ...validEnv,
       CI_COMMIT_TAG: "vX.Y.Z",
+      CI_ENVIRONMENT_NAME: "fabrique-prod",
       PRODUCTION: "true",
     },
   ],
