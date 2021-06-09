@@ -55,7 +55,7 @@
     ]
   },
   "peerDependencies": {
-    "@kosko/env": "1",
+    "@kosko/env": "2",
     "@kubernetes-models/sealed-secrets": "1",
     "kubernetes-models": "1"
   },
