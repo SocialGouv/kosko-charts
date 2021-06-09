@@ -29,7 +29,11 @@ export default (env = process.env): GlobalEnvironment => {
   } = env as Record<string, string>;
 
   const shortSha = GITHUB_SHA.slice(0, 7);
-  const branchName = GITHUB_REF.split("/").pop();
+
+  const branchName = GITHUB_REF.includes("/")
+    ? (GITHUB_REF || "").split("/").pop()
+    : GITHUB_REF;
+
   const environmentSlug = slugify(branchName ?? shortSha);
   const domain = SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN;
   const projectName = GITHUB_REPOSITORY.split("/")[1];
