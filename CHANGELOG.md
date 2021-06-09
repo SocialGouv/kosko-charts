@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/SocialGouv/kosko-charts/compare/v6.0.0...v6.0.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* **deps:** require @kosko/env@2 as peerDependencies ([12ec2f6](https://github.com/SocialGouv/kosko-charts/commit/12ec2f6f216788fc0e4f06b24dde927d80a8a185))
+
 # [6.0.0](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v6.0.0) (2021-06-09)
 
 
