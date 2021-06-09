@@ -30,8 +30,10 @@ export default (env = process.env): GlobalEnvironment => {
 
   const shortSha = GITHUB_SHA.slice(0, 7);
 
-  const branchName = GITHUB_REF.includes("/")
-    ? (GITHUB_REF || "").split("/").pop()
+  const branchName = GITHUB_REF
+    ? GITHUB_REF.includes("/")
+      ? GITHUB_REF.split("/").pop()
+      : GITHUB_REF
     : GITHUB_REF;
 
   const environmentSlug = slugify(branchName ?? shortSha);
