@@ -1,3 +1,10 @@
+## [5.6.5](https://github.com/SocialGouv/kosko-charts/compare/v5.6.4...v5.6.5) (2021-06-09)
+
+
+### Bug Fixes
+
+* getHarborImagePath use app name when project is missing. ([a0dced8](https://github.com/SocialGouv/kosko-charts/commit/a0dced89eff4f13771cab2fec18c814bf78e3eba))
+
 ## [5.6.4](https://github.com/SocialGouv/kosko-charts/compare/v5.6.3...v5.6.4) (2021-06-07)
 
 
