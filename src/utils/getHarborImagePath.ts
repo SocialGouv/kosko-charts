@@ -31,5 +31,5 @@ export const getHarborImagePath = ({
   registry = process.env.HARBOR_REGISTRY ?? "harbor.fabrique.social.gouv.fr",
   project = process.env.HARBOR_PROJECT,
 }: HarborProjectImageProps): string => {
-  return `${registry}/${project}/${name}:${getTag()}`;
+  return `${registry}/${project ?? name}/${name}:${getTag()}`;
 };
