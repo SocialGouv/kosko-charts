@@ -1,3 +1,39 @@
+# [6.0.0](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v6.0.0) (2021-06-09)
+
+
+* feat(deps)!: update kosko monorepo (#441) ([619db28](https://github.com/SocialGouv/kosko-charts/commit/619db28235b6d43e64932b8b0ec1ec3204e2a121)), closes [#441](https://github.com/SocialGouv/kosko-charts/issues/441)
+
+
+### BREAKING CHANGES
+
+* components app `create` functions are now async !
+
+```diff
+import { create } from "@socialgouv/kosko-charts/components/hasura";
+
+- export default (): { kind: string }[] => {
+-   const manifests = create("hasura", { env })
+    // [...]
+- }
++ export default async (): Promise<{ kind: string }[]> => {
++   const manifests = await create("hasura", { env })
+    // [...]
++ }
+```
+* the fist args of the `create` function must be an name !
+
+```diff
+import { create } from "@socialgouv/kosko-charts/components/hasura";
+
+-const manifests = create({
++const manifests = create("hasura", {
+  env,
+});
+```
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com>
+Co-authored-by: Douglas DUTEIL <douglasduteil@gmail.com>
+
 # [5.4.0](https://github.com/SocialGouv/kosko-charts/compare/v5.3.5...v5.4.0) (2021-05-26)
 
 
