@@ -206,7 +206,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -234,7 +234,7 @@ Array [
         "metadata": Object {
           "annotations": Object {
             "app.github.com/job": "5678",
-            "app.github.com/ref": "v1.2.3",
+            "app.github.com/ref": "refs/tags/v1.2.3",
             "app.github.com/repo": "socialgouv/sample",
             "app.github.com/run": "1234",
             "app.github.com/sha": "0123456",
@@ -311,7 +311,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -348,7 +348,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -404,7 +404,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -431,7 +431,7 @@ Array [
         "metadata": Object {
           "annotations": Object {
             "app.github.com/job": "5678",
-            "app.github.com/ref": "v1.2.3",
+            "app.github.com/ref": "refs/tags/v1.2.3",
             "app.github.com/repo": "socialgouv/sample",
             "app.github.com/run": "1234",
             "app.github.com/sha": "0123456",
@@ -507,7 +507,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -543,7 +543,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -600,7 +600,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -627,7 +627,7 @@ Array [
         "metadata": Object {
           "annotations": Object {
             "app.github.com/job": "5678",
-            "app.github.com/ref": "v1.2.3",
+            "app.github.com/ref": "refs/tags/v1.2.3",
             "app.github.com/repo": "socialgouv/sample",
             "app.github.com/run": "1234",
             "app.github.com/sha": "0123456",
@@ -703,7 +703,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -739,7 +739,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -796,7 +796,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -823,7 +823,7 @@ Array [
         "metadata": Object {
           "annotations": Object {
             "app.github.com/job": "5678",
-            "app.github.com/ref": "v1.2.3",
+            "app.github.com/ref": "refs/tags/v1.2.3",
             "app.github.com/repo": "socialgouv/sample",
             "app.github.com/run": "1234",
             "app.github.com/sha": "0123456",
@@ -899,7 +899,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",
@@ -935,7 +935,7 @@ Array [
     "metadata": Object {
       "annotations": Object {
         "app.github.com/job": "5678",
-        "app.github.com/ref": "v1.2.3",
+        "app.github.com/ref": "refs/tags/v1.2.3",
         "app.github.com/repo": "socialgouv/sample",
         "app.github.com/run": "1234",
         "app.github.com/sha": "0123456",

@@ -24,13 +24,13 @@ export const project = (
 
   const preprod = {
     ...base,
-    GITHUB_REF: "v1.2.3",
+    GITHUB_REF: "refs/tags/v1.2.3",
     SOCIALGOUV_PREPRODUCTION: "true",
   };
 
   const prod = {
     ...base,
-    GITHUB_REF: "v1.2.3",
+    GITHUB_REF: "refs/tags/v1.2.3",
     SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "fabrique.social.gouv.fr",
     SOCIALGOUV_PRODUCTION: "true",
   };
