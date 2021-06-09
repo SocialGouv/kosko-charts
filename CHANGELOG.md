@@ -1,3 +1,10 @@
+## [5.6.7-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v5.6.7-alpha.2...v5.6.7-alpha.3) (2021-06-09)
+
+
+### Bug Fixes
+
+* Check GITHUB_REF properly. ([ab3a5d2](https://github.com/SocialGouv/kosko-charts/commit/ab3a5d2b57b8ba0a2cbf149b4b51f5299a2a2a23))
+
 ## [5.6.7-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v5.6.7-alpha.1...v5.6.7-alpha.2) (2021-06-09)
 
 
