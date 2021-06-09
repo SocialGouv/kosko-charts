@@ -1,3 +1,10 @@
+## [5.6.7-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v5.6.7-alpha.3...v5.6.7-alpha.4) (2021-06-09)
+
+
+### Bug Fixes
+
+* Extract tag properly. ([17638a1](https://github.com/SocialGouv/kosko-charts/commit/17638a1c7a8431c3cdf83a47436be63b7d092cbe))
+
 ## [5.6.7-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v5.6.7-alpha.2...v5.6.7-alpha.3) (2021-06-09)
 
 
