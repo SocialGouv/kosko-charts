@@ -1,4 +1,5 @@
 import type { Environment } from "@kosko/env";
+import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import type {
   AppConfig,
   CreateFnDeploymentArgs,
@@ -27,6 +28,8 @@ export type CreateFn = (
 
 export const create: CreateFn = async (name, { env, config, deployment }) => {
   const manifests = [];
+
+  const gitlabEnv = gitlab(process.env);
 
   const strapiConfig = merge(
     {
@@ -124,7 +127,7 @@ export const create: CreateFn = async (name, { env, config, deployment }) => {
 
   addEnvs({
     data: {
-      BACKOFFICE_URL: `https://${strapiConfig.subDomainPrefix}${env.subdomain}.${env.domain}`,
+      BACKOFFICE_URL: `https://${strapiConfig.subDomainPrefix}${gitlabEnv.subdomain}.${gitlabEnv.domain}`,
       DATABASE_CLIENT: "postgres",
       DATABASE_HOST: "$(PGHOST)",
       DATABASE_NAME: "$(PGDATABASE)",

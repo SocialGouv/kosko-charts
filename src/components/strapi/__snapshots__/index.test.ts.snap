@@ -51,7 +51,7 @@ Array [
               "env": Array [
                 Object {
                   "name": "BACKOFFICE_URL",
-                  "value": "https://strapi-undefined.undefined",
+                  "value": "https://strapi-some-slug-some-project.dev2.fabrique.social.gouv.fr",
                 },
                 Object {
                   "name": "DATABASE_CLIENT",
@@ -341,7 +341,7 @@ Array [
               "env": Array [
                 Object {
                   "name": "BACKOFFICE_URL",
-                  "value": "https://strapi-undefined.undefined",
+                  "value": "https://strapi-some-slug-some-project.dev2.fabrique.social.gouv.fr",
                 },
                 Object {
                   "name": "DATABASE_CLIENT",
