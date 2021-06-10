@@ -58,28 +58,28 @@ Array [
                   "value": "postgres",
                 },
                 Object {
-                  "name": "DATABASE_NAME",
-                  "value": "$(PGDATABASE)",
-                },
-                Object {
                   "name": "DATABASE_HOST",
                   "value": "$(PGHOST)",
                 },
                 Object {
-                  "name": "DATABASE_PORT",
-                  "value": "$(PGPORT)",
-                },
-                Object {
-                  "name": "DATABASE_USERNAME",
-                  "value": "$(PGUSER)",
+                  "name": "DATABASE_NAME",
+                  "value": "$(PGDATABASE)",
                 },
                 Object {
                   "name": "DATABASE_PASSWORD",
                   "value": "$(PGPASSWORD)",
                 },
                 Object {
+                  "name": "DATABASE_PORT",
+                  "value": "$(PGPORT)",
+                },
+                Object {
                   "name": "DATABASE_SSL",
                   "value": "true",
+                },
+                Object {
+                  "name": "DATABASE_USERNAME",
+                  "value": "$(PGUSER)",
                 },
               ],
               "envFrom": Array [
@@ -348,28 +348,28 @@ Array [
                   "value": "postgres",
                 },
                 Object {
-                  "name": "DATABASE_NAME",
-                  "value": "$(PGDATABASE)",
-                },
-                Object {
                   "name": "DATABASE_HOST",
                   "value": "$(PGHOST)",
                 },
                 Object {
-                  "name": "DATABASE_PORT",
-                  "value": "$(PGPORT)",
-                },
-                Object {
-                  "name": "DATABASE_USERNAME",
-                  "value": "$(PGUSER)",
+                  "name": "DATABASE_NAME",
+                  "value": "$(PGDATABASE)",
                 },
                 Object {
                   "name": "DATABASE_PASSWORD",
                   "value": "$(PGPASSWORD)",
                 },
                 Object {
+                  "name": "DATABASE_PORT",
+                  "value": "$(PGPORT)",
+                },
+                Object {
                   "name": "DATABASE_SSL",
                   "value": "true",
+                },
+                Object {
+                  "name": "DATABASE_USERNAME",
+                  "value": "$(PGUSER)",
                 },
               ],
               "envFrom": Array [
