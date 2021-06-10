@@ -5,7 +5,7 @@ Object {
   "annotations": Object {
     "app.gitlab.com/app": "socialgouv-sample",
     "app.gitlab.com/env": "my-test",
-    "app.gitlab.com/env.name": "fabrique-dev",
+    "app.gitlab.com/env.name": "fabrique-prod",
   },
   "domain": "dev2.fabrique.social.gouv.fr",
   "git": Object {
@@ -39,6 +39,7 @@ Object {
   },
   "labels": Object {
     "application": "vX-Y-Z-sample",
+    "cert": "wildcard",
     "owner": "sample",
     "team": "sample",
   },
@@ -64,6 +65,33 @@ Object {
   },
   "labels": Object {
     "application": "my-test-sample",
+    "cert": "wildcard",
+    "owner": "sample",
+    "team": "sample",
+  },
+  "namespace": Object {
+    "name": "sample-42-my-test",
+  },
+  "rancherId": "",
+  "subdomain": "my-test-sample",
+}
+`;
+
+exports[`should return the gitlab global env of the cluster dev2 1`] = `
+Object {
+  "annotations": Object {
+    "app.gitlab.com/app": "socialgouv-sample",
+    "app.gitlab.com/env": "my-test",
+    "app.gitlab.com/env.name": "fabrique-dev2",
+  },
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
+  "labels": Object {
+    "application": "my-test-sample",
+    "cert": "wildcard",
     "owner": "sample",
     "team": "sample",
   },
