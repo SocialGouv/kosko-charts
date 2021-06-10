@@ -1,10 +1,10 @@
 import type { Environment } from "@kosko/env";
-import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import type {
   AppConfig,
   CreateFnDeploymentArgs,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
+import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { addEnvs } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import type { Deployment } from "kubernetes-models/api/apps/v1/Deployment";
