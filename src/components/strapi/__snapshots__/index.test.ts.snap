@@ -1,0 +1,581 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create strapi dev config 1`] = `
+Array [
+  Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "some-path",
+        "app.gitlab.com/env": "some-slug",
+        "app.gitlab.com/env.name": "some-name",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "hello",
+        "application": "some-slug-some-project",
+        "owner": "some-project",
+        "team": "some-project",
+      },
+      "name": "hello",
+      "namespace": "some-namespace",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "hello",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "some-path",
+            "app.gitlab.com/env": "some-slug",
+            "app.gitlab.com/env.name": "some-name",
+            "kapp.k14s.io/disable-default-label-scoping-rules": "",
+            "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          },
+          "labels": Object {
+            "app": "hello",
+            "application": "some-slug-some-project",
+            "owner": "some-project",
+            "team": "some-project",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "env": Array [
+                Object {
+                  "name": "BACKOFFICE_URL",
+                  "value": "https://strapi-undefined.undefined",
+                },
+                Object {
+                  "name": "DATABASE_CLIENT",
+                  "value": "postgres",
+                },
+                Object {
+                  "name": "DATABASE_NAME",
+                  "value": "$(PGDATABASE)",
+                },
+                Object {
+                  "name": "DATABASE_HOST",
+                  "value": "$(PGHOST)",
+                },
+                Object {
+                  "name": "DATABASE_PORT",
+                  "value": "$(PGPORT)",
+                },
+                Object {
+                  "name": "DATABASE_USERNAME",
+                  "value": "$(PGUSER)",
+                },
+                Object {
+                  "name": "DATABASE_PASSWORD",
+                  "value": "$(PGPASSWORD)",
+                },
+                Object {
+                  "name": "DATABASE_SSL",
+                  "value": "true",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-user-sha",
+                  },
+                },
+              ],
+              "image": "/path/to/docker/image/hello:undefined",
+              "livenessProbe": Object {
+                "failureThreshold": 6,
+                "httpGet": Object {
+                  "path": "/_health",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 30,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
+              "name": "hello",
+              "ports": Array [
+                Object {
+                  "containerPort": 1337,
+                  "name": "http",
+                },
+              ],
+              "readinessProbe": Object {
+                "failureThreshold": 15,
+                "httpGet": Object {
+                  "path": "/_health",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 0,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
+              },
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "500m",
+                  "memory": "512Mi",
+                },
+                "requests": Object {
+                  "cpu": "50m",
+                  "memory": "256Mi",
+                },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/_health",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
+              },
+              "volumeMounts": Array [
+                Object {
+                  "mountPath": "/app/public/uploads",
+                  "name": "uploads",
+                },
+              ],
+            },
+          ],
+          "initContainers": Array [
+            Object {
+              "env": Array [
+                Object {
+                  "name": "WAIT_FOR_RETRIES",
+                  "value": "24",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-user-sha",
+                  },
+                },
+              ],
+              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.0.1",
+              "imagePullPolicy": "Always",
+              "name": "wait-for-postgres",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "20m",
+                  "memory": "32Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+            },
+          ],
+          "volumes": Array [
+            Object {
+              "name": "uploads",
+              "persistentVolumeClaim": Object {
+                "claimName": "strapi-uploads",
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "some-path",
+        "app.gitlab.com/env": "some-slug",
+        "app.gitlab.com/env.name": "some-name",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "hello",
+        "application": "some-slug-some-project",
+        "owner": "some-project",
+        "team": "some-project",
+      },
+      "name": "hello",
+      "namespace": "some-namespace",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "name": "http",
+          "port": 80,
+          "targetPort": 1337,
+        },
+      ],
+      "selector": Object {
+        "app": "hello",
+      },
+      "type": "ClusterIP",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "some-path",
+        "app.gitlab.com/env": "some-slug",
+        "app.gitlab.com/env.name": "some-name",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        "kubernetes.io/ingress.class": "nginx",
+      },
+      "labels": Object {
+        "app": "hello",
+        "application": "some-slug-some-project",
+        "owner": "some-project",
+        "team": "some-project",
+      },
+      "name": "hello",
+      "namespace": "some-namespace",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "strapi-some-slug-some-project.dev2.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "hello",
+                  "servicePort": 80,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "strapi-some-slug-some-project.dev2.fabrique.social.gouv.fr",
+          ],
+          "secretName": "wildcard-crt",
+        },
+      ],
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": Object {
+      "annotations": Object {},
+      "name": "strapi-uploads",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteOnce",
+      ],
+      "resources": Object {
+        "requests": Object {
+          "storage": "5Gi",
+        },
+      },
+      "volumeMode": "Filesystem",
+    },
+  },
+]
+`;
+
+exports[`should handle custom pvcName 1`] = `
+Array [
+  Object {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "some-path",
+        "app.gitlab.com/env": "some-slug",
+        "app.gitlab.com/env.name": "some-name",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "hello",
+        "application": "some-slug-some-project",
+        "owner": "some-project",
+        "team": "some-project",
+      },
+      "name": "hello",
+      "namespace": "some-namespace",
+    },
+    "spec": Object {
+      "replicas": 1,
+      "selector": Object {
+        "matchLabels": Object {
+          "app": "hello",
+        },
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "app.gitlab.com/app": "some-path",
+            "app.gitlab.com/env": "some-slug",
+            "app.gitlab.com/env.name": "some-name",
+            "kapp.k14s.io/disable-default-label-scoping-rules": "",
+            "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          },
+          "labels": Object {
+            "app": "hello",
+            "application": "some-slug-some-project",
+            "owner": "some-project",
+            "team": "some-project",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "env": Array [
+                Object {
+                  "name": "BACKOFFICE_URL",
+                  "value": "https://strapi-undefined.undefined",
+                },
+                Object {
+                  "name": "DATABASE_CLIENT",
+                  "value": "postgres",
+                },
+                Object {
+                  "name": "DATABASE_NAME",
+                  "value": "$(PGDATABASE)",
+                },
+                Object {
+                  "name": "DATABASE_HOST",
+                  "value": "$(PGHOST)",
+                },
+                Object {
+                  "name": "DATABASE_PORT",
+                  "value": "$(PGPORT)",
+                },
+                Object {
+                  "name": "DATABASE_USERNAME",
+                  "value": "$(PGUSER)",
+                },
+                Object {
+                  "name": "DATABASE_PASSWORD",
+                  "value": "$(PGPASSWORD)",
+                },
+                Object {
+                  "name": "DATABASE_SSL",
+                  "value": "true",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-user-sha",
+                  },
+                },
+              ],
+              "image": "/path/to/docker/image/hello:undefined",
+              "livenessProbe": Object {
+                "failureThreshold": 6,
+                "httpGet": Object {
+                  "path": "/_health",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 30,
+                "periodSeconds": 5,
+                "timeoutSeconds": 5,
+              },
+              "name": "hello",
+              "ports": Array [
+                Object {
+                  "containerPort": 1337,
+                  "name": "http",
+                },
+              ],
+              "readinessProbe": Object {
+                "failureThreshold": 15,
+                "httpGet": Object {
+                  "path": "/_health",
+                  "port": "http",
+                },
+                "initialDelaySeconds": 0,
+                "periodSeconds": 5,
+                "successThreshold": 1,
+                "timeoutSeconds": 1,
+              },
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "500m",
+                  "memory": "512Mi",
+                },
+                "requests": Object {
+                  "cpu": "50m",
+                  "memory": "256Mi",
+                },
+              },
+              "startupProbe": Object {
+                "failureThreshold": 12,
+                "httpGet": Object {
+                  "path": "/_health",
+                  "port": "http",
+                },
+                "periodSeconds": 5,
+              },
+              "volumeMounts": Array [
+                Object {
+                  "mountPath": "/app/public/uploads",
+                  "name": "uploads",
+                },
+              ],
+            },
+          ],
+          "initContainers": Array [
+            Object {
+              "env": Array [
+                Object {
+                  "name": "WAIT_FOR_RETRIES",
+                  "value": "24",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-user-sha",
+                  },
+                },
+              ],
+              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.0.1",
+              "imagePullPolicy": "Always",
+              "name": "wait-for-postgres",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "20m",
+                  "memory": "32Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+            },
+          ],
+          "volumes": Array [
+            Object {
+              "name": "uploads",
+              "persistentVolumeClaim": Object {
+                "claimName": "some-pvc",
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "some-path",
+        "app.gitlab.com/env": "some-slug",
+        "app.gitlab.com/env.name": "some-name",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+      },
+      "labels": Object {
+        "app": "hello",
+        "application": "some-slug-some-project",
+        "owner": "some-project",
+        "team": "some-project",
+      },
+      "name": "hello",
+      "namespace": "some-namespace",
+    },
+    "spec": Object {
+      "ports": Array [
+        Object {
+          "name": "http",
+          "port": 80,
+          "targetPort": 1337,
+        },
+      ],
+      "selector": Object {
+        "app": "hello",
+      },
+      "type": "ClusterIP",
+    },
+  },
+  Object {
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Ingress",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "some-path",
+        "app.gitlab.com/env": "some-slug",
+        "app.gitlab.com/env.name": "some-name",
+        "kapp.k14s.io/disable-default-label-scoping-rules": "",
+        "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        "kubernetes.io/ingress.class": "nginx",
+      },
+      "labels": Object {
+        "app": "hello",
+        "application": "some-slug-some-project",
+        "owner": "some-project",
+        "team": "some-project",
+      },
+      "name": "hello",
+      "namespace": "some-namespace",
+    },
+    "spec": Object {
+      "rules": Array [
+        Object {
+          "host": "strapi-some-slug-some-project.dev2.fabrique.social.gouv.fr",
+          "http": Object {
+            "paths": Array [
+              Object {
+                "backend": Object {
+                  "serviceName": "hello",
+                  "servicePort": 80,
+                },
+                "path": "/",
+              },
+            ],
+          },
+        },
+      ],
+      "tls": Array [
+        Object {
+          "hosts": Array [
+            "strapi-some-slug-some-project.dev2.fabrique.social.gouv.fr",
+          ],
+          "secretName": "wildcard-crt",
+        },
+      ],
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": Object {
+      "annotations": Object {},
+      "name": "some-pvc",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteOnce",
+      ],
+      "resources": Object {
+        "requests": Object {
+          "storage": "5Gi",
+        },
+      },
+      "volumeMode": "Filesystem",
+    },
+  },
+]
+`;
