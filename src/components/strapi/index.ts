@@ -4,13 +4,11 @@ import type {
   CreateFnDeploymentArgs,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
-import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
 import { addEnvs } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import type { Deployment } from "kubernetes-models/api/apps/v1/Deployment";
 import { PersistentVolumeClaim } from "kubernetes-models/v1/PersistentVolumeClaim";
-
-//
+import {getIngressHost} from "@socialgouv/kosko-charts/utils/getIngressHost";
 
 interface StrapiAppConfig extends Partial<AppConfig> {
   pvcName?: string;
@@ -28,8 +26,6 @@ export type CreateFn = (
 
 export const create: CreateFn = async (name, { env, config, deployment }) => {
   const manifests = [];
-
-  const gitlabEnv = gitlab(process.env);
 
   const strapiConfig = merge(
     {
@@ -95,6 +91,8 @@ export const create: CreateFn = async (name, { env, config, deployment }) => {
     (m) => m.kind === "Deployment"
   ) as Deployment;
 
+  const backofficeUrl = "https://" + getIngressHost(strapiManifests);
+
   const projectName = process.env.CI_PROJECT_NAME;
   const pvcName = strapiConfig.pvcName || `${projectName}-strapi-uploads`;
 
@@ -127,7 +125,7 @@ export const create: CreateFn = async (name, { env, config, deployment }) => {
 
   addEnvs({
     data: {
-      BACKOFFICE_URL: `https://${strapiConfig.subDomainPrefix}${gitlabEnv.subdomain}.${gitlabEnv.domain}`,
+      BACKOFFICE_URL: backofficeUrl,
       DATABASE_CLIENT: "postgres",
       DATABASE_HOST: "$(PGHOST)",
       DATABASE_NAME: "$(PGDATABASE)",
