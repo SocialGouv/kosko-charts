@@ -85,11 +85,11 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user-sha",
+                    "name": "azure-pg-user-shortsha",
                   },
                 },
               ],
-              "image": "/path/to/docker/image/hello:undefined",
+              "image": "/path/to/docker/image/hello:longsha",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -155,7 +155,7 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user-sha",
+                    "name": "azure-pg-user-shortsha",
                   },
                 },
               ],
@@ -375,11 +375,11 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user-sha",
+                    "name": "azure-pg-user-shortsha",
                   },
                 },
               ],
-              "image": "/path/to/docker/image/hello:undefined",
+              "image": "/path/to/docker/image/hello:longsha",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -445,7 +445,7 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user-sha",
+                    "name": "azure-pg-user-shortsha",
                   },
                 },
               ],

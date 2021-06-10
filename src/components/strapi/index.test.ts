@@ -2,7 +2,8 @@ import { createNodeCJSEnvironment } from "@kosko/env";
 
 import { create } from "./index";
 
-process.env.CI_COMMIT_SHORT_SHA = "sha";
+process.env.CI_COMMIT_SHA = "longsha";
+process.env.CI_COMMIT_SHORT_SHA = "shortsha";
 process.env.CI_ENVIRONMENT_SLUG = "some-slug";
 process.env.CI_ENVIRONMENT_NAME = "some-name";
 process.env.CI_PROJECT_PATH_SLUG = "some-path";
