@@ -1,3 +1,10 @@
+## [6.0.2](https://github.com/SocialGouv/kosko-charts/compare/v6.0.1...v6.0.2) (2021-06-10)
+
+
+### Bug Fixes
+
+* **gitlab:** all *-dev\d+ env are dev env now ([#536](https://github.com/SocialGouv/kosko-charts/issues/536)) ([f3849d5](https://github.com/SocialGouv/kosko-charts/commit/f3849d5c224e3b71812f4ae9f60fd5ea0ddc339c))
+
 ## [6.0.1](https://github.com/SocialGouv/kosko-charts/compare/v6.0.0...v6.0.1) (2021-06-09)
 
 
