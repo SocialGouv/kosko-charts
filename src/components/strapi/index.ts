@@ -8,7 +8,7 @@ import { addEnvs } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import type { Deployment } from "kubernetes-models/api/apps/v1/Deployment";
 import { PersistentVolumeClaim } from "kubernetes-models/v1/PersistentVolumeClaim";
-import {getIngressHost} from "@socialgouv/kosko-charts/utils/getIngressHost";
+import { getIngressHost } from "@socialgouv/kosko-charts/utils/getIngressHost";
 
 interface StrapiAppConfig extends Partial<AppConfig> {
   pvcName?: string;
