@@ -4,6 +4,11 @@ import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1al
 import { ok } from "assert";
 import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
+import { IoK8sApiCoreV1PersistentVolumeClaim } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolumeClaim";
+import { PersistentVolume } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolume";
+import { PersistentVolumeClaim } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolumeClaim";
+import { IoK8sApiCoreV1AzureFilePersistentVolumeSource } from "kubernetes-models/_definitions/IoK8sApiCoreV1AzureFilePersistentVolumeSource";
+import { IPersistentVolumeSpec } from "kubernetes-models/v1/PersistentVolumeSpec";
 
 import gitlab from "../../environments/gitlab";
 import { addToEnvFrom } from "../../utils/addToEnvFrom";
@@ -22,11 +27,21 @@ import { updateMetadata } from "../../utils/updateMetadata";
 import { merge } from "../../utils/@kosko/env/merge";
 import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
 import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
-import { PersistentVolume } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolume";
-import { PersistentVolumeClaim } from "kubernetes-models/_definitions/IoK8sApiCoreV1PersistentVolumeClaim";
+import { VolumeMount } from "kubernetes-models/_definitions/IoK8sApiCoreV1VolumeMount";
+import { StatefulSet } from "kubernetes-models/apps/v1/StatefulSet";
 
-import { IoK8sApiCoreV1AzureFilePersistentVolumeSource } from "kubernetes-models/_definitions/IoK8sApiCoreV1AzureFilePersistentVolumeSource"
+const DEFAULT_PV_SIZE = "10Gi";
 
+const removeFromArray = (arr: any[], item: any) => {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === item) {
+      arr.splice(i, 1);
+    }
+  }
+  return arr;
+};
+
+//type PV
 type AliasParams = {
   hosts: string[];
   destination: string;
@@ -34,18 +49,15 @@ type AliasParams = {
 
 export type Volume = {
   name: string;
-  size: string;
   mountPath: string;
   azureFile?: {
     shareName: string;
     secretName: string;
-    // shareName: IoK8sApiCoreV1AzureFilePersistentVolumeSource["shareName"];
-    // secretName?: IoK8sApiCoreV1AzureFilePersistentVolumeSource["secretName"];
-  }
-  // emptyDir?: Record<string, string>;
-}
+  };
+};
 
-export type AppConfig = DeploymentParams & StatefulSetParams &
+export type AppConfig = DeploymentParams &
+  StatefulSetParams &
   CreateServiceParams &
   IngressParams & {
     subdomain: string;
@@ -67,14 +79,16 @@ export type createFn = (
   }: {
     env: Environment;
     config?: Partial<AppConfig>;
-    deployment?: Partial<Omit<DeploymentParams | StatefulSetParams, "containerPort">>;
-    volumes?: Volume[]
+    deployment?: Partial<
+      Omit<DeploymentParams | StatefulSetParams, "containerPort">
+    >;
+    volumes?: Volume[];
   }
-) => { apiVersion: string, kind: string }[];
+) => { apiVersion: string; kind: string }[];
 
 export const create: createFn = (
   name,
-  { env, config, deployment: deploymentParams, volumes },
+  { env, config, deployment: deploymentParams, volumes }
 ) => {
   ok(process.env.CI_REGISTRY_IMAGE);
   ok(process.env.CI_ENVIRONMENT_URL);
@@ -102,11 +116,7 @@ export const create: createFn = (
 
   const { containerPort, servicePort } = envParams;
 
-  const deployment = volumes
-    ? (env.env === "prod" || env.env === "preprod")
-    ? createStatefulSet(merge(envParams, deploymentParams || {}, { volumes }), true)
-    : createStatefulSet(merge(envParams, deploymentParams || {}, { volumes }))
-    : createStatefulSet(merge(envParams, deploymentParams || {}));
+  const deployment = createDeployment(merge(envParams, deploymentParams || {}));
 
   updateMetadata(deployment, {
     annotations: envParams.annotations || {},
@@ -123,7 +133,7 @@ export const create: createFn = (
     addWaitForPostgres(deployment);
   }
 
-  // add a redirection ingresses, production only
+  // add a redirection ingress, production only
   if (env.env === "prod" && envParams.withRedirections) {
     const { hosts, destination } = envParams.withRedirections;
     const redirectIngress = createIngress({
@@ -237,47 +247,88 @@ export const create: createFn = (
     manifests.push(ingress);
   }
 
-  if (volumes && (env.env === "prod" || env.env === "preprod")) {
-    volumes?.map(({azureFile, name, size}) => {
-      const spec = azureFile ? {
+  // persistent volumes definitions
+  // stateful : create a statefulset + PV + PVC
+  // stateless : attach ephemeral volume
+  if (volumes && volumes.length) {
+    const isDev = env.env !== "prod" && env.env !== "preprod";
+    const isStateful = !isDev;
+    const persistentVolumeReclaimPolicy = isStateful ? "Retain" : "Delete";
+    const accessModes = ["ReadWriteMany"];
+
+    // container volumesMount
+    const volumeMounts = volumes.map(
+      ({ name, mountPath }) =>
+        ({
+          mountPath,
+          name,
+        } as VolumeMount)
+    );
+
+    // add volumes in the deployment manifest
+    if (deployment?.spec?.template.spec) {
+      if (!isStateful) {
+        deployment.spec.template.spec.volumes = volumes.map(({ name }) => ({
+          name,
+        }));
+      }
+      deployment.spec.template.spec.containers[0].volumeMounts = volumeMounts;
+    }
+
+    // replace the deployment with a statefulset when needed
+    if (isStateful) {
+      // create PersistentVolume manifests
+      volumes.forEach(({ azureFile, name }) => {
+        const spec = {
           storageClassName: name,
-          accessModes: ["ReadWriteMany"],
-          capacity: { storage: size },
-          persistentVolumeReclaimPolicy: "Delete",
-          azureFile: {...azureFile, secretNamespace: envParams.namespace.name},
-      } : {
-          storageClassName: name,
-          accessModes: ["ReadWriteMany"],
-          capacity: { storage: size },
-          persistentVolumeReclaimPolicy: "Delete",
-      };
+          accessModes,
+          capacity: { storage: DEFAULT_PV_SIZE },
+          persistentVolumeReclaimPolicy,
+        } as IPersistentVolumeSpec;
 
-      const metadata = {
-        name: `pv-${name}`,
-        labels: { usage: `pv-${name}`}
-      };
+        if (azureFile) {
+          spec.azureFile = {
+            secretNamespace: envParams.namespace.name,
+            ...azureFile,
+          };
+        }
+        const metadata = {
+          name: `pv-${name}`,
+          labels: { usage: `pv-${name}` },
+        };
 
-      const pv = new PersistentVolume({ metadata, spec });
+        const pv = new PersistentVolume({ metadata, spec });
+        manifests.push(pv);
+      });
 
-      manifests.push(pv)
-      // const pvc = new PersistentVolumeClaim({
-      //   metadata: {
-      //     name: `${name}-${volume.name}`,
-      //     namespace: envParams.namespace.name
-      //   },
-      //   spec: {
-      //     accessModes: ["ReadWriteOnce"],
-      //     resources: {
-      //       requests: {
-      //         storage: volume.size
-      //       }
-      //     }
-      //   }
-      // });
-  
-      // manifests.push(pvc)
-    })
+      // create PersistentVolumeClaim templates
+      const volumeClaimTemplates = volumes.map(
+        ({ name }) =>
+          new PersistentVolumeClaim({
+            metadata: { name },
+            spec: {
+              accessModes,
+              resources: { requests: { storage: DEFAULT_PV_SIZE } },
+              storageClassName: name,
+            },
+          })
+      );
+
+      if (deployment.spec?.template) {
+        const statefulset = new StatefulSet({
+          metadata: deployment.metadata,
+          spec: {
+            template: deployment.spec.template,
+            replicas: 1,
+            selector: deployment.spec.selector,
+            serviceName: name,
+            volumeClaimTemplates,
+          },
+        });
+        removeFromArray(manifests, deployment);
+        manifests.unshift(statefulset);
+      }
+    }
   }
-
   return manifests;
 };

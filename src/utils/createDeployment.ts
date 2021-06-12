@@ -20,6 +20,8 @@ export interface DeploymentParams {
   name: string;
   /** docker registry secrets */
   imagePullSecrets?: IIoK8sApiCoreV1LocalObjectReference[];
+  /** volumes to attach to the deployment */
+  volumes?: [];
 }
 
 /**
@@ -44,15 +46,93 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
   const image =
     params.image || `${process.env.CI_REGISTRY_IMAGE}/${params.name}:${tag}`;
 
-  return new Deployment({
+  const template = {
     metadata: {
-      annotations: params.annotations,
+      annotations: {},
       labels: merge(
         {
           app: params.name,
         },
         params.labels ?? {}
       ),
+    },
+    spec: {
+      containers: [
+        merge(
+          {
+            image,
+            livenessProbe: {
+              // 6 x 5s + 30s = 30-1m
+              // Kill the pod if not alive after 1 minute
+              failureThreshold: 6,
+              httpGet: {
+                path: "/healthz",
+                port: "http",
+              },
+              initialDelaySeconds: 30,
+              periodSeconds: 5,
+              timeoutSeconds: 5,
+            },
+            name: params.name,
+            ports: [
+              {
+                containerPort: params.containerPort,
+                name: "http",
+              },
+            ],
+            readinessProbe: {
+              // 15 x 1s = 0-15s
+              // Mark pod as unhealthy after 15s
+              failureThreshold: 15,
+              httpGet: {
+                path: "/healthz",
+                port: "http",
+              },
+              initialDelaySeconds: 0,
+              periodSeconds: 5,
+              successThreshold: 1,
+              timeoutSeconds: 1,
+            },
+            resources: {
+              limits: {
+                cpu: "500m",
+                memory: "128Mi",
+              },
+              requests: {
+                cpu: "5m",
+                memory: "16Mi",
+              },
+            },
+            startupProbe: {
+              // 12 x 5s = 0-1min
+              // Takes up to 1 minute to start up before it fails
+              failureThreshold: 12,
+              httpGet: {
+                path: "/healthz",
+                port: "http",
+              },
+              periodSeconds: 5,
+            },
+          },
+          params.container ?? {}
+        ),
+      ],
+      imagePullSecrets: params.imagePullSecrets,
+      volumes: params.volumes,
+    },
+  };
+
+  const labels = merge(
+    {
+      app: params.name,
+    },
+    params.labels ?? {}
+  );
+
+  return new Deployment({
+    metadata: {
+      annotations: params.annotations,
+      labels,
       name: params.name,
     },
     spec: {
@@ -62,80 +142,7 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
           app: params.name,
         },
       },
-      template: {
-        metadata: {
-          annotations: {},
-          labels: merge(
-            {
-              app: params.name,
-            },
-            params.labels ?? {}
-          ),
-        },
-        spec: {
-          containers: [
-            merge(
-              {
-                image,
-                livenessProbe: {
-                  // 6 x 5s + 30s = 30-1m
-                  // Kill the pod if not alive after 1 minute
-                  failureThreshold: 6,
-                  httpGet: {
-                    path: "/healthz",
-                    port: "http",
-                  },
-                  initialDelaySeconds: 30,
-                  periodSeconds: 5,
-                  timeoutSeconds: 5,
-                },
-                name: params.name,
-                ports: [
-                  {
-                    containerPort: params.containerPort,
-                    name: "http",
-                  },
-                ],
-                readinessProbe: {
-                  // 15 x 1s = 0-15s
-                  // Mark pod as unhealthy after 15s
-                  failureThreshold: 15,
-                  httpGet: {
-                    path: "/healthz",
-                    port: "http",
-                  },
-                  initialDelaySeconds: 0,
-                  periodSeconds: 5,
-                  successThreshold: 1,
-                  timeoutSeconds: 1,
-                },
-                resources: {
-                  limits: {
-                    cpu: "500m",
-                    memory: "128Mi",
-                  },
-                  requests: {
-                    cpu: "5m",
-                    memory: "16Mi",
-                  },
-                },
-                startupProbe: {
-                  // 12 x 5s = 0-1min
-                  // Takes up to 1 minute to start up before it fails
-                  failureThreshold: 12,
-                  httpGet: {
-                    path: "/healthz",
-                    port: "http",
-                  },
-                  periodSeconds: 5,
-                },
-              },
-              params.container ?? {}
-            ),
-          ],
-          imagePullSecrets: params.imagePullSecrets,
-        },
-      },
+      template,
     },
   });
 };

@@ -195,7 +195,7 @@ export const createStatefulSet = (
       volumeClaimTemplates,
     };
 
-    const config = { metadata, spec: spec };
+    const config = { metadata, spec };
     return new StatefulSet(config);
   } else {
     const spec = { replicas: 1, selector, template };

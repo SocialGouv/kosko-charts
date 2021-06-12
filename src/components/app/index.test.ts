@@ -103,3 +103,89 @@ test("should return prod manifests without custom subdomain if undefined", async
     })
   ).toMatchSnapshot();
 });
+
+
+test("should return dev manifests with azureFile volumes", async () => {
+  const gitlabEnv = project("sample").dev;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = new Environment(cwd);
+  env.env = "dev";
+  await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
+  expect(
+    create("app", {
+      config: {
+        subdomain: undefined,
+      },
+      volumes: [
+        {
+          name: "plop",
+          mountPath: "/path/to/plop",
+          azureFile: { shareName: "azure-share", secretName: "azure-secret" },
+        },
+      ],
+      env,
+    })
+  ).toMatchSnapshot();
+});
+
+test("should return dev manifests with volumes", async () => {
+  const gitlabEnv = project("sample").dev;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = new Environment(cwd);
+  env.env = "dev";
+  await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
+  expect(
+    create("app", {
+      config: {
+        subdomain: undefined,
+      },
+      volumes: [{ name: "plop", mountPath: "/path/to/plop" }],
+      env,
+    })
+  ).toMatchSnapshot();
+});
+
+
+test("should return prod manifests with azureFile volumes", async () => {
+  const gitlabEnv = project("sample").prod;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = new Environment(cwd);
+  env.env = "prod";
+  await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
+  expect(
+    create("app", {
+      config: {
+        subdomain: undefined,
+      },
+      volumes: [
+        {
+          name: "plop",
+          mountPath: "/path/to/plop",
+          azureFile: { shareName: "azure-share", secretName: "azure-secret" },
+        },
+      ],
+      env,
+    })
+  ).toMatchSnapshot();
+});
+
+test("should return prod manifests with volumes", async () => {
+  const gitlabEnv = project("sample").prod;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = new Environment(cwd);
+  env.env = "prod";
+  await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
+  expect(
+    create("app", {
+      config: {
+        subdomain: undefined,
+      },
+      volumes: [{ name: "plop", mountPath: "/path/to/plop" }],
+      env,
+    })
+  ).toMatchSnapshot();
+});
