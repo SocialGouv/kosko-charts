@@ -420,7 +420,7 @@ Array [
       "capacity": Object {
         "storage": "10Gi",
       },
-      "persistentVolumeReclaimPolicy": "Delete",
+      "persistentVolumeReclaimPolicy": "Retain",
       "storageClassName": "my_volume",
     },
   },
@@ -656,7 +656,7 @@ Array [
       "capacity": Object {
         "storage": "10Gi",
       },
-      "persistentVolumeReclaimPolicy": "Delete",
+      "persistentVolumeReclaimPolicy": "Retain",
       "storageClassName": "my_volume",
     },
   },

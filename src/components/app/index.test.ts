@@ -114,9 +114,6 @@ test("should return dev manifests with azureFile volumes", async () => {
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
   expect(
     create("app", {
-      config: {
-        subdomain: undefined,
-      },
       volumes: [
         {
           name: "plop",
@@ -138,9 +135,6 @@ test("should return dev manifests with volumes", async () => {
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
   expect(
     create("app", {
-      config: {
-        subdomain: undefined,
-      },
       volumes: [{ name: "plop", mountPath: "/path/to/plop" }],
       env,
     })
@@ -157,9 +151,6 @@ test("should return prod manifests with azureFile volumes", async () => {
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
     create("app", {
-      config: {
-        subdomain: undefined,
-      },
       volumes: [
         {
           name: "plop",
@@ -181,9 +172,6 @@ test("should return prod manifests with volumes", async () => {
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
     create("app", {
-      config: {
-        subdomain: undefined,
-      },
       volumes: [{ name: "plop", mountPath: "/path/to/plop" }],
       env,
     })

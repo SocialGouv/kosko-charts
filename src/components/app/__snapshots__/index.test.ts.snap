@@ -1036,14 +1036,6 @@ Array [
               ],
             },
           ],
-          "volumes": Array [
-            Object {
-              "name": "plop",
-              "persistentVolumeClaim": Object {
-                "claimName": "plop-plop",
-              },
-            },
-          ],
         },
       },
       "volumeClaimTemplates": Array [
@@ -1462,14 +1454,6 @@ Array [
                   "name": "plop",
                 },
               ],
-            },
-          ],
-          "volumes": Array [
-            Object {
-              "name": "plop",
-              "persistentVolumeClaim": Object {
-                "claimName": "plop-plop",
-              },
             },
           ],
         },
