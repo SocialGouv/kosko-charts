@@ -104,7 +104,6 @@ test("should return prod manifests without custom subdomain if undefined", async
   ).toMatchSnapshot();
 });
 
-
 test("should return dev manifests with azureFile volumes", async () => {
   const gitlabEnv = project("sample").dev;
   Object.assign(process.env, gitlabEnv);
@@ -114,14 +113,14 @@ test("should return dev manifests with azureFile volumes", async () => {
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
   expect(
     create("app", {
+      env,
       volumes: [
         {
-          name: "plop",
+          azureFile: { secretName: "azure-secret", shareName: "azure-share" },
           mountPath: "/path/to/plop",
-          azureFile: { shareName: "azure-share", secretName: "azure-secret" },
+          name: "plop",
         },
       ],
-      env,
     })
   ).toMatchSnapshot();
 });
@@ -135,12 +134,11 @@ test("should return dev manifests with volumes", async () => {
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
   expect(
     create("app", {
-      volumes: [{ name: "plop", mountPath: "/path/to/plop" }],
       env,
+      volumes: [{ mountPath: "/path/to/plop", name: "plop" }],
     })
   ).toMatchSnapshot();
 });
-
 
 test("should return prod manifests with azureFile volumes", async () => {
   const gitlabEnv = project("sample").prod;
@@ -151,14 +149,14 @@ test("should return prod manifests with azureFile volumes", async () => {
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
     create("app", {
+      env,
       volumes: [
         {
-          name: "plop",
+          azureFile: { secretName: "azure-secret", shareName: "azure-share" },
           mountPath: "/path/to/plop",
-          azureFile: { shareName: "azure-share", secretName: "azure-secret" },
+          name: "plop",
         },
       ],
-      env,
     })
   ).toMatchSnapshot();
 });
@@ -172,8 +170,8 @@ test("should return prod manifests with volumes", async () => {
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
   expect(
     create("app", {
-      volumes: [{ name: "plop", mountPath: "/path/to/plop" }],
       env,
+      volumes: [{ mountPath: "/path/to/plop", name: "plop" }],
     })
   ).toMatchSnapshot();
 });
