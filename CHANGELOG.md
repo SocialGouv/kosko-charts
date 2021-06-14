@@ -1,3 +1,16 @@
+# [6.1.0](https://github.com/SocialGouv/kosko-charts/compare/v6.0.2...v6.1.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **deps:** add missing fs-extra ([c491000](https://github.com/SocialGouv/kosko-charts/commit/c49100061bb9c108611e8dcb0bde6a29aa28fa44))
+* **deps:** add missing fs-extra ([1e383be](https://github.com/SocialGouv/kosko-charts/commit/1e383be8b2b09da719ecb1ea95bc63a40032b93b))
+
+
+### Features
+
+* **testing:** run as env prod ([1b52a57](https://github.com/SocialGouv/kosko-charts/commit/1b52a57469897239c6922e22ca1cbb5021863265))
+
 ## [6.0.2](https://github.com/SocialGouv/kosko-charts/compare/v6.0.1...v6.0.2) (2021-06-10)
 
 
