@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/SocialGouv/kosko-charts/compare/v6.1.0...v6.1.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sindresorhus/is to ^4.0.1 ([#544](https://github.com/SocialGouv/kosko-charts/issues/544)) ([f955395](https://github.com/SocialGouv/kosko-charts/commit/f9553955216edceb3e94ad2ad7d55de4a5781e4c))
+
 # [6.1.0](https://github.com/SocialGouv/kosko-charts/compare/v6.0.2...v6.1.0) (2021-06-14)
 
 
