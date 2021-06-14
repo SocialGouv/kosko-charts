@@ -17,7 +17,7 @@
     "@socialgouv/eslint-config-recommended": "^1.70.0",
     "@socialgouv/eslint-config-typescript": "^1.70.0",
     "@socialgouv/kosko-charts": "link:./",
-    "@types/fs-extra": "^9.0.8",
+    "@types/fs-extra": "^9.0.11",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
     "babel-plugin-module-resolver": "^4.1.0",
