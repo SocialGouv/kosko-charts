@@ -1,3 +1,11 @@
+## [6.1.7](https://github.com/SocialGouv/kosko-charts/compare/v6.1.6...v6.1.7) (2021-06-17)
+
+
+### Bug Fixes
+
+* **azure-pg:** use public kubernetes-models import ([1562644](https://github.com/SocialGouv/kosko-charts/commit/1562644db8557ff1b0a0a5a0da6fa55a8f1a8a61))
+* **deps:** update dependency typescript to ^4.3.3 ([#562](https://github.com/SocialGouv/kosko-charts/issues/562)) ([62cf018](https://github.com/SocialGouv/kosko-charts/commit/62cf0180667d843f2501e2d0254f2e43a16129b7))
+
 ## [6.1.6](https://github.com/SocialGouv/kosko-charts/compare/v6.1.5...v6.1.6) (2021-06-15)
 
 
