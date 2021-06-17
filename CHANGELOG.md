@@ -1,3 +1,10 @@
+## [6.1.8](https://github.com/SocialGouv/kosko-charts/compare/v6.1.7...v6.1.8) (2021-06-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to ^4.3.4 ([#564](https://github.com/SocialGouv/kosko-charts/issues/564)) ([25b0b8d](https://github.com/SocialGouv/kosko-charts/commit/25b0b8df15f79e8a4e93fdcd9201ba357ecb2593))
+
 ## [6.1.7](https://github.com/SocialGouv/kosko-charts/compare/v6.1.6...v6.1.7) (2021-06-17)
 
 
