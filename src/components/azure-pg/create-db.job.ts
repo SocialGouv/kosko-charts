@@ -1,4 +1,4 @@
-import { Job } from "kubernetes-models/batch/v1/Job";
+import { Job } from "kubernetes-models/batch/v1";
 
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext uuid-ossp";
 

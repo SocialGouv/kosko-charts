@@ -2,10 +2,9 @@ import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils/waitForPostgres";
 import ok from "assert";
-import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
-import { Job } from "kubernetes-models/batch/v1/Job";
-import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
-import type { EnvVar } from "kubernetes-models/v1/EnvVar";
+import { Job } from "kubernetes-models/batch/v1";
+import type { EnvVar } from "kubernetes-models/v1";
+import { ConfigMap, EnvFromSource } from "kubernetes-models/v1";
 
 interface RestoreDbJobArgs {
   project: string;

@@ -57,22 +57,19 @@ export type AppConfig = DeploymentParams & StatefulSetParams &
     withRedirections?: AliasParams;
   };
 
-export type createFn = (
+export type CreateFnDeploymentArgs = Partial<Omit<DeploymentParams | StatefulSetParams, "containerPort">>;
+export type CreateFnArgs = {
+  env: Environment;
+  config?: Partial<AppConfig>;
+  deployment?: CreateFnDeploymentArgs;
+  volumes?: Volume[]
+};
+export type CreateFn = (
   name: string,
-  {
-    env,
-    config,
-    deployment: deploymentParams,
-    volumes,
-  }: {
-    env: Environment;
-    config?: Partial<AppConfig>;
-    deployment?: Partial<Omit<DeploymentParams | StatefulSetParams, "containerPort">>;
-    volumes?: Volume[]
-  }
-) => { apiVersion: string, kind: string }[];
+  { env, config, deployment: deploymentParams }: CreateFnArgs
+) => Promise<{ kind: string }[]>;
 
-export const create: createFn = (
+export const create: CreateFn = async (
   name,
   { env, config, deployment: deploymentParams, volumes },
 ) => {
@@ -139,7 +136,10 @@ export const create: createFn = (
 
   /* SEALED-SECRET */
   // try to import environment sealed-secret
-  const secret = loadYaml<SealedSecret>(env, `${name}.sealed-secret.yaml`);
+  const secret = await loadYaml<SealedSecret>(
+    env,
+    `${name}.sealed-secret.yaml`
+  );
   if (secret) {
     // add gitlab annotations
     updateMetadata(secret, {
@@ -163,7 +163,7 @@ export const create: createFn = (
 
   /* CONFIGMAP */
   // try to import configmap
-  const configMap = loadYaml<ConfigMap>(env, `${name}.configmap.yaml`);
+  const configMap = await loadYaml<ConfigMap>(env, `${name}.configmap.yaml`);
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (configMap) {
     // add gitlab annotations
@@ -274,7 +274,7 @@ export const create: createFn = (
       //     }
       //   }
       // });
-  
+
       // manifests.push(pvc)
     })
   }

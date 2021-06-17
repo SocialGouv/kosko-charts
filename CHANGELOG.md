@@ -1,64 +1,115 @@
-# [5.5.0-beta.8](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.7...v5.5.0-beta.8) (2021-06-01)
+## [6.1.7](https://github.com/SocialGouv/kosko-charts/compare/v6.1.6...v6.1.7) (2021-06-17)
 
 
 ### Bug Fixes
 
-* Get Azure file shares from volume config. ([0900095](https://github.com/SocialGouv/kosko-charts/commit/09000950729605937094d368ffe9ee61c1b663ba))
+* **azure-pg:** use public kubernetes-models import ([1562644](https://github.com/SocialGouv/kosko-charts/commit/1562644db8557ff1b0a0a5a0da6fa55a8f1a8a61))
+* **deps:** update dependency typescript to ^4.3.3 ([#562](https://github.com/SocialGouv/kosko-charts/issues/562)) ([62cf018](https://github.com/SocialGouv/kosko-charts/commit/62cf0180667d843f2501e2d0254f2e43a16129b7))
 
-# [5.5.0-beta.7](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.6...v5.5.0-beta.7) (2021-06-01)
-
-
-### Bug Fixes
-
-* Use PersistentVolume. ([3f8726d](https://github.com/SocialGouv/kosko-charts/commit/3f8726d8c78db4a02e494149d7c3cf5d4face6ac))
-
-# [5.5.0-beta.6](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.5...v5.5.0-beta.6) (2021-06-01)
+## [6.1.6](https://github.com/SocialGouv/kosko-charts/compare/v6.1.5...v6.1.6) (2021-06-15)
 
 
 ### Bug Fixes
 
-* Add stateful flag. ([f7f0597](https://github.com/SocialGouv/kosko-charts/commit/f7f05971d98e3787475feb5690e340ba9d66e3b7))
-* Remove Deployment serviceName. ([93b3c63](https://github.com/SocialGouv/kosko-charts/commit/93b3c636205e76cbee61c8e9943b383c95e4a5d4))
+* **deps:** update dependency ts-node to v10 ([#559](https://github.com/SocialGouv/kosko-charts/issues/559)) ([8291cf3](https://github.com/SocialGouv/kosko-charts/commit/8291cf37b9e2026a2069d9e85aa266d38b988c1f))
 
-# [5.5.0-beta.5](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.4...v5.5.0-beta.5) (2021-06-01)
-
-
-### Bug Fixes
-
-* Volume type definition. ([fb566b6](https://github.com/SocialGouv/kosko-charts/commit/fb566b623d16cf211952f2572040f4b75bc0f08c))
-
-# [5.5.0-beta.4](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.3...v5.5.0-beta.4) (2021-05-31)
+## [6.1.5](https://github.com/SocialGouv/kosko-charts/compare/v6.1.4...v6.1.5) (2021-06-15)
 
 
 ### Bug Fixes
 
-* Usage desciption. ([49bf4d2](https://github.com/SocialGouv/kosko-charts/commit/49bf4d2cd1a061b76cea60e5d9f91e963e5ed07a))
+* **deps:** update dependency @types/node to v14.17.3 ([#558](https://github.com/SocialGouv/kosko-charts/issues/558)) ([ac3dca8](https://github.com/SocialGouv/kosko-charts/commit/ac3dca8e78f727633775a5f2445a46c83d7f9b96))
 
-# [5.5.0-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.2...v5.5.0-beta.3) (2021-05-31)
-
-
-### Bug Fixes
-
-* Github registry tag name. ([66f872e](https://github.com/SocialGouv/kosko-charts/commit/66f872e996d64fb64d0affb3e427251d71283e96))
-
-# [5.5.0-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v5.5.0-beta.1...v5.5.0-beta.2) (2021-05-28)
+## [6.1.4](https://github.com/SocialGouv/kosko-charts/compare/v6.1.3...v6.1.4) (2021-06-15)
 
 
 ### Bug Fixes
 
-* Add missing StatefulSet type references. ([faa6a85](https://github.com/SocialGouv/kosko-charts/commit/faa6a850a513ee559cd2adbefd9bd2b86e78ae9e))
+* **deps:** update dependency @kosko/env to v2 ([#510](https://github.com/SocialGouv/kosko-charts/issues/510)) ([05d850b](https://github.com/SocialGouv/kosko-charts/commit/05d850bbd15e9c8d60d583601fd0a6cb813e1ff1))
 
-# [5.5.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v5.5.0-beta.1) (2021-05-28)
+## [6.1.3](https://github.com/SocialGouv/kosko-charts/compare/v6.1.2...v6.1.3) (2021-06-14)
 
 
 ### Bug Fixes
 
-* Allow stateful app creation. ([42e1f57](https://github.com/SocialGouv/kosko-charts/commit/42e1f5731ee7ef89b39ebf5733d8dd67a5043457))
+* **deps:** update kosko monorepo ([#554](https://github.com/SocialGouv/kosko-charts/issues/554)) ([8581685](https://github.com/SocialGouv/kosko-charts/commit/8581685507c6ea2d2533f37838128a11ba9b849b))
+
+## [6.1.2](https://github.com/SocialGouv/kosko-charts/compare/v6.1.1...v6.1.2) (2021-06-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to ^4.3.2 ([#553](https://github.com/SocialGouv/kosko-charts/issues/553)) ([c8e350c](https://github.com/SocialGouv/kosko-charts/commit/c8e350ce04e2cbbe346e5a5de69799eae576e454))
+
+## [6.1.1](https://github.com/SocialGouv/kosko-charts/compare/v6.1.0...v6.1.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sindresorhus/is to ^4.0.1 ([#544](https://github.com/SocialGouv/kosko-charts/issues/544)) ([f955395](https://github.com/SocialGouv/kosko-charts/commit/f9553955216edceb3e94ad2ad7d55de4a5781e4c))
+
+# [6.1.0](https://github.com/SocialGouv/kosko-charts/compare/v6.0.2...v6.1.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **deps:** add missing fs-extra ([c491000](https://github.com/SocialGouv/kosko-charts/commit/c49100061bb9c108611e8dcb0bde6a29aa28fa44))
+* **deps:** add missing fs-extra ([1e383be](https://github.com/SocialGouv/kosko-charts/commit/1e383be8b2b09da719ecb1ea95bc63a40032b93b))
 
 
 ### Features
 
-* Add StatefulSet manifest kind. ([27d8f75](https://github.com/SocialGouv/kosko-charts/commit/27d8f75bb0eb95625f3ecedf898c486b135fbd29))
+* **testing:** run as env prod ([1b52a57](https://github.com/SocialGouv/kosko-charts/commit/1b52a57469897239c6922e22ca1cbb5021863265))
+
+## [6.0.2](https://github.com/SocialGouv/kosko-charts/compare/v6.0.1...v6.0.2) (2021-06-10)
+
+
+### Bug Fixes
+
+* **gitlab:** all *-dev\d+ env are dev env now ([#536](https://github.com/SocialGouv/kosko-charts/issues/536)) ([f3849d5](https://github.com/SocialGouv/kosko-charts/commit/f3849d5c224e3b71812f4ae9f60fd5ea0ddc339c))
+
+## [6.0.1](https://github.com/SocialGouv/kosko-charts/compare/v6.0.0...v6.0.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* **deps:** require @kosko/env@2 as peerDependencies ([12ec2f6](https://github.com/SocialGouv/kosko-charts/commit/12ec2f6f216788fc0e4f06b24dde927d80a8a185))
+
+# [6.0.0](https://github.com/SocialGouv/kosko-charts/compare/v5.4.0...v6.0.0) (2021-06-09)
+
+
+* feat(deps)!: update kosko monorepo (#441) ([619db28](https://github.com/SocialGouv/kosko-charts/commit/619db28235b6d43e64932b8b0ec1ec3204e2a121)), closes [#441](https://github.com/SocialGouv/kosko-charts/issues/441)
+
+
+### BREAKING CHANGES
+
+* components app `create` functions are now async !
+
+```diff
+import { create } from "@socialgouv/kosko-charts/components/hasura";
+
+- export default (): { kind: string }[] => {
+-   const manifests = create("hasura", { env })
+    // [...]
+- }
++ export default async (): Promise<{ kind: string }[]> => {
++   const manifests = await create("hasura", { env })
+    // [...]
++ }
+```
+* the fist args of the `create` function must be an name !
+
+```diff
+import { create } from "@socialgouv/kosko-charts/components/hasura";
+
+-const manifests = create({
++const manifests = create("hasura", {
+  env,
+});
+```
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com>
+Co-authored-by: Douglas DUTEIL <douglasduteil@gmail.com>
 
 # [5.4.0](https://github.com/SocialGouv/kosko-charts/compare/v5.3.5...v5.4.0) (2021-05-26)
 

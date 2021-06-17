@@ -1,4 +1,4 @@
-import { Environment } from "@kosko/env";
+import { createNodeCJSEnvironment } from "@kosko/env";
 
 import { create } from "./index";
 
@@ -10,9 +10,9 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-test("should create app with nginx config", () => {
-  const env = new Environment("/tmp");
-  const manifest = create("www", { env });
+test("should create app with nginx config", async () => {
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
+  const manifest = await create("www", { env });
   expect(manifest).toMatchInlineSnapshot(`
     Array [
       "www",
@@ -56,22 +56,20 @@ test("should create app with nginx config", () => {
             "component": "nginx",
           },
         },
-        "env": Environment {
+        "env": Object {
+          "component": [Function],
           "cwd": "/tmp",
+          "extensions": Array [
+            "cjs",
+            "mjs",
+          ],
+          "global": [Function],
           "paths": Object {
             "component": "environments/#{environment}/#{component}",
             "global": "environments/#{environment}",
           },
-          "reducers": Array [
-            Object {
-              "name": "global",
-              "reduce": [Function],
-            },
-            Object {
-              "name": "component",
-              "reduce": [Function],
-            },
-          ],
+          "resetReducers": [Function],
+          "setReducers": [Function],
         },
       },
     ]

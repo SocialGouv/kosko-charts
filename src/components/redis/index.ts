@@ -1,6 +1,9 @@
 //
 
-import type { createFn } from "@socialgouv/kosko-charts/components/app";
+import type {
+  AppConfig,
+  CreateFn,
+} from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
@@ -9,53 +12,47 @@ import type { DeploymentParams } from "../../utils/createDeployment";
 // renovate: datasource=docker depName=redis versioning=6.2.3-alpine3.13
 const REDIS_VERSION = "6.2.3-alpine3.13";
 
-const redisDeploymentParams: Partial<
-  Omit<DeploymentParams, "containerPort">
-> = {
+const redisConfig: Partial<AppConfig> = {
+  container: {
+    livenessProbe: {
+      exec: {
+        command: ["sh", "-c", "redis-cli ping"],
+      },
+      httpGet: undefined,
+    },
+    readinessProbe: {
+      exec: {
+        command: ["sh", "-c", "redis-cli ping"],
+      },
+      httpGet: undefined,
+    },
+    startupProbe: {
+      exec: {
+        command: ["sh", "-c", "redis-cli ping"],
+      },
+      httpGet: undefined,
+    },
+  },
+  containerPort: 6379,
+  image: `redis:${REDIS_VERSION}`,
+  ingress: false,
+};
+
+const redisDeployment: Partial<Omit<DeploymentParams, "containerPort">> = {
   labels: {
     component: "redis",
   },
 };
 
-export const create: createFn = (
-  name: string,
-  { env, config = {}, deployment = {} }
-) => {
-  const manifests = createApp(name, {
+export const create: CreateFn = async (name, { env, config, deployment }) =>
+  createApp(name, {
     config: merge(
+      redisConfig,
       {
-        container: {
-          livenessProbe: {
-            exec: {
-              command: ["sh", "-c", "redis-cli ping"],
-            },
-            httpGet: undefined,
-          },
-          readinessProbe: {
-            exec: {
-              command: ["sh", "-c", "redis-cli ping"],
-            },
-            httpGet: undefined,
-          },
-          startupProbe: {
-            exec: {
-              command: ["sh", "-c", "redis-cli ping"],
-            },
-            httpGet: undefined,
-          },
-        },
-        containerPort: 6379,
-        image: `redis:${REDIS_VERSION}`,
-        ingress: false,
         subDomainPrefix: process.env.PRODUCTION ? `redis.` : "redis-",
       },
-      config
+      config ?? {}
     ),
-    deployment: merge(redisDeploymentParams, deployment),
+    deployment: merge(redisDeployment, deployment ?? {}),
     env,
   });
-
-  //
-
-  return manifests;
-};

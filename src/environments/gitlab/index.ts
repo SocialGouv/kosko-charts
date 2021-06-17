@@ -32,7 +32,7 @@ export default (env = process.env): GlobalEnvironment => {
     RANCHER_PROJECT_ID,
   } = env;
   const isProductionCluster = Boolean(PRODUCTION);
-  const isPreProduction = CI_ENVIRONMENT_NAME === "preprod-dev2";
+  const isPreProduction = /^preprod-dev\d*$/.test(CI_ENVIRONMENT_NAME);
   const application = isProductionCluster
     ? CI_PROJECT_NAME
     : CI_COMMIT_TAG
@@ -65,7 +65,7 @@ export default (env = process.env): GlobalEnvironment => {
       //component: application,
       owner: CI_PROJECT_NAME,
       team: CI_PROJECT_NAME,
-      ...(CI_ENVIRONMENT_NAME.endsWith("-dev2") ? { cert: "wildcard" } : {}),
+      ...(/-dev\d*$/.test(CI_ENVIRONMENT_NAME) ? { cert: "wildcard" } : {}),
     },
     namespace: {
       name: namespaceName,
