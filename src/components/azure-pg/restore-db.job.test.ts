@@ -1,4 +1,4 @@
-import { EnvVar } from "kubernetes-models/v1/EnvVar";
+import { EnvVar } from "kubernetes-models/v1";
 
 import { restoreDbJob } from "./restore-db.job";
 
