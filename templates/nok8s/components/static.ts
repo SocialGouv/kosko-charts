@@ -11,7 +11,7 @@ import Config from "../utils/config";
 declare type AppManifests = { kind: string }[];
 
 export default async (): Manifests => {
-  const { name, type, subdomain, ingress } = Config();
+  const { name, type, subdomain, ingress } = await Config();
   if (type === "static") {
     const manifests = (await create(name, {
       config: { subdomain },

@@ -27,7 +27,7 @@ export default async (): Manifests => {
     ingress,
     registry = "harbor",
     project,
-  } = Config();
+  } = await Config();
 
   const image =
     registry === "ghcr"

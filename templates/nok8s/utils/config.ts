@@ -1,18 +1,18 @@
-import { IIoK8sApiCoreV1ResourceRequirements } from "kubernetes-models/v1/ResourceRequirements";
-import { IIoK8sApiCoreV1Probe } from "kubernetes-models/v1/Probe";
+import type { IIoK8sApiCoreV1Probe } from "kubernetes-models/v1/Probe";
+import type { IIoK8sApiCoreV1ResourceRequirements } from "kubernetes-models/v1/ResourceRequirements";
 
-type Probes = {
+interface Probes {
   startupProbe?: IIoK8sApiCoreV1Probe;
   livenessProbe?: IIoK8sApiCoreV1Probe;
   readinessProbe?: IIoK8sApiCoreV1Probe;
-};
+}
 
-type Resources = {
-  requests?: Object;
-  limits?: Object;
-};
+// type Resources = {
+//   requests?: Object;
+//   limits?: Object;
+// };
 
-type ConfigTypes = {
+interface ConfigTypes {
   name: string;
   type: string;
   subdomain: string;
@@ -22,17 +22,17 @@ type ConfigTypes = {
   resources?: IIoK8sApiCoreV1ResourceRequirements;
   probesPath?: string;
   ingress?: {
-    annotations?: Record<string, string>
-  }
-  registry?:  string;
-  project?:  string;
-};
+    annotations?: Record<string, string>;
+  };
+  registry?: string;
+  project?: string;
+}
 
-const Config = () => {
-  const config = require(process.env.SOCIALGOUV_CONFIG_PATH ??
-    "../../.socialgouv/config.json");
+const Config = async (): Promise<ConfigTypes> => {
+  const path =
+    process.env.SOCIALGOUV_CONFIG_PATH ?? "../../.socialgouv/config.json";
 
-  return config as ConfigTypes;
+  return (await import(path)) as ConfigTypes;
 };
 
 export default Config;

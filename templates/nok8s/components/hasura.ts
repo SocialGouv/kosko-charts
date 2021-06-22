@@ -6,7 +6,7 @@ import type { Manifests } from "../types/config";
 import Config from "../utils/config";
 
 export default async (): Manifests => {
-  const { name, hasura } = Config();
+  const { name, hasura } = await Config();
 
   const config = {
     config: { ingress: hasura === "exposed" },

@@ -9,7 +9,7 @@ import type { Manifest } from "../types/config";
 import Config from "../utils/config";
 
 export default async (): Promise<{ kind: string }[] | Manifest[]> => {
-  const { azurepg } = Config();
+  const { azurepg } = await Config();
 
   if (!azurepg) {
     return [];
