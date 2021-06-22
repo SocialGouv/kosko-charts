@@ -1,0 +1,6 @@
+{
+  "name": "myapp",
+  "type": "app",
+  "registry": "ghcr",
+  "project": "myproject"
+}

@@ -1,0 +1,15 @@
+{
+  "ts-node": {
+    "files": true
+  },
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "es2015",
+    "types": ["node", "jest"],
+    "resolveJsonModule": true
+  }
+}

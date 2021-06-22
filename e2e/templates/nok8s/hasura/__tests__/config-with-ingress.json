@@ -1,0 +1,5 @@
+{
+  "name": "myapp",
+  "type": "app",
+  "hasura": "exposed"
+}
