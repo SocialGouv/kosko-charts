@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return production gitlab global env 1`] = `
+Object {
+  "annotations": Object {
+    "app.gitlab.com/app": "socialgouv-sample",
+    "app.gitlab.com/env": "my-test",
+    "app.gitlab.com/env.name": "fabrique-prod",
+  },
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
+  "labels": Object {
+    "application": "sample",
+    "owner": "sample",
+    "team": "sample",
+  },
+  "namespace": Object {
+    "name": "sample",
+  },
+  "rancherId": "",
+  "subdomain": "sample",
+}
+`;
+
+exports[`should return tagged gitlab global env 1`] = `
+Object {
+  "annotations": Object {
+    "app.gitlab.com/app": "socialgouv-sample",
+    "app.gitlab.com/env": "my-test",
+    "app.gitlab.com/env.name": "fabrique-dev",
+  },
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
+  "labels": Object {
+    "application": "vX-Y-Z-sample",
+    "cert": "wildcard",
+    "owner": "sample",
+    "team": "sample",
+  },
+  "namespace": Object {
+    "name": "sample-42-my-test",
+  },
+  "rancherId": "",
+  "subdomain": "vX-Y-Z-sample",
+}
+`;
+
+exports[`should return the gitlab global env 1`] = `
+Object {
+  "annotations": Object {
+    "app.gitlab.com/app": "socialgouv-sample",
+    "app.gitlab.com/env": "my-test",
+    "app.gitlab.com/env.name": "fabrique-dev",
+  },
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
+  "labels": Object {
+    "application": "my-test-sample",
+    "cert": "wildcard",
+    "owner": "sample",
+    "team": "sample",
+  },
+  "namespace": Object {
+    "name": "sample-42-my-test",
+  },
+  "rancherId": "",
+  "subdomain": "my-test-sample",
+}
+`;
+
+exports[`should return the gitlab global env of the cluster dev2 1`] = `
+Object {
+  "annotations": Object {
+    "app.gitlab.com/app": "socialgouv-sample",
+    "app.gitlab.com/env": "my-test",
+    "app.gitlab.com/env.name": "fabrique-dev2",
+  },
+  "domain": "dev2.fabrique.social.gouv.fr",
+  "git": Object {
+    "branch": undefined,
+    "remote": undefined,
+  },
+  "labels": Object {
+    "application": "my-test-sample",
+    "cert": "wildcard",
+    "owner": "sample",
+    "team": "sample",
+  },
+  "namespace": Object {
+    "name": "sample-42-my-test",
+  },
+  "rancherId": "",
+  "subdomain": "my-test-sample",
+}
+`;
+
+exports[`should throw because of empty strings 1`] = `
+"Wrong environment variables
+required \\"CI_ENVIRONMENT_NAME\\": \\" \\" should not be an empty string
+required \\"CI_ENVIRONMENT_SLUG\\": \\" \\" should not be an empty string
+required \\"CI_PROJECT_NAME\\": \\" \\" should not be an empty string
+required \\"CI_PROJECT_PATH_SLUG\\": \\" \\" should not be an empty string
+required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\" \\" should not be an empty string
+required \\"KUBE_NAMESPACE\\": \\" \\" should not be an empty string
+"
+`;
+
+exports[`should throw because of missing variables 1`] = `
+"Wrong environment variables
+required \\"CI_ENVIRONMENT_NAME\\": \\"undefined\\" should be defined
+required \\"CI_ENVIRONMENT_SLUG\\": \\"undefined\\" should be defined
+required \\"CI_PROJECT_NAME\\": \\"undefined\\" should be defined
+required \\"CI_PROJECT_PATH_SLUG\\": \\"undefined\\" should be defined
+required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\"undefined\\" should be defined
+required \\"KUBE_NAMESPACE\\": \\"undefined\\" should be defined
+"
+`;

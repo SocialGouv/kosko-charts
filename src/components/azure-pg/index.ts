@@ -1,6 +1,5 @@
 import type { Environment } from "@kosko/env";
-import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
-import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
+import environments from "@socialgouv/kosko-charts/environments";
 
 import type { DeploymentParams } from "../../utils/createDeployment";
 import { getPgServerHostname } from "../../utils/getPgServerHostname";
@@ -10,19 +9,12 @@ import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
 
-const assert = assertEnv(["CI_COMMIT_SHORT_SHA", "CI_PROJECT_NAME"]);
-
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
-  assert(process.env);
-
-  const {
-    CI_COMMIT_SHORT_SHA: sha,
-    CI_PROJECT_NAME: projectName,
-    // NOTE(douglasduteil): enforce defined string in process.env
-    // Those env variables are asserted to be defined above
-  } = process.env as Record<string, string>;
+  const ciEnv = environments(process.env);
+  const sha = ciEnv.shortSha;
+  const projectName = ciEnv.projectName;
 
   return {
     ...getDevDatabaseParameters({
@@ -43,12 +35,14 @@ interface CreateParams {
 }
 
 export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
+  const ciEnv = environments(process.env);
+
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
   const envParams = {
     ...defaultParams, // set name as default if not provided
-    ...gitlab(process.env),
+    ...ciEnv.manifest,
     ...config, // create options
   };
 
@@ -56,7 +50,7 @@ export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
-    name: `create-db-job-${process.env.CI_COMMIT_SHORT_SHA}`,
+    name: `create-db-job-${ciEnv.shortSha}`,
     namespace: envParams.namespace,
   });
 
