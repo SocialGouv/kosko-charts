@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`--env preprod : should generate dev manifest 1`] = `
+"---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    field.cattle.io/creatorId: gitlab
+    field.cattle.io/projectId: c-bd7z2:p-7ms8p
+    git/branch: refs/heads/e2e-branch
+    git/remote: socialgouv/sample-next-app
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-next-app
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    azure-pg-admin-user: sample-next-app
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: sample-next-app-preprod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-next-app
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    app: pgweb
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+    component: pgweb
+  name: pgweb
+  namespace: sample-next-app-preprod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgweb
+  template:
+    metadata:
+      annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
+        app.github.com/job: xxxxxxx-job
+        app.github.com/ref: refs/heads/e2e-branch
+        app.github.com/repo: socialgouv/sample-next-app
+        app.github.com/run: '12345'
+        app.github.com/sha: '8843083'
+      labels:
+        app: pgweb
+        application: sample-next-app
+        owner: sample-next-app
+        team: sample-next-app
+        cert: wildcard
+        component: pgweb
+    spec:
+      containers:
+        - image: sosedoff/pgweb:0.11.7
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+          name: pgweb
+          ports:
+            - containerPort: 8081
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+      initContainers:
+        - env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-8843083
+          image: ghcr.io/socialgouv/docker/wait-for-postgres:6.0.1
+          imagePullPolicy: Always
+          name: wait-for-postgres
+          resources:
+            limits:
+              cpu: 20m
+              memory: 32Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pgweb
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: pgweb
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-next-app
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  namespace: sample-next-app-preprod
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8081
+  selector:
+    app: pgweb
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-next-app
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    app: pgweb
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: pgweb
+  namespace: sample-next-app-preprod
+spec:
+  rules:
+    - host: pgweb-sample-next-app-preprod.dev2.fabrique.social.gouv.fr
+      http:
+        paths:
+          - backend:
+              serviceName: pgweb
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - pgweb-sample-next-app-preprod.dev2.fabrique.social.gouv.fr
+      secretName: wildcard-crt
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: 'true'
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-next-app
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  name: azure-pg-user
+  labels:
+    application: sample-next-app
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  namespace: sample-next-app-preprod
+spec:
+  encryptedData:
+    DATABASE_URL: >-
+      AgBfd1SHlTzcYoP7sWPTzKcWEHVa8yhZdP8p3tc2BxvK/PlebaTyn5c/vqUGABlOJpB5t49inaOvnvvBBZE+jnt+yPJrM9ejAA6de5rjlsSDtISRmI19RpfX2T9wsCL33Ah6V3sExBUwqFmrBdMwq5oyW/Iinf86rln2YDt2lxroxxV7MWI0FmEZP3ZC/8JZuIVT8nyJVN1C8CeJSHN7fogynCIOiA+v3iWYN+Z8uuhDnh+tVEHZC5QPlp5YyggXWnCzohqkqqtsq1fcdgbARGDT6UaEMoxFNh7l5HUHwphLySdiVeTfC712qhz15lHx1i7y10BPJhWCS7LSGMzrZpQiFIMviEbKi75u/hBESOdP80vRcpCnLqBUS8MHc0k5NBdKEYMxvVnhrqBOm47S+DV1xJH8s3ZWiVwrJQfWjtOJ1jtlmiaVLid9xGjIcFS9RGPCIl3rVJ5ClkDHfVW9URxs3Y7TR/4OwE7thl1Gxpz4dK1s2aGxdslA/hgrmxYdOaF2FurN30S3aOd3c3NyLNhkgyEar8S0jS0XK1HkHFkisBgZelG5ayURTWjVPoFasuZ80d86v/tvxtxfUrFMo/uTAO3FK60bhur44hgdIDCLi9XH88bjbZAHPMry6F7h278A0zSFOLwzS5fsBIv+WRcWckybzabOeIGOCqb9xu65pmjh5T6v2uLTqUu+0uA5Cao+1QTI/rmL0/OXr2GXxFz2jt8HfMPVSSJ/9MdtepVtjHOz4Mv3ZzLESmByYi877LYbDY5CoKPdUbN6ouSjocpI/j3SlSIHkUj9sRtAiugR03EY20ZZbLpQ/t4eKMdvLvn2cId5dSbXsBrVQFT+sVPQONcvZX6n10eTMUgC6bbvbMvToNYVO6pjbRA7W8tp6YWtC5/W5ogHdepusbeBkDnkzpnOY3J1sllWDcLthTeO4nHPY3Ll
+    DB_URI: >-
+      AgBLy+a+Dwej6jIu5srEON9oi7G+syL/8M93hlwJ2fwRuyfm+x6/7KzZ+woEQN6riJO3/OQl3AWq1M3EOHmpSZKJOO09USa/NOvWJS1/GpPxACLKGbWvigHEpZb7gPZs3+QeKKbXyjb1BtOFlnWXptxSPFTrJLxaMN+X1BlzVif4/P91PseSwKRrAdeYOvWoAkgWe9nVUn28eztwc4t9N789QExMrpG7fjIuNkGie6LQyeVslNEpHLYjULYXdX9Sw4+pBrzvneTkPZAI8q429WNsOF/a9MCo2ZrMa+DHmwsMRoSAXAlSv+XY4JMwuNVlUsnqxOXh0MLqsPJUysJp02qNgjY5U6mjOpr/r/F/yt8vBV+o6qysb9MkJo9X8ZvBVYZKonOxHW949nISv6tKJqcfEq88SXhw21cEVHDuXEXrGrdBf3FvBuQp6X6QxEcN56B+QJaXe4zUeKUSdIMp5SDvmHGdhJZ8ERlDH5GjWIeJfj37L2PQoCQ51u6YuQqaUGVnhiAmsOkcIcE1+A5q3lG7SxhSteQAG4yuDiQaWEulp1X0GsWpNWeDX4wCLcatzORoM/zxAwRhNAIwhdouGyfOVwKhfKoE+JIKXHheHEzgL1ZhLjLBZfNIqAhqDSrfTZQWzJDIki+1da/0nCaWlKSQYCbK1Z2ts5rq6DrUIACTUfC8Y4fl0yJ5YlJA77+x1MRH+7HDV2CNaTcf+6alNsJwt4XgHmPSAx8D8+CrC6aRT0WwoVAqnBs1WZJn61p+CBNCdofqkF3cqqCc1Oc0dDB++JwnC4w2T9zMWJNylkHr1BgmuaGJiPeML2hQfA2YuqfdjfvGAz59H9hmLPHr1S2wF5Yxxtov787VQOffJ5FS+Hcldly8R4gk3f4/pll8Y79ZFCjl6+5MTof9lBwlHh/BOdTeLYsab1NeqcgaMqy0D/hYijx/
+    HASURA_GRAPHQL_DATABASE_URL: >-
+      AgBqBKPv+x6MMlADir+ypXzFCY/JhxzuTLI8h7l7GuPWF06L/Rvq+f06lSYYGJABK4CH1gsfNN5/Sj3xBsfLEo2ou9FfBDbdkGJpXSzgU5fiysfi/A8IJPN1O1c10RMI/9slIxt0por4GbVj6x9DgtypHamRKCiJJ2do+Vc0/owc//qtRZLiLFQvy10Zc45Vog8usQw3q7eFXtMui3bnk5n+fuij2psBB6eSaNhoBB2O6Os2RGfYkDMIqnRjd0AWWscPIAPLE/0m9JjhWTkPE16DYNxY9mxJtwxBhDb/2yqAI6JzZ+0jAv9naI36hzVIzo0YfAPHvHtbAhJrxyWXxERSafIgU4Qsggfx2mJm8E7Tu02TxMy0oyihRJVhKHAVMofDWlfxp6zyXQk4BPUlL5INECYUTKwXXOf4YhhJruo4LQMjSI/AgdN3XlvEGblHoIxC3qgxwOPzB4omSJ7kP3rUHDE9USgmMCZuCSMKQ7x9pmKkeTZg57bJLhFAHUd4Wo8vM2ADmKKlEYYSHOzvsXsHBxJddC9YYaXaUyQ1AV9YsIjS19r4TRZDhiRci/wGMMwrDeA+E75GMo12IQEUfZQJCcySp/kTc0blKi40/UnZkGPCHgpnSdDrlghcLy32in8cjyGu1ZrQG8SDhgQD4lB3850kA4vKrqr5ukScuaMAuafksolALGLcKgesyhdI+YuUibGzm/ViFkRpOR8ofargq+L6oDQ30NquvF3HEwO2v1MeqdPCQwfchLLhOTdH5MkCxYI8DFou0DLmOFrwrgaRTItHZJzP2PAr/LH4++57e/oMaZ9urNSe+r842Kj2/HQW7GS61jmLCc8YuQBNL1+wGqAnKNqSuEteg4JvATnD3XLDj415yy/Kv8Xlwsza3LFrmBDiPD/npI2N48wy5xmALYP9ltBnQuMqCBtju0xBNyFsVVZZ
+    PGDATABASE: >-
+      AgCh43sRRafioL2I6pAtJxn0ILJHbLF6zU8Xu4MszeBB3XRWfZJ+32DAAKT52L8jKNmizYrhEv8gagqmozJj4iR6wTcpXCwtwBoZymwMPvCSQwz5T4ah1BcO79gUvYVkYGKbb5QkAMDIY20zM0xccNQRgKW0DXt3aYfDAI01MWCcuvs4wNTQdZ761UpJLfFK99QIHJGXrn2JRqDKzctsaLOGbQ6HfehEbNpTOcxixfkY8h4GZixDpH1djXDfvxgKHSy12Hv5Vj7ELRUwGE34Nj0o/AkCKVb9z3dyJLGAmtv+HiAkAzMcqP5tZIWfjvSckvBPEdIKSltEOFs9VuGxcXXaZWy5RdyvAOnWEHVoaRps43q6qyTSQTBdK552hspkuLo1qlQInkWecrBnUsiPT/9Q/Dhj9pxf1RK/TpuiryJY/kSHRxr2TWtp87lVk540EOH4aHOFXxCK8cZkV2xar3hJcc0J0HajwTxvhkPO9ZQ7jESLIZBXvRrxS3OrfxYkKPis/Mu9mSA+thix2upSTFeLsiTNaLO9BiL7aFQGs+TJrYgPeEZs0nKXOgiGcE3eJUnJAWB2WRMO6oTCqaRArstJgco6wQzy++w0vOBwaWEn6PDRDF4VwnQY3rz0w6tpLEZxhwR3bdtL5qdOwz8YwsRCB4ZgmCrYyFTK23hxDin8PyHR9kiRVRclfsJtq//qf+uG700dE6zZCKOaHFssThwD+uw=
+    PGHOST: >-
+      AgCS5H7vsnc5kz132ic79N5vuKwzLgXbEH6P5NgFvg5HfOT1WtOwpPBbG9kvkF+ak25aFPSkQdG60NihmHZKrrSDnWkoUelNgCuMUb0xwogalN5oMflrLeHdQK0BikU9dqbqNqHbd18N5WA6rJOKsI+v0BUs52sXLG9KyO3qTvn8Tfo2ASzegjnBNkqsMs/eWkrajNx7UHNaaJTlwQS9dgJ8KsPEIGyh7/Pt8JZj7WGHS8ZPmwb26CUaohoV76DvDKmfo1m730VBlJMocxV01Zf9Ee3Dnc/tBvsfi+4B9ZR1L8NGtmAmIxP5eyvOpwM3bq8+RvU2Mci7cCNi4JsKuvJJMB04fCTWiS/MU8FSXelyKfbmtDCsvk+xm0YkNDAOa8Jgcq+0t/d+C1qdNi5e3K+kQJw3dVUGTsfm0jl6gJw+cRCKpul8P+U9XJ8yu+pZU0TfOTwqNgmf7xKV0qrXn7PW6EzoWX8KjClC5fLzTuzJj8SY24GJ1nCWZOFaG1lf+bWv6kG3/7lV2qbaPA++jrfrf5ZAMqq6qqprlN9RCjZtRdbqsPkQW52GIgzAWGArkzBWafmUm/M0P08LdFB4bpUBKCP/p9mkBAzFAbIt7O5d8/wlxEcdrmtXSDo7simLxi092Cn/e0eTLOWww5dWkCMzQggB6XXVOgIcY7pYQtSjtALBiCgw125rov+pzi20ZuOenG9BRjOMvmtwDIAJm7UltkcBytssD+jOhSZlmWAUjqtE9cykcxIv9qoJn2AxUsyZZA==
+    PGPASSWORD: >-
+      AgC6pW9aQUI24KO48dZaFd2LrfBnuInxpOxAv9iusZzu+JzeeN8ixeG4QUcWf78oE3bcxkI0TBXESE4NDOVfbcwO48cTQXwwhT8bPPrbK9W0YadOvpg2X2jjWjRdmuqHL2qU6VwLECQ9DJWdEYw/MvFt/cvHykHmMscA2q7KF6morQKicWyQjK0eKPUdA/TXkuwGEvh7BQjS9Y4QO38ABQKcLpFV0XDqVKs0qTtMSreulVAvUmOThqi6aol39RgYR5s3+ZceVS879xcAG6lKirMY7z7g/JHxVlOwXSZOGbfqgFZChOhT7ZqAp9p2w/Zy58qPTfcbDdGFTsf9OY/Piqmm1RLxf2X+ghTb7pLWH4LkeeFYi7UdxQ2fqr3CDTB7Lq0LM8yLZ4Rp7qirP8N2rGJLAA9y6CeggBFRF9sUaSu+R43yuXf5QSinFI381FgRWUYwbNN68gpvD4X0UrjdTrmVAFvl7yRLSb7+5MqQlkFX9+/piPBk4qPVlz+cgzytiSO1pP5YaF2nb3TN3ja93OuPj2YIzeSGfPUXbNk4qf5pLamOoJ+w7/ZJtYJgfFMn1I++tdtl/uECHvTscnuUBwZr+ZhdcjM2Im1eJ3XFiXCZzg4nb/H1yw6jptKSHT/7GmoQrcGvk/Cyn75q7T4s6X8qcDkYSiDIsKklzIkAxuo6Ol97qt8xzwcuyV+s1me0lkq40opQtWsetHKsOSX8DE/q
+    PGRST_DB_URI: >-
+      AgC6I8YqW4aeNeZNCAepLWiTSSk/m9c59V+ezy4gmFAc08WX3cT3jNFiIylBEWPdGdWxMc9Q88Wz87qA5ecerK+JMwjfQUB8w5umnOmYUd7/IKnuYrXBjdOeit9k+BQG+xF1hcV4ap9cZkPNTq2YxvwMryfB/aZVMdalUEG5PPM5XFyRpXva2Y3VVSeXTIFxwylofYSwU5VMwoHZzgfgf6B29hN+lLhxlLBhNrCU9M9F1JjcK2Xp587BqDZc7ojaTahZ6z5TAl6v75IFg74XHJYtzAqg7sHXLtEqUG+ggfxMbt7IsBaxpXHLLI7a/KH+cX+JUnXYurCmGE1GOdO/sQDAqAwbcsBie5O6plpy6Ssu//xdwDqPxu/GoptsOYLKU2hf3KGl4lXFkgQgfQf7dy1wtw6cwaThyQfFUpt1D5tvdX2mpjxoryD1jM1QOjTiJag118I5BYz0MvtgjzQN/Roe+/OdFtduOL/5MPFx1ebk0UX9n9he/BNQdy7eoHyNqhChlTbI/BIEVBAiI62wfsozB9S/BH8FiUIcv92tWPSooDYuWS6ikdiAvFJdRBQ5SDMXEO09wBkj0IjY+3rxUP+dNTV70iOLAk9FKqZEiO+alEW1hO47tu3MAEM3Ua7UAUzE8bZlgxK+Rwp2vDJqno+3Rw5ijFdNkQnP0UGPqWAJbG58GmbJK7VB6sa4K/kWgeJhUzbmiYRfm8f5tRwhtMhOokPZGRXnt00KETBZWZ+UyLAOEoeldqWmAllQKzPWI309CWLAlID6Z0SBo3oM9/7c2xlxtfcTJLLdxZUsQLlnp0LgRPIbjfGttQEA6NlwBpEDHeX7c762iJNXx4tvUctk7i0M8aOLwdOpEXwKoek6udRID83NN6mGy4VwEaWXOGK/UoHP1lpEkECsiEgp4fZ+EyQdB2SIImttY1UydKhwq8CDvsCw
+    PGSSLMODE: >-
+      AgCKAKQTA7/69s9SZIZ1bQzigwRqqyxqkv/Y+lcj7+M2UL9TnF+uxD2COe5Z5M8S5j9X80E+ncvlAH1T+LE0FMOlLLAM1odaUMQ6NZjf9CY22Id1AXXTR1FvE0xNx3bZILbYgZsDIUCfEL0eaUaZEm3Nb29SX2Rzuq1IggXvKVpHpSnEVkCICx1K30ouN8kbZgWghFULVcsUDfvjCktBSvtxH5+q4Ra094lp6McRpva/Xl527jse+AYbGrIYAtk4fn5iq8Ydiym6630bNJoCxetVFxqM+jHGspafF/xNZsChPaDFLKbr71gfhaKj/XTBqjpLVxd1l3GFHzcmlD3pkli6V8vlbfTOP7NfsC0gKP3au+hpM0GU2h8A9kWeMbkKTn50K17yad0PmurVIxywM1hWs3lzirdzLpd0a2ckBYHvWT/QXLfWw13Ewrnb+C16OU/cZ5QqjsZaRj2+oeaQWY7987OOLwiyBbF65Qfd0tXpedguEYVKqkOyA/szfKtCR/Qjp3fV8x9zGJeIZN8RywRf9L9XdlTg0tvkFgIRpgg+zQNT91CfotW4KQnXJru2mr/D5E/Fjf3w0o3y9cqL0Lo4u0Zp9oyZIAeZ1FVop4VGl/KQXTF0ElE8eCgKQfwcRkbS9ET/o4atKdeUAvDB67+x2nJKhGCmNz6XVOpOTP4/YCDpb+bNvHgF63WXok7Hewyf7DxXyAfT
+    PGUSER: >-
+      AgDKqXE8BSlYrkaPpyYCYXcxh+03V7ZPoVzkc0FDH+h3uD3JddOc5OC+wW3t4YzzxkWl//SWb50NeSkz7ms9VNAnOFJDFOyn0FoMyIbwBz8JUhLVwqKh3x9l/kLROMuhlY4WpvGpQcdlfMrzOj+3BzwvUP80tD1KHpxF3oYgzbc7mRby4BnjW3VOZ4ftwq0yg8VWdreJRE4X6Xqys3pgrLE98mH6onbBKteOGDTF1VhfAY36stPCPzPKC3J7it0jSE5aUHFtPNjpSb/T/TJo8RQmPssnCkEeU63YuRIalamVeJ0D2Gtx6/q660KW8rtUTZTyqI0Y300M6py5SnqleyHzwx5NfRlnHuSp/DxnZ7aQIW1dojbg5ozs9ewEtQefRBMF09NZh77cn5Mh7xbxOxyjqQty5rGx1MGBFvj41Blod7MhrQWznR6EEi3e28bNUkpo423W7Bwfff8OkAnJdECfB6krlXFzTiqdyshS7DK/KATkFbT6U96BTXtVCY37yb2UFJnXdcyyBLwpmwRj2dj8td88xi/IdzATmspDWJN7EbPiM4z48ss/RnVufw+0yaVovKscqkLMMUy19pnJ4Dk1WqoLDJAofrnQyCmjaYw12Y/FIbb7EcG2Ocgz9cKm5dBjdD/hkiixZN7kPTMzAJTxR3OHW1RdaVo4FcBCa2GbIAL3rHMeWWNMhHWocGSo5kI9tk5l9FTOxmjt7K272lh9lNUqXItcwIwh+OMbytbFdaM5efyJrJngINdqnIK7IS/tRfL3VMhSsC2hXokEHDg=
+  template:
+    metadata:
+      annotations:
+        app.gitlab.com/app: socialgouv-sample-next-app
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+        sealedsecrets.bitnami.com/cluster-wide: 'true'
+        app.github.com/job: xxxxxxx-job
+        app.github.com/ref: refs/heads/e2e-branch
+        app.github.com/repo: socialgouv/sample-next-app
+        app.github.com/run: '12345'
+        app.github.com/sha: '8843083'
+      creationTimestamp: null
+      labels:
+        application: sample-next-app
+        cert: wildcard
+        owner: sample-next-app
+        team: sample-next-app
+      name: azure-pg-user
+    type: Opaque"
+`;

@@ -1,5 +1,7 @@
 import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
 
+import environments from "../environments";
+
 /** Parameters to create an [[Ingress]] with [[createDeployment]] */
 export interface IngressConfig {
   /** ingress name */
@@ -53,11 +55,15 @@ const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
  */
 export const createIngress = (params: IngressConfig): Ingress => {
   const hosts = params.hosts;
+
+  const ciEnv = environments(process.env);
+
   const annotations: Record<string, string> = {
     "kubernetes.io/ingress.class": "nginx",
     ...(params.annotations ?? {}),
   };
-  if (process.env.PRODUCTION) {
+
+  if (ciEnv.isProduction) {
     annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
     annotations["kubernetes.io/tls-acme"] = "true";
   }
@@ -88,7 +94,7 @@ export const createIngress = (params: IngressConfig): Ingress => {
           hosts: hosts,
           secretName:
             params.secretName ??
-            (process.env.PRODUCTION ? `${params.name}-crt` : "wildcard-crt"),
+            (ciEnv.isProduction ? `${params.name}-crt` : "wildcard-crt"),
         },
       ],
     },
