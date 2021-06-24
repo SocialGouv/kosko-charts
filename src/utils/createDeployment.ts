@@ -1,6 +1,7 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
+import type { Volume } from "kubernetes-models/v1";
 
 import { merge } from "./@kosko/env/merge";
 
@@ -20,6 +21,8 @@ export interface DeploymentParams {
   name: string;
   /** docker registry secrets */
   imagePullSecrets?: IIoK8sApiCoreV1LocalObjectReference[];
+  /** volumes */
+  volumes?: Volume[];
 }
 
 /**
@@ -134,6 +137,7 @@ export const createDeployment = (params: DeploymentParams): Deployment => {
             ),
           ],
           imagePullSecrets: params.imagePullSecrets,
+          volumes: params.volumes,
         },
       },
     },
