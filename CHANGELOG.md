@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/SocialGouv/kosko-charts/compare/v6.1.9...v6.2.0) (2021-06-24)
+
+
+### Features
+
+* **utils:** allow volumes entry on deployment ([#572](https://github.com/SocialGouv/kosko-charts/issues/572)) ([cb088a4](https://github.com/SocialGouv/kosko-charts/commit/cb088a4fe22969fd1ba60bb014e08c88d173c995))
+
 ## [6.1.9](https://github.com/SocialGouv/kosko-charts/compare/v6.1.8...v6.1.9) (2021-06-23)
 
 
