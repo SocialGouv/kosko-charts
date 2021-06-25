@@ -24,7 +24,7 @@ Object {
                 },
               },
             ],
-            "image": "ghcr.io/socialgouv/docker/azure-db:6.0.1",
+            "image": "ghcr.io/socialgouv/docker/azure-db:6.26.2",
             "imagePullPolicy": "IfNotPresent",
             "name": "drop-autodevops-dbs",
             "resources": Object {
@@ -70,7 +70,7 @@ Object {
                 },
               },
             ],
-            "image": "ghcr.io/socialgouv/docker/azure-db:6.0.1",
+            "image": "ghcr.io/socialgouv/docker/azure-db:6.26.2",
             "imagePullPolicy": "IfNotPresent",
             "name": "drop-autodevops-dbs",
             "resources": Object {
