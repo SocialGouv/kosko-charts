@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/SocialGouv/kosko-charts/compare/v6.2.1...v6.3.0) (2021-06-25)
+
+
+### Features
+
+* **azure-storage:** add project volume ([#573](https://github.com/SocialGouv/kosko-charts/issues/573)) ([059e4a6](https://github.com/SocialGouv/kosko-charts/commit/059e4a6c1698fda6d2bd1ceb48803636cdb68023))
+
 ## [6.2.1](https://github.com/SocialGouv/kosko-charts/compare/v6.2.0...v6.2.1) (2021-06-25)
 
 
