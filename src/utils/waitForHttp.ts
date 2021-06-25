@@ -1,8 +1,8 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/wait-for-http";
-// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/wait-for-http versioning=6.0.1
-const SOCIALGOUV_DOCKER_VERSION = "6.0.1";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/wait-for-http versioning=6.26.1
+const SOCIALGOUV_DOCKER_VERSION = "6.26.1";
 
 /** params for the [[waitForHttp]] function */
 export interface WaitForHttpParams {
