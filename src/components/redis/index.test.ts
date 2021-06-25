@@ -15,70 +15,70 @@ test("should create app with redis config", async () => {
   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   const manifest = await create("redis", { env });
   expect(manifest).toMatchInlineSnapshot(`
-    Array [
-      "redis",
-      Object {
-        "config": Object {
-          "container": Object {
-            "livenessProbe": Object {
-              "exec": Object {
-                "command": Array [
-                  "sh",
-                  "-c",
-                  "redis-cli ping",
-                ],
-              },
-              "httpGet": undefined,
-            },
-            "readinessProbe": Object {
-              "exec": Object {
-                "command": Array [
-                  "sh",
-                  "-c",
-                  "redis-cli ping",
-                ],
-              },
-              "httpGet": undefined,
-            },
-            "startupProbe": Object {
-              "exec": Object {
-                "command": Array [
-                  "sh",
-                  "-c",
-                  "redis-cli ping",
-                ],
-              },
-              "httpGet": undefined,
-            },
+Array [
+  "redis",
+  Object {
+    "config": Object {
+      "container": Object {
+        "livenessProbe": Object {
+          "exec": Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "redis-cli ping",
+            ],
           },
-          "containerPort": 6379,
-          "image": "redis:6.2.3-alpine3.13",
-          "ingress": false,
-          "subDomainPrefix": "redis-",
+          "httpGet": undefined,
         },
-        "deployment": Object {
-          "labels": Object {
-            "component": "redis",
+        "readinessProbe": Object {
+          "exec": Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "redis-cli ping",
+            ],
           },
+          "httpGet": undefined,
         },
-        "env": Object {
-          "component": [Function],
-          "cwd": "/tmp",
-          "extensions": Array [
-            "cjs",
-            "mjs",
-          ],
-          "global": [Function],
-          "paths": Object {
-            "component": "environments/#{environment}/#{component}",
-            "global": "environments/#{environment}",
+        "startupProbe": Object {
+          "exec": Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "redis-cli ping",
+            ],
           },
-          "resetReducers": [Function],
-          "setReducers": [Function],
+          "httpGet": undefined,
         },
       },
-    ]
-  `);
+      "containerPort": 6379,
+      "image": "redis:6.2.4-alpine3.13",
+      "ingress": false,
+      "subDomainPrefix": "redis-",
+    },
+    "deployment": Object {
+      "labels": Object {
+        "component": "redis",
+      },
+    },
+    "env": Object {
+      "component": [Function],
+      "cwd": "/tmp",
+      "extensions": Array [
+        "cjs",
+        "mjs",
+      ],
+      "global": [Function],
+      "paths": Object {
+        "component": "environments/#{environment}/#{component}",
+        "global": "environments/#{environment}",
+      },
+      "resetReducers": [Function],
+      "setReducers": [Function],
+    },
+  },
+]
+`);
 });
 
 test("should create app with pgweb config for production", async () => {
@@ -86,68 +86,68 @@ test("should create app with pgweb config for production", async () => {
   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   const manifest = await create("redis", { env });
   expect(manifest).toMatchInlineSnapshot(`
-    Array [
-      "redis",
-      Object {
-        "config": Object {
-          "container": Object {
-            "livenessProbe": Object {
-              "exec": Object {
-                "command": Array [
-                  "sh",
-                  "-c",
-                  "redis-cli ping",
-                ],
-              },
-              "httpGet": undefined,
-            },
-            "readinessProbe": Object {
-              "exec": Object {
-                "command": Array [
-                  "sh",
-                  "-c",
-                  "redis-cli ping",
-                ],
-              },
-              "httpGet": undefined,
-            },
-            "startupProbe": Object {
-              "exec": Object {
-                "command": Array [
-                  "sh",
-                  "-c",
-                  "redis-cli ping",
-                ],
-              },
-              "httpGet": undefined,
-            },
+Array [
+  "redis",
+  Object {
+    "config": Object {
+      "container": Object {
+        "livenessProbe": Object {
+          "exec": Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "redis-cli ping",
+            ],
           },
-          "containerPort": 6379,
-          "image": "redis:6.2.3-alpine3.13",
-          "ingress": false,
-          "subDomainPrefix": "redis.",
+          "httpGet": undefined,
         },
-        "deployment": Object {
-          "labels": Object {
-            "component": "redis",
+        "readinessProbe": Object {
+          "exec": Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "redis-cli ping",
+            ],
           },
+          "httpGet": undefined,
         },
-        "env": Object {
-          "component": [Function],
-          "cwd": "/tmp",
-          "extensions": Array [
-            "cjs",
-            "mjs",
-          ],
-          "global": [Function],
-          "paths": Object {
-            "component": "environments/#{environment}/#{component}",
-            "global": "environments/#{environment}",
+        "startupProbe": Object {
+          "exec": Object {
+            "command": Array [
+              "sh",
+              "-c",
+              "redis-cli ping",
+            ],
           },
-          "resetReducers": [Function],
-          "setReducers": [Function],
+          "httpGet": undefined,
         },
       },
-    ]
-  `);
+      "containerPort": 6379,
+      "image": "redis:6.2.4-alpine3.13",
+      "ingress": false,
+      "subDomainPrefix": "redis.",
+    },
+    "deployment": Object {
+      "labels": Object {
+        "component": "redis",
+      },
+    },
+    "env": Object {
+      "component": [Function],
+      "cwd": "/tmp",
+      "extensions": Array [
+        "cjs",
+        "mjs",
+      ],
+      "global": [Function],
+      "paths": Object {
+        "component": "environments/#{environment}/#{component}",
+        "global": "environments/#{environment}",
+      },
+      "resetReducers": [Function],
+      "setReducers": [Function],
+    },
+  },
+]
+`);
 });
