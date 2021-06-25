@@ -14,8 +14,8 @@ interface RestoreDbJobArgs {
 }
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
-// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.0.1
-const SOCIALGOUV_DOCKER_VERSION = "6.0.1";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.26.2
+const SOCIALGOUV_DOCKER_VERSION = "6.26.2";
 
 const restoreScript = `
 
