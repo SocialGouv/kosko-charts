@@ -32,7 +32,7 @@
     "kubernetes-models": "^1.7.1",
     "lint-staged": "^11.0.0",
     "onchange": "^7.1.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.2",
     "tempy": "^1.0.1",
     "ts-node": "^10.0.0",
     "typedoc": "^0.21.2",
