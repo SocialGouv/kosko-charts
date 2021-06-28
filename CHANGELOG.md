@@ -1,3 +1,10 @@
+## [6.4.1](https://github.com/SocialGouv/kosko-charts/compare/v6.4.0...v6.4.1) (2021-06-28)
+
+
+### Bug Fixes
+
+* **azure-storage:** use env name instead of dynamic application name ([#580](https://github.com/SocialGouv/kosko-charts/issues/580)) ([e62484b](https://github.com/SocialGouv/kosko-charts/commit/e62484bfe546ef7ef985e0b2e7021fab13b0e863))
+
 # [6.4.0](https://github.com/SocialGouv/kosko-charts/compare/v6.3.0...v6.4.0) (2021-06-28)
 
 
