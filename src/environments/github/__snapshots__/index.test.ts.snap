@@ -146,14 +146,3 @@ required \\"GITHUB_REPOSITORY\\": \\" \\" should not be an empty string
 required \\"SOCIALGOUV_BASE_DOMAIN\\": \\" \\" should not be an empty string
 "
 `;
-
-exports[`should throw because of missing variables 1`] = `
-"Wrong environment variables
-required \\"GITHUB_SHA\\": \\"undefined\\" should be defined
-required \\"GITHUB_REF\\": \\"undefined\\" should be defined
-required \\"GITHUB_JOB\\": \\"undefined\\" should be defined
-required \\"GITHUB_RUN_ID\\": \\"undefined\\" should be defined
-required \\"GITHUB_REPOSITORY\\": \\"undefined\\" should be defined
-required \\"SOCIALGOUV_BASE_DOMAIN\\": \\"undefined\\" should be defined
-"
-`;
