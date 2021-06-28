@@ -8,8 +8,8 @@ test("kosko generate --preprod", async () => {
   expect(
     await getEnvManifests("preprod", "", {
       ...project("foo").preprod,
-      KUBE_NAMESPACE: "foo-XYZ-preprod-dev2",
       HARBOR_PROJECT: "foo",
+      KUBE_NAMESPACE: "foo-XYZ-preprod-dev2",
       RANCHER_PROJECT_ID: "c-bar:p-foo",
     })
   ).toMatchSnapshot();

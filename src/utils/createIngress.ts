@@ -61,9 +61,8 @@ export const createIngress = (params: IngressConfig): Ingress => {
     annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
     annotations["kubernetes.io/tls-acme"] = "true";
   }
-  const isRedirectionIngress = !!annotations[
-    "nginx.ingress.kubernetes.io/permanent-redirect"
-  ];
+  const isRedirectionIngress =
+    !!annotations["nginx.ingress.kubernetes.io/permanent-redirect"];
 
   const ingressDefinition = {
     metadata: {
