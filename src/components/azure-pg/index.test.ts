@@ -4,8 +4,6 @@ import { createNodeCJSEnvironment } from "@kosko/env";
 import { promises } from "fs";
 import { directory } from "tempy";
 
-import { create } from "./index";
-
 const gitlabEnv = {
   CI_COMMIT_SHORT_SHA: "abcdefg",
   CI_ENVIRONMENT_NAME: "fabrique-dev",
@@ -17,37 +15,44 @@ const gitlabEnv = {
   KUBE_NAMESPACE: "sample-42-my-test",
 };
 
-jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
+const gitlabMock = {
+  manifest: {
+    annotations: {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+    },
+    labels: {
+      application: "sample",
+      owner: "sample",
+      team: "sample",
+    },
+    namespace: { name: "sample-42-my-test" },
+  },
+  projectName: "sample",
+  shortSha: "abcdefg",
+};
+
+const gitlabModuleMock = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   __esModule: true,
-  default: () => ({
-    manifest: {
-      annotations: {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
-      labels: {
-        application: "sample",
-        owner: "sample",
-        team: "sample",
-      },
-      namespace: { name: "sample-42-my-test" },
-    },
-    projectName: "sample",
-    shortSha: "abcdefg",
-  }),
-}));
+  default: () => gitlabMock,
+};
 
 beforeEach(() => {
   jest.resetModules();
 });
 
-// test("should throw because of a missing envs", () => {
-//   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
-//   expect(() => create({ env })).toThrowErrorMatchingSnapshot();
-// });
+test("should throw because of a missing envs", async () => {
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
+  const { create } = await import("./index");
+  expect(() => create({ env })).toThrowErrorMatchingSnapshot();
+});
 
 test("should return create an job", async () => {
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
@@ -57,10 +62,15 @@ test("should return create an job", async () => {
     `${cwd}/environments/dev/pg.sealed-secret.yaml`,
     "---\napiVersion: v1\nkind: ConfigMap"
   );
+  const { create } = await import("./index");
   expect(create({ env })).toMatchSnapshot();
 });
 
 test("should use custom pgHost", async () => {
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
   process.env.CI_PROJECT_NAME = "sample-next-app";
   const env = createNodeCJSEnvironment({ cwd: "/tmp/xxx" });
   env.env = "dev";
@@ -69,6 +79,7 @@ test("should use custom pgHost", async () => {
     `/tmp/xxx/environments/dev/pg.sealed-secret.yaml`,
     "---\napiVersion: v1\nkind: ConfigMap"
   );
+  const { create } = await import("./index");
   expect(
     create({ config: { pgHost: "pouetpouet.com" }, env })
   ).toMatchSnapshot();

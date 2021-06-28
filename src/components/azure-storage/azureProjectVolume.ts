@@ -8,13 +8,13 @@ export function azureProjectVolume(
   { storage }: { storage: string }
 ): [PersistentVolumeClaim, PersistentVolume] {
   const globalEnv = gitlab(process.env);
-  assert.nonEmptyObject(globalEnv.labels);
+  assert.nonEmptyObject(globalEnv.manifest.labels);
 
-  const application = globalEnv.labels.application;
+  const application = globalEnv.manifest.labels.application;
   const metadata = {
-    annotations: globalEnv.annotations ?? {},
-    labels: globalEnv.labels,
-    namespace: globalEnv.namespace,
+    annotations: globalEnv.manifest.annotations ?? {},
+    labels: globalEnv.manifest.labels,
+    namespace: globalEnv.manifest.namespace,
   };
   const pv = `${application}-${name}`;
 
@@ -48,8 +48,8 @@ export function azureProjectVolume(
     spec: {
       accessModes: ["ReadWriteMany"],
       azureFile: {
-        secretName: `azure-${globalEnv.labels.team}-volume`,
-        secretNamespace: globalEnv.namespace.name,
+        secretName: `azure-${globalEnv.manifest.labels.team}-volume`,
+        secretNamespace: globalEnv.manifest.namespace.name,
         shareName: name,
       },
       capacity: {
