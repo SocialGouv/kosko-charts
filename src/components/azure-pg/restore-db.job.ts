@@ -1,7 +1,8 @@
 import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg";
+import environments from "@socialgouv/kosko-charts/environments";
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils/waitForPostgres";
-import ok from "assert";
+// import ok from "assert";
 import { Job } from "kubernetes-models/batch/v1";
 import type { EnvVar } from "kubernetes-models/v1";
 import { ConfigMap, EnvFromSource } from "kubernetes-models/v1";
@@ -65,7 +66,9 @@ export const restoreDbJob = ({
   envFrom = [],
   postRestoreScript,
 }: RestoreDbJobArgs): Manifest[] => {
-  ok(process.env.CI_COMMIT_SHORT_SHA);
+  // ok(process.env.CI_COMMIT_SHORT_SHA);
+  const ciEnv = environments(process.env);
+
   const secretNamespace = getProjectSecretNamespace(project);
   const azureSecretName = getAzureProdVolumeSecretName(project);
   const azureShareName = getAzureBackupShareName(project);
@@ -127,7 +130,7 @@ export const restoreDbJob = ({
     jobSpec.volumes.push({
       //@ts-expect-error
       configMap: {
-        name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
+        name: `post-restore-script-configmap-${ciEnv.shortSha}`,
       },
 
       name: "scripts",
@@ -137,7 +140,7 @@ export const restoreDbJob = ({
         "post-restore.sql": postRestoreScript,
       },
       metadata: {
-        name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
+        name: `post-restore-script-configmap-${ciEnv.shortSha}`,
         namespace: secretNamespace,
       },
     });
@@ -146,7 +149,7 @@ export const restoreDbJob = ({
 
   const job = new Job({
     metadata: {
-      name: `restore-db-${process.env.CI_JOB_ID}`,
+      name: `restore-db-${ciEnv.shortSha}`,
       namespace: secretNamespace,
     },
     spec: {
