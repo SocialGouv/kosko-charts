@@ -19,7 +19,7 @@ test("fails as FOO variable unset", () => {
 test("fails as FOO variable is not a string", () => {
   const assert = assertEnv(["FOO"]);
   expect(() => {
-    assert({ FOO: (42 as unknown) as string });
+    assert({ FOO: 42 as unknown as string });
   }).toThrowErrorMatchingInlineSnapshot(`
     "Wrong environment variables
     required \\"FOO\\": \\"42\\" should be string
