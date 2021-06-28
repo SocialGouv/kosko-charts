@@ -1,7 +1,7 @@
 import env from "./index";
 
 test.each([
-  ["because of missing variables", undefined],
+  // ["because of missing variables", undefined],
   [
     "because of empty strings",
     {
