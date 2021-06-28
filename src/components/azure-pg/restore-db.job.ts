@@ -1,5 +1,6 @@
 import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg";
 import { azureProjectVolume } from "@socialgouv/kosko-charts/components/azure-storage/azureProjectVolume";
+import environments from "@socialgouv/kosko-charts/environments";
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils/waitForPostgres";
 import ok from "assert";
@@ -66,8 +67,9 @@ export const restoreDbJob = ({
   envFrom = [],
   postRestoreScript,
 }: RestoreDbJobArgs): { metadata?: IObjectMeta; kind: string }[] => {
-  ok(process.env.CI_COMMIT_SHORT_SHA);
-  ok(process.env.CI_JOB_ID);
+  // ok(process.env.CI_COMMIT_SHORT_SHA);
+  // ok(process.env.CI_JOB_ID);
+  const ciEnv = environments(process.env);
   const secretNamespace = getProjectSecretNamespace(project);
   const azureSecretName = getAzureProdVolumeSecretName(project);
   const azureFileShareName = `${project}-backup-restore`;
@@ -80,10 +82,7 @@ export const restoreDbJob = ({
   // NOTE(douglasduteil): lock the pvc and the pc on the existing secret prod namepace
   ok(pv.spec?.azureFile, "Missing pv.spec?.azureFile");
   pvc.metadata.name = azureFileShareName;
-  pvc.metadata.namespace =
-    pv.metadata.namespace =
-    pv.spec.azureFile.secretNamespace =
-      secretNamespace;
+  pvc.metadata.namespace = pv.metadata.namespace = pv.spec.azureFile.secretNamespace = secretNamespace;
   pv.spec.azureFile.secretName = azureSecretName;
 
   const backupsVolume = new Volume({
@@ -144,7 +143,7 @@ export const restoreDbJob = ({
     jobSpec.volumes.push(
       new Volume({
         configMap: {
-          name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
+          name: `post-restore-script-configmap-${ciEnv.shortSha}`,
         },
         name,
       })
@@ -154,7 +153,7 @@ export const restoreDbJob = ({
         "post-restore.sql": postRestoreScript,
       },
       metadata: {
-        name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
+        name: `post-restore-script-configmap-${ciEnv.shortSha}`,
         namespace: secretNamespace,
       },
     });
@@ -163,7 +162,7 @@ export const restoreDbJob = ({
 
   const job = new Job({
     metadata: {
-      name: `restore-db-${process.env.CI_JOB_ID}`,
+      name: `restore-db-${ciEnv.shortSha}`,
       namespace: secretNamespace,
     },
     spec: {
