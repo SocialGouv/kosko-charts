@@ -57,6 +57,8 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c "ALTER SCHEMA public owner to \${OWNER
 `;
 
 const getProjectSecretNamespace = (project: string) => `${project}-secret`;
+const getAzureProdVolumeSecretName = (project: string) =>
+  `azure-${project.replace(/-/g, "")}prod-volume`;
 
 export const restoreDbJob = ({
   project,
@@ -67,6 +69,7 @@ export const restoreDbJob = ({
   ok(process.env.CI_COMMIT_SHORT_SHA);
   ok(process.env.CI_JOB_ID);
   const secretNamespace = getProjectSecretNamespace(project);
+  const azureSecretName = getAzureProdVolumeSecretName(project);
   const [pvc, pv] = azureProjectVolume(`${project}-backup-restore`, {
     storage: "128Gi",
   });
@@ -80,7 +83,7 @@ export const restoreDbJob = ({
     pv.metadata.namespace =
     pv.spec.azureFile.secretNamespace =
       secretNamespace;
-  pv.spec.azureFile.secretName = "azure-cdtnadmindev-volume";
+  pv.spec.azureFile.secretName = azureSecretName;
 
   const backupsVolume = new Volume({
     name: "backups",

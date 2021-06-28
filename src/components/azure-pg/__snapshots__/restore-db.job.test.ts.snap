@@ -195,7 +195,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "ReadWriteMany",
       ],
       "azureFile": Object {
-        "secretName": "azure-cdtnadmindev-volume",
+        "secretName": "azure-samplenextappprod-volume",
         "secretNamespace": "sample-next-app-secret",
         "shareName": "sample-next-app-backup-restore",
       },
@@ -425,7 +425,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "ReadWriteMany",
       ],
       "azureFile": Object {
-        "secretName": "azure-cdtnadmindev-volume",
+        "secretName": "azure-samplenextappprod-volume",
         "secretNamespace": "sample-next-app-secret",
         "shareName": "sample-next-app-backup-restore",
       },
