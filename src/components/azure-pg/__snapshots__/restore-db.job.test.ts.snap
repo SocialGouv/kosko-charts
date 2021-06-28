@@ -128,17 +128,82 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           "restartPolicy": "OnFailure",
           "volumes": Array [
             Object {
-              "azureFile": Object {
-                "readOnly": true,
-                "secretName": "azure-samplenextappprod-volume",
-                "shareName": "sample-next-app-backup-restore",
-              },
               "name": "backups",
+              "persistentVolumeClaim": Object {
+                "claimName": "restore-db-123456789-backup-restore",
+                "readOnly": true,
+              },
             },
           ],
         },
       },
       "ttlSecondsAfterFinished": 86400,
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "restore-db-123456789-backup-restore",
+      "namespace": "sample-next-app-secret",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "resources": Object {
+        "requests": Object {
+          "storage": "128Gi",
+        },
+      },
+      "selector": Object {
+        "matchLabels": Object {
+          "usage": "sample-sample-next-app-backup-restore",
+        },
+      },
+      "storageClassName": "",
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolume",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+        "usage": "sample-sample-next-app-backup-restore",
+      },
+      "name": "sample-sample-next-app-backup-restore",
+      "namespace": "sample-next-app-secret",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "azureFile": Object {
+        "secretName": "azure-cdtnadmindev-volume",
+        "secretNamespace": "sample-next-app-secret",
+        "shareName": "sample-next-app-backup-restore",
+      },
+      "capacity": Object {
+        "storage": "128Gi",
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "",
     },
   },
 ]
@@ -287,12 +352,11 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           "restartPolicy": "OnFailure",
           "volumes": Array [
             Object {
-              "azureFile": Object {
-                "readOnly": true,
-                "secretName": "azure-samplenextappprod-volume",
-                "shareName": "sample-next-app-backup-restore",
-              },
               "name": "backups",
+              "persistentVolumeClaim": Object {
+                "claimName": "restore-db-123456789-backup-restore",
+                "readOnly": true,
+              },
             },
             Object {
               "configMap": Object {
@@ -304,6 +368,72 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         },
       },
       "ttlSecondsAfterFinished": 86400,
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "restore-db-123456789-backup-restore",
+      "namespace": "sample-next-app-secret",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "resources": Object {
+        "requests": Object {
+          "storage": "128Gi",
+        },
+      },
+      "selector": Object {
+        "matchLabels": Object {
+          "usage": "sample-sample-next-app-backup-restore",
+        },
+      },
+      "storageClassName": "",
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolume",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "sample",
+        "owner": "sample",
+        "team": "sample",
+        "usage": "sample-sample-next-app-backup-restore",
+      },
+      "name": "sample-sample-next-app-backup-restore",
+      "namespace": "sample-next-app-secret",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "azureFile": Object {
+        "secretName": "azure-cdtnadmindev-volume",
+        "secretNamespace": "sample-next-app-secret",
+        "shareName": "sample-next-app-backup-restore",
+      },
+      "capacity": Object {
+        "storage": "128Gi",
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "",
     },
   },
 ]
