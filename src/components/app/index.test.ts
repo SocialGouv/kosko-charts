@@ -3,111 +3,110 @@ import { project } from "@socialgouv/kosko-charts/testing/fake/gitlab-ci.env";
 import { promises } from "fs";
 import { directory } from "tempy";
 
-import { create } from "./index";
+const gitlabMock = {
+  manifest: {
+    annotations: {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+    },
+    domain: "fabrique.social.gouv.fr",
+    labels: {
+      application: "sample",
+      owner: "sample",
+      team: "sample",
+    },
+    namespace: { name: "sample-42-my-test" },
+    subdomain: "sample",
+  },
+  projectName: "sample",
+  shorSha: "abcdefg",
+};
 
-jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
+const gitlabModuleMock = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   __esModule: true,
-  default: () => ({
-    isProduction: "true",
-    manifest: {
-      annotations: {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-      },
-      domain: "fabrique.social.gouv.fr",
-      labels: {
-        application: "sample",
-        owner: "sample",
-        team: "sample",
-      },
-      namespace: { name: "sample-42-my-test" },
-      subdomain: "sample",
-    },
-    projectName: "sample",
-    shorSha: "abcdefg",
-  }),
-}));
+  default: () => gitlabMock,
+};
 
 beforeEach(() => {
   jest.resetModules();
 });
 
-// test("should throw because of a missing envs", async () => {
-//   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
-//   await expect(async () =>
-//     create("app", { env })
-//   ).rejects.toThrowErrorMatchingSnapshot();
-// });
+test("should throw because of a missing envs", async () => {
+  const env = createNodeCJSEnvironment({ cwd: "/tmp" });
+  const { create } = await import("./index");
+  await expect(async () =>
+    create("app", { env })
+  ).rejects.toThrowErrorMatchingSnapshot();
+});
 
 test("should return dev manifests", async () => {
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
   const gitlabEnv = project("sample").dev;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "dev";
   await promises.mkdir(`${cwd}/environments/dev`, { recursive: true });
+  const { create } = await import("./index");
   expect(await create("app", { env })).toMatchSnapshot();
+});
+
+test("should return preprod manifests with NO custom subdomain", async () => {
+  Object.assign(gitlabMock, { isPreProduction: "true" });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
+  const gitlabEnv = project("sample").preprod;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = createNodeCJSEnvironment({ cwd });
+  env.env = "preprod";
+  await promises.mkdir(`${cwd}/environments/preprod`, { recursive: true });
+  const { create } = await import("./index");
+  expect(
+    await create("app", {
+      config: {
+        subdomain: "another",
+      },
+      env,
+    })
+  ).toMatchSnapshot();
 });
 
 test("should return prod manifests", async () => {
+  Object.assign(gitlabMock, { isProduction: "true" });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
   const gitlabEnv = project("sample").prod;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
+  const { create } = await import("./index");
   expect(await create("app", { env })).toMatchSnapshot();
 });
 
-// test("should return preprod manifests with NO custom subdomain", async () => {
-//   jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
-//     // eslint-disable-next-line @typescript-eslint/naming-convention
-//     __esModule: true,
-//     default: () => ({
-//       isPreProduction: "true",
-//       manifest: {
-//         annotations: {
-//           "app.gitlab.com/app": "socialgouv-sample",
-//           "app.gitlab.com/env": "my-test",
-//         },
-//         domain: "fabrique.social.gouv.fr",
-//         labels: {
-//           application: "sample",
-//           owner: "sample",
-//           team: "sample",
-//         },
-//         namespace: { name: "sample-42-my-test" },
-//         subdomain: "sample",
-//       },
-//       projectName: "sample",
-//       shorSha: "abcdefg",
-//     }),
-//   }));
-
-//   const gitlabEnv = project("sample").preprod;
-//   Object.assign(process.env, gitlabEnv);
-//   const cwd = directory();
-//   const env = createNodeCJSEnvironment({ cwd });
-//   env.env = "preprod";
-//   await promises.mkdir(`${cwd}/environments/preprod`, { recursive: true });
-//   expect(
-//     await create("app", {
-//       config: {
-//         subdomain: "another",
-//       },
-//       env,
-//     })
-//   ).toMatchSnapshot();
-// });
-
 test("should return prod manifests with custom subdomain", async () => {
+  Object.assign(gitlabMock, { isProduction: "true" });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
   const gitlabEnv = project("sample").prod;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
+  const { create } = await import("./index");
   expect(
     await create("app", {
       config: {
@@ -119,12 +118,18 @@ test("should return prod manifests with custom subdomain", async () => {
 });
 
 test("should return prod manifests without custom subdomain if undefined", async () => {
+  Object.assign(gitlabMock, { isProduction: "true" });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
   const gitlabEnv = project("sample").prod;
   Object.assign(process.env, gitlabEnv);
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
   await promises.mkdir(`${cwd}/environments/prod`, { recursive: true });
+  const { create } = await import("./index");
   expect(
     await create("app", {
       config: {

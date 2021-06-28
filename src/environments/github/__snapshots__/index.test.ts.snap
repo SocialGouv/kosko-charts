@@ -2,125 +2,158 @@
 
 exports[`should return production gitlab global env 1`] = `
 Object {
-  "annotations": Object {
-    "app.gitlab.com/app": "socialgouv-sample",
-    "app.gitlab.com/env": "my-test",
-    "app.gitlab.com/env.name": "fabrique-prod",
+  "isPreProduction": false,
+  "isProduction": false,
+  "manifest": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/heads/e2e-branch",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/heads/e2e-branch",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "cert": "wildcard",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app-e2e-branch",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app-e2e-branch",
   },
-  "domain": "dev2.fabrique.social.gouv.fr",
-  "git": Object {
-    "branch": undefined,
-    "remote": undefined,
-  },
-  "labels": Object {
-    "application": "sample",
-    "owner": "sample",
-    "team": "sample",
-  },
-  "namespace": Object {
-    "name": "sample",
-  },
-  "rancherId": "",
-  "subdomain": "sample",
+  "projectName": "sample-next-app",
+  "shortSha": "8843083",
 }
 `;
 
 exports[`should return tagged gitlab global env 1`] = `
 Object {
-  "annotations": Object {
-    "app.gitlab.com/app": "socialgouv-sample",
-    "app.gitlab.com/env": "my-test",
-    "app.gitlab.com/env.name": "fabrique-dev",
+  "isPreProduction": false,
+  "isProduction": false,
+  "manifest": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/heads/e2e-branch",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/heads/e2e-branch",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "cert": "wildcard",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app-e2e-branch",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app-e2e-branch",
   },
-  "domain": "dev2.fabrique.social.gouv.fr",
-  "git": Object {
-    "branch": undefined,
-    "remote": undefined,
-  },
-  "labels": Object {
-    "application": "vX-Y-Z-sample",
-    "cert": "wildcard",
-    "owner": "sample",
-    "team": "sample",
-  },
-  "namespace": Object {
-    "name": "sample-42-my-test",
-  },
-  "rancherId": "",
-  "subdomain": "vX-Y-Z-sample",
+  "projectName": "sample-next-app",
+  "shortSha": "8843083",
 }
 `;
 
 exports[`should return the gitlab global env 1`] = `
 Object {
-  "annotations": Object {
-    "app.gitlab.com/app": "socialgouv-sample",
-    "app.gitlab.com/env": "my-test",
-    "app.gitlab.com/env.name": "fabrique-dev",
+  "isPreProduction": false,
+  "isProduction": false,
+  "manifest": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/heads/e2e-branch",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/heads/e2e-branch",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "cert": "wildcard",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app-e2e-branch",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app-e2e-branch",
   },
-  "domain": "dev2.fabrique.social.gouv.fr",
-  "git": Object {
-    "branch": undefined,
-    "remote": undefined,
-  },
-  "labels": Object {
-    "application": "my-test-sample",
-    "cert": "wildcard",
-    "owner": "sample",
-    "team": "sample",
-  },
-  "namespace": Object {
-    "name": "sample-42-my-test",
-  },
-  "rancherId": "",
-  "subdomain": "my-test-sample",
+  "projectName": "sample-next-app",
+  "shortSha": "8843083",
 }
 `;
 
 exports[`should return the gitlab global env of the cluster dev2 1`] = `
 Object {
-  "annotations": Object {
-    "app.gitlab.com/app": "socialgouv-sample",
-    "app.gitlab.com/env": "my-test",
-    "app.gitlab.com/env.name": "fabrique-dev2",
+  "isPreProduction": false,
+  "isProduction": false,
+  "manifest": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/heads/e2e-branch",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/heads/e2e-branch",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "cert": "wildcard",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app-e2e-branch",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app-e2e-branch",
   },
-  "domain": "dev2.fabrique.social.gouv.fr",
-  "git": Object {
-    "branch": undefined,
-    "remote": undefined,
-  },
-  "labels": Object {
-    "application": "my-test-sample",
-    "cert": "wildcard",
-    "owner": "sample",
-    "team": "sample",
-  },
-  "namespace": Object {
-    "name": "sample-42-my-test",
-  },
-  "rancherId": "",
-  "subdomain": "my-test-sample",
+  "projectName": "sample-next-app",
+  "shortSha": "8843083",
 }
 `;
 
 exports[`should throw because of empty strings 1`] = `
 "Wrong environment variables
-required \\"CI_ENVIRONMENT_NAME\\": \\" \\" should not be an empty string
-required \\"CI_ENVIRONMENT_SLUG\\": \\" \\" should not be an empty string
-required \\"CI_PROJECT_NAME\\": \\" \\" should not be an empty string
-required \\"CI_PROJECT_PATH_SLUG\\": \\" \\" should not be an empty string
-required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\" \\" should not be an empty string
-required \\"KUBE_NAMESPACE\\": \\" \\" should not be an empty string
+required \\"GITHUB_SHA\\": \\" \\" should not be an empty string
+required \\"GITHUB_REF\\": \\" \\" should not be an empty string
+required \\"GITHUB_JOB\\": \\" \\" should not be an empty string
+required \\"GITHUB_RUN_ID\\": \\" \\" should not be an empty string
+required \\"GITHUB_REPOSITORY\\": \\" \\" should not be an empty string
+required \\"SOCIALGOUV_BASE_DOMAIN\\": \\" \\" should not be an empty string
 "
 `;
 
 exports[`should throw because of missing variables 1`] = `
 "Wrong environment variables
-required \\"CI_ENVIRONMENT_NAME\\": \\"undefined\\" should be defined
-required \\"CI_ENVIRONMENT_SLUG\\": \\"undefined\\" should be defined
-required \\"CI_PROJECT_NAME\\": \\"undefined\\" should be defined
-required \\"CI_PROJECT_PATH_SLUG\\": \\"undefined\\" should be defined
-required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\"undefined\\" should be defined
-required \\"KUBE_NAMESPACE\\": \\"undefined\\" should be defined
+required \\"GITHUB_SHA\\": \\"undefined\\" should be defined
+required \\"GITHUB_REF\\": \\"undefined\\" should be defined
+required \\"GITHUB_JOB\\": \\"undefined\\" should be defined
+required \\"GITHUB_RUN_ID\\": \\"undefined\\" should be defined
+required \\"GITHUB_REPOSITORY\\": \\"undefined\\" should be defined
+required \\"SOCIALGOUV_BASE_DOMAIN\\": \\"undefined\\" should be defined
 "
 `;
