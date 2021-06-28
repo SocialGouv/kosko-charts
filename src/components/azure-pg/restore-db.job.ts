@@ -1,10 +1,17 @@
 import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg";
+import { azureProjectVolume } from "@socialgouv/kosko-charts/components/azure-storage/azureProjectVolume";
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils/waitForPostgres";
 import ok from "assert";
+import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1";
 import { Job } from "kubernetes-models/batch/v1";
 import type { EnvVar } from "kubernetes-models/v1";
-import { ConfigMap, EnvFromSource } from "kubernetes-models/v1";
+import {
+  ConfigMap,
+  EnvFromSource,
+  Volume,
+  VolumeMount,
+} from "kubernetes-models/v1";
 
 interface RestoreDbJobArgs {
   project: string;
@@ -50,26 +57,41 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c "ALTER SCHEMA public owner to \${OWNER
 `;
 
 const getProjectSecretNamespace = (project: string) => `${project}-secret`;
-
 const getAzureProdVolumeSecretName = (project: string) =>
   `azure-${project.replace(/-/g, "")}prod-volume`;
-
-const getAzureBackupShareName = (project: string) =>
-  `${project}-backup-restore`;
-
-type Manifest = ConfigMap | Job;
 
 export const restoreDbJob = ({
   project,
   env = [],
   envFrom = [],
   postRestoreScript,
-}: RestoreDbJobArgs): Manifest[] => {
+}: RestoreDbJobArgs): { metadata?: IObjectMeta; kind: string }[] => {
   ok(process.env.CI_COMMIT_SHORT_SHA);
+  ok(process.env.CI_JOB_ID);
   const secretNamespace = getProjectSecretNamespace(project);
   const azureSecretName = getAzureProdVolumeSecretName(project);
-  const azureShareName = getAzureBackupShareName(project);
+  const [pvc, pv] = azureProjectVolume(`${project}-backup-restore`, {
+    storage: "128Gi",
+  });
+  ok(pvc.metadata?.name, "Missing pvc.metadata.name");
+  ok(pv.metadata?.name, "Missing pv.metadata.name");
 
+  // NOTE(douglasduteil): lock the pvc and the pc on the existing secret prod namepace
+  ok(pv.spec?.azureFile, "Missing pv.spec?.azureFile");
+  pvc.metadata.name = `restore-db-${process.env.CI_JOB_ID}-backup-restore`;
+  pvc.metadata.namespace =
+    pv.metadata.namespace =
+    pv.spec.azureFile.secretNamespace =
+      secretNamespace;
+  pv.spec.azureFile.secretName = azureSecretName;
+
+  const backupsVolume = new Volume({
+    name: "backups",
+    persistentVolumeClaim: {
+      claimName: pvc.metadata.name,
+      readOnly: true,
+    },
+  });
   const manifests = [];
 
   const jobSpec = {
@@ -101,37 +123,31 @@ export const restoreDbJob = ({
         volumeMounts: [
           {
             mountPath: "/mnt/data",
-            name: "backups",
+            name: backupsVolume.name,
           },
         ],
       },
     ],
     restartPolicy: "OnFailure",
-    volumes: [
-      {
-        azureFile: {
-          readOnly: true,
-          secretName: azureSecretName,
-          shareName: azureShareName,
-        },
-        name: "backups",
-      },
-    ],
+    volumes: [backupsVolume],
   };
 
   if (postRestoreScript) {
-    jobSpec.containers[0].volumeMounts.push({
-      mountPath: "/mnt/scripts",
-      name: "scripts",
-    });
-    jobSpec.volumes.push({
-      //@ts-expect-error
-      configMap: {
-        name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
-      },
-
-      name: "scripts",
-    });
+    const name = "scripts";
+    jobSpec.containers[0].volumeMounts.push(
+      new VolumeMount({
+        mountPath: "/mnt/scripts",
+        name,
+      })
+    );
+    jobSpec.volumes.push(
+      new Volume({
+        configMap: {
+          name: `post-restore-script-configmap-${process.env.CI_COMMIT_SHORT_SHA}`,
+        },
+        name,
+      })
+    );
     const configMap = new ConfigMap({
       data: {
         "post-restore.sql": postRestoreScript,
@@ -191,6 +207,8 @@ export const restoreDbJob = ({
   addInitContainer(job, initContainer);
 
   manifests.push(job);
+  manifests.push(pvc);
+  manifests.push(pv);
 
   return manifests;
 };
