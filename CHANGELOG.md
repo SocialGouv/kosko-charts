@@ -1,3 +1,10 @@
+## [6.3.1-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v6.3.1-beta.1...v6.3.1-beta.2) (2021-06-28)
+
+
+### Bug Fixes
+
+* Use common environment in restore-db job. ([5485447](https://github.com/SocialGouv/kosko-charts/commit/5485447973e66e7eb662648b2b3466e2554934f1))
+
 ## [6.3.1-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v6.3.0...v6.3.1-beta.1) (2021-06-28)
 
 
