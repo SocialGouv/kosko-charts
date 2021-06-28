@@ -5,14 +5,14 @@ test.each([
   [
     "because of empty strings",
     {
-      CI_COMMIT_TAG: " ",
-      CI_ENVIRONMENT_NAME: " ",
-      CI_ENVIRONMENT_SLUG: " ",
-      CI_PROJECT_NAME: " ",
-      CI_PROJECT_PATH_SLUG: " ",
-      KUBE_INGRESS_BASE_DOMAIN: " ",
+      GITHUB_JOB: " ",
+      GITHUB_REF: " ",
+      GITHUB_REPOSITORY: " ",
+      GITHUB_RUN_ID: " ",
+      GITHUB_SHA: " ",
       KUBE_NAMESPACE: " ",
-      PRODUCTION: " ",
+      RANCHER_PROJECT_ID: " ",
+      SOCIALGOUV_BASE_DOMAIN: " ",
     },
   ],
 ])("should throw %s", (_: string, testEnv?: NodeJS.ProcessEnv) => {
@@ -20,13 +20,14 @@ test.each([
 });
 
 const validEnv = {
-  CI_ENVIRONMENT_NAME: "fabrique-dev",
-  CI_ENVIRONMENT_SLUG: "my-test",
-  CI_PROJECT_NAME: "sample",
-  CI_PROJECT_PATH_SLUG: "socialgouv-sample",
-  CI_REGISTRY_IMAGE: "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
-  KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
-  KUBE_NAMESPACE: "sample-42-my-test",
+  GITHUB_JOB: "xxxxxxx-job",
+  GITHUB_REF: "refs/heads/e2e-branch",
+  GITHUB_REPOSITORY: "socialgouv/sample-next-app",
+  GITHUB_RUN_ID: "12345",
+  GITHUB_SHA: "8843083edb7f873cad1d1420731a60773594ffae",
+  KUBE_NAMESPACE: "sample-next-app-24-e2e-branch-42",
+  RANCHER_PROJECT_ID: "c-bd7z2:p-7ms8p",
+  SOCIALGOUV_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
 };
 test.each([
   ["the gitlab global env", { ...validEnv }],

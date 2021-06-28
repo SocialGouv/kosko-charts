@@ -20,8 +20,8 @@ export default (env = process.env): CIEnv => {
     GITHUB_REF,
     GITHUB_JOB,
     GITHUB_RUN_ID,
-    // KUBE_NAMESPACE,
     GITHUB_REPOSITORY,
+    // KUBE_NAMESPACE,
     SOCIALGOUV_BASE_DOMAIN,
     // NOTE(douglasduteil): enforce defined string in process.env
     // Those env variables are asserted to be defined above
