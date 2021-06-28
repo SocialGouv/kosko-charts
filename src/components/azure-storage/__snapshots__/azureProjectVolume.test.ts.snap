@@ -29,7 +29,7 @@ Array [
       },
       "selector": Object {
         "matchLabels": Object {
-          "usage": "sample-foo",
+          "usage": "my-test-foo",
         },
       },
       "storageClassName": "",
@@ -47,9 +47,9 @@ Array [
         "application": "sample",
         "owner": "sample",
         "team": "sample",
-        "usage": "sample-foo",
+        "usage": "my-test-foo",
       },
-      "name": "sample-foo",
+      "name": "my-test-foo",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
