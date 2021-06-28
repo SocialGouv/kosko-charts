@@ -12,7 +12,7 @@ const assert = assertEnv([
   "SOCIALGOUV_BASE_DOMAIN",
 ]);
 
-export default (env = process.env): CIEnv => {
+export default (env: NodeJS.ProcessEnv | undefined): CIEnv => {
   assert(env);
 
   const {
@@ -31,7 +31,7 @@ export default (env = process.env): CIEnv => {
     RANCHER_PROJECT_ID,
     SOCIALGOUV_PRODUCTION,
     SOCIALGOUV_PREPRODUCTION,
-  } = env;
+  } = env ?? {};
 
   const shortSha = GITHUB_SHA.slice(0, 7);
   const projectName = GITHUB_REPOSITORY.split("/")[1];
