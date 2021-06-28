@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/SocialGouv/kosko-charts/compare/v6.3.0...v6.4.0) (2021-06-28)
+
+
+### Features
+
+* **azure-pg:** make restore db uses azure files pv ([#578](https://github.com/SocialGouv/kosko-charts/issues/578)) ([10d0c45](https://github.com/SocialGouv/kosko-charts/commit/10d0c45661b271b51b749cee90546fdfdc8f8468))
+
 # [6.3.0](https://github.com/SocialGouv/kosko-charts/compare/v6.2.1...v6.3.0) (2021-06-25)
 
 
