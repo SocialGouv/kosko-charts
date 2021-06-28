@@ -167,7 +167,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
       },
       "selector": Object {
         "matchLabels": Object {
-          "usage": "sample-sample-next-app-backup-restore",
+          "usage": "my-test-sample-next-app-backup-restore",
         },
       },
       "storageClassName": "",
@@ -185,9 +185,9 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "application": "sample",
         "owner": "sample",
         "team": "sample",
-        "usage": "sample-sample-next-app-backup-restore",
+        "usage": "my-test-sample-next-app-backup-restore",
       },
-      "name": "sample-sample-next-app-backup-restore",
+      "name": "my-test-sample-next-app-backup-restore",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
@@ -397,7 +397,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
       },
       "selector": Object {
         "matchLabels": Object {
-          "usage": "sample-sample-next-app-backup-restore",
+          "usage": "my-test-sample-next-app-backup-restore",
         },
       },
       "storageClassName": "",
@@ -415,9 +415,9 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "application": "sample",
         "owner": "sample",
         "team": "sample",
-        "usage": "sample-sample-next-app-backup-restore",
+        "usage": "my-test-sample-next-app-backup-restore",
       },
-      "name": "sample-sample-next-app-backup-restore",
+      "name": "my-test-sample-next-app-backup-restore",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {

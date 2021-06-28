@@ -8,15 +8,15 @@ export function azureProjectVolume(
   { storage }: { storage: string }
 ): [PersistentVolumeClaim, PersistentVolume] {
   const globalEnv = gitlab(process.env);
-  assert.nonEmptyObject(globalEnv.labels);
+  assert.nonEmptyObject(globalEnv.annotations);
 
-  const application = globalEnv.labels.application;
+  const envName = globalEnv.annotations["app.gitlab.com/env"];
   const metadata = {
-    annotations: globalEnv.annotations ?? {},
-    labels: globalEnv.labels,
+    annotations: globalEnv.annotations,
+    labels: globalEnv.labels ?? {},
     namespace: globalEnv.namespace,
   };
-  const pv = `${application}-${name}`;
+  const pv = `${envName}-${name}`;
 
   const persistentVolumeClaim = new PersistentVolumeClaim({
     metadata: {
