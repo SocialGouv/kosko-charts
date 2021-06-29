@@ -130,7 +130,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
             Object {
               "name": "backups",
               "persistentVolumeClaim": Object {
-                "claimName": "restore-db-123456789-backup-restore",
+                "claimName": "sample-next-app-backup-restore",
                 "readOnly": true,
               },
             },
@@ -153,7 +153,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "owner": "sample",
         "team": "sample",
       },
-      "name": "restore-db-123456789-backup-restore",
+      "name": "sample-next-app-backup-restore",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
@@ -354,7 +354,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
             Object {
               "name": "backups",
               "persistentVolumeClaim": Object {
-                "claimName": "restore-db-123456789-backup-restore",
+                "claimName": "sample-next-app-backup-restore",
                 "readOnly": true,
               },
             },
@@ -383,7 +383,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "owner": "sample",
         "team": "sample",
       },
-      "name": "restore-db-123456789-backup-restore",
+      "name": "sample-next-app-backup-restore",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {

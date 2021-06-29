@@ -70,7 +70,8 @@ export const restoreDbJob = ({
   ok(process.env.CI_JOB_ID);
   const secretNamespace = getProjectSecretNamespace(project);
   const azureSecretName = getAzureProdVolumeSecretName(project);
-  const [pvc, pv] = azureProjectVolume(`${project}-backup-restore`, {
+  const azureFileShareName = `${project}-backup-restore`;
+  const [pvc, pv] = azureProjectVolume(azureFileShareName, {
     storage: "128Gi",
   });
   ok(pvc.metadata?.name, "Missing pvc.metadata.name");
@@ -78,7 +79,7 @@ export const restoreDbJob = ({
 
   // NOTE(douglasduteil): lock the pvc and the pc on the existing secret prod namepace
   ok(pv.spec?.azureFile, "Missing pv.spec?.azureFile");
-  pvc.metadata.name = `restore-db-${process.env.CI_JOB_ID}-backup-restore`;
+  pvc.metadata.name = azureFileShareName;
   pvc.metadata.namespace =
     pv.metadata.namespace =
     pv.spec.azureFile.secretNamespace =
