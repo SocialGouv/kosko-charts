@@ -1,3 +1,10 @@
+## [6.4.2](https://github.com/SocialGouv/kosko-charts/compare/v6.4.1...v6.4.2) (2021-06-29)
+
+
+### Bug Fixes
+
+* **azure-pg:** ensure to use constant pvc-pv naming ([#581](https://github.com/SocialGouv/kosko-charts/issues/581)) ([9364d7a](https://github.com/SocialGouv/kosko-charts/commit/9364d7afa78d617c18acae4fe12282479e92d846))
+
 ## [6.4.1](https://github.com/SocialGouv/kosko-charts/compare/v6.4.0...v6.4.1) (2021-06-28)
 
 
