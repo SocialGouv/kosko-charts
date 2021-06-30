@@ -25,13 +25,13 @@
 - const ciEnv = gitlab(process.env);
 + const ciEnv = environments(process.env);
 ```
-* the previous envParams is now inside the ci env as `manifest`
+* the previous envParams is now inside the ci env as `metadata`
 
 ```diff
 export interface CIEnv {
   isPreProduction: boolean;
   isProduction: boolean;
-  manifest: GlobalEnvironment;
+  metadata: GlobalEnvironment;
   projectName: string;
   shortSha: string;
 }
