@@ -1,8 +1,12 @@
 //
 
 const gitlabMock = {
-  git: {},
-  namespace: { name: "sample-42-my-test" },
+  metadata: {
+    git: {},
+    namespace: { name: "sample-42-my-test" },
+  },
+  projectName: "sample",
+  shortSha: "abcdefg",
 };
 
 const gitlabModuleMock = {
@@ -27,7 +31,7 @@ test("should create a namespace", async () => {
 });
 
 test("should create a namespace with extra labels and annotations", async () => {
-  Object.assign(gitlabMock, {
+  Object.assign(gitlabMock.metadata, {
     annotations: {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",

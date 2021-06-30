@@ -1,12 +1,13 @@
 {
   "name": "@socialgouv/kosko-charts",
   "description": "Kosko charts for the SocialGouv needs",
-  "version": "6.5.0",
+  "version": "6.5.1-beta.3",
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
     "@sindresorhus/is": "^4.0.1",
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "slugify": "^1.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

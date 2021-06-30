@@ -1,3 +1,27 @@
+## [6.5.1-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v6.5.1-beta.2...v6.5.1-beta.3) (2021-06-30)
+
+
+### Bug Fixes
+
+* Replace manifest by metadata in CIEnv type. ([a34dbb3](https://github.com/SocialGouv/kosko-charts/commit/a34dbb318e1286b91ccc474f065ac1bb39587357))
+
+## [6.5.1-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v6.5.1-beta.1...v6.5.1-beta.2) (2021-06-30)
+
+
+### Bug Fixes
+
+* Update README. ([4b6f43b](https://github.com/SocialGouv/kosko-charts/commit/4b6f43b81bb0ce5ba027a3933e2eb58f4db7643b))
+
+## [6.5.1-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v6.5.0...v6.5.1-beta.1) (2021-06-30)
+
+
+### Bug Fixes
+
+* Add github env. ([4c7dd35](https://github.com/SocialGouv/kosko-charts/commit/4c7dd351234ae456cc19773cfaa29c6cb502d699))
+* Rebase and fix lint. ([09c1b20](https://github.com/SocialGouv/kosko-charts/commit/09c1b2027eab564da9118bfbf6fddeb3b1b39422))
+* Update unit tests snapshots. ([6626308](https://github.com/SocialGouv/kosko-charts/commit/66263083d722c0ccbaeccda9d0593153db3276a6))
+* Use common environment in restore-db job. ([a179027](https://github.com/SocialGouv/kosko-charts/commit/a17902702b68a21c3c57e6faacf096437971016b))
+
 # [6.5.0](https://github.com/SocialGouv/kosko-charts/compare/v6.4.2...v6.5.0) (2021-06-30)
 
 
