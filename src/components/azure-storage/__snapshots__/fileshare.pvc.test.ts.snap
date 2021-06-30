@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create a persistent volume claim and a persistent volume 1`] = `
+Object {
+  "apiVersion": "v1",
+  "kind": "PersistentVolumeClaim",
+  "metadata": Object {
+    "annotations": Object {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+    },
+    "labels": Object {
+      "application": "sample",
+      "owner": "sample",
+      "team": "sample",
+    },
+    "name": "foobar",
+    "namespace": "sample-42-my-test",
+  },
+  "spec": Object {
+    "accessModes": Array [
+      "ReadWriteMany",
+    ],
+    "resources": Object {
+      "requests": Object {
+        "storage": "5Gi",
+      },
+    },
+    "storageClassName": "azurefile",
+  },
+}
+`;
