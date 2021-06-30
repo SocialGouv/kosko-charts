@@ -1,3 +1,46 @@
+# [7.0.0](https://github.com/SocialGouv/kosko-charts/compare/v6.5.0...v7.0.0) (2021-06-30)
+
+
+* feat(environments)!: GitLab and GitHub environments fusion 🔬 (#577) ([c48453e](https://github.com/SocialGouv/kosko-charts/commit/c48453e62442cb710200d81d264640073b7881f1)), closes [#577](https://github.com/SocialGouv/kosko-charts/issues/577)
+
+
+### Bug Fixes
+
+* Add github env. ([4c7dd35](https://github.com/SocialGouv/kosko-charts/commit/4c7dd351234ae456cc19773cfaa29c6cb502d699))
+* Rebase and fix lint. ([09c1b20](https://github.com/SocialGouv/kosko-charts/commit/09c1b2027eab564da9118bfbf6fddeb3b1b39422))
+* Replace manifest by metadata in CIEnv type. ([a34dbb3](https://github.com/SocialGouv/kosko-charts/commit/a34dbb318e1286b91ccc474f065ac1bb39587357))
+* Update README. ([4b6f43b](https://github.com/SocialGouv/kosko-charts/commit/4b6f43b81bb0ce5ba027a3933e2eb58f4db7643b))
+* Update unit tests snapshots. ([6626308](https://github.com/SocialGouv/kosko-charts/commit/66263083d722c0ccbaeccda9d0593153db3276a6))
+* Use common environment in restore-db job. ([a179027](https://github.com/SocialGouv/kosko-charts/commit/a17902702b68a21c3c57e6faacf096437971016b))
+
+
+### BREAKING CHANGES
+
+* We should now use a common ci environments
+
+```diff
+- import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
++ import gitlab from "@socialgouv/kosko-charts/environments";
+
+- const ciEnv = gitlab(process.env);
++ const ciEnv = environments(process.env);
+```
+* the previous envParams is now inside the ci env as `manifest`
+
+```diff
+export interface CIEnv {
+  isPreProduction: boolean;
+  isProduction: boolean;
+  manifest: GlobalEnvironment;
+  projectName: string;
+  shortSha: string;
+}
+```
+
+
+
+Co-authored-by: Social Groovy Bot <45039513+SocialGroovyBot@users.noreply.github.com>
+
 ## [6.5.1-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v6.5.1-beta.2...v6.5.1-beta.3) (2021-06-30)
 
 
