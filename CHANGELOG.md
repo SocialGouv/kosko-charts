@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/SocialGouv/kosko-charts/compare/v6.4.2...v6.5.0) (2021-06-30)
+
+
+### Features
+
+* **azure-storage:** add dynamic fileshare pvc ([#584](https://github.com/SocialGouv/kosko-charts/issues/584)) ([df74344](https://github.com/SocialGouv/kosko-charts/commit/df7434498f3f14622ccacee7e7a7386b322bd6f0))
+
 ## [6.4.2](https://github.com/SocialGouv/kosko-charts/compare/v6.4.1...v6.4.2) (2021-06-29)
 
 
