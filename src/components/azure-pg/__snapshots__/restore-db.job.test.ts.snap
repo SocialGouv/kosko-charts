@@ -6,7 +6,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-b123a99",
+      "name": "restore-db-abcdefg",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
@@ -90,19 +90,19 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
               "env": Array [
                 Object {
                   "name": "PGHOST",
-                  "value": "someappdevserver.postgres.database.azure.com",
+                  "value": "sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGDATABASE",
-                  "value": "autodevops_b123a99",
+                  "value": "autodevops_abcdefg",
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_b123a99",
+                  "value": "password_abcdefg",
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_b123a99@someappdevserver.postgres.database.azure.com",
+                  "value": "user_abcdefg@sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",
@@ -218,7 +218,7 @@ Array [
     },
     "kind": "ConfigMap",
     "metadata": Object {
-      "name": "post-restore-script-configmap-b123a99",
+      "name": "post-restore-script-configmap-abcdefg",
       "namespace": "sample-next-app-secret",
     },
   },
@@ -226,7 +226,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-b123a99",
+      "name": "restore-db-abcdefg",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
@@ -314,19 +314,19 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
               "env": Array [
                 Object {
                   "name": "PGHOST",
-                  "value": "someappdevserver.postgres.database.azure.com",
+                  "value": "sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGDATABASE",
-                  "value": "autodevops_b123a99",
+                  "value": "autodevops_abcdefg",
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_b123a99",
+                  "value": "password_abcdefg",
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_b123a99@someappdevserver.postgres.database.azure.com",
+                  "value": "user_abcdefg@sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",
@@ -360,7 +360,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
             },
             Object {
               "configMap": Object {
-                "name": "post-restore-script-configmap-b123a99",
+                "name": "post-restore-script-configmap-abcdefg",
               },
               "name": "scripts",
             },

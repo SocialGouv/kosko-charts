@@ -18,9 +18,9 @@ export function fileSharePersistentVolumeClaim({
   return new PersistentVolumeClaim({
     metadata: merge(
       {
-        annotations: globalEnv.annotations,
-        labels: globalEnv.labels,
-        namespace: globalEnv.namespace.name,
+        annotations: globalEnv.manifest.annotations,
+        labels: globalEnv.manifest.labels,
+        namespace: globalEnv.manifest.namespace.name,
       },
       metadata
     ),
