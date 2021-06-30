@@ -82,7 +82,8 @@ export const restoreDbJob = ({
   // NOTE(douglasduteil): lock the pvc and the pc on the existing secret prod namepace
   ok(pv.spec?.azureFile, "Missing pv.spec?.azureFile");
   pvc.metadata.name = azureFileShareName;
-  pvc.metadata.namespace = pv.metadata.namespace = pv.spec.azureFile.secretNamespace = secretNamespace;
+  pvc.metadata.namespace = secretNamespace;
+  pv.metadata.namespace = pv.spec.azureFile.secretNamespace = secretNamespace;
   pv.spec.azureFile.secretName = azureSecretName;
 
   const backupsVolume = new Volume({
