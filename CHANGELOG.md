@@ -1,3 +1,10 @@
+## [6.5.1-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v6.5.1-beta.2...v6.5.1-beta.3) (2021-06-30)
+
+
+### Bug Fixes
+
+* Replace manifest by metadata in CIEnv type. ([a34dbb3](https://github.com/SocialGouv/kosko-charts/commit/a34dbb318e1286b91ccc474f065ac1bb39587357))
+
 ## [6.5.1-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v6.5.1-beta.1...v6.5.1-beta.2) (2021-06-30)
 
 
