@@ -1,47 +1,47 @@
-# GitLab Environments
+# Github Environments
 
-> The GitLab focus environments.
+> The Github focus environments.
 
-## [`GitLabGlobalEnvironment`](./index.ts)
+## [`GithubGlobalEnvironment`](./index.ts)
 
 > extends [`GlobalEnvironment`](./../types/index.ts)
 
 ### Usage
 
-Import the gitlab global environment object.
+Import the github global environment object.
 
 ```ts
 // in .k8s/environments/_base/index.ts
-import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import github from "@socialgouv/kosko-charts/environments/github";
 
-export default gitlab(process.env);
+export default github(process.env);
 ```
 
 You can customize it
 
 ```ts
 // in .k8s/environments/_base/index.ts
-import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import github from "@socialgouv/kosko-charts/environments/github";
 
 export default {
-  ...gitlab(process.env),
+  ...github(process.env),
 };
 ```
 
 ### Requirements
 
-As this environment is meant to be used in GitLab, some environment variables are expected.
+As this environment is meant to be used in Github, some environment variables are expected.
 
 | Variable                   | Description                                                                |
 | -------------------------- | -------------------------------------------------------------------------- |
-| `CI_COMMIT_TAG`            | (optional) The commit tag name\*                                           |
-| `CI_ENVIRONMENT_NAME`      | The name of the environment for this job\*                                 |
-| `CI_ENVIRONMENT_SLUG`      | A simplified version of the environment name\*                             |
-| `CI_PROJECT_NAME`          | The name of the directory for the project that is currently being built\*  |
-| `CI_PROJECT_PATH_SLUG`     | A simplified version of the namespace with project name\*                  |
-| `KUBE_INGRESS_BASE_DOMAIN` | The domain of the cluster\*\*                                              |
-| `KUBE_NAMESPACE`           | The namespace associated with the project’s deployment service account\*\* |
-| `PRODUCTION`               | (optional) If set we are in production (on the production cluster)         |
+| `GITHUB_SHA`               | The commit SHA that triggered the workflow\*                               |
+| `GITHUB_REF`               | The branch or tag ref that triggered the workflow\*                        |
+| `GITHUB_JOB`               | The job_id of the current job\*                                            |
+| `GITHUB_RUN_ID`            | A unique number for each run within a repository\*                         |
+| `GITHUB_REPOSITORY`        | The owner and repository name\*                                            |
+| `SOCIALGOUV_BASE_DOMAIN`   | The base domain used to forge deployments urls                             |
+| `RANCHER_PROJECT_ID`       | The Rancher project ID                                                     |
+| `SOCIALGOUV_PREPRODUCTION` | (optional) If set we are in preproduction (on the developement cluster)    |
+| `SOCIALGOUV_PRODUCTION`    | (optional) If set we are in production (on the production cluster)         |
 
-\*: see https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
-\*\*: see https://docs.gitlab.com/ee/user/project/clusters/index.html#deployment-variables
+\*: see https://docs.github.com/en/actions/reference/environment-variables
