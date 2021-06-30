@@ -7,9 +7,9 @@ export const createNamespace = (
   config?: NamespaceComponentEnvironment
 ): K8SNamespace => {
   const gitlabEnv = environments(process.env);
-  const owner = gitlabEnv.manifest.labels?.owner;
+  const owner = gitlabEnv.metadata.labels?.owner;
 
-  const envParams = merge(gitlabEnv.manifest, config ?? {});
+  const envParams = merge(gitlabEnv.metadata, config ?? {});
 
   const namespace = new K8SNamespace({
     metadata: {

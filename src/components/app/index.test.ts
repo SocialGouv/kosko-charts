@@ -4,7 +4,7 @@ import { promises } from "fs";
 import { directory } from "tempy";
 
 const gitlabMock = {
-  manifest: {
+  metadata: {
     annotations: {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",
@@ -56,7 +56,7 @@ test("should return dev manifests", async () => {
 });
 
 test("should return dev manifests with postgres", async () => {
-  Object.assign(gitlabMock.manifest, { withPostgres: true });
+  Object.assign(gitlabMock.metadata, { withPostgres: true });
   jest.doMock(
     "@socialgouv/kosko-charts/environments/gitlab",
     () => gitlabModuleMock
@@ -73,7 +73,7 @@ test("should return dev manifests with postgres", async () => {
 
 test("should return preprod manifests with NO custom subdomain", async () => {
   Object.assign(gitlabMock, { isPreProduction: "true" });
-  Object.assign(gitlabMock.manifest, { withPostgres: false });
+  Object.assign(gitlabMock.metadata, { withPostgres: false });
   jest.doMock(
     "@socialgouv/kosko-charts/environments/gitlab",
     () => gitlabModuleMock
@@ -97,7 +97,7 @@ test("should return preprod manifests with NO custom subdomain", async () => {
 
 test("should return prod manifests", async () => {
   Object.assign(gitlabMock, { isProduction: "true" });
-  Object.assign(gitlabMock.manifest, { withPostgres: false });
+  Object.assign(gitlabMock.metadata, { withPostgres: false });
   jest.doMock(
     "@socialgouv/kosko-charts/environments/gitlab",
     () => gitlabModuleMock
@@ -114,7 +114,7 @@ test("should return prod manifests", async () => {
 
 test("should return prod manifests with custom subdomain", async () => {
   Object.assign(gitlabMock, { isProduction: "true" });
-  Object.assign(gitlabMock.manifest, { withPostgres: false });
+  Object.assign(gitlabMock.metadata, { withPostgres: false });
   jest.doMock(
     "@socialgouv/kosko-charts/environments/gitlab",
     () => gitlabModuleMock
@@ -138,7 +138,7 @@ test("should return prod manifests with custom subdomain", async () => {
 
 test("should return prod manifests without custom subdomain if undefined", async () => {
   Object.assign(gitlabMock, { isProduction: "true" });
-  Object.assign(gitlabMock.manifest, { withPostgres: false });
+  Object.assign(gitlabMock.metadata, { withPostgres: false });
   jest.doMock(
     "@socialgouv/kosko-charts/environments/gitlab",
     () => gitlabModuleMock

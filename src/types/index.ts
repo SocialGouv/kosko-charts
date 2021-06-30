@@ -26,7 +26,7 @@ export interface NamedComponentEnvironment {
 export interface CIEnv {
   isPreProduction: boolean;
   isProduction: boolean;
-  manifest: GlobalEnvironment;
+  metadata: GlobalEnvironment;
   projectName: string;
   shortSha: string;
 }

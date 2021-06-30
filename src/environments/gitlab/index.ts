@@ -55,7 +55,7 @@ export default (env = process.env): CIEnv => {
   return {
     isPreProduction,
     isProduction,
-    manifest: {
+    metadata: {
       annotations: {
         "app.gitlab.com/app": CI_PROJECT_PATH_SLUG,
         "app.gitlab.com/env": CI_ENVIRONMENT_SLUG,

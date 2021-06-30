@@ -66,7 +66,7 @@ export default (env = process.env): CIEnv => {
   return {
     isPreProduction,
     isProduction,
-    manifest: {
+    metadata: {
       annotations: {
         "app.github.com/job": GITHUB_JOB,
         "app.github.com/ref": GITHUB_REF,

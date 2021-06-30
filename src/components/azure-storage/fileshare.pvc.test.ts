@@ -6,7 +6,7 @@ jest.mock("@socialgouv/kosko-charts/environments/gitlab", () => ({
   // eslint-disable-next-line @typescript-eslint/naming-convention
   __esModule: true,
   default: () => ({
-    manifest: {
+    metadata: {
       annotations: {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",

@@ -71,7 +71,7 @@ export const create: CreateFn = async (
   // kosko component env values
   const envParams = merge(
     defaultEnvParams, // set name as default if not provided
-    gitlabEnv.manifest,
+    gitlabEnv.metadata,
     config ?? {}, // create options
     env.component(name) as AppConfig // kosko env overrides
   );
@@ -178,8 +178,8 @@ export const create: CreateFn = async (
   /* INGRESS */
   if (envParams.ingress !== false) {
     let hosts = [
-      `${(envParams.subDomainPrefix || "") + gitlabEnv.manifest.subdomain}.${
-        gitlabEnv.manifest.domain
+      `${(envParams.subDomainPrefix || "") + gitlabEnv.metadata.subdomain}.${
+        gitlabEnv.metadata.domain
       }`,
     ];
 
@@ -187,8 +187,8 @@ export const create: CreateFn = async (
       hosts = [
         `${
           (envParams.subDomainPrefix || "") +
-          (envParams.subdomain || gitlabEnv.manifest.subdomain)
-        }.${envParams.domain || gitlabEnv.manifest.domain}`,
+          (envParams.subdomain || gitlabEnv.metadata.subdomain)
+        }.${envParams.domain || gitlabEnv.metadata.domain}`,
       ];
     }
 

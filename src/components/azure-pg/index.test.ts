@@ -16,7 +16,7 @@ const gitlabEnv = {
 };
 
 const gitlabMock = {
-  manifest: {
+  metadata: {
     annotations: {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",

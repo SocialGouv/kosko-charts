@@ -42,7 +42,7 @@ export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
   // kosko component env values
   const envParams = {
     ...defaultParams, // set name as default if not provided
-    ...ciEnv.manifest,
+    ...ciEnv.metadata,
     ...config, // create options
   };
 

@@ -4,7 +4,7 @@ exports[`should return production gitlab global env 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": true,
-  "manifest": Object {
+  "metadata": Object {
     "annotations": Object {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",
@@ -35,7 +35,7 @@ exports[`should return tagged gitlab global env 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
-  "manifest": Object {
+  "metadata": Object {
     "annotations": Object {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",
@@ -67,7 +67,7 @@ exports[`should return the gitlab global env 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
-  "manifest": Object {
+  "metadata": Object {
     "annotations": Object {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",
@@ -99,7 +99,7 @@ exports[`should return the gitlab global env of the cluster dev2 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
-  "manifest": Object {
+  "metadata": Object {
     "annotations": Object {
       "app.gitlab.com/app": "socialgouv-sample",
       "app.gitlab.com/env": "my-test",
