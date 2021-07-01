@@ -1,3 +1,10 @@
+## [7.0.2](https://github.com/SocialGouv/kosko-charts/compare/v7.0.1...v7.0.2) (2021-07-01)
+
+
+### Bug Fixes
+
+* Use azure-pg-user secret name on preprod and prod. ([#590](https://github.com/SocialGouv/kosko-charts/issues/590)) ([fde1a20](https://github.com/SocialGouv/kosko-charts/commit/fde1a20b8aa323e5d35b94e27e5b950c3197e7c1))
+
 ## [7.0.1](https://github.com/SocialGouv/kosko-charts/compare/v7.0.0...v7.0.1) (2021-07-01)
 
 
