@@ -95,6 +95,23 @@ test("should return preprod manifests with NO custom subdomain", async () => {
   ).toMatchSnapshot();
 });
 
+test("should return preprod manifests with postgres", async () => {
+  Object.assign(gitlabMock, { isPreProduction: "true" });
+  Object.assign(gitlabMock.metadata, { withPostgres: true });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
+  const gitlabEnv = project("sample").preprod;
+  Object.assign(process.env, gitlabEnv);
+  const cwd = directory();
+  const env = createNodeCJSEnvironment({ cwd });
+  env.env = "preprod";
+  await promises.mkdir(`${cwd}/environments/preprod`, { recursive: true });
+  const { create } = await import("./index");
+  expect(await create("app", { env })).toMatchSnapshot();
+});
+
 test("should return prod manifests", async () => {
   Object.assign(gitlabMock, { isProduction: "true" });
   Object.assign(gitlabMock.metadata, { withPostgres: false });

@@ -111,7 +111,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.26.2
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -325,7 +325,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.26.2
           imagePullPolicy: Always
           name: wait-for-postgres
