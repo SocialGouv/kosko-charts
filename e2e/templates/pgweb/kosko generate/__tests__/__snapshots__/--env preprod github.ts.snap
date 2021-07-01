@@ -104,7 +104,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES

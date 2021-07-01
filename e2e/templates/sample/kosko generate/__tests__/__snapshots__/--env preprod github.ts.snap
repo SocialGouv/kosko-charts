@@ -102,7 +102,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user
             - configMapRef:
                 name: hasura-configmap
       initContainers:
@@ -316,7 +316,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-8843083
+                name: azure-pg-user
             - configMapRef:
                 name: app-configmap
       initContainers:
