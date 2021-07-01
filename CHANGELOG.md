@@ -1,3 +1,10 @@
+## [7.0.4](https://github.com/SocialGouv/kosko-charts/compare/v7.0.3...v7.0.4) (2021-07-01)
+
+
+### Bug Fixes
+
+* Use global ci env in Azure volumes. ([#592](https://github.com/SocialGouv/kosko-charts/issues/592)) ([c7fdbf8](https://github.com/SocialGouv/kosko-charts/commit/c7fdbf81515667b0e8450d6e3b358959bdc58721))
+
 ## [7.0.3](https://github.com/SocialGouv/kosko-charts/compare/v7.0.2...v7.0.3) (2021-07-01)
 
 
