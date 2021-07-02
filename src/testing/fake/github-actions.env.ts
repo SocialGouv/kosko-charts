@@ -12,7 +12,7 @@ export const project = (
     GITHUB_RUN_ID: "1234",
     GITHUB_SHA: "0123456789abcdefghijklmnopqrstuvwxyz0123",
     // Additional
-    SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
+    SOCIALGOUV_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
     SOCIALGOUV_PREPRODUCTION: "",
     SOCIALGOUV_PRODUCTION: "",
   };
@@ -31,7 +31,7 @@ export const project = (
   const prod = {
     ...base,
     GITHUB_REF: "refs/tags/v1.2.3",
-    SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: "fabrique.social.gouv.fr",
+    SOCIALGOUV_BASE_DOMAIN: "fabrique.social.gouv.fr",
     SOCIALGOUV_PRODUCTION: "true",
   };
 
