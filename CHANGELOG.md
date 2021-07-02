@@ -1,3 +1,10 @@
+## [7.0.5](https://github.com/SocialGouv/kosko-charts/compare/v7.0.4...v7.0.5) (2021-07-02)
+
+
+### Bug Fixes
+
+* Use SOCIALGOUV_BASE_DOMAIN in Github testing env ([#593](https://github.com/SocialGouv/kosko-charts/issues/593)) ([0f0cb4f](https://github.com/SocialGouv/kosko-charts/commit/0f0cb4f0bac0ec9a1785af06221ad41ecb2e9ee3))
+
 ## [7.0.4](https://github.com/SocialGouv/kosko-charts/compare/v7.0.3...v7.0.4) (2021-07-01)
 
 
