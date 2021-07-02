@@ -1,7 +1,7 @@
 import env from "@kosko/env";
 import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import { create } from "@socialgouv/kosko-charts/components/azure-pg";
-import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import environments from "@socialgouv/kosko-charts/environments";
 import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
 
@@ -27,12 +27,13 @@ export default async (): Promise<{ kind: string }[] | Manifest[]> => {
     return [];
   }
 
-  const envParams = gitlab(process.env);
+  const ciEnv = environments(process.env);
+
   // add gitlab annotations
   updateMetadata(secret, {
-    annotations: envParams.annotations ?? {},
-    labels: envParams.labels ?? {},
-    namespace: envParams.namespace,
+    annotations: ciEnv.metadata.annotations ?? {},
+    labels: ciEnv.metadata.labels ?? {},
+    namespace: ciEnv.metadata.namespace,
   });
 
   return [secret];
