@@ -33,3 +33,29 @@ test(
   },
   TIMEOUT
 );
+
+test(
+  "static github: kosko generate --preprod",
+  async () => {
+    const gitlabEnv = config({
+      path: resolve(cwd, "./environments/.github-actions.env"),
+    }).parsed;
+
+    const env = {
+      ...gitlabEnv,
+      SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
+      SOCIALGOUV_PREPRODUCTION: "true",
+    };
+
+    // Required to allow seemless integration code example
+    const result = await execa.node(
+      KOSKO_BIN,
+      ["generate", "--env", "preprod"],
+      { cwd, env }
+    );
+
+    expect(result.stdout).toMatchSnapshot();
+    expect(result.exitCode).toEqual(0);
+  },
+  TIMEOUT
+);
