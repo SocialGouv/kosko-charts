@@ -2,7 +2,7 @@
   "dependencies": {
     "@kosko/env": "^2.0.1",
     "@kubernetes-models/sealed-secrets": "^1.6.3",
-    "@socialgouv/kosko-charts": "^6.1.0",
+    "@socialgouv/kosko-charts": "^7.0.5",
     "@types/node": "^13.13.41",
     "kosko": "^1.1.5",
     "kubernetes-models": "^1.7.1",
@@ -25,10 +25,14 @@
     "generate:dev": "kosko generate --env dev",
     "generate:preprod": "kosko generate --env preprod",
     "generate:prod": "kosko generate --env dev",
-    "gitlab": "DOTENV_CONFIG_PATH=./environments/.gitlab.env kosko generate --require dotenv/config",
+    "gitlab": "DOTENV_CONFIG_PATH=./environments/.gitlab-ci.env kosko generate --require dotenv/config",
+    "github": "DOTENV_CONFIG_PATH=./environments/.github-actions.env kosko generate --require dotenv/config",
     "gitlab:dev": "yarn --silent gitlab --env dev",
     "gitlab:preprod": "yarn --silent gitlab --env preprod",
     "gitlab:prod": "yarn --silent gitlab --env prod",
+    "github:dev": "yarn --silent github --env dev",
+    "github:preprod": "yarn --silent github --env preprod",
+    "github:prod": "yarn --silent github --env prod",
     "test": "jest"
   }
 }
