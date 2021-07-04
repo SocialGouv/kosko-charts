@@ -1,3 +1,5 @@
+import environments from "../environments";
+
 /** Parameters to get a valid `registry/project/image:tag` harbor path */
 export interface GithubRegistryImageProps {
   /** name of the docker image */
@@ -26,9 +28,6 @@ export const getGithubRegistryImagePath = ({
   name,
   project,
 }: GithubRegistryImageProps): string => {
-  const tag = process.env.CI_COMMIT_TAG
-    ? process.env.CI_COMMIT_TAG.slice(1)
-    : process.env.CI_COMMIT_SHA;
-
-  return `ghcr.io/socialgouv/${project}/${name}:${tag}`;
+  const ciEnv = environments(process.env);
+  return `ghcr.io/socialgouv/${project}/${name}:${ciEnv.tag}`;
 };

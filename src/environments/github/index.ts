@@ -93,5 +93,6 @@ export default (env = process.env): CIEnv => {
     },
     projectName,
     shortSha,
+    tag: `sha-${GITHUB_SHA}`,
   };
 };
