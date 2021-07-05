@@ -1,0 +1,9 @@
+{
+  "name": "app-ingress-annotations",
+  "type": "app",
+  "ingress": {
+    "annotations": {
+      "nginx.ingress.kubernetes.io/configuration-snippet": "more_set_headers \"X-Answer: 42\";"
+    }
+  }
+}

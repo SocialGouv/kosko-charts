@@ -1,3 +1,10 @@
+## [7.0.6](https://github.com/SocialGouv/kosko-charts/compare/v7.0.5...v7.0.6) (2021-07-05)
+
+
+### Bug Fixes
+
+* Slugify namespace properly. ([#595](https://github.com/SocialGouv/kosko-charts/issues/595)) ([b2afca4](https://github.com/SocialGouv/kosko-charts/commit/b2afca4f87a2054a183f5b5fe7ad366d453c7403))
+
 ## [7.0.5](https://github.com/SocialGouv/kosko-charts/compare/v7.0.4...v7.0.5) (2021-07-02)
 
 

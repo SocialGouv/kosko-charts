@@ -45,7 +45,7 @@ export default (env = process.env): CIEnv => {
       : GITHUB_REF
     : GITHUB_REF;
 
-  const environmentSlug = slugify(branchName ?? shortSha);
+  const environmentSlug = slugify(branchName ?? shortSha, { strict: true });
 
   const productionNamespace = projectName;
   const preProductionNamespace = `${projectName}-preprod`;
@@ -93,5 +93,6 @@ export default (env = process.env): CIEnv => {
     },
     projectName,
     shortSha,
+    tag: `sha-${GITHUB_SHA}`,
   };
 };

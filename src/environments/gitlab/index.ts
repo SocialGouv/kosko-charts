@@ -52,6 +52,10 @@ export default (env = process.env): CIEnv => {
     ? PRODUCTION_NAMESPACE ?? CI_PROJECT_NAME
     : KUBE_NAMESPACE;
 
+  const tag = process.env.CI_COMMIT_TAG
+    ? process.env.CI_COMMIT_TAG.slice(1)
+    : process.env.CI_COMMIT_SHA;
+
   return {
     isPreProduction,
     isProduction,
@@ -81,5 +85,6 @@ export default (env = process.env): CIEnv => {
     },
     projectName: CI_PROJECT_NAME,
     shortSha: CI_COMMIT_SHORT_SHA,
+    tag,
   };
 };

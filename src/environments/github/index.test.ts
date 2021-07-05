@@ -36,6 +36,10 @@ test.each([
     { ...validEnv, CI_ENVIRONMENT_NAME: "fabrique-dev2" },
   ],
   [
+    "the gitlab global env with slugify",
+    { ...validEnv, GITHUB_REF: "refs/heads/domifa-commander-8.x" },
+  ],
+  [
     "tagged gitlab global env",
     {
       ...validEnv,
