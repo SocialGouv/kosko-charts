@@ -1,3 +1,10 @@
+## [7.0.7](https://github.com/SocialGouv/kosko-charts/compare/v7.0.6...v7.0.7) (2021-07-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.17.5 ([#599](https://github.com/SocialGouv/kosko-charts/issues/599)) ([58373b4](https://github.com/SocialGouv/kosko-charts/commit/58373b4aa5ec69ba4559fc11fe053a9b5668446f))
+
 ## [7.0.6](https://github.com/SocialGouv/kosko-charts/compare/v7.0.5...v7.0.6) (2021-07-05)
 
 
