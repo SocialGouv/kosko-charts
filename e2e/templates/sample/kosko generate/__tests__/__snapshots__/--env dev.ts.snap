@@ -59,8 +59,7 @@ spec:
         cert: wildcard
     spec:
       containers:
-        - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-next-app/hasura:8843083edb7f873cad1d1420731a60773594ffae
+        - image: hasura/graphql-engine:latest
           livenessProbe:
             failureThreshold: 6
             httpGet:
