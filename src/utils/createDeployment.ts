@@ -1,7 +1,6 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
-import type { IIoK8sApiCoreV1LocalObjectReference } from "kubernetes-models/_definitions/IoK8sApiCoreV1LocalObjectReference";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
-import type { Volume } from "kubernetes-models/v1";
+import type { ILocalObjectReference, IVolume } from "kubernetes-models/v1";
 
 import { merge } from "./@kosko/env/merge";
 
@@ -14,15 +13,21 @@ export interface DeploymentParams {
   /** default container port */
   containerPort: number;
   /** deployment docker image */
-  image: string;
+  image?: string;
   /** kubernetes labels */
   labels?: Record<string, string>;
   /** deployment name **/
   name: string;
   /** docker registry secrets */
-  imagePullSecrets?: IIoK8sApiCoreV1LocalObjectReference[];
+  imagePullSecrets?: ILocalObjectReference[];
   /** volumes */
-  volumes?: Volume[];
+  volumes?: IVolume[];
+  /** registry */
+  registry: string;
+  /** git tag */
+  tag?: string;
+  /** git sha */
+  sha: string;
 }
 
 /**
@@ -41,11 +46,8 @@ export interface DeploymentParams {
  * @return {Deployment}
  */
 export const createDeployment = (params: DeploymentParams): Deployment => {
-  const tag = process.env.CI_COMMIT_TAG
-    ? process.env.CI_COMMIT_TAG.slice(1)
-    : process.env.CI_COMMIT_SHA;
-  const image =
-    params.image || `${process.env.CI_REGISTRY_IMAGE}/${params.name}:${tag}`;
+  const tag = params.tag ? params.tag.slice(1) : params.sha;
+  const image = params.image ?? `${params.registry}/${params.name}:${tag}`;
 
   return new Deployment({
     metadata: {

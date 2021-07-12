@@ -29,4 +29,8 @@ export interface CIEnv {
   metadata: GlobalEnvironment;
   projectName: string;
   shortSha: string;
+
+  sha: string;
+  tag?: string;
+  registry: string;
 }

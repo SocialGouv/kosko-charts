@@ -21,7 +21,8 @@ test.each([
 });
 
 const validEnv = {
-  CI_COMMIT_SHORT_SHA: "abcdefg",
+  CI_COMMIT_SHA: "0123456789abcdefghijklmnopqrstuvwxyz0123",
+  CI_COMMIT_SHORT_SHA: "0123456",
   CI_ENVIRONMENT_NAME: "fabrique-dev",
   CI_ENVIRONMENT_SLUG: "my-test",
   CI_PROJECT_NAME: "sample",

@@ -1,6 +1,5 @@
-import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
-
-import environments from "../environments";
+import type { IIngressRule } from "kubernetes-models/_definitions/IoK8sApiNetworkingV1IngressRule";
+import { Ingress } from "kubernetes-models/networking.k8s.io/v1/Ingress";
 
 /** Parameters to create an [[Ingress]] with [[createDeployment]] */
 export interface IngressConfig {
@@ -16,15 +15,25 @@ export interface IngressConfig {
   secretName?: string;
   /** kubernetes annotations */
   annotations?: Record<string, unknown>;
+  /** is a production ingress */
+  isProduction: boolean;
 }
 
-const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
+const getHostService = ({
+  serviceName = "www",
+  servicePort = 80,
+}): IIngressRule => ({
   http: {
     paths: [
       {
         backend: {
-          serviceName,
-          servicePort,
+          service: {
+            name: serviceName,
+            port: {
+              name: "http",
+              number: servicePort,
+            },
+          },
         },
         path: "/",
       },
@@ -55,22 +64,18 @@ const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
  */
 export const createIngress = (params: IngressConfig): Ingress => {
   const hosts = params.hosts;
-
-  const ciEnv = environments(process.env);
-
   const annotations: Record<string, string> = {
     "kubernetes.io/ingress.class": "nginx",
     ...(params.annotations ?? {}),
   };
-
-  if (ciEnv.isProduction) {
+  if (params.isProduction) {
     annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
     annotations["kubernetes.io/tls-acme"] = "true";
   }
   const isRedirectionIngress =
     !!annotations["nginx.ingress.kubernetes.io/permanent-redirect"];
 
-  const ingressDefinition = {
+  return new Ingress({
     metadata: {
       annotations,
       labels: {
@@ -94,13 +99,11 @@ export const createIngress = (params: IngressConfig): Ingress => {
           hosts: hosts,
           secretName:
             params.secretName ??
-            (ciEnv.isProduction ? `${params.name}-crt` : "wildcard-crt"),
+            (params.isProduction ? `${params.name}-crt` : "wildcard-crt"),
         },
       ],
     },
-  };
-
-  return new Ingress(ingressDefinition);
+  });
 };
 
 export default createIngress;
