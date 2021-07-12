@@ -6,8 +6,6 @@ test("should create a dev ingress", () => {
       hosts: ["sample.dev2.fabrique.social.gouv.fr"],
       isProduction: false,
       name: "my-ingress",
-      serviceName: "www",
-      servicePort: 80,
     })
   ).toMatchSnapshot();
 });
