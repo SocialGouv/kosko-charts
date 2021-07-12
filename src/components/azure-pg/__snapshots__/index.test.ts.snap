@@ -124,6 +124,8 @@ required \\"CI_PROJECT_PATH_SLUG\\": \\"undefined\\" should be defined
 required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\"undefined\\" should be defined
 required \\"KUBE_NAMESPACE\\": \\"undefined\\" should be defined
 required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
+required \\"CI_COMMIT_SHA\\": \\"undefined\\" should be defined
+required \\"CI_REGISTRY_IMAGE\\": \\"undefined\\" should be defined
 "
 `;
 

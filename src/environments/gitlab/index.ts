@@ -9,6 +9,8 @@ const assert = assertEnv([
   "KUBE_INGRESS_BASE_DOMAIN",
   "KUBE_NAMESPACE",
   "CI_COMMIT_SHORT_SHA",
+  "CI_COMMIT_SHA",
+  "CI_REGISTRY_IMAGE",
 ]);
 
 export default (env = process.env): CIEnv => {
