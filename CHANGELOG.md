@@ -1,3 +1,28 @@
+# [8.0.0](https://github.com/SocialGouv/kosko-charts/compare/v7.0.8...v8.0.0) (2021-07-13)
+
+
+* feat(ingress)!: update from extensions/v1beta1 to networking.k8s.io/v1 (#604) ([e3b383c](https://github.com/SocialGouv/kosko-charts/commit/e3b383c1cd620ea86ae189b17de3245dbaad67f9)), closes [#604](https://github.com/SocialGouv/kosko-charts/issues/604)
+
+
+### BREAKING CHANGES
+
+* Our utils deployment and ingress will no longer depend on `process.env`
+
+```diff
+ createDeployment({
+   containerPort: 8080,
+   name: "www",
++  registry: "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
++  sha: "0123456789abcdefghijklmnopqrstuvwxyz0123",
+ })
+
+ createIngress({
+   hosts: ["sample.dev2.fabrique.social.gouv.fr"],
++  isProduction: false,
+   name: "my-ingress",
+ })
+```
+
 ## [7.0.8](https://github.com/SocialGouv/kosko-charts/compare/v7.0.7...v7.0.8) (2021-07-09)
 
 
