@@ -9,6 +9,8 @@ const assert = assertEnv([
   "KUBE_INGRESS_BASE_DOMAIN",
   "KUBE_NAMESPACE",
   "CI_COMMIT_SHORT_SHA",
+  "CI_COMMIT_SHA",
+  "CI_REGISTRY_IMAGE",
 ]);
 
 export default (env = process.env): CIEnv => {
@@ -22,6 +24,8 @@ export default (env = process.env): CIEnv => {
     KUBE_INGRESS_BASE_DOMAIN,
     KUBE_NAMESPACE,
     CI_COMMIT_SHORT_SHA,
+    CI_COMMIT_SHA,
+    CI_REGISTRY_IMAGE,
     // NOTE(douglasduteil): enforce defined string in process.env
     // Those env variables are asserted to be defined above
   } = env as Record<string, string>;
@@ -80,6 +84,9 @@ export default (env = process.env): CIEnv => {
       subdomain,
     },
     projectName: CI_PROJECT_NAME,
+    registry: CI_REGISTRY_IMAGE,
+    sha: CI_COMMIT_SHA,
     shortSha: CI_COMMIT_SHORT_SHA,
+    tag: CI_COMMIT_TAG,
   };
 };

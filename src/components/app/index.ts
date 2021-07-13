@@ -4,21 +4,22 @@ import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1al
 import { ok } from "assert";
 import { ConfigMap } from "kubernetes-models/_definitions/IoK8sApiCoreV1ConfigMap";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
-
-import environments from "../../environments";
-import { addToEnvFrom } from "../../utils/addToEnvFrom";
+import environments from "@socialgouv/kosko-charts/environments";
+import { addToEnvFrom } from "@socialgouv/kosko-charts/utils/addToEnvFrom";
 import createDeployment, {
   DeploymentParams,
-} from "../../utils/createDeployment";
+} from "@socialgouv/kosko-charts/utils/createDeployment";
 import createIngress, {
   IngressConfig as IngressParams,
-} from "../../utils/createIngress";
-import createService, { CreateServiceParams } from "../../utils/createService";
-import { loadYaml } from "../../utils/getEnvironmentComponent";
-import { updateMetadata } from "../../utils/updateMetadata";
-import { merge } from "../../utils/@kosko/env/merge";
-import { addPostgresUserSecret } from "../../utils/addPostgresUserSecret";
-import { addWaitForPostgres } from "../../utils/addWaitForPostgres";
+} from "@socialgouv/kosko-charts/utils/createIngress";
+import createService, {
+  CreateServiceParams,
+} from "@socialgouv/kosko-charts/utils/createService";
+import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
+import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
+import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
+import { addPostgresUserSecret } from "@socialgouv/kosko-charts/utils/addPostgresUserSecret";
+import { addWaitForPostgres } from "@socialgouv/kosko-charts/utils/addWaitForPostgres";
 
 type AliasParams = {
   hosts: string[];
@@ -66,19 +67,29 @@ export const create: CreateFn = async (
     },
   };
 
-  const gitlabEnv = environments(process.env);
+  const ciEnv = environments(process.env);
 
   // kosko component env values
   const envParams = merge(
     defaultEnvParams, // set name as default if not provided
-    gitlabEnv.metadata,
+    ciEnv.metadata,
     config ?? {}, // create options
     env.component(name) as AppConfig // kosko env overrides
   );
 
   const { containerPort, servicePort } = envParams;
 
-  const deployment = createDeployment(merge(envParams, deploymentParams || {}));
+  const deployment = createDeployment(
+    merge(
+      envParams,
+      {
+        registry: ciEnv.registry,
+        sha: ciEnv.sha,
+        tag: ciEnv.tag,
+      } as DeploymentParams,
+      deploymentParams || {}
+    )
+  );
   updateMetadata(deployment, {
     annotations: envParams.annotations || {},
     labels: envParams.labels || {},
@@ -103,6 +114,7 @@ export const create: CreateFn = async (
       annotations: {
         "nginx.ingress.kubernetes.io/permanent-redirect": `https://${destination}$request_uri`,
       },
+      isProduction: ciEnv.isProduction,
     });
     manifests.push(redirectIngress);
   }
@@ -178,8 +190,8 @@ export const create: CreateFn = async (
   /* INGRESS */
   if (envParams.ingress !== false) {
     let hosts = [
-      `${(envParams.subDomainPrefix || "") + gitlabEnv.metadata.subdomain}.${
-        gitlabEnv.metadata.domain
+      `${(envParams.subDomainPrefix || "") + ciEnv.metadata.subdomain}.${
+        ciEnv.metadata.domain
       }`,
     ];
 
@@ -187,8 +199,8 @@ export const create: CreateFn = async (
       hosts = [
         `${
           (envParams.subDomainPrefix || "") +
-          (envParams.subdomain || gitlabEnv.metadata.subdomain)
-        }.${envParams.domain || gitlabEnv.metadata.domain}`,
+          (envParams.subdomain || ciEnv.metadata.subdomain)
+        }.${envParams.domain || ciEnv.metadata.domain}`,
       ];
     }
 
@@ -197,6 +209,7 @@ export const create: CreateFn = async (
       hosts,
       serviceName: name,
       servicePort,
+      isProduction: ciEnv.isProduction,
     });
     // add gitlab annotations
     updateMetadata(ingress, {

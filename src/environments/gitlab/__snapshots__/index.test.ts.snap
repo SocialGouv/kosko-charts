@@ -27,7 +27,10 @@ Object {
     "subdomain": "sample",
   },
   "projectName": "sample",
-  "shortSha": "abcdefg",
+  "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
+  "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
+  "shortSha": "0123456",
+  "tag": "vX.Y.Z",
 }
 `;
 
@@ -59,7 +62,10 @@ Object {
     "subdomain": "vX-Y-Z-sample",
   },
   "projectName": "sample",
-  "shortSha": "abcdefg",
+  "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
+  "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
+  "shortSha": "0123456",
+  "tag": "vX.Y.Z",
 }
 `;
 
@@ -91,7 +97,10 @@ Object {
     "subdomain": "my-test-sample",
   },
   "projectName": "sample",
-  "shortSha": "abcdefg",
+  "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
+  "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
+  "shortSha": "0123456",
+  "tag": undefined,
 }
 `;
 
@@ -123,7 +132,10 @@ Object {
     "subdomain": "my-test-sample",
   },
   "projectName": "sample",
-  "shortSha": "abcdefg",
+  "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
+  "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
+  "shortSha": "0123456",
+  "tag": undefined,
 }
 `;
 
@@ -136,6 +148,8 @@ required \\"CI_PROJECT_PATH_SLUG\\": \\" \\" should not be an empty string
 required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\" \\" should not be an empty string
 required \\"KUBE_NAMESPACE\\": \\" \\" should not be an empty string
 required \\"CI_COMMIT_SHORT_SHA\\": \\" \\" should not be an empty string
+required \\"CI_COMMIT_SHA\\": \\"undefined\\" should be defined
+required \\"CI_REGISTRY_IMAGE\\": \\"undefined\\" should be defined
 "
 `;
 
@@ -148,5 +162,7 @@ required \\"CI_PROJECT_PATH_SLUG\\": \\"undefined\\" should be defined
 required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\"undefined\\" should be defined
 required \\"KUBE_NAMESPACE\\": \\"undefined\\" should be defined
 required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
+required \\"CI_COMMIT_SHA\\": \\"undefined\\" should be defined
+required \\"CI_REGISTRY_IMAGE\\": \\"undefined\\" should be defined
 "
 `;

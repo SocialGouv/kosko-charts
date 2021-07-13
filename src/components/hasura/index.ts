@@ -29,6 +29,7 @@ export const create: CreateFn = async (name, { env, config, deployment }) =>
     config: merge(
       hasuraConfig,
       {
+        image: "hasura/graphql-engine:latest",
         subDomainPrefix: process.env.PRODUCTION ? `hasura.` : "hasura-",
       },
       config ?? {}

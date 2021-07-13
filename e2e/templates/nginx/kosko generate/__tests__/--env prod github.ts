@@ -12,7 +12,7 @@ const cwd = template(basename(resolve(__dirname, "..", "..")));
 test(
   "--env prod : should generate prod manifest",
   async () => {
-    const gitlabEnv = config({
+    const githubEnv = config({
       path: resolve(cwd, "./environments/.github-actions.env"),
     }).parsed;
     // Required to allow seemless integration code example
@@ -22,7 +22,7 @@ test(
       {
         cwd,
         env: {
-          ...gitlabEnv,
+          ...githubEnv,
           SOCIALGOUV_PRODUCTION: "true",
         },
       }
