@@ -71,7 +71,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Parameters to create an <a href="../modules/node_modules_kubernetes_models__definitions_IoK8sApiExtensionsV1beta1Ingress.html#Ingress">Ingress</a> with <a href="../modules/src_utils.html#createDeployment">createDeployment</a></p>
+						<p>Parameters to create an <a href="../modules/node_modules_kubernetes_models__definitions_IoK8sApiNetworkingV1Ingress.html#Ingress">Ingress</a> with <a href="../modules/src_utils.html#createDeployment">createDeployment</a></p>
 					</div>
 				</div>
 			</section>
@@ -92,6 +92,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="src_utils.IngressConfig.html#annotations" class="tsd-kind-icon">annotations</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="src_utils.IngressConfig.html#hosts" class="tsd-kind-icon">hosts</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="src_utils.IngressConfig.html#isProduction" class="tsd-kind-icon">is<wbr>Production</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="src_utils.IngressConfig.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="src_utils.IngressConfig.html#secretName" class="tsd-kind-icon">secret<wbr>Name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="src_utils.IngressConfig.html#serviceName" class="tsd-kind-icon">service<wbr>Name</a></li>
@@ -109,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">annotations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/d44c4fb/src/utils/createIngress.ts#L18">src/utils/createIngress.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/e3b383c/src/utils/createIngress.ts#L17">src/utils/createIngress.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -124,7 +125,7 @@
 					<div class="tsd-signature tsd-kind-icon">hosts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/d44c4fb/src/utils/createIngress.ts#L10">src/utils/createIngress.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/e3b383c/src/utils/createIngress.ts#L9">src/utils/createIngress.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -134,12 +135,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="isProduction" class="tsd-anchor"></a>
+					<h3>is<wbr>Production</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Production<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/e3b383c/src/utils/createIngress.ts#L19">src/utils/createIngress.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>is a production ingress</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/d44c4fb/src/utils/createIngress.ts#L8">src/utils/createIngress.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/e3b383c/src/utils/createIngress.ts#L7">src/utils/createIngress.ts:7</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -154,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">secret<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/d44c4fb/src/utils/createIngress.ts#L16">src/utils/createIngress.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/e3b383c/src/utils/createIngress.ts#L15">src/utils/createIngress.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -169,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">service<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/d44c4fb/src/utils/createIngress.ts#L12">src/utils/createIngress.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/e3b383c/src/utils/createIngress.ts#L11">src/utils/createIngress.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -184,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">service<wbr>Port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/d44c4fb/src/utils/createIngress.ts#L14">src/utils/createIngress.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/SocialGouv/kosko-charts/blob/e3b383c/src/utils/createIngress.ts#L13">src/utils/createIngress.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -233,6 +249,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="src_utils.IngressConfig.html#hosts" class="tsd-kind-icon">hosts</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="src_utils.IngressConfig.html#isProduction" class="tsd-kind-icon">is<wbr>Production</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="src_utils.IngressConfig.html#name" class="tsd-kind-icon">name</a>
