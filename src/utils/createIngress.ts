@@ -9,8 +9,8 @@ export interface IngressConfig {
   hosts: string[];
   /** name of the target service */
   serviceName?: string;
-  /** port of the target service */
-  servicePort?: number;
+  /** the name of the port of the target service */
+  servicePortName?: string;
   /** name of the secret for TLS certificate */
   secretName?: string;
   /** kubernetes annotations */
@@ -21,7 +21,7 @@ export interface IngressConfig {
 
 const getHostService = ({
   serviceName = "www",
-  servicePort = 80,
+  servicePortName = "http",
 }): IIngressRule => ({
   http: {
     paths: [
@@ -30,12 +30,12 @@ const getHostService = ({
           service: {
             name: serviceName,
             port: {
-              name: "http",
-              number: servicePort,
+              name: servicePortName,
             },
           },
         },
         path: "/",
+        pathType: "Prefix",
       },
     ],
   },
@@ -56,7 +56,7 @@ const getHostService = ({
  *   name: "app-ingress",
  *   hosts: ["host1.pouet.fr", "host2.pouet.fr"],
  *   serviceName: "www",
- *   servicePort: 80
+ *   servicePortName: "http"
  * });
  * ```
  * @category utils
@@ -91,7 +91,7 @@ export const createIngress = (params: IngressConfig): Ingress => {
           ? {}
           : getHostService({
               serviceName: params.serviceName,
-              servicePort: params.servicePort,
+              servicePortName: params.servicePortName,
             })),
       })),
       tls: [

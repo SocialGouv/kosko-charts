@@ -155,8 +155,8 @@ spec:
                 name: www
                 port:
                   name: http
-                  number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - master-dev42-sample-nxt-app.dev42.fabrique.social.gouv.fr

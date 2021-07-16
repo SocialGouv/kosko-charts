@@ -171,8 +171,8 @@ spec:
                 name: pgweb
                 port:
                   name: http
-                  number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - pgweb-preprod-sample-next-app.dev2.fabrique.social.gouv.fr

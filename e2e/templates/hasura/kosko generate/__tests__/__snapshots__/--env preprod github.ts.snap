@@ -206,8 +206,8 @@ spec:
                 name: hasura
                 port:
                   name: http
-                  number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - hasura-sample-next-app-preprod.dev2.fabrique.social.gouv.fr

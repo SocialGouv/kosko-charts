@@ -130,8 +130,8 @@ spec:
                 name: www
                 port:
                   name: http
-                  number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - sample-kosko.fabrique.social.gouv.fr

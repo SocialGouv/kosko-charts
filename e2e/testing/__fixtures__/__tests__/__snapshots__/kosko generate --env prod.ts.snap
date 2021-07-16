@@ -133,8 +133,8 @@ spec:
                 name: www
                 port:
                   name: http
-                  number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - sample-nxt-app.fabrique.social.gouv.fr
