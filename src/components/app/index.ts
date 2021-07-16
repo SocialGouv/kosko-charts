@@ -208,7 +208,6 @@ export const create: CreateFn = async (
       name,
       hosts,
       serviceName: name,
-      servicePort,
       isProduction: ciEnv.isProduction,
     });
     // add gitlab annotations

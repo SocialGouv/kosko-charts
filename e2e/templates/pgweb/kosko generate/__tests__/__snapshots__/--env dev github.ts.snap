@@ -181,8 +181,8 @@ spec:
                 name: pgweb
                 port:
                   name: http
-                  number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - pgweb-sample-next-app-e2e-branch.dev2.fabrique.social.gouv.fr

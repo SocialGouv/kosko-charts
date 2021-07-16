@@ -17,7 +17,7 @@ test("should create a prod ingress", () => {
       isProduction: true,
       name: "my-ingress",
       serviceName: "www",
-      servicePort: 80,
+      servicePortName: "http-foo",
     })
   ).toMatchSnapshot();
 });
@@ -32,7 +32,7 @@ test("should create an ingress with multiple hosts", () => {
       isProduction: false,
       name: "my-ingress",
       serviceName: "www",
-      servicePort: 80,
+      servicePortName: "http-foo",
     })
   ).toMatchSnapshot();
 });

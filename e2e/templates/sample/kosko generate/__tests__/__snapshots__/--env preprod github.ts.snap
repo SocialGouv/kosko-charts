@@ -417,8 +417,8 @@ spec:
                 name: www
                 port:
                   name: http
-                  number: 80
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - sample-next-app-preprod.dev2.fabrique.social.gouv.fr

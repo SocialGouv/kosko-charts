@@ -25,11 +25,11 @@ Object {
                   "name": "www",
                   "port": Object {
                     "name": "http",
-                    "number": 80,
                   },
                 },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },
@@ -73,12 +73,12 @@ Object {
                 "service": Object {
                   "name": "www",
                   "port": Object {
-                    "name": "http",
-                    "number": 80,
+                    "name": "http-foo",
                   },
                 },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },
@@ -120,12 +120,12 @@ Object {
                 "service": Object {
                   "name": "www",
                   "port": Object {
-                    "name": "http",
-                    "number": 80,
+                    "name": "http-foo",
                   },
                 },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },
@@ -139,12 +139,12 @@ Object {
                 "service": Object {
                   "name": "www",
                   "port": Object {
-                    "name": "http",
-                    "number": 80,
+                    "name": "http-foo",
                   },
                 },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },
