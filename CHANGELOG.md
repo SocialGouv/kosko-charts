@@ -1,3 +1,10 @@
+## [8.0.2](https://github.com/SocialGouv/kosko-charts/compare/v8.0.1...v8.0.2) (2021-07-16)
+
+
+### Bug Fixes
+
+* **ingress:** missing pathType and name port collision ([#608](https://github.com/SocialGouv/kosko-charts/issues/608)) ([9a12a7b](https://github.com/SocialGouv/kosko-charts/commit/9a12a7b0247af8c54bdc4af7327280263ce13469))
+
 ## [8.0.1](https://github.com/SocialGouv/kosko-charts/compare/v8.0.0...v8.0.1) (2021-07-15)
 
 
