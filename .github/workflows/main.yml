@@ -10,16 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version:
-          - 14.x
-
     steps:
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2-beta
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: lts/*
+          cache: yarn
 
       - name: Get yarn cache directory path
         id: init
@@ -37,25 +35,6 @@ jobs:
           #   /usr/bin/env: 'node': No such file or directory
           # see https://github.com/nodejs/node-v0.x-archive/issues/3911
           sudo ln -s $(which node) /usr/bin/node
-
-      - uses: actions/checkout@v2
-
-      - name: Cache Yarn packages
-        id: yarn_cache_packages
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.init.outputs.yarn_cache }}
-          key: ${{ runner.os }}-yarn_cache-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn_cache-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-${{ matrix.node-version }}-yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-yarn-
 
       - name: Installing
         run: yarn --frozen-lockfile --perfer-offline --link-duplicates
