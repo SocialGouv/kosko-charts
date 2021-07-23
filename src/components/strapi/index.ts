@@ -1,23 +1,22 @@
 import type { Environment } from "@kosko/env";
 import { loadFile } from "@kosko/yaml";
-import {
-  VolumeMount,
-  Probe,
-  ResourceRequirements,
-  Volume,
-} from "kubernetes-models/v1";
-
 import type {
   AppConfig,
   CreateFnDeploymentArgs,
 } from "@socialgouv/kosko-charts/components/app";
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
+import { azureProjectVolume } from "@socialgouv/kosko-charts/components/azure-storage/azureProjectVolume";
 import { addEnvs, getIngressHost } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import { getDeployment } from "@socialgouv/kosko-charts/utils/getDeployment";
-import { azureProjectVolume } from "@socialgouv/kosko-charts/components/azure-storage/azureProjectVolume";
+import {
+  Probe,
+  ResourceRequirements,
+  Volume,
+  VolumeMount,
+} from "kubernetes-models/v1";
 
-interface StrapiAppConfig extends Partial<AppConfig> {}
+type StrapiAppConfig = Partial<AppConfig>;
 
 export interface CreateFnArgs {
   env: Environment;
@@ -29,14 +28,6 @@ export type CreateFn = (
   { env, config, deployment: deploymentParams }: CreateFnArgs
 ) => Promise<{ kind: string }[]>;
 
-const getGithubRef = (env: Record<string, any>) => {
-  const ref =
-    env.GITHUB_REF && env.GITHUB_REF.startsWith("refs/tags/")
-      ? env.GITHUB_REF.split("/").pop()
-      : `sha-${env.GITHUB_SHA}`;
-  return ref;
-};
-
 const prob = new Probe({
   httpGet: {
     path: "/_health",
@@ -46,13 +37,13 @@ const prob = new Probe({
 });
 
 const resources = new ResourceRequirements({
-  requests: {
-    cpu: "300m",
-    memory: "256Mi",
-  },
   limits: {
     cpu: "1",
     memory: "1Gi",
+  },
+  requests: {
+    cpu: "300m",
+    memory: "256Mi",
   },
 });
 
@@ -80,11 +71,15 @@ export const create: CreateFn = async (name, { env, config, deployment }) => {
   );
 
   const uploadsVolume = new Volume({
-    persistentVolumeClaim: { claimName: persistentVolumeClaim.metadata!.name! },
     name: volumeName,
+    persistentVolumeClaim: persistentVolumeClaim.metadata?.name
+      ? {
+          claimName: persistentVolumeClaim.metadata.name,
+        }
+      : undefined,
   });
 
-  const emptyDir = new Volume({ name: volumeName, emptyDir: {} });
+  const emptyDir = new Volume({ emptyDir: {}, name: volumeName });
 
   const uploadsVolumeMount = new VolumeMount({
     mountPath: "/app/public/uploads",
@@ -93,35 +88,36 @@ export const create: CreateFn = async (name, { env, config, deployment }) => {
 
   // generate basic strapi manifests
   const manifests = await createApp(name, {
-    env,
     config: strapiConfig,
     deployment: {
+      ...deployment,
       container: {
         livenessProbe: prob,
         readinessProbe: prob,
-        startupProbe: prob,
         resources,
+        startupProbe: prob,
         volumeMounts: [uploadsVolumeMount],
       },
       volumes: [ephemeralVolume ? emptyDir : uploadsVolume],
     },
+    env,
   });
 
   const strapiDeployment = getDeployment(manifests);
   const backofficeUrl = "https://" + getIngressHost(manifests);
 
   addEnvs({
-    deployment: strapiDeployment,
     data: {
       BACKOFFICE_URL: backofficeUrl,
       DATABASE_CLIENT: "postgres",
-      DATABASE_NAME: "$(PGDATABASE)",
       DATABASE_HOST: "$(PGHOST)",
-      DATABASE_PORT: "$(PGPORT)",
-      DATABASE_USERNAME: "$(PGUSER)",
+      DATABASE_NAME: "$(PGDATABASE)",
       DATABASE_PASSWORD: "$(PGPASSWORD)",
+      DATABASE_PORT: "$(PGPORT)",
       DATABASE_SSL: "true",
+      DATABASE_USERNAME: "$(PGUSER)",
     },
+    deployment: strapiDeployment,
   });
 
   const azureVolume = await loadFile(
@@ -129,6 +125,6 @@ export const create: CreateFn = async (name, { env, config, deployment }) => {
   )().catch(() => []);
 
   return manifests
-    .concat(azureVolume as any)
+    .concat(azureVolume)
     .concat(ephemeralVolume ? [] : [persistentVolumeClaim, persistentVolume]);
 };
