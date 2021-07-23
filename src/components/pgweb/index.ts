@@ -6,8 +6,8 @@ import { create as createApp } from "@socialgouv/kosko-charts/components/app";
 import type { DeploymentParams } from "@socialgouv/kosko-charts/utils";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
-// renovate: datasource=docker depName=sosedoff/pgweb versioning=0.11.7
-const PGWEB_VERSION = "0.11.7";
+// renovate: datasource=docker depName=sosedoff/pgweb versioning=0.11.8
+const PGWEB_VERSION = "0.11.8";
 
 const pgwebConfig: Partial<AppConfig> = {
   container: {
