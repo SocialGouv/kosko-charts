@@ -2,7 +2,7 @@
 
 exports[`should create a dev ingress 1`] = `
 Object {
-  "apiVersion": "extensions/v1beta1",
+  "apiVersion": "networking.k8s.io/v1",
   "kind": "Ingress",
   "metadata": Object {
     "annotations": Object {
@@ -21,10 +21,15 @@ Object {
           "paths": Array [
             Object {
               "backend": Object {
-                "serviceName": "www",
-                "servicePort": 80,
+                "service": Object {
+                  "name": "www",
+                  "port": Object {
+                    "name": "http",
+                  },
+                },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },
@@ -44,7 +49,7 @@ Object {
 
 exports[`should create a prod ingress 1`] = `
 Object {
-  "apiVersion": "extensions/v1beta1",
+  "apiVersion": "networking.k8s.io/v1",
   "kind": "Ingress",
   "metadata": Object {
     "annotations": Object {
@@ -65,10 +70,15 @@ Object {
           "paths": Array [
             Object {
               "backend": Object {
-                "serviceName": "www",
-                "servicePort": 80,
+                "service": Object {
+                  "name": "www",
+                  "port": Object {
+                    "name": "http-foo",
+                  },
+                },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },
@@ -88,7 +98,7 @@ Object {
 
 exports[`should create an ingress with multiple hosts 1`] = `
 Object {
-  "apiVersion": "extensions/v1beta1",
+  "apiVersion": "networking.k8s.io/v1",
   "kind": "Ingress",
   "metadata": Object {
     "annotations": Object {
@@ -107,10 +117,15 @@ Object {
           "paths": Array [
             Object {
               "backend": Object {
-                "serviceName": "www",
-                "servicePort": 80,
+                "service": Object {
+                  "name": "www",
+                  "port": Object {
+                    "name": "http-foo",
+                  },
+                },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },
@@ -121,10 +136,15 @@ Object {
           "paths": Array [
             Object {
               "backend": Object {
-                "serviceName": "www",
-                "servicePort": 80,
+                "service": Object {
+                  "name": "www",
+                  "port": Object {
+                    "name": "http-foo",
+                  },
+                },
               },
               "path": "/",
+              "pathType": "Prefix",
             },
           ],
         },

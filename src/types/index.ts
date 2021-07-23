@@ -22,3 +22,15 @@ export interface GlobalEnvironment extends NamespaceComponentEnvironment {
 export interface NamedComponentEnvironment {
   name: string;
 }
+
+export interface CIEnv {
+  isPreProduction: boolean;
+  isProduction: boolean;
+  metadata: GlobalEnvironment;
+  projectName: string;
+  shortSha: string;
+
+  sha: string;
+  tag?: string;
+  registry: string;
+}

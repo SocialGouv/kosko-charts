@@ -1,3 +1,165 @@
+## [8.0.2](https://github.com/SocialGouv/kosko-charts/compare/v8.0.1...v8.0.2) (2021-07-16)
+
+
+### Bug Fixes
+
+* **ingress:** missing pathType and name port collision ([#608](https://github.com/SocialGouv/kosko-charts/issues/608)) ([9a12a7b](https://github.com/SocialGouv/kosko-charts/commit/9a12a7b0247af8c54bdc4af7327280263ce13469))
+
+## [8.0.1](https://github.com/SocialGouv/kosko-charts/compare/v8.0.0...v8.0.1) (2021-07-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency slugify to ^1.6.0 ([#607](https://github.com/SocialGouv/kosko-charts/issues/607)) ([918ebf5](https://github.com/SocialGouv/kosko-charts/commit/918ebf5c0f00631c6c2481c2d35a92332e7169f3))
+
+# [8.0.0](https://github.com/SocialGouv/kosko-charts/compare/v7.0.8...v8.0.0) (2021-07-13)
+
+
+* feat(ingress)!: update from extensions/v1beta1 to networking.k8s.io/v1 (#604) ([e3b383c](https://github.com/SocialGouv/kosko-charts/commit/e3b383c1cd620ea86ae189b17de3245dbaad67f9)), closes [#604](https://github.com/SocialGouv/kosko-charts/issues/604)
+
+
+### BREAKING CHANGES
+
+* Our utils deployment and ingress will no longer depend on `process.env`
+
+```diff
+ createDeployment({
+   containerPort: 8080,
+   name: "www",
++  registry: "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
++  sha: "0123456789abcdefghijklmnopqrstuvwxyz0123",
+ })
+
+ createIngress({
+   hosts: ["sample.dev2.fabrique.social.gouv.fr"],
++  isProduction: false,
+   name: "my-ingress",
+ })
+```
+
+## [7.0.8](https://github.com/SocialGouv/kosko-charts/compare/v7.0.7...v7.0.8) (2021-07-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ts-node to ^10.1.0 ([#601](https://github.com/SocialGouv/kosko-charts/issues/601)) ([fe270ef](https://github.com/SocialGouv/kosko-charts/commit/fe270ef4f7a32e8373286d0c7c2ffa0c4f009145))
+
+## [7.0.7](https://github.com/SocialGouv/kosko-charts/compare/v7.0.6...v7.0.7) (2021-07-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.17.5 ([#599](https://github.com/SocialGouv/kosko-charts/issues/599)) ([58373b4](https://github.com/SocialGouv/kosko-charts/commit/58373b4aa5ec69ba4559fc11fe053a9b5668446f))
+
+## [7.0.6](https://github.com/SocialGouv/kosko-charts/compare/v7.0.5...v7.0.6) (2021-07-05)
+
+
+### Bug Fixes
+
+* Slugify namespace properly. ([#595](https://github.com/SocialGouv/kosko-charts/issues/595)) ([b2afca4](https://github.com/SocialGouv/kosko-charts/commit/b2afca4f87a2054a183f5b5fe7ad366d453c7403))
+
+## [7.0.5](https://github.com/SocialGouv/kosko-charts/compare/v7.0.4...v7.0.5) (2021-07-02)
+
+
+### Bug Fixes
+
+* Use SOCIALGOUV_BASE_DOMAIN in Github testing env ([#593](https://github.com/SocialGouv/kosko-charts/issues/593)) ([0f0cb4f](https://github.com/SocialGouv/kosko-charts/commit/0f0cb4f0bac0ec9a1785af06221ad41ecb2e9ee3))
+
+## [7.0.4](https://github.com/SocialGouv/kosko-charts/compare/v7.0.3...v7.0.4) (2021-07-01)
+
+
+### Bug Fixes
+
+* Use global ci env in Azure volumes. ([#592](https://github.com/SocialGouv/kosko-charts/issues/592)) ([c7fdbf8](https://github.com/SocialGouv/kosko-charts/commit/c7fdbf81515667b0e8450d6e3b358959bdc58721))
+
+## [7.0.3](https://github.com/SocialGouv/kosko-charts/compare/v7.0.2...v7.0.3) (2021-07-01)
+
+
+### Bug Fixes
+
+* Use azure-pg-user secret name on preprod and prod. ([#591](https://github.com/SocialGouv/kosko-charts/issues/591)) ([a51c2ba](https://github.com/SocialGouv/kosko-charts/commit/a51c2ba8255844060e5371849fe3846f01d27b0c))
+
+## [7.0.2](https://github.com/SocialGouv/kosko-charts/compare/v7.0.1...v7.0.2) (2021-07-01)
+
+
+### Bug Fixes
+
+* Use azure-pg-user secret name on preprod and prod. ([#590](https://github.com/SocialGouv/kosko-charts/issues/590)) ([fde1a20](https://github.com/SocialGouv/kosko-charts/commit/fde1a20b8aa323e5d35b94e27e5b950c3197e7c1))
+
+## [7.0.1](https://github.com/SocialGouv/kosko-charts/compare/v7.0.0...v7.0.1) (2021-07-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to ^4.3.5 ([#587](https://github.com/SocialGouv/kosko-charts/issues/587)) ([0633081](https://github.com/SocialGouv/kosko-charts/commit/06330814a55706266b71c88a62bf98acf8adb647))
+
+# [7.0.0](https://github.com/SocialGouv/kosko-charts/compare/v6.5.0...v7.0.0) (2021-06-30)
+
+
+* feat(environments)!: GitLab and GitHub environments fusion 🔬 (#577) ([c48453e](https://github.com/SocialGouv/kosko-charts/commit/c48453e62442cb710200d81d264640073b7881f1)), closes [#577](https://github.com/SocialGouv/kosko-charts/issues/577)
+
+
+### Bug Fixes
+
+* Add github env. ([4c7dd35](https://github.com/SocialGouv/kosko-charts/commit/4c7dd351234ae456cc19773cfaa29c6cb502d699))
+* Rebase and fix lint. ([09c1b20](https://github.com/SocialGouv/kosko-charts/commit/09c1b2027eab564da9118bfbf6fddeb3b1b39422))
+* Replace manifest by metadata in CIEnv type. ([a34dbb3](https://github.com/SocialGouv/kosko-charts/commit/a34dbb318e1286b91ccc474f065ac1bb39587357))
+* Update README. ([4b6f43b](https://github.com/SocialGouv/kosko-charts/commit/4b6f43b81bb0ce5ba027a3933e2eb58f4db7643b))
+* Update unit tests snapshots. ([6626308](https://github.com/SocialGouv/kosko-charts/commit/66263083d722c0ccbaeccda9d0593153db3276a6))
+* Use common environment in restore-db job. ([a179027](https://github.com/SocialGouv/kosko-charts/commit/a17902702b68a21c3c57e6faacf096437971016b))
+
+
+### BREAKING CHANGES
+
+* We should now use a common ci environments
+
+```diff
+- import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
++ import gitlab from "@socialgouv/kosko-charts/environments";
+
+- const ciEnv = gitlab(process.env);
++ const ciEnv = environments(process.env);
+```
+* the previous envParams is now inside the ci env as `metadata`
+
+```diff
+export interface CIEnv {
+  isPreProduction: boolean;
+  isProduction: boolean;
+  metadata: GlobalEnvironment;
+  projectName: string;
+  shortSha: string;
+}
+```
+
+
+
+Co-authored-by: Social Groovy Bot <45039513+SocialGroovyBot@users.noreply.github.com>
+
+## [6.5.1-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v6.5.1-beta.2...v6.5.1-beta.3) (2021-06-30)
+
+
+### Bug Fixes
+
+* Replace manifest by metadata in CIEnv type. ([a34dbb3](https://github.com/SocialGouv/kosko-charts/commit/a34dbb318e1286b91ccc474f065ac1bb39587357))
+
+## [6.5.1-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v6.5.1-beta.1...v6.5.1-beta.2) (2021-06-30)
+
+
+### Bug Fixes
+
+* Update README. ([4b6f43b](https://github.com/SocialGouv/kosko-charts/commit/4b6f43b81bb0ce5ba027a3933e2eb58f4db7643b))
+
+## [6.5.1-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v6.5.0...v6.5.1-beta.1) (2021-06-30)
+
+
+### Bug Fixes
+
+* Add github env. ([4c7dd35](https://github.com/SocialGouv/kosko-charts/commit/4c7dd351234ae456cc19773cfaa29c6cb502d699))
+* Rebase and fix lint. ([09c1b20](https://github.com/SocialGouv/kosko-charts/commit/09c1b2027eab564da9118bfbf6fddeb3b1b39422))
+* Update unit tests snapshots. ([6626308](https://github.com/SocialGouv/kosko-charts/commit/66263083d722c0ccbaeccda9d0593153db3276a6))
+* Use common environment in restore-db job. ([a179027](https://github.com/SocialGouv/kosko-charts/commit/a17902702b68a21c3c57e6faacf096437971016b))
+
 # [6.5.0](https://github.com/SocialGouv/kosko-charts/compare/v6.4.2...v6.5.0) (2021-06-30)
 
 

@@ -143,7 +143,7 @@ spec:
     app: pgweb
   type: ClusterIP
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -167,9 +167,12 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: pgweb
-              servicePort: 80
+              service:
+                name: pgweb
+                port:
+                  name: http
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - pgweb-preprod-sample-next-app.dev2.fabrique.social.gouv.fr

@@ -1,4 +1,5 @@
-import { Ingress } from "kubernetes-models/extensions/v1beta1/Ingress";
+import type { IIngressRule } from "kubernetes-models/_definitions/IoK8sApiNetworkingV1IngressRule";
+import { Ingress } from "kubernetes-models/networking.k8s.io/v1/Ingress";
 
 /** Parameters to create an [[Ingress]] with [[createDeployment]] */
 export interface IngressConfig {
@@ -8,23 +9,33 @@ export interface IngressConfig {
   hosts: string[];
   /** name of the target service */
   serviceName?: string;
-  /** port of the target service */
-  servicePort?: number;
+  /** the name of the port of the target service */
+  servicePortName?: string;
   /** name of the secret for TLS certificate */
   secretName?: string;
   /** kubernetes annotations */
   annotations?: Record<string, unknown>;
+  /** is a production ingress */
+  isProduction: boolean;
 }
 
-const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
+const getHostService = ({
+  serviceName = "www",
+  servicePortName = "http",
+}): IIngressRule => ({
   http: {
     paths: [
       {
         backend: {
-          serviceName,
-          servicePort,
+          service: {
+            name: serviceName,
+            port: {
+              name: servicePortName,
+            },
+          },
         },
         path: "/",
+        pathType: "Prefix",
       },
     ],
   },
@@ -45,7 +56,7 @@ const getHostService = ({ serviceName = "app", servicePort = 3000 }) => ({
  *   name: "app-ingress",
  *   hosts: ["host1.pouet.fr", "host2.pouet.fr"],
  *   serviceName: "www",
- *   servicePort: 80
+ *   servicePortName: "http"
  * });
  * ```
  * @category utils
@@ -57,14 +68,14 @@ export const createIngress = (params: IngressConfig): Ingress => {
     "kubernetes.io/ingress.class": "nginx",
     ...(params.annotations ?? {}),
   };
-  if (process.env.PRODUCTION) {
+  if (params.isProduction) {
     annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
     annotations["kubernetes.io/tls-acme"] = "true";
   }
   const isRedirectionIngress =
     !!annotations["nginx.ingress.kubernetes.io/permanent-redirect"];
 
-  const ingressDefinition = {
+  return new Ingress({
     metadata: {
       annotations,
       labels: {
@@ -80,7 +91,7 @@ export const createIngress = (params: IngressConfig): Ingress => {
           ? {}
           : getHostService({
               serviceName: params.serviceName,
-              servicePort: params.servicePort,
+              servicePortName: params.servicePortName,
             })),
       })),
       tls: [
@@ -88,13 +99,11 @@ export const createIngress = (params: IngressConfig): Ingress => {
           hosts: hosts,
           secretName:
             params.secretName ??
-            (process.env.PRODUCTION ? `${params.name}-crt` : "wildcard-crt"),
+            (params.isProduction ? `${params.name}-crt` : "wildcard-crt"),
         },
       ],
     },
-  };
-
-  return new Ingress(ingressDefinition);
+  });
 };
 
 export default createIngress;

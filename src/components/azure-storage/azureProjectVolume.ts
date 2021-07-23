@@ -1,5 +1,5 @@
 import { assert } from "@sindresorhus/is";
-import gitlab from "@socialgouv/kosko-charts/environments/gitlab";
+import environments from "@socialgouv/kosko-charts/environments";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
 import { PersistentVolume, PersistentVolumeClaim } from "kubernetes-models/v1";
 
@@ -7,15 +7,18 @@ export function azureProjectVolume(
   name: string,
   { storage }: { storage: string }
 ): [PersistentVolumeClaim, PersistentVolume] {
-  const globalEnv = gitlab(process.env);
-  assert.nonEmptyObject(globalEnv.annotations);
-  assert.nonEmptyObject(globalEnv.labels);
+  const ciEnv = environments(process.env);
+  assert.nonEmptyObject(ciEnv.metadata.annotations);
+  assert.nonEmptyObject(ciEnv.metadata.labels);
 
-  const envName = globalEnv.annotations["app.gitlab.com/env"];
+  const envName =
+    ciEnv.metadata.annotations["app.gitlab.com/env"] ||
+    ciEnv.metadata.labels.application;
+
   const metadata = {
-    annotations: globalEnv.annotations,
-    labels: globalEnv.labels,
-    namespace: globalEnv.namespace,
+    annotations: ciEnv.metadata.annotations,
+    labels: ciEnv.metadata.labels,
+    namespace: ciEnv.metadata.namespace,
   };
   const pv = `${envName}-${name}`;
 
@@ -49,8 +52,8 @@ export function azureProjectVolume(
     spec: {
       accessModes: ["ReadWriteMany"],
       azureFile: {
-        secretName: `azure-${globalEnv.labels.team}-volume`,
-        secretNamespace: globalEnv.namespace.name,
+        secretName: `azure-${ciEnv.metadata.labels.team}-volume`,
+        secretNamespace: ciEnv.metadata.namespace.name,
         shareName: name,
       },
       capacity: {

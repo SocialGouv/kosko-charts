@@ -59,8 +59,7 @@ spec:
         cert: wildcard
     spec:
       containers:
-        - image: >-
-            registry.gitlab.factory.social.gouv.fr/socialgouv/sample-kosko/hasura:8843083edb7f873cad1d1420731a60773594ffae
+        - image: hasura/graphql-engine:latest
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -269,7 +268,7 @@ spec:
     app: www
   type: ClusterIP
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -293,9 +292,12 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: www
-              servicePort: 80
+              service:
+                name: www
+                port:
+                  name: http
             path: /
+            pathType: Prefix
   tls:
     - hosts:
         - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr

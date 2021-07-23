@@ -3,6 +3,7 @@ import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 
 import { getDefaultPgParams } from "../components/azure-pg";
+import environments from "../environments";
 
 /**
  *
@@ -23,11 +24,14 @@ export const addPostgresUserSecret = (deployment?: Deployment): void => {
     return;
   }
 
+  const ciEnv = environments(process.env);
+
   const defaultParams = getDefaultPgParams();
 
-  const secretRefName = process.env.CI_COMMIT_TAG
-    ? `azure-pg-user`
-    : defaultParams.name;
+  const secretRefName =
+    ciEnv.isPreProduction || ciEnv.isProduction
+      ? `azure-pg-user`
+      : defaultParams.name;
 
   const azureSecretSource = new EnvFromSource({
     secretRef: {

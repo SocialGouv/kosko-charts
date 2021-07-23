@@ -1,0 +1,591 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create a deployment for the commit 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "labels": Object {
+      "app": "www",
+    },
+    "name": "www",
+  },
+  "spec": Object {
+    "replicas": 1,
+    "selector": Object {
+      "matchLabels": Object {
+        "app": "www",
+      },
+    },
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {},
+        "labels": Object {
+          "app": "www",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/www:0123456789abcdefghijklmnopqrstuvwxyz0123",
+            "livenessProbe": Object {
+              "failureThreshold": 6,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 30,
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+            },
+            "name": "www",
+            "ports": Array [
+              Object {
+                "containerPort": 8080,
+                "name": "http",
+              },
+            ],
+            "readinessProbe": Object {
+              "failureThreshold": 15,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 0,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1,
+            },
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "128Mi",
+              },
+              "requests": Object {
+                "cpu": "5m",
+                "memory": "16Mi",
+              },
+            },
+            "startupProbe": Object {
+              "failureThreshold": 12,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "periodSeconds": 5,
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`should create a deployment for the tag 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "labels": Object {
+      "app": "www",
+    },
+    "name": "www",
+  },
+  "spec": Object {
+    "replicas": 1,
+    "selector": Object {
+      "matchLabels": Object {
+        "app": "www",
+      },
+    },
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {},
+        "labels": Object {
+          "app": "www",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/www:X.Y.Z",
+            "livenessProbe": Object {
+              "failureThreshold": 6,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 30,
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+            },
+            "name": "www",
+            "ports": Array [
+              Object {
+                "containerPort": 8080,
+                "name": "http",
+              },
+            ],
+            "readinessProbe": Object {
+              "failureThreshold": 15,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 0,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1,
+            },
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "128Mi",
+              },
+              "requests": Object {
+                "cpu": "5m",
+                "memory": "16Mi",
+              },
+            },
+            "startupProbe": Object {
+              "failureThreshold": 12,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "periodSeconds": 5,
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`should create a deployment with additionnal container spec 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "labels": Object {
+      "app": "www",
+    },
+    "name": "www",
+  },
+  "spec": Object {
+    "replicas": 1,
+    "selector": Object {
+      "matchLabels": Object {
+        "app": "www",
+      },
+    },
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {},
+        "labels": Object {
+          "app": "www",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/www:0123456789abcdefghijklmnopqrstuvwxyz0123",
+            "livenessProbe": Object {
+              "failureThreshold": 6,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 30,
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+            },
+            "name": "www",
+            "ports": Array [
+              Object {
+                "containerPort": 8080,
+                "name": "http",
+              },
+            ],
+            "readinessProbe": Object {
+              "failureThreshold": 15,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 0,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1,
+            },
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "128Mi",
+              },
+              "requests": Object {
+                "cpu": "500m",
+                "memory": "16Mi",
+              },
+            },
+            "startupProbe": Object {
+              "failureThreshold": 12,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "periodSeconds": 5,
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`should create a deployment with custom image 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "labels": Object {
+      "app": "www",
+    },
+    "name": "www",
+  },
+  "spec": Object {
+    "replicas": 1,
+    "selector": Object {
+      "matchLabels": Object {
+        "app": "www",
+      },
+    },
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {},
+        "labels": Object {
+          "app": "www",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "ghcr.io/socialgouv/foo/bar:qux",
+            "livenessProbe": Object {
+              "failureThreshold": 6,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 30,
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+            },
+            "name": "www",
+            "ports": Array [
+              Object {
+                "containerPort": 8080,
+                "name": "http",
+              },
+            ],
+            "readinessProbe": Object {
+              "failureThreshold": 15,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 0,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1,
+            },
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "128Mi",
+              },
+              "requests": Object {
+                "cpu": "5m",
+                "memory": "16Mi",
+              },
+            },
+            "startupProbe": Object {
+              "failureThreshold": 12,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "periodSeconds": 5,
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`should create a deployment with imagePullSecrets 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "labels": Object {
+      "app": "www",
+    },
+    "name": "www",
+  },
+  "spec": Object {
+    "replicas": 1,
+    "selector": Object {
+      "matchLabels": Object {
+        "app": "www",
+      },
+    },
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {},
+        "labels": Object {
+          "app": "www",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/www:0123456789abcdefghijklmnopqrstuvwxyz0123",
+            "livenessProbe": Object {
+              "failureThreshold": 6,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 30,
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+            },
+            "name": "www",
+            "ports": Array [
+              Object {
+                "containerPort": 8080,
+                "name": "http",
+              },
+            ],
+            "readinessProbe": Object {
+              "failureThreshold": 15,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 0,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1,
+            },
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "128Mi",
+              },
+              "requests": Object {
+                "cpu": "5m",
+                "memory": "16Mi",
+              },
+            },
+            "startupProbe": Object {
+              "failureThreshold": 12,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "periodSeconds": 5,
+            },
+          },
+        ],
+        "imagePullSecrets": Array [
+          Object {
+            "name": "fooSecretName",
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`should create a deployment with metadata 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "annotations": Object {
+      "foo": "bar",
+    },
+    "labels": Object {
+      "app": "www",
+      "foo": "bar",
+    },
+    "name": "www",
+  },
+  "spec": Object {
+    "replicas": 1,
+    "selector": Object {
+      "matchLabels": Object {
+        "app": "www",
+      },
+    },
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {},
+        "labels": Object {
+          "app": "www",
+          "foo": "bar",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/www:0123456789abcdefghijklmnopqrstuvwxyz0123",
+            "livenessProbe": Object {
+              "failureThreshold": 6,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 30,
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+            },
+            "name": "www",
+            "ports": Array [
+              Object {
+                "containerPort": 8080,
+                "name": "http",
+              },
+            ],
+            "readinessProbe": Object {
+              "failureThreshold": 15,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 0,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1,
+            },
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "128Mi",
+              },
+              "requests": Object {
+                "cpu": "5m",
+                "memory": "16Mi",
+              },
+            },
+            "startupProbe": Object {
+              "failureThreshold": 12,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "periodSeconds": 5,
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`should create a deployment with volumes 1`] = `
+Object {
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": Object {
+    "labels": Object {
+      "app": "www",
+    },
+    "name": "www",
+  },
+  "spec": Object {
+    "replicas": 1,
+    "selector": Object {
+      "matchLabels": Object {
+        "app": "www",
+      },
+    },
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {},
+        "labels": Object {
+          "app": "www",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/www:0123456789abcdefghijklmnopqrstuvwxyz0123",
+            "livenessProbe": Object {
+              "failureThreshold": 6,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 30,
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+            },
+            "name": "www",
+            "ports": Array [
+              Object {
+                "containerPort": 8080,
+                "name": "http",
+              },
+            ],
+            "readinessProbe": Object {
+              "failureThreshold": 15,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "initialDelaySeconds": 0,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1,
+            },
+            "resources": Object {
+              "limits": Object {
+                "cpu": "500m",
+                "memory": "128Mi",
+              },
+              "requests": Object {
+                "cpu": "5m",
+                "memory": "16Mi",
+              },
+            },
+            "startupProbe": Object {
+              "failureThreshold": 12,
+              "httpGet": Object {
+                "path": "/healthz",
+                "port": "http",
+              },
+              "periodSeconds": 5,
+            },
+          },
+        ],
+        "volumes": Array [
+          Object {
+            "emptyDir": Object {},
+            "name": "foo",
+          },
+        ],
+      },
+    },
+  },
+}
+`;

@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return preproduction tagged github global env 1`] = `
+Object {
+  "isPreProduction": true,
+  "isProduction": false,
+  "metadata": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/tags/vX.Y.Z",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/tags/vX.Y.Z",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "cert": "wildcard",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app-preprod",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app-preprod",
+  },
+  "projectName": "sample-next-app",
+  "registry": "ghcr.io/socialgouv/sample-next-app",
+  "sha": "8843083edb7f873cad1d1420731a60773594ffae",
+  "shortSha": "8843083",
+  "tag": "vX.Y.Z",
+}
+`;
+
+exports[`should return production github global env 1`] = `
+Object {
+  "isPreProduction": false,
+  "isProduction": true,
+  "metadata": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/tags/vX.Y.Z",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/tags/vX.Y.Z",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app",
+  },
+  "projectName": "sample-next-app",
+  "registry": "ghcr.io/socialgouv/sample-next-app",
+  "sha": "8843083edb7f873cad1d1420731a60773594ffae",
+  "shortSha": "8843083",
+  "tag": "vX.Y.Z",
+}
+`;
+
+exports[`should return the github global env 1`] = `
+Object {
+  "isPreProduction": false,
+  "isProduction": false,
+  "metadata": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/heads/e2e-branch",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/heads/e2e-branch",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "cert": "wildcard",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app-e2e-branch",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app-e2e-branch",
+  },
+  "projectName": "sample-next-app",
+  "registry": "ghcr.io/socialgouv/sample-next-app",
+  "sha": "8843083edb7f873cad1d1420731a60773594ffae",
+  "shortSha": "8843083",
+  "tag": undefined,
+}
+`;
+
+exports[`should return the github global env with slugify 1`] = `
+Object {
+  "isPreProduction": false,
+  "isProduction": false,
+  "metadata": Object {
+    "annotations": Object {
+      "app.github.com/job": "xxxxxxx-job",
+      "app.github.com/ref": "refs/heads/domifa-commander-8.x",
+      "app.github.com/repo": "socialgouv/sample-next-app",
+      "app.github.com/run": "12345",
+      "app.github.com/sha": "8843083",
+    },
+    "domain": "dev2.fabrique.social.gouv.fr",
+    "git": Object {
+      "branch": "refs/heads/domifa-commander-8.x",
+      "remote": "socialgouv/sample-next-app",
+    },
+    "labels": Object {
+      "application": "sample-next-app",
+      "cert": "wildcard",
+      "owner": "sample-next-app",
+      "team": "sample-next-app",
+    },
+    "namespace": Object {
+      "name": "sample-next-app-domifa-commander-8x",
+    },
+    "rancherId": "c-bd7z2:p-7ms8p",
+    "subdomain": "sample-next-app-domifa-commander-8x",
+  },
+  "projectName": "sample-next-app",
+  "registry": "ghcr.io/socialgouv/sample-next-app",
+  "sha": "8843083edb7f873cad1d1420731a60773594ffae",
+  "shortSha": "8843083",
+  "tag": undefined,
+}
+`;
+
+exports[`should throw because of empty strings 1`] = `
+"Wrong environment variables
+required \\"GITHUB_SHA\\": \\" \\" should not be an empty string
+required \\"GITHUB_REF\\": \\" \\" should not be an empty string
+required \\"GITHUB_JOB\\": \\" \\" should not be an empty string
+required \\"GITHUB_RUN_ID\\": \\" \\" should not be an empty string
+required \\"GITHUB_REPOSITORY\\": \\" \\" should not be an empty string
+required \\"SOCIALGOUV_BASE_DOMAIN\\": \\" \\" should not be an empty string
+"
+`;
