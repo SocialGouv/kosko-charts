@@ -10,7 +10,7 @@ Plugged to the default database with a persistent storage attached
 
 ```js
 import env from "@kosko/env";
-import { create } from "@socialgouv/kosko-charts/components/metabase";
+import { create } from "@socialgouv/kosko-charts/components/strapi";
 
 const manifests = create("strapi", {
   env,
