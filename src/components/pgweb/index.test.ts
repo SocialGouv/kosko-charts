@@ -15,68 +15,68 @@ test("should create app with pgweb config", async () => {
   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   const manifest = await create("pgweb", { env });
   expect(manifest).toMatchInlineSnapshot(`
-    Array [
-      "pgweb",
-      Object {
-        "config": Object {
-          "container": Object {
-            "livenessProbe": Object {
-              "httpGet": Object {
-                "path": "/",
-                "port": "http",
-              },
-            },
-            "readinessProbe": Object {
-              "httpGet": Object {
-                "path": "/",
-                "port": "http",
-              },
-            },
-            "resources": Object {
-              "limits": Object {
-                "cpu": "500m",
-                "memory": "256Mi",
-              },
-              "requests": Object {
-                "cpu": "100m",
-                "memory": "64Mi",
-              },
-            },
-            "startupProbe": Object {
-              "httpGet": Object {
-                "path": "/",
-                "port": "http",
-              },
-            },
-          },
-          "containerPort": 8081,
-          "image": "sosedoff/pgweb:0.11.7",
-          "subDomainPrefix": "pgweb-",
-          "withPostgres": true,
-        },
-        "deployment": Object {
-          "labels": Object {
-            "component": "pgweb",
+Array [
+  "pgweb",
+  Object {
+    "config": Object {
+      "container": Object {
+        "livenessProbe": Object {
+          "httpGet": Object {
+            "path": "/",
+            "port": "http",
           },
         },
-        "env": Object {
-          "component": [Function],
-          "cwd": "/tmp",
-          "extensions": Array [
-            "cjs",
-            "mjs",
-          ],
-          "global": [Function],
-          "paths": Object {
-            "component": "environments/#{environment}/#{component}",
-            "global": "environments/#{environment}",
+        "readinessProbe": Object {
+          "httpGet": Object {
+            "path": "/",
+            "port": "http",
           },
-          "resetReducers": [Function],
-          "setReducers": [Function],
+        },
+        "resources": Object {
+          "limits": Object {
+            "cpu": "500m",
+            "memory": "256Mi",
+          },
+          "requests": Object {
+            "cpu": "100m",
+            "memory": "64Mi",
+          },
+        },
+        "startupProbe": Object {
+          "httpGet": Object {
+            "path": "/",
+            "port": "http",
+          },
         },
       },
-    ]
-  `);
+      "containerPort": 8081,
+      "image": "sosedoff/pgweb:0.11.8",
+      "subDomainPrefix": "pgweb-",
+      "withPostgres": true,
+    },
+    "deployment": Object {
+      "labels": Object {
+        "component": "pgweb",
+      },
+    },
+    "env": Object {
+      "component": [Function],
+      "cwd": "/tmp",
+      "extensions": Array [
+        "cjs",
+        "mjs",
+      ],
+      "global": [Function],
+      "paths": Object {
+        "component": "environments/#{environment}/#{component}",
+        "global": "environments/#{environment}",
+      },
+      "resetReducers": [Function],
+      "setReducers": [Function],
+    },
+  },
+]
+`);
 });
 
 test("should create app with pgweb config for production", async () => {
@@ -84,66 +84,66 @@ test("should create app with pgweb config for production", async () => {
   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   const manifest = await create("pgweb", { env });
   expect(manifest).toMatchInlineSnapshot(`
-    Array [
-      "pgweb",
-      Object {
-        "config": Object {
-          "container": Object {
-            "livenessProbe": Object {
-              "httpGet": Object {
-                "path": "/",
-                "port": "http",
-              },
-            },
-            "readinessProbe": Object {
-              "httpGet": Object {
-                "path": "/",
-                "port": "http",
-              },
-            },
-            "resources": Object {
-              "limits": Object {
-                "cpu": "500m",
-                "memory": "256Mi",
-              },
-              "requests": Object {
-                "cpu": "100m",
-                "memory": "64Mi",
-              },
-            },
-            "startupProbe": Object {
-              "httpGet": Object {
-                "path": "/",
-                "port": "http",
-              },
-            },
-          },
-          "containerPort": 8081,
-          "image": "sosedoff/pgweb:0.11.7",
-          "subDomainPrefix": "pgweb.",
-          "withPostgres": true,
-        },
-        "deployment": Object {
-          "labels": Object {
-            "component": "pgweb",
+Array [
+  "pgweb",
+  Object {
+    "config": Object {
+      "container": Object {
+        "livenessProbe": Object {
+          "httpGet": Object {
+            "path": "/",
+            "port": "http",
           },
         },
-        "env": Object {
-          "component": [Function],
-          "cwd": "/tmp",
-          "extensions": Array [
-            "cjs",
-            "mjs",
-          ],
-          "global": [Function],
-          "paths": Object {
-            "component": "environments/#{environment}/#{component}",
-            "global": "environments/#{environment}",
+        "readinessProbe": Object {
+          "httpGet": Object {
+            "path": "/",
+            "port": "http",
           },
-          "resetReducers": [Function],
-          "setReducers": [Function],
+        },
+        "resources": Object {
+          "limits": Object {
+            "cpu": "500m",
+            "memory": "256Mi",
+          },
+          "requests": Object {
+            "cpu": "100m",
+            "memory": "64Mi",
+          },
+        },
+        "startupProbe": Object {
+          "httpGet": Object {
+            "path": "/",
+            "port": "http",
+          },
         },
       },
-    ]
-  `);
+      "containerPort": 8081,
+      "image": "sosedoff/pgweb:0.11.8",
+      "subDomainPrefix": "pgweb.",
+      "withPostgres": true,
+    },
+    "deployment": Object {
+      "labels": Object {
+        "component": "pgweb",
+      },
+    },
+    "env": Object {
+      "component": [Function],
+      "cwd": "/tmp",
+      "extensions": Array [
+        "cjs",
+        "mjs",
+      ],
+      "global": [Function],
+      "paths": Object {
+        "component": "environments/#{environment}/#{component}",
+        "global": "environments/#{environment}",
+      },
+      "resetReducers": [Function],
+      "setReducers": [Function],
+    },
+  },
+]
+`);
 });
