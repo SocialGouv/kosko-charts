@@ -63,11 +63,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up Node.js 14.x
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 14.x
-
       - name: Get upstream commit branch
         id: comment
         run: |
@@ -79,11 +74,18 @@ jobs:
             | jq '.head.ref' \
             | sed 's/\"//g' \
           )"
+
       - name: Checkout upstream repo
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
           ref: ${{ steps.comment.outputs.branch }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: yarn
 
       - name: Get yarn cache directory path
         id: init
@@ -95,23 +97,6 @@ jobs:
           echo "NPM $(npm --version)"
           echo "Npx $(npx --version)"
           echo "Yarn $(yarn --version)"
-
-      - name: Cache Yarn packages
-        id: yarn_cache_packages
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.init.outputs.yarn_cache }}
-          key: ${{ runner.os }}-yarn_cache-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn_cache-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
 
       - name: Installing
         run: yarn --frozen-lockfile --perfer-offline --link-duplicates
