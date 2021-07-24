@@ -1,3 +1,15 @@
+## [8.0.3](https://github.com/SocialGouv/kosko-charts/compare/v8.0.2...v8.0.3) (2021-07-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.17.6 ([#620](https://github.com/SocialGouv/kosko-charts/issues/620)) ([0790a8f](https://github.com/SocialGouv/kosko-charts/commit/0790a8fee456de72ac9eec04b2aea0460696ad3e))
+
+
+### Reverts
+
+* **azure-storage:** add dynamic fileshare pvc ([#585](https://github.com/SocialGouv/kosko-charts/issues/585)) ([ff6c0dc](https://github.com/SocialGouv/kosko-charts/commit/ff6c0dcb666e7dacc94053b5b4b10ec118e9d276))
+
 ## [8.0.2](https://github.com/SocialGouv/kosko-charts/compare/v8.0.1...v8.0.2) (2021-07-16)
 
 
