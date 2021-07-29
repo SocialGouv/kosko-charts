@@ -1,3 +1,58 @@
+# [9.0.0-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v8.1.1...v9.0.0-beta.1) (2021-07-29)
+
+
+* feat(azure-pg)!: use one database per branch (#624) ([a0883a3](https://github.com/SocialGouv/kosko-charts/commit/a0883a3df670349d11f9902faeb9c83b5d87d993)), closes [#624](https://github.com/SocialGouv/kosko-charts/issues/624)
+
+
+### BREAKING CHANGES
+
+* Our create database component is now creating one database per branch
+
+Previously our `@socialgouv/kosko-charts/components/azure-pg` component was creating one database per commit. As it happen to be a rare need at @SocialGouv, we now switch to one database per branch.
+* Unify commen `pg.ts` component use under the same function
+
+Previously our `@socialgouv/kosko-charts/components/azure-pg` component was only handling the "dev"/"review" use case where we have to create the database and the user ourself. This ends up putting on the user land the responsibility of manually loading a sealedsecret in other case. As it happen to be a common need at @SocialGouv, we now deal with loading the file our creating the database as before if the named file does not exist.
+
+```diff
+import env from "@kosko/env";
+-import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+ import { create } from "@socialgouv/kosko-charts/components/azure-pg";
+-import environments from "@socialgouv/kosko-charts/environments";
+-import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
+-import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
+
++export default create("pg-user", {
++  env,
++});
+-export default async (): Promise<{ kind: string }[]> => {
+-  if (env.env === "dev") {
+-    return create({
+-      env,
+-    });
+-  }
+-
+-  // in prod/preprod, we try to add a fixed sealed-secret
+-  const secret = await loadYaml<SealedSecret>(
+-    env,
+-    `pg-user.sealed-secret.yaml`
+-  );
+-  if (!secret) {
+-    return [];
+-  }
+-
+-  const envParams = environments(process.env);
+-  // add gitlab annotations
+-  updateMetadata(secret, {
+-    annotations: envParams.metadata.annotations ?? {},
+-    labels: envParams.metadata.labels ?? {},
+-    namespace: envParams.metadata.namespace,
+-  });
+-  return [secret];
+-};
+```
+
+The new `create` function of `@socialgouv/kosko-charts/components/azure-pg` takes a `name` as fist argument used to "guest" the file to load `${name}.sealed-secret.yaml` is the given env (as before)
+
 ## [8.1.1](https://github.com/SocialGouv/kosko-charts/compare/v8.1.0...v8.1.1) (2021-07-29)
 
 

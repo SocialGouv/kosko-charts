@@ -4,6 +4,7 @@ import { promises } from "fs";
 import { directory } from "tempy";
 
 const gitlabMock: CIEnv = {
+  environment: "my-test",
   isPreProduction: false,
   isProduction: false,
   metadata: {

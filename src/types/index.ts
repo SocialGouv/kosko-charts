@@ -24,13 +24,13 @@ export interface NamedComponentEnvironment {
 }
 
 export interface CIEnv {
+  environment: string;
   isPreProduction: boolean;
   isProduction: boolean;
   metadata: GlobalEnvironment;
   projectName: string;
-  shortSha: string;
-
-  sha: string;
-  tag?: string;
   registry: string;
+  sha: string;
+  shortSha: string;
+  tag?: string;
 }

@@ -67,8 +67,6 @@ export const restoreDbJob = ({
   envFrom = [],
   postRestoreScript,
 }: RestoreDbJobArgs): { metadata?: IObjectMeta; kind: string }[] => {
-  // ok(process.env.CI_COMMIT_SHORT_SHA);
-  // ok(process.env.CI_JOB_ID);
   const ciEnv = environments(process.env);
   const secretNamespace = getProjectSecretNamespace(project);
   const azureSecretName = getAzureProdVolumeSecretName(project);

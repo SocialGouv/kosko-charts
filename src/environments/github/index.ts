@@ -1,6 +1,6 @@
 import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
-import slugify from "slugify";
+import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 
 const assert = assertEnv([
   "GITHUB_SHA",
@@ -43,9 +43,12 @@ export default (env = process.env): CIEnv => {
   const isProduction = Boolean(SOCIALGOUV_PRODUCTION);
   const isPreProduction = Boolean(SOCIALGOUV_PREPRODUCTION);
 
-  const branchName = GITHUB_REF.replace("refs/heads/", "");
+  const branchName = GITHUB_REF.replace("refs/heads/", "").replace(
+    "refs/tags/",
+    ""
+  );
 
-  const environmentSlug = slugify(branchName, { strict: true });
+  const environmentSlug = generate(branchName);
 
   const productionNamespace = projectName;
   const preProductionNamespace = `${projectName}-preprod`;
@@ -64,6 +67,7 @@ export default (env = process.env): CIEnv => {
     : devNamespace;
 
   return {
+    environment: environmentSlug,
     isPreProduction,
     isProduction,
     metadata: {
