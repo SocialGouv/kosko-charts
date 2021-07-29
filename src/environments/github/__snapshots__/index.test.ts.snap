@@ -2,7 +2,7 @@
 
 exports[`should return preproduction tagged github global env 1`] = `
 Object {
-  "environment": "vx-y-z-2nlvbj",
+  "environment": "vx-y-z-25jxw5",
   "isPreProduction": true,
   "isProduction": false,
   "metadata": Object {
@@ -40,7 +40,7 @@ Object {
 
 exports[`should return production github global env 1`] = `
 Object {
-  "environment": "vx-y-z-2nlvbj",
+  "environment": "vx-y-z-25jxw5",
   "isPreProduction": false,
   "isProduction": true,
   "metadata": Object {
@@ -115,7 +115,7 @@ Object {
 
 exports[`should return the github global env with renovate prefixed env name 1`] = `
 Object {
-  "environment": "renovate-major-j-19v2gm",
+  "environment": "renovate-major-j-3qv5n7",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {
@@ -138,10 +138,10 @@ Object {
       "team": "sample-next-app",
     },
     "namespace": Object {
-      "name": "sample-next-app-renovate-major-j-19v2gm",
+      "name": "sample-next-app-renovate-major-j-3qv5n7",
     },
     "rancherId": "c-bd7z2:p-7ms8p",
-    "subdomain": "sample-next-app-renovate-major-j-19v2gm",
+    "subdomain": "sample-next-app-renovate-major-j-3qv5n7",
   },
   "projectName": "sample-next-app",
   "registry": "ghcr.io/socialgouv/sample-next-app",
@@ -153,7 +153,7 @@ Object {
 
 exports[`should return the github global env with slugify 1`] = `
 Object {
-  "environment": "domifa-commander-207hqn",
+  "environment": "domifa-commander-4k3z09",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {
@@ -176,10 +176,10 @@ Object {
       "team": "sample-next-app",
     },
     "namespace": Object {
-      "name": "sample-next-app-domifa-commander-207hqn",
+      "name": "sample-next-app-domifa-commander-4k3z09",
     },
     "rancherId": "c-bd7z2:p-7ms8p",
-    "subdomain": "sample-next-app-domifa-commander-207hqn",
+    "subdomain": "sample-next-app-domifa-commander-4k3z09",
   },
   "projectName": "sample-next-app",
   "registry": "ghcr.io/socialgouv/sample-next-app",

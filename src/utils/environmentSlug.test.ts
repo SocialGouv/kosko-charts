@@ -2,48 +2,49 @@ import { generate } from "./environmentSlug";
 
 test.concurrent.each`
 name | expected
-${""} | ${"env-43gao4"}
+${""} | ${"env-5oaq0b"}
+${" "} | ${"env-1d1ppf"}
 ${"a"} | ${"a"}
-${"A"} | ${"a-51rzzs"}
+${"A"} | ${"a-24t5zj"}
 ${"foo"} | ${"foo"}
-${" foo"} | ${"foo-13m58g"}
-${"-foo"} | ${"foo-13m58g"}
-${".foo"} | ${"env-foo-30b7ar"}
-${"_foo"} | ${"env-foo-30b7ar"}
-${"/foo"} | ${"env-foo-30b7ar"}
-${"//foo"} | ${"env-foo-30b7ar"}
+${" foo"} | ${"foo-519jbe"}
+${"-foo"} | ${"foo-48rrcc"}
+${".foo"} | ${"env-foo-13scql"}
+${"_foo"} | ${"env-foo-276ax5"}
+${"/foo"} | ${"env-foo-2ry66a"}
+${"//foo"} | ${"env-foo-49jdu9"}
 ${"bar"} | ${"bar"}
-${"bar "} | ${"bar-6avzi6"}
-${"bar-"} | ${"bar-6avzi6"}
-${"bar."} | ${"bar-3p5jxr"}
-${"bar_"} | ${"bar-3p5jxr"}
-${"bar//"} | ${"bar-3p5jxr"}
-${"42"} | ${"env-42-69um1o"}
-${"42-foo"} | ${"env-42-foo-1wgih0"}
-${"42-foo/bar-42"} | ${"env-42-foo-bar-4-3k4xn2"}
-${"foo bar"} | ${"foo-bar-34n246"}
-${"foo  bar"} | ${"foo-bar-34n246"}
-${"foo - bar"} | ${"foo-bar-34n246"}
-${"foo -bar"} | ${"foo-bar-34n246"}
-${"foo- bar"} | ${"foo-bar-34n246"}
+${"bar "} | ${"bar-3bd9i7"}
+${"bar-"} | ${"bar-3p5jxr"}
+${"bar."} | ${"bar-3odd94"}
+${"bar_"} | ${"bar-3zwwso"}
+${"bar//"} | ${"bar-51rfpg"}
+${"42"} | ${"env-42-2vfnyo"}
+${"42-foo"} | ${"env-42-foo-2rkzi7"}
+${"42-foo/bar-42"} | ${"env-42-foo-bar-4-47yjnm"}
+${"foo bar"} | ${"foo-bar-69w36b"}
+${"foo  bar"} | ${"foo-bar-3dj5tm"}
+${"foo - bar"} | ${"foo-bar-21zv3j"}
+${"foo -bar"} | ${"foo-bar-ftlsyn"}
+${"foo- bar"} | ${"foo-bar-202h7o"}
 ${"foo-bar"} | ${"foo-bar"}
-${"foo_bar"} | ${"foo-bar-34n246"}
-${"foo/bar"} | ${"foo-bar-34n246"}
-${"foo~bar"} | ${"foo-bar-34n246"}
-${"foo@bar"} | ${"foo-bar-34n246"}
+${"foo_bar"} | ${"foo-bar-1tn5ds"}
+${"foo/bar"} | ${"foo-bar-53d979"}
+${"foo~bar"} | ${"foo-bar-63gi2v"}
+${"foo@bar"} | ${"foo-bar-5v88ns"}
 ...
 ${"master"} | ${"master"}
 ${"alpha"} | ${"alpha"}
 ${"beta"} | ${"beta"}
 ${"next"} | ${"next"}
-${"v0.0.0"} | ${"v0-0-0-3juiz4"}
-${"v0.0.1"} | ${"v0-0-1-53ptvv"}
-${"v0.1.1"} | ${"v0-1-1-1g556e"}
-${"v1.1.1"} | ${"v1-1-1-55k9zo"}
+${"v0.0.0"} | ${"v0-0-0-4svh1v"}
+${"v0.0.1"} | ${"v0-0-1-4cg10t"}
+${"v0.1.1"} | ${"v0-1-1-21ni6m"}
+${"v1.1.1"} | ${"v1-1-1-3k7de0"}
 ...
-${"renovate/socialgouvdocker-images"} | ${"renovate-socialg-1colh5"}
+${"renovate/socialgouvdocker-images"} | ${"renovate-socialg-1e66b4"}
 `(
-  "returns $expected env slug for branch $name",
+  "'$name' 's slug should be '$expected'",
   ({ name, expected }: { name: string; expected: string }) => {
     expect(generate(name)).toBe(expected);
   }

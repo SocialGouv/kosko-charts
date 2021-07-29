@@ -16,13 +16,6 @@ export function generate(name: string): string {
   let slugified = slugify(name, {
     lower: true,
   });
-  // see https://gist.github.com/codeguy/6684588#gistcomment-3361909
-  // .normalize("NFD") // split an accented letter in the base letter and the acent
-  // .replace(/[\u0300-\u036f]/g, "") // remove all previously split accents
-  // .toLowerCase()
-  // .trim()
-  // .replace(/[^a-z0-9 ]/g, "-") // remove all chars not letters, numbers and spaces (to be replaced)
-  // .replace(/\s+/g, "-"); // separator
 
   // Must start with a letter
   if (!/^[a-z]/.exec(slugified)) slugified = "env-" + slugified;
@@ -31,10 +24,14 @@ export function generate(name: string): string {
   slugified = slugified.replace(/-{2,}/g, "-");
 
   // Repeated dashes are invalid (OpenShift limitation)
-  slugified =
-    slugified.length > 24 || slugified != name
-      ? shortenAndAddSuffix(slugified)
-      : slugified.replace(/-$/, "");
+  if (slugified.length > 24 || slugified !== name) {
+    const shortSlug = slugified.slice(0, 16);
+    slugified = `${shortSlug}${shortSlug.endsWith("-") ? "" : "-"}${suffix(
+      name
+    )}`;
+  }
+
+  slugified = slugified.replace(/-{2,}/g, "-");
 
   return slugified;
 }
