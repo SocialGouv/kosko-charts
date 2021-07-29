@@ -43,13 +43,9 @@ export default (env = process.env): CIEnv => {
   const isProduction = Boolean(SOCIALGOUV_PRODUCTION);
   const isPreProduction = Boolean(SOCIALGOUV_PREPRODUCTION);
 
-  const branchName = GITHUB_REF
-    ? GITHUB_REF.includes("/")
-      ? GITHUB_REF.split("/").pop()
-      : GITHUB_REF
-    : GITHUB_REF;
+  const branchName = GITHUB_REF.replace("refs/heads/", "");
 
-  const environmentSlug = slugify(branchName ?? shortSha, { strict: true });
+  const environmentSlug = slugify(branchName, { strict: true });
 
   const productionNamespace = projectName;
   const preProductionNamespace = `${projectName}-preprod`;
