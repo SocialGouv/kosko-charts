@@ -6,7 +6,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-abcdefg",
+      "name": "restore-db-0123456",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
@@ -94,15 +94,15 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGDATABASE",
-                  "value": "autodevops_abcdefg",
+                  "value": "autodevops_my-test",
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_abcdefg",
+                  "value": "password_my-test",
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_abcdefg@sampledevserver.postgres.database.azure.com",
+                  "value": "user_my-test@sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",
@@ -218,7 +218,7 @@ Array [
     },
     "kind": "ConfigMap",
     "metadata": Object {
-      "name": "post-restore-script-configmap-abcdefg",
+      "name": "post-restore-script-configmap-0123456",
       "namespace": "sample-next-app-secret",
     },
   },
@@ -226,7 +226,7 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-abcdefg",
+      "name": "restore-db-0123456",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
@@ -318,15 +318,15 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGDATABASE",
-                  "value": "autodevops_abcdefg",
+                  "value": "autodevops_my-test",
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_abcdefg",
+                  "value": "password_my-test",
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_abcdefg@sampledevserver.postgres.database.azure.com",
+                  "value": "user_my-test@sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",
@@ -360,7 +360,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
             },
             Object {
               "configMap": Object {
-                "name": "post-restore-script-configmap-abcdefg",
+                "name": "post-restore-script-configmap-0123456",
               },
               "name": "scripts",
             },

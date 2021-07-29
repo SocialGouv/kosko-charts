@@ -15,7 +15,7 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "create-db-job-abcdefg",
+      "name": "create-db-job-0123456",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
@@ -41,15 +41,15 @@ Array [
               "env": Array [
                 Object {
                   "name": "NEW_DB_NAME",
-                  "value": "autodevops_abcdefg",
+                  "value": "autodevops_my-test",
                 },
                 Object {
                   "name": "NEW_USER",
-                  "value": "user_abcdefg",
+                  "value": "user_my-test",
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_abcdefg",
+                  "value": "password_my-test",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -97,36 +97,22 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "azure-pg-user-abcdefg",
+      "name": "azure-pg-user-my-test",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
-      "DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
-      "DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
-      "PGDATABASE": "autodevops_abcdefg",
+      "DATABASE_URL": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
+      "DB_URI": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
+      "PGDATABASE": "autodevops_my-test",
       "PGHOST": "sampledevserver.postgres.database.azure.com",
-      "PGPASSWORD": "password_abcdefg",
-      "PGRST_DB_URI": "postgresql://user_abcdefg%40sampledevserver.postgres.database.azure.com:password_abcdefg@sampledevserver.postgres.database.azure.com/autodevops_abcdefg?sslmode=require",
+      "PGPASSWORD": "password_my-test",
+      "PGRST_DB_URI": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
       "PGSSLMODE": "require",
-      "PGUSER": "user_abcdefg@sampledevserver.postgres.database.azure.com",
+      "PGUSER": "user_my-test@sampledevserver.postgres.database.azure.com",
     },
   },
 ]
-`;
-
-exports[`should throw because of a missing envs 1`] = `
-"Wrong environment variables
-required \\"CI_ENVIRONMENT_NAME\\": \\"undefined\\" should be defined
-required \\"CI_ENVIRONMENT_SLUG\\": \\"undefined\\" should be defined
-required \\"CI_PROJECT_NAME\\": \\"undefined\\" should be defined
-required \\"CI_PROJECT_PATH_SLUG\\": \\"undefined\\" should be defined
-required \\"KUBE_INGRESS_BASE_DOMAIN\\": \\"undefined\\" should be defined
-required \\"KUBE_NAMESPACE\\": \\"undefined\\" should be defined
-required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
-required \\"CI_COMMIT_SHA\\": \\"undefined\\" should be defined
-required \\"CI_REGISTRY_IMAGE\\": \\"undefined\\" should be defined
-"
 `;
 
 exports[`should use custom pgHost 1`] = `
@@ -144,7 +130,7 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "create-db-job-abcdefg",
+      "name": "create-db-job-0123456",
       "namespace": "sample-42-my-test",
     },
     "spec": Object {
@@ -170,15 +156,15 @@ Array [
               "env": Array [
                 Object {
                   "name": "NEW_DB_NAME",
-                  "value": "autodevops_abcdefg",
+                  "value": "autodevops_my-test",
                 },
                 Object {
                   "name": "NEW_USER",
-                  "value": "user_abcdefg",
+                  "value": "user_my-test",
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_abcdefg",
+                  "value": "password_my-test",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -226,19 +212,19 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "azure-pg-user-abcdefg",
+      "name": "azure-pg-user-my-test",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
-      "DATABASE_URL": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
-      "DB_URI": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
-      "PGDATABASE": "autodevops_abcdefg",
+      "DATABASE_URL": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
+      "DB_URI": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
+      "PGDATABASE": "autodevops_my-test",
       "PGHOST": "pouetpouet.com",
-      "PGPASSWORD": "password_abcdefg",
-      "PGRST_DB_URI": "postgresql://user_abcdefg%40pouetpouet.com:password_abcdefg@pouetpouet.com/autodevops_abcdefg?sslmode=require",
+      "PGPASSWORD": "password_my-test",
+      "PGRST_DB_URI": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
       "PGSSLMODE": "require",
-      "PGUSER": "user_abcdefg@pouetpouet.com",
+      "PGUSER": "user_my-test@pouetpouet.com",
     },
   },
 ]

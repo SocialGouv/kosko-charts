@@ -2,6 +2,7 @@
 
 exports[`should return production gitlab global env 1`] = `
 Object {
+  "environment": "my-test",
   "isPreProduction": false,
   "isProduction": true,
   "metadata": Object {
@@ -36,6 +37,7 @@ Object {
 
 exports[`should return tagged gitlab global env 1`] = `
 Object {
+  "environment": "my-test",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {
@@ -71,6 +73,7 @@ Object {
 
 exports[`should return the gitlab global env 1`] = `
 Object {
+  "environment": "my-test",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {
@@ -106,6 +109,7 @@ Object {
 
 exports[`should return the gitlab global env of the cluster dev2 1`] = `
 Object {
+  "environment": "my-test",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {

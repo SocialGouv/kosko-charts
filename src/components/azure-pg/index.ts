@@ -1,27 +1,34 @@
 import type { Environment } from "@kosko/env";
+import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+import { createSecret } from "@socialgouv/kosko-charts/components/pg-secret";
 import environments from "@socialgouv/kosko-charts/environments";
+import type { DeploymentParams } from "@socialgouv/kosko-charts/utils/createDeployment";
+import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
+import { getPgServerHostname } from "@socialgouv/kosko-charts/utils/getPgServerHostname";
+import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
 
-import type { DeploymentParams } from "../../utils/createDeployment";
-import { getPgServerHostname } from "../../utils/getPgServerHostname";
-import { updateMetadata } from "../../utils/updateMetadata";
-import { createSecret } from "../pg-secret";
 import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
+
+export const PREPROD_PG_ENVIRONMENT = "preprod";
 
 export const getDefaultPgParams = (
   config: Partial<CreateConfig> = {}
 ): PgParams => {
   const ciEnv = environments(process.env);
-  const sha = ciEnv.shortSha;
+
+  const suffix = ciEnv.isPreProduction
+    ? PREPROD_PG_ENVIRONMENT
+    : ciEnv.environment;
   const projectName = ciEnv.projectName;
 
   return {
     ...getDevDatabaseParameters({
-      suffix: sha,
+      suffix,
     }),
     host: config.pgHost ?? getPgServerHostname(projectName, "dev"),
-    name: `azure-pg-user-${sha}`,
+    name: `azure-pg-user-${suffix}`,
   };
 };
 
@@ -34,9 +41,29 @@ interface CreateParams {
   config?: Partial<CreateConfig>;
 }
 
-export const create = ({ config = {} }: CreateParams): { kind: string }[] => {
+export const create = async (
+  name: string,
+  { env, config = {} }: CreateParams
+): Promise<{ kind: string }[]> => {
   const ciEnv = environments(process.env);
 
+  // in prod/preprod, we try to add a fixed sealed-secret
+  const existingSecret = await loadYaml<SealedSecret>(
+    env,
+    `${name}.sealed-secret.yaml`
+  );
+
+  if (existingSecret) {
+    updateMetadata(existingSecret, {
+      annotations: ciEnv.metadata.annotations ?? {},
+      labels: ciEnv.metadata.labels ?? {},
+      namespace: ciEnv.metadata.namespace,
+    });
+
+    return [existingSecret];
+  }
+
+  // add gitlab annotations
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
