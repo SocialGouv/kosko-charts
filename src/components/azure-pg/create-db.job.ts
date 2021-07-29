@@ -19,7 +19,7 @@ export const createDbJob = ({
   secretRefName?: string;
   user: string;
 }): Job => {
-  const job = new Job({
+  return new Job({
     spec: {
       backoffLimit: 5,
       template: {
@@ -73,5 +73,4 @@ export const createDbJob = ({
       ttlSecondsAfterFinished: 86400,
     },
   });
-  return job;
 };

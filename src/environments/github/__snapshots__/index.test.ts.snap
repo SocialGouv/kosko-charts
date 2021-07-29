@@ -2,6 +2,7 @@
 
 exports[`should return preproduction tagged github global env 1`] = `
 Object {
+  "environment": "vx-y-z-2nlvbj",
   "isPreProduction": true,
   "isProduction": false,
   "metadata": Object {
@@ -39,6 +40,7 @@ Object {
 
 exports[`should return production github global env 1`] = `
 Object {
+  "environment": "vx-y-z-2nlvbj",
   "isPreProduction": false,
   "isProduction": true,
   "metadata": Object {
@@ -75,6 +77,7 @@ Object {
 
 exports[`should return the github global env 1`] = `
 Object {
+  "environment": "e2e-branch",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {
@@ -112,6 +115,7 @@ Object {
 
 exports[`should return the github global env with renovate prefixed env name 1`] = `
 Object {
+  "environment": "renovate-major-j-19v2gm",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {
@@ -134,10 +138,10 @@ Object {
       "team": "sample-next-app",
     },
     "namespace": Object {
-      "name": "sample-next-app-renovatemajor-jest-monorepo",
+      "name": "sample-next-app-renovate-major-j-19v2gm",
     },
     "rancherId": "c-bd7z2:p-7ms8p",
-    "subdomain": "sample-next-app-renovatemajor-jest-monorepo",
+    "subdomain": "sample-next-app-renovate-major-j-19v2gm",
   },
   "projectName": "sample-next-app",
   "registry": "ghcr.io/socialgouv/sample-next-app",
@@ -149,6 +153,7 @@ Object {
 
 exports[`should return the github global env with slugify 1`] = `
 Object {
+  "environment": "domifa-commander-207hqn",
   "isPreProduction": false,
   "isProduction": false,
   "metadata": Object {
@@ -171,10 +176,10 @@ Object {
       "team": "sample-next-app",
     },
     "namespace": Object {
-      "name": "sample-next-app-domifa-commander-8x",
+      "name": "sample-next-app-domifa-commander-207hqn",
     },
     "rancherId": "c-bd7z2:p-7ms8p",
-    "subdomain": "sample-next-app-domifa-commander-8x",
+    "subdomain": "sample-next-app-domifa-commander-207hqn",
   },
   "projectName": "sample-next-app",
   "registry": "ghcr.io/socialgouv/sample-next-app",

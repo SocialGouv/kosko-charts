@@ -57,6 +57,7 @@ export default (env = process.env): CIEnv => {
     : KUBE_NAMESPACE;
 
   return {
+    environment: CI_ENVIRONMENT_SLUG,
     isPreProduction,
     isProduction,
     metadata: {
