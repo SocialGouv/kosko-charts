@@ -1,3 +1,10 @@
+## [8.1.1](https://github.com/SocialGouv/kosko-charts/compare/v8.1.0...v8.1.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **environments:** github branch env slug missing prefix ([#623](https://github.com/SocialGouv/kosko-charts/issues/623)) ([23fa233](https://github.com/SocialGouv/kosko-charts/commit/23fa233ee050a62f6cf3a60ca326daf29f1e452f))
+
 # [8.1.0](https://github.com/SocialGouv/kosko-charts/compare/v8.0.3...v8.1.0) (2021-07-29)
 
 
