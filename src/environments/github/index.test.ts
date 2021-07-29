@@ -36,6 +36,10 @@ test.each([
     { ...validEnv, GITHUB_REF: "refs/heads/domifa-commander-8.x" },
   ],
   [
+    "the github global env with renovate prefixed env name",
+    { ...validEnv, GITHUB_REF: "refs/heads/renovate/major-@jest-monorepo" },
+  ],
+  [
     "preproduction tagged github global env",
     {
       ...validEnv,
