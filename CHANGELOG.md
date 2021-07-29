@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/SocialGouv/kosko-charts/compare/v8.0.3...v8.1.0) (2021-07-29)
+
+
+### Features
+
+* **utils:** add gitlab like environmentSlug function ([#622](https://github.com/SocialGouv/kosko-charts/issues/622)) ([3f75386](https://github.com/SocialGouv/kosko-charts/commit/3f7538688c651382b1b970a10d705b72abbb534b))
+
 ## [8.0.3](https://github.com/SocialGouv/kosko-charts/compare/v8.0.2...v8.0.3) (2021-07-24)
 
 
