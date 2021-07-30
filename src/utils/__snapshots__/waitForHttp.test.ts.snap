@@ -5,7 +5,7 @@ Object {
   "args": Array [
     "http://service:4242",
   ],
-  "image": "ghcr.io/socialgouv/docker/wait-for-http:6.32.2",
+  "image": "ghcr.io/socialgouv/docker/wait-for-http:6.38.3",
   "imagePullPolicy": "Always",
   "name": "wait-for-some-service",
   "resources": Object {
