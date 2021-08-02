@@ -79,7 +79,7 @@ test(
     Object.assign(process.env, env);
 
     const cmd = `
-      npx degit SocialGouv/kosko-charts/templates/nok8s#d9abac99d6bdc722bf5a5a9990f4547f091fc3b6 ${dir}/nok8s; \
+      npx degit SocialGouv/kosko-charts/templates/nok8s#bf56f7c4c8282b211c5e7517a4160dea860159fc ${dir}/nok8s; \
       yarn --cwd ${dir}/nok8s --silent; \
       yarn --cwd ${dir}/nok8s --silent generate --env dev
     `;

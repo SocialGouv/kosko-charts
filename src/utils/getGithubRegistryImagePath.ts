@@ -29,5 +29,5 @@ export const getGithubRegistryImagePath = ({
   project,
 }: GithubRegistryImageProps): string => {
   const ciEnv = environments(process.env);
-  return `ghcr.io/socialgouv/${project}/${name}:sha-${ciEnv.tag}`;
+  return `ghcr.io/socialgouv/${project}/${name}:${ciEnv.tag}`;
 };
