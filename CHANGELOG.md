@@ -1,3 +1,18 @@
+## [7.0.7-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v7.0.6...v7.0.7-alpha.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* Add e2e tests. ([4f81d40](https://github.com/SocialGouv/kosko-charts/commit/4f81d4079b8bfcc7bbd866fe3f9a06c48e9871d3))
+* Add nok8s package. ([33f3636](https://github.com/SocialGouv/kosko-charts/commit/33f3636979a04755db9b40857adc7d5197bdc5d5))
+* Get image according to registry configuration. ([84a3175](https://github.com/SocialGouv/kosko-charts/commit/84a3175755bb13587d3a5bb0f481691ba4388c5f))
+* Lint. ([4af5921](https://github.com/SocialGouv/kosko-charts/commit/4af59214c21de03c45587d423a2870760ef9376e))
+* Lint. ([bf56f7c](https://github.com/SocialGouv/kosko-charts/commit/bf56f7c4c8282b211c5e7517a4160dea860159fc))
+* Remove test. ([d377701](https://github.com/SocialGouv/kosko-charts/commit/d377701e8e712deedbce48c0fa4f1fee86ae3c74))
+* Slugify namespace properly. ([#595](https://github.com/SocialGouv/kosko-charts/issues/595)) ([02628a4](https://github.com/SocialGouv/kosko-charts/commit/02628a49f9f6853b82470af10e4ebf13068780cd))
+* Tests. ([07aba58](https://github.com/SocialGouv/kosko-charts/commit/07aba587dbf2cf883d47f1d5709b440b1a43506a))
+* Unit and e2e tests. ([a1ee658](https://github.com/SocialGouv/kosko-charts/commit/a1ee6584803daafc0d91ab19a701cab5b5b734cd))
+
 ## [7.0.6](https://github.com/SocialGouv/kosko-charts/compare/v7.0.5...v7.0.6) (2021-07-05)
 
 
