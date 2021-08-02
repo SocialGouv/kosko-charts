@@ -1,14 +1,14 @@
 //
 
-import child_process from "child_process";
+// import child_process from "child_process";
 import { config } from "dotenv";
 import { KOSKO_BIN, template, TIMEOUT } from "e2e/templates/helpers";
 import execa from "execa";
 import { basename, resolve } from "path";
-import { directory } from "tempy";
-import util from "util";
+// import { directory } from "tempy";
+// import util from "util";
 
-const exec = util.promisify(child_process.exec);
+// const exec = util.promisify(child_process.exec);
 
 //
 
