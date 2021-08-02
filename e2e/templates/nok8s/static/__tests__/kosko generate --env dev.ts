@@ -62,38 +62,40 @@ test(
   TIMEOUT
 );
 
-test(
-  "static github 2: kosko generate --dev",
-  async () => {
-    const dir = directory();
+// test(
+//   "static github 2: kosko generate --dev",
+//   async () => {
+//     const dir = directory();
 
-    const gitlabEnv = config({
-      path: resolve(cwd, "./environments/.github-actions.env"),
-    }).parsed;
+//     const gitlabEnv = config({
+//       path: resolve(cwd, "./environments/.github-actions.env"),
+//     }).parsed;
 
-    const env = {
-      ...gitlabEnv,
-      SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
-    };
+//     const env = {
+//       ...gitlabEnv,
+//       SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
+//     };
 
-    Object.assign(process.env, env);
+//     Object.assign(process.env, env);
 
-    const cmd = `
-      npx degit SocialGouv/kosko-charts/templates/nok8s#bf56f7c4c8282b211c5e7517a4160dea860159fc ${dir}/nok8s; \
-      yarn --cwd ${dir}/nok8s --silent; \
-      yarn --cwd ${dir}/nok8s --silent generate --env dev
-    `;
+//     const sha = process.env.GITHUB_SHA || "07aba587dbf2cf883d47f1d5709b440b1a43506a";
 
-    // Required to allow seemless integration code example
-    // const result = await execa.node(KOSKO_BIN, ["generate", "--env", "dev"], {
-    //   cwd,
-    //   env,
-    // });
-    const { stdout: manifest } = await exec(cmd, { env: process.env });
-    expect(manifest).toMatchSnapshot();
+//     const cmd = `
+//       npx degit SocialGouv/kosko-charts/templates/nok8s#${sha} ${dir}/nok8s; \
+//       yarn --cwd ${dir}/nok8s --silent; \
+//       yarn --cwd ${dir}/nok8s --silent generate --env dev
+//     `;
 
-    // expect(result.stdout).toMatchSnapshot();
-    // expect(result.exitCode).toEqual(0);
-  },
-  TIMEOUT
-);
+//     // Required to allow seemless integration code example
+//     // const result = await execa.node(KOSKO_BIN, ["generate", "--env", "dev"], {
+//     //   cwd,
+//     //   env,
+//     // });
+//     const { stdout: manifest } = await exec(cmd, { env: process.env });
+//     expect(manifest).toMatchSnapshot();
+
+//     // expect(result.stdout).toMatchSnapshot();
+//     // expect(result.exitCode).toEqual(0);
+//   },
+//   TIMEOUT
+// );
