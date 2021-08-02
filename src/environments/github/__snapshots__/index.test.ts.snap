@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return production gitlab global env 1`] = `
+exports[`should return production github global env 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
@@ -31,10 +31,11 @@ Object {
   },
   "projectName": "sample-next-app",
   "shortSha": "8843083",
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
-exports[`should return tagged gitlab global env 1`] = `
+exports[`should return tagged github global env 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
@@ -65,10 +66,11 @@ Object {
   },
   "projectName": "sample-next-app",
   "shortSha": "8843083",
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
-exports[`should return the gitlab global env 1`] = `
+exports[`should return the github global env 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
@@ -99,10 +101,11 @@ Object {
   },
   "projectName": "sample-next-app",
   "shortSha": "8843083",
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
-exports[`should return the gitlab global env of the cluster dev2 1`] = `
+exports[`should return the github global env of the cluster dev2 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
@@ -133,10 +136,11 @@ Object {
   },
   "projectName": "sample-next-app",
   "shortSha": "8843083",
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
-exports[`should return the gitlab global env with slugify 1`] = `
+exports[`should return the github global env with slugify 1`] = `
 Object {
   "isPreProduction": false,
   "isProduction": false,
@@ -167,6 +171,7 @@ Object {
   },
   "projectName": "sample-next-app",
   "shortSha": "8843083",
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 

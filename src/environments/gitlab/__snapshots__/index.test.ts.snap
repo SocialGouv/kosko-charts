@@ -28,6 +28,7 @@ Object {
   },
   "projectName": "sample",
   "shortSha": "abcdefg",
+  "tag": undefined,
 }
 `;
 
@@ -60,6 +61,7 @@ Object {
   },
   "projectName": "sample",
   "shortSha": "abcdefg",
+  "tag": undefined,
 }
 `;
 
@@ -92,6 +94,7 @@ Object {
   },
   "projectName": "sample",
   "shortSha": "abcdefg",
+  "tag": undefined,
 }
 `;
 
@@ -124,6 +127,7 @@ Object {
   },
   "projectName": "sample",
   "shortSha": "abcdefg",
+  "tag": undefined,
 }
 `;
 

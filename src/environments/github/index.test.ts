@@ -30,24 +30,24 @@ const validEnv = {
   SOCIALGOUV_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
 };
 test.each([
-  ["the gitlab global env", { ...validEnv }],
+  ["the github global env", { ...validEnv }],
   [
-    "the gitlab global env of the cluster dev2",
+    "the github global env of the cluster dev2",
     { ...validEnv, CI_ENVIRONMENT_NAME: "fabrique-dev2" },
   ],
   [
-    "the gitlab global env with slugify",
+    "the github global env with slugify",
     { ...validEnv, GITHUB_REF: "refs/heads/domifa-commander-8.x" },
   ],
   [
-    "tagged gitlab global env",
+    "tagged github global env",
     {
       ...validEnv,
       CI_COMMIT_TAG: "vX.Y.Z",
     },
   ],
   [
-    "production gitlab global env",
+    "production github global env",
     {
       ...validEnv,
       CI_COMMIT_TAG: "vX.Y.Z",

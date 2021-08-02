@@ -68,7 +68,7 @@ spec:
     spec:
       containers:
         - image: >-
-            harbor.fabrique.social.gouv.fr/undefined/myapp:8843083edb7f873cad1d1420731a60773594ffae
+            ghcr.io/socialgouv/myapp/myapp:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -164,7 +164,8 @@ spec:
   tls:
     - hosts:
         - sample-kosko-e2e-branch.dev2.fabrique.social.gouv.fr
-      secretName: wildcard-crt"
+      secretName: wildcard-crt
+"
 `;
 
 exports[`static github: kosko generate --dev 1`] = `
@@ -235,7 +236,7 @@ spec:
     spec:
       containers:
         - image: >-
-            harbor.fabrique.social.gouv.fr/undefined/myapp:8843083edb7f873cad1d1420731a60773594ffae
+            ghcr.io/socialgouv/myapp/myapp:sha-8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -396,7 +397,7 @@ spec:
     spec:
       containers:
         - image: >-
-            harbor.fabrique.social.gouv.fr/undefined/myapp:8843083edb7f873cad1d1420731a60773594ffae
+            ghcr.io/socialgouv/myapp/myapp:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
