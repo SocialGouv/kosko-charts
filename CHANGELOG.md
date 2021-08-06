@@ -1,3 +1,10 @@
+## [7.0.7-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v7.0.7-alpha.2...v7.0.7-alpha.3) (2021-08-06)
+
+
+### Bug Fixes
+
+* fix nok8s dep ([b3618c0](https://github.com/SocialGouv/kosko-charts/commit/b3618c08ef74b10f23f9a42001e5fee9c8236e31))
+
 ## [7.0.7-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v7.0.7-alpha.1...v7.0.7-alpha.2) (2021-08-06)
 
 
