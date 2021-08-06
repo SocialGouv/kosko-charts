@@ -1,3 +1,10 @@
+## [7.0.7-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v7.0.7-alpha.1...v7.0.7-alpha.2) (2021-08-06)
+
+
+### Bug Fixes
+
+* release ([35be104](https://github.com/SocialGouv/kosko-charts/commit/35be1041504e865f42d792f791c7a6e17d161bc9))
+
 ## [7.0.7-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v7.0.6...v7.0.7-alpha.1) (2021-08-02)
 
 
