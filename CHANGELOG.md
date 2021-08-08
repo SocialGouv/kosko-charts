@@ -1,3 +1,10 @@
+## [9.1.5](https://github.com/SocialGouv/kosko-charts/compare/v9.1.4...v9.1.5) (2021-08-08)
+
+
+### Bug Fixes
+
+* **deps:** update kosko monorepo to ^2.0.2 ([#641](https://github.com/SocialGouv/kosko-charts/issues/641)) ([7e34b25](https://github.com/SocialGouv/kosko-charts/commit/7e34b251f858ab98af6cbbe57d0686dd0ae69544))
+
 ## [9.1.4](https://github.com/SocialGouv/kosko-charts/compare/v9.1.3...v9.1.4) (2021-08-07)
 
 
