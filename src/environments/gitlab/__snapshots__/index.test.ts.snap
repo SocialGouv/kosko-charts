@@ -31,7 +31,7 @@ Object {
   "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
   "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
   "shortSha": "0123456",
-  "tag": "vX.Y.Z",
+  "tag": "X.Y.Z",
 }
 `;
 
@@ -67,7 +67,7 @@ Object {
   "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
   "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
   "shortSha": "0123456",
-  "tag": "vX.Y.Z",
+  "tag": "X.Y.Z",
 }
 `;
 
@@ -103,7 +103,7 @@ Object {
   "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
   "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
   "shortSha": "0123456",
-  "tag": undefined,
+  "tag": "0123456789abcdefghijklmnopqrstuvwxyz0123",
 }
 `;
 
@@ -139,7 +139,7 @@ Object {
   "registry": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
   "sha": "0123456789abcdefghijklmnopqrstuvwxyz0123",
   "shortSha": "0123456",
-  "tag": undefined,
+  "tag": "0123456789abcdefghijklmnopqrstuvwxyz0123",
 }
 `;
 
