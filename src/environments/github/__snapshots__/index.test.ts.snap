@@ -109,7 +109,7 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": undefined,
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
@@ -147,7 +147,7 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": undefined,
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
@@ -185,7 +185,7 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": undefined,
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
