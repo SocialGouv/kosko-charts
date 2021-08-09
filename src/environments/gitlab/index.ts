@@ -57,6 +57,7 @@ export default (env = process.env): CIEnv => {
     : KUBE_NAMESPACE;
 
   return {
+    branch: CI_COMMIT_REF_NAME ?? "",
     environment: CI_ENVIRONMENT_SLUG,
     isPreProduction,
     isProduction,

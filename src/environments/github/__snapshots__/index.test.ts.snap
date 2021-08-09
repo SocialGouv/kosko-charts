@@ -2,6 +2,7 @@
 
 exports[`should return preproduction tagged github global env 1`] = `
 Object {
+  "branch": "vx-y-z-25jxw5",
   "environment": "vx-y-z-25jxw5",
   "isPreProduction": true,
   "isProduction": false,
@@ -34,12 +35,13 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": "vX.Y.Z",
+  "tag": "X.Y.Z",
 }
 `;
 
 exports[`should return production github global env 1`] = `
 Object {
+  "branch": "vx-y-z-25jxw5",
   "environment": "vx-y-z-25jxw5",
   "isPreProduction": false,
   "isProduction": true,
@@ -71,12 +73,13 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": "vX.Y.Z",
+  "tag": "X.Y.Z",
 }
 `;
 
 exports[`should return the github global env 1`] = `
 Object {
+  "branch": "e2e-branch",
   "environment": "e2e-branch",
   "isPreProduction": false,
   "isProduction": false,
@@ -109,12 +112,13 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": undefined,
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
 exports[`should return the github global env with renovate prefixed env name 1`] = `
 Object {
+  "branch": "renovate-major-j-3qv5n7",
   "environment": "renovate-major-j-3qv5n7",
   "isPreProduction": false,
   "isProduction": false,
@@ -147,12 +151,13 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": undefined,
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 
 exports[`should return the github global env with slugify 1`] = `
 Object {
+  "branch": "domifa-commander-4k3z09",
   "environment": "domifa-commander-4k3z09",
   "isPreProduction": false,
   "isProduction": false,
@@ -185,7 +190,7 @@ Object {
   "registry": "ghcr.io/socialgouv/sample-next-app",
   "sha": "8843083edb7f873cad1d1420731a60773594ffae",
   "shortSha": "8843083",
-  "tag": undefined,
+  "tag": "sha-8843083edb7f873cad1d1420731a60773594ffae",
 }
 `;
 

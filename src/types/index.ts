@@ -34,4 +34,5 @@ export interface CIEnv {
   sha: string;
   shortSha: string;
   tag?: string;
+  branch: string;
 }
