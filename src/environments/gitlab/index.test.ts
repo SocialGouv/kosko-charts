@@ -1,5 +1,16 @@
 import env from "./index";
 
+const OLD_ENV = process.env;
+
+beforeEach(() => {
+  jest.resetModules();
+  process.env = { ...OLD_ENV };
+});
+
+afterAll(() => {
+  process.env = OLD_ENV;
+});
+
 test.each([
   ["because of missing variables", undefined],
   [
@@ -31,6 +42,7 @@ const validEnv = {
   KUBE_INGRESS_BASE_DOMAIN: "dev2.fabrique.social.gouv.fr",
   KUBE_NAMESPACE: "sample-42-my-test",
 };
+
 test.each([
   ["the gitlab global env", { ...validEnv }],
   [
@@ -54,5 +66,8 @@ test.each([
     },
   ],
 ])("should return %s", (_: string, testEnv?: NodeJS.ProcessEnv) => {
+  for (const [key, value] of Object.entries(testEnv ?? {})) {
+    process.env[key] = value;
+  }
   expect(env(testEnv)).toMatchSnapshot();
 });

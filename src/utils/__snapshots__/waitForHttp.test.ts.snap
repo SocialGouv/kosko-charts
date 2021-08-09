@@ -5,7 +5,11 @@ Object {
   "args": Array [
     "http://service:4242",
   ],
+<<<<<<< HEAD
   "image": "ghcr.io/socialgouv/docker/wait-for-http:6.39.1",
+=======
+  "image": "ghcr.io/socialgouv/docker/wait-for-http:6.38.5",
+>>>>>>> e1da35d97 (fix: Add autodevops template.)
   "imagePullPolicy": "Always",
   "name": "wait-for-some-service",
   "resources": Object {
