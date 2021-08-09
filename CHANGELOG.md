@@ -1,3 +1,10 @@
+## [9.1.7-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.1.6...v9.1.7-beta.1) (2021-08-09)
+
+
+### Bug Fixes
+
+* Add autodevops template. ([4aec973](https://github.com/SocialGouv/kosko-charts/commit/4aec97378c649ec5b6b0979296bd335ec526c42f))
+
 ## [9.1.6](https://github.com/SocialGouv/kosko-charts/compare/v9.1.5...v9.1.6) (2021-08-09)
 
 
