@@ -1,0 +1,5 @@
+{
+  "name": "myapp",
+  "type": "static",
+  "subdomain": "mysubdomain"
+}
