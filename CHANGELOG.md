@@ -1,3 +1,10 @@
+## [9.1.7-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v9.1.7-beta.1...v9.1.7-beta.2) (2021-08-09)
+
+
+### Bug Fixes
+
+* Do not allow undefined tags. ([c93c4f0](https://github.com/SocialGouv/kosko-charts/commit/c93c4f0efd8457fa88ce98fe344d235043831064))
+
 ## [9.1.7-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.1.6...v9.1.7-beta.1) (2021-08-09)
 
 
