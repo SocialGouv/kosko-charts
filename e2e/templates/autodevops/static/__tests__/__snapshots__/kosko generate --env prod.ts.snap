@@ -1,0 +1,327 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`static github: kosko generate --prod 1`] = `
+"---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    field.cattle.io/creatorId: gitlab
+    field.cattle.io/projectId: c-bd7z2:p-7ms8p
+    git/branch: refs/heads/e2e-branch
+    git/remote: socialgouv/sample-kosko
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-kosko
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    azure-pg-admin-user: sample-kosko
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+  name: sample-kosko
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-kosko
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    app: myapp
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    component: nginx
+  name: myapp
+  namespace: sample-kosko
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
+        app.github.com/job: xxxxxxx-job
+        app.github.com/ref: refs/heads/e2e-branch
+        app.github.com/repo: socialgouv/sample-kosko
+        app.github.com/run: '12345'
+        app.github.com/sha: '8843083'
+      labels:
+        app: myapp
+        application: sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        component: nginx
+    spec:
+      containers:
+        - image: >-
+            ghcr.io/socialgouv/myapp/myapp:sha-8843083edb7f873cad1d1420731a60773594ffae
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /index.html
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+          name: myapp
+          ports:
+            - containerPort: 80
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /index.html
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 5m
+              memory: 32Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /index.html
+              port: http
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myapp
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+  name: myapp
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-kosko
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  namespace: sample-kosko
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: myapp
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: 'true'
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-kosko
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    app: myapp
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+  name: myapp
+  namespace: sample-kosko
+spec:
+  rules:
+    - host: sample-kosko.fabrique.social.gouv.fr
+      http:
+        paths:
+          - backend:
+              service:
+                name: myapp
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - sample-kosko.fabrique.social.gouv.fr
+      secretName: myapp-crt"
+`;
+
+exports[`static: kosko generate --prod 1`] = `
+"---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    field.cattle.io/creatorId: gitlab
+    field.cattle.io/projectId: c-bd7z2:p-7ms8p
+    git/branch: e2e-branch
+    git/remote: git@github.com:SocialGouv/sample-kosko.git
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    azure-pg-admin-user: sample-kosko
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: sample-kosko-24-e2e-branch-42
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: myapp
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+    component: nginx
+  name: myapp
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      annotations:
+        kapp.k14s.io/disable-default-ownership-label-rules: ''
+        kapp.k14s.io/disable-default-label-scoping-rules: ''
+        app.gitlab.com/app: socialgouv-sample-kosko
+        app.gitlab.com/env: e2e-branch-42
+        app.gitlab.com/env.name: e2e-branch-dev2
+      labels:
+        app: myapp
+        application: e2e-branch-42-sample-kosko
+        owner: sample-kosko
+        team: sample-kosko
+        cert: wildcard
+        component: nginx
+    spec:
+      containers:
+        - image: ghcr.io/socialgouv/myapp/myapp:undefined
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /index.html
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+          name: myapp
+          ports:
+            - containerPort: 80
+              name: http
+          readinessProbe:
+            failureThreshold: 15
+            httpGet:
+              path: /index.html
+              port: http
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 5m
+              memory: 32Mi
+          startupProbe:
+            failureThreshold: 12
+            httpGet:
+              path: /index.html
+              port: http
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myapp
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: myapp
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: myapp
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kapp.k14s.io/disable-default-ownership-label-rules: ''
+    kapp.k14s.io/disable-default-label-scoping-rules: ''
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    app: myapp
+    application: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: myapp
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  rules:
+    - host: e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+      http:
+        paths:
+          - backend:
+              service:
+                name: myapp
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+      secretName: wildcard-crt"
+`;

@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/permanent-redirect: https://testapp.fabrique.social.gouv.fr$request_uri
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: "true"
+  labels:
+    app.kubernetes.io/component: redirect
+    app.kubernetes.io/name: www
+  name: www-redirect
+  namespace: testapp-site
+spec:
+  rules:
+    - host: www.testapp.fr
+    - host: testapp.fr
+  tls:
+    - hosts:
+        - www.testapp.fr
+        - testapp.fr
+      secretName: www-redirect

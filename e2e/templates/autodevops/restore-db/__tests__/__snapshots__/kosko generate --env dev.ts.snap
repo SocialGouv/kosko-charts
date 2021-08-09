@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`restore DB: kosko generate --dev 1`] = `
+"apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-kosko
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    application: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: restore-db
+  namespace: sample-kosko-e2e-branch
+spec:
+  template:
+    metadata: {}
+    spec:
+      containers:
+        - args:
+            - psql < /mnt/myapp/scripts/scripts/restore-my-db.sql
+          command:
+            - sh
+            - '-c'
+          env:
+            - name: PGDATABASE
+              value: autodevops_8843083
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: postgres:10.16
+          name: restore-db
+          volumeMounts:
+            - mountPath: /mnt/myapp
+              name: restore-db-volume
+      initContainers:
+        - args:
+            - clone
+            - https://github.com/SocialGouv/myapp.git
+            - /mnt/myapp
+          command:
+            - git
+          image: alpine/git:v2.30.2
+          name: restore-db-init
+          volumeMounts:
+            - mountPath: /mnt/myapp
+              name: restore-db-volume
+      restartPolicy: OnFailure
+      volumes:
+        - emptyDir: {}
+          name: restore-db-volume
+  ttlSecondsAfterFinished: 86400"
+`;

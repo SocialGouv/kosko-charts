@@ -1,0 +1,6 @@
+{
+  "name": "myapp",
+  "type": "app",
+  "hasura": true,
+  "registry": "ghcr"
+}
