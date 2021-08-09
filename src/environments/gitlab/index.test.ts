@@ -3,12 +3,12 @@ import env from "./index";
 const OLD_ENV = process.env;
 
 beforeEach(() => {
-  jest.resetModules() // Most important - it clears the cache
-  process.env = { ...OLD_ENV }; // Make a copy
+  jest.resetModules();
+  process.env = { ...OLD_ENV };
 });
 
 afterAll(() => {
-  process.env = OLD_ENV; // Restore old environment
+  process.env = OLD_ENV;
 });
 
 test.each([
@@ -66,7 +66,7 @@ test.each([
     },
   ],
 ])("should return %s", (_: string, testEnv?: NodeJS.ProcessEnv) => {
-  for (const [key, value] of Object.entries(testEnv || {})) {
+  for (const [key, value] of Object.entries(testEnv ?? {})) {
     process.env[key] = value;
   }
   expect(env(testEnv)).toMatchSnapshot();
