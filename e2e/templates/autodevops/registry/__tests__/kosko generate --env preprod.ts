@@ -7,17 +7,6 @@ import { basename, resolve } from "path";
 
 //
 
-const OLD_ENV = process.env;
-
-beforeEach(() => {
-  jest.resetModules();
-  process.env = { ...OLD_ENV };
-});
-
-afterAll(() => {
-  process.env = OLD_ENV;
-});
-
 const cwd = template(basename(resolve(__dirname, "..", "..")));
 
 test(
@@ -31,8 +20,6 @@ test(
       ...gitlabEnv,
       SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
     };
-
-    process.env.SOCIALGOUV_BASE_DOMAIN = undefined;
 
     // Required to allow seemless integration code example
     const result = await execa.node(
