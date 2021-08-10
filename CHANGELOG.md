@@ -1,3 +1,17 @@
+## [9.1.7-beta.3](https://github.com/SocialGouv/kosko-charts/compare/v9.1.7-beta.2...v9.1.7-beta.3) (2021-08-10)
+
+
+### Bug Fixes
+
+* Force SOCIALGOUV_BASE_DOMAIN value within process.env. ([84f0042](https://github.com/SocialGouv/kosko-charts/commit/84f004243363f1ea7edd862c268d0b738d88d3f4))
+* Force SOCIALGOUV_BASE_DOMAIN value. ([f4e3b00](https://github.com/SocialGouv/kosko-charts/commit/f4e3b0086804dbe4b36a53c88169756dc6957589))
+* Gitlab tag. ([a441142](https://github.com/SocialGouv/kosko-charts/commit/a441142bfc3a475e28bfdd2f81f89fce36d903c7))
+* Lint. ([92f8fa8](https://github.com/SocialGouv/kosko-charts/commit/92f8fa8b69719552f4534eb03b81ffefa4cee31f))
+* Remove process.env override. ([604c29b](https://github.com/SocialGouv/kosko-charts/commit/604c29ba7bce7080cfcd027c49725c2151a680ea))
+* Update e2e tests. ([7e6d3cd](https://github.com/SocialGouv/kosko-charts/commit/7e6d3cd4f457c1085632d1ace848a868aa53a344))
+* Update tests. ([d66698f](https://github.com/SocialGouv/kosko-charts/commit/d66698f165a20527eb5d182d64e61cd03b5456ee))
+* Use environments within getGithubRegistryImagePath. ([cfbcfb0](https://github.com/SocialGouv/kosko-charts/commit/cfbcfb0c85cdb8222843ebbcac299a5fd0ccfd53))
+
 ## [9.1.7-beta.2](https://github.com/SocialGouv/kosko-charts/compare/v9.1.7-beta.1...v9.1.7-beta.2) (2021-08-09)
 
 
