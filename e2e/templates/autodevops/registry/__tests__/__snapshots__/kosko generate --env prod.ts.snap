@@ -59,8 +59,7 @@ spec:
         cert: wildcard
     spec:
       containers:
-        - image: >-
-            ghcr.io/socialgouv/myproject/myapp:8843083edb7f873cad1d1420731a60773594ffae
+        - image: ghcr.io/socialgouv/myproject/myapp:undefined
           livenessProbe:
             failureThreshold: 6
             httpGet:
