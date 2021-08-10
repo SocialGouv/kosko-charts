@@ -18,6 +18,7 @@ test(
 
     const env = {
       ...gitlabEnv,
+      SOCIALGOUV_BASE_DOMAIN: undefined,
       SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
     };
 
