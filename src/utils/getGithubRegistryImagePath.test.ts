@@ -20,7 +20,7 @@ test("custom ghcr project with param with commit sha", () => {
 });
 
 test("custom registry with tag", () => {
-  process.env.GITHUB_REF = "refs/tags/1.2.3";
+  process.env.GITHUB_REF = "refs/tags/v1.2.3";
   expect(
     getGithubRegistryImagePath({ name: "frontend", project: "some-project" })
   ).toStrictEqual("ghcr.io/socialgouv/some-project/frontend:1.2.3");
