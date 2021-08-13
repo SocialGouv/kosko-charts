@@ -2,6 +2,8 @@ import type { IIoK8sApimachineryPkgApisMetaV1ObjectMeta } from "kubernetes-model
 
 declare type Manifests = Promise<{ kind: string }[] | []>;
 
+declare type JobType = Promise<{ kind: string }[] | []>;
+
 declare type Manifest =
   | {
       metadata?: IIoK8sApimachineryPkgApisMetaV1ObjectMeta | undefined;

@@ -21,6 +21,7 @@ interface ConfigTypes {
   };
   registry?: string;
   project?: string;
+  restoreDb?: string;
 }
 
 const Config = async (): Promise<ConfigTypes> => {
