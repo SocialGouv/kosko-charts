@@ -7,13 +7,13 @@ import type { Manifests } from "../types/config";
 import Config from "../utils/config";
 
 export default async (): Manifests => {
-  const { hasura, name: appName, registry } = await Config();
+  const { hasura, name: appName, project, registry } = await Config();
 
   const name = "hasura";
 
   const image =
     registry === "ghcr"
-      ? getGithubRegistryImagePath({ name, project: appName })
+      ? getGithubRegistryImagePath({ name, project: project ?? appName })
       : getHarborImagePath({ name: `${appName}-hasura` });
 
   const config = {
