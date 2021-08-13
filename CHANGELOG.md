@@ -1,3 +1,26 @@
+## [9.1.7-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.1.6...v9.1.7-beta.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* Add autodevops template. ([a43572a](https://github.com/SocialGouv/kosko-charts/commit/a43572a0b9506005d1476b6448f18ba7423857ef))
+* Add ghcr for hasura autodevops. ([b299e3c](https://github.com/SocialGouv/kosko-charts/commit/b299e3c24f387e56deec45eb5adb2d2285205917))
+* Do not allow undefined tags. ([4d8c035](https://github.com/SocialGouv/kosko-charts/commit/4d8c035cc2564f91b4b619bbeb75eec3c4d31c06))
+* Force SOCIALGOUV_BASE_DOMAIN value within process.env. ([b3e59fe](https://github.com/SocialGouv/kosko-charts/commit/b3e59fe7bf2cd99702baecc57d5746e890e0f80f))
+* Force SOCIALGOUV_BASE_DOMAIN value. ([5f777a1](https://github.com/SocialGouv/kosko-charts/commit/5f777a142a42bac15fdd6aa7e2464bdad09a6309))
+* Gitlab tag. ([1a5db6b](https://github.com/SocialGouv/kosko-charts/commit/1a5db6b0ed3d54546e9867beea499606ad134d18))
+* Lint. ([37e8b04](https://github.com/SocialGouv/kosko-charts/commit/37e8b04ae440d6093bf3533f07f632073b7b688c))
+* Remove process.env override. ([570540c](https://github.com/SocialGouv/kosko-charts/commit/570540c3d287f0f252396c253c8dc30f3324a31d))
+* Remove v char from github tag. ([ba6c3c7](https://github.com/SocialGouv/kosko-charts/commit/ba6c3c7bb296c5b7efe5627013e0f78ebbd74be0))
+* Update e2e tests, again and again. ([eca5d24](https://github.com/SocialGouv/kosko-charts/commit/eca5d24cc5265a4a64f2618d4aaa080eb841b50b))
+* Update e2e tests, again. ([f2dc371](https://github.com/SocialGouv/kosko-charts/commit/f2dc3710710b0e3125344090b3e641888792fe92))
+* Update e2e tests. ([9b764a0](https://github.com/SocialGouv/kosko-charts/commit/9b764a0f83c81c551bd0a8a921d045d573909f7b))
+* Update e2e tests. ([9a968fd](https://github.com/SocialGouv/kosko-charts/commit/9a968fde6559fd8c0cf36186b875eee8c24654ac))
+* Update tests. ([b3aa0a8](https://github.com/SocialGouv/kosko-charts/commit/b3aa0a8e83984d2a48d3ade187cdc2fa8ad97d3d))
+* Update tests. ([539300e](https://github.com/SocialGouv/kosko-charts/commit/539300edf6de6e4afb149037975907eb462e95f1))
+* Update unit tests. ([73bff5a](https://github.com/SocialGouv/kosko-charts/commit/73bff5a4e9e73dcd1d0dbb115d89a6f3311ffdc7))
+* Use environments within getGithubRegistryImagePath. ([4f08d2d](https://github.com/SocialGouv/kosko-charts/commit/4f08d2d5d2b0b6c028c6cabaf3c8ae9cab5c4334))
+
 ## [9.1.7-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.1.6...v9.1.7-beta.1) (2021-08-11)
 
 
