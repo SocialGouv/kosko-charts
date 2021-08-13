@@ -1,3 +1,11 @@
+## [9.1.7-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v9.1.7-alpha.1...v9.1.7-alpha.2) (2021-08-13)
+
+
+### Bug Fixes
+
+* Add autodevops retore db job. ([61632af](https://github.com/SocialGouv/kosko-charts/commit/61632af616ec00ee8d0170b3aa4e5e6cd2ccfd36))
+* Keep namespace within manifests. ([ff2c9b6](https://github.com/SocialGouv/kosko-charts/commit/ff2c9b6fd67d4ba99c034e6e76e4b93275f03d49))
+
 ## [9.1.7-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.1.6...v9.1.7-alpha.1) (2021-08-13)
 
 
