@@ -9,6 +9,7 @@ export interface NamespaceComponentEnvironment extends MetadataEntries {
   namespace: { name: string };
   rancherId?: string;
   git: { branch?: string; remote?: string };
+  keepAlive?: boolean;
 }
 
 export interface GlobalEnvironment extends NamespaceComponentEnvironment {

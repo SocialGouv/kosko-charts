@@ -1,6 +1,8 @@
 //
 
 const gitlabMock = {
+  isPreProduction: false,
+  isProduction: false,
   metadata: {
     git: {},
     namespace: { name: "sample-42-my-test" },
@@ -54,4 +56,63 @@ test("should create a namespace with extra labels and annotations", async () => 
   const { createNamespace } = await import("./index");
   const namespace = createNamespace();
   expect(namespace).toMatchSnapshot();
+  expect(
+    namespace.metadata &&
+      namespace.metadata.annotations &&
+      namespace.metadata.annotations["janitor/ttl"]
+  ).toEqual("15d");
+});
+
+test("should NOT add janitor annotation if keepAlive set to true", async () => {
+  Object.assign(gitlabMock, {
+    isPreProduction: false,
+    isProduction: false,
+  });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
+  const { createNamespace } = await import("./index");
+  const namespace = createNamespace({ keepAlive: true });
+  expect(
+    namespace.metadata &&
+      namespace.metadata.annotations &&
+      namespace.metadata.annotations["janitor/ttl"]
+  ).toBeUndefined();
+});
+
+test("should NOT add janitor annotation for preprod", async () => {
+  Object.assign(gitlabMock, {
+    isPreProduction: true,
+    isProduction: false,
+  });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
+  const { createNamespace } = await import("./index");
+  const namespace = createNamespace();
+  expect(
+    namespace.metadata &&
+      namespace.metadata.annotations &&
+      namespace.metadata.annotations["janitor/ttl"]
+  ).toBeUndefined();
+});
+
+test("should NOT add janitor annotation for prod", async () => {
+  Object.assign(gitlabMock, {
+    isPreProduction: false,
+    isProduction: true,
+  });
+  jest.doMock(
+    "@socialgouv/kosko-charts/environments/gitlab",
+    () => gitlabModuleMock
+  );
+  const { createNamespace } = await import("./index");
+  const namespace = createNamespace();
+  expect(
+    namespace.metadata &&
+      namespace.metadata.annotations &&
+      namespace.metadata.annotations["janitor/ttl"]
+  ).toBeUndefined();
 });
