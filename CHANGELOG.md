@@ -1,3 +1,10 @@
+## [9.1.7](https://github.com/SocialGouv/kosko-charts/compare/v9.1.6...v9.1.7) (2021-08-16)
+
+
+### Bug Fixes
+
+* **deps:** update socialgouv/docker images docker tags to v6.39.1 ([#646](https://github.com/SocialGouv/kosko-charts/issues/646)) ([7e20027](https://github.com/SocialGouv/kosko-charts/commit/7e200274bb0dc68167e9d54a34ee51e6b5c7f3b9))
+
 ## [9.1.6](https://github.com/SocialGouv/kosko-charts/compare/v9.1.5...v9.1.6) (2021-08-09)
 
 
