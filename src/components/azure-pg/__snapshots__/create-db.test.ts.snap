@@ -38,11 +38,7 @@ Object {
                 },
               },
             ],
-<<<<<<< HEAD
             "image": "ghcr.io/socialgouv/docker/azure-db:6.39.1",
-=======
-            "image": "ghcr.io/socialgouv/docker/azure-db:6.38.5",
->>>>>>> e1da35d97 (fix: Add autodevops template.)
             "imagePullPolicy": "IfNotPresent",
             "name": "create-db-user",
             "resources": Object {
@@ -103,11 +99,7 @@ Object {
                 },
               },
             ],
-<<<<<<< HEAD
             "image": "ghcr.io/socialgouv/docker/azure-db:6.39.1",
-=======
-            "image": "ghcr.io/socialgouv/docker/azure-db:6.38.5",
->>>>>>> e1da35d97 (fix: Add autodevops template.)
             "imagePullPolicy": "IfNotPresent",
             "name": "create-db-user",
             "resources": Object {
