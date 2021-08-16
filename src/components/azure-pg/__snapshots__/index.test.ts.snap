@@ -63,7 +63,7 @@ Array [
                   },
                 },
               ],
-              "image": "ghcr.io/socialgouv/docker/azure-db:6.38.3",
+              "image": "ghcr.io/socialgouv/docker/azure-db:6.39.1",
               "imagePullPolicy": "IfNotPresent",
               "name": "create-db-user",
               "resources": Object {
@@ -178,7 +178,7 @@ Array [
                   },
                 },
               ],
-              "image": "ghcr.io/socialgouv/docker/azure-db:6.38.3",
+              "image": "ghcr.io/socialgouv/docker/azure-db:6.39.1",
               "imagePullPolicy": "IfNotPresent",
               "name": "create-db-user",
               "resources": Object {
