@@ -1,3 +1,10 @@
+## [9.2.1-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.1...v9.2.1-alpha.2) (2021-08-17)
+
+
+### Bug Fixes
+
+* Use fixed kosko-charts version within templates. ([123c0e2](https://github.com/SocialGouv/kosko-charts/commit/123c0e23309344a3b2fb29ff10db3da22c26bffe))
+
 ## [9.2.1-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.2.0...v9.2.1-alpha.1) (2021-08-17)
 
 
