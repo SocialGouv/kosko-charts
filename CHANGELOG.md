@@ -1,3 +1,11 @@
+## [9.2.1-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.5...v9.2.1-alpha.6) (2021-08-17)
+
+
+### Bug Fixes
+
+* Remove env check from autodevops azure-pg job creation, again. ([99af360](https://github.com/SocialGouv/kosko-charts/commit/99af360f3c9801bfed7f6fae9a2369110d1d951a))
+* Remove env check from autodevops azure-pg job creation. ([3e2657a](https://github.com/SocialGouv/kosko-charts/commit/3e2657a16b649cb03539e28864ba026f42a7325a))
+
 ## [9.2.1-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.4...v9.2.1-alpha.5) (2021-08-17)
 
 
