@@ -26,8 +26,8 @@ const getJob = async () => {
           spec: {
             containers: [
               {
-                // args: [`psql < /mnt/${name}/scripts/seeds-dev.sql`],
-                args: [`psql < /mnt/${name}/scripts/${restoreDb}`],
+                // args: [`psql < /mnt/${nameseeds-dev.sql`],
+                args: [`psql < /mnt/${name}/${restoreDb}`],
                 command: ["sh", "-c"],
                 env: [
                   {

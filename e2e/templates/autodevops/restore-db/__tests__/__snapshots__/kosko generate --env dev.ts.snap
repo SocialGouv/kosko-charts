@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - args:
-            - psql < /mnt/myapp/scripts/scripts/restore-my-db.sql
+            - psql < /mnt/myapp/scripts/restore-my-db.sql
           command:
             - sh
             - '-c'
