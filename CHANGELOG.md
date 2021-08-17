@@ -1,3 +1,10 @@
+# [9.2.0](https://github.com/SocialGouv/kosko-charts/compare/v9.1.7...v9.2.0) (2021-08-17)
+
+
+### Features
+
+* **components:** add janitor annotations in dev ([#650](https://github.com/SocialGouv/kosko-charts/issues/650)) ([8a53860](https://github.com/SocialGouv/kosko-charts/commit/8a53860f83cb71f3613adacc71799389b6ee850c))
+
 ## [9.1.7](https://github.com/SocialGouv/kosko-charts/compare/v9.1.6...v9.1.7) (2021-08-16)
 
 
