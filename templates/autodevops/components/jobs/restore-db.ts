@@ -17,7 +17,7 @@ const getJob = async () => {
       metadata: {
         annotations: ciEnv.metadata.annotations,
         labels: ciEnv.metadata.labels,
-        name: "restore-db",
+        name: `restore-db-${ciEnv.shortSha}`,
         namespace: ciEnv.metadata.namespace.name,
       },
       spec: {

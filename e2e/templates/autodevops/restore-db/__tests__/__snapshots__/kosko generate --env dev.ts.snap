@@ -15,7 +15,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: restore-db
+  name: restore-db-8843083
   namespace: sample-kosko-e2e-branch
 spec:
   template:
