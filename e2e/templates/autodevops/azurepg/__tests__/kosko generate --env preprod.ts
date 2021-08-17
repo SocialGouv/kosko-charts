@@ -1,11 +1,7 @@
-//
-
 import { config } from "dotenv";
 import { KOSKO_BIN, template, TIMEOUT } from "e2e/templates/helpers";
 import execa from "execa";
 import { basename, resolve } from "path";
-
-//
 
 const cwd = template(basename(resolve(__dirname, "..", "..")));
 
@@ -18,6 +14,7 @@ test(
 
     const env = {
       ...gitlabEnv,
+      CI_ENVIRONMENT_NAME: "preprod-dev2",
       SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
     };
 
@@ -33,20 +30,3 @@ test(
   },
   TIMEOUT
 );
-
-// //
-
-// import { getEnvManifests } from "@socialgouv/kosko-charts/testing"
-// import { project } from "@socialgouv/kosko-charts/testing/fake/gitlab-ci.env"
-
-// const name = "myapp"
-
-// jest.setTimeout(1000 * 60)
-// test("azurepg: kosko generate --preprod", async () => {
-//   expect(
-//     await getEnvManifests("preprod", "", {
-//       ...project(name).preprod,
-//       SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
-//     })
-//   ).toMatchSnapshot()
-// })

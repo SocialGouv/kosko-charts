@@ -7,7 +7,6 @@ kind: Namespace
 metadata:
   annotations:
     socialgouv/creator: autodevops
-    janitor/ttl: 15d
     field.cattle.io/creatorId: gitlab
     field.cattle.io/projectId: c-bd7z2:p-7ms8p
     git/branch: e2e-branch
@@ -17,11 +16,11 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     azure-pg-admin-user: sample-kosko
-    application: e2e-branch-42-sample-kosko
+    application: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: sample-kosko-24-e2e-branch-42
+  name: sample-kosko
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,12 +33,12 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: myapp
-    application: e2e-branch-42-sample-kosko
+    application: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
   name: myapp
-  namespace: sample-kosko-24-e2e-branch-42
+  namespace: sample-kosko
 spec:
   replicas: 1
   selector:
@@ -55,7 +54,7 @@ spec:
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         app: myapp
-        application: e2e-branch-42-sample-kosko
+        application: sample-kosko
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
@@ -99,17 +98,17 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user
           env:
             - name: APP_BASE_URL
-              value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+              value: https://sample-kosko.dev2.fabrique.social.gouv.fr
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.39.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -126,7 +125,7 @@ kind: Service
 metadata:
   labels:
     app: myapp
-    application: e2e-branch-42-sample-kosko
+    application: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -137,7 +136,7 @@ metadata:
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-  namespace: sample-kosko-24-e2e-branch-42
+  namespace: sample-kosko
 spec:
   ports:
     - name: http
@@ -152,6 +151,8 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: 'true'
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -159,15 +160,15 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     app: myapp
-    application: e2e-branch-42-sample-kosko
+    application: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
   name: myapp
-  namespace: sample-kosko-24-e2e-branch-42
+  namespace: sample-kosko
 spec:
   rules:
-    - host: e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+    - host: sample-kosko.dev2.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -179,6 +180,6 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
-      secretName: wildcard-crt"
+        - sample-kosko.dev2.fabrique.social.gouv.fr
+      secretName: myapp-crt"
 `;

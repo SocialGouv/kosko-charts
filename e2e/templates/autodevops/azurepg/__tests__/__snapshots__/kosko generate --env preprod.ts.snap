@@ -7,14 +7,13 @@ kind: Namespace
 metadata:
   annotations:
     socialgouv/creator: autodevops
-    janitor/ttl: 15d
     field.cattle.io/creatorId: gitlab
     field.cattle.io/projectId: c-bd7z2:p-7ms8p
     git/branch: e2e-branch
     git/remote: git@github.com:SocialGouv/sample-kosko.git
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
+    app.gitlab.com/env.name: preprod-dev2
   labels:
     azure-pg-admin-user: sample-kosko
     application: e2e-branch-42-sample-kosko
@@ -31,7 +30,7 @@ metadata:
     kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
+    app.gitlab.com/env.name: preprod-dev2
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
@@ -52,7 +51,7 @@ spec:
         kapp.k14s.io/disable-default-label-scoping-rules: ''
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
-        app.gitlab.com/env.name: e2e-branch-dev2
+        app.gitlab.com/env.name: preprod-dev2
       labels:
         app: myapp
         application: e2e-branch-42-sample-kosko
@@ -99,17 +98,17 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user
           env:
             - name: APP_BASE_URL
-              value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+              value: https://preprod-sample-kosko.dev2.fabrique.social.gouv.fr
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.39.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -136,7 +135,7 @@ metadata:
     kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
+    app.gitlab.com/env.name: preprod-dev2
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   ports:
@@ -156,7 +155,7 @@ metadata:
     kapp.k14s.io/disable-default-label-scoping-rules: ''
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
+    app.gitlab.com/env.name: preprod-dev2
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
@@ -167,7 +166,7 @@ metadata:
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   rules:
-    - host: e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+    - host: preprod-sample-kosko.dev2.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -179,6 +178,6 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+        - preprod-sample-kosko.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt"
 `;

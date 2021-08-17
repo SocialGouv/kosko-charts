@@ -11,29 +11,30 @@ import Config from "../utils/config";
 
 export default async (): Promise<{ kind: string }[] | Manifest[]> => {
   const { azurepg } = await Config();
+  const ciEnv = environments(process.env);
 
   if (!azurepg) {
     return [];
   }
 
-  return create("pg-user", { env });
+  if (!ciEnv.isPreProduction && !ciEnv.isProduction) {
+    return create("pg-user", { env });
+  }
 
   // in prod/preprod, we try to add a fixed sealed-secret
-  // const secretName = "pg-user.sealed-secret.yaml";
-  // const secret = (await loadYaml<SealedSecret>(env, secretName)) as Manifest;
+  const secretName = "pg-user.sealed-secret.yaml";
+  const secret = (await loadYaml<SealedSecret>(env, secretName)) as Manifest;
 
-  // if (!secret) {
-  //   return [];
-  // }
+  if (!secret) {
+    return [];
+  }
 
-  // const ciEnv = environments(process.env);
+  // add gitlab annotations
+  updateMetadata(secret, {
+    annotations: ciEnv.metadata.annotations ?? {},
+    labels: ciEnv.metadata.labels ?? {},
+    namespace: ciEnv.metadata.namespace,
+  });
 
-  // // add gitlab annotations
-  // updateMetadata(secret, {
-  //   annotations: ciEnv.metadata.annotations ?? {},
-  //   labels: ciEnv.metadata.labels ?? {},
-  //   namespace: ciEnv.metadata.namespace,
-  // });
-
-  // return [secret];
+  return [secret];
 };
