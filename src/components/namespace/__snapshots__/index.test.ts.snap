@@ -10,6 +10,8 @@ Object {
       "field.cattle.io/projectId": "",
       "git/branch": "",
       "git/remote": "",
+      "janitor/ttl": "15d",
+      "socialgouv/creator": "autodevops",
     },
     "labels": Object {},
     "name": "sample-42-my-test",
@@ -29,6 +31,8 @@ Object {
       "field.cattle.io/projectId": "rancherId",
       "git/branch": "my-branch",
       "git/remote": "my-origin",
+      "janitor/ttl": "15d",
+      "socialgouv/creator": "autodevops",
     },
     "labels": Object {
       "application": "sample",

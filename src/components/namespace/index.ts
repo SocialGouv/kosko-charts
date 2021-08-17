@@ -4,16 +4,27 @@ import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import { Namespace as K8SNamespace } from "kubernetes-models/v1/Namespace";
 
 export const createNamespace = (
-  config?: NamespaceComponentEnvironment
+  config?: Partial<NamespaceComponentEnvironment>
 ): K8SNamespace => {
-  const gitlabEnv = environments(process.env);
-  const owner = gitlabEnv.metadata.labels?.owner;
+  const ciEnv = environments(process.env);
+  const owner = ciEnv.metadata.labels?.owner;
 
-  const envParams = merge(gitlabEnv.metadata, config ?? {});
+  const envParams = merge(ciEnv.metadata, config ?? {});
 
+  const namespaceTtl = {} as Record<string, string>;
+
+  // destroy devs env after 15 days, except if keepAlive set to false
+  const isDev = !ciEnv.isPreProduction && !ciEnv.isProduction;
+  const isDestroyable = isDev && !envParams.keepAlive;
+
+  if (isDestroyable) {
+    namespaceTtl["janitor/ttl"] = "15d";
+  }
   const namespace = new K8SNamespace({
     metadata: {
       annotations: {
+        "socialgouv/creator": "autodevops",
+        ...namespaceTtl,
         "field.cattle.io/creatorId": "gitlab",
         "field.cattle.io/projectId": envParams.rancherId ?? "",
         "git/branch": envParams.git.branch ?? "",
