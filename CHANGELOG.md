@@ -1,3 +1,10 @@
+## [9.2.1-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.4...v9.2.1-alpha.5) (2021-08-17)
+
+
+### Bug Fixes
+
+* Use proper db name in autodevops retsore db job. ([bed337c](https://github.com/SocialGouv/kosko-charts/commit/bed337c470477b58375cbaf707dd371b2f639d68))
+
 ## [9.2.1-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.3...v9.2.1-alpha.4) (2021-08-17)
 
 
