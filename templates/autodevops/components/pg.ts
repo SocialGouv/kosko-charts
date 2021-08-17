@@ -16,26 +16,24 @@ export default async (): Promise<{ kind: string }[] | Manifest[]> => {
     return [];
   }
 
-  if (env.env === "dev") {
-    return create("pg-user", { env });
-  }
+  return create("pg-user", { env });
 
   // in prod/preprod, we try to add a fixed sealed-secret
-  const secretName = "pg-user.sealed-secret.yaml";
-  const secret = (await loadYaml<SealedSecret>(env, secretName)) as Manifest;
+  // const secretName = "pg-user.sealed-secret.yaml";
+  // const secret = (await loadYaml<SealedSecret>(env, secretName)) as Manifest;
 
-  if (!secret) {
-    return [];
-  }
+  // if (!secret) {
+  //   return [];
+  // }
 
-  const ciEnv = environments(process.env);
+  // const ciEnv = environments(process.env);
 
-  // add gitlab annotations
-  updateMetadata(secret, {
-    annotations: ciEnv.metadata.annotations ?? {},
-    labels: ciEnv.metadata.labels ?? {},
-    namespace: ciEnv.metadata.namespace,
-  });
+  // // add gitlab annotations
+  // updateMetadata(secret, {
+  //   annotations: ciEnv.metadata.annotations ?? {},
+  //   labels: ciEnv.metadata.labels ?? {},
+  //   namespace: ciEnv.metadata.namespace,
+  // });
 
-  return [secret];
+  // return [secret];
 };
