@@ -1,3 +1,10 @@
+## [9.2.1-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.2...v9.2.1-alpha.3) (2021-08-17)
+
+
+### Bug Fixes
+
+* Change sql script path. ([118474f](https://github.com/SocialGouv/kosko-charts/commit/118474f0800d7301d5874328ef7e8918ff2e8b36))
+
 ## [9.2.1-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.1...v9.2.1-alpha.2) (2021-08-17)
 
 
