@@ -5,9 +5,8 @@ import { Job } from "kubernetes-models/batch/v1";
 import type { JobType } from "../../types/config";
 import Config from "../../utils/config";
 
-const suffix = (process.env.GITHUB_SHA ?? "").slice(0, 7);
-const pgParams = getDevDatabaseParameters({ suffix });
 const ciEnv = environments(process.env);
+const pgParams = getDevDatabaseParameters({ suffix: ciEnv.branch });
 
 const getJob = async () => {
   const { name, restoreDb } = await Config();
@@ -26,7 +25,6 @@ const getJob = async () => {
           spec: {
             containers: [
               {
-                // args: [`psql < /mnt/${nameseeds-dev.sql`],
                 args: [`psql < /mnt/${name}/${restoreDb}`],
                 command: ["sh", "-c"],
                 env: [

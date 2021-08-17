@@ -29,7 +29,7 @@ spec:
             - '-c'
           env:
             - name: PGDATABASE
-              value: autodevops_8843083
+              value: autodevops_e2e-branch
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user

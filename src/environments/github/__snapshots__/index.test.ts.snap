@@ -2,6 +2,7 @@
 
 exports[`should return preproduction tagged github global env 1`] = `
 Object {
+  "branch": "vx-y-z-25jxw5",
   "environment": "vx-y-z-25jxw5",
   "isPreProduction": true,
   "isProduction": false,
@@ -40,6 +41,7 @@ Object {
 
 exports[`should return production github global env 1`] = `
 Object {
+  "branch": "vx-y-z-25jxw5",
   "environment": "vx-y-z-25jxw5",
   "isPreProduction": false,
   "isProduction": true,
@@ -77,6 +79,7 @@ Object {
 
 exports[`should return the github global env 1`] = `
 Object {
+  "branch": "e2e-branch",
   "environment": "e2e-branch",
   "isPreProduction": false,
   "isProduction": false,
@@ -115,6 +118,7 @@ Object {
 
 exports[`should return the github global env with renovate prefixed env name 1`] = `
 Object {
+  "branch": "renovate-major-j-3qv5n7",
   "environment": "renovate-major-j-3qv5n7",
   "isPreProduction": false,
   "isProduction": false,
@@ -153,6 +157,7 @@ Object {
 
 exports[`should return the github global env with slugify 1`] = `
 Object {
+  "branch": "domifa-commander-4k3z09",
   "environment": "domifa-commander-4k3z09",
   "isPreProduction": false,
   "isProduction": false,
