@@ -1,3 +1,10 @@
+## [9.2.1-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.3...v9.2.1-alpha.4) (2021-08-17)
+
+
+### Bug Fixes
+
+* Make restore job name dynamic. ([d2a8f21](https://github.com/SocialGouv/kosko-charts/commit/d2a8f21944956f03c276ea80ed73cfff95516f1e))
+
 ## [9.2.1-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v9.2.1-alpha.2...v9.2.1-alpha.3) (2021-08-17)
 
 
