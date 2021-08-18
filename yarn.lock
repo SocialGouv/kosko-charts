@@ -1323,10 +1323,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@socialgouv/eslint-config-recommended@^1.84.1":
-  version "1.84.1"
-  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.84.1.tgz#af03c25df12c4996a44af18115dc3e497747a578"
-  integrity sha512-YqMKpbPTgnXWyZQ+6MYkCSzX5jhD+H2FdvRrrwLTLjy8MG/Q9IJXik4y5MSsKtvB7gEYmZzpBWT4r0oBJaDpjg==
+"@socialgouv/eslint-config-recommended@^1.84.2":
+  version "1.84.2"
+  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.84.2.tgz#accfc31df26fcbb4feca1e5fe13e295f897195b0"
+  integrity sha512-n7Q+BMA4iMLlMwenRDz1FHCBFa6XVCKNV0kdIKtIA78WtOIw5GaUfKb1Or/id5Gdp+mTkQ1mrFvV1ZMewmNqoQ==
   dependencies:
     eslint-config-prettier "~8.3.0"
     eslint-plugin-import "~2.23.4"
@@ -1335,14 +1335,14 @@
     eslint-plugin-simple-import-sort "~7.0.0"
     eslint-plugin-sort-keys-fix "~1.1.2"
 
-"@socialgouv/eslint-config-typescript@^1.84.1":
-  version "1.84.1"
-  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-typescript/-/eslint-config-typescript-1.84.1.tgz#78fc1b131697747e7de4aa9ae86d2db2e1e848fd"
-  integrity sha512-x/sSyD+dEQyqH8xL9sYxzkP7h8Fb+rABYknuy70sLH2suSqNeTYgkgjMMONTw+VCypKe2aTiX+XmKI4rozeXBA==
+"@socialgouv/eslint-config-typescript@^1.84.2":
+  version "1.84.2"
+  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-typescript/-/eslint-config-typescript-1.84.2.tgz#461290b0352641a14e96b3170c61e83cf3e88d05"
+  integrity sha512-oH64oZyQkQE/d8bdEK2QIfuy6uHJNiWjFKAYm1RHAoUzFC2Bu5e45h9eJGSeISMaByR2PJpuc7oOW1Cc8ZvmLg==
   dependencies:
-    "@socialgouv/eslint-config-recommended" "^1.84.1"
-    "@typescript-eslint/eslint-plugin" "~4.29.1"
-    "@typescript-eslint/parser" "~4.29.1"
+    "@socialgouv/eslint-config-recommended" "^1.84.2"
+    "@typescript-eslint/eslint-plugin" "~4.29.2"
+    "@typescript-eslint/parser" "~4.29.2"
     eslint-import-resolver-typescript "~2.4.0"
     eslint-plugin-import "~2.23.4"
 
@@ -1497,7 +1497,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@~4.29.1":
+"@typescript-eslint/eslint-plugin@~4.29.2":
   version "4.29.2"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.29.2.tgz#f54dc0a32b8f61c6024ab8755da05363b733838d"
   integrity sha512-x4EMgn4BTfVd9+Z+r+6rmWxoAzBaapt4QFqE+d8L8sUtYZYLDTK6VG/y/SMMWA5t1/BVU5Kf+20rX4PtWzUYZg==
@@ -1522,7 +1522,7 @@
     eslint-scope "^5.1.1"
     eslint-utils "^3.0.0"
 
-"@typescript-eslint/parser@~4.29.1":
+"@typescript-eslint/parser@~4.29.2":
   version "4.29.2"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.29.2.tgz#1c7744f4c27aeb74610c955d3dce9250e95c370a"
   integrity sha512-WQ6BPf+lNuwteUuyk1jD/aHKqMQ9jrdCn7Gxt9vvBnzbpj7aWEf+aZsJ1zvTjx5zFxGCt000lsbD9tQPEL8u6g==
