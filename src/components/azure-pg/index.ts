@@ -63,6 +63,9 @@ export const create = async (
     return [existingSecret];
   }
 
+  if (ciEnv.isProduction || ciEnv.isPreProduction) {
+    throw new Error(`Missing envs/${env.env}/${name}.sealed-secret.yaml`);
+  }
   // add gitlab annotations
   const defaultParams = getDefaultPgParams(config);
 
