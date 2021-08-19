@@ -1,8 +1,8 @@
 import type { IIoK8sApiCoreV1Container } from "kubernetes-models/_definitions/IoK8sApiCoreV1Container";
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/wait-for-postgres";
-// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/wait-for-postgres versioning=6.39.1
-const SOCIALGOUV_DOCKER_VERSION = "6.39.1";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/wait-for-postgres versioning=6.43.0
+const SOCIALGOUV_DOCKER_VERSION = "6.43.0";
 
 /** params for the [[waitForPostgres]] function */
 export interface WaitForPostgresParams {
