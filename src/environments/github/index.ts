@@ -36,8 +36,9 @@ export default (env = process.env): CIEnv => {
   const sha = GITHUB_SHA;
   const shortSha = GITHUB_SHA.slice(0, 7);
   const tag = GITHUB_REF.startsWith("refs/tags/")
-    ? GITHUB_REF.split("/").pop()
-    : undefined;
+    ? (GITHUB_REF.split("/").pop() ?? "").substring(1)
+    : `sha-${GITHUB_SHA}`;
+
   const projectName = GITHUB_REPOSITORY.split("/")[1];
 
   const isProduction = Boolean(SOCIALGOUV_PRODUCTION);
@@ -67,6 +68,7 @@ export default (env = process.env): CIEnv => {
     : devNamespace;
 
   return {
+    branch: environmentSlug,
     environment: environmentSlug,
     isPreProduction,
     isProduction,

@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "@kosko/env": "^2.0.1",
+    "@kubernetes-models/sealed-secrets": "^1.6.3",
+    "@socialgouv/kosko-charts": "9.2.3-alpha.1",
+    "@types/node": "^14.17.9",
+    "kosko": "^1.1.5",
+    "kubernetes-models": "^2.0.2",
+    "ts-node": "^10.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.13",
+    "@types/fs-extra": "^9.0.11",
+    "@types/jest": "^26.0.20",
+    "dotenv": "^10.0.0",
+    "fs-extra": "^10.0.0",
+    "jest": "^26.6.3",
+    "tempy": "^1.0.1",
+    "typescript": "^4.3.5"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "generate": "kosko generate",
+    "generate:dev": "kosko generate --env dev",
+    "generate:preprod": "kosko generate --env preprod",
+    "generate:prod": "kosko generate --env dev",
+    "gitlab": "DOTENV_CONFIG_PATH=./environments/.gitlab-ci.env kosko generate --require dotenv/config",
+    "github": "DOTENV_CONFIG_PATH=./environments/.github-actions.env kosko generate --require dotenv/config",
+    "gitlab:dev": "yarn --silent gitlab --env dev",
+    "gitlab:preprod": "yarn --silent gitlab --env preprod",
+    "gitlab:prod": "yarn --silent gitlab --env prod",
+    "github:dev": "yarn --silent github --env dev",
+    "github:preprod": "yarn --silent github --env preprod",
+    "github:prod": "yarn --silent github --env prod",
+    "test": "jest"
+  }
+}

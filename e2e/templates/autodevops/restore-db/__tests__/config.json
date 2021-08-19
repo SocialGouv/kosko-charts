@@ -1,0 +1,5 @@
+{
+  "name": "myapp",
+  "type": "app",
+  "restoreDb": "scripts/restore-my-db.sql"
+}
