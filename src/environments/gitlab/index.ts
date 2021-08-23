@@ -36,7 +36,6 @@ export default (env = process.env): CIEnv => {
     CI_REPOSITORY_URL,
     PRODUCTION,
     PRODUCTION_NAMESPACE, // deprecated
-    SOCIALGOUV_PRODUCTION_NAMESPACE,
     RANCHER_PROJECT_ID,
   } = env;
   const isProduction = Boolean(PRODUCTION);
@@ -54,8 +53,7 @@ export default (env = process.env): CIEnv => {
     : application;
 
   const namespaceName = isProduction
-    ? (SOCIALGOUV_PRODUCTION_NAMESPACE || PRODUCTION_NAMESPACE) ??
-      CI_PROJECT_NAME
+    ? PRODUCTION_NAMESPACE ?? CI_PROJECT_NAME
     : KUBE_NAMESPACE;
 
   return {
