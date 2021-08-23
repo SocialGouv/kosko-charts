@@ -71,3 +71,29 @@ test.each([
   }
   expect(env(testEnv)).toMatchSnapshot();
 });
+
+test("default production namespace", () => {
+  const testEnv = {
+    ...validEnv,
+    PRODUCTION: "true",
+  };
+  expect(env(testEnv).metadata.namespace.name).toEqual("sample");
+});
+
+test("SOCIALGOUV_PRODUCTION_NAMESPACE production namespace", () => {
+  const testEnv = {
+    ...validEnv,
+    PRODUCTION: "true",
+    SOCIALGOUV_PRODUCTION_NAMESPACE: "test-1",
+  };
+  expect(env(testEnv).metadata.namespace.name).toEqual("test-1");
+});
+
+test("PRODUCTION_NAMESPACE production namespace", () => {
+  const testEnv = {
+    ...validEnv,
+    PRODUCTION: "true",
+    PRODUCTION_NAMESPACE: "test-2",
+  };
+  expect(env(testEnv).metadata.namespace.name).toEqual("test-2");
+});

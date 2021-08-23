@@ -58,3 +58,20 @@ test.each([
 ])("should return %s", (_: string, testEnv?: NodeJS.ProcessEnv) => {
   expect(env(testEnv)).toMatchSnapshot();
 });
+
+test("default production namespace", () => {
+  const testEnv = {
+    ...validEnv,
+    SOCIALGOUV_PRODUCTION: "true",
+  };
+  expect(env(testEnv).metadata.namespace.name).toEqual("sample-next-app");
+});
+
+test("SOCIALGOUV_PRODUCTION_NAMESPACE production namespace", () => {
+  const testEnv = {
+    ...validEnv,
+    SOCIALGOUV_PRODUCTION: "true",
+    SOCIALGOUV_PRODUCTION_NAMESPACE: "test-1",
+  };
+  expect(env(testEnv).metadata.namespace.name).toEqual("test-1");
+});
