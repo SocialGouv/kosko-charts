@@ -1,3 +1,10 @@
+## [9.2.7](https://github.com/SocialGouv/kosko-charts/compare/v9.2.6...v9.2.7) (2021-08-23)
+
+
+### Bug Fixes
+
+* Add SOCIALGOUV_PRODUCTION_NAMESPACE to override prod namespace. ([#668](https://github.com/SocialGouv/kosko-charts/issues/668)) ([b991b28](https://github.com/SocialGouv/kosko-charts/commit/b991b28d9a6c5b73d34d9cb1aafab5b27dfedd87))
+
 ## [9.2.6](https://github.com/SocialGouv/kosko-charts/compare/v9.2.5...v9.2.6) (2021-08-23)
 
 
