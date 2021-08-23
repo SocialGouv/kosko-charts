@@ -22,7 +22,7 @@ export default (env = process.env): CIEnv => {
     GITHUB_REPOSITORY,
     // KUBE_NAMESPACE,
     SOCIALGOUV_BASE_DOMAIN,
-    SOCIALGOUV_PRODUCTION_NAMESPACE
+    SOCIALGOUV_PRODUCTION_NAMESPACE,
     // NOTE(douglasduteil): enforce defined string in process.env
     // Those env variables are asserted to be defined above
   } = env as Record<string, string>;
