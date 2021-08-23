@@ -35,7 +35,7 @@ export default (env = process.env): CIEnv => {
     CI_COMMIT_TAG,
     CI_REPOSITORY_URL,
     PRODUCTION,
-    PRODUCTION_NAMESPACE, // deprecated
+    PRODUCTION_NAMESPACE,
     RANCHER_PROJECT_ID,
   } = env;
   const isProduction = Boolean(PRODUCTION);
