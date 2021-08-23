@@ -1323,24 +1323,24 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@socialgouv/eslint-config-recommended@^1.85.1":
-  version "1.85.1"
-  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.85.1.tgz#3cb9c08169cb46814be5de3b30ed2e70025fd52a"
-  integrity sha512-V+2c3qg8Lz+NKNH7z8z2zW3mlpq/CSbrSwMOdQNrRS5fKpI+efCw6IpUYgOG6o/OtTB81Nk/nQG7qF5A02st0Q==
+"@socialgouv/eslint-config-recommended@^1.85.2":
+  version "1.85.2"
+  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.85.2.tgz#81b776aaf0076d152f45210d176e2a609af46141"
+  integrity sha512-uwFKN36kpQVofAxDt8PinCGi5qbKp+mjWqz4KWEuE4gntZytObZlFtvX/tTWW5l2PUSDpuH11pYSoUxemN/wKQ==
   dependencies:
     eslint-config-prettier "~8.3.0"
     eslint-plugin-import "~2.24.1"
     eslint-plugin-jest "~24.4.0"
-    eslint-plugin-prettier "~3.4.0"
+    eslint-plugin-prettier "~3.4.1"
     eslint-plugin-simple-import-sort "~7.0.0"
     eslint-plugin-sort-keys-fix "~1.1.2"
 
-"@socialgouv/eslint-config-typescript@^1.85.1":
-  version "1.85.1"
-  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-typescript/-/eslint-config-typescript-1.85.1.tgz#e1a20064563fbeb817a98756c2663087c2f64996"
-  integrity sha512-fAoAU/FoolpR3zTj/v9TyCD3ToayyJi6ae37IwMR96nQWoKwqJBKdQrhyynF1wZyqN9pJvdklJrNuzfoRXtzpg==
+"@socialgouv/eslint-config-typescript@^1.85.2":
+  version "1.85.2"
+  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-typescript/-/eslint-config-typescript-1.85.2.tgz#016a5c1a70f1b6c01d6be8a4ccde599549fa85d1"
+  integrity sha512-RcoUdeoztnIPevOozuflak9aL/Lq6GLmAuJpRtdhjf3FAvlis1ONhtWeygjFrdGJjEmo6G1AwbKfgTwQj57Y3g==
   dependencies:
-    "@socialgouv/eslint-config-recommended" "^1.85.1"
+    "@socialgouv/eslint-config-recommended" "^1.85.2"
     "@typescript-eslint/eslint-plugin" "~4.29.2"
     "@typescript-eslint/parser" "~4.29.2"
     eslint-import-resolver-typescript "~2.4.0"
@@ -2426,10 +2426,10 @@ eslint-plugin-jest@~24.4.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
-eslint-plugin-prettier@~3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.4.0.tgz#cdbad3bf1dbd2b177e9825737fe63b476a08f0c7"
-  integrity sha512-UDK6rJT6INSfcOo545jiaOwB701uAIt2/dR7WnFQoGCVl1/EMqdANBmwUaqqQ45aXprsTGzSa39LI1PyuRBxxw==
+eslint-plugin-prettier@~3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.4.1.tgz#e9ddb200efb6f3d05ffe83b1665a716af4a387e5"
+  integrity sha512-htg25EUYUeIhKHXjOinK4BgCcDwtLHjqaxCDsMy5nbnUMkKFvIhMVCp+5GFUXQ4Nr8lBsPqtGAqBenbpFqAA2g==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
