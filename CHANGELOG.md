@@ -1,3 +1,11 @@
+## [9.2.6](https://github.com/SocialGouv/kosko-charts/compare/v9.2.5...v9.2.6) (2021-08-23)
+
+
+### Bug Fixes
+
+* **autodevops:** dont include namespaces in prod ([#663](https://github.com/SocialGouv/kosko-charts/issues/663)) ([9f00329](https://github.com/SocialGouv/kosko-charts/commit/9f0032904e7f62782e674ceafdbcd29b3b4ea641))
+* **azure-pg:** warn when missing secret in prod/preprod ([#659](https://github.com/SocialGouv/kosko-charts/issues/659)) ([5c3768a](https://github.com/SocialGouv/kosko-charts/commit/5c3768a864607b6e7d8ea3acae0e9cd9037fbd9a))
+
 ## [9.2.5](https://github.com/SocialGouv/kosko-charts/compare/v9.2.4...v9.2.5) (2021-08-21)
 
 
