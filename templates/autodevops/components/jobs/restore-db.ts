@@ -6,7 +6,7 @@ import type { JobType } from "../../types/config";
 import Config from "../../utils/config";
 
 const ciEnv = environments(process.env);
-const pgParams = getDevDatabaseParameters({ suffix: ciEnv.branch });
+const pgParams = getDevDatabaseParameters({ suffix: ciEnv.environment });
 
 const getJob = async () => {
   const { name, restoreDb } = await Config();

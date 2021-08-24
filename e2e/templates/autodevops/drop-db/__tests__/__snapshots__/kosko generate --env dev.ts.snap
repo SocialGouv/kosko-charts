@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`drop DB from github : kosko generate jobs/drop-db --env dev 1`] = `
+"apiVersion: batch/v1
+kind: Job
+metadata:
+  name: drop-azure-db-8843083
+spec:
+  backoffLimit: 0
+  template:
+    metadata: {}
+    spec:
+      containers:
+        - command:
+            - drop-db-user
+          env:
+            - name: DROP_DATABASE
+              value: autodevops_e2e-branch
+            - name: DROP_USER
+              value: user_e2e-branch
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: ghcr.io/socialgouv/docker/azure-db:6.43.1
+          imagePullPolicy: IfNotPresent
+          name: drop-db-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+      restartPolicy: Never
+  ttlSecondsAfterFinished: 86400"
+`;
+
+exports[`drop DB from gitlab : kosko generate jobs/drop-db --env dev 1`] = `
+"apiVersion: batch/v1
+kind: Job
+metadata:
+  name: drop-azure-db-8843083
+spec:
+  backoffLimit: 0
+  template:
+    metadata: {}
+    spec:
+      containers:
+        - command:
+            - drop-db-user
+          env:
+            - name: DROP_DATABASE
+              value: autodevops_e2e-branch-42
+            - name: DROP_USER
+              value: user_e2e-branch-42
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: ghcr.io/socialgouv/docker/azure-db:6.43.1
+          imagePullPolicy: IfNotPresent
+          name: drop-db-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+      restartPolicy: Never
+  ttlSecondsAfterFinished: 86400"
+`;
