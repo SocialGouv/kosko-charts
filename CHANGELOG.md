@@ -1,3 +1,10 @@
+# [9.3.0](https://github.com/SocialGouv/kosko-charts/compare/v9.2.7...v9.3.0) (2021-08-24)
+
+
+### Features
+
+* **autodevops:** add drop db job ([#670](https://github.com/SocialGouv/kosko-charts/issues/670)) ([ca51f1b](https://github.com/SocialGouv/kosko-charts/commit/ca51f1ba91f64a7cd1f8db6811b3a440029264eb))
+
 ## [9.2.7](https://github.com/SocialGouv/kosko-charts/compare/v9.2.6...v9.2.7) (2021-08-23)
 
 
