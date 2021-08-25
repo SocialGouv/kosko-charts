@@ -6,13 +6,26 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-0123456",
+      "annotations": Object {
+        "kapp.k14s.io/update-strategy": "always-replace",
+      },
+      "labels": Object {
+        "application": "sample",
+        "component": "restore-db-my-test-branch-45q3uw",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "restore-db-my-test-branch-45q3uw",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
       "backoffLimit": 0,
       "template": Object {
-        "metadata": Object {},
+        "metadata": Object {
+          "annotations": Object {
+            "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+          },
+        },
         "spec": Object {
           "containers": Array [
             Object {
@@ -218,7 +231,7 @@ Array [
     },
     "kind": "ConfigMap",
     "metadata": Object {
-      "name": "post-restore-script-configmap-0123456",
+      "name": "post-restore-script-configmap-my-test-branch-3mtyhl",
       "namespace": "sample-next-app-secret",
     },
   },
@@ -226,13 +239,26 @@ Array [
     "apiVersion": "batch/v1",
     "kind": "Job",
     "metadata": Object {
-      "name": "restore-db-0123456",
+      "annotations": Object {
+        "kapp.k14s.io/update-strategy": "always-replace",
+      },
+      "labels": Object {
+        "application": "sample",
+        "component": "restore-db-my-test-branch-45q3uw",
+        "owner": "sample",
+        "team": "sample",
+      },
+      "name": "restore-db-my-test-branch-45q3uw",
       "namespace": "sample-next-app-secret",
     },
     "spec": Object {
       "backoffLimit": 0,
       "template": Object {
-        "metadata": Object {},
+        "metadata": Object {
+          "annotations": Object {
+            "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+          },
+        },
         "spec": Object {
           "containers": Array [
             Object {
@@ -360,7 +386,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
             },
             Object {
               "configMap": Object {
-                "name": "post-restore-script-configmap-0123456",
+                "name": "post-restore-script-configmap-my-test-branch-3mtyhl",
               },
               "name": "scripts",
             },
