@@ -18,7 +18,9 @@ export const getDefaultPgParams = (
 ): PgParams => {
   const ciEnv = environments(process.env);
 
-  const suffix = ciEnv.isPreProduction ? PREPROD_PG_ENVIRONMENT : ciEnv.branch;
+  const suffix = ciEnv.isPreProduction
+    ? PREPROD_PG_ENVIRONMENT
+    : ciEnv.branchSlug;
   const projectName = ciEnv.projectName;
 
   return {
