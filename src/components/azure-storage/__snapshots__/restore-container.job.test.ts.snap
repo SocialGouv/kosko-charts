@@ -5,13 +5,26 @@ Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
   "metadata": Object {
-    "name": "restore-container-b123a99",
+    "annotations": Object {
+      "kapp.k14s.io/update-strategy": "always-replace",
+    },
+    "labels": Object {
+      "application": "sample",
+      "component": "restore-container-my-test-branch-47n9d8",
+      "owner": "sample",
+      "team": "sample",
+    },
+    "name": "restore-container-my-test-branch-47n9d8",
     "namespace": "some-cool-project-secret",
   },
   "spec": Object {
     "backoffLimit": 0,
     "template": Object {
-      "metadata": Object {},
+      "metadata": Object {
+        "annotations": Object {
+          "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+        },
+      },
       "spec": Object {
         "containers": Array [
           Object {
@@ -116,13 +129,26 @@ Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
   "metadata": Object {
-    "name": "restore-container-b123a99",
+    "annotations": Object {
+      "kapp.k14s.io/update-strategy": "always-replace",
+    },
+    "labels": Object {
+      "application": "sample",
+      "component": "restore-container-my-test-branch-47n9d8",
+      "owner": "sample",
+      "team": "sample",
+    },
+    "name": "restore-container-my-test-branch-47n9d8",
     "namespace": "some-cool-project-secret",
   },
   "spec": Object {
     "backoffLimit": 0,
     "template": Object {
-      "metadata": Object {},
+      "metadata": Object {
+        "annotations": Object {
+          "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+        },
+      },
       "spec": Object {
         "containers": Array [
           Object {
@@ -227,13 +253,26 @@ Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
   "metadata": Object {
-    "name": "restore-container-b123a99",
+    "annotations": Object {
+      "kapp.k14s.io/update-strategy": "always-replace",
+    },
+    "labels": Object {
+      "application": "sample",
+      "component": "restore-container-my-test-branch-47n9d8",
+      "owner": "sample",
+      "team": "sample",
+    },
+    "name": "restore-container-my-test-branch-47n9d8",
     "namespace": "some-cool-project-secret",
   },
   "spec": Object {
     "backoffLimit": 0,
     "template": Object {
-      "metadata": Object {},
+      "metadata": Object {
+        "annotations": Object {
+          "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+        },
+      },
       "spec": Object {
         "containers": Array [
           Object {
@@ -338,13 +377,26 @@ Object {
   "apiVersion": "batch/v1",
   "kind": "Job",
   "metadata": Object {
-    "name": "restore-container-b123a99",
+    "annotations": Object {
+      "kapp.k14s.io/update-strategy": "always-replace",
+    },
+    "labels": Object {
+      "application": "sample",
+      "component": "restore-container-my-test-branch-47n9d8",
+      "owner": "sample",
+      "team": "sample",
+    },
+    "name": "restore-container-my-test-branch-47n9d8",
     "namespace": "some-cool-project-secret",
   },
   "spec": Object {
     "backoffLimit": 0,
     "template": Object {
-      "metadata": Object {},
+      "metadata": Object {
+        "annotations": Object {
+          "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+        },
+      },
       "spec": Object {
         "containers": Array [
           Object {

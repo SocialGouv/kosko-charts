@@ -2,6 +2,7 @@ import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg
 import { azureProjectVolume } from "@socialgouv/kosko-charts/components/azure-storage/azureProjectVolume";
 import environments from "@socialgouv/kosko-charts/environments";
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
+import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils/waitForPostgres";
 import ok from "assert";
 import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1";
@@ -133,6 +134,9 @@ export const restoreDbJob = ({
 
   if (postRestoreScript) {
     const name = "scripts";
+    const configMapName = generate(
+      `post-restore-script-configmap-${ciEnv.branch}`
+    );
     jobSpec.containers[0].volumeMounts.push(
       new VolumeMount({
         mountPath: "/mnt/scripts",
@@ -142,7 +146,7 @@ export const restoreDbJob = ({
     jobSpec.volumes.push(
       new Volume({
         configMap: {
-          name: `post-restore-script-configmap-${ciEnv.shortSha}`,
+          name: configMapName,
         },
         name,
       })
@@ -152,22 +156,34 @@ export const restoreDbJob = ({
         "post-restore.sql": postRestoreScript,
       },
       metadata: {
-        name: `post-restore-script-configmap-${ciEnv.shortSha}`,
+        name: configMapName,
         namespace: secretNamespace,
       },
     });
     manifests.push(configMap);
   }
 
+  const jobName = generate(`restore-db-${ciEnv.branch}`);
   const job = new Job({
     metadata: {
-      name: `restore-db-${ciEnv.shortSha}`,
+      annotations: {
+        "kapp.k14s.io/update-strategy": "always-replace",
+      },
+      labels: {
+        ...ciEnv.metadata.labels,
+        component: jobName,
+      },
+      name: jobName,
       namespace: secretNamespace,
     },
     spec: {
       backoffLimit: 0,
       template: {
-        metadata: {},
+        metadata: {
+          annotations: {
+            "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+          },
+        },
         spec: jobSpec,
       },
       ttlSecondsAfterFinished: 86400,

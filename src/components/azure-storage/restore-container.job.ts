@@ -1,4 +1,5 @@
-import ok from "assert";
+import environments from "@socialgouv/kosko-charts/environments";
+import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { Job } from "kubernetes-models/batch/v1/Job";
 import type { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 import { EnvVar } from "kubernetes-models/v1/EnvVar";
@@ -56,7 +57,7 @@ export const restoreContainerJob = ({
   from,
   to,
 }: RestoreJobArgs): Job => {
-  ok(process.env.CI_COMMIT_SHORT_SHA);
+  const ciEnv = environments(process.env);
   const secretNamespace = getProjectSecretNamespace(project);
   const projectSlug = project.replace(/-/g, "");
   const jobEnv = [];
@@ -156,15 +157,25 @@ export const restoreContainerJob = ({
     );
   }
 
+  const jobName = generate(`restore-container-${ciEnv.branch}`);
   return new Job({
     metadata: {
-      name: `restore-container-${process.env.CI_COMMIT_SHORT_SHA}`,
+      annotations: { "kapp.k14s.io/update-strategy": "always-replace" },
+      labels: {
+        ...ciEnv.metadata.labels,
+        component: jobName,
+      },
+      name: jobName,
       namespace: secretNamespace,
     },
     spec: {
       backoffLimit: 0,
       template: {
-        metadata: {},
+        metadata: {
+          annotations: {
+            "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+          },
+        },
         spec: {
           containers: [
             {

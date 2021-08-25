@@ -1,10 +1,10 @@
+import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
 import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
-import { restoreContainerJob } from "./restore-container.job";
+test("should create restore job from dev to dev", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
 
-process.env.CI_COMMIT_SHORT_SHA = "b123a99";
-
-test("should create restore job from dev to dev", () => {
+  const { restoreContainerJob } = await import("./restore-container.job");
   expect(
     restoreContainerJob({
       env: [
@@ -24,7 +24,10 @@ test("should create restore job from dev to dev", () => {
   ).toMatchSnapshot();
 });
 
-test("should create restore job from dev to prod", () => {
+test("should create restore job from dev to prod", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+
+  const { restoreContainerJob } = await import("./restore-container.job");
   expect(
     restoreContainerJob({
       env: [
@@ -44,7 +47,10 @@ test("should create restore job from dev to prod", () => {
   ).toMatchSnapshot();
 });
 
-test("should create restore job from prod to prod", () => {
+test("should create restore job from prod to prod", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+
+  const { restoreContainerJob } = await import("./restore-container.job");
   expect(
     restoreContainerJob({
       env: [
@@ -64,7 +70,10 @@ test("should create restore job from prod to prod", () => {
   ).toMatchSnapshot();
 });
 
-test("should create restore job from prod to dev", () => {
+test("should create restore job from prod to dev", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+
+  const { restoreContainerJob } = await import("./restore-container.job");
   expect(
     restoreContainerJob({
       env: [
