@@ -35,6 +35,6 @@ test("should use custom pgHost", async () => {
   );
   const { create } = await import("./index");
   expect(
-    await create("foo", { config: { pgHost: "pouetpouet.com" }, env })
+    await create("foo", { config: { host: "pouetpouet.com" }, env })
   ).toMatchSnapshot();
 });
