@@ -1,37 +1,39 @@
 import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
+import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 
 const assert = assertEnv([
+  "CI_COMMIT_REF_NAME",
+  "CI_COMMIT_SHA",
+  "CI_COMMIT_SHORT_SHA",
   "CI_ENVIRONMENT_NAME",
   "CI_ENVIRONMENT_SLUG",
   "CI_PROJECT_NAME",
   "CI_PROJECT_PATH_SLUG",
+  "CI_REGISTRY_IMAGE",
   "KUBE_INGRESS_BASE_DOMAIN",
   "KUBE_NAMESPACE",
-  "CI_COMMIT_SHORT_SHA",
-  "CI_COMMIT_SHA",
-  "CI_REGISTRY_IMAGE",
 ]);
 
 export default (env = process.env): CIEnv => {
   assert(env);
 
   const {
+    CI_COMMIT_REF_NAME,
+    CI_COMMIT_SHA,
+    CI_COMMIT_SHORT_SHA,
     CI_ENVIRONMENT_NAME,
     CI_ENVIRONMENT_SLUG,
     CI_PROJECT_NAME,
     CI_PROJECT_PATH_SLUG,
+    CI_REGISTRY_IMAGE,
     KUBE_INGRESS_BASE_DOMAIN,
     KUBE_NAMESPACE,
-    CI_COMMIT_SHORT_SHA,
-    CI_COMMIT_SHA,
-    CI_REGISTRY_IMAGE,
     // NOTE(douglasduteil): enforce defined string in process.env
     // Those env variables are asserted to be defined above
   } = env as Record<string, string>;
 
   const {
-    CI_COMMIT_REF_NAME,
     CI_COMMIT_TAG,
     CI_REPOSITORY_URL,
     PRODUCTION,
@@ -52,12 +54,15 @@ export default (env = process.env): CIEnv => {
     ? `preprod-${CI_PROJECT_NAME}`
     : application;
 
+  const environmentSlug = generate(CI_COMMIT_REF_NAME);
+
   const namespaceName = isProduction
     ? PRODUCTION_NAMESPACE ?? CI_PROJECT_NAME
     : KUBE_NAMESPACE;
 
   return {
-    branch: CI_COMMIT_REF_NAME ?? "",
+    branch: CI_COMMIT_REF_NAME,
+    branchSlug: environmentSlug,
     environment: CI_ENVIRONMENT_SLUG,
     isPreProduction,
     isProduction,

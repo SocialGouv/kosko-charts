@@ -25,6 +25,8 @@ export interface NamedComponentEnvironment {
 }
 
 export interface CIEnv {
+  branch: string;
+  branchSlug: string;
   environment: string;
   isPreProduction: boolean;
   isProduction: boolean;
@@ -34,5 +36,4 @@ export interface CIEnv {
   sha: string;
   shortSha: string;
   tag?: string;
-  branch: string;
 }

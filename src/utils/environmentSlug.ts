@@ -7,7 +7,12 @@ import slugify from "slugify";
 
 //
 
-slugify.extend({ ".": "-", "/": "-", "@": "-", _: "-", "~": "-" });
+slugify.extend({ "!": "-", ".": "-", "/": "-", "@": "-", _: "-", "~": "-" });
+
+//
+
+const KUBERNETS_MAX_NAME_LENGTH = 63;
+const SUFFIX_SHA_LENGTH = 8;
 
 //
 
@@ -24,8 +29,11 @@ export function generate(name: string): string {
   slugified = slugified.replace(/-{2,}/g, "-");
 
   // Repeated dashes are invalid (OpenShift limitation)
-  if (slugified.length > 24 || slugified !== name) {
-    const shortSlug = slugified.slice(0, 16);
+  if (slugified.length > KUBERNETS_MAX_NAME_LENGTH || slugified !== name) {
+    const shortSlug = slugified.slice(
+      0,
+      KUBERNETS_MAX_NAME_LENGTH - SUFFIX_SHA_LENGTH
+    );
     slugified = `${shortSlug}${shortSlug.endsWith("-") ? "" : "-"}${suffix(
       name
     )}`;
@@ -37,7 +45,7 @@ export function generate(name: string): string {
 }
 
 export function shortenAndAddSuffix(name: string): string {
-  const slug = name.slice(0, 16);
+  const slug = name.slice(0, KUBERNETS_MAX_NAME_LENGTH - SUFFIX_SHA_LENGTH);
   return `${slug}${slug.endsWith("-") ? "" : "-"}${suffix(name)}`;
 }
 

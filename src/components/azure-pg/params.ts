@@ -13,10 +13,3 @@ export function getDevDatabaseParameters({
     user: `user_${suffix}`,
   };
 }
-export function getProdDatabaseParameters(): PgDatabaseParams {
-  return {
-    database: "production_db",
-    password: "production_password",
-    user: "production_user",
-  };
-}

@@ -99,7 +99,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user-e2e-branch
           env:
             - name: APP_BASE_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
@@ -109,7 +109,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.43.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -193,11 +193,11 @@ spec:
             - create-db-user
           env:
             - name: NEW_DB_NAME
-              value: autodevops_e2e-branch-42
+              value: autodevops_e2e-branch
             - name: NEW_USER
-              value: user_e2e-branch-42
+              value: user_e2e-branch
             - name: NEW_PASSWORD
-              value: password_e2e-branch-42
+              value: password_e2e-branch
             - name: NEW_DB_EXTENSIONS
               value: hstore pgcrypto citext uuid-ossp
           envFrom:
@@ -242,18 +242,18 @@ apiVersion: v1
 kind: Secret
 stringData:
   DATABASE_URL: >-
-    postgresql://user_e2e-branch-42%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch-42@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch-42?sslmode=require
+    postgresql://user_e2e-branch%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   DB_URI: >-
-    postgresql://user_e2e-branch-42%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch-42@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch-42?sslmode=require
+    postgresql://user_e2e-branch%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   HASURA_GRAPHQL_DATABASE_URL: >-
-    postgresql://user_e2e-branch-42%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch-42@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch-42?sslmode=require
-  PGDATABASE: autodevops_e2e-branch-42
+    postgresql://user_e2e-branch%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+  PGDATABASE: autodevops_e2e-branch
   PGHOST: samplekoskodevserver.postgres.database.azure.com
-  PGPASSWORD: password_e2e-branch-42
+  PGPASSWORD: password_e2e-branch
   PGRST_DB_URI: >-
-    postgresql://user_e2e-branch-42%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch-42@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch-42?sslmode=require
+    postgresql://user_e2e-branch%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   PGSSLMODE: require
-  PGUSER: user_e2e-branch-42@samplekoskodevserver.postgres.database.azure.com
+  PGUSER: user_e2e-branch@samplekoskodevserver.postgres.database.azure.com
 metadata:
   annotations:
     app.gitlab.com/app: socialgouv-sample-kosko
@@ -264,6 +264,6 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: azure-pg-user-e2e-branch-42
+  name: azure-pg-user-e2e-branch
   namespace: sample-kosko-24-e2e-branch-42"
 `;

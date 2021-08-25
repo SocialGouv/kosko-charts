@@ -21,7 +21,7 @@ ${"bar_"} | ${"bar-3zwwso"}
 ${"bar//"} | ${"bar-51rfpg"}
 ${"42"} | ${"env-42-2vfnyo"}
 ${"42-foo"} | ${"env-42-foo-2rkzi7"}
-${"42-foo/bar-42"} | ${"env-42-foo-bar-4-47yjnm"}
+${"42-foo/bar-42"} | ${"env-42-foo-bar-42-47yjnm"}
 ${"foo bar"} | ${"foo-bar-69w36b"}
 ${"foo  bar"} | ${"foo-bar-3dj5tm"}
 ${"foo - bar"} | ${"foo-bar-21zv3j"}
@@ -42,7 +42,9 @@ ${"v0.0.1"} | ${"v0-0-1-4cg10t"}
 ${"v0.1.1"} | ${"v0-1-1-21ni6m"}
 ${"v1.1.1"} | ${"v1-1-1-3k7de0"}
 ...
-${"renovate/socialgouvdocker-images"} | ${"renovate-socialg-1e66b4"}
+${"renovate/socialgouvdocker-images"} | ${"renovate-socialgouvdocker-images-1e66b4"}
+${"douglasduteil/very-very-very-very-very-long-branch-name!"} | ${"douglasduteil-very-very-very-very-very-long-branch-name-5z9ugw"}
+${"douglasduteil/very-very-very-very-very-very-long-branch-name!"} | ${"douglasduteil-very-very-very-very-very-very-long-branch-1u0g3l"}
 `(
   "'$name' 's slug should be '$expected'",
   ({ name, expected }: { name: string; expected: string }) => {

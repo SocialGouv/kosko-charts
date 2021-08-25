@@ -94,15 +94,15 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGDATABASE",
-                  "value": "autodevops_my-test",
+                  "value": "autodevops_my-test-branch",
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_my-test",
+                  "value": "password_my-test-branch",
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_my-test@sampledevserver.postgres.database.azure.com",
+                  "value": "user_my-test-branch@sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",
@@ -318,15 +318,15 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGDATABASE",
-                  "value": "autodevops_my-test",
+                  "value": "autodevops_my-test-branch",
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_my-test",
+                  "value": "password_my-test-branch",
                 },
                 Object {
                   "name": "PGUSER",
-                  "value": "user_my-test@sampledevserver.postgres.database.azure.com",
+                  "value": "user_my-test-branch@sampledevserver.postgres.database.azure.com",
                 },
                 Object {
                   "name": "PGSSLMODE",

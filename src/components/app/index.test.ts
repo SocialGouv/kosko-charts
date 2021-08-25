@@ -5,6 +5,7 @@ import { directory } from "tempy";
 
 const gitlabMock: CIEnv = {
   branch: "my-test-branch",
+  branchSlug: "my-test-branch",
   environment: "my-test",
   isPreProduction: false,
   isProduction: false,
