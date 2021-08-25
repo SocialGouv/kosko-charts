@@ -2,6 +2,7 @@ import type { CIEnv } from "@socialgouv/kosko-charts/types";
 
 export default (): CIEnv => ({
   branch: "my-test-branch",
+  branchSlug: "my-test-branch",
   environment: "my-test",
   isPreProduction: false,
   isProduction: false,

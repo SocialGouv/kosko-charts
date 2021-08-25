@@ -68,7 +68,8 @@ export default (env = process.env): CIEnv => {
     : devNamespace;
 
   return {
-    branch: environmentSlug,
+    branch: branchName,
+    branchSlug: environmentSlug,
     environment: environmentSlug,
     isPreProduction,
     isProduction,

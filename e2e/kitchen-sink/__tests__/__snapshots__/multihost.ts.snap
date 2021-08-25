@@ -98,7 +98,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user-e2e-branch
       imagePullSecrets:
         - name: regcred
       initContainers:
@@ -107,7 +107,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.43.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -223,7 +223,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user-e2e-branch
       imagePullSecrets:
         - name: some-secret
       initContainers:
@@ -232,7 +232,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch-42
+                name: azure-pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.43.1
           imagePullPolicy: Always
           name: wait-for-postgres

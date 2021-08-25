@@ -16,6 +16,8 @@ test.each([
   [
     "because of empty strings",
     {
+      CI_COMMIT_REF_NAME: " ",
+      CI_COMMIT_SHA: " ",
       CI_COMMIT_SHORT_SHA: " ",
       CI_COMMIT_TAG: " ",
       CI_ENVIRONMENT_NAME: " ",
@@ -32,6 +34,7 @@ test.each([
 });
 
 const validEnv = {
+  CI_COMMIT_REF_NAME: "the-branch-name",
   CI_COMMIT_SHA: "0123456789abcdefghijklmnopqrstuvwxyz0123",
   CI_COMMIT_SHORT_SHA: "0123456",
   CI_ENVIRONMENT_NAME: "fabrique-dev",

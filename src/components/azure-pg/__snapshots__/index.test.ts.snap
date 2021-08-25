@@ -41,15 +41,15 @@ Array [
               "env": Array [
                 Object {
                   "name": "NEW_DB_NAME",
-                  "value": "autodevops_my-test",
+                  "value": "autodevops_my-test-branch",
                 },
                 Object {
                   "name": "NEW_USER",
-                  "value": "user_my-test",
+                  "value": "user_my-test-branch",
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_my-test",
+                  "value": "password_my-test-branch",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -97,19 +97,19 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "azure-pg-user-my-test",
+      "name": "azure-pg-user-my-test-branch",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
-      "DATABASE_URL": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
-      "DB_URI": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
-      "PGDATABASE": "autodevops_my-test",
+      "DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "PGDATABASE": "autodevops_my-test-branch",
       "PGHOST": "sampledevserver.postgres.database.azure.com",
-      "PGPASSWORD": "password_my-test",
-      "PGRST_DB_URI": "postgresql://user_my-test%40sampledevserver.postgres.database.azure.com:password_my-test@sampledevserver.postgres.database.azure.com/autodevops_my-test?sslmode=require",
+      "PGPASSWORD": "password_my-test-branch",
+      "PGRST_DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
       "PGSSLMODE": "require",
-      "PGUSER": "user_my-test@sampledevserver.postgres.database.azure.com",
+      "PGUSER": "user_my-test-branch@sampledevserver.postgres.database.azure.com",
     },
   },
 ]
@@ -156,15 +156,15 @@ Array [
               "env": Array [
                 Object {
                   "name": "NEW_DB_NAME",
-                  "value": "autodevops_my-test",
+                  "value": "autodevops_my-test-branch",
                 },
                 Object {
                   "name": "NEW_USER",
-                  "value": "user_my-test",
+                  "value": "user_my-test-branch",
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_my-test",
+                  "value": "password_my-test-branch",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -212,19 +212,19 @@ Array [
         "owner": "sample",
         "team": "sample",
       },
-      "name": "azure-pg-user-my-test",
+      "name": "azure-pg-user-my-test-branch",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
-      "DATABASE_URL": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
-      "DB_URI": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
-      "PGDATABASE": "autodevops_my-test",
+      "DATABASE_URL": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
+      "DB_URI": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
+      "PGDATABASE": "autodevops_my-test-branch",
       "PGHOST": "pouetpouet.com",
-      "PGPASSWORD": "password_my-test",
-      "PGRST_DB_URI": "postgresql://user_my-test%40pouetpouet.com:password_my-test@pouetpouet.com/autodevops_my-test?sslmode=require",
+      "PGPASSWORD": "password_my-test-branch",
+      "PGRST_DB_URI": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
       "PGSSLMODE": "require",
-      "PGUSER": "user_my-test@pouetpouet.com",
+      "PGUSER": "user_my-test-branch@pouetpouet.com",
     },
   },
 ]

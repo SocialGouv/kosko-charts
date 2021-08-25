@@ -1,7 +1,8 @@
-import { dropDbJob } from "./drop-db.job";
+import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
 
-test("should create a pg secret", () => {
-  process.env.CI_COMMIT_SHORT_SHA = "1234567";
+test("should create a pg secret", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+  const { dropDbJob } = await import("./drop-db.job");
   const job = dropDbJob({
     database: "some-db",
     user: "tester",
@@ -17,12 +18,22 @@ test("should create a pg secret", () => {
       "apiVersion": "batch/v1",
       "kind": "Job",
       "metadata": Object {
-        "name": "drop-azure-db-1234567",
+        "annotations": Object {
+          "kapp.k14s.io/disable-default-label-scoping-rules": "",
+          "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          "kapp.k14s.io/nonce": "",
+          "kapp.k14s.io/update-strategy": "fallback-on-replace",
+        },
+        "name": "drop-azure-db-0123456",
       },
       "spec": Object {
         "backoffLimit": 0,
         "template": Object {
-          "metadata": Object {},
+          "metadata": Object {
+            "annotations": Object {
+              "kapp.k14s.io/deploy-logs": "",
+            },
+          },
           "spec": Object {
             "containers": Array [
               Object {
@@ -72,18 +83,4 @@ test("should create a pg secret", () => {
   expect(job.spec?.template.spec?.containers[0].image).toMatch(
     "ghcr.io/socialgouv/docker/azure-db:"
   );
-});
-
-test("fails because of missing CI_COMMIT_SHORT_SHA", () => {
-  delete process.env.CI_COMMIT_SHORT_SHA;
-  expect(() =>
-    dropDbJob({
-      database: "some-db",
-      user: "tester",
-    })
-  ).toThrowErrorMatchingInlineSnapshot(`
-    "Wrong environment variables
-    required \\"CI_COMMIT_SHORT_SHA\\": \\"undefined\\" should be defined
-    "
-  `);
 });
