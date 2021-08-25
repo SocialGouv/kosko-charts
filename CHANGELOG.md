@@ -1,3 +1,10 @@
+## [9.3.1](https://github.com/SocialGouv/kosko-charts/compare/v9.3.0...v9.3.1) (2021-08-25)
+
+
+### Bug Fixes
+
+* **azure-pg:** rework the db on/off ([#673](https://github.com/SocialGouv/kosko-charts/issues/673)) ([e8449da](https://github.com/SocialGouv/kosko-charts/commit/e8449da089eb723c7f05fb82eb585e2097aa3206))
+
 # [9.3.0](https://github.com/SocialGouv/kosko-charts/compare/v9.2.7...v9.3.0) (2021-08-24)
 
 
