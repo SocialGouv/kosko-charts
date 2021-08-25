@@ -1,3 +1,10 @@
+## [9.3.2](https://github.com/SocialGouv/kosko-charts/compare/v9.3.1...v9.3.2) (2021-08-25)
+
+
+### Bug Fixes
+
+* **azure-db:** use branch slug as database name ([#674](https://github.com/SocialGouv/kosko-charts/issues/674)) ([9d41805](https://github.com/SocialGouv/kosko-charts/commit/9d41805347437f5a14d186a2041527c490550431))
+
 ## [9.3.1](https://github.com/SocialGouv/kosko-charts/compare/v9.3.0...v9.3.1) (2021-08-25)
 
 
