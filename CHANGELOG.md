@@ -1,3 +1,10 @@
+# [9.4.0](https://github.com/SocialGouv/kosko-charts/compare/v9.3.5...v9.4.0) (2021-08-26)
+
+
+### Features
+
+* **env:** add component label ([#681](https://github.com/SocialGouv/kosko-charts/issues/681)) ([6539f71](https://github.com/SocialGouv/kosko-charts/commit/6539f713b32acddd1e0a3ffed53dd90a9f38e6e4))
+
 ## [9.3.5](https://github.com/SocialGouv/kosko-charts/compare/v9.3.4...v9.3.5) (2021-08-26)
 
 
