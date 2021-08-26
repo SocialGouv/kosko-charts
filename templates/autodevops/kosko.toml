@@ -1,5 +1,5 @@
 # dont include jobs on deploys
-components = ["!jobs", "*"]
+components = ["!jobs", "!_*", "*"]
 require = ["ts-node/register"]
 
 [environments.prod]

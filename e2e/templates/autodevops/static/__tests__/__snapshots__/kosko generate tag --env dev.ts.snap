@@ -2,29 +2,6 @@
 
 exports[`github tag: kosko generate --dev 1`] = `
 "---
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    socialgouv/creator: autodevops
-    janitor/ttl: 15d
-    field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: c-bd7z2:p-7ms8p
-    git/branch: refs/tags/v1.4.2
-    git/remote: socialgouv/sample-kosko
-    app.github.com/job: xxxxxxx-job
-    app.github.com/ref: refs/tags/v1.4.2
-    app.github.com/repo: socialgouv/sample-kosko
-    app.github.com/run: '12345'
-    app.github.com/sha: '8843083'
-  labels:
-    azure-pg-admin-user: sample-kosko
-    application: sample-kosko
-    owner: sample-kosko
-    team: sample-kosko
-    cert: wildcard
-  name: sample-kosko-v1-4-2-3lldg0
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
