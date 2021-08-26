@@ -1,6 +1,5 @@
 import { createNodeCJSEnvironment } from "@kosko/env";
-
-import { create } from "./index";
+import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
 
 jest.mock("@socialgouv/kosko-charts/components/app", () => ({
   create: jest.fn().mockImplementation((...args: unknown[]) => args),
@@ -11,10 +10,9 @@ beforeEach(() => {
 });
 
 test("should create hasura dev config", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
-  process.env.CI_REGISTRY_IMAGE = "/path/to/docker/image";
-  process.env.CI_ENVIRONMENT_URL = "https://path/to/env";
-  process.env.CI_PROJECT_NAME = "some-project";
+  const { create } = await import("./index");
   const manifest = await create("hasura", {
     env,
   });
@@ -22,11 +20,13 @@ test("should create hasura dev config", async () => {
 });
 
 test("should create hasura prod config", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
+    ...environmentMock(),
+    isProduction: true,
+    tag: "v1.2.3",
+  }));
+  const { create } = await import("./index");
   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
-  process.env.CI_REGISTRY_IMAGE = "/path/to/docker/image";
-  process.env.CI_ENVIRONMENT_URL = "https://path/to/env";
-  process.env.CI_PROJECT_NAME = "some-project";
-  process.env.PRODUCTION = "true";
   const manifest = await create("hasura", {
     env,
   });

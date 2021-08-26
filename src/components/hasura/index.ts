@@ -21,6 +21,9 @@ const hasuraConfig: Partial<AppConfig> = {
   },
   containerPort: 80,
   ingress: false,
+  labels: {
+    component: "hasura",
+  },
   withPostgres: true,
 };
 const hasuraDeployment: Partial<Omit<DeploymentParams, "containerPort">> = {};

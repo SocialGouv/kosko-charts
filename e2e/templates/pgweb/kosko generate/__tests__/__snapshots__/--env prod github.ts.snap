@@ -13,6 +13,7 @@ metadata:
   name: sample-next-app
   labels:
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   namespace: sample-next-app
@@ -53,6 +54,7 @@ spec:
         cert: wildcard
         owner: sample-next-app
         team: sample-next-app
+        component: sample-next-app
       name: azure-pg-user
     type: Opaque"
 `;

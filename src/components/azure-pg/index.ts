@@ -3,6 +3,7 @@ import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com
 import { createSecret } from "@socialgouv/kosko-charts/components/pg-secret";
 import environments from "@socialgouv/kosko-charts/environments";
 import type { DeploymentParams } from "@socialgouv/kosko-charts/utils/createDeployment";
+import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
 import { getPgServerHostname } from "@socialgouv/kosko-charts/utils/getPgServerHostname";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
@@ -80,7 +81,7 @@ export const create = async (
   updateMetadata(job, {
     annotations: envParams.annotations ?? {},
     labels: envParams.labels ?? {},
-    name: `create-db-job-${ciEnv.shortSha}`,
+    name: generate(`create-db-job-${ciEnv.branch}`),
     namespace: envParams.namespace,
   });
 

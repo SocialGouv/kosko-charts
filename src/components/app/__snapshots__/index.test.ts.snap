@@ -14,9 +14,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -38,15 +38,15 @@ Array [
           },
           "labels": Object {
             "app": "app",
-            "application": "sample",
-            "owner": "sample",
-            "team": "sample",
+            "application": "www",
+            "owner": "my-team",
+            "team": "my-team",
           },
         },
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
+              "image": "registry/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -111,9 +111,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -145,9 +145,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -155,7 +155,7 @@ Array [
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "subdomain.domain",
           "http": Object {
             "paths": Array [
               Object {
@@ -177,7 +177,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "subdomain.domain",
           ],
           "secretName": "wildcard-crt",
         },
@@ -201,9 +201,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -225,9 +225,9 @@ Array [
           },
           "labels": Object {
             "app": "app",
-            "application": "sample",
-            "owner": "sample",
-            "team": "sample",
+            "application": "www",
+            "owner": "my-team",
+            "team": "my-team",
           },
         },
         "spec": Object {
@@ -240,7 +240,7 @@ Array [
                   },
                 },
               ],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
+              "image": "registry/app:0123456789abcdefghijklmnopqrstuvwxyz0123",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -335,9 +335,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -369,9 +369,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -379,7 +379,7 @@ Array [
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "subdomain.domain",
           "http": Object {
             "paths": Array [
               Object {
@@ -401,7 +401,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "subdomain.domain",
           ],
           "secretName": "wildcard-crt",
         },
@@ -425,9 +425,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -449,15 +449,15 @@ Array [
           },
           "labels": Object {
             "app": "app",
-            "application": "sample",
-            "owner": "sample",
-            "team": "sample",
+            "application": "www",
+            "owner": "my-team",
+            "team": "my-team",
           },
         },
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "image": "registry/app:1.2.3",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -522,9 +522,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -556,9 +556,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -566,7 +566,7 @@ Array [
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "subdomain.domain",
           "http": Object {
             "paths": Array [
               Object {
@@ -588,7 +588,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "subdomain.domain",
           ],
           "secretName": "wildcard-crt",
         },
@@ -612,9 +612,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -636,9 +636,9 @@ Array [
           },
           "labels": Object {
             "app": "app",
-            "application": "sample",
-            "owner": "sample",
-            "team": "sample",
+            "application": "www",
+            "owner": "my-team",
+            "team": "my-team",
           },
         },
         "spec": Object {
@@ -651,7 +651,7 @@ Array [
                   },
                 },
               ],
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "image": "registry/app:1.2.3",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -746,9 +746,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -780,9 +780,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -790,7 +790,7 @@ Array [
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "subdomain.domain",
           "http": Object {
             "paths": Array [
               Object {
@@ -812,7 +812,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "subdomain.domain",
           ],
           "secretName": "wildcard-crt",
         },
@@ -836,9 +836,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -860,15 +860,15 @@ Array [
           },
           "labels": Object {
             "app": "app",
-            "application": "sample",
-            "owner": "sample",
-            "team": "sample",
+            "application": "www",
+            "owner": "my-team",
+            "team": "my-team",
           },
         },
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "image": "registry/app:1.2.3",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -933,9 +933,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -969,9 +969,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -979,7 +979,7 @@ Array [
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "subdomain.domain",
           "http": Object {
             "paths": Array [
               Object {
@@ -1001,7 +1001,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "subdomain.domain",
           ],
           "secretName": "app-crt",
         },
@@ -1025,9 +1025,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -1049,15 +1049,15 @@ Array [
           },
           "labels": Object {
             "app": "app",
-            "application": "sample",
-            "owner": "sample",
-            "team": "sample",
+            "application": "www",
+            "owner": "my-team",
+            "team": "my-team",
           },
         },
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "image": "registry/app:1.2.3",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -1122,9 +1122,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -1158,9 +1158,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -1168,7 +1168,7 @@ Array [
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "another.fabrique.social.gouv.fr",
+          "host": "another.domain",
           "http": Object {
             "paths": Array [
               Object {
@@ -1190,7 +1190,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "another.fabrique.social.gouv.fr",
+            "another.domain",
           ],
           "secretName": "app-crt",
         },
@@ -1214,9 +1214,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -1238,15 +1238,15 @@ Array [
           },
           "labels": Object {
             "app": "app",
-            "application": "sample",
-            "owner": "sample",
-            "team": "sample",
+            "application": "www",
+            "owner": "my-team",
+            "team": "my-team",
           },
         },
         "spec": Object {
           "containers": Array [
             Object {
-              "image": "registry.gitlab.factory.social.gouv.fr/socialgouv/sample/app:1.2.3",
+              "image": "registry/app:1.2.3",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -1311,9 +1311,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -1347,9 +1347,9 @@ Array [
       },
       "labels": Object {
         "app": "app",
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "app",
       "namespace": "sample-42-my-test",
@@ -1357,7 +1357,7 @@ Array [
     "spec": Object {
       "rules": Array [
         Object {
-          "host": "sample.fabrique.social.gouv.fr",
+          "host": "subdomain.domain",
           "http": Object {
             "paths": Array [
               Object {
@@ -1379,7 +1379,7 @@ Array [
       "tls": Array [
         Object {
           "hosts": Array [
-            "sample.fabrique.social.gouv.fr",
+            "subdomain.domain",
           ],
           "secretName": "app-crt",
         },

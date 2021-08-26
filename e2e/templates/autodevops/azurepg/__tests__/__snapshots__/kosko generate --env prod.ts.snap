@@ -14,6 +14,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
+    component: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -35,6 +36,7 @@ spec:
       labels:
         app: myapp
         application: sample-kosko
+        component: sample-kosko
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
@@ -106,6 +108,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
+    component: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -141,6 +144,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
+    component: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

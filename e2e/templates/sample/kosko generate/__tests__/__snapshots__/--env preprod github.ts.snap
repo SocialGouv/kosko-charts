@@ -19,6 +19,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-next-app
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -38,6 +39,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -61,6 +63,7 @@ spec:
       labels:
         app: hasura
         application: sample-next-app
+        component: hasura
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -138,6 +141,7 @@ metadata:
     app.github.com/sha: '8843083'
   labels:
     application: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -156,6 +160,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -191,6 +196,7 @@ metadata:
   name: azure-pg-user
   labels:
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -233,6 +239,7 @@ spec:
         cert: wildcard
         owner: sample-next-app
         team: sample-next-app
+        component: sample-next-app
       name: azure-pg-user
     type: Opaque
 ---
@@ -250,10 +257,10 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-    component: next
   name: www
   namespace: sample-next-app-preprod
 spec:
@@ -274,10 +281,10 @@ spec:
       labels:
         app: www
         application: sample-next-app
+        component: sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
-        component: next
     spec:
       containers:
         - image: harbor.fabrique.social.gouv.fr/undefined/www:undefined
@@ -352,6 +359,7 @@ metadata:
     app.github.com/sha: '8843083'
   labels:
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -366,6 +374,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -403,6 +412,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

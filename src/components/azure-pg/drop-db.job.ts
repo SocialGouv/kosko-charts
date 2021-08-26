@@ -25,6 +25,7 @@ export const dropDbJob = ({
         // see https://carvel.dev/kapp/docs/latest/apply/#kappk14sioupdate-strategy
         "kapp.k14s.io/update-strategy": "fallback-on-replace",
       },
+      labels: { component: "drop_db", ...ciEnv.metadata.labels },
       name: `drop-azure-db-${ciEnv.shortSha}`,
     },
     spec: {

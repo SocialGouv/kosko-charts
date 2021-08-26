@@ -18,6 +18,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-kosko
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -35,10 +36,10 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-    component: nginx
   name: www
   namespace: sample-kosko-24-e2e-branch-42
 spec:
@@ -57,10 +58,10 @@ spec:
       labels:
         app: www
         application: e2e-branch-42-sample-kosko
+        component: nginx
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
-        component: nginx
     spec:
       containers:
         - image: nginx:latest
@@ -105,6 +106,7 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -138,6 +140,7 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

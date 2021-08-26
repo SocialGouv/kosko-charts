@@ -14,10 +14,10 @@ metadata:
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-    component: nginx
   name: myapp
   namespace: sample-kosko-24-e2e-branch-42
 spec:
@@ -36,10 +36,10 @@ spec:
       labels:
         app: myapp
         application: e2e-branch-42-sample-kosko
+        component: nginx
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
-        component: nginx
     spec:
       containers:
         - image: >-
@@ -85,6 +85,7 @@ metadata:
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -118,6 +119,7 @@ metadata:
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

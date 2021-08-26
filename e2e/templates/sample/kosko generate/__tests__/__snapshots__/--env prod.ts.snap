@@ -14,6 +14,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
   name: hasura
@@ -34,6 +35,7 @@ spec:
       labels:
         app: hasura
         application: sample-next-app
+        component: hasura
         owner: sample-next-app
         team: sample-next-app
     spec:
@@ -108,6 +110,7 @@ metadata:
     app.gitlab.com/env.name: prod2
   labels:
     application: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
   namespace: sample-next-app
@@ -125,6 +128,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
   name: hasura
@@ -154,6 +158,7 @@ metadata:
   name: sample-next-app
   labels:
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   namespace: sample-next-app
@@ -189,6 +194,7 @@ spec:
         cert: wildcard
         owner: sample-next-app
         team: sample-next-app
+        component: sample-next-app
       name: azure-pg-user
     type: Opaque
 ---
@@ -204,9 +210,9 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
-    component: next
   name: www
   namespace: sample-next-app
 spec:
@@ -225,9 +231,9 @@ spec:
       labels:
         app: www
         application: sample-next-app
+        component: sample-next-app
         owner: sample-next-app
         team: sample-next-app
-        component: next
     spec:
       containers:
         - image: harbor.fabrique.social.gouv.fr/some-harbor-project/www:1.2.3
@@ -300,6 +306,7 @@ metadata:
     app.gitlab.com/env.name: prod2
   labels:
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   namespace: sample-next-app
@@ -313,6 +320,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   name: www
@@ -347,6 +355,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   name: www

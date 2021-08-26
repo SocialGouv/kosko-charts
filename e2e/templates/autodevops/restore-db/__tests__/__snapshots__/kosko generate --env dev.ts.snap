@@ -12,6 +12,7 @@ metadata:
     app.github.com/sha: '8843083'
   labels:
     application: sample-kosko
+    component: sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

@@ -17,6 +17,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-next-app
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -34,10 +35,10 @@ metadata:
   labels:
     app: pgweb
     application: v1-2-3-sample-next-app
+    component: pgweb
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-    component: pgweb
   name: pgweb
   namespace: sample-next-app-24-preprod-dev2
 spec:
@@ -56,10 +57,10 @@ spec:
       labels:
         app: pgweb
         application: v1-2-3-sample-next-app
+        component: pgweb
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
-        component: pgweb
     spec:
       containers:
         - image: sosedoff/pgweb:0.11.8
@@ -124,6 +125,7 @@ metadata:
   labels:
     app: pgweb
     application: v1-2-3-sample-next-app
+    component: pgweb
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -157,6 +159,7 @@ metadata:
   labels:
     app: pgweb
     application: v1-2-3-sample-next-app
+    component: pgweb
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -190,6 +193,7 @@ metadata:
   name: azure-pg-user
   labels:
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -227,6 +231,7 @@ spec:
         cert: wildcard
         owner: sample-next-app
         team: sample-next-app
+        component: v1-2-3-sample-next-app
       name: azure-pg-user
     type: Opaque"
 `;

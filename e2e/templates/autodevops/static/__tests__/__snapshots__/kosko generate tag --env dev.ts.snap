@@ -16,10 +16,10 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-    component: nginx
   name: myapp
   namespace: sample-kosko-v1-4-2-3lldg0
 spec:
@@ -40,10 +40,10 @@ spec:
       labels:
         app: myapp
         application: sample-kosko
+        component: nginx
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
-        component: nginx
     spec:
       containers:
         - image: ghcr.io/socialgouv/myapp/myapp:1.4.2
@@ -88,6 +88,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -125,6 +126,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

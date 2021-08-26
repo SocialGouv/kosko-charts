@@ -167,11 +167,11 @@ export const restoreDbJob = ({
   const job = new Job({
     metadata: {
       annotations: {
-        "kapp.k14s.io/update-strategy": "always-replace",
+        "kapp.k14s.io/update-strategy": "skip",
       },
       labels: {
+        component: "restore-db",
         ...ciEnv.metadata.labels,
-        component: jobName,
       },
       name: jobName,
       namespace: secretNamespace,
