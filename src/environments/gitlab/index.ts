@@ -36,8 +36,9 @@ export default (env = process.env): CIEnv => {
   const {
     CI_COMMIT_TAG,
     CI_REPOSITORY_URL,
-    PRODUCTION,
+    COMPONENT,
     PRODUCTION_NAMESPACE,
+    PRODUCTION,
     RANCHER_PROJECT_ID,
   } = env;
   const isProduction = Boolean(PRODUCTION);
@@ -79,7 +80,7 @@ export default (env = process.env): CIEnv => {
       },
       labels: {
         application,
-        //component: application,
+        component: COMPONENT ?? application,
         owner: CI_PROJECT_NAME,
         team: CI_PROJECT_NAME,
         ...(/-dev\d*$/.test(CI_ENVIRONMENT_NAME) ? { cert: "wildcard" } : {}),

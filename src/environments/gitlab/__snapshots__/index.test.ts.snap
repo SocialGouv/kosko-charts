@@ -20,6 +20,7 @@ Object {
     },
     "labels": Object {
       "application": "sample",
+      "component": "sample",
       "owner": "sample",
       "team": "sample",
     },
@@ -58,6 +59,7 @@ Object {
     "labels": Object {
       "application": "vX-Y-Z-sample",
       "cert": "wildcard",
+      "component": "vX-Y-Z-sample",
       "owner": "sample",
       "team": "sample",
     },
@@ -96,6 +98,7 @@ Object {
     "labels": Object {
       "application": "my-test-sample",
       "cert": "wildcard",
+      "component": "my-test-sample",
       "owner": "sample",
       "team": "sample",
     },
@@ -134,6 +137,7 @@ Object {
     "labels": Object {
       "application": "my-test-sample",
       "cert": "wildcard",
+      "component": "my-test-sample",
       "owner": "sample",
       "team": "sample",
     },

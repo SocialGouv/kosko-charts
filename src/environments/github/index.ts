@@ -28,6 +28,7 @@ export default (env = process.env): CIEnv => {
   } = env as Record<string, string>;
 
   const {
+    COMPONENT,
     RANCHER_PROJECT_ID,
     SOCIALGOUV_PRODUCTION,
     SOCIALGOUV_PREPRODUCTION,
@@ -88,6 +89,7 @@ export default (env = process.env): CIEnv => {
       },
       labels: {
         application: projectName,
+        component: COMPONENT ?? projectName,
         owner: projectName,
         team: projectName,
         ...(!isProduction ? { cert: "wildcard" } : {}),

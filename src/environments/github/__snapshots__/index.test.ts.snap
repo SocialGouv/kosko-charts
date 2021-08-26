@@ -23,6 +23,7 @@ Object {
     "labels": Object {
       "application": "sample-next-app",
       "cert": "wildcard",
+      "component": "sample-next-app",
       "owner": "sample-next-app",
       "team": "sample-next-app",
     },
@@ -62,6 +63,7 @@ Object {
     },
     "labels": Object {
       "application": "sample-next-app",
+      "component": "sample-next-app",
       "owner": "sample-next-app",
       "team": "sample-next-app",
     },
@@ -102,6 +104,7 @@ Object {
     "labels": Object {
       "application": "sample-next-app",
       "cert": "wildcard",
+      "component": "sample-next-app",
       "owner": "sample-next-app",
       "team": "sample-next-app",
     },
@@ -142,6 +145,7 @@ Object {
     "labels": Object {
       "application": "sample-next-app",
       "cert": "wildcard",
+      "component": "sample-next-app",
       "owner": "sample-next-app",
       "team": "sample-next-app",
     },
@@ -182,6 +186,7 @@ Object {
     "labels": Object {
       "application": "sample-next-app",
       "cert": "wildcard",
+      "component": "sample-next-app",
       "owner": "sample-next-app",
       "team": "sample-next-app",
     },
