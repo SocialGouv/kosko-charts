@@ -40,7 +40,7 @@ metadata:
   labels:
     app: www
     application: master-dev42-sample-nxt-app
-    component: master-dev42-sample-nxt-app
+    component: nginx
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard
@@ -62,7 +62,7 @@ spec:
       labels:
         app: www
         application: master-dev42-sample-nxt-app
-        component: master-dev42-sample-nxt-app
+        component: nginx
         owner: sample-nxt-app
         team: sample-nxt-app
         cert: wildcard
@@ -110,7 +110,7 @@ metadata:
   labels:
     app: www
     application: master-dev42-sample-nxt-app
-    component: master-dev42-sample-nxt-app
+    component: nginx
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard
@@ -144,7 +144,7 @@ metadata:
   labels:
     app: www
     application: master-dev42-sample-nxt-app
-    component: master-dev42-sample-nxt-app
+    component: nginx
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard

@@ -39,7 +39,7 @@ metadata:
   labels:
     app: www
     application: v1-2-3-sample-nxt-app
-    component: v1-2-3-sample-nxt-app
+    component: nginx
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard
@@ -61,7 +61,7 @@ spec:
       labels:
         app: www
         application: v1-2-3-sample-nxt-app
-        component: v1-2-3-sample-nxt-app
+        component: nginx
         owner: sample-nxt-app
         team: sample-nxt-app
         cert: wildcard
@@ -109,7 +109,7 @@ metadata:
   labels:
     app: www
     application: v1-2-3-sample-nxt-app
-    component: v1-2-3-sample-nxt-app
+    component: nginx
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard
@@ -143,7 +143,7 @@ metadata:
   labels:
     app: www
     application: v1-2-3-sample-nxt-app
-    component: v1-2-3-sample-nxt-app
+    component: nginx
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard

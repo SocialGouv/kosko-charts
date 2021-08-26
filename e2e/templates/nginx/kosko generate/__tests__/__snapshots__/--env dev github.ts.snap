@@ -40,7 +40,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
-    component: sample-next-app
+    component: nginx
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -64,7 +64,7 @@ spec:
       labels:
         app: www
         application: sample-next-app
-        component: sample-next-app
+        component: nginx
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -112,7 +112,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
-    component: sample-next-app
+    component: nginx
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -150,7 +150,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
-    component: sample-next-app
+    component: nginx
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

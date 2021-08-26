@@ -16,7 +16,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
-    component: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -40,7 +40,7 @@ spec:
       labels:
         app: myapp
         application: sample-kosko
-        component: sample-kosko
+        component: nginx
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
@@ -89,7 +89,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
-    component: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -127,7 +127,7 @@ metadata:
   labels:
     app: myapp
     application: sample-kosko
-    component: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -165,7 +165,7 @@ metadata:
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
-    component: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -187,7 +187,7 @@ spec:
       labels:
         app: myapp
         application: e2e-branch-42-sample-kosko
-        component: e2e-branch-42-sample-kosko
+        component: nginx
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
@@ -235,7 +235,7 @@ metadata:
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
-    component: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -269,7 +269,7 @@ metadata:
   labels:
     app: myapp
     application: e2e-branch-42-sample-kosko
-    component: e2e-branch-42-sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

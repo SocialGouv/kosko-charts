@@ -14,7 +14,7 @@ metadata:
   labels:
     app: www
     application: sample-kosko
-    component: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
   name: www
@@ -35,7 +35,7 @@ spec:
       labels:
         app: www
         application: sample-kosko
-        component: sample-kosko
+        component: nginx
         owner: sample-kosko
         team: sample-kosko
     spec:
@@ -82,7 +82,7 @@ metadata:
   labels:
     app: www
     application: sample-kosko
-    component: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
   name: www
@@ -117,7 +117,7 @@ metadata:
   labels:
     app: www
     application: sample-kosko
-    component: sample-kosko
+    component: nginx
     owner: sample-kosko
     team: sample-kosko
   name: www

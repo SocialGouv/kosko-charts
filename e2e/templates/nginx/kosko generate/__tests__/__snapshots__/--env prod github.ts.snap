@@ -16,7 +16,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
-    component: sample-next-app
+    component: nginx
     owner: sample-next-app
     team: sample-next-app
   name: www
@@ -39,7 +39,7 @@ spec:
       labels:
         app: www
         application: sample-next-app
-        component: sample-next-app
+        component: nginx
         owner: sample-next-app
         team: sample-next-app
     spec:
@@ -86,7 +86,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
-    component: sample-next-app
+    component: nginx
     owner: sample-next-app
     team: sample-next-app
   name: www
@@ -125,7 +125,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
-    component: sample-next-app
+    component: nginx
     owner: sample-next-app
     team: sample-next-app
   name: www
