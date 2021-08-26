@@ -160,10 +160,10 @@ export const restoreContainerJob = ({
   const jobName = generate(`restore-container-${ciEnv.branch}`);
   return new Job({
     metadata: {
-      annotations: { "kapp.k14s.io/update-strategy": "always-replace" },
+      annotations: { "kapp.k14s.io/update-strategy": "skip" },
       labels: {
+        component: "restore-container",
         ...ciEnv.metadata.labels,
-        component: jobName,
       },
       name: jobName,
       namespace: secretNamespace,

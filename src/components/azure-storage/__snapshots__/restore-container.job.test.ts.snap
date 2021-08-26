@@ -6,11 +6,11 @@ Object {
   "kind": "Job",
   "metadata": Object {
     "annotations": Object {
-      "kapp.k14s.io/update-strategy": "always-replace",
+      "kapp.k14s.io/update-strategy": "skip",
     },
     "labels": Object {
       "application": "sample",
-      "component": "restore-container-my-test-branch-47n9d8",
+      "component": "restore-container",
       "owner": "sample",
       "team": "sample",
     },
@@ -130,11 +130,11 @@ Object {
   "kind": "Job",
   "metadata": Object {
     "annotations": Object {
-      "kapp.k14s.io/update-strategy": "always-replace",
+      "kapp.k14s.io/update-strategy": "skip",
     },
     "labels": Object {
       "application": "sample",
-      "component": "restore-container-my-test-branch-47n9d8",
+      "component": "restore-container",
       "owner": "sample",
       "team": "sample",
     },
@@ -254,11 +254,11 @@ Object {
   "kind": "Job",
   "metadata": Object {
     "annotations": Object {
-      "kapp.k14s.io/update-strategy": "always-replace",
+      "kapp.k14s.io/update-strategy": "skip",
     },
     "labels": Object {
       "application": "sample",
-      "component": "restore-container-my-test-branch-47n9d8",
+      "component": "restore-container",
       "owner": "sample",
       "team": "sample",
     },
@@ -378,11 +378,11 @@ Object {
   "kind": "Job",
   "metadata": Object {
     "annotations": Object {
-      "kapp.k14s.io/update-strategy": "always-replace",
+      "kapp.k14s.io/update-strategy": "skip",
     },
     "labels": Object {
       "application": "sample",
-      "component": "restore-container-my-test-branch-47n9d8",
+      "component": "restore-container",
       "owner": "sample",
       "team": "sample",
     },

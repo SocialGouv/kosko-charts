@@ -7,11 +7,11 @@ Array [
     "kind": "Job",
     "metadata": Object {
       "annotations": Object {
-        "kapp.k14s.io/update-strategy": "always-replace",
+        "kapp.k14s.io/update-strategy": "skip",
       },
       "labels": Object {
         "application": "sample",
-        "component": "restore-db-my-test-branch-45q3uw",
+        "component": "restore-db",
         "owner": "sample",
         "team": "sample",
       },
@@ -240,11 +240,11 @@ Array [
     "kind": "Job",
     "metadata": Object {
       "annotations": Object {
-        "kapp.k14s.io/update-strategy": "always-replace",
+        "kapp.k14s.io/update-strategy": "skip",
       },
       "labels": Object {
         "application": "sample",
-        "component": "restore-db-my-test-branch-45q3uw",
+        "component": "restore-db",
         "owner": "sample",
         "team": "sample",
       },

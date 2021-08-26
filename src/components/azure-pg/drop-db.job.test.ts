@@ -24,6 +24,12 @@ test("should create a pg secret", async () => {
           "kapp.k14s.io/nonce": "",
           "kapp.k14s.io/update-strategy": "fallback-on-replace",
         },
+        "labels": Object {
+          "application": "sample",
+          "component": "drop_db",
+          "owner": "sample",
+          "team": "sample",
+        },
         "name": "drop-azure-db-0123456",
       },
       "spec": Object {
