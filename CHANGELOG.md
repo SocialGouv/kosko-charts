@@ -1,3 +1,10 @@
+## [9.3.5](https://github.com/SocialGouv/kosko-charts/compare/v9.3.4...v9.3.5) (2021-08-26)
+
+
+### Bug Fixes
+
+* Remove namespace from all autodevops manifests. ([#679](https://github.com/SocialGouv/kosko-charts/issues/679)) ([9c522d0](https://github.com/SocialGouv/kosko-charts/commit/9c522d05f96644fbe8b039901db66f94c49e0ede))
+
 ## [9.3.4](https://github.com/SocialGouv/kosko-charts/compare/v9.3.3...v9.3.4) (2021-08-26)
 
 
