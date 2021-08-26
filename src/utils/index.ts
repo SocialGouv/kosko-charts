@@ -15,6 +15,7 @@ export * from "./getHarborImagePath";
 export * from "./getIngressHost";
 export * from "./getManifestByKind";
 export * from "./getPgServerHostname";
+export * from "./toEnvVars";
 export * from "./waitForHttp";
 export * from "./waitForPostgres";
 export * from "./waitForService";
