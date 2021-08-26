@@ -17,9 +17,9 @@ metadata:
   labels:
     app: www
     application: sample-nxt-app
+    component: sample-nxt-app
     owner: sample-nxt-app
     team: sample-nxt-app
-    component: nginx
   name: www
   namespace: sample-nxt-app
 spec:
@@ -38,9 +38,9 @@ spec:
       labels:
         app: www
         application: sample-nxt-app
+        component: sample-nxt-app
         owner: sample-nxt-app
         team: sample-nxt-app
-        component: nginx
     spec:
       containers:
         - image: nginx:latest
@@ -85,6 +85,7 @@ metadata:
   labels:
     app: www
     application: sample-nxt-app
+    component: sample-nxt-app
     owner: sample-nxt-app
     team: sample-nxt-app
   name: www
@@ -119,6 +120,7 @@ metadata:
   labels:
     app: www
     application: sample-nxt-app
+    component: sample-nxt-app
     owner: sample-nxt-app
     team: sample-nxt-app
   name: www

@@ -51,14 +51,13 @@ Array [
       },
       "containerPort": 8081,
       "image": "sosedoff/pgweb:0.11.8",
-      "subDomainPrefix": "pgweb-",
-      "withPostgres": true,
-    },
-    "deployment": Object {
       "labels": Object {
         "component": "pgweb",
       },
+      "subDomainPrefix": "pgweb-",
+      "withPostgres": true,
     },
+    "deployment": undefined,
     "env": Object {
       "component": [Function],
       "cwd": "/tmp",
@@ -120,14 +119,13 @@ Array [
       },
       "containerPort": 8081,
       "image": "sosedoff/pgweb:0.11.8",
-      "subDomainPrefix": "pgweb.",
-      "withPostgres": true,
-    },
-    "deployment": Object {
       "labels": Object {
         "component": "pgweb",
       },
+      "subDomainPrefix": "pgweb.",
+      "withPostgres": true,
     },
+    "deployment": undefined,
     "env": Object {
       "component": [Function],
       "cwd": "/tmp",

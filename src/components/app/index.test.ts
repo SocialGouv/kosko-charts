@@ -1,48 +1,11 @@
 import { createNodeCJSEnvironment } from "@kosko/env";
-import type { CIEnv } from "@socialgouv/kosko-charts/types";
+import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
 import { promises } from "fs";
 import { directory } from "tempy";
-
-const gitlabMock: CIEnv = {
-  branch: "my-test-branch",
-  branchSlug: "my-test-branch",
-  environment: "my-test",
-  isPreProduction: false,
-  isProduction: false,
-  metadata: {
-    annotations: {
-      "app.gitlab.com/app": "socialgouv-sample",
-      "app.gitlab.com/env": "my-test",
-    },
-    domain: "fabrique.social.gouv.fr",
-    git: {
-      branch: "my-test-branch",
-      remote: "git@github.com:SocialGouv/sample-next-app.git",
-    },
-    labels: {
-      application: "sample",
-      owner: "sample",
-      team: "sample",
-    },
-    namespace: { name: "sample-42-my-test" },
-    subdomain: "sample",
-  },
-  projectName: "sample",
-  registry: "registry.gitlab.factory.social.gouv.fr/socialgouv/sample",
-  sha: "0123456789abcdefghijklmnopqrstuvwxyz0123",
-  shortSha: "0123456",
-};
-
-const ciEnvModuleMock = {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  __esModule: true,
-  default: () => gitlabMock,
-};
 
 beforeEach(() => {
   jest.resetModules();
 });
-
 test("should throw because of a missing envs", async () => {
   const env = createNodeCJSEnvironment({ cwd: "/tmp" });
   const { create } = await import("./index");
@@ -52,7 +15,7 @@ test("should throw because of a missing envs", async () => {
 });
 
 test("should return dev manifests", async () => {
-  jest.doMock("@socialgouv/kosko-charts/environments", () => ciEnvModuleMock);
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "dev";
@@ -62,7 +25,7 @@ test("should return dev manifests", async () => {
 });
 
 test("should return dev manifests with postgres", async () => {
-  jest.doMock("@socialgouv/kosko-charts/environments", () => ciEnvModuleMock);
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "dev";
@@ -74,9 +37,11 @@ test("should return dev manifests with postgres", async () => {
 });
 
 test("should return preprod manifests with NO custom subdomain", async () => {
-  gitlabMock.isPreProduction = true;
-  gitlabMock.tag = "v1.2.3";
-  jest.doMock("@socialgouv/kosko-charts/environments", () => ciEnvModuleMock);
+  jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
+    ...environmentMock(),
+    isPreProduction: true,
+    tag: "v1.2.3",
+  }));
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "preprod";
@@ -93,9 +58,11 @@ test("should return preprod manifests with NO custom subdomain", async () => {
 });
 
 test("should return preprod manifests with postgres", async () => {
-  gitlabMock.isPreProduction = true;
-  gitlabMock.tag = "v1.2.3";
-  jest.doMock("@socialgouv/kosko-charts/environments", () => ciEnvModuleMock);
+  jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
+    ...environmentMock(),
+    isPreProduction: true,
+    tag: "v1.2.3",
+  }));
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "preprod";
@@ -107,9 +74,11 @@ test("should return preprod manifests with postgres", async () => {
 });
 
 test("should return prod manifests", async () => {
-  gitlabMock.isProduction = true;
-  gitlabMock.tag = "v1.2.3";
-  jest.doMock("@socialgouv/kosko-charts/environments", () => ciEnvModuleMock);
+  jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
+    ...environmentMock(),
+    isProduction: true,
+    tag: "v1.2.3",
+  }));
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
@@ -119,9 +88,12 @@ test("should return prod manifests", async () => {
 });
 
 test("should return prod manifests with custom subdomain", async () => {
-  gitlabMock.isProduction = true;
-  gitlabMock.tag = "v1.2.3";
-  jest.doMock("@socialgouv/kosko-charts/environments", () => ciEnvModuleMock);
+  jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
+    ...environmentMock(),
+    isProduction: true,
+    tag: "v1.2.3",
+  }));
+
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";
@@ -138,9 +110,11 @@ test("should return prod manifests with custom subdomain", async () => {
 });
 
 test("should return prod manifests without custom subdomain if undefined", async () => {
-  gitlabMock.isProduction = true;
-  gitlabMock.tag = "v1.2.3";
-  jest.doMock("@socialgouv/kosko-charts/environments", () => ciEnvModuleMock);
+  jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
+    ...environmentMock(),
+    isProduction: true,
+    tag: "v1.2.3",
+  }));
   const cwd = directory();
   const env = createNodeCJSEnvironment({ cwd });
   env.env = "prod";

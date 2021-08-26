@@ -54,13 +54,12 @@ Array [
       "containerPort": 6379,
       "image": "redis:6.2.5-alpine3.14",
       "ingress": false,
-      "subDomainPrefix": "redis-",
-    },
-    "deployment": Object {
       "labels": Object {
         "component": "redis",
       },
+      "subDomainPrefix": "redis-",
     },
+    "deployment": undefined,
     "env": Object {
       "component": [Function],
       "cwd": "/tmp",
@@ -125,13 +124,12 @@ Array [
       "containerPort": 6379,
       "image": "redis:6.2.5-alpine3.14",
       "ingress": false,
-      "subDomainPrefix": "redis.",
-    },
-    "deployment": Object {
       "labels": Object {
         "component": "redis",
       },
+      "subDomainPrefix": "redis.",
     },
+    "deployment": undefined,
     "env": Object {
       "component": [Function],
       "cwd": "/tmp",

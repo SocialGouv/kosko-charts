@@ -35,7 +35,7 @@ metadata:
   labels:
     app: hasura
     application: v1-2-3-sample-next-app
-    component: v1-2-3-sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -57,7 +57,7 @@ spec:
       labels:
         app: hasura
         application: v1-2-3-sample-next-app
-        component: v1-2-3-sample-next-app
+        component: hasura
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -133,7 +133,7 @@ metadata:
     app.gitlab.com/env.name: preprod-dev2
   labels:
     application: v1-2-3-sample-next-app
-    component: v1-2-3-sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -152,7 +152,7 @@ metadata:
   labels:
     app: hasura
     application: v1-2-3-sample-next-app
-    component: v1-2-3-sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

@@ -7,8 +7,6 @@ import type {
 import { create as createApp } from "@socialgouv/kosko-charts/components/app";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 
-import type { DeploymentParams } from "../../utils/createDeployment";
-
 // renovate: datasource=docker depName=redis versioning=6.2.5-alpine3.14
 const REDIS_VERSION = "6.2.5-alpine3.14";
 
@@ -36,9 +34,6 @@ const redisConfig: Partial<AppConfig> = {
   containerPort: 6379,
   image: `redis:${REDIS_VERSION}`,
   ingress: false,
-};
-
-const redisDeployment: Partial<Omit<DeploymentParams, "containerPort">> = {
   labels: {
     component: "redis",
   },
@@ -53,6 +48,6 @@ export const create: CreateFn = async (name, { env, config, deployment }) =>
       },
       config ?? {}
     ),
-    deployment: merge(redisDeployment, deployment ?? {}),
+    deployment,
     env,
   });

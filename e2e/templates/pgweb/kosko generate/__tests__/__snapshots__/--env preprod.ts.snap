@@ -35,7 +35,7 @@ metadata:
   labels:
     app: pgweb
     application: v1-2-3-sample-next-app
-    component: v1-2-3-sample-next-app
+    component: pgweb
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -57,7 +57,7 @@ spec:
       labels:
         app: pgweb
         application: v1-2-3-sample-next-app
-        component: v1-2-3-sample-next-app
+        component: pgweb
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -125,7 +125,7 @@ metadata:
   labels:
     app: pgweb
     application: v1-2-3-sample-next-app
-    component: v1-2-3-sample-next-app
+    component: pgweb
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -159,7 +159,7 @@ metadata:
   labels:
     app: pgweb
     application: v1-2-3-sample-next-app
-    component: v1-2-3-sample-next-app
+    component: pgweb
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

@@ -20,6 +20,9 @@ Array [
       "containerPort": 80,
       "image": "hasura/graphql-engine:latest",
       "ingress": false,
+      "labels": Object {
+        "component": "hasura",
+      },
       "subDomainPrefix": "hasura-",
       "withPostgres": true,
     },
@@ -63,7 +66,10 @@ Array [
       "containerPort": 80,
       "image": "hasura/graphql-engine:latest",
       "ingress": false,
-      "subDomainPrefix": "hasura.",
+      "labels": Object {
+        "component": "hasura",
+      },
+      "subDomainPrefix": "hasura-",
       "withPostgres": true,
     },
     "deployment": Object {},

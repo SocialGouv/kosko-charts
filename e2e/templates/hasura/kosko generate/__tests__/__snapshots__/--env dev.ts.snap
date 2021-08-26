@@ -36,7 +36,7 @@ metadata:
   labels:
     app: hasura
     application: e2e-branch-42-sample-next-app
-    component: e2e-branch-42-sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -58,7 +58,7 @@ spec:
       labels:
         app: hasura
         application: e2e-branch-42-sample-next-app
-        component: e2e-branch-42-sample-next-app
+        component: hasura
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -134,7 +134,7 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     application: e2e-branch-42-sample-next-app
-    component: e2e-branch-42-sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -152,7 +152,7 @@ metadata:
   labels:
     app: hasura
     application: e2e-branch-42-sample-next-app
-    component: e2e-branch-42-sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -186,7 +186,7 @@ metadata:
   labels:
     app: hasura
     application: e2e-branch-42-sample-next-app
-    component: e2e-branch-42-sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

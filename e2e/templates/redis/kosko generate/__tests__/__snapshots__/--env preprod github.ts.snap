@@ -39,7 +39,7 @@ metadata:
   labels:
     app: redis
     application: sample-next-app
-    component: sample-next-app
+    component: redis
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -63,7 +63,7 @@ spec:
       labels:
         app: redis
         application: sample-next-app
-        component: sample-next-app
+        component: redis
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -117,7 +117,7 @@ metadata:
   labels:
     app: redis
     application: sample-next-app
-    component: sample-next-app
+    component: redis
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

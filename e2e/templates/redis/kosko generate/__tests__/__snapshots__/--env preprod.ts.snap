@@ -35,7 +35,7 @@ metadata:
   labels:
     app: redis
     application: v1-2-3-sample-kosko
-    component: v1-2-3-sample-kosko
+    component: redis
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -57,7 +57,7 @@ spec:
       labels:
         app: redis
         application: v1-2-3-sample-kosko
-        component: v1-2-3-sample-kosko
+        component: redis
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
@@ -111,7 +111,7 @@ metadata:
   labels:
     app: redis
     application: v1-2-3-sample-kosko
-    component: v1-2-3-sample-kosko
+    component: redis
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

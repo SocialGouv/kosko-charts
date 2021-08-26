@@ -36,7 +36,7 @@ metadata:
   labels:
     app: redis
     application: e2e-branch-42-sample-kosko
-    component: e2e-branch-42-sample-kosko
+    component: redis
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -58,7 +58,7 @@ spec:
       labels:
         app: redis
         application: e2e-branch-42-sample-kosko
-        component: e2e-branch-42-sample-kosko
+        component: redis
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
@@ -112,7 +112,7 @@ metadata:
   labels:
     app: redis
     application: e2e-branch-42-sample-kosko
-    component: e2e-branch-42-sample-kosko
+    component: redis
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

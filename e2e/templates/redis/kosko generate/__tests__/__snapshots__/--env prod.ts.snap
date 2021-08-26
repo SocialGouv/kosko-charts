@@ -14,7 +14,7 @@ metadata:
   labels:
     app: redis
     application: sample-kosko
-    component: sample-kosko
+    component: redis
     owner: sample-kosko
     team: sample-kosko
   name: redis
@@ -35,7 +35,7 @@ spec:
       labels:
         app: redis
         application: sample-kosko
-        component: sample-kosko
+        component: redis
         owner: sample-kosko
         team: sample-kosko
     spec:
@@ -88,7 +88,7 @@ metadata:
   labels:
     app: redis
     application: sample-kosko
-    component: sample-kosko
+    component: redis
     owner: sample-kosko
     team: sample-kosko
   name: redis

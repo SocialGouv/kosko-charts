@@ -14,9 +14,9 @@ export default (): CIEnv => ({
     domain: "domain",
     git: {},
     labels: {
-      application: "sample",
-      owner: "sample",
-      team: "sample",
+      application: "www",
+      owner: "my-team",
+      team: "my-team",
     },
     namespace: { name: "sample-42-my-test" },
     subdomain: "subdomain",

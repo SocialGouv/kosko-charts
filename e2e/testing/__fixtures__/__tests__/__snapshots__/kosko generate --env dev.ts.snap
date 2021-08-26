@@ -19,6 +19,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-nxt-app
     application: master-dev42-sample-nxt-app
+    component: master-dev42-sample-nxt-app
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard
@@ -39,10 +40,10 @@ metadata:
   labels:
     app: www
     application: master-dev42-sample-nxt-app
+    component: master-dev42-sample-nxt-app
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard
-    component: nginx
   name: www
   namespace: sample-nxt-app-85-master-dev42
 spec:
@@ -61,10 +62,10 @@ spec:
       labels:
         app: www
         application: master-dev42-sample-nxt-app
+        component: master-dev42-sample-nxt-app
         owner: sample-nxt-app
         team: sample-nxt-app
         cert: wildcard
-        component: nginx
     spec:
       containers:
         - image: nginx:latest
@@ -109,6 +110,7 @@ metadata:
   labels:
     app: www
     application: master-dev42-sample-nxt-app
+    component: master-dev42-sample-nxt-app
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard
@@ -142,6 +144,7 @@ metadata:
   labels:
     app: www
     application: master-dev42-sample-nxt-app
+    component: master-dev42-sample-nxt-app
     owner: sample-nxt-app
     team: sample-nxt-app
     cert: wildcard

@@ -40,7 +40,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
-    component: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -64,7 +64,7 @@ spec:
       labels:
         app: hasura
         application: sample-next-app
-        component: sample-next-app
+        component: hasura
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -142,7 +142,7 @@ metadata:
     app.github.com/sha: '8843083'
   labels:
     application: sample-next-app
-    component: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -160,7 +160,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
-    component: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -198,7 +198,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
-    component: sample-next-app
+    component: hasura
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

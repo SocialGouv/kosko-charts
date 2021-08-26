@@ -16,7 +16,7 @@ metadata:
   labels:
     app: redis
     application: sample-next-app
-    component: sample-next-app
+    component: redis
     owner: sample-next-app
     team: sample-next-app
   name: redis
@@ -39,7 +39,7 @@ spec:
       labels:
         app: redis
         application: sample-next-app
-        component: sample-next-app
+        component: redis
         owner: sample-next-app
         team: sample-next-app
     spec:
@@ -92,7 +92,7 @@ metadata:
   labels:
     app: redis
     application: sample-next-app
-    component: sample-next-app
+    component: redis
     owner: sample-next-app
     team: sample-next-app
   name: redis
