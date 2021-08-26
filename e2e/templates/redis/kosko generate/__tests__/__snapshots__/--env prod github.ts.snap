@@ -16,9 +16,9 @@ metadata:
   labels:
     app: redis
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
-    component: redis
   name: redis
   namespace: sample-next-app
 spec:
@@ -39,9 +39,9 @@ spec:
       labels:
         app: redis
         application: sample-next-app
+        component: sample-next-app
         owner: sample-next-app
         team: sample-next-app
-        component: redis
     spec:
       containers:
         - image: redis:6.2.5-alpine3.14
@@ -92,6 +92,7 @@ metadata:
   labels:
     app: redis
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   name: redis

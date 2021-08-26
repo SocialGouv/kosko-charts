@@ -17,6 +17,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-next-app
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -34,6 +35,7 @@ metadata:
   labels:
     app: hasura
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -55,6 +57,7 @@ spec:
       labels:
         app: hasura
         application: v1-2-3-sample-next-app
+        component: v1-2-3-sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -130,6 +133,7 @@ metadata:
     app.gitlab.com/env.name: preprod-dev2
   labels:
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -147,6 +151,7 @@ metadata:
   labels:
     app: hasura
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -180,6 +185,7 @@ metadata:
   labels:
     app: hasura
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -213,6 +219,7 @@ metadata:
   name: azure-pg-user
   labels:
     application: v1-2-3-sample-next-app
+    component: v1-2-3-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -250,6 +257,7 @@ spec:
         cert: wildcard
         owner: sample-next-app
         team: sample-next-app
+        component: v1-2-3-sample-next-app
       name: azure-pg-user
     type: Opaque"
 `;

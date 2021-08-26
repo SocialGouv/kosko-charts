@@ -16,6 +16,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   name: hasura
@@ -38,6 +39,7 @@ spec:
       labels:
         app: hasura
         application: sample-next-app
+        component: sample-next-app
         owner: sample-next-app
         team: sample-next-app
     spec:
@@ -114,6 +116,7 @@ metadata:
     app.github.com/sha: '8843083'
   labels:
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   namespace: sample-next-app
@@ -130,6 +133,7 @@ metadata:
   labels:
     app: hasura
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   name: hasura
@@ -163,6 +167,7 @@ metadata:
   name: sample-next-app
   labels:
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
   namespace: sample-next-app
@@ -203,6 +208,7 @@ spec:
         cert: wildcard
         owner: sample-next-app
         team: sample-next-app
+        component: sample-next-app
       name: azure-pg-user
     type: Opaque"
 `;

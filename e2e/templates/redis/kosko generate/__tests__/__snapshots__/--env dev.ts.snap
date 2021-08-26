@@ -18,6 +18,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-kosko
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -35,10 +36,10 @@ metadata:
   labels:
     app: redis
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-    component: redis
   name: redis
   namespace: sample-kosko-24-e2e-branch-42
 spec:
@@ -57,10 +58,10 @@ spec:
       labels:
         app: redis
         application: e2e-branch-42-sample-kosko
+        component: e2e-branch-42-sample-kosko
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
-        component: redis
     spec:
       containers:
         - image: redis:6.2.5-alpine3.14
@@ -111,6 +112,7 @@ metadata:
   labels:
     app: redis
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

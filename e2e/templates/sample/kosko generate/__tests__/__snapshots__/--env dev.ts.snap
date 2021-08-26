@@ -18,6 +18,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-next-app
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -35,6 +36,7 @@ metadata:
   labels:
     app: hasura
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -56,6 +58,7 @@ spec:
       labels:
         app: hasura
         application: e2e-branch-42-sample-next-app
+        component: e2e-branch-42-sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -131,6 +134,7 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -149,6 +153,7 @@ metadata:
   labels:
     app: hasura
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -208,6 +213,7 @@ spec:
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
         application: e2e-branch-42-sample-next-app
+        component: e2e-branch-42-sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
@@ -219,10 +225,11 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-  name: create-db-job-8843083
+  name: create-db-job-e2e-branch
   namespace: sample-next-app-24-e2e-branch-42
 ---
 apiVersion: v1
@@ -248,6 +255,7 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -266,10 +274,10 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-    component: next
   name: www
   namespace: sample-next-app-24-e2e-branch-42
 spec:
@@ -288,10 +296,10 @@ spec:
       labels:
         app: www
         application: e2e-branch-42-sample-next-app
+        component: e2e-branch-42-sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
-        component: next
     spec:
       containers:
         - image: >-
@@ -365,6 +373,7 @@ metadata:
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -379,6 +388,7 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -412,6 +422,7 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-next-app
+    component: e2e-branch-42-sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

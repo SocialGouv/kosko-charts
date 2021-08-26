@@ -19,6 +19,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-next-app
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -38,10 +39,10 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-    component: nginx
   name: www
   namespace: sample-next-app-preprod
 spec:
@@ -62,10 +63,10 @@ spec:
       labels:
         app: www
         application: sample-next-app
+        component: sample-next-app
         owner: sample-next-app
         team: sample-next-app
         cert: wildcard
-        component: nginx
     spec:
       containers:
         - image: nginx:latest
@@ -110,6 +111,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
@@ -147,6 +149,7 @@ metadata:
   labels:
     app: www
     application: sample-next-app
+    component: sample-next-app
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard

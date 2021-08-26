@@ -17,6 +17,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-kosko
     application: v1-2-3-sample-kosko
+    component: v1-2-3-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -34,10 +35,10 @@ metadata:
   labels:
     app: redis
     application: v1-2-3-sample-kosko
+    component: v1-2-3-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-    component: redis
   name: redis
   namespace: sample-next-app-24-preprod-dev2
 spec:
@@ -56,10 +57,10 @@ spec:
       labels:
         app: redis
         application: v1-2-3-sample-kosko
+        component: v1-2-3-sample-kosko
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
-        component: redis
     spec:
       containers:
         - image: redis:6.2.5-alpine3.14
@@ -110,6 +111,7 @@ metadata:
   labels:
     app: redis
     application: v1-2-3-sample-kosko
+    component: v1-2-3-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard

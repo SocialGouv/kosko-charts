@@ -14,9 +14,9 @@ metadata:
   labels:
     app: redis
     application: sample-kosko
+    component: sample-kosko
     owner: sample-kosko
     team: sample-kosko
-    component: redis
   name: redis
   namespace: sample-kosko
 spec:
@@ -35,9 +35,9 @@ spec:
       labels:
         app: redis
         application: sample-kosko
+        component: sample-kosko
         owner: sample-kosko
         team: sample-kosko
-        component: redis
     spec:
       containers:
         - image: redis:6.2.5-alpine3.14
@@ -88,6 +88,7 @@ metadata:
   labels:
     app: redis
     application: sample-kosko
+    component: sample-kosko
     owner: sample-kosko
     team: sample-kosko
   name: redis

@@ -18,6 +18,7 @@ metadata:
   labels:
     azure-pg-admin-user: sample-kosko
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -35,6 +36,7 @@ metadata:
   labels:
     app: hasura
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -56,6 +58,7 @@ spec:
       labels:
         app: hasura
         application: e2e-branch-42-sample-kosko
+        component: e2e-branch-42-sample-kosko
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
@@ -125,6 +128,7 @@ metadata:
   labels:
     app: hasura
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -157,10 +161,10 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-    component: next
   name: www
   namespace: sample-kosko-24-e2e-branch-42
 spec:
@@ -179,10 +183,10 @@ spec:
       labels:
         app: www
         application: e2e-branch-42-sample-kosko
+        component: e2e-branch-42-sample-kosko
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
-        component: next
     spec:
       containers:
         - image: >-
@@ -250,6 +254,7 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
@@ -283,6 +288,7 @@ metadata:
   labels:
     app: www
     application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
