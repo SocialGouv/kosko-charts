@@ -2,29 +2,6 @@
 
 exports[`registry github: kosko generate --dev 1`] = `
 "---
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    socialgouv/creator: autodevops
-    janitor/ttl: 15d
-    field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: c-bd7z2:p-7ms8p
-    git/branch: refs/heads/e2e-branch
-    git/remote: socialgouv/sample-kosko
-    app.github.com/job: xxxxxxx-job
-    app.github.com/ref: refs/heads/e2e-branch
-    app.github.com/repo: socialgouv/sample-kosko
-    app.github.com/run: '12345'
-    app.github.com/sha: '8843083'
-  labels:
-    azure-pg-admin-user: sample-kosko
-    application: sample-kosko
-    owner: sample-kosko
-    team: sample-kosko
-    cert: wildcard
-  name: sample-kosko-e2e-branch
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -175,27 +152,6 @@ spec:
 
 exports[`registry: kosko generate --dev 1`] = `
 "---
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    socialgouv/creator: autodevops
-    janitor/ttl: 15d
-    field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: c-bd7z2:p-7ms8p
-    git/branch: e2e-branch
-    git/remote: git@github.com:SocialGouv/sample-kosko.git
-    app.gitlab.com/app: socialgouv-sample-kosko
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
-  labels:
-    azure-pg-admin-user: sample-kosko
-    application: e2e-branch-42-sample-kosko
-    owner: sample-kosko
-    team: sample-kosko
-    cert: wildcard
-  name: sample-kosko-24-e2e-branch-42
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
