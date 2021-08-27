@@ -14,6 +14,9 @@ interface RestoreJobArgs {
 
 const getProjectSecretNamespace = (project: string) => `${project}-secret`;
 
+const getAzureSecretName = (project: string, env: string) =>
+  `${project}${env}-access-key`;
+
 const restoreScript = `
 
 [ ! -z $SOURCE_CONTAINER ] || (echo "No SOURCE_CONTAINER"; exit 1)
@@ -61,7 +64,7 @@ export const restoreContainerJob = ({
   const secretNamespace = getProjectSecretNamespace(project);
   const projectSlug = project.replace(/-/g, "");
   const jobEnv = [];
-  // create needed env vars depending on the environemnt
+  // create needed env vars depending on the environment
   if (from === "prod") {
     jobEnv.push(
       new EnvVar({
@@ -69,7 +72,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountname",
-            name: `azure-${projectSlug}prod-volume`,
+            name: getAzureSecretName(projectSlug, "prod"),
           },
         },
       })
@@ -80,7 +83,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountkey",
-            name: `azure-${projectSlug}prod-volume`,
+            name: getAzureSecretName(projectSlug, "prod"),
           },
         },
       })
@@ -92,7 +95,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountname",
-            name: `azure-${projectSlug}dev-volume`,
+            name: getAzureSecretName(projectSlug, "dev"),
           },
         },
       })
@@ -103,7 +106,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountkey",
-            name: `azure-${projectSlug}dev-volume`,
+            name: getAzureSecretName(projectSlug, "dev"),
           },
         },
       })
@@ -116,7 +119,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountname",
-            name: `azure-${projectSlug}prod-volume`,
+            name: getAzureSecretName(projectSlug, "prod"),
           },
         },
       })
@@ -127,7 +130,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountkey",
-            name: `azure-${projectSlug}prod-volume`,
+            name: getAzureSecretName(projectSlug, "prod"),
           },
         },
       })
@@ -139,7 +142,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountname",
-            name: `azure-${projectSlug}dev-volume`,
+            name: getAzureSecretName(projectSlug, "dev"),
           },
         },
       })
@@ -150,7 +153,7 @@ export const restoreContainerJob = ({
         valueFrom: {
           secretKeyRef: {
             key: "azurestorageaccountkey",
-            name: `azure-${projectSlug}dev-volume`,
+            name: getAzureSecretName(projectSlug, "dev"),
           },
         },
       })

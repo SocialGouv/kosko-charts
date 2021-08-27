@@ -60,7 +60,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -69,7 +69,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -78,7 +78,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -87,7 +87,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -184,7 +184,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -193,7 +193,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -202,7 +202,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
@@ -211,7 +211,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
@@ -308,7 +308,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
@@ -317,7 +317,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
@@ -326,7 +326,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -335,7 +335,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectdev-volume",
+                    "name": "somecoolprojectdev-access-key",
                   },
                 },
               },
@@ -432,7 +432,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
@@ -441,7 +441,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
@@ -450,7 +450,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountname",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
@@ -459,7 +459,7 @@ az storage container set-permission   --name $DESTINATION_CONTAINER   --account-
                 "valueFrom": Object {
                   "secretKeyRef": Object {
                     "key": "azurestorageaccountkey",
-                    "name": "azure-somecoolprojectprod-volume",
+                    "name": "somecoolprojectprod-access-key",
                   },
                 },
               },
