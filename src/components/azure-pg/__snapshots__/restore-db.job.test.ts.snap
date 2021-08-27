@@ -77,7 +77,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                   },
                 },
               ],
-              "image": "ghcr.io/socialgouv/docker/azure-db:6.43.1",
+              "image": "ghcr.io/socialgouv/docker/azure-db:6.45.0",
               "imagePullPolicy": "IfNotPresent",
               "name": "restore-db",
               "resources": Object {
@@ -123,7 +123,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
               ],
               "envFrom": Array [],
-              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.43.1",
+              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.45.0",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
               "resources": Object {
@@ -310,7 +310,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                   },
                 },
               ],
-              "image": "ghcr.io/socialgouv/docker/azure-db:6.43.1",
+              "image": "ghcr.io/socialgouv/docker/azure-db:6.45.0",
               "imagePullPolicy": "IfNotPresent",
               "name": "restore-db",
               "resources": Object {
@@ -360,7 +360,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
               ],
               "envFrom": Array [],
-              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.43.1",
+              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.45.0",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
               "resources": Object {
