@@ -1,0 +1,37 @@
+name: 🚸🧪 autodevops 
+
+on:
+  - push
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.ref }}
+
+jobs:
+  empty:
+    name: Generate k8s manifests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: /tmp/autodevops/
+    steps:
+      - name: Degit templates/autodevops#${{ github.ref }}
+        run: |
+          npx degit SocialGouv/kosko-charts/templates/autodevops#${{ github.ref }} /tmp/autodevops
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: yarn
+
+      - name: Generate k8s manifests
+        run: |
+          yarn --silent generate:dev > manifests.yml
+          
+      - name: Archive k8s manifests
+        uses: actions/upload-artifact@v2
+        with:
+          name: manifests.yml
+          path: manifests.yml
