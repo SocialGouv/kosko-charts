@@ -34,7 +34,7 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user
-          image: ghcr.io/socialgouv/docker/azure-db:6.43.1
+          image: ghcr.io/socialgouv/docker/azure-db:6.45.0
           imagePullPolicy: IfNotPresent
           name: drop-db-user
           resources:
@@ -82,7 +82,7 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user
-          image: ghcr.io/socialgouv/docker/azure-db:6.43.1
+          image: ghcr.io/socialgouv/docker/azure-db:6.45.0
           imagePullPolicy: IfNotPresent
           name: drop-db-user
           resources:
