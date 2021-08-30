@@ -1,3 +1,10 @@
+# [9.5.0](https://github.com/SocialGouv/kosko-charts/compare/v9.4.3...v9.5.0) (2021-08-30)
+
+
+### Features
+
+* **azure-pg:** tell kapp to skip update on create-db ([#700](https://github.com/SocialGouv/kosko-charts/issues/700)) ([d945da0](https://github.com/SocialGouv/kosko-charts/commit/d945da0f0feab5f76781f97b15ac427b26f0b70f))
+
 ## [9.4.3](https://github.com/SocialGouv/kosko-charts/compare/v9.4.2...v9.4.3) (2021-08-30)
 
 
