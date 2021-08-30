@@ -19,6 +19,11 @@ test("should create a pg secret", () => {
       "spec": Object {
         "backoffLimit": 5,
         "template": Object {
+          "metadata": Object {
+            "annotations": Object {
+              "kapp.k14s.io/deploy-logs": "for-new",
+            },
+          },
           "spec": Object {
             "containers": Array [
               Object {

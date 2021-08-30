@@ -228,6 +228,7 @@ spec:
   ttlSecondsAfterFinished: 86400
 metadata:
   annotations:
+    kapp.k14s.io/update-strategy: skip
     app.github.com/job: xxxxxxx-job
     app.github.com/ref: refs/heads/e2e-branch
     app.github.com/repo: socialgouv/sample-next-app
@@ -260,6 +261,7 @@ stringData:
   PGUSER: user_e2e-branch@samplenextappdevserver.postgres.database.azure.com
 metadata:
   annotations:
+    kapp.k14s.io/update-strategy: skip
     app.github.com/job: xxxxxxx-job
     app.github.com/ref: refs/heads/e2e-branch
     app.github.com/repo: socialgouv/sample-next-app
