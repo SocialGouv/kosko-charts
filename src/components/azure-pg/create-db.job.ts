@@ -23,6 +23,11 @@ export const createDbJob = ({
     spec: {
       backoffLimit: 5,
       template: {
+        metadata: {
+          annotations: {
+            "kapp.k14s.io/deploy-logs": "for-new",
+          },
+        },
         spec: {
           containers: [
             {

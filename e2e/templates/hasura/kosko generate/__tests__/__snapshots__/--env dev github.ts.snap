@@ -226,6 +226,21 @@ kind: Job
 spec:
   backoffLimit: 5
   template:
+    metadata:
+      annotations:
+        kapp.k14s.io/deploy-logs: for-new
+        kapp.k14s.io/update-strategy: skip
+        app.github.com/job: xxxxxxx-job
+        app.github.com/ref: refs/heads/e2e-branch
+        app.github.com/repo: socialgouv/sample-next-app
+        app.github.com/run: '12345'
+        app.github.com/sha: '8843083'
+      labels:
+        application: sample-next-app
+        component: sample-next-app
+        owner: sample-next-app
+        team: sample-next-app
+        cert: wildcard
     spec:
       containers:
         - command:
@@ -253,22 +268,10 @@ spec:
               cpu: 100m
               memory: 64Mi
       restartPolicy: Never
-    metadata:
-      annotations:
-        app.github.com/job: xxxxxxx-job
-        app.github.com/ref: refs/heads/e2e-branch
-        app.github.com/repo: socialgouv/sample-next-app
-        app.github.com/run: '12345'
-        app.github.com/sha: '8843083'
-      labels:
-        application: sample-next-app
-        component: sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
-        cert: wildcard
   ttlSecondsAfterFinished: 86400
 metadata:
   annotations:
+    kapp.k14s.io/update-strategy: skip
     app.github.com/job: xxxxxxx-job
     app.github.com/ref: refs/heads/e2e-branch
     app.github.com/repo: socialgouv/sample-next-app
@@ -301,6 +304,7 @@ stringData:
   PGUSER: user_e2e-branch@samplenextappdevserver.postgres.database.azure.com
 metadata:
   annotations:
+    kapp.k14s.io/update-strategy: skip
     app.github.com/job: xxxxxxx-job
     app.github.com/ref: refs/heads/e2e-branch
     app.github.com/repo: socialgouv/sample-next-app

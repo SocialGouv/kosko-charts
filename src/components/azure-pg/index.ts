@@ -2,6 +2,7 @@ import type { Environment } from "@kosko/env";
 import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import { createSecret } from "@socialgouv/kosko-charts/components/pg-secret";
 import environments from "@socialgouv/kosko-charts/environments";
+import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import type { DeploymentParams } from "@socialgouv/kosko-charts/utils/createDeployment";
 import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
@@ -71,15 +72,20 @@ export const create = async (
   const defaultParams = getDefaultPgParams(config);
 
   // kosko component env values
-  const envParams = {
-    ...defaultParams, // set name as default if not provided
-    ...ciEnv.metadata,
-    ...config, // create options
-  };
+  const envParams = merge(
+    defaultParams, // set name as default if not provided
+    {
+      annotations: {
+        "kapp.k14s.io/update-strategy": "skip",
+      },
+    },
+    ciEnv.metadata,
+    config // create options
+  );
 
   const job = createDbJob(defaultParams);
   updateMetadata(job, {
-    annotations: envParams.annotations ?? {},
+    annotations: envParams.annotations,
     labels: envParams.labels ?? {},
     name: generate(`create-db-job-${ciEnv.branch}`),
     namespace: envParams.namespace,
@@ -87,7 +93,7 @@ export const create = async (
 
   const secret = createSecret(envParams);
   updateMetadata(secret, {
-    annotations: envParams.annotations ?? {},
+    annotations: envParams.annotations,
     labels: envParams.labels ?? {},
     name: defaultParams.name,
     namespace: envParams.namespace,
