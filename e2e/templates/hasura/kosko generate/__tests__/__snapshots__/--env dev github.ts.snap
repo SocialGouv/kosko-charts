@@ -253,19 +253,6 @@ spec:
               cpu: 100m
               memory: 64Mi
       restartPolicy: Never
-    metadata:
-      annotations:
-        app.github.com/job: xxxxxxx-job
-        app.github.com/ref: refs/heads/e2e-branch
-        app.github.com/repo: socialgouv/sample-next-app
-        app.github.com/run: '12345'
-        app.github.com/sha: '8843083'
-      labels:
-        application: sample-next-app
-        component: sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
-        cert: wildcard
   ttlSecondsAfterFinished: 86400
 metadata:
   annotations:

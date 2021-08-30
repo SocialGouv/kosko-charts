@@ -215,17 +215,6 @@ spec:
               cpu: 100m
               memory: 64Mi
       restartPolicy: Never
-    metadata:
-      annotations:
-        app.gitlab.com/app: socialgouv-sample-next-app
-        app.gitlab.com/env: e2e-branch-42
-        app.gitlab.com/env.name: e2e-branch-dev2
-      labels:
-        application: e2e-branch-42-sample-next-app
-        component: e2e-branch-42-sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
-        cert: wildcard
   ttlSecondsAfterFinished: 86400
 metadata:
   annotations:
