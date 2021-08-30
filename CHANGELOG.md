@@ -1,3 +1,10 @@
+## [9.4.3](https://github.com/SocialGouv/kosko-charts/compare/v9.4.2...v9.4.3) (2021-08-30)
+
+
+### Bug Fixes
+
+* **azure-pg:** remove spec.template.metadata ([#701](https://github.com/SocialGouv/kosko-charts/issues/701)) ([d044359](https://github.com/SocialGouv/kosko-charts/commit/d0443591030d0176d829710fde59ba42004797c2))
+
 ## [9.4.2](https://github.com/SocialGouv/kosko-charts/compare/v9.4.1...v9.4.2) (2021-08-27)
 
 

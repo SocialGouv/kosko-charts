@@ -188,19 +188,6 @@ kind: Job
 spec:
   backoffLimit: 5
   template:
-    metadata:
-      annotations:
-        kapp.k14s.io/deploy-logs: for-new
-        kapp.k14s.io/update-strategy: skip
-        app.gitlab.com/app: socialgouv-sample-next-app
-        app.gitlab.com/env: e2e-branch-42
-        app.gitlab.com/env.name: e2e-branch-dev2
-      labels:
-        application: e2e-branch-42-sample-next-app
-        component: e2e-branch-42-sample-next-app
-        owner: sample-next-app
-        team: sample-next-app
-        cert: wildcard
     spec:
       containers:
         - command:
