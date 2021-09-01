@@ -961,6 +961,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod",
         "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
@@ -1150,6 +1151,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod",
         "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
@@ -1339,6 +1341,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod",
         "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
