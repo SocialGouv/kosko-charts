@@ -69,7 +69,7 @@ export const createIngress = (params: IngressConfig): Ingress => {
     ...(params.annotations ?? {}),
   };
   if (params.isProduction) {
-    annotations["certmanager.k8s.io/cluster-issuer"] = "letsencrypt-prod";
+    annotations["cert-manager.io/cluster-issuer"] = "letsencrypt-prod";
     annotations["kubernetes.io/tls-acme"] = "true";
   }
   const isRedirectionIngress =
