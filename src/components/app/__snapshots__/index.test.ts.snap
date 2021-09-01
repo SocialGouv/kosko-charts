@@ -961,7 +961,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -1150,7 +1150,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -1339,7 +1339,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "certmanager.k8s.io/cluster-issuer": "letsencrypt-prod",
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
