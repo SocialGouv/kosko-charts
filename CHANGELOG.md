@@ -1,3 +1,10 @@
+## [9.5.3](https://github.com/SocialGouv/kosko-charts/compare/v9.5.2...v9.5.3) (2021-09-01)
+
+
+### Bug Fixes
+
+* Cert annotation. ([#707](https://github.com/SocialGouv/kosko-charts/issues/707)) ([ede9596](https://github.com/SocialGouv/kosko-charts/commit/ede95963da20d1dd20d46d0b5bb4791899fb5e99))
+
 ## [9.5.2](https://github.com/SocialGouv/kosko-charts/compare/v9.5.1...v9.5.2) (2021-09-01)
 
 
