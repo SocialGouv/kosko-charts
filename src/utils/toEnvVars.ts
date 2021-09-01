@@ -2,11 +2,6 @@ import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 type AnyObject = Record<string, string>;
 
-/** Parameters for the [[addEnvs]] function */
-interface ToEnvVarsParams {
-  /** an object with key/value */
-  dict: AnyObject;
-}
 
 /**
  *
