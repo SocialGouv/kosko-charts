@@ -100,6 +100,7 @@ export default (env = process.env): CIEnv => {
       rancherId: RANCHER_PROJECT_ID ?? "",
       subdomain,
     },
+    productionNamespace,
     projectName,
     registry: `ghcr.io/socialgouv/${projectName}`,
     sha,

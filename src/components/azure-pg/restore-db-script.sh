@@ -9,8 +9,8 @@
 echo "starting restore into $PGHOST/$PGDATABASE"
 
 # get latest backup folder
-LATEST=$(ls -1Fr /mnt/data | head -n 1);
-DUMP="/mnt/data/${LATEST}${FILE}"
+LATEST=$(ls -1Fr . | head -n 1);
+DUMP="./${LATEST}${FILE}"
 echo "Restore ${DUMP} into ${PGDATABASE}";
 
 pg_isready;

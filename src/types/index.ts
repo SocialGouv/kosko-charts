@@ -31,6 +31,7 @@ export interface CIEnv {
   isPreProduction: boolean;
   isProduction: boolean;
   metadata: GlobalEnvironment;
+  productionNamespace: string;
   projectName: string;
   registry: string;
   sha: string;

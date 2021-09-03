@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`from from 1`] = `
+Array [
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "annotations": Object {
+        "kapp.k14s.io/update-strategy": "skip",
+      },
+      "labels": Object {
+        "application": "www",
+        "component": "restore-db",
+        "owner": "my-team",
+        "team": "my-team",
+      },
+      "name": "restore-db-my-restore-db",
+      "namespace": "sample",
+    },
+    "spec": Object {
+      "backoffLimit": 0,
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "kapp.k14s.io/deploy-logs": "for-new-or-existing",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "sh",
+                "-c",
+                "#!/usr/bin/env bash
+
+[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
+[ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
+[ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
+[ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
+[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
+
+echo \\"starting restore into $PGHOST/$PGDATABASE\\"
+
+# get latest backup folder
+LATEST=$(ls -1Fr . | head -n 1);
+DUMP=\\"./\${LATEST}\${FILE}\\"
+echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
+
+pg_isready;
+
+pg_restore \\\\
+  --clean \\\\
+  --dbname \\"\${PGDATABASE}\\" \\\\
+  --exclude-schema=audit \\\\
+  --if-exists \\\\
+  --no-acl \\\\
+  --no-owner \\\\
+  --role \\"\${OWNER}\\" \\\\
+  --verbose \\\\
+  \\"\${DUMP}\\";
+
+psql
+  --command=\\"ALTER SCHEMA public owner to \${OWNER};\\"
+  --set=ON_ERROR_STOP=1
+  \\"\${PGDATABASE}\\"
+
+[ -f \\"/mnt/scripts/post-restore.sql\\" ] && \\\\
+  psql \\\\
+    --echo-all \\\\
+    --set=ON_ERROR_STOP=1 \\\\
+    < /mnt/scripts/post-restore.sql
+",
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user-dev",
+                  },
+                },
+              ],
+              "image": "ghcr.io/socialgouv/docker/azure-db:6.45.0",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "restore-db",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "512Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
+                },
+              },
+              "volumeMounts": Array [
+                Object {
+                  "mountPath": "/mnt/data",
+                  "name": "backups",
+                },
+              ],
+              "workingDir": "/mnt/data",
+            },
+          ],
+          "initContainers": Array [
+            Object {
+              "env": Array [
+                Object {
+                  "name": "PGHOST",
+                  "value": "sampledevserver.postgres.database.azure.com",
+                },
+                Object {
+                  "name": "PGDATABASE",
+                  "value": "autodevops_my-test-branch",
+                },
+                Object {
+                  "name": "PGPASSWORD",
+                  "value": "password_my-test-branch",
+                },
+                Object {
+                  "name": "PGUSER",
+                  "value": "user_my-test-branch@sampledevserver.postgres.database.azure.com",
+                },
+                Object {
+                  "name": "PGSSLMODE",
+                  "value": "require",
+                },
+              ],
+              "envFrom": Array [],
+              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.45.0",
+              "imagePullPolicy": "Always",
+              "name": "wait-for-postgres",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "20m",
+                  "memory": "32Mi",
+                },
+                "requests": Object {
+                  "cpu": "5m",
+                  "memory": "16Mi",
+                },
+              },
+            },
+          ],
+          "restartPolicy": "OnFailure",
+          "volumes": Array [
+            Object {
+              "name": "backups",
+            },
+          ],
+        },
+      },
+      "ttlSecondsAfterFinished": 86400,
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
+      },
+      "name": "foo-backup-restore",
+      "namespace": "sample",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "resources": Object {
+        "requests": Object {
+          "storage": "128Gi",
+        },
+      },
+      "selector": Object {
+        "matchLabels": Object {
+          "usage": "my-test-foo-backup-restore",
+        },
+      },
+      "storageClassName": "",
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolume",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
+        "usage": "my-test-foo-backup-restore",
+      },
+      "name": "my-test-foo-backup-restore",
+      "namespace": "sample",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "azureFile": Object {
+        "secretName": "azure-fooprod-volume",
+        "secretNamespace": "sample",
+        "shareName": "fooprodserver-backup-restore",
+      },
+      "capacity": Object {
+        "storage": "128Gi",
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "",
+    },
+  },
+]
+`;
