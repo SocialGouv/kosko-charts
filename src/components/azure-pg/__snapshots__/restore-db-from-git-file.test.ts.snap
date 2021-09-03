@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create restore DB job from github my-dump.sql file 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "annotations": Object {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+    },
+    "labels": Object {
+      "application": "www",
+      "owner": "my-team",
+      "team": "my-team",
+    },
+    "name": "restore-db-my-test-branch-45q3uw",
+    "namespace": "sample-42-my-test",
+  },
+  "spec": Object {
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "args": Array [
+              "psql < /mnt/sample/my-dump.sql",
+            ],
+            "command": Array [
+              "sh",
+              "-c",
+            ],
+            "env": Array [
+              Object {
+                "name": "PGDATABASE",
+                "value": "autodevops_my-test-branch",
+              },
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "azure-pg-admin-user",
+                },
+              },
+            ],
+            "image": "postgres:10.16",
+            "name": "restore-db",
+            "volumeMounts": Array [
+              Object {
+                "mountPath": "/mnt/sample",
+                "name": "restore-db-volume",
+              },
+            ],
+          },
+        ],
+        "initContainers": Array [
+          Object {
+            "args": Array [
+              "clone",
+              "https://github.com/SocialGouv/sample-next-app",
+              "/mnt/sample",
+            ],
+            "command": Array [
+              "git",
+            ],
+            "image": "alpine/git:v2.30.2",
+            "name": "restore-db-init",
+            "volumeMounts": Array [
+              Object {
+                "mountPath": "/mnt/sample",
+                "name": "restore-db-volume",
+              },
+            ],
+          },
+        ],
+        "restartPolicy": "OnFailure",
+        "volumes": Array [
+          Object {
+            "emptyDir": Object {},
+            "name": "restore-db-volume",
+          },
+        ],
+      },
+    },
+    "ttlSecondsAfterFinished": 86400,
+  },
+}
+`;
+
+exports[`should create restore DB job from gitlab my-dump.sql file 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "annotations": Object {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+    },
+    "labels": Object {
+      "application": "www",
+      "owner": "my-team",
+      "team": "my-team",
+    },
+    "name": "restore-db-my-test-branch-45q3uw",
+    "namespace": "sample-42-my-test",
+  },
+  "spec": Object {
+    "template": Object {
+      "metadata": Object {},
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "args": Array [
+              "psql < /mnt/sample/my-dump.sql",
+            ],
+            "command": Array [
+              "sh",
+              "-c",
+            ],
+            "env": Array [
+              Object {
+                "name": "PGDATABASE",
+                "value": "autodevops_my-test-branch",
+              },
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "azure-pg-admin-user",
+                },
+              },
+            ],
+            "image": "postgres:10.16",
+            "name": "restore-db",
+            "volumeMounts": Array [
+              Object {
+                "mountPath": "/mnt/sample",
+                "name": "restore-db-volume",
+              },
+            ],
+          },
+        ],
+        "initContainers": Array [
+          Object {
+            "args": Array [
+              "clone",
+              "https://gitlab.factory.social.gouv.fr/SocialGouv/sample-next-app/sample-next-app",
+              "/mnt/sample",
+            ],
+            "command": Array [
+              "git",
+            ],
+            "image": "alpine/git:v2.30.2",
+            "name": "restore-db-init",
+            "volumeMounts": Array [
+              Object {
+                "mountPath": "/mnt/sample",
+                "name": "restore-db-volume",
+              },
+            ],
+          },
+        ],
+        "restartPolicy": "OnFailure",
+        "volumes": Array [
+          Object {
+            "emptyDir": Object {},
+            "name": "restore-db-volume",
+          },
+        ],
+      },
+    },
+    "ttlSecondsAfterFinished": 86400,
+  },
+}
+`;

@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a SealedSecret if the name match a file 1`] = `
+Array [
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/update-strategy": "skip",
+      },
+      "labels": Object {
+        "application": "www",
+        "component": "create-db",
+        "owner": "my-team",
+        "team": "my-team",
+      },
+      "name": "create-db-job-my-test-branch-4gss4k",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "backoffLimit": 5,
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "kapp.k14s.io/deploy-logs": "for-new",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "create-db-user",
+              ],
+              "env": Array [
+                Object {
+                  "name": "NEW_DB_NAME",
+                  "value": "autodevops_my-test-branch",
+                },
+                Object {
+                  "name": "NEW_USER",
+                  "value": "user_my-test-branch",
+                },
+                Object {
+                  "name": "NEW_PASSWORD",
+                  "value": "password_my-test-branch",
+                },
+                Object {
+                  "name": "NEW_DB_EXTENSIONS",
+                  "value": "hstore pgcrypto citext uuid-ossp",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user",
+                  },
+                },
+              ],
+              "image": "ghcr.io/socialgouv/docker/azure-db:6.45.0",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "create-db-user",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "256Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
+                },
+              },
+            },
+          ],
+          "restartPolicy": "Never",
+        },
+      },
+      "ttlSecondsAfterFinished": 86400,
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Secret",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
+      },
+      "name": "azure-pg-user-my-test-branch",
+      "namespace": "sample-42-my-test",
+    },
+    "stringData": Object {
+      "DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "PGDATABASE": "autodevops_my-test-branch",
+      "PGHOST": "sampledevserver.postgres.database.azure.com",
+      "PGPASSWORD": "password_my-test-branch",
+      "PGRST_DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "PGSSLMODE": "require",
+      "PGUSER": "user_my-test-branch@sampledevserver.postgres.database.azure.com",
+    },
+  },
+]
+`;
+
+exports[`should return the autodevops job and secret pair 1`] = `
+Array [
+  Object {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/update-strategy": "skip",
+      },
+      "labels": Object {
+        "application": "www",
+        "component": "create-db",
+        "owner": "my-team",
+        "team": "my-team",
+      },
+      "name": "create-db-job-my-test-branch-4gss4k",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "backoffLimit": 5,
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "kapp.k14s.io/deploy-logs": "for-new",
+          },
+        },
+        "spec": Object {
+          "containers": Array [
+            Object {
+              "command": Array [
+                "create-db-user",
+              ],
+              "env": Array [
+                Object {
+                  "name": "NEW_DB_NAME",
+                  "value": "autodevops_my-test-branch",
+                },
+                Object {
+                  "name": "NEW_USER",
+                  "value": "user_my-test-branch",
+                },
+                Object {
+                  "name": "NEW_PASSWORD",
+                  "value": "password_my-test-branch",
+                },
+                Object {
+                  "name": "NEW_DB_EXTENSIONS",
+                  "value": "hstore pgcrypto citext uuid-ossp",
+                },
+              ],
+              "envFrom": Array [
+                Object {
+                  "secretRef": Object {
+                    "name": "azure-pg-admin-user",
+                  },
+                },
+              ],
+              "image": "ghcr.io/socialgouv/docker/azure-db:6.45.0",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "create-db-user",
+              "resources": Object {
+                "limits": Object {
+                  "cpu": "300m",
+                  "memory": "256Mi",
+                },
+                "requests": Object {
+                  "cpu": "100m",
+                  "memory": "64Mi",
+                },
+              },
+            },
+          ],
+          "restartPolicy": "Never",
+        },
+      },
+      "ttlSecondsAfterFinished": 86400,
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "Secret",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
+      },
+      "name": "azure-pg-user-my-test-branch",
+      "namespace": "sample-42-my-test",
+    },
+    "stringData": Object {
+      "DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "PGDATABASE": "autodevops_my-test-branch",
+      "PGHOST": "sampledevserver.postgres.database.azure.com",
+      "PGPASSWORD": "password_my-test-branch",
+      "PGRST_DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
+      "PGSSLMODE": "require",
+      "PGUSER": "user_my-test-branch@sampledevserver.postgres.database.azure.com",
+    },
+  },
+]
+`;
