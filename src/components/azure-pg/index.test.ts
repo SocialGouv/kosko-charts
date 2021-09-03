@@ -23,18 +23,3 @@ test("should return create an job", async () => {
   const { create } = await import("./index");
   expect(await create("foo", { env })).toMatchSnapshot();
 });
-
-test("should use custom pgHost", async () => {
-  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
-  const env = createNodeCJSEnvironment({ cwd: "/tmp/xxx" });
-  env.env = "dev";
-  await promises.mkdir(`/tmp/xxx/environments/dev`, { recursive: true });
-  await promises.writeFile(
-    `/tmp/xxx/environments/dev/pg.sealed-secret.yaml`,
-    "---\napiVersion: v1\nkind: ConfigMap"
-  );
-  const { create } = await import("./index");
-  expect(
-    await create("foo", { config: { pgHost: "pouetpouet.com" }, env })
-  ).toMatchSnapshot();
-});

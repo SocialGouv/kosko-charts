@@ -1,4 +1,3 @@
-import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg";
 import { azureProjectVolume } from "@socialgouv/kosko-charts/components/azure-storage/azureProjectVolume";
 import environments from "@socialgouv/kosko-charts/environments";
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
@@ -16,6 +15,8 @@ import {
   VolumeMount,
 } from "kubernetes-models/v1";
 import { join } from "path";
+
+import { autodevopsPgUserParams } from "./autodevops-user-params";
 
 interface RestoreDbJobArgs {
   project: string;
@@ -170,23 +171,24 @@ export const restoreDbJob = ({
   });
 
   initContainer.envFrom = [];
-  const defaultParams = getDefaultPgParams();
+
+  const currentBranchParams = autodevopsPgUserParams(ciEnv.branchSlug);
   initContainer.env = [
     {
       name: "PGHOST",
-      value: defaultParams.host,
+      value: currentBranchParams.host,
     },
     {
       name: "PGDATABASE",
-      value: defaultParams.database,
+      value: currentBranchParams.database,
     },
     {
       name: "PGPASSWORD",
-      value: defaultParams.password,
+      value: currentBranchParams.password,
     },
     {
       name: "PGUSER",
-      value: `${defaultParams.user}@${defaultParams.host}`,
+      value: `${currentBranchParams.user}@${currentBranchParams.host}`,
     },
     {
       name: "PGSSLMODE",

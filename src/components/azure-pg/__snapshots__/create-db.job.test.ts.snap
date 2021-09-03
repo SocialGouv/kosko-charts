@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a job to create a database 1`] = `
+Object {
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": Object {
+    "annotations": Object {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+      "kapp.k14s.io/update-strategy": "skip",
+    },
+    "labels": Object {
+      "application": "www",
+      "component": "create-db",
+      "owner": "my-team",
+      "team": "my-team",
+    },
+    "name": "foobar",
+    "namespace": "sample-42-my-test",
+  },
+  "spec": Object {
+    "backoffLimit": 5,
+    "template": Object {
+      "metadata": Object {
+        "annotations": Object {
+          "kapp.k14s.io/deploy-logs": "for-new",
+        },
+      },
+      "spec": Object {
+        "containers": Array [
+          Object {
+            "command": Array [
+              "create-db-user",
+            ],
+            "env": Array [
+              Object {
+                "name": "NEW_DB_NAME",
+                "value": "some-db",
+              },
+              Object {
+                "name": "NEW_USER",
+                "value": "tester",
+              },
+              Object {
+                "name": "NEW_PASSWORD",
+                "value": "my-password",
+              },
+              Object {
+                "name": "NEW_DB_EXTENSIONS",
+                "value": "hstore pgcrypto citext uuid-ossp",
+              },
+            ],
+            "envFrom": Array [
+              Object {
+                "secretRef": Object {
+                  "name": "azure-pg-admin-user",
+                },
+              },
+            ],
+            "image": StringMatching /ghcr\\.io\\\\/socialgouv\\\\/docker\\\\/azure-db:/,
+            "imagePullPolicy": "IfNotPresent",
+            "name": "create-db-user",
+            "resources": Object {
+              "limits": Object {
+                "cpu": "300m",
+                "memory": "256Mi",
+              },
+              "requests": Object {
+                "cpu": "100m",
+                "memory": "64Mi",
+              },
+            },
+          },
+        ],
+        "restartPolicy": "Never",
+      },
+    },
+    "ttlSecondsAfterFinished": 86400,
+  },
+}
+`;
