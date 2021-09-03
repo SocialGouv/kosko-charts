@@ -42,7 +42,7 @@ spec:
       initContainers:
         - args:
             - clone
-            - https://github.com/myapp
+            - https://github.com/socialgouv/sample-kosko
             - /mnt/sample-kosko
           command:
             - git
