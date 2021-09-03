@@ -81,7 +81,6 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "kapp.k14s.io/update-strategy": "skip",
       },
       "labels": Object {
         "application": "www",
@@ -187,7 +186,6 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
-        "kapp.k14s.io/update-strategy": "skip",
       },
       "labels": Object {
         "application": "www",

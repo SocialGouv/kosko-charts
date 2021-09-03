@@ -93,13 +93,7 @@ export const create = async (
 
   delete job.spec?.template.metadata;
 
-  const secret = createSecret(envParams);
-  updateMetadata(secret, {
-    annotations: envParams.annotations,
-    labels: envParams.labels ?? {},
-    name: defaultParams.name,
-    namespace: envParams.namespace,
-  });
+  const secret = createSecret(defaultParams.name, envParams);
 
   return [job, secret];
 };
