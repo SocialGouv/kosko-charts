@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`restore DB: kosko generate --dev 1`] = `
+exports[`restore from scripts/restore-my-db.sql on SocialGouv/myapp repo 1`] = `
 "apiVersion: batch/v1
 kind: Job
 metadata:
@@ -16,7 +16,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: restore-db-8843083
+  name: restore-db-e2e-branch
   namespace: sample-kosko-e2e-branch
 spec:
   template:
@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - args:
-            - psql < /mnt/myapp/scripts/restore-my-db.sql
+            - psql < /mnt/sample-kosko/scripts/restore-my-db.sql
           command:
             - sh
             - '-c'
@@ -37,19 +37,19 @@ spec:
           image: postgres:10.16
           name: restore-db
           volumeMounts:
-            - mountPath: /mnt/myapp
+            - mountPath: /mnt/sample-kosko
               name: restore-db-volume
       initContainers:
         - args:
             - clone
-            - https://github.com/SocialGouv/myapp.git
-            - /mnt/myapp
+            - https://github.com/myapp
+            - /mnt/sample-kosko
           command:
             - git
           image: alpine/git:v2.30.2
           name: restore-db-init
           volumeMounts:
-            - mountPath: /mnt/myapp
+            - mountPath: /mnt/sample-kosko
               name: restore-db-volume
       restartPolicy: OnFailure
       volumes:

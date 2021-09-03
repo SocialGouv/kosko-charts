@@ -186,9 +186,28 @@ spec:
 ---
 apiVersion: batch/v1
 kind: Job
+metadata:
+  annotations:
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-next-app
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+    kapp.k14s.io/update-strategy: skip
+  labels:
+    application: sample-next-app
+    component: create-db
+    owner: sample-next-app
+    team: sample-next-app
+    cert: wildcard
+  name: create-db-job-e2e-branch
+  namespace: sample-next-app-e2e-branch
 spec:
   backoffLimit: 5
   template:
+    metadata:
+      annotations:
+        kapp.k14s.io/deploy-logs: for-new
     spec:
       containers:
         - command:
@@ -217,9 +236,11 @@ spec:
               memory: 64Mi
       restartPolicy: Never
   ttlSecondsAfterFinished: 86400
+---
+apiVersion: v1
+kind: Secret
 metadata:
   annotations:
-    kapp.k14s.io/update-strategy: skip
     app.github.com/job: xxxxxxx-job
     app.github.com/ref: refs/heads/e2e-branch
     app.github.com/repo: socialgouv/sample-next-app
@@ -231,11 +252,8 @@ metadata:
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-  name: create-db-job-e2e-branch
+  name: azure-pg-user-e2e-branch
   namespace: sample-next-app-e2e-branch
----
-apiVersion: v1
-kind: Secret
 stringData:
   DATABASE_URL: >-
     postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
@@ -250,22 +268,6 @@ stringData:
     postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   PGSSLMODE: require
   PGUSER: user_e2e-branch@samplenextappdevserver.postgres.database.azure.com
-metadata:
-  annotations:
-    kapp.k14s.io/update-strategy: skip
-    app.github.com/job: xxxxxxx-job
-    app.github.com/ref: refs/heads/e2e-branch
-    app.github.com/repo: socialgouv/sample-next-app
-    app.github.com/run: '12345'
-    app.github.com/sha: '8843083'
-  labels:
-    application: sample-next-app
-    component: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
-    cert: wildcard
-  name: azure-pg-user-e2e-branch
-  namespace: sample-next-app-e2e-branch
 ---
 apiVersion: apps/v1
 kind: Deployment

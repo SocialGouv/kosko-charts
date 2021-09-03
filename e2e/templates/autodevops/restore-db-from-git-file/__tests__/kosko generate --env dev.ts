@@ -10,7 +10,7 @@ import { basename, resolve } from "path";
 const cwd = template(basename(resolve(__dirname, "..", "..")));
 
 test(
-  "restore DB: kosko generate --dev",
+  "restore from scripts/restore-my-db.sql on SocialGouv/myapp repo",
   async () => {
     const gitlabEnv = config({
       path: resolve(cwd, "./environments/.github-actions.env"),
