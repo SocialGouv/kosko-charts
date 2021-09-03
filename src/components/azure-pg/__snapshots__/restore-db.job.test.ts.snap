@@ -32,15 +32,15 @@ Array [
               "command": Array [
                 "sh",
                 "-c",
-                "
+                "#!/usr/bin/env bash
 
-echo \\"starting restore into $PGHOST/$PGDATABASE\\"
-
+[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
 [ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
 [ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
-[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
 [ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
-[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
+[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
+
+echo \\"starting restore into $PGHOST/$PGDATABASE\\"
 
 # get latest backup folder
 LATEST=$(ls -1Fr /mnt/data | head -n 1);
@@ -49,11 +49,27 @@ echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
 
 pg_isready;
 
-pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --exclude-schema=audit   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
+pg_restore \\\\
+  --clean \\\\
+  --dbname \\"\${PGDATABASE}\\" \\\\
+  --exclude-schema=audit \\\\
+  --if-exists \\\\
+  --no-acl \\\\
+  --no-owner \\\\
+  --role \\"\${OWNER}\\" \\\\
+  --verbose \\\\
+  \\"\${DUMP}\\";
 
-psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
+psql
+  --command=\\"ALTER SCHEMA public owner to \${OWNER};\\"
+  --set=ON_ERROR_STOP=1
+  \\"\${PGDATABASE}\\"
 
-[ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
+[ -f \\"/mnt/scripts/post-restore.sql\\" ] && \\\\
+  psql \\\\
+    --echo-all \\\\
+    --set=ON_ERROR_STOP=1 \\\\
+    < /mnt/scripts/post-restore.sql
 ",
               ],
               "env": Array [
@@ -265,15 +281,15 @@ Array [
               "command": Array [
                 "sh",
                 "-c",
-                "
+                "#!/usr/bin/env bash
 
-echo \\"starting restore into $PGHOST/$PGDATABASE\\"
-
+[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
 [ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
 [ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
-[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
 [ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
-[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
+[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
+
+echo \\"starting restore into $PGHOST/$PGDATABASE\\"
 
 # get latest backup folder
 LATEST=$(ls -1Fr /mnt/data | head -n 1);
@@ -282,11 +298,27 @@ echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
 
 pg_isready;
 
-pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --exclude-schema=audit   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
+pg_restore \\\\
+  --clean \\\\
+  --dbname \\"\${PGDATABASE}\\" \\\\
+  --exclude-schema=audit \\\\
+  --if-exists \\\\
+  --no-acl \\\\
+  --no-owner \\\\
+  --role \\"\${OWNER}\\" \\\\
+  --verbose \\\\
+  \\"\${DUMP}\\";
 
-psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
+psql
+  --command=\\"ALTER SCHEMA public owner to \${OWNER};\\"
+  --set=ON_ERROR_STOP=1
+  \\"\${PGDATABASE}\\"
 
-[ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
+[ -f \\"/mnt/scripts/post-restore.sql\\" ] && \\\\
+  psql \\\\
+    --echo-all \\\\
+    --set=ON_ERROR_STOP=1 \\\\
+    < /mnt/scripts/post-restore.sql
 ",
               ],
               "env": Array [
