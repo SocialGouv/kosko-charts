@@ -12,7 +12,7 @@
     "slugify": "^1.6.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.4",
+    "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.4",
     "@babel/preset-typescript": "^7.15.0",
     "@kosko/env": "^2.0.1",
