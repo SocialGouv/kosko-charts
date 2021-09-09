@@ -1,3 +1,10 @@
+# [10.0.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.2...v10.0.0-alpha.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **release:** move where the sh file is loaded ([1756ddb](https://github.com/SocialGouv/kosko-charts/commit/1756ddb604b4c300b5fc2aff059ff30a32480563))
+
 # [10.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.1...v10.0.0-alpha.2) (2021-09-09)
 
 
