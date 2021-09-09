@@ -75,3 +75,18 @@ test("SOCIALGOUV_PRODUCTION_NAMESPACE production namespace", () => {
   };
   expect(env(testEnv).metadata.namespace.name).toEqual("test-1");
 });
+
+test("the generated namespace name should not be longer that 63 chars", () => {
+  const testEnv = {
+    ...validEnv,
+    GITHUB_REF:
+      "refs/heads/douglasduteil/build-k8s-make-the-preprod-a-anonym-data-mirror-of-the-production",
+  };
+
+  expect(env(testEnv).metadata.namespace.name.length).toBeLessThan(63);
+  expect(env(testEnv).metadata.namespace).toMatchInlineSnapshot(`
+Object {
+  "name": "sample-next-app-douglasduteil-build-k8s-make-the-prepro-2kt5sc",
+}
+`);
+});

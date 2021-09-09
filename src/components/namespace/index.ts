@@ -20,6 +20,7 @@ export const createNamespace = (
   if (isDestroyable) {
     namespaceTtl["janitor/ttl"] = "15d";
   }
+
   const namespace = new K8SNamespace({
     metadata: {
       annotations: {

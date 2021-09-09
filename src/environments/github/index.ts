@@ -54,7 +54,7 @@ export default (env = process.env): CIEnv => {
 
   const productionNamespace = SOCIALGOUV_PRODUCTION_NAMESPACE || projectName;
   const preProductionNamespace = `${projectName}-preprod`;
-  const devNamespace = `${projectName}-${environmentSlug}`;
+  const devNamespace = generate(`${projectName}-${branchName}`);
 
   const namespaceName = isProduction
     ? productionNamespace

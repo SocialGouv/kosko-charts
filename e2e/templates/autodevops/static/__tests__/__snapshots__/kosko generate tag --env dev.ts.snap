@@ -21,7 +21,7 @@ metadata:
     team: sample-kosko
     cert: wildcard
   name: myapp
-  namespace: sample-kosko-v1-4-2-3lldg0
+  namespace: sample-kosko-v1-4-2-2bf7nu
 spec:
   replicas: 1
   selector:
@@ -101,7 +101,7 @@ metadata:
     app.github.com/repo: socialgouv/sample-kosko
     app.github.com/run: '12345'
     app.github.com/sha: '8843083'
-  namespace: sample-kosko-v1-4-2-3lldg0
+  namespace: sample-kosko-v1-4-2-2bf7nu
 spec:
   ports:
     - name: http
@@ -131,10 +131,10 @@ metadata:
     team: sample-kosko
     cert: wildcard
   name: myapp
-  namespace: sample-kosko-v1-4-2-3lldg0
+  namespace: sample-kosko-v1-4-2-2bf7nu
 spec:
   rules:
-    - host: sample-kosko-v1-4-2-3lldg0.dev2.fabrique.social.gouv.fr
+    - host: sample-kosko-v1-4-2-2bf7nu.dev2.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -146,6 +146,6 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - sample-kosko-v1-4-2-3lldg0.dev2.fabrique.social.gouv.fr
+        - sample-kosko-v1-4-2-2bf7nu.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt"
 `;
