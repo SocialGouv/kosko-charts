@@ -1,3 +1,10 @@
+## [9.5.5](https://github.com/SocialGouv/kosko-charts/compare/v9.5.4...v9.5.5) (2021-09-09)
+
+
+### Bug Fixes
+
+* **components:** ensure correct namespace name length ([#717](https://github.com/SocialGouv/kosko-charts/issues/717)) ([cef5b8d](https://github.com/SocialGouv/kosko-charts/commit/cef5b8dad6ba9f4a90afacce16befe816c7bfd2f))
+
 ## [9.5.4](https://github.com/SocialGouv/kosko-charts/compare/v9.5.3...v9.5.4) (2021-09-07)
 
 
