@@ -107,7 +107,7 @@ function restoreScriptContainer(
   postRestoreScriptVolumeMount?: IVolumeMount
 ) {
   const bashScript = readFileSync(
-    join(__dirname, "./restore-db-script.sh"),
+    join(__dirname, "./restore-db-from-azure-backup.script.sh"),
     "utf8"
   );
   return new Container({
