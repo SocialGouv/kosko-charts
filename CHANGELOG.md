@@ -1,3 +1,17 @@
+# [10.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.5.5...v10.0.0-alpha.1) (2021-09-09)
+
+
+* refactor(azure-pg)!: implement restore db again (#712) ([6f161fc](https://github.com/SocialGouv/kosko-charts/commit/6f161fcb60738de48df37d8b227f1680211f0dfe)), closes [#712](https://github.com/SocialGouv/kosko-charts/issues/712)
+
+
+### BREAKING CHANGES
+
+* Yet another restore db iteration
+
+- The `@socialgouv/kosko-charts/components/azure-pg` module is now an endpoint returning multiple components as function.
+
+- The `@socialgouv/kosko-charts/components/azure-container` module is now an endpoint returning the new `restoreContainerJob` function
+
 ## [9.5.5](https://github.com/SocialGouv/kosko-charts/compare/v9.5.4...v9.5.5) (2021-09-09)
 
 
