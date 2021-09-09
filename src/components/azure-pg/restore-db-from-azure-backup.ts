@@ -25,6 +25,10 @@ const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
 // renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.45.0
 const SOCIALGOUV_DOCKER_VERSION = "6.45.0";
 
+const bashScript = readFileSync(
+  join(__dirname, "./restore-db-from-azure-backup.script.sh"),
+  "utf8"
+);
 interface RestoreDbJobArgs {
   project: string;
 
@@ -106,10 +110,6 @@ function restoreScriptContainer(
   dataMount: IVolumeMount,
   postRestoreScriptVolumeMount?: IVolumeMount
 ) {
-  const bashScript = readFileSync(
-    join(__dirname, "./restore-db-from-azure-backup.script.sh"),
-    "utf8"
-  );
   return new Container({
     command: ["sh", "-c", bashScript],
     envFrom: [
