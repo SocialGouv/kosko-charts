@@ -66,9 +66,10 @@
   "repository": "SocialGouv/kosko-charts.git",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf components coverage environments testing types utils",
     "e2e": "jest -c ./e2e/jest.config.js",
     "lint": "eslint .",
-    "postbuild": "cpy '**/*' '!**/*.ts' ../ --cwd=src/ --no-overwrite --parents",
+    "postbuild": "cpy '**/*' '!**/*.ts' '!**/*.snap' ../ --cwd=src/ --no-overwrite --parents",
     "precommit": "lint-staged",
     "test": "jest",
     "typecheck": "tsc",
