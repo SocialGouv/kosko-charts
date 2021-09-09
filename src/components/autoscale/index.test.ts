@@ -7,11 +7,6 @@ beforeEach(() => {
 });
 
 test("should create an autoscale for a deployment", async () => {
-  jest.doMock(
-    "@socialgouv/kosko-charts/environments/gitlab",
-    () => gitlabModuleMock
-  );
-
   const deployment = new Deployment({
     metadata: {
       name: "foo",
@@ -27,11 +22,6 @@ test("should create an autoscale for a deployment", async () => {
 });
 
 test("should create an autoscale with custom spec", async () => {
-  jest.doMock(
-    "@socialgouv/kosko-charts/environments/gitlab",
-    () => gitlabModuleMock
-  );
-
   const deployment = new Deployment({
     metadata: {
       name: "foo",
