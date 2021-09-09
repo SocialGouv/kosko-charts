@@ -1,3 +1,10 @@
+# [10.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.1...v10.0.0-alpha.2) (2021-09-09)
+
+
+### Bug Fixes
+
+* **release:** ensure to cp no ts files on releases ([8a68f39](https://github.com/SocialGouv/kosko-charts/commit/8a68f39199f14fc5afab104643cc4a47e6dbae7a))
+
 # [10.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.5.5...v10.0.0-alpha.1) (2021-09-09)
 
 
