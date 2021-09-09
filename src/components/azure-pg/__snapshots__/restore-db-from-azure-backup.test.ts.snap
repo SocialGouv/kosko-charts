@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create restore DB job 1`] = `
+exports[`should generate manifests to restore foo project 1`] = `
 Array [
   Object {
     "apiVersion": "batch/v1",
@@ -15,8 +15,8 @@ Array [
         "owner": "my-team",
         "team": "my-team",
       },
-      "name": "restore-db-my-test-branch-45q3uw",
-      "namespace": "sample-next-app-secret",
+      "name": "restore-db-my-server",
+      "namespace": "sample",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -32,43 +32,45 @@ Array [
               "command": Array [
                 "sh",
                 "-c",
-                "
+                "#!/usr/bin/env bash
+
+[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
+[ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
+[ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
+[ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
+[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
 
 echo \\"starting restore into $PGHOST/$PGDATABASE\\"
 
-[ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
-[ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
-[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
-[ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
-[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
-
 # get latest backup folder
-LATEST=$(ls -1Fr /mnt/data | head -n 1);
-DUMP=\\"/mnt/data/\${LATEST}\${FILE}\\"
+LATEST=$(ls -1Fr . | head -n 1);
+DUMP=\\"./\${LATEST}\${FILE}\\"
 echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
 
 pg_isready;
 
-pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --exclude-schema=audit   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
+pg_restore \\\\
+  --clean \\\\
+  --dbname \\"\${PGDATABASE}\\" \\\\
+  --exclude-schema=audit \\\\
+  --if-exists \\\\
+  --no-acl \\\\
+  --no-owner \\\\
+  --role \\"\${OWNER}\\" \\\\
+  --verbose \\\\
+  \\"\${DUMP}\\";
 
-psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
+psql
+  --command=\\"ALTER SCHEMA public owner to \${OWNER};\\"
+  --set=ON_ERROR_STOP=1
+  \\"\${PGDATABASE}\\"
 
-[ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
+[ -f \\"/mnt/scripts/post-restore.sql\\" ] && \\\\
+  psql \\\\
+    --echo-all \\\\
+    --set=ON_ERROR_STOP=1 \\\\
+    < /mnt/scripts/post-restore.sql
 ",
-              ],
-              "env": Array [
-                Object {
-                  "name": "PGDATABASE",
-                  "value": "db_64105",
-                },
-                Object {
-                  "name": "OWNER",
-                  "value": "user_64105",
-                },
-                Object {
-                  "name": "FILE",
-                  "value": "product_prod_db.psql.gz",
-                },
               ],
               "envFrom": Array [
                 Object {
@@ -96,6 +98,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                   "name": "backups",
                 },
               ],
+              "workingDir": "/mnt/data",
             },
           ],
           "initContainers": Array [
@@ -142,10 +145,6 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           "volumes": Array [
             Object {
               "name": "backups",
-              "persistentVolumeClaim": Object {
-                "claimName": "sample-next-app-backup-restore",
-                "readOnly": true,
-              },
             },
           ],
         },
@@ -166,8 +165,8 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "owner": "my-team",
         "team": "my-team",
       },
-      "name": "sample-next-app-backup-restore",
-      "namespace": "sample-next-app-secret",
+      "name": "foo-backup-restore",
+      "namespace": "sample",
     },
     "spec": Object {
       "accessModes": Array [
@@ -180,7 +179,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
       },
       "selector": Object {
         "matchLabels": Object {
-          "usage": "my-test-sample-next-app-backup-restore",
+          "usage": "my-test-foo-backup-restore",
         },
       },
       "storageClassName": "",
@@ -198,19 +197,19 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "application": "www",
         "owner": "my-team",
         "team": "my-team",
-        "usage": "my-test-sample-next-app-backup-restore",
+        "usage": "my-test-foo-backup-restore",
       },
-      "name": "my-test-sample-next-app-backup-restore",
-      "namespace": "sample-next-app-secret",
+      "name": "my-test-foo-backup-restore",
+      "namespace": "sample",
     },
     "spec": Object {
       "accessModes": Array [
         "ReadWriteMany",
       ],
       "azureFile": Object {
-        "secretName": "azure-samplenextappprod-volume",
-        "secretNamespace": "sample-next-app-secret",
-        "shareName": "sample-next-app-backup-restore",
+        "secretName": "azure-fooprod-volume",
+        "secretNamespace": "sample",
+        "shareName": "fooprodserver-backup-restore",
       },
       "capacity": Object {
         "storage": "128Gi",
@@ -222,19 +221,8 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
 ]
 `;
 
-exports[`should create restore DB job with post-restore script 1`] = `
+exports[`should generate manifests to restore foo project and remove all users 1`] = `
 Array [
-  Object {
-    "apiVersion": "v1",
-    "data": Object {
-      "post-restore.sql": "DELETE * from users;",
-    },
-    "kind": "ConfigMap",
-    "metadata": Object {
-      "name": "post-restore-script-configmap-my-test-branch-3mtyhl",
-      "namespace": "sample-next-app-secret",
-    },
-  },
   Object {
     "apiVersion": "batch/v1",
     "kind": "Job",
@@ -248,8 +236,8 @@ Array [
         "owner": "my-team",
         "team": "my-team",
       },
-      "name": "restore-db-my-test-branch-45q3uw",
-      "namespace": "sample-next-app-secret",
+      "name": "restore-db-my-app",
+      "namespace": "sample",
     },
     "spec": Object {
       "backoffLimit": 0,
@@ -265,43 +253,45 @@ Array [
               "command": Array [
                 "sh",
                 "-c",
-                "
+                "#!/usr/bin/env bash
+
+[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
+[ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
+[ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
+[ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
+[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
 
 echo \\"starting restore into $PGHOST/$PGDATABASE\\"
 
-[ ! -z $PGDATABASE ] || (echo \\"No PGDATABASE\\"; exit 1)
-[ ! -z $PGHOST ] || (echo \\"No PGHOST\\"; exit 1)
-[ ! -z $PGUSER ] || (echo \\"No PGUSER\\"; exit 1)
-[ ! -z $PGPASSWORD ] || (echo \\"No PGPASSWORD\\"; exit 1)
-[ ! -z $OWNER ] || (echo \\"No OWNER\\"; exit 1)
-
 # get latest backup folder
-LATEST=$(ls -1Fr /mnt/data | head -n 1);
-DUMP=\\"/mnt/data/\${LATEST}\${FILE}\\"
+LATEST=$(ls -1Fr . | head -n 1);
+DUMP=\\"./\${LATEST}\${FILE}\\"
 echo \\"Restore \${DUMP} into \${PGDATABASE}\\";
 
 pg_isready;
 
-pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --exclude-schema=audit   --no-owner   --role \${OWNER}   --no-acl   --verbose   \${DUMP};
+pg_restore \\\\
+  --clean \\\\
+  --dbname \\"\${PGDATABASE}\\" \\\\
+  --exclude-schema=audit \\\\
+  --if-exists \\\\
+  --no-acl \\\\
+  --no-owner \\\\
+  --role \\"\${OWNER}\\" \\\\
+  --verbose \\\\
+  \\"\${DUMP}\\";
 
-psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
+psql
+  --command=\\"ALTER SCHEMA public owner to \${OWNER};\\"
+  --set=ON_ERROR_STOP=1
+  \\"\${PGDATABASE}\\"
 
-[ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
+[ -f \\"/mnt/scripts/post-restore.sql\\" ] && \\\\
+  psql \\\\
+    --echo-all \\\\
+    --set=ON_ERROR_STOP=1 \\\\
+    < /mnt/scripts/post-restore.sql
 ",
-              ],
-              "env": Array [
-                Object {
-                  "name": "PGDATABASE",
-                  "value": "db_64105",
-                },
-                Object {
-                  "name": "OWNER",
-                  "value": "user_64105",
-                },
-                Object {
-                  "name": "FILE",
-                  "value": "product_prod_db.psql.gz",
-                },
               ],
               "envFrom": Array [
                 Object {
@@ -333,6 +323,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                   "name": "scripts",
                 },
               ],
+              "workingDir": "/mnt/data",
             },
           ],
           "initContainers": Array [
@@ -379,10 +370,6 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           "volumes": Array [
             Object {
               "name": "backups",
-              "persistentVolumeClaim": Object {
-                "claimName": "sample-next-app-backup-restore",
-                "readOnly": true,
-              },
             },
             Object {
               "configMap": Object {
@@ -409,8 +396,8 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "owner": "my-team",
         "team": "my-team",
       },
-      "name": "sample-next-app-backup-restore",
-      "namespace": "sample-next-app-secret",
+      "name": "foo-backup-restore",
+      "namespace": "sample",
     },
     "spec": Object {
       "accessModes": Array [
@@ -423,7 +410,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
       },
       "selector": Object {
         "matchLabels": Object {
-          "usage": "my-test-sample-next-app-backup-restore",
+          "usage": "my-test-foo-backup-restore",
         },
       },
       "storageClassName": "",
@@ -441,25 +428,36 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
         "application": "www",
         "owner": "my-team",
         "team": "my-team",
-        "usage": "my-test-sample-next-app-backup-restore",
+        "usage": "my-test-foo-backup-restore",
       },
-      "name": "my-test-sample-next-app-backup-restore",
-      "namespace": "sample-next-app-secret",
+      "name": "my-test-foo-backup-restore",
+      "namespace": "sample",
     },
     "spec": Object {
       "accessModes": Array [
         "ReadWriteMany",
       ],
       "azureFile": Object {
-        "secretName": "azure-samplenextappprod-volume",
-        "secretNamespace": "sample-next-app-secret",
-        "shareName": "sample-next-app-backup-restore",
+        "secretName": "azure-fooprod-volume",
+        "secretNamespace": "sample",
+        "shareName": "fooprodserver-backup-restore",
       },
       "capacity": Object {
         "storage": "128Gi",
       },
       "persistentVolumeReclaimPolicy": "Delete",
       "storageClassName": "",
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "data": Object {
+      "post-restore.sql": "DELETE * from users;",
+    },
+    "kind": "ConfigMap",
+    "metadata": Object {
+      "name": "post-restore-script-configmap-my-test-branch-3mtyhl",
+      "namespace": "sample",
     },
   },
 ]

@@ -1,11 +1,15 @@
 import { assert } from "@sindresorhus/is";
 import environments from "@socialgouv/kosko-charts/environments";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
+import type { IAzureFilePersistentVolumeSource } from "kubernetes-models/v1";
 import { PersistentVolume, PersistentVolumeClaim } from "kubernetes-models/v1";
 
 export function azureProjectVolume(
   name: string,
-  { storage }: { storage: string }
+  {
+    azureFile,
+    storage,
+  }: { azureFile?: IAzureFilePersistentVolumeSource; storage: string }
 ): [PersistentVolumeClaim, PersistentVolume] {
   const ciEnv = environments(process.env);
   assert.nonEmptyObject(ciEnv.metadata.annotations);
@@ -55,6 +59,7 @@ export function azureProjectVolume(
         secretName: `azure-${ciEnv.metadata.labels.team}-volume`,
         secretNamespace: ciEnv.metadata.namespace.name,
         shareName: name,
+        ...azureFile,
       },
       capacity: {
         storage,

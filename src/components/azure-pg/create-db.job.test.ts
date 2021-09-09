@@ -1,84 +1,26 @@
-import { createDbJob } from "./create-db.job";
+import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
 
-test("should create a pg secret", () => {
-  const job = createDbJob({
+test("should return a job to create a database", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+  const { createDbJob } = await import("./create-db.job");
+  const job = createDbJob("foobar", {
     database: "some-db",
     password: "my-password",
     user: "tester",
   });
-  expect(job).toMatchInlineSnapshot(
-    {
-      spec: {
-        template: { spec: { containers: [{ image: expect.any(String) }] } },
+  expect(job).toMatchSnapshot({
+    spec: {
+      template: {
+        spec: {
+          containers: [
+            {
+              image: expect.stringMatching(
+                "ghcr.io/socialgouv/docker/azure-db:"
+              ),
+            },
+          ],
+        },
       },
     },
-    `
-    Object {
-      "apiVersion": "batch/v1",
-      "kind": "Job",
-      "spec": Object {
-        "backoffLimit": 5,
-        "template": Object {
-          "metadata": Object {
-            "annotations": Object {
-              "kapp.k14s.io/deploy-logs": "for-new",
-            },
-          },
-          "spec": Object {
-            "containers": Array [
-              Object {
-                "command": Array [
-                  "create-db-user",
-                ],
-                "env": Array [
-                  Object {
-                    "name": "NEW_DB_NAME",
-                    "value": "some-db",
-                  },
-                  Object {
-                    "name": "NEW_USER",
-                    "value": "tester",
-                  },
-                  Object {
-                    "name": "NEW_PASSWORD",
-                    "value": "my-password",
-                  },
-                  Object {
-                    "name": "NEW_DB_EXTENSIONS",
-                    "value": "hstore pgcrypto citext uuid-ossp",
-                  },
-                ],
-                "envFrom": Array [
-                  Object {
-                    "secretRef": Object {
-                      "name": "azure-pg-admin-user",
-                    },
-                  },
-                ],
-                "image": Any<String>,
-                "imagePullPolicy": "IfNotPresent",
-                "name": "create-db-user",
-                "resources": Object {
-                  "limits": Object {
-                    "cpu": "300m",
-                    "memory": "256Mi",
-                  },
-                  "requests": Object {
-                    "cpu": "100m",
-                    "memory": "64Mi",
-                  },
-                },
-              },
-            ],
-            "restartPolicy": "Never",
-          },
-        },
-        "ttlSecondsAfterFinished": 86400,
-      },
-    }
-  `
-  );
-  expect(job.spec?.template.spec?.containers[0].image).toMatch(
-    "ghcr.io/socialgouv/docker/azure-db:"
-  );
+  });
 });

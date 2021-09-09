@@ -57,6 +57,7 @@ export default (env = process.env): CIEnv => {
 
   const environmentSlug = generate(CI_COMMIT_REF_NAME);
 
+  const productionNamespace = PRODUCTION_NAMESPACE ?? CI_PROJECT_NAME;
   const namespaceName = isProduction
     ? PRODUCTION_NAMESPACE ?? CI_PROJECT_NAME
     : KUBE_NAMESPACE;
@@ -91,6 +92,7 @@ export default (env = process.env): CIEnv => {
       rancherId: RANCHER_PROJECT_ID ?? "",
       subdomain,
     },
+    productionNamespace,
     projectName: CI_PROJECT_NAME,
     registry: CI_REGISTRY_IMAGE,
     sha: CI_COMMIT_SHA,

@@ -21,6 +21,7 @@ export default (): CIEnv => ({
     namespace: { name: "sample-42-my-test" },
     subdomain: "subdomain",
   },
+  productionNamespace: "sample",
   projectName: "sample",
   registry: "registry",
   sha: "0123456789abcdefghijklmnopqrstuvwxyz0123",

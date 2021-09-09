@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should create a persistent volume claim and a persistent volume 1`] = `
+exports[`for cdtnadminprodserver 1`] = `
 Array [
   Object {
     "apiVersion": "v1",
@@ -11,9 +11,9 @@ Array [
         "app.gitlab.com/env": "my-test",
       },
       "labels": Object {
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
       },
       "name": "foo",
       "namespace": "sample-42-my-test",
@@ -44,9 +44,9 @@ Array [
         "app.gitlab.com/env": "my-test",
       },
       "labels": Object {
-        "application": "sample",
-        "owner": "sample",
-        "team": "sample",
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
         "usage": "my-test-foo",
       },
       "name": "my-test-foo",
@@ -57,7 +57,78 @@ Array [
         "ReadWriteMany",
       ],
       "azureFile": Object {
-        "secretName": "azure-sample-volume",
+        "secretName": "azure-cdtnadmindev-volume",
+        "secretNamespace": "cdtn-admin",
+        "shareName": "cdtnadminprodserver-backup-restore",
+      },
+      "capacity": Object {
+        "storage": "42o",
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "",
+    },
+  },
+]
+`;
+
+exports[`should create a persistent volume claim and a persistent volume 1`] = `
+Array [
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
+      },
+      "name": "foo",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "resources": Object {
+        "requests": Object {
+          "storage": "42o",
+        },
+      },
+      "selector": Object {
+        "matchLabels": Object {
+          "usage": "my-test-foo",
+        },
+      },
+      "storageClassName": "",
+    },
+  },
+  Object {
+    "apiVersion": "v1",
+    "kind": "PersistentVolume",
+    "metadata": Object {
+      "annotations": Object {
+        "app.gitlab.com/app": "socialgouv-sample",
+        "app.gitlab.com/env": "my-test",
+      },
+      "labels": Object {
+        "application": "www",
+        "owner": "my-team",
+        "team": "my-team",
+        "usage": "my-test-foo",
+      },
+      "name": "my-test-foo",
+      "namespace": "sample-42-my-test",
+    },
+    "spec": Object {
+      "accessModes": Array [
+        "ReadWriteMany",
+      ],
+      "azureFile": Object {
+        "secretName": "azure-my-team-volume",
         "secretNamespace": "sample-42-my-test",
         "shareName": "foo",
       },

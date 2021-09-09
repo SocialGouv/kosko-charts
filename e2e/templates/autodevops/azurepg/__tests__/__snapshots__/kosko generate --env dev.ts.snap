@@ -167,9 +167,26 @@ spec:
 ---
 apiVersion: batch/v1
 kind: Job
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+    kapp.k14s.io/update-strategy: skip
+  labels:
+    application: e2e-branch-42-sample-kosko
+    component: create-db
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-job-e2e-branch
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   backoffLimit: 5
   template:
+    metadata:
+      annotations:
+        kapp.k14s.io/deploy-logs: for-new
     spec:
       containers:
         - command:
@@ -198,9 +215,11 @@ spec:
               memory: 64Mi
       restartPolicy: Never
   ttlSecondsAfterFinished: 86400
+---
+apiVersion: v1
+kind: Secret
 metadata:
   annotations:
-    kapp.k14s.io/update-strategy: skip
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -210,11 +229,8 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: create-db-job-e2e-branch
+  name: azure-pg-user-e2e-branch
   namespace: sample-kosko-24-e2e-branch-42
----
-apiVersion: v1
-kind: Secret
 stringData:
   DATABASE_URL: >-
     postgresql://user_e2e-branch%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
@@ -228,19 +244,5 @@ stringData:
   PGRST_DB_URI: >-
     postgresql://user_e2e-branch%40samplekoskodevserver.postgres.database.azure.com:password_e2e-branch@samplekoskodevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
   PGSSLMODE: require
-  PGUSER: user_e2e-branch@samplekoskodevserver.postgres.database.azure.com
-metadata:
-  annotations:
-    kapp.k14s.io/update-strategy: skip
-    app.gitlab.com/app: socialgouv-sample-kosko
-    app.gitlab.com/env: e2e-branch-42
-    app.gitlab.com/env.name: e2e-branch-dev2
-  labels:
-    application: e2e-branch-42-sample-kosko
-    component: e2e-branch-42-sample-kosko
-    owner: sample-kosko
-    team: sample-kosko
-    cert: wildcard
-  name: azure-pg-user-e2e-branch
-  namespace: sample-kosko-24-e2e-branch-42"
+  PGUSER: user_e2e-branch@samplekoskodevserver.postgres.database.azure.com"
 `;

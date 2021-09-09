@@ -1,25 +1,13 @@
 import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
-import { EnvVar } from "kubernetes-models/v1/EnvVar";
 
 test("should create restore job from dev to dev", async () => {
   jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
 
   const { restoreContainerJob } = await import("./restore-container.job");
   expect(
-    restoreContainerJob({
-      env: [
-        new EnvVar({
-          name: "SOURCE_CONTAINER",
-          value: "dev-files1",
-        }),
-        new EnvVar({
-          name: "DESTINATION_CONTAINER",
-          value: "dev-files2",
-        }),
-      ],
-      from: "dev",
-      project: "some-cool-project",
-      to: "dev",
+    restoreContainerJob("my-files", {
+      from: { container: "dev-files1", volume: "dev" },
+      to: { container: "dev-files2", volume: "dev" },
     })
   ).toMatchSnapshot();
 });
@@ -29,20 +17,9 @@ test("should create restore job from dev to prod", async () => {
 
   const { restoreContainerJob } = await import("./restore-container.job");
   expect(
-    restoreContainerJob({
-      env: [
-        new EnvVar({
-          name: "SOURCE_CONTAINER",
-          value: "dev-files1",
-        }),
-        new EnvVar({
-          name: "DESTINATION_CONTAINER",
-          value: "prod-files2",
-        }),
-      ],
-      from: "dev",
-      project: "some-cool-project",
-      to: "prod",
+    restoreContainerJob("my-files", {
+      from: { container: "dev-files", volume: "dev" },
+      to: { container: "prod-files", volume: "prod" },
     })
   ).toMatchSnapshot();
 });
@@ -52,20 +29,9 @@ test("should create restore job from prod to prod", async () => {
 
   const { restoreContainerJob } = await import("./restore-container.job");
   expect(
-    restoreContainerJob({
-      env: [
-        new EnvVar({
-          name: "SOURCE_CONTAINER",
-          value: "prod-files1",
-        }),
-        new EnvVar({
-          name: "DESTINATION_CONTAINER",
-          value: "prod-files2",
-        }),
-      ],
-      from: "prod",
-      project: "some-cool-project",
-      to: "prod",
+    restoreContainerJob("my-files", {
+      from: { container: "prod-files1", volume: "prod" },
+      to: { container: "prod-files2", volume: "prod" },
     })
   ).toMatchSnapshot();
 });
@@ -75,20 +41,9 @@ test("should create restore job from prod to dev", async () => {
 
   const { restoreContainerJob } = await import("./restore-container.job");
   expect(
-    restoreContainerJob({
-      env: [
-        new EnvVar({
-          name: "SOURCE_CONTAINER",
-          value: "prod-files1",
-        }),
-        new EnvVar({
-          name: "DESTINATION_CONTAINER",
-          value: "dev-files2",
-        }),
-      ],
-      from: "prod",
-      project: "some-cool-project",
-      to: "dev",
+    restoreContainerJob("my-files", {
+      from: { container: "prod-files", volume: "prod" },
+      to: { container: "dev-files", volume: "dev" },
     })
   ).toMatchSnapshot();
 });
