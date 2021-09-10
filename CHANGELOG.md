@@ -1,3 +1,10 @@
+# [10.0.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.4...v10.0.0-alpha.5) (2021-09-10)
+
+
+### Features
+
+* **azure-pg:** require additionnal secrets ([50778ae](https://github.com/SocialGouv/kosko-charts/commit/50778aeb6c42bad1cf6c4033730e40558407d288))
+
 # [10.0.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.3...v10.0.0-alpha.4) (2021-09-10)
 
 
