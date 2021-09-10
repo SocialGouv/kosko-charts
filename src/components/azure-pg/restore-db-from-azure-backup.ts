@@ -4,7 +4,6 @@ import { waitForPostgres } from "@socialgouv/kosko-charts/utils";
 import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
 import { ok } from "assert";
-import { readFileSync } from "fs";
 import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1";
 import { Job } from "kubernetes-models/batch/v1";
 import type { IVolumeMount } from "kubernetes-models/v1";
@@ -15,7 +14,6 @@ import {
   Volume,
   VolumeMount,
 } from "kubernetes-models/v1";
-import { join } from "path";
 
 import { azureProjectVolume } from "../azure-storage/azureProjectVolume";
 import { autodevopsPgUserParams } from ".";
@@ -25,10 +23,31 @@ const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
 // renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.45.0
 const SOCIALGOUV_DOCKER_VERSION = "6.45.0";
 
-const bashScript = readFileSync(
-  join(__dirname, "./restore-db-from-azure-backup.script.sh"),
-  "utf8"
-);
+const restoreScript = `
+echo "starting restore into $PGHOST/$PGDATABASE"
+[ ! -z $PGDATABASE ] || (echo "No PGDATABASE"; exit 1)
+[ ! -z $PGHOST ] || (echo "No PGHOST"; exit 1)
+[ ! -z $PGUSER ] || (echo "No PGUSER"; exit 1)
+[ ! -z $PGPASSWORD ] || (echo "No PGPASSWORD"; exit 1)
+[ ! -z $OWNER ] || (echo "No OWNER"; exit 1)
+# get latest backup folder
+LATEST=$(ls -1Fr /mnt/data | head -n 1);
+DUMP="/mnt/data/\${LATEST}\${FILE}"
+echo "Restore \${DUMP} into \${PGDATABASE}";
+pg_isready;
+pg_restore \
+  --dbname \${PGDATABASE} \
+  --clean --if-exists \
+  --exclude-schema=audit \
+  --no-owner \
+  --role \${OWNER} \
+  --no-acl \
+  --verbose \
+  \${DUMP};
+psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c "ALTER SCHEMA public owner to \${OWNER};"
+[ -f "/mnt/scripts/post-restore.sql" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
+`;
+
 interface RestoreDbJobArgs {
   project: string;
 
@@ -53,7 +72,7 @@ export const restoreDbFromAzureBackup = (
     configMap: postRestoreScriptConfigMap,
     volume: postRestoreScriptVolume,
     volumeMount: postRestoreScriptVolumeMount,
-  } = restoreScript(env, postRestoreScript);
+  } = createPostRestoreScript(env, postRestoreScript);
 
   const scriptContainer = restoreScriptContainer(
     dataMount,
@@ -111,7 +130,7 @@ function restoreScriptContainer(
   postRestoreScriptVolumeMount?: IVolumeMount
 ) {
   return new Container({
-    command: ["sh", "-c", bashScript],
+    command: ["sh", "-c", restoreScript],
     envFrom: [
       {
         secretRef: {
@@ -205,15 +224,15 @@ function azureBackupVolume(env: CIEnv, project: string) {
 
   return { pv, pvc, volume };
 }
-function restoreScript(env: CIEnv, postRestoreScript?: string) {
-  if (!postRestoreScript) {
+function createPostRestoreScript(env: CIEnv, script?: string) {
+  if (!script) {
     return {};
   }
 
   const configMapName = generate(`post-restore-script-configmap-${env.branch}`);
   const configMap = new ConfigMap({
     data: {
-      "post-restore.sql": postRestoreScript,
+      "post-restore.sql": script,
     },
     metadata: {
       name: configMapName,
