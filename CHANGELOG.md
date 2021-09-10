@@ -1,3 +1,10 @@
+# [10.0.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.3...v10.0.0-alpha.4) (2021-09-10)
+
+
+### Bug Fixes
+
+* **release:** back to sh content in ts files :( ([cf3eeef](https://github.com/SocialGouv/kosko-charts/commit/cf3eeefd3c83179dea11894b0fb8bd12d426bf9a))
+
 # [10.0.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.2...v10.0.0-alpha.3) (2021-09-09)
 
 
