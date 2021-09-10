@@ -72,14 +72,23 @@ export const restoreDbFromAzureBackup = async (
 ): Promise<{ metadata?: IObjectMeta; kind: string }[]> => {
   const ciEnv = ci(process.env);
   const jobName = generate(`restore-db-${name}`);
+  const { pvc, pv } = azureBackupVolume(ciEnv, project);
+  ok(pvc.metadata);
+  ok(pvc.metadata.name);
+
   const backupsVolume = new Volume({
     name: "backups",
+    persistentVolumeClaim: {
+      claimName: pvc.metadata.name,
+      readOnly: true,
+    },
   });
+
   const dataMount = new VolumeMount({
     mountPath: "/mnt/data",
     name: backupsVolume.name,
   });
-  const { pvc, pv } = azureBackupVolume(ciEnv, project);
+
   const {
     configMap: postRestoreScriptConfigMap,
     volume: postRestoreScriptVolume,
@@ -245,8 +254,10 @@ function azureBackupVolume(env: CIEnv, project: string) {
   });
   updateMetadata(pv, { namespace: { name: env.productionNamespace } });
   updateMetadata(pvc, { namespace: { name: env.productionNamespace } });
-  ok(pvc.metadata?.name, "Missing pvc.metadata.name");
-  ok(pv.metadata?.name, "Missing pv.metadata.name");
+  ok(pvc.metadata, "Missing pvc.metadata");
+  ok(pvc.metadata.name, "Missing pvc.metadata.name");
+  ok(pv.metadata, "Missing pv.metadata");
+  ok(pv.metadata.name, "Missing pv.metadata.name");
 
   // NOTE(douglasduteil): lock the pvc and the pc on the existing secret prod namepace
   ok(pv.spec?.azureFile, "Missing pv.spec?.azureFile");

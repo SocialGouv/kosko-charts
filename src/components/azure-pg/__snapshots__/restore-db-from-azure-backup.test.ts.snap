@@ -136,6 +136,10 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           "volumes": Array [
             Object {
               "name": "backups",
+              "persistentVolumeClaim": Object {
+                "claimName": "foo-backup-restore",
+                "readOnly": true,
+              },
             },
           ],
         },
@@ -372,6 +376,10 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
           "volumes": Array [
             Object {
               "name": "backups",
+              "persistentVolumeClaim": Object {
+                "claimName": "foo-backup-restore",
+                "readOnly": true,
+              },
             },
             Object {
               "configMap": Object {
