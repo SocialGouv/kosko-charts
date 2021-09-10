@@ -49,6 +49,20 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
 [ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
 ",
               ],
+              "env": Array [
+                Object {
+                  "name": "PGDATABASE",
+                  "value": "autodevops_my-test-branch",
+                },
+                Object {
+                  "name": "OWNER",
+                  "value": "user_my-test-branch",
+                },
+                Object {
+                  "name": "FILE",
+                  "value": "hasura_prod_db.psql.gz",
+                },
+              ],
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
@@ -195,6 +209,26 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
       "storageClassName": "",
     },
   },
+  Object {
+    "kind": "SealSecret",
+    "metadata": Object {
+      "label": Object {
+        "//0": "this is a mocked ;)",
+        "//1": "for 'environments/prod/restore/azure-pg-admin-user-dev.yaml'",
+      },
+      "name": "restore/azure-pg-admin-user-dev.yaml",
+    },
+  },
+  Object {
+    "kind": "SealSecret",
+    "metadata": Object {
+      "label": Object {
+        "//0": "this is a mocked ;)",
+        "//1": "for 'environments/prod/restore/pg-backup.sealed-secret.yaml'",
+      },
+      "name": "restore/pg-backup.sealed-secret.yaml",
+    },
+  },
 ]
 `;
 
@@ -246,6 +280,20 @@ pg_restore   --dbname \${PGDATABASE}   --clean --if-exists   --exclude-schema=au
 psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWNER};\\"
 [ -f \\"/mnt/scripts/post-restore.sql\\" ] && psql -v ON_ERROR_STOP=1 -a < /mnt/scripts/post-restore.sql
 ",
+              ],
+              "env": Array [
+                Object {
+                  "name": "PGDATABASE",
+                  "value": "autodevops_my-test-branch",
+                },
+                Object {
+                  "name": "OWNER",
+                  "value": "user_my-test-branch",
+                },
+                Object {
+                  "name": "FILE",
+                  "value": "hasura_prod_db.psql.gz",
+                },
               ],
               "envFrom": Array [
                 Object {
@@ -401,6 +449,26 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
       },
       "persistentVolumeReclaimPolicy": "Delete",
       "storageClassName": "",
+    },
+  },
+  Object {
+    "kind": "SealSecret",
+    "metadata": Object {
+      "label": Object {
+        "//0": "this is a mocked ;)",
+        "//1": "for 'environments/prod/restore/azure-pg-admin-user-dev.yaml'",
+      },
+      "name": "restore/azure-pg-admin-user-dev.yaml",
+    },
+  },
+  Object {
+    "kind": "SealSecret",
+    "metadata": Object {
+      "label": Object {
+        "//0": "this is a mocked ;)",
+        "//1": "for 'environments/prod/restore/pg-backup.sealed-secret.yaml'",
+      },
+      "name": "restore/pg-backup.sealed-secret.yaml",
     },
   },
   Object {

@@ -1,12 +1,14 @@
+import type { Environment } from "@kosko/env";
 import ci from "@socialgouv/kosko-charts/environments";
 import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils";
 import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
+import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
 import { ok } from "assert";
 import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1";
 import { Job } from "kubernetes-models/batch/v1";
-import type { IVolumeMount } from "kubernetes-models/v1";
+import type { ISecret, IVolumeMount } from "kubernetes-models/v1";
 import {
   AzureFilePersistentVolumeSource,
   ConfigMap,
@@ -49,16 +51,26 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c "ALTER SCHEMA public owner to \${OWNER
 `;
 
 interface RestoreDbJobArgs {
-  project: string;
-
+  azureStorageAccountBackupSecretFile: string;
+  env: Environment;
+  file: string;
+  pgAdminDevSecretFile: string;
   postRestoreScript?: string;
+  project: string;
 }
 
-export const restoreDbFromAzureBackup = (
+export const restoreDbFromAzureBackup = async (
   name: string,
-  { postRestoreScript, project }: RestoreDbJobArgs
-): { metadata?: IObjectMeta; kind: string }[] => {
-  const env = ci(process.env);
+  {
+    azureStorageAccountBackupSecretFile,
+    pgAdminDevSecretFile,
+    env,
+    file,
+    postRestoreScript,
+    project,
+  }: RestoreDbJobArgs
+): Promise<{ metadata?: IObjectMeta; kind: string }[]> => {
+  const ciEnv = ci(process.env);
   const jobName = generate(`restore-db-${name}`);
   const backupsVolume = new Volume({
     name: "backups",
@@ -67,19 +79,32 @@ export const restoreDbFromAzureBackup = (
     mountPath: "/mnt/data",
     name: backupsVolume.name,
   });
-  const { pvc, pv } = azureBackupVolume(env, project);
+  const { pvc, pv } = azureBackupVolume(ciEnv, project);
   const {
     configMap: postRestoreScriptConfigMap,
     volume: postRestoreScriptVolume,
     volumeMount: postRestoreScriptVolumeMount,
-  } = createPostRestoreScript(env, postRestoreScript);
+  } = createPostRestoreScript(ciEnv, postRestoreScript);
 
+  const currentBranchParams = autodevopsPgUserParams(ciEnv.branchSlug);
   const scriptContainer = restoreScriptContainer(
     dataMount,
+    currentBranchParams,
+    file,
     postRestoreScriptVolumeMount
   );
 
-  const currentBranchParams = autodevopsPgUserParams(env.branchSlug);
+  const backupFilesSecret = await loadYaml<ISecret>(
+    env,
+    azureStorageAccountBackupSecretFile
+  );
+  ok(backupFilesSecret, "Missing restore/pg-backup.sealed-secret.yaml");
+  ok(backupFilesSecret.metadata, "Missing secret.metadata");
+  ok(backupFilesSecret.metadata.name, "Missing secret.metadata.name");
+  const pgAdminDevSecret = await loadYaml<ISecret>(env, pgAdminDevSecretFile);
+  ok(pgAdminDevSecret, "Missing restore/azure-pg-admin-user-dev.yaml");
+  ok(pgAdminDevSecret.metadata, "Missing secret.metadata");
+  ok(pgAdminDevSecret.metadata.name, "Missing secret.metadata.name");
 
   const restoreJob = new Job({
     metadata: {
@@ -88,10 +113,10 @@ export const restoreDbFromAzureBackup = (
       },
       labels: {
         component: "restore-db",
-        ...env.metadata.labels,
+        ...ciEnv.metadata.labels,
       },
       name: jobName,
-      namespace: env.productionNamespace,
+      namespace: ciEnv.productionNamespace,
     },
     spec: {
       backoffLimit: 0,
@@ -119,6 +144,8 @@ export const restoreDbFromAzureBackup = (
     restoreJob,
     pvc,
     pv,
+    pgAdminDevSecret,
+    backupFilesSecret,
     ...(postRestoreScriptConfigMap ? [postRestoreScriptConfigMap] : []),
   ];
 };
@@ -127,10 +154,26 @@ export const restoreDbFromAzureBackup = (
 
 function restoreScriptContainer(
   dataMount: IVolumeMount,
+  pgParams: PgParams,
+  file: string,
   postRestoreScriptVolumeMount?: IVolumeMount
 ) {
   return new Container({
     command: ["sh", "-c", restoreScript],
+    env: [
+      {
+        name: "PGDATABASE",
+        value: pgParams.database,
+      },
+      {
+        name: "OWNER",
+        value: pgParams.user,
+      },
+      {
+        name: "FILE",
+        value: file,
+      },
+    ],
     envFrom: [
       {
         secretRef: {
