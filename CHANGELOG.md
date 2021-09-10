@@ -1,3 +1,10 @@
+# [10.0.0-alpha.7](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.6...v10.0.0-alpha.7) (2021-09-10)
+
+
+### Bug Fixes
+
+* **azure-db:** add missing backup volume link ([2a40fd3](https://github.com/SocialGouv/kosko-charts/commit/2a40fd33f85c6bcb121da08584e5a720b0c4ca74))
+
 # [10.0.0-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.5...v10.0.0-alpha.6) (2021-09-10)
 
 
