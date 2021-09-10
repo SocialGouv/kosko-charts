@@ -1,44 +1,9 @@
-# [10.0.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.4...v10.0.0-alpha.5) (2021-09-10)
-
-
-### Features
-
-* **azure-pg:** require additionnal secrets ([50778ae](https://github.com/SocialGouv/kosko-charts/commit/50778aeb6c42bad1cf6c4033730e40558407d288))
-
-# [10.0.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.3...v10.0.0-alpha.4) (2021-09-10)
+## [9.5.6](https://github.com/SocialGouv/kosko-charts/compare/v9.5.5...v9.5.6) (2021-09-10)
 
 
 ### Bug Fixes
 
-* **release:** back to sh content in ts files :( ([cf3eeef](https://github.com/SocialGouv/kosko-charts/commit/cf3eeefd3c83179dea11894b0fb8bd12d426bf9a))
-
-# [10.0.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.2...v10.0.0-alpha.3) (2021-09-09)
-
-
-### Bug Fixes
-
-* **release:** move where the sh file is loaded ([1756ddb](https://github.com/SocialGouv/kosko-charts/commit/1756ddb604b4c300b5fc2aff059ff30a32480563))
-
-# [10.0.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v10.0.0-alpha.1...v10.0.0-alpha.2) (2021-09-09)
-
-
-### Bug Fixes
-
-* **release:** ensure to cp no ts files on releases ([8a68f39](https://github.com/SocialGouv/kosko-charts/commit/8a68f39199f14fc5afab104643cc4a47e6dbae7a))
-
-# [10.0.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.5.5...v10.0.0-alpha.1) (2021-09-09)
-
-
-* refactor(azure-pg)!: implement restore db again (#712) ([6f161fc](https://github.com/SocialGouv/kosko-charts/commit/6f161fcb60738de48df37d8b227f1680211f0dfe)), closes [#712](https://github.com/SocialGouv/kosko-charts/issues/712)
-
-
-### BREAKING CHANGES
-
-* Yet another restore db iteration
-
-- The `@socialgouv/kosko-charts/components/azure-pg` module is now an endpoint returning multiple components as function.
-
-- The `@socialgouv/kosko-charts/components/azure-container` module is now an endpoint returning the new `restoreContainerJob` function
+* **deps:** update dependency @sindresorhus/is to ^4.1.0 ([#721](https://github.com/SocialGouv/kosko-charts/issues/721)) ([ed0bc59](https://github.com/SocialGouv/kosko-charts/commit/ed0bc59cd6944e03ffa6fae360215bf06cfd47ad))
 
 ## [9.5.5](https://github.com/SocialGouv/kosko-charts/compare/v9.5.4...v9.5.5) (2021-09-09)
 
