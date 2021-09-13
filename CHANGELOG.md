@@ -1,3 +1,10 @@
+## [9.5.8](https://github.com/SocialGouv/kosko-charts/compare/v9.5.7...v9.5.8) (2021-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sindresorhus/is to ^4.2.0 ([#727](https://github.com/SocialGouv/kosko-charts/issues/727)) ([3697000](https://github.com/SocialGouv/kosko-charts/commit/3697000d45f2282fb33d9bc7e6018b6cdc47b88f))
+
 ## [9.5.7](https://github.com/SocialGouv/kosko-charts/compare/v9.5.6...v9.5.7) (2021-09-10)
 
 
