@@ -1,7 +1,7 @@
 import { createNodeCJSEnvironment } from "@kosko/env";
 import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
 import { promises } from "fs";
-import { Ingress } from "kubernetes-models/_definitions/IoK8sApiNetworkingV1Ingress";
+import type { Ingress } from "kubernetes-models/_definitions/IoK8sApiNetworkingV1Ingress";
 import { directory } from "tempy";
 
 beforeEach(() => {
@@ -144,13 +144,13 @@ test("very long hostnames should be padded", async () => {
   const { create } = await import("./index");
   const manifests = await create("app", {
     config: {
-      subdomain: "some-very-very-very-very-very-very-long-subdomain",
       subDomainPrefix:
         "some-very-very-very-very-very-very-long-subdomain-prefix",
+      subdomain: "some-very-very-very-very-very-very-long-subdomain",
     },
     env,
   });
   const ingress = manifests.find((m) => m.kind === "Ingress") as Ingress;
-  //@ts-ignore-error
+  //@ts-expect-error-error
   expect(ingress.spec?.rules[0]?.host?.split(".")[0].length).toEqual(63);
 });
