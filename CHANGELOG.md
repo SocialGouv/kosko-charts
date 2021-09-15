@@ -1,3 +1,10 @@
+## [9.5.10](https://github.com/SocialGouv/kosko-charts/compare/v9.5.9...v9.5.10) (2021-09-15)
+
+
+### Bug Fixes
+
+* **app:** fix very long hostnames ([#728](https://github.com/SocialGouv/kosko-charts/issues/728)) ([027e048](https://github.com/SocialGouv/kosko-charts/commit/027e048440fac3ec53b2e78469fffc1dccb11cb1))
+
 ## [9.5.9](https://github.com/SocialGouv/kosko-charts/compare/v9.5.8...v9.5.9) (2021-09-15)
 
 
