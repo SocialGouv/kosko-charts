@@ -187,20 +187,24 @@ export const create: CreateFn = async (
   });
   manifests.push(service);
 
+  const MAX_HOSTNAME_SIZE = 63;
+  const shortenHost = (hostname: string) =>
+    hostname.slice(0, MAX_HOSTNAME_SIZE);
+
   /* INGRESS */
   if (envParams.ingress !== false) {
     let hosts = [
-      `${(envParams.subDomainPrefix || "") + ciEnv.metadata.subdomain}.${
-        ciEnv.metadata.domain
-      }`,
+      `${shortenHost(
+        (envParams.subDomainPrefix || "") + ciEnv.metadata.subdomain
+      )}.${ciEnv.metadata.domain}`,
     ];
 
     if (env.env === "prod") {
       hosts = [
-        `${
+        `${shortenHost(
           (envParams.subDomainPrefix || "") +
-          (envParams.subdomain || ciEnv.metadata.subdomain)
-        }.${envParams.domain || ciEnv.metadata.domain}`,
+            (envParams.subdomain || ciEnv.metadata.subdomain)
+        )}.${envParams.domain || ciEnv.metadata.domain}`,
       ];
     }
 
@@ -210,6 +214,7 @@ export const create: CreateFn = async (
       serviceName: name,
       isProduction: ciEnv.isProduction,
     });
+
     // add gitlab annotations
     updateMetadata(ingress, {
       annotations: envParams.annotations || {},
