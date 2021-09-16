@@ -1,3 +1,10 @@
+## [9.5.11](https://github.com/SocialGouv/kosko-charts/compare/v9.5.10...v9.5.11) (2021-09-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^14.17.17 ([#733](https://github.com/SocialGouv/kosko-charts/issues/733)) ([e7896c0](https://github.com/SocialGouv/kosko-charts/commit/e7896c05856dfa2f5c305bc9d6057635337c9c7a))
+
 ## [9.5.10](https://github.com/SocialGouv/kosko-charts/compare/v9.5.9...v9.5.10) (2021-09-15)
 
 
