@@ -33,7 +33,7 @@
     "kosko": "^1.1.5",
     "lint-staged": "^11.1.2",
     "onchange": "^7.1.0",
-    "prettier": "^2.4.0",
+    "prettier": "^2.4.1",
     "tempy": "^1.0.1",
     "ts-node": "^10.2.1",
     "typedoc": "^0.22.3",
