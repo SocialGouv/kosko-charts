@@ -30,9 +30,16 @@ export const getHarborImagePath = ({
   registry = process.env.HARBOR_REGISTRY ?? "harbor.fabrique.social.gouv.fr",
   project = process.env.HARBOR_PROJECT,
 }: HarborProjectImageProps): string => {
-  const tag = process.env.CI_COMMIT_TAG
+  let tag = process.env.CI_COMMIT_TAG
     ? process.env.CI_COMMIT_TAG.slice(1)
     : process.env.CI_COMMIT_SHA;
+
+  if (process.env.SOCIALGOUV_BASE_DOMAIN) {
+    tag =
+      process.env.GITHUB_REF && process.env.GITHUB_REF.startsWith("refs/tags/")
+        ? (process.env.GITHUB_REF.split("/").pop() ?? "").substring(1)
+        : `sha-${process.env.GITHUB_SHA}`;
+  }
 
   return `${registry}/${project}/${name}:${tag}`;
 };
