@@ -48,3 +48,24 @@ test("custom registry with tag", () => {
     "another-registry/another-project/frontend:1.2.3"
   );
 });
+
+test("custom registry with Github tag", () => {
+  process.env.HARBOR_PROJECT = "another-project";
+  process.env.HARBOR_REGISTRY = "another-registry";
+  process.env.SOCIALGOUV_BASE_DOMAIN = "xxx";
+  process.env.GITHUB_REF = "refs/tags/v1.2.3";
+  expect(getHarborImagePath({ name: "frontend" })).toStrictEqual(
+    "another-registry/another-project/frontend:1.2.3"
+  );
+});
+
+test("custom registry with Github sha", () => {
+  process.env.HARBOR_PROJECT = "another-project";
+  process.env.HARBOR_REGISTRY = "another-registry";
+  process.env.SOCIALGOUV_BASE_DOMAIN = "xxx";
+  process.env.GITHUB_REF = "refs/head/xxx";
+  process.env.GITHUB_SHA = "123456";
+  expect(getHarborImagePath({ name: "frontend" })).toStrictEqual(
+    "another-registry/another-project/frontend:sha-123456"
+  );
+});

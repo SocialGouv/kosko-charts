@@ -255,7 +255,8 @@ spec:
         team: sample-next-app
     spec:
       containers:
-        - image: harbor.fabrique.social.gouv.fr/undefined/www:undefined
+        - image: >-
+            harbor.fabrique.social.gouv.fr/undefined/www:sha-8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
