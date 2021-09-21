@@ -1,3 +1,10 @@
+## [9.5.12](https://github.com/SocialGouv/kosko-charts/compare/v9.5.11...v9.5.12) (2021-09-21)
+
+
+### Bug Fixes
+
+* **getHarborImagePath:** allow from github too ([#739](https://github.com/SocialGouv/kosko-charts/issues/739)) ([a91f2d2](https://github.com/SocialGouv/kosko-charts/commit/a91f2d2011519c1e9b380abd9a1452435bbff1b9))
+
 ## [9.5.11](https://github.com/SocialGouv/kosko-charts/compare/v9.5.10...v9.5.11) (2021-09-16)
 
 

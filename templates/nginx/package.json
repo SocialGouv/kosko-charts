@@ -4,7 +4,7 @@
     "kubernetes-models": "^2.0.2"
   },
   "devDependencies": {
-    "@socialgouv/kosko-charts": "9.5.11",
+    "@socialgouv/kosko-charts": "9.5.12",
     "@types/node": "^14.17.17",
     "dotenv": "^10.0.0",
     "kosko": "^1.1.5",
