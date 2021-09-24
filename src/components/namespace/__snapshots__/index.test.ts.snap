@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renovate : should create a namespace with 1 day duration 1`] = `
+Object {
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": Object {
+    "annotations": Object {
+      "app.gitlab.com/app": "socialgouv-sample",
+      "app.gitlab.com/env": "my-test",
+      "field.cattle.io/creatorId": "gitlab",
+      "field.cattle.io/projectId": "",
+      "git/branch": "",
+      "git/remote": "",
+      "janitor/ttl": "1d",
+      "socialgouv/creator": "autodevops",
+    },
+    "labels": Object {
+      "application": "www",
+      "azure-pg-admin-user": "my-team",
+      "owner": "my-team",
+      "team": "my-team",
+    },
+    "name": "sample-42-my-test",
+  },
+}
+`;
+
 exports[`should create a namespace 1`] = `
 Object {
   "apiVersion": "v1",
@@ -12,7 +38,7 @@ Object {
       "field.cattle.io/projectId": "",
       "git/branch": "",
       "git/remote": "",
-      "janitor/ttl": "15d",
+      "janitor/ttl": "7d",
       "socialgouv/creator": "autodevops",
     },
     "labels": Object {
@@ -38,7 +64,7 @@ Object {
       "field.cattle.io/projectId": "",
       "git/branch": "",
       "git/remote": "",
-      "janitor/ttl": "15d",
+      "janitor/ttl": "7d",
       "socialgouv/creator": "autodevops",
     },
     "labels": Object {

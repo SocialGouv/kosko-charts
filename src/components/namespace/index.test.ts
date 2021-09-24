@@ -29,7 +29,22 @@ test("should create a namespace with extra labels and annotations", async () => 
     namespace.metadata &&
       namespace.metadata.annotations &&
       namespace.metadata.annotations["janitor/ttl"]
-  ).toEqual("15d");
+  ).toEqual("7d");
+});
+
+test("renovate : should create a namespace with 1 day duration", async () => {
+  jest.doMock("@socialgouv/kosko-charts/environments/gitlab", () => () => ({
+    ...environmentMock(),
+    branch: "renovate/pouet",
+  }));
+  const { createNamespace } = await import("./index");
+  const namespace = createNamespace();
+  expect(namespace).toMatchSnapshot();
+  expect(
+    namespace.metadata &&
+      namespace.metadata.annotations &&
+      namespace.metadata.annotations["janitor/ttl"]
+  ).toEqual("1d");
 });
 
 test("should NOT add janitor annotation if keepAlive set to true", async () => {
