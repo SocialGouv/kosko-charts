@@ -1,3 +1,10 @@
+# [9.6.0](https://github.com/SocialGouv/kosko-charts/compare/v9.5.14...v9.6.0) (2021-09-27)
+
+
+### Features
+
+* **namespace:** reduce ttl ([#744](https://github.com/SocialGouv/kosko-charts/issues/744)) ([6ffd71a](https://github.com/SocialGouv/kosko-charts/commit/6ffd71a560cc291d0434168d43fda272373610ee))
+
 ## [9.5.14](https://github.com/SocialGouv/kosko-charts/compare/v9.5.13...v9.5.14) (2021-09-25)
 
 
