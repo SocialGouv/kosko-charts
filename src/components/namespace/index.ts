@@ -18,7 +18,11 @@ export const createNamespace = (
   const isDestroyable = isDev && !envParams.keepAlive;
 
   if (isDestroyable) {
-    namespaceTtl["janitor/ttl"] = "15d";
+    let maxDuration = "7d";
+    if (ciEnv.branch.startsWith("renovate")) {
+      maxDuration = "1d";
+    }
+    namespaceTtl["janitor/ttl"] = maxDuration;
   }
 
   const namespace = new K8SNamespace({
