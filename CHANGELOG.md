@@ -1,3 +1,10 @@
+## [9.6.2](https://github.com/SocialGouv/kosko-charts/compare/v9.6.1...v9.6.2) (2021-10-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency slugify to ^1.6.1 ([#755](https://github.com/SocialGouv/kosko-charts/issues/755)) ([03ce6f1](https://github.com/SocialGouv/kosko-charts/commit/03ce6f1b42af46e6aaf742690265b7ccf03219eb))
+
 ## [9.6.1](https://github.com/SocialGouv/kosko-charts/compare/v9.6.0...v9.6.1) (2021-09-29)
 
 
