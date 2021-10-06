@@ -1,3 +1,10 @@
+## [9.6.4-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.6.3...v9.6.4-beta.1) (2021-10-06)
+
+
+### Bug Fixes
+
+* Override projectName by SOCIALGOUV_PRODUCTION_NAMESPACE ([756b795](https://github.com/SocialGouv/kosko-charts/commit/756b795054164c8a1a37166e265e6682cd8871f2))
+
 ## [9.6.3](https://github.com/SocialGouv/kosko-charts/compare/v9.6.2...v9.6.3) (2021-10-06)
 
 
