@@ -40,7 +40,8 @@ export default (env = process.env): CIEnv => {
     ? (GITHUB_REF.split("/").pop() ?? "").substring(1)
     : `sha-${GITHUB_SHA}`;
 
-  const projectName = GITHUB_REPOSITORY.split("/")[1];
+  const projectName =
+    SOCIALGOUV_PRODUCTION_NAMESPACE || GITHUB_REPOSITORY.split("/")[1];
 
   const isProduction = Boolean(SOCIALGOUV_PRODUCTION);
   const isPreProduction = Boolean(SOCIALGOUV_PREPRODUCTION);
