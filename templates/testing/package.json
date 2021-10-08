@@ -21,7 +21,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "@types/jest": "^27.0.2",
     "dotenv": "^10.0.0",
-    "jest": "^27.2.4"
+    "jest": "^27.2.5"
   },
   "license": "Apache-2.0",
   "scripts": {
