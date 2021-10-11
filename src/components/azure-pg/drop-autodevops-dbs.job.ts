@@ -5,8 +5,8 @@ interface DropAutodevopsDbsJobArgs {
 }
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
-// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.56.0
-const SOCIALGOUV_DOCKER_VERSION = "6.56.0";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.56.1
+const SOCIALGOUV_DOCKER_VERSION = "6.56.1";
 
 export const dropAutodevopsDbsJob = ({
   secretRefName = `azure-pg-admin-user`,
