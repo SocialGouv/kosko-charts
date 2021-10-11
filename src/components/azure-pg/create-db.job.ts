@@ -3,8 +3,8 @@ import { Job } from "kubernetes-models/batch/v1";
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext uuid-ossp";
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
-// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.45.0
-const SOCIALGOUV_DOCKER_VERSION = "6.45.0";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.56.0
+const SOCIALGOUV_DOCKER_VERSION = "6.56.0";
 
 export const createDbJob = ({
   database,
