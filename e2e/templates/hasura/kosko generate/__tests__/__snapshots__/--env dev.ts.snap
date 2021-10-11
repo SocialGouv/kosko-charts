@@ -111,7 +111,7 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
-          image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.0
+          image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
           resources:
@@ -230,7 +230,7 @@ spec:
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user
-          image: ghcr.io/socialgouv/docker/azure-db:6.56.0
+          image: ghcr.io/socialgouv/docker/azure-db:6.56.1
           imagePullPolicy: IfNotPresent
           name: create-db-user
           resources:
