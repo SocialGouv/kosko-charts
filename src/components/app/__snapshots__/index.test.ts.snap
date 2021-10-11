@@ -304,7 +304,7 @@ Array [
                   },
                 },
               ],
-              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.56.0",
+              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
               "resources": Object {
@@ -715,7 +715,7 @@ Array [
                   },
                 },
               ],
-              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.56.0",
+              "image": "ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1",
               "imagePullPolicy": "Always",
               "name": "wait-for-postgres",
               "resources": Object {
