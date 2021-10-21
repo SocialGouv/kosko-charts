@@ -27,7 +27,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.2",
     "execa": "^5.1.1",
-    "husky": "^7.0.2",
+    "husky": "^7.0.4",
     "jest": "^27.3.1",
     "jest-file-snapshot": "^0.5.0",
     "kosko": "^1.1.5",
