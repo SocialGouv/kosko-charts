@@ -5,7 +5,7 @@
   },
   "devDependencies": {
     "@socialgouv/kosko-charts": "9.6.18",
-    "@types/node": "^14.17.31",
+    "@types/node": "^14.17.32",
     "dotenv": "^10.0.0",
     "kosko": "^1.1.5",
     "ts-node": "^10.4.0",
