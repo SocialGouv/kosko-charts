@@ -1,3 +1,12 @@
+## [9.6.21](https://github.com/SocialGouv/kosko-charts/compare/v9.6.20...v9.6.21) (2021-10-29)
+
+
+### Bug Fixes
+
+* Add sha to preprod image tag in getGithubRegistryImagePath ([cac4d8f](https://github.com/SocialGouv/kosko-charts/commit/cac4d8ff6f47b0e47fe8186f7788de12267aa85d))
+* Update e2e snapshots ([5561ac9](https://github.com/SocialGouv/kosko-charts/commit/5561ac9679d217a3c18f544f54767bc243267df8))
+* Update e2e snapshots ([533e55b](https://github.com/SocialGouv/kosko-charts/commit/533e55bf0f4f2efe15cdeb740754d86e1588289f))
+
 ## [9.6.20](https://github.com/SocialGouv/kosko-charts/compare/v9.6.19...v9.6.20) (2021-10-26)
 
 
