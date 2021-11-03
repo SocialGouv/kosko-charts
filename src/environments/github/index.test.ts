@@ -83,10 +83,10 @@ test("the generated namespace name should not be longer that 63 chars", () => {
       "refs/heads/douglasduteil/build-k8s-make-the-preprod-a-anonym-data-mirror-of-the-production",
   };
 
-  expect(env(testEnv).metadata.namespace.name.length).toBeLessThan(63);
+  expect(env(testEnv).metadata.namespace.name.length).toBeLessThan(53);
   expect(env(testEnv).metadata.namespace).toMatchInlineSnapshot(`
-Object {
-  "name": "sample-next-app-douglasduteil-build-k8s-make-the-prepro-2kt5sc",
-}
-`);
+    Object {
+      "name": "sample-next-app-douglasduteil-build-k8s-make-2kt5sc",
+    }
+  `);
 });
