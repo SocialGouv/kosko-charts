@@ -1,3 +1,10 @@
+## [9.6.22-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.6.21...v9.6.22-beta.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* **slug:** Reduce slug size from 63 to 53 chars ([15d53cb](https://github.com/SocialGouv/kosko-charts/commit/15d53cb3433103b4c069d4a7be8771ac77e1aa91))
+
 ## [9.6.21](https://github.com/SocialGouv/kosko-charts/compare/v9.6.20...v9.6.21) (2021-10-29)
 
 
