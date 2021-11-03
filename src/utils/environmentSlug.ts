@@ -11,7 +11,7 @@ slugify.extend({ "!": "-", ".": "-", "/": "-", "@": "-", _: "-", "~": "-" });
 
 //
 
-const KUBERNETS_MAX_NAME_LENGTH = 63;
+const KUBERNETS_MAX_NAME_LENGTH = 53;
 const SUFFIX_SHA_LENGTH = 8;
 
 //

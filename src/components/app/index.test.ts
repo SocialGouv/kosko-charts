@@ -152,5 +152,5 @@ test("very long hostnames should be padded", async () => {
   });
   const ingress = manifests.find((m) => m.kind === "Ingress") as Ingress;
   //@ts-expect-error-error
-  expect(ingress.spec?.rules[0]?.host?.split(".")[0].length).toEqual(63);
+  expect(ingress.spec?.rules[0]?.host?.split(".")[0].length).toEqual(53);
 });

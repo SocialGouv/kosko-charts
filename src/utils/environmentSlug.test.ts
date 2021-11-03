@@ -43,8 +43,8 @@ ${"v0.1.1"} | ${"v0-1-1-21ni6m"}
 ${"v1.1.1"} | ${"v1-1-1-3k7de0"}
 ...
 ${"renovate/socialgouvdocker-images"} | ${"renovate-socialgouvdocker-images-1e66b4"}
-${"douglasduteil/very-very-very-very-very-long-branch-name!"} | ${"douglasduteil-very-very-very-very-very-long-branch-name-5z9ugw"}
-${"douglasduteil/very-very-very-very-very-very-long-branch-name!"} | ${"douglasduteil-very-very-very-very-very-very-long-branch-1u0g3l"}
+${"douglasduteil/very-very-very-very-very-long-branch-name!"} | ${"douglasduteil-very-very-very-very-very-long-b-5z9ugw"}
+${"douglasduteil/very-very-very-very-very-very-long-branch-name!"} | ${"douglasduteil-very-very-very-very-very-very-l-1u0g3l"}
 `(
   "'$name' 's slug should be '$expected'",
   ({ name, expected }: { name: string; expected: string }) => {

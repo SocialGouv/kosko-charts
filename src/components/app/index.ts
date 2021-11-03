@@ -187,7 +187,7 @@ export const create: CreateFn = async (
   });
   manifests.push(service);
 
-  const MAX_HOSTNAME_SIZE = 63;
+  const MAX_HOSTNAME_SIZE = 53;
   const shortenHost = (hostname: string) =>
     hostname.slice(0, MAX_HOSTNAME_SIZE);
 
