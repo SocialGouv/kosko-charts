@@ -9,7 +9,7 @@
     "@sindresorhus/is": "^4.2.0",
     "fs-extra": "^10.0.0",
     "kubernetes-models": "^2.0.2",
-    "slugify": "^1.6.1"
+    "slugify": "^1.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
