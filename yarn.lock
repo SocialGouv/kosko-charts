@@ -1331,28 +1331,28 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@socialgouv/eslint-config-recommended@^1.97.2":
-  version "1.97.2"
-  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.97.2.tgz#f2dbf57547d4ec6cd4c5027a122af3b9b5d448f0"
-  integrity sha512-m3snPDtDzp75tlDJMf+U0rey2+S+Jq5lvPJrLTWT/6Qzpn2Q4athKaq+jmrH4TSTBRzyUbSWge5ugPiCgUKAfQ==
+"@socialgouv/eslint-config-recommended@^1.98.0":
+  version "1.98.0"
+  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.98.0.tgz#d2d45ac4c7a7350dd1948e0a510071f2c45574d0"
+  integrity sha512-tAEF0Vo2iLBB3Z08W2/opc28RXgWNUs26DSn9eDS3oDhR+8yvp7WZ2sXPIAl4DnQEZKdsUj8YpQ4QzV0FTZJhA==
   dependencies:
     eslint-config-prettier "~8.3.0"
-    eslint-plugin-import "~2.25.2"
+    eslint-plugin-import "~2.25.3"
     eslint-plugin-jest "~25.2.4"
     eslint-plugin-prettier "~4.0.0"
     eslint-plugin-simple-import-sort "~7.0.0"
     eslint-plugin-sort-keys-fix "~1.1.2"
 
-"@socialgouv/eslint-config-typescript@^1.97.2":
-  version "1.97.2"
-  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-typescript/-/eslint-config-typescript-1.97.2.tgz#5c6fdd1188b044d083c0e1f1562f90e4aaca5d2a"
-  integrity sha512-YJ6WGztAufsHwf6L03NLW4QYB7i/CsY3XIEX3jw4nxBGBHdKV+rjZupdIyf0Jgd3GHEKBX7WBMRFAqLd+EGHOA==
+"@socialgouv/eslint-config-typescript@^1.98.0":
+  version "1.98.0"
+  resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-typescript/-/eslint-config-typescript-1.98.0.tgz#d4dc2f4d665c9dc7bae3c9c561b3a0649c1f89a6"
+  integrity sha512-YIq9dKojuqSqMmKhl5EnqFxSfpfsaS114thYPIwjULxx9QN/MuYOnF/0FAix++D70OeVEg7JLmFwXgyTJNyq/A==
   dependencies:
-    "@socialgouv/eslint-config-recommended" "^1.97.2"
+    "@socialgouv/eslint-config-recommended" "^1.98.0"
     "@typescript-eslint/eslint-plugin" "~4.33.0"
     "@typescript-eslint/parser" "~4.33.0"
     eslint-import-resolver-typescript "~2.5.0"
-    eslint-plugin-import "~2.25.2"
+    eslint-plugin-import "~2.25.3"
 
 "@socialgouv/kosko-charts@link:.":
   version "0.0.0"
@@ -2462,7 +2462,7 @@ eslint-module-utils@^2.7.1:
     find-up "^2.1.0"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.25.3, eslint-plugin-import@~2.25.2:
+eslint-plugin-import@^2.25.3, eslint-plugin-import@~2.25.3:
   version "2.25.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.3.tgz#a554b5f66e08fb4f6dc99221866e57cfff824766"
   integrity sha512-RzAVbby+72IB3iOEL8clzPLzL3wpDrlwjsTBAQXgyp5SeTqqY+0bFubwuo+y/HLhNZcXV4XqTBO4LGsfyHIDXg==
