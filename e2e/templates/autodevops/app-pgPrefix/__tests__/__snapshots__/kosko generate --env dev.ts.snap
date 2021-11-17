@@ -78,9 +78,29 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-e2e-branch
           env:
             - name: APP_BASE_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+      initContainers:
+        - env:
+            - name: WAIT_FOR_RETRIES
+              value: '24'
+          envFrom:
+            - secretRef:
+                name: azure-pg-user-e2e-branch
+          image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
+          imagePullPolicy: Always
+          name: wait-for-postgres
+          resources:
+            limits:
+              cpu: 20m
+              memory: 32Mi
+            requests:
+              cpu: 5m
+              memory: 16Mi
 ---
 apiVersion: v1
 kind: Service
@@ -143,5 +163,84 @@ spec:
   tls:
     - hosts:
         - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
-      secretName: wildcard-crt"
+      secretName: wildcard-crt
+---
+apiVersion: batch/v1
+kind: Job
+spec:
+  backoffLimit: 5
+  template:
+    spec:
+      containers:
+        - command:
+            - create-db-user
+          env:
+            - name: NEW_DB_NAME
+              value: autodevops_e2e-branch
+            - name: NEW_USER
+              value: user_e2e-branch
+            - name: NEW_PASSWORD
+              value: password_e2e-branch
+            - name: NEW_DB_EXTENSIONS
+              value: hstore pgcrypto citext uuid-ossp
+          envFrom:
+            - secretRef:
+                name: azure-pg-admin-user
+          image: ghcr.io/socialgouv/docker/azure-db:6.56.1
+          imagePullPolicy: IfNotPresent
+          name: create-db-user
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+      restartPolicy: Never
+  ttlSecondsAfterFinished: 86400
+metadata:
+  annotations:
+    kapp.k14s.io/update-strategy: skip
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-job-e2e-branch
+  namespace: sample-kosko-24-e2e-branch-42
+---
+apiVersion: v1
+kind: Secret
+stringData:
+  DATABASE_URL: >-
+    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+  DB_URI: >-
+    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+  HASURA_GRAPHQL_DATABASE_URL: >-
+    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+  PGDATABASE: autodevops_e2e-branch
+  PGHOST: pgprefixdevserver.postgres.database.azure.com
+  PGPASSWORD: password_e2e-branch
+  PGRST_DB_URI: >-
+    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+  PGSSLMODE: require
+  PGUSER: user_e2e-branch@pgprefixdevserver.postgres.database.azure.com
+metadata:
+  annotations:
+    kapp.k14s.io/update-strategy: skip
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: azure-pg-user-e2e-branch
+  namespace: sample-kosko-24-e2e-branch-42"
 `;
