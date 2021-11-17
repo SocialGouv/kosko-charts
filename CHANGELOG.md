@@ -1,3 +1,10 @@
+# [9.7.0](https://github.com/SocialGouv/kosko-charts/compare/v9.6.24...v9.7.0) (2021-11-17)
+
+
+### Features
+
+* **autodevops:** add config.pgHostDev ([#814](https://github.com/SocialGouv/kosko-charts/issues/814)) ([fdd2091](https://github.com/SocialGouv/kosko-charts/commit/fdd209139e164cb88ed5b93ea17cf22df2978462))
+
 ## [9.6.24](https://github.com/SocialGouv/kosko-charts/compare/v9.6.23...v9.6.24) (2021-11-09)
 
 
