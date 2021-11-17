@@ -1,6 +1,6 @@
 {
   "name": "myapp",
   "type": "app",
-  "pgPrefix": "pgprefix",
+  "pgHostDev": "pgprefix.azure.microsoft.com",
   "azurepg": true
 }

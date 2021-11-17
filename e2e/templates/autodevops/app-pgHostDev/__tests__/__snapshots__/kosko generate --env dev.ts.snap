@@ -217,18 +217,18 @@ apiVersion: v1
 kind: Secret
 stringData:
   DATABASE_URL: >-
-    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+    postgresql://user_e2e-branch%40pgprefix.azure.microsoft.com:password_e2e-branch@pgprefix.azure.microsoft.com/autodevops_e2e-branch?sslmode=require
   DB_URI: >-
-    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+    postgresql://user_e2e-branch%40pgprefix.azure.microsoft.com:password_e2e-branch@pgprefix.azure.microsoft.com/autodevops_e2e-branch?sslmode=require
   HASURA_GRAPHQL_DATABASE_URL: >-
-    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+    postgresql://user_e2e-branch%40pgprefix.azure.microsoft.com:password_e2e-branch@pgprefix.azure.microsoft.com/autodevops_e2e-branch?sslmode=require
   PGDATABASE: autodevops_e2e-branch
-  PGHOST: pgprefixdevserver.postgres.database.azure.com
+  PGHOST: pgprefix.azure.microsoft.com
   PGPASSWORD: password_e2e-branch
   PGRST_DB_URI: >-
-    postgresql://user_e2e-branch%40pgprefixdevserver.postgres.database.azure.com:password_e2e-branch@pgprefixdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
+    postgresql://user_e2e-branch%40pgprefix.azure.microsoft.com:password_e2e-branch@pgprefix.azure.microsoft.com/autodevops_e2e-branch?sslmode=require
   PGSSLMODE: require
-  PGUSER: user_e2e-branch@pgprefixdevserver.postgres.database.azure.com
+  PGUSER: user_e2e-branch@pgprefix.azure.microsoft.com
 metadata:
   annotations:
     kapp.k14s.io/update-strategy: skip

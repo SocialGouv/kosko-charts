@@ -10,16 +10,14 @@ import type { Manifest } from "../types/config";
 import Config from "../utils/config";
 
 export default async (): Promise<{ kind: string }[] | Manifest[]> => {
-  const { azurepg, pgPrefix } = await Config();
+  const { azurepg, pgHostDev } = await Config();
   const ciEnv = environments(process.env);
   if (!azurepg) {
     return [];
   }
 
   if (!ciEnv.isPreProduction && !ciEnv.isProduction) {
-    const config = pgPrefix
-      ? { pgHost: `${pgPrefix}devserver.postgres.database.azure.com` }
-      : undefined;
+    const config = pgHostDev ? { pgHost: pgHostDev } : undefined;
     return create("pg-user", { env, config });
   }
 
