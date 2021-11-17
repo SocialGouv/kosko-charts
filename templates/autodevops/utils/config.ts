@@ -13,6 +13,7 @@ interface ConfigTypes {
   subdomain: string;
   hasura?: boolean | "exposed";
   azurepg?: boolean;
+  pgPrefix?: string;
   probes?: Probes;
   resources?: IIoK8sApiCoreV1ResourceRequirements;
   probesPath?: string;

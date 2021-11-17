@@ -10,15 +10,17 @@ import type { Manifest } from "../types/config";
 import Config from "../utils/config";
 
 export default async (): Promise<{ kind: string }[] | Manifest[]> => {
-  const { azurepg } = await Config();
+  const { azurepg, pgPrefix } = await Config();
   const ciEnv = environments(process.env);
-
   if (!azurepg) {
     return [];
   }
 
   if (!ciEnv.isPreProduction && !ciEnv.isProduction) {
-    return create("pg-user", { env });
+    const config = pgPrefix
+      ? { pgHost: `${pgPrefix}devserver.postgres.database.azure.com` }
+      : undefined;
+    return create("pg-user", { env, config });
   }
 
   // in prod/preprod, we try to add a fixed sealed-secret
