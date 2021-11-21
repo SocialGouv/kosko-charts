@@ -1331,6 +1331,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@socialgouv/aes-gcm-rsa-oaep@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@socialgouv/aes-gcm-rsa-oaep/-/aes-gcm-rsa-oaep-1.1.2.tgz#f8fa67d251c70e22e1cd4807999fc4104f0f367b"
+  integrity sha512-6e80+VkKq1QYIF3I2whHdAhLep4cwuJvJjVZqlrtvLnwQhJaGLq6oUNmCptoMcS9uNI7mMmXN4PC038+KcdVYQ==
+  dependencies:
+    "@types/node-forge" "^0.9.7"
+    hybrid-crypto-js "^0.2.4"
+    node-forge "^0.10.0"
+
 "@socialgouv/eslint-config-recommended@^1.99.1":
   version "1.99.1"
   resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.99.1.tgz#ba9223460b9bfee53b7603f779b58d54efa71d6c"
@@ -1357,16 +1366,6 @@
 "@socialgouv/kosko-charts@link:.":
   version "0.0.0"
   uid ""
-
-"@socialgouv/sre-seal@^1.12.1":
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/@socialgouv/sre-seal/-/sre-seal-1.12.1.tgz#3a0dd8d797d886569d9d2661dd24b2d14441995a"
-  integrity sha512-IO0mZZlrnq7KT7FZt3cQip3cdKl0GUUhey1qVA6DQScysQjKg1bCZNYt8WjDndKiwy9Hb7VIBI23ZfBXMNZ91Q==
-  dependencies:
-    execa "^5.1.1"
-    pipe-args "^1.3.0"
-    yaml "^1.10.2"
-    yargs "^17.0.1"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -1481,6 +1480,13 @@
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/md5/-/md5-2.3.1.tgz#010bcf3bb50a2cff3a574cb1c0b4051a9c67d6bc"
   integrity sha512-OK3oe+ALIoPSo262lnhAYwpqFNXbiwH2a+0+Z5YBnkQEwWD8fk5+PIeRhYA48PzvX9I4SGNpWy+9bLj8qz92RQ==
+  dependencies:
+    "@types/node" "*"
+
+"@types/node-forge@^0.9.7":
+  version "0.9.10"
+  resolved "https://registry.yarnpkg.com/@types/node-forge/-/node-forge-0.9.10.tgz#ce34701b2fd1816ca87fb6752045466881e9692c"
+  integrity sha512-+BbPlhZeYs/WETWftQi2LeRx9VviWSwawNo+Pid5qNrSZHb60loYjpph3OrbwXMMseadu9rE9NeK34r4BHT+QQ==
   dependencies:
     "@types/node" "*"
 
@@ -3067,6 +3073,13 @@ husky@^7.0.4:
   resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.4.tgz#242048245dc49c8fb1bf0cc7cfb98dd722531535"
   integrity sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==
 
+hybrid-crypto-js@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/hybrid-crypto-js/-/hybrid-crypto-js-0.2.4.tgz#7e764a6c4c7542e84df368df9e84fd76ab7043a1"
+  integrity sha512-lm4iQn14rApw/7yLOnd9eZu8JaxD8+BB34bQaZY7faKiT78tVjxSwOabOPO2LSIS0QMANhjMXNLNUXyuAJwYXw==
+  dependencies:
+    node-forge "^0.8.5"
+
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -4193,6 +4206,16 @@ node-fetch@^2.6.1:
   dependencies:
     whatwg-url "^5.0.0"
 
+node-forge@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.10.0.tgz#32dea2afb3e9926f02ee5ce8794902691a676bf3"
+  integrity sha512-PPmu8eEeG9saEUvI97fm4OYxXVB6bFvyNTyiUOBichBpFG8A1Ljw3bY62+5oOjDEMHRnd0Y7HQ+x7uzxOzC6JA==
+
+node-forge@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.8.5.tgz#57906f07614dc72762c84cef442f427c0e1b86ee"
+  integrity sha512-vFMQIWt+J/7FLNyKouZ9TazT74PRV3wgv9UT4cRjC8BffxFbKXkgIWR42URCPSnHm/QDz6BOlb2Q0U4+VQT67Q==
+
 node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
@@ -4439,13 +4462,6 @@ pify@^3.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
-pipe-args@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/pipe-args/-/pipe-args-1.3.0.tgz#09b33719aef0dde70e06cfb5e23c5cdbcede6f2b"
-  integrity sha1-CbM3Ga7w3ecOBs+14jxc287ebys=
-  dependencies:
-    ramda "^0.23.0"
-
 pirates@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
@@ -4551,11 +4567,6 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
-
-ramda@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
-  integrity sha1-zNE//3NJepOXTj6GMnv9h71ujis=
 
 react-is@^17.0.1:
   version "17.0.2"
@@ -5448,7 +5459,7 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@^1.10.0, yaml@^1.10.2:
+yaml@^1.10.0:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
@@ -5462,19 +5473,6 @@ yargs@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
   integrity sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==
-  dependencies:
-    cliui "^7.0.2"
-    escalade "^3.1.1"
-    get-caller-file "^2.0.5"
-    require-directory "^2.1.1"
-    string-width "^4.2.0"
-    y18n "^5.0.5"
-    yargs-parser "^20.2.2"
-
-yargs@^17.0.1:
-  version "17.2.1"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.2.1.tgz#e2c95b9796a0e1f7f3bf4427863b42e0418191ea"
-  integrity sha512-XfR8du6ua4K6uLGm5S6fA+FIJom/MdJcFNVY8geLlp2v8GYbOXD4EB1tPNZsRn4vBzKGMgb5DRZMeWuFc2GO8Q==
   dependencies:
     cliui "^7.0.2"
     escalade "^3.1.1"
