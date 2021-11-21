@@ -21,7 +21,15 @@ test("should return create an job", async () => {
     "---\napiVersion: v1\nkind: ConfigMap"
   );
   const { create } = await import("./index");
-  expect(await create("foo", { env })).toMatchSnapshot();
+  const manifests = await create("foo", { env });
+  // remove encryptedData from snapshot as it always changes
+  manifests
+    .filter((m) => m.kind === "SealedSecret")
+    .forEach((secret) => {
+      // @ts-ignore
+      secret.spec.encryptedData = {};
+    });
+  expect(manifests).toMatchSnapshot();
 });
 
 test("should use custom pgHost", async () => {
@@ -34,7 +42,16 @@ test("should use custom pgHost", async () => {
     "---\napiVersion: v1\nkind: ConfigMap"
   );
   const { create } = await import("./index");
-  expect(
-    await create("foo", { config: { pgHost: "pouetpouet.com" }, env })
-  ).toMatchSnapshot();
+  const manifests = await create("foo", {
+    config: { pgHost: "pouetpouet.com" },
+    env,
+  });
+  // remove encryptedData from snapshot as it always changes
+  manifests
+    .filter((m) => m.kind === "SealedSecret")
+    .forEach((secret) => {
+      // @ts-ignore
+      secret.spec.encryptedData = {};
+    });
+  expect(manifests).toMatchSnapshot();
 });
