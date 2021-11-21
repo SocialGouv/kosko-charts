@@ -18,7 +18,7 @@ export default async (): Promise<{ kind: string }[] | Manifest[]> => {
 
   if (!ciEnv.isPreProduction && !ciEnv.isProduction) {
     const config = pgHostDev ? { pgHost: pgHostDev } : undefined;
-    return create("pg-user", { env, config });
+    return create("pg-user", { config, env });
   }
 
   // in prod/preprod, we try to add a fixed sealed-secret

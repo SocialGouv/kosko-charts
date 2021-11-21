@@ -1,5 +1,6 @@
-import type { PgParams } from "./types";
 import md5 from "md5";
+
+import type { PgParams } from "./types";
 
 type PgDatabaseParams = Omit<PgParams, "host" | "name">;
 

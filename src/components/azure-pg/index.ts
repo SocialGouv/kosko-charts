@@ -1,4 +1,5 @@
 import type { Environment } from "@kosko/env";
+import type { ISealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import environments from "@socialgouv/kosko-charts/environments";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
@@ -93,17 +94,17 @@ export const create = async (
 
   delete job.spec?.template.metadata;
 
-  const sealedSecretDefinition = await cryptFromSecrets({
+  const sealedSecretDefinition = (await cryptFromSecrets({
+    context: "dev",
     name: defaultParams.name,
     namespace: envParams.namespace.name,
-    context: "dev",
     secrets: {
       database: defaultParams.database,
       host: defaultParams.host,
-      user: defaultParams.user,
       password: defaultParams.password,
+      user: defaultParams.user,
     },
-  });
+  })) as ISealedSecret;
 
   const sealedSecret = new SealedSecret(sealedSecretDefinition);
 
