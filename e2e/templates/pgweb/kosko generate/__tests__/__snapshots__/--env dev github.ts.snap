@@ -208,7 +208,7 @@ spec:
             - name: NEW_USER
               value: user_e2e-branch
             - name: NEW_PASSWORD
-              value: password_e2e-branch
+              value: 0e6681d9ebfa85f518ab113dfe42d7a1
             - name: NEW_DB_EXTENSIONS
               value: hstore pgcrypto citext uuid-ossp
           envFrom:
@@ -243,36 +243,27 @@ metadata:
   name: create-db-job-e2e-branch
   namespace: sample-next-app-e2e-branch
 ---
-apiVersion: v1
-kind: Secret
-stringData:
-  DATABASE_URL: >-
-    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
-  DB_URI: >-
-    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
-  HASURA_GRAPHQL_DATABASE_URL: >-
-    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
-  PGDATABASE: autodevops_e2e-branch
-  PGHOST: samplenextappdevserver.postgres.database.azure.com
-  PGPASSWORD: password_e2e-branch
-  PGRST_DB_URI: >-
-    postgresql://user_e2e-branch%40samplenextappdevserver.postgres.database.azure.com:password_e2e-branch@samplenextappdevserver.postgres.database.azure.com/autodevops_e2e-branch?sslmode=require
-  PGSSLMODE: require
-  PGUSER: user_e2e-branch@samplenextappdevserver.postgres.database.azure.com
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
 metadata:
   annotations:
-    kapp.k14s.io/update-strategy: skip
-    app.github.com/job: xxxxxxx-job
-    app.github.com/ref: refs/heads/e2e-branch
-    app.github.com/repo: socialgouv/sample-next-app
-    app.github.com/run: '12345'
-    app.github.com/sha: '8843083'
-  labels:
-    application: sample-next-app
-    component: sample-next-app
-    owner: sample-next-app
-    team: sample-next-app
-    cert: wildcard
+    sealedsecrets.bitnami.com/cluster-wide: 'true'
   name: azure-pg-user-e2e-branch
-  namespace: sample-next-app-e2e-branch"
+  namespace: sample-next-app-e2e-branch
+spec:
+  encryptedData:
+    database: >-
+      AgCjHpo0mYDjD2B6VWBfGYXKeRDAwALc5cU0MmQzTNWQgMLRUscI9NzchCFInEhnMz6BpAnGDZRkRQKeT9rq377s7wCcwJo+p4J5w0/yJImQMMODdCVS02YIW2uzoXl5BxCSIpBB8wgVs2RiaKVc+tr+DmmE131SphygUc7GYSZW3FmEkicZXeP5IBmKBlTTqDZFNIwF7YjL/dhx2ZajhU4EM4ImjSvFUCEX5CE1V9VZ6EUF8jbnSdY13loAPnEUBTzbH0Kf61+fsJyT1Onj3EwdhwZzRH/OxAmKzIRaMw7I3E+F+9uu8X7kQN2FprJVsA5tym9e+sD1iOUKo+rjR01p8mzuCK77Lfghhr/6R+gFYU+qNoHEFXhmoqimeBebKFTLFOwyyvY8gnIn55ad4bnIyidtzy2FSiXQ2rosZ08PB2CdmJfk/S6w9hMn8Q8WeTHy/cpdlj8BRTt9iD6c5kBqzTDRLhAS4AU6PanybfJsUkDdmzyBYmR4M3lFbGhxa+m3/MdeWuXWrHU3/KCHbIS97mjancPRMEHmto/23XoZA2Sf3V99ab7Yi+JblwK+TOgBuzW0e8GrM8TdA5YDrEhw5YSU4zLZ+q2MAsQfI4TUv3GT1KGXmEL/Cm+MPT0hO/qkA6yEebflU8HJVcOHt8pUVW+yxtYi3g4uzXhPjlekiplpIg8bxa9njOhAMZhmFvmnc5VpK/70v4ejJpdzc8JSDyPUOwk=
+    host: >-
+      AgCUWB+QrkAG6UwjmpyF7MK0/EQTzt9Ffh1yziowNiwoZK7zUqqSMXXgEGYIK2BXSawAHPw7NTNbzCVnnIHUhTdua8/74wdSRTi0/6E5BV1WvSUqxzSi64atKZINZUMgCRjpqvuOO5FwEy7w3AHeM2GkiAUaPOszs4op/D5EpVHR1LXRQbr/6bYMgPxD0bZ9tmYXX6z8r9JhCrTbUC8l2IX/PUFtxfEW/Ok2up0Cf2MOSpdNRQGq7X9k9PxQHKFpzljFMReYIqeiiRsNbW4TUoEWlpfXr4EU0Nek0hrCi4dWSNMvELR5cnWfpbygLD8jxaay2Xp7Xl8pPYE66XPbhQHgEPKW2yva7hMCAjE5h5evI2wfQB8KYSZSdACyiTf+ned5UTzwruy9Ie7mEmSjULUJz6wYX345CRAB0saSQtVQ32TIVwSl6gJzTfoY4oe9+J6Zmna+SW8gI5VDRlqetHO7RhLZIF63OTZ6Fge6h9NSh8dsS+EY4AoNfHQz1fxePsvR3w5i+dxCycjFfuXG03FqYU+A6yBwrnU8wG7SzqLOprNGjUDB+35FHe9LIVkOAM9ozrpkzVkZuFl/GMXrLQKWaf4cRsJg+yHDvoiysSj3Xtcn+OmFJeHHz02KLFaF8rOt96Lkbnq0jgiEFkcNBSRGPgl10w1zPFL49IUrbqQVIJkvDhm0rDXhIZqPp+uttihAGPWKwALtpLJ2jAUsAZJ2ttqrmLjgd3LQZ5A9RYl45aInwJQOR0yVc/fw7kroJQ3wag==
+    user: >-
+      AgB4y+LoVoYa8P6ZPd1pFrNptNmgeoM6Mpc+caX9krqlMlqzG0mGFHt49vO77OQ5sA2Xv1XF4k6a1CaNirckTJ1S1jKUKjWlkhI/7miOUE63toOPxOB1RVGGrpKag+xJ+8j7PDrlIFyct9/U5n0rISodBxBGBbIAb77q63jq8Y66O725L6okvN6NXXSlFTSJcdGAHmPJFgGCya6qRgV1nGSLEgUy86U/DPwvMGKlK36qRx63olwCR+f9gapf4KPMBNY8o4cvEmRzCTH4jibl31FyCBN/YQvUXa/4+HwKYZ2qIPrTPnE7fprxUSSMKKFvGir3CVmuNaB8J0l1z5IwS2rUgokuUWz8+aC4laqIjdgmAr8N1fRQBqfsHUdkfThQxLKKnhqqzYpTQD9q++cfVvegVpuhcwwTD2LMzfRUpwhLjQ0vL/RYUuZVk1u6wZkqxBdhf+doY+6Kr7b8Fb44F273L9UInHIchBf8VxFeUYT3HZ6YampWpWR3euDaRkvn0bWgpW+Y42gl3S6l7uW0LT/+zqdO5pfjqoKyLBJpJ/l0xRh+Ib07hLLptzWlevUakwi6S5nuaBVQ+keOQXMrk7CoMDtPfOOeIok/evUk0qHoni4zHu/jUBBiGA3f2lr9pMcDwx2P/J5cysHquJy3UYRAmvFmnwsoswzs3aUXs0v/1lhMai5lk4Ye3kNuAFm7qILSgxmP06DebxeDlNMwUaE=
+    password: >-
+      AgAXRHpBkWiO7G2KauSSrH/ZBqacJICxkjfElXz5UrF8jIMj9VLLjM6G3AqRYLZeE7Pkcvl9JD57CUDB7XTKr2RjPdQD+u8fM5ghGszMGw1qrbNHYLp/6bwjxROyqsdEa35j/UcEVv+178CeY/LCUgnQAwThy5m06Tg7vRuBet3xYGi5nkQDIngnhQzrLBb/EsgBzngwIVo3GBs0J5SaWVDnZZUN5+8bBUK6L3t8F8DeQZcj/K6Wg1LomgrU6aulxq/UkC/TVdJd+IcoEtF5kmGlhM8zHibAtSLIoOVBCe6sRWqAlGXxpe6131z4U2sxLE0TKprIFmRWjo0JEzZ9awpc28xT9DhSWfR2G5mXIZX3dtPndcKGVPl7PYQsPHtOvolp0DvAjd2b2dPx9F1sw1ffMCtnntLl7vFBp8o0j2103Va821OnO3tywftZy1kwFM6DLXfjw3mEOiHUALZLpvdb/yyBfyDQSb/auv4PDbLxUF01/5mUbRpRelnjuIPvGtgCbO5bv/SbNSoXFxusYhLQTyt8ht9axiQmmJj0WAHoPJ+Ni0DS3oR8bkUYPKMZxaPm2YmjeGV+yT+LPsacDH7rYTdF47lBHNIpYVI2K4CcRHCtIZhOTTAkjAH9aDCFroMytBCuaS9pd9Ld3mL9/6EIXf3zyFTUwhaOvKdV550d3RiG2hHAoqvKjtVlXvghOJ3XJ2xVEe7tWsdv8GsCKbp7RWkovh/2B+K8UK3BFd9oGg==
+  template:
+    metadata:
+      annotations:
+        sealedsecrets.bitnami.com/cluster-wide: 'true'
+      name: azure-pg-user-e2e-branch
+    type: Opaque"
 `;

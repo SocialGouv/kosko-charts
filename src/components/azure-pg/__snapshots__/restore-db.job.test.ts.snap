@@ -111,7 +111,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_my-test-branch",
+                  "value": "b882754016399d053be945a896564f38",
                 },
                 Object {
                   "name": "PGUSER",
@@ -348,7 +348,7 @@ psql -v ON_ERROR_STOP=1 \${PGDATABASE} -c \\"ALTER SCHEMA public owner to \${OWN
                 },
                 Object {
                   "name": "PGPASSWORD",
-                  "value": "password_my-test-branch",
+                  "value": "b882754016399d053be945a896564f38",
                 },
                 Object {
                   "name": "PGUSER",

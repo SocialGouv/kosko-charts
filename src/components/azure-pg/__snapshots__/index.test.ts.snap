@@ -39,7 +39,7 @@ Array [
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_my-test-branch",
+                  "value": "b882754016399d053be945a896564f38",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -75,32 +75,31 @@ Array [
     },
   },
   Object {
-    "apiVersion": "v1",
-    "kind": "Secret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "kind": "SealedSecret",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-        "kapp.k14s.io/update-strategy": "skip",
-      },
-      "labels": Object {
-        "application": "www",
-        "owner": "my-team",
-        "team": "my-team",
+        "sealedsecrets.bitnami.com/cluster-wide": "true",
       },
       "name": "azure-pg-user-my-test-branch",
       "namespace": "sample-42-my-test",
     },
-    "stringData": Object {
-      "DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
-      "DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
-      "PGDATABASE": "autodevops_my-test-branch",
-      "PGHOST": "sampledevserver.postgres.database.azure.com",
-      "PGPASSWORD": "password_my-test-branch",
-      "PGRST_DB_URI": "postgresql://user_my-test-branch%40sampledevserver.postgres.database.azure.com:password_my-test-branch@sampledevserver.postgres.database.azure.com/autodevops_my-test-branch?sslmode=require",
-      "PGSSLMODE": "require",
-      "PGUSER": "user_my-test-branch@sampledevserver.postgres.database.azure.com",
+    "spec": Object {
+      "encryptedData": Object {
+        "database": "AgB2Sy/U/Tc/BIHVWv6mlchcj4cBAmtK3c2LorgAV+Iomhnhq7n0pM03PvceJjJMXdGvUHb5TQttAnFsOkiTeefF6C4hqm+5XjrWZGqBnqZgLGcqnw9JlTkqSQHchJZzbjMdDyNKZcnS37TcXyqsYjD1s8Yk1xq8MoF3hJs+lYF2RmnXbF05rW6vE2kqT4S7SZYidnbFU+Ny/t5FHQ+0UKqdV2M7cjH1sQ/vL4u7Rqii7sy3EQlGFKzVX5llC1U08IZrS5bfXRH0la+kftAWcvNpaldkb1WqNitX1UvlU7oA3wyosjl3pagHKgjDYBsxrtaFI1SUmSXM4vmkmLrdH0dRSdNcoGaWmCvbJPXrW0/aM+UldzAs6mqWtrrPqE9N8yTJER+v0QILvGeNM4+knk8/IQPCr9bUQifVMW8miS4VpBq2N3in90J7DSaVKkH4gBSvtVH8FvOhXDqz9hWtEt2hxJmXg1zdTYBuNmKczAsfmRf6UynGOeLr+/WAb4NiX2RfNRUNxJ4TZGNiG+WSDjs/QyxD0t1ZW3JMTWhGekgENpuPtoGZlZlqqtAPVEGHLBZPc8bqtEhyeGcqdN3tSLHGxsVpJkkw4U8S6pfhuHEcn0cM2N9JT5xIL6cEwdK/orU39whRtf168z4E7umj8g/dNPX2Npfei+IbZVFWpRpUSelPYCL+Uomdl7EFcVdN/3hb3HP56woQvTbWKZi2Zf0YJNJBlwjAmJka",
+        "host": "AgC83EwfBGHLUC9qz1pGJQvPBjI6+ZxqVkvXuQqswi/rrxFChT2Ek/FG+UeATx8oS7P96obXqw1Bm4g1YtLqzjk1D8I3I9sTjL3wrzHyg35SBfaGjbG2n4sbG7c/y3zV8SVb9H5adOIRijsUNTuglfE++QRU4F0Is7ndELyQTLSIchdA2uPhn7bQL5uhZO8kNCm1Ukr4kH3mm0cAEtkEyMChpdGq55c5k8ItfgxkiYNodcn67pQXdPynoc38AM3u3b5GjK9hJdIF7eeiCAWiiDPSKiR35fXFj8Teq7mKVK40acS/jqM/WijUg/TN2odAn0PpM1YsMeWtNyU3afA2RU1Yf7PujhMexfNgWALgUDT09qIpchNlALJC3R2i7tqum0QPcVJNd2Lpc4LOtqk2HCFD25DQEkNAnvZPJhnVTNqsrbPaIsO6oeqZKh15cbVo+be3/62vPhs7E0qxwXZAtq9Xs6+OhabME5ogPT16/chWe1XB1hNrLYKsc8Lpt1zRQYxetprMo7ZtykK2xW5vkUaaBJRUQiZyX8nPlLnSICGBSR1fsHvbd3TZq4teItDobztyvnxj/YiivmxZ0wJwDmvazAjlDjkFt6J7AWkH/nhzSRY7PxG2Glnerh4mSw5BsmckcYxLdM3ZvKNvOEOXpwpn2hb7cjkb8lq8981PopORZSf/Uih8SVlm1Vr0hpMdgaBvqM9j5yuO6jhoBxeVMA7t5u00V6M2bIAOL0QOQGRr4o7iRDEjJJcAZFqG",
+        "password": "AgC5gsOnltVE/mvZlxpkiHFdf/BYOrd4Q1TikvC3JFwVkFk16WXlCIYXisshzUQ6IFQX0Jhqlkm2KMndOR8ZQsrwYD/yyRUlHjx5nwtPIpaV/0tXeDeNq7lsBuUL6FtgdGkjS6mEfS5d8RFEuY/LL/8ZRaBia48aLkwOXN3HHVhmLRNlAs+ZlVJCJRmhqDHlVMxPaPFRUiVhlA9UTZNzm5rwC/A5mrreXWTJVG1U+bqdVgjuqGjUTrKbCtjCO+p4NAglsQbfCC7YmMiUZ9r6NwGwJK/2LggboLbqX34QFW/4shdrI8sdWiSQle6ef1NL3Nn2cfhHBWta1YUTKeqYCYbtrICro6+CFmrHDyDuYh+ogn9e0TQmMnDF8bSd0R3F19ZuT/pBmhtSYIUsGdoxUvWxFgqHAlBhLd4NRA3hZ8ASJY4FLyhSaZwMeHKCvMHaXCgQVhT++D7f1qVl0MLqNeCVkWr+C8++VBk8m1EBknZarHn2oyajuz7/VV9VNz7mpbLEOCr4lxsIR0WELYuDhW50A83WluoOlJSoRaFf7GqvDe1s1ZqjQJKh5QC3OGTIq83m9nrzoQYk8+T9dnLqK6CKgcWdXXCQJyWX5BwBxk/XSBnl+8nyDjN+kDkL5EjBpIEH7ey2TLKy6madNfImz6ffe8+tBosFHg+2JEOLR3vMVHWg+GtKhZTLqZKZb+D8KYW+nvFtmJ8SSRkpa+62AwOotCmeWijDLrI6X96bbXcPuA==",
+        "user": "AgAFSVe/dKDYERaOsmQku2andFdFsZnB/jZUaNrO+/p2CWyayXCc5IIwMERSsvbBFdA7CY9LcDxu6UpNOlFOq3lWNlMPNTieNu2SL4tU9Us4kyZd68U8WdXo6GrCSWMfCHngcQOgtPvAmp4DqA8suXPgnCOIt1wVJJbx6NhquKhujKgWWjpElLGUuW1Fzt8HTWy5W6LDtv//EMghl0FUVOOa7xiyimXQ1Bct8KPzFQEQIhlRturIa7YMs6DuX7vkraQM13mlEmeSesGRF30Bc0pnaH9A1vGUn93PfCnkGitDOT8OrZ4OooympbmSbCByYJ/8Wnl+p5PSHXx8jCRCfNma2boeEBOlRiZv+B1nJ+5xolHZZAa1mioo2dfE5iikRgZHs80GeS8dX9ntvWc/dFBxY1kiMhd3NOejx48vc5/iH7fNgWaXITMVaZ95DRZu0BVfXBz3NYuaIWFytoWq0nQ0jj7xIE3k4gD/6T9082LfpWwcNqCNL11Q7FdVoqQ7NPt8kJN9cIkEz4X58loBiPPHScjiYJDGsMEH8aV6l6TAIi7tJAXeMQJ+ha3EJvZ/rjt5rN5tzdAjdVOe4wA/euAOhWyXsHNYHBBMzJROmuqIciSFikdLjcyhzcB9w28NPVCGSZM6eHLgrVJyrsIziR/R9B9nMHmlb69QGEN4uRT+WdgrkAziD7edzru8W+oIzI6T2BTMm45PKXtZ0o9DCHfpHxLo",
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "sealedsecrets.bitnami.com/cluster-wide": "true",
+          },
+          "name": "azure-pg-user-my-test-branch",
+        },
+        "type": "Opaque",
+      },
     },
   },
 ]
@@ -145,7 +144,7 @@ Array [
                 },
                 Object {
                   "name": "NEW_PASSWORD",
-                  "value": "password_my-test-branch",
+                  "value": "b882754016399d053be945a896564f38",
                 },
                 Object {
                   "name": "NEW_DB_EXTENSIONS",
@@ -181,32 +180,31 @@ Array [
     },
   },
   Object {
-    "apiVersion": "v1",
-    "kind": "Secret",
+    "apiVersion": "bitnami.com/v1alpha1",
+    "kind": "SealedSecret",
     "metadata": Object {
       "annotations": Object {
-        "app.gitlab.com/app": "socialgouv-sample",
-        "app.gitlab.com/env": "my-test",
-        "kapp.k14s.io/update-strategy": "skip",
-      },
-      "labels": Object {
-        "application": "www",
-        "owner": "my-team",
-        "team": "my-team",
+        "sealedsecrets.bitnami.com/cluster-wide": "true",
       },
       "name": "azure-pg-user-my-test-branch",
       "namespace": "sample-42-my-test",
     },
-    "stringData": Object {
-      "DATABASE_URL": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
-      "DB_URI": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
-      "HASURA_GRAPHQL_DATABASE_URL": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
-      "PGDATABASE": "autodevops_my-test-branch",
-      "PGHOST": "pouetpouet.com",
-      "PGPASSWORD": "password_my-test-branch",
-      "PGRST_DB_URI": "postgresql://user_my-test-branch%40pouetpouet.com:password_my-test-branch@pouetpouet.com/autodevops_my-test-branch?sslmode=require",
-      "PGSSLMODE": "require",
-      "PGUSER": "user_my-test-branch@pouetpouet.com",
+    "spec": Object {
+      "encryptedData": Object {
+        "database": "AgB17jO0KEBDJ2NkTbXhZ0WOFyINgsR4OBTe4oYzzPcCu82j3Doetd1aFW+yOu8omRaB6FcF4sOd/nbDXhfJNkdfTFb5bz/QJeZug0WWtD37+8nU+lLy1WJ9Jvv6ArNyMeXYpDqqKgP+W+uFn3U9B+2mnhgCqc/rlH+LwIwG/kMoHnORh0r6LLEaLsRsanJXEHcPlKpfc7BM3gZdQyDrrQvN61z+nEeYgPHmpP41BqZ0f/4ErVmK4MZOIh0dAuOHqDJINdPjK7qshYP3FeMr47gXktHtbueKCNjMS6wImoA9jLMIte/Te9vh4bjztGb8OjTVRnHx0D7vLATyl8IzRsAIbihUcobhm1KdlKZMyW3L7AKkCxWQ1MJqxUzzIACat3rsiFH0c0dCWxuBUP6C+kpHQRcDa2QaxrXtvraJsCCJcXAwhCleqtlrVycv2Mxu1KAGtCjSDqEf2vjga1UOj9hdP2bM3kfLPG2OWqg/NhHuZJTuBkgUswJ5e/dMu3I6sP0SiHoMzA4ZYHqt0o61X6UIY+qZUY7KcUmXgCzqgV8bOsZDLmKcWJeD7b+J0qnCp1Qi4vFSez7/QCPNaHUWYleXUUzqXRQA4eP5KATmULOVJh7W4aj78jZKq92EA7Kh9yw+DVHGYmQC0WzaJl/KIYegyC0fNWZKcrXfNU1POYYs8wp1uohxstozwIHSMshdHh9RWOynaZPe+n3ANMhLxoxVbR+DN/ZSHwWf",
+        "host": "AgAhp6dJhON4+Xip67XvJc2eOFZN83GOJtOib6v1pzcW3XU09X13LJUjGzjM8PXPdohFUVwRUwW7S3ETVF0vg/cbid7iccIFnb7+rM1G8Mbwe9e1A6kV00k8P/pfBUS/lj1+D0Y1rTwoLU0WYeB7A9UqkjVzYuTQKbyLDFW7GH/uihW/YVWCO+QhBUdMaH2Ws+0rIMUdxoC299Gpd7UHDoiph8dzDGaHkhE/waHgSUb+e2UqC/Q4NhT5zzPsEIudZ5JlJ8/ZlfCURW5rCSkxzWLiioNCeRjJQdpzjzu45AkZLopnK6q8xUOCOyrez0IBJyYfkC/t8FpL/qVgy5OEz/oG8ejwUynYUGK/Jgk36gzYb92znp5sHiMWC8imLbS1e3/VbKp7/8hfAFMizMrk9v8qilrxTBo3FoJ+enlRD6YaeTpKo1ZHOIFu4a8DiVpwrwcsLRcjr7SzvZ5V1ZzkbplYPAQjzMLN7M15+HKR24RSgPQDMYts5QgAjQ/QlU0R2cKviJoAbbhB6L4lnSvZV9zS1yL/Kd1+E6C53pgB2tUvLKjEdZMIv09HbMelrLUab7kHDUn4hy6rvJtrfm42m0iOUvx7L6jr/1WXmyWU4HNN4L+TGiKUcGEwOojdWwZ2GYkQcrFH0hAyL+rr2KBwH1bIpS978Lqi/o6tQRzK1SCNld1JjRgQpf2ut95KQh0C6IG3toGwAgWbFy0fxpBMwQ==",
+        "password": "AgArbDYQaFMcjZXT+DUuBaIoAcrbSGaZPfcjXiBcLbcUSJZ890m4YIx5AmZ6EqUnbxLmqysmgyCkk3SdHlsAtxqrg69TIwMPqxbLsi5ir3Ftb/EWg7/51FaaPWZcMdEcAdhqAdMQLJa6vMMRz2Cc/Qn2JFOXA1PuhyBIZlOEQIj3klV2LrnwZ7dXg0BNDlA6ks/L+3P6f9iJuos5Ob9XVS9HBebNQHpbM3a9GirCnwVrRa8LHG0uZcX/BlQRAZi+NFPZrm/CeMAfca122GUnZBay2wkXmzUWYC9RXy5BgXEooljg60aF/Q3ESEO/4/E6g8lWUwO1IPVW+L4ugkhjtIJnmpxUPDxxY6geKkQQEzyl5ar10V1nMb2r1J7GCqJ5rEIPlnPCAjSaOTNXnb8N6KaU6STTpnNYiiUYxDj++xR4akaRP/Xvw1fvN5+I2TRf7MOvIhFu2wF/Ovclcj0X0C9cN31Q6VsAXhary6lKxE8j90aOw/tL3pFS3+suwb4ffLeaP3xWmyBZUzBx8bSzJwJJvDZYiqUh0mCbiMPrwyW+G1mUJEx4cXxjquW0gCeB0re8S7givmnVcdS4ZTOAfsG0s6muIlogLD+NnkpV99vGJ2sLYtzbjfK8hJsaft2ly2qyoGYl98kGfdp97wou8v8E0epbxk4YLHCDCmI2Che6NsbnUug+RgbhQQEtH2Eq+Imf85YYcoDM6F6tC3mj9EuFb/b0ZDVhuk3YiLkRz5OoBw==",
+        "user": "AgCObvppLgvKgrs1yJ8dsyFQWKJGR+UXl46pEUlEsxbDDS45wQG3j4yGGcrvv/FczoRfghbaeLalLxsjhJzAlYd/jaQrBAvM44Xq60nNfr1PTSXpcVAZQ5VodCLvgR26K6Ty9jOtCsJTG593ZwXOXYsj1iaIWSHnruhq/8Rx7oO3BERuQBk4/6br9t1UCigz66DC3db4RDeNlPFcFySmFaiHDOSpR+Vb3a7gp5h+EXTIQx1TGh4zoLDi4oAs6dLMBV3lBaeNfR89WPaIhNGRt9mW2j+M+rFgUdJ+mY7DpE7CCEIZa+rW5jug/dcsJxbjo4IWGAK9PQck3QIEvmW2CpCW7L+ayLUHqAJU1XH5QF5W1iVxL8hdi+Ayj3U6dB83sojLSrGtaTM78AOwOE30SZbTgoq6x3eeXKwCeuOlTVhlK2rZ0oDCKKsjA9vxXegT/596kjDdSMcPLS/dlfMwzuRtiCgcbplGiVbGioEIBxnOMmx8Nx/SdHCa3sGCdn2oQ5hqldTaZkJoRfsmt5kRJ7XG+YRDAg3MdxBTWAoAYSvYQBYvPbOvrtmhZJnNkt9RZk6C6kN5VqmIxkUacTaRBPsxdWfHG2SAgULsHJxTOF0754LC6esmi9t3nbpRZrjRRcZyqMX1SSAqkOX/fGaUw7kq7ook4OQeQdfF51e2H2hrsmEglMzsAkICcPc05xg4g3NeLhn26OVqfQrajDfTZqrHXsfU",
+      },
+      "template": Object {
+        "metadata": Object {
+          "annotations": Object {
+            "sealedsecrets.bitnami.com/cluster-wide": "true",
+          },
+          "name": "azure-pg-user-my-test-branch",
+        },
+        "type": "Opaque",
+      },
     },
   },
 ]

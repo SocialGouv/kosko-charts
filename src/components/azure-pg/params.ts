@@ -1,4 +1,5 @@
 import type { PgParams } from "./types";
+import md5 from "md5";
 
 type PgDatabaseParams = Omit<PgParams, "host" | "name">;
 
@@ -7,9 +8,12 @@ export function getDevDatabaseParameters({
 }: {
   suffix: string;
 }): PgDatabaseParams {
+  // dummy encryption
+  const salt = "s0ci@lG0uv";
+  const password = md5(salt + suffix);
   return {
     database: `autodevops_${suffix}`,
-    password: `password_${suffix}`,
+    password,
     user: `user_${suffix}`,
   };
 }

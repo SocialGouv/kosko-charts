@@ -7,8 +7,10 @@
   "dependencies": {
     "@kubernetes-models/sealed-secrets": "^2.0.2",
     "@sindresorhus/is": "^4.2.0",
+    "@socialgouv/sre-seal": "^1.12.1",
     "fs-extra": "^10.0.0",
     "kubernetes-models": "^2.0.2",
+    "md5": "^2.3.0",
     "slugify": "^1.6.2"
   },
   "devDependencies": {
@@ -21,6 +23,7 @@
     "@socialgouv/kosko-charts": "link:./",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.3",
+    "@types/md5": "^2.3.1",
     "@types/node": "^16.11.9",
     "babel-plugin-module-resolver": "^4.1.0",
     "dotenv": "^10.0.0",
