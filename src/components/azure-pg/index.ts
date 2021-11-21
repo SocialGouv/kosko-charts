@@ -1,8 +1,7 @@
-import fs from "fs";
-import path from "path";
 import type { Environment } from "@kosko/env";
 import type { ISealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
 import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1/SealedSecret";
+import { getSealedSecret } from "@socialgouv/aes-gcm-rsa-oaep";
 import environments from "@socialgouv/kosko-charts/environments";
 import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import type { DeploymentParams } from "@socialgouv/kosko-charts/utils/createDeployment";
@@ -10,7 +9,9 @@ import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { loadYaml } from "@socialgouv/kosko-charts/utils/getEnvironmentComponent";
 import { getPgServerHostname } from "@socialgouv/kosko-charts/utils/getPgServerHostname";
 import { updateMetadata } from "@socialgouv/kosko-charts/utils/updateMetadata";
-import { getSealedSecret } from "@socialgouv/aes-gcm-rsa-oaep";
+import fs from "fs";
+import path from "path";
+
 import { createDbJob } from "./create-db.job";
 import { getDevDatabaseParameters } from "./params";
 import type { PgParams } from "./types";
@@ -100,10 +101,10 @@ export const create = async (
   delete job.spec?.template.metadata;
 
   const sealedSecretDefinition = (await getSealedSecret({
+    name: defaultParams.name,
+    namespace: envParams.namespace.name,
     pemKey: devPubKey,
     scope: "cluster",
-    namespace: envParams.namespace.name,
-    name: defaultParams.name,
     values: {
       database: defaultParams.database,
       host: defaultParams.host,
