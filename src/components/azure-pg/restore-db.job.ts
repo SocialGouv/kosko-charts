@@ -1,8 +1,8 @@
+import { generate } from "@socialgouv/env-slug";
 import { getDefaultPgParams } from "@socialgouv/kosko-charts/components/azure-pg";
 import { azureProjectVolume } from "@socialgouv/kosko-charts/components/azure-storage/azureProjectVolume";
 import environments from "@socialgouv/kosko-charts/environments";
 import { addInitContainer } from "@socialgouv/kosko-charts/utils/addInitContainer";
-import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { waitForPostgres } from "@socialgouv/kosko-charts/utils/waitForPostgres";
 import ok from "assert";
 import type { IObjectMeta } from "kubernetes-models/apimachinery/pkg/apis/meta/v1";

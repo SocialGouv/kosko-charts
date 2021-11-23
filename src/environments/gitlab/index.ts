@@ -1,6 +1,6 @@
+import { generate } from "@socialgouv/env-slug";
 import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { assertEnv } from "@socialgouv/kosko-charts/utils/assertEnv";
-import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 
 const assert = assertEnv([
   "CI_COMMIT_REF_NAME",

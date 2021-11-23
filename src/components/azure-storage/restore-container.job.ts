@@ -1,5 +1,5 @@
+import { generate } from "@socialgouv/env-slug";
 import environments from "@socialgouv/kosko-charts/environments";
-import { generate } from "@socialgouv/kosko-charts/utils/environmentSlug";
 import { Job } from "kubernetes-models/batch/v1/Job";
 import type { EnvFromSource } from "kubernetes-models/v1/EnvFromSource";
 import { EnvVar } from "kubernetes-models/v1/EnvVar";
