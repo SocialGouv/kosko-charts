@@ -2,15 +2,16 @@ import environments from "@socialgouv/kosko-charts/environments";
 import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { Job } from "kubernetes-models/batch/v1";
 
-import type { JobType } from "../../types/config";
-
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
 const SOCIALGOUV_DOCKER_VERSION = "6.63.0";
 
 export const createDbSecretJob = ({
   pgPasswordSecretKeyRef = "pgpassword",
   ciEnv,
-}: { pgPasswordSecretKeyRef?: string; ciEnv: CIEnv } = {}): JobType => {
+}: {
+  pgPasswordSecretKeyRef?: string;
+  ciEnv: CIEnv;
+}): Job => {
   return new Job({
     metadata: {
       annotations: ciEnv.metadata.annotations,
@@ -49,7 +50,7 @@ export const createDbSecretJob = ({
   });
 };
 
-export default (): [JobType] => {
+export default (): [Job] => {
   const ciEnv = environments(process.env);
   const job = createDbSecretJob({ ciEnv });
   return [job];

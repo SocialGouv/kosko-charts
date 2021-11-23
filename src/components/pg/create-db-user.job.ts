@@ -1,8 +1,6 @@
 import environments from "@socialgouv/kosko-charts/environments";
 import { Job } from "kubernetes-models/batch/v1";
 
-import type { JobType } from "../../types/config";
-
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext uuid-ossp";
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
@@ -20,7 +18,7 @@ export const createDbUserJob = ({
   secretRefName?: string;
   pgPasswordSecretKeyRef?: string;
   user: string;
-}): JobType => {
+}): Job => {
   return new Job({
     spec: {
       backoffLimit: 5,
@@ -87,7 +85,7 @@ export const createDbUserJob = ({
   });
 };
 
-export default (): [JobType] => {
+export default (): [Job] => {
   const ciEnv = environments(process.env);
   const { projectName, branchSlug } = ciEnv;
   const database = `${projectName}-${branchSlug}`;
