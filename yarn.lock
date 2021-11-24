@@ -1397,10 +1397,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@socialgouv/env-slug@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@socialgouv/env-slug/-/env-slug-1.1.0.tgz#a423b2325bf506b547287522c8e01630ec9cf74d"
-  integrity sha512-g+P8pFgOahqYmVmXwmZfS3unr1djPsqrJ5ZXC76qjpmNpa0lujANQ0a5jrCCRlTkG2Ck0wnC+o+nR9GFYnLF+A==
+"@socialgouv/env-slug@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@socialgouv/env-slug/-/env-slug-1.1.1.tgz#0a29e95d322164682536cf2d404a5690d4d26cfc"
+  integrity sha512-j7wKhhE9NbrON6Hnqnvx3MSJ41CiDyHMfAbjegHdc27ewW1Ko/xUVS6sy7s2IrOWSLMskdAqILPS5I05U0Y5bg==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
