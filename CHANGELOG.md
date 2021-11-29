@@ -1,3 +1,11 @@
+## [9.8.2](https://github.com/SocialGouv/kosko-charts/compare/v9.8.1...v9.8.2) (2021-11-29)
+
+
+### Bug Fixes
+
+* **create-db-user:** metadata scope ([#839](https://github.com/SocialGouv/kosko-charts/issues/839)) ([b080cbe](https://github.com/SocialGouv/kosko-charts/commit/b080cbed73a3fb74a22d4683533eb1d12a28d95d))
+* **create-db-user:** metadata scope ([#840](https://github.com/SocialGouv/kosko-charts/issues/840)) ([f33e897](https://github.com/SocialGouv/kosko-charts/commit/f33e8974968bad04ea9688f1e37f8712de7af58d))
+
 ## [9.8.1](https://github.com/SocialGouv/kosko-charts/compare/v9.8.0...v9.8.1) (2021-11-29)
 
 
