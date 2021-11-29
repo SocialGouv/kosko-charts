@@ -3,24 +3,24 @@
 exports[`create DB from github : kosko generate jobs/create-db --env dev 1`] = `
 "apiVersion: batch/v1
 kind: Job
+metadata:
+  annotations:
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-kosko
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    application: sample-kosko
+    component: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-user-8843083
+  namespace: sample-kosko-e2e-branch
 spec:
   backoffLimit: 5
   template:
-    metadata:
-      annotations:
-        app.github.com/job: xxxxxxx-job
-        app.github.com/ref: refs/heads/e2e-branch
-        app.github.com/repo: socialgouv/sample-kosko
-        app.github.com/run: '12345'
-        app.github.com/sha: '8843083'
-      labels:
-        application: sample-kosko
-        component: sample-kosko
-        owner: sample-kosko
-        team: sample-kosko
-        cert: wildcard
-      name: create-db-user-8843083
-      namespace: sample-kosko-e2e-branch
     spec:
       containers:
         - command:
@@ -57,22 +57,22 @@ spec:
 exports[`create DB from gitlab : kosko generate jobs/create-db --env dev 1`] = `
 "apiVersion: batch/v1
 kind: Job
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-user-8843083
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   backoffLimit: 5
   template:
-    metadata:
-      annotations:
-        app.gitlab.com/app: socialgouv-sample-kosko
-        app.gitlab.com/env: e2e-branch-42
-        app.gitlab.com/env.name: e2e-branch-dev2
-      labels:
-        application: e2e-branch-42-sample-kosko
-        component: e2e-branch-42-sample-kosko
-        owner: sample-kosko
-        team: sample-kosko
-        cert: wildcard
-      name: create-db-user-8843083
-      namespace: sample-kosko-24-e2e-branch-42
     spec:
       containers:
         - command:
