@@ -12,7 +12,7 @@ const job = createDbSecretJob()
 export default [job];
 ```
 
-Create db and user using with password from secret
+Create db and user using password from secret
 
 ```ts
 // in .k8s/components/create-db-user.ts
