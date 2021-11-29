@@ -8,6 +8,8 @@ Ensure secret containing random secure password for db exists
 // in .k8s/components/create-db-secret.ts
 import createDbSecretJob from "@socialgouv/kosko-charts/components/pg/create-db-secret.job";
 
+
+// create a new secret and put it in the namespace
 const job = createDbSecretJob()
 export default [job];
 ```
