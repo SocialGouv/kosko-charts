@@ -9,18 +9,14 @@ const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
 const SOCIALGOUV_DOCKER_VERSION = "6.64.0";
 
 export const createDbUserJob = ({
-  database,
   extensions = DEFAULT_EXTENSIONS,
   secretRefName = `azure-pg-admin-user`,
-  pgPasswordSecretKeyRef = "pgpassword",
-  user,
+  pgPasswordSecretKeyRef,
   ciEnv,
 }: {
-  database: string;
   extensions?: string;
   secretRefName?: string;
-  pgPasswordSecretKeyRef?: string;
-  user: string;
+  pgPasswordSecretKeyRef: string;
   ciEnv: CIEnv;
 }): Job => {
   return new Job({
@@ -40,17 +36,36 @@ export const createDbUserJob = ({
               env: [
                 {
                   name: "NEW_DB_NAME",
-                  value: database,
+                  valueFrom: {
+                    secretKeyRef: {
+                      key: "PGDATABASE",
+                      name: pgPasswordSecretKeyRef,
+                    },
+                  },
                 },
                 {
                   name: "NEW_USER",
-                  value: user,
+                  valueFrom: {
+                    secretKeyRef: {
+                      key: "PGUSER",
+                      name: pgPasswordSecretKeyRef,
+                    },
+                  },
                 },
                 {
                   name: "NEW_PASSWORD",
                   valueFrom: {
                     secretKeyRef: {
                       key: "PGPASSWORD",
+                      name: pgPasswordSecretKeyRef,
+                    },
+                  },
+                },
+                {
+                  name: "PGHOST",
+                  valueFrom: {
+                    secretKeyRef: {
+                      key: "PGHOST",
                       name: pgPasswordSecretKeyRef,
                     },
                   },
@@ -92,13 +107,14 @@ export const createDbUserJob = ({
 
 export default (): [Job] => {
   const ciEnv = environments(process.env);
-  const { projectName, branchSlug } = ciEnv;
-  const database = `${projectName}-${branchSlug}`;
-  const user = `${projectName}-${branchSlug}`;
+  const pgPasswordSecretKeyRef = ciEnv.isProduction
+    ? `azure-pg-user`
+    : ciEnv.isPreProduction
+    ? `azure-pg-user-preprod`
+    : `azure-pg-user-${ciEnv.branchSlug}`;
   const job = createDbUserJob({
     ciEnv,
-    database,
-    user,
+    pgPasswordSecretKeyRef,
   });
   return [job];
 };
