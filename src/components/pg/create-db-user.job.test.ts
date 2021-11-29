@@ -8,6 +8,7 @@ test("should create a pg create-db-user job", () => {
     database: "test",
     user: "test",
   });
+  console.log(job);
   expect(job).toMatchInlineSnapshot(`
     Object {
       "apiVersion": "batch/v1",
@@ -37,18 +38,33 @@ test("should create a pg create-db-user job", () => {
                 "env": Array [
                   Object {
                     "name": "NEW_DB_NAME",
-                    "value": "test",
+                    "valueFrom": Object {
+                      "secretKeyRef": Object {
+                        "key": "PGDATABASE",
+                      },
+                    },
                   },
                   Object {
                     "name": "NEW_USER",
-                    "value": "test",
+                    "valueFrom": Object {
+                      "secretKeyRef": Object {
+                        "key": "PGUSER",
+                      },
+                    },
                   },
                   Object {
                     "name": "NEW_PASSWORD",
                     "valueFrom": Object {
                       "secretKeyRef": Object {
                         "key": "PGPASSWORD",
-                        "name": "pgpassword",
+                      },
+                    },
+                  },
+                  Object {
+                    "name": "PGHOST",
+                    "valueFrom": Object {
+                      "secretKeyRef": Object {
+                        "key": "PGHOST",
                       },
                     },
                   },
