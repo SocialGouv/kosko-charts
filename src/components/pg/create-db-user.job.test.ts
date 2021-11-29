@@ -8,7 +8,6 @@ test("should create a pg create-db-user job", () => {
     database: "test",
     user: "test",
   });
-  console.log(job);
   expect(job).toMatchInlineSnapshot(`
     Object {
       "apiVersion": "batch/v1",
