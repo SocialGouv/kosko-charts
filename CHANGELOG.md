@@ -1,3 +1,12 @@
+## [9.8.1](https://github.com/SocialGouv/kosko-charts/compare/v9.8.0...v9.8.1) (2021-11-29)
+
+
+### Bug Fixes
+
+* **create-db-user:** ci-env test and snapshots ([#837](https://github.com/SocialGouv/kosko-charts/issues/837)) ([7df8213](https://github.com/SocialGouv/kosko-charts/commit/7df8213ba9557d79f678034320eeb4ce6ebbbabc))
+* **create-db-user:** job metadata ([#836](https://github.com/SocialGouv/kosko-charts/issues/836)) ([e52a21c](https://github.com/SocialGouv/kosko-charts/commit/e52a21caf1c8b509224f4f9c3af8bfc1c53a11a9))
+* **create-db-user:** snapshots and clean debug ([#838](https://github.com/SocialGouv/kosko-charts/issues/838)) ([b8764d2](https://github.com/SocialGouv/kosko-charts/commit/b8764d293fce3f2a6369118641aaee3e87669a57))
+
 # [9.8.0](https://github.com/SocialGouv/kosko-charts/compare/v9.7.5...v9.8.0) (2021-11-29)
 
 
