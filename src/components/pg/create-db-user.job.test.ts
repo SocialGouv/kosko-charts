@@ -13,22 +13,22 @@ test("should create a pg create-db-user job", () => {
     Object {
       "apiVersion": "batch/v1",
       "kind": "Job",
+      "metadata": Object {
+        "annotations": Object {
+          "app.gitlab.com/app": "socialgouv-sample",
+          "app.gitlab.com/env": "my-test",
+        },
+        "labels": Object {
+          "application": "www",
+          "owner": "my-team",
+          "team": "my-team",
+        },
+        "name": "create-db-user-0123456",
+        "namespace": "sample-42-my-test",
+      },
       "spec": Object {
         "backoffLimit": 5,
         "template": Object {
-          "metadata": Object {
-            "annotations": Object {
-              "app.gitlab.com/app": "socialgouv-sample",
-              "app.gitlab.com/env": "my-test",
-            },
-            "labels": Object {
-              "application": "www",
-              "owner": "my-team",
-              "team": "my-team",
-            },
-            "name": "create-db-user-0123456",
-            "namespace": "sample-42-my-test",
-          },
           "spec": Object {
             "containers": Array [
               Object {
