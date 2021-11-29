@@ -17,7 +17,7 @@ export const createDbSecretJob = ({
     metadata: {
       annotations: ciEnv.metadata.annotations,
       labels: ciEnv.metadata.labels,
-      name: `create-db-secret-${ciEnv.shortSha}`,
+      name: `create-db-secret`,
       namespace: ciEnv.metadata.namespace.name,
     },
     spec: {

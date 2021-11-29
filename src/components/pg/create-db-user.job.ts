@@ -27,7 +27,7 @@ export const createDbUserJob = ({
     metadata: {
       annotations: ciEnv.metadata.annotations,
       labels: ciEnv.metadata.labels,
-      name: `create-db-user-${ciEnv.shortSha}`,
+      name: `create-db-user`,
       namespace: ciEnv.metadata.namespace.name,
     },
     spec: {

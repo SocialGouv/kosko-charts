@@ -22,7 +22,7 @@ test("should create a pg create-db-user job", () => {
           "owner": "my-team",
           "team": "my-team",
         },
-        "name": "create-db-user-0123456",
+        "name": "create-db-user",
         "namespace": "sample-42-my-test",
       },
       "spec": Object {

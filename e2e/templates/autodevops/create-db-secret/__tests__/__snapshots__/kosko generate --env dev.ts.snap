@@ -16,7 +16,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: create-db-secret-8843083
+  name: create-db-secret
   namespace: sample-kosko-e2e-branch
 spec:
   template:
@@ -54,7 +54,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: create-db-secret-8843083
+  name: create-db-secret
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   template:
