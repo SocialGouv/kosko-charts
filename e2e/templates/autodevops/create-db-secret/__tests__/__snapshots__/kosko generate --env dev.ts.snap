@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create DB secret from github : kosko generate jobs/create-db-secret --env dev 1`] = `
+"apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    app.github.com/job: xxxxxxx-job
+    app.github.com/ref: refs/heads/e2e-branch
+    app.github.com/repo: socialgouv/sample-kosko
+    app.github.com/run: '12345'
+    app.github.com/sha: '8843083'
+  labels:
+    application: sample-kosko
+    component: sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-secret-8843083
+  namespace: sample-kosko-e2e-branch
+spec:
+  template:
+    metadata: {}
+    spec:
+      containers:
+        - args:
+            - create-db-secret $
+          command:
+            - sh
+            - '-c'
+          env:
+            - name: K8S_NS
+              value: sample-kosko-e2e-branch
+            - name: PGPASSWORD_SECRET_NAME
+              value: pgpassword
+          image: ghcr.io/socialgouv/docker/azure-db:6.63.0
+          imagePullPolicy: IfNotPresent
+          name: create-db-secret
+      restartPolicy: OnFailure
+  ttlSecondsAfterFinished: 86400"
+`;
+
+exports[`create DB secret from gitlab : kosko generate jobs/create-db-secret --env dev 1`] = `
+"apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    app.gitlab.com/app: socialgouv-sample-kosko
+    app.gitlab.com/env: e2e-branch-42
+    app.gitlab.com/env.name: e2e-branch-dev2
+  labels:
+    application: e2e-branch-42-sample-kosko
+    component: e2e-branch-42-sample-kosko
+    owner: sample-kosko
+    team: sample-kosko
+    cert: wildcard
+  name: create-db-secret-8843083
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  template:
+    metadata: {}
+    spec:
+      containers:
+        - args:
+            - create-db-secret $
+          command:
+            - sh
+            - '-c'
+          env:
+            - name: K8S_NS
+              value: sample-kosko-24-e2e-branch-42
+            - name: PGPASSWORD_SECRET_NAME
+              value: pgpassword
+          image: ghcr.io/socialgouv/docker/azure-db:6.63.0
+          imagePullPolicy: IfNotPresent
+          name: create-db-secret
+      restartPolicy: OnFailure
+  ttlSecondsAfterFinished: 86400"
+`;

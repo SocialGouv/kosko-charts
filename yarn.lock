@@ -1408,7 +1408,7 @@
     "@oclif/parser" "^3.8.6"
     "@oclif/plugin-help" "^3"
     slugify "^1.6.3"
-
+    
 "@socialgouv/eslint-config-recommended@^1.100.0":
   version "1.100.0"
   resolved "https://registry.yarnpkg.com/@socialgouv/eslint-config-recommended/-/eslint-config-recommended-1.100.0.tgz#0f72970005aa27c78b5a7202ddf65e9fb916e59f"
@@ -1434,6 +1434,7 @@
 
 "@socialgouv/kosko-charts@link:.":
   version "0.0.0"
+  uid ""
 
 "@tootallnate/once@1":
   version "1.1.2"
