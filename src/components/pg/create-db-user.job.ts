@@ -1,5 +1,6 @@
 import environments from "@socialgouv/kosko-charts/environments";
 import { Job } from "kubernetes-models/batch/v1";
+import type { CIEnv } from "@socialgouv/kosko-charts/types";
 
 const DEFAULT_EXTENSIONS = "hstore pgcrypto citext uuid-ossp";
 
@@ -13,12 +14,14 @@ export const createDbUserJob = ({
   secretRefName = `azure-pg-admin-user`,
   pgPasswordSecretKeyRef = "pgpassword",
   user,
+  ciEnv
 }: {
   database: string;
   extensions?: string;
   secretRefName?: string;
   pgPasswordSecretKeyRef?: string;
   user: string;
+  ciEnv: CIEnv
 }): Job => {
   return new Job({
     spec: {
@@ -95,6 +98,7 @@ export default (): [Job] => {
   const job = createDbUserJob({
     database,
     user,
+    ciEnv
   });
   return [job];
 };
