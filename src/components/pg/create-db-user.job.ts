@@ -25,9 +25,10 @@ export const createDbUserJob = ({
       backoffLimit: 5,
       template: {
         metadata: {
-          annotations: {
-            "kapp.k14s.io/deploy-logs": "for-new",
-          },
+          annotations: ciEnv.metadata.annotations,
+          labels: ciEnv.metadata.labels,
+          name: `create-db-user-${ciEnv.shortSha}`,
+          namespace: ciEnv.metadata.namespace.name,
         },
         spec: {
           containers: [
