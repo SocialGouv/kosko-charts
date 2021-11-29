@@ -33,7 +33,7 @@ spec:
               value: sample-kosko-e2e-branch
             - name: PGPASSWORD_SECRET_NAME
               value: pgpassword
-          image: ghcr.io/socialgouv/docker/azure-db:6.63.0
+          image: ghcr.io/socialgouv/docker/azure-db:6.64.0
           imagePullPolicy: IfNotPresent
           name: create-db-secret
       restartPolicy: OnFailure
@@ -71,7 +71,7 @@ spec:
               value: sample-kosko-24-e2e-branch-42
             - name: PGPASSWORD_SECRET_NAME
               value: pgpassword
-          image: ghcr.io/socialgouv/docker/azure-db:6.63.0
+          image: ghcr.io/socialgouv/docker/azure-db:6.64.0
           imagePullPolicy: IfNotPresent
           name: create-db-secret
       restartPolicy: OnFailure
