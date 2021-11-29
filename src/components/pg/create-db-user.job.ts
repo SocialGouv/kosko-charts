@@ -24,15 +24,15 @@ export const createDbUserJob = ({
   ciEnv: CIEnv;
 }): Job => {
   return new Job({
+    metadata: {
+      annotations: ciEnv.metadata.annotations,
+      labels: ciEnv.metadata.labels,
+      name: `create-db-user-${ciEnv.shortSha}`,
+      namespace: ciEnv.metadata.namespace.name,
+    },
     spec: {
       backoffLimit: 5,
       template: {
-        metadata: {
-          annotations: ciEnv.metadata.annotations,
-          labels: ciEnv.metadata.labels,
-          name: `create-db-user-${ciEnv.shortSha}`,
-          namespace: ciEnv.metadata.namespace.name,
-        },
         spec: {
           containers: [
             {
