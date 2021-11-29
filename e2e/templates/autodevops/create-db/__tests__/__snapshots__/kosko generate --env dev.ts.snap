@@ -16,7 +16,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: create-db-user-8843083
+  name: create-db-user
   namespace: sample-kosko-e2e-branch
 spec:
   backoffLimit: 5
@@ -68,7 +68,7 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: create-db-user-8843083
+  name: create-db-user
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   backoffLimit: 5

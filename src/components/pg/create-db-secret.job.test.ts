@@ -21,7 +21,7 @@ test("should create a pg create-db-secret job", () => {
           "owner": "my-team",
           "team": "my-team",
         },
-        "name": "create-db-secret-0123456",
+        "name": "create-db-secret",
         "namespace": "sample-42-my-test",
       },
       "spec": Object {
