@@ -3,8 +3,8 @@ import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { Job } from "kubernetes-models/batch/v1";
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
-// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.63.0
-const SOCIALGOUV_DOCKER_VERSION = "6.63.0";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.64.0
+const SOCIALGOUV_DOCKER_VERSION = "6.64.0";
 
 export const createDbSecretJob = ({
   pgPasswordSecretKeyRef = "pgpassword",

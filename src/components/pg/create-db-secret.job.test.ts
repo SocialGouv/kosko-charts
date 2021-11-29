@@ -47,7 +47,7 @@ test("should create a pg create-db-secret job", () => {
                     "value": "pgpassword",
                   },
                 ],
-                "image": "ghcr.io/socialgouv/docker/azure-db:6.63.0",
+                "image": "ghcr.io/socialgouv/docker/azure-db:6.64.0",
                 "imagePullPolicy": "IfNotPresent",
                 "name": "create-db-secret",
               },
