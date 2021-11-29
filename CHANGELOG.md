@@ -1,3 +1,10 @@
+## [9.8.4](https://github.com/SocialGouv/kosko-charts/compare/v9.8.3...v9.8.4) (2021-11-29)
+
+
+### Bug Fixes
+
+* **createdb-jobs:** remove sha suffix ([#842](https://github.com/SocialGouv/kosko-charts/issues/842)) ([13092c7](https://github.com/SocialGouv/kosko-charts/commit/13092c7e62d59f2590a0c062324bff3a84d3fd1e))
+
 ## [9.8.3](https://github.com/SocialGouv/kosko-charts/compare/v9.8.2...v9.8.3) (2021-11-29)
 
 
