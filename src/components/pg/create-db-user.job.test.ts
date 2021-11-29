@@ -1,10 +1,14 @@
+import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
+
 import { createDbUserJob } from "./create-db-user.job";
 
 test("should create a pg create-db-user job", () => {
   const job = createDbUserJob({
+    ciEnv: environmentMock(),
     database: "test",
     user: "test",
   });
+  console.log(job);
   expect(job).toMatchInlineSnapshot(`
     Object {
       "apiVersion": "batch/v1",
@@ -14,8 +18,16 @@ test("should create a pg create-db-user job", () => {
         "template": Object {
           "metadata": Object {
             "annotations": Object {
-              "kapp.k14s.io/deploy-logs": "for-new",
+              "app.gitlab.com/app": "socialgouv-sample",
+              "app.gitlab.com/env": "my-test",
             },
+            "labels": Object {
+              "application": "www",
+              "owner": "my-team",
+              "team": "my-team",
+            },
+            "name": "create-db-user-0123456",
+            "namespace": "sample-42-my-test",
           },
           "spec": Object {
             "containers": Array [
