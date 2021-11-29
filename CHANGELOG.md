@@ -1,3 +1,10 @@
+# [9.8.0](https://github.com/SocialGouv/kosko-charts/compare/v9.7.5...v9.8.0) (2021-11-29)
+
+
+### Features
+
+* **pg:** create-db-secret + create-db-user ([#828](https://github.com/SocialGouv/kosko-charts/issues/828)) ([7913877](https://github.com/SocialGouv/kosko-charts/commit/79138777ffee88b1ecd8f4113d05dcfe12dbb171))
+
 ## [9.7.5](https://github.com/SocialGouv/kosko-charts/compare/v9.7.4...v9.7.5) (2021-11-24)
 
 
