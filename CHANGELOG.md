@@ -1,3 +1,17 @@
+## [9.7.5](https://github.com/SocialGouv/kosko-charts/compare/v9.7.4...v9.7.5) (2021-11-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @socialgouv/env-slug to ^1.1.1 ([#829](https://github.com/SocialGouv/kosko-charts/issues/829)) ([ff8b44f](https://github.com/SocialGouv/kosko-charts/commit/ff8b44fb2d1a511db37097d5a98086517ed8307e))
+
+## [9.7.4](https://github.com/SocialGouv/kosko-charts/compare/v9.7.3...v9.7.4) (2021-11-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^16.11.10 ([#827](https://github.com/SocialGouv/kosko-charts/issues/827)) ([fb9cfdc](https://github.com/SocialGouv/kosko-charts/commit/fb9cfdcb5572563d2d0dc016b1f15d6ede5a2578))
+
 ## [9.7.3](https://github.com/SocialGouv/kosko-charts/compare/v9.7.2...v9.7.3) (2021-11-22)
 
 
