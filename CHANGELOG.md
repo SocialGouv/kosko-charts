@@ -1,3 +1,10 @@
+## [9.8.5](https://github.com/SocialGouv/kosko-charts/compare/v9.8.4...v9.8.5) (2021-11-30)
+
+
+### Bug Fixes
+
+* **createdb-jobs:** rely more on secret ([#843](https://github.com/SocialGouv/kosko-charts/issues/843)) ([a8180ee](https://github.com/SocialGouv/kosko-charts/commit/a8180eebed51b5750a90ca1fe30ecb804fc63872))
+
 ## [9.8.4](https://github.com/SocialGouv/kosko-charts/compare/v9.8.3...v9.8.4) (2021-11-29)
 
 
