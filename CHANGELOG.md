@@ -1,3 +1,10 @@
+## [9.8.6](https://github.com/SocialGouv/kosko-charts/compare/v9.8.5...v9.8.6) (2021-11-30)
+
+
+### Bug Fixes
+
+* **createdb-jobs:** fix tests ([#844](https://github.com/SocialGouv/kosko-charts/issues/844)) ([a75a162](https://github.com/SocialGouv/kosko-charts/commit/a75a1627b4223f559ed079462f79a6c6969076a4))
+
 ## [9.8.5](https://github.com/SocialGouv/kosko-charts/compare/v9.8.4...v9.8.5) (2021-11-30)
 
 
