@@ -1,3 +1,10 @@
+## [9.8.8](https://github.com/SocialGouv/kosko-charts/compare/v9.8.7...v9.8.8) (2021-11-30)
+
+
+### Bug Fixes
+
+* **clean:** remove unused create-db-secret job ([#848](https://github.com/SocialGouv/kosko-charts/issues/848)) ([30917f9](https://github.com/SocialGouv/kosko-charts/commit/30917f9575a2f534d7dabbf7ebe1067e33dd183d))
+
 ## [9.8.7](https://github.com/SocialGouv/kosko-charts/compare/v9.8.6...v9.8.7) (2021-11-30)
 
 
