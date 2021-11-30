@@ -5,8 +5,7 @@ import { createDbUserJob } from "./create-db-user.job";
 test("should create a pg create-db-user job", () => {
   const job = createDbUserJob({
     ciEnv: environmentMock(),
-    database: "test",
-    user: "test",
+    pgPasswordSecretKeyRef: "azure-pg-user-preprod",
   });
   console.log(job);
   expect(job).toMatchInlineSnapshot(`
@@ -41,6 +40,7 @@ test("should create a pg create-db-user job", () => {
                     "valueFrom": Object {
                       "secretKeyRef": Object {
                         "key": "PGDATABASE",
+                        "name": "azure-pg-user-preprod",
                       },
                     },
                   },
@@ -49,6 +49,7 @@ test("should create a pg create-db-user job", () => {
                     "valueFrom": Object {
                       "secretKeyRef": Object {
                         "key": "PGUSER",
+                        "name": "azure-pg-user-preprod",
                       },
                     },
                   },
@@ -57,6 +58,7 @@ test("should create a pg create-db-user job", () => {
                     "valueFrom": Object {
                       "secretKeyRef": Object {
                         "key": "PGPASSWORD",
+                        "name": "azure-pg-user-preprod",
                       },
                     },
                   },
@@ -65,6 +67,7 @@ test("should create a pg create-db-user job", () => {
                     "valueFrom": Object {
                       "secretKeyRef": Object {
                         "key": "PGHOST",
+                        "name": "azure-pg-user-preprod",
                       },
                     },
                   },
