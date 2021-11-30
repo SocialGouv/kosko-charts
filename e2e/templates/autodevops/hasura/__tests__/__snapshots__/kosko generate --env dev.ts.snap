@@ -85,6 +85,8 @@ spec:
           env:
             - name: APP_BASE_URL
               value: https://sample-kosko-e2e-branch.dev2.fabrique.social.gouv.fr
+            - name: NEXTAUTH_URL
+              value: https://sample-kosko-e2e-branch.dev2.fabrique.social.gouv.fr
 ---
 apiVersion: v1
 kind: Service
@@ -364,6 +366,8 @@ spec:
             periodSeconds: 5
           env:
             - name: APP_BASE_URL
+              value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+            - name: NEXTAUTH_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
 ---
 apiVersion: v1
@@ -670,6 +674,8 @@ spec:
             periodSeconds: 5
           env:
             - name: APP_BASE_URL
+              value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+            - name: NEXTAUTH_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
 ---
 apiVersion: v1
