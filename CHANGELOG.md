@@ -1,3 +1,10 @@
+## [9.8.9](https://github.com/SocialGouv/kosko-charts/compare/v9.8.8...v9.8.9) (2021-12-06)
+
+
+### Bug Fixes
+
+* **netpol:** use podSelector + fix default name ([#853](https://github.com/SocialGouv/kosko-charts/issues/853)) ([252fef5](https://github.com/SocialGouv/kosko-charts/commit/252fef51093183b551054183b9fd16b3fdaecf8e))
+
 ## [9.8.8](https://github.com/SocialGouv/kosko-charts/compare/v9.8.7...v9.8.8) (2021-11-30)
 
 
