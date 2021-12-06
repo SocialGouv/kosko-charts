@@ -1,3 +1,10 @@
+## [9.8.10](https://github.com/SocialGouv/kosko-charts/compare/v9.8.9...v9.8.10) (2021-12-06)
+
+
+### Bug Fixes
+
+* **netpol:** use default namespace ([#854](https://github.com/SocialGouv/kosko-charts/issues/854)) ([7bf6cae](https://github.com/SocialGouv/kosko-charts/commit/7bf6caeb6d8737b5e3221c5a87cfd9b0d5bfb302))
+
 ## [9.8.9](https://github.com/SocialGouv/kosko-charts/compare/v9.8.8...v9.8.9) (2021-12-06)
 
 
