@@ -1,3 +1,4 @@
+import environments from "@socialgouv/kosko-charts/environments";
 import { NetworkPolicy } from "kubernetes-models/networking.k8s.io/v1/NetworkPolicy";
 
 /**  Basic netpol that allow :
@@ -6,9 +7,11 @@ import { NetworkPolicy } from "kubernetes-models/networking.k8s.io/v1/NetworkPol
 /*      - communication from monitoring
 */
 
-export const create = (namespace: string): NetworkPolicy =>
-  new NetworkPolicy({
-    metadata: { name: `netpol-${namespace}`, namespace },
+export const create = (namespace?: string): NetworkPolicy => {
+  const ciEnv = environments(process.env);
+  const ns = namespace || ciEnv.metadata.namespace.name;
+  return new NetworkPolicy({
+    metadata: { name: `netpol-${ns}`, namespace: ns },
     spec: {
       ingress: [
         {
@@ -45,3 +48,4 @@ export const create = (namespace: string): NetworkPolicy =>
       policyTypes: ["Ingress"],
     },
   });
+};
