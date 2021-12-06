@@ -9,7 +9,7 @@ import { NetworkPolicy } from "kubernetes-models/networking.k8s.io/v1/NetworkPol
 
 export const create = (namespace?: string): NetworkPolicy => {
   const ciEnv = environments(process.env);
-  const ns = namespace || ciEnv.metadata.namespace.name;
+  const ns = namespace ?? ciEnv.metadata.namespace.name;
   return new NetworkPolicy({
     metadata: { name: `netpol-${ns}`, namespace: ns },
     spec: {
