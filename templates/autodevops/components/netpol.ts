@@ -1,4 +1,5 @@
 import { create } from "@socialgouv/kosko-charts/components/netpol";
+
 import Config from "../utils/config";
 
 const manifests = async () => {
