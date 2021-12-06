@@ -5,7 +5,7 @@ Object {
   "apiVersion": "networking.k8s.io/v1",
   "kind": "NetworkPolicy",
   "metadata": Object {
-    "name": "default",
+    "name": "netpol-some-app",
     "namespace": "some-app",
   },
   "spec": Object {
@@ -13,11 +13,7 @@ Object {
       Object {
         "from": Array [
           Object {
-            "namespaceSelector": Object {
-              "matchLabels": Object {
-                "network-policy/namespace": "some-app",
-              },
-            },
+            "podSelector": Object {},
           },
         ],
       },

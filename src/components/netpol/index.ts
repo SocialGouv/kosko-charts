@@ -8,15 +8,13 @@ import { NetworkPolicy } from "kubernetes-models/networking.k8s.io/v1/NetworkPol
 
 export const create = (namespace: string): NetworkPolicy =>
   new NetworkPolicy({
-    metadata: { name: "default", namespace },
+    metadata: { name: `netpol-${namespace}`, namespace },
     spec: {
       ingress: [
         {
           from: [
             {
-              namespaceSelector: {
-                matchLabels: { "network-policy/namespace": namespace },
-              },
+              podSelector: {},
             },
           ],
         },
