@@ -1,3 +1,10 @@
+## [9.8.14](https://github.com/SocialGouv/kosko-charts/compare/v9.8.13...v9.8.14) (2021-12-10)
+
+
+### Bug Fixes
+
+* **oclif-resolution:** break yarndep infinite loop ([#863](https://github.com/SocialGouv/kosko-charts/issues/863)) ([c16fff6](https://github.com/SocialGouv/kosko-charts/commit/c16fff64aebe1b774c84b5a2e119dc157feff3d6))
+
 ## [9.8.13](https://github.com/SocialGouv/kosko-charts/compare/v9.8.12...v9.8.13) (2021-12-10)
 
 
