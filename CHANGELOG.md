@@ -1,3 +1,10 @@
+## [9.8.13-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.8.12...v9.8.13-beta.1) (2021-12-10)
+
+
+### Bug Fixes
+
+* **pkg:** fix oclif resolution, prevent yarn crash ([55ff00c](https://github.com/SocialGouv/kosko-charts/commit/55ff00cd4c031d58a73a0ea9f1489e082eafc9ec))
+
 ## [9.8.12](https://github.com/SocialGouv/kosko-charts/compare/v9.8.11...v9.8.12) (2021-12-10)
 
 
