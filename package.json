@@ -60,6 +60,9 @@
   "peerDependencies": {
     "@kosko/env": "2"
   },
+  "resolutions": {
+    "@oclif/command": "1.8.10"
+  },
   "publishConfig": {
     "access": "public"
   },
