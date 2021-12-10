@@ -1,3 +1,11 @@
+## [9.8.13](https://github.com/SocialGouv/kosko-charts/compare/v9.8.12...v9.8.13) (2021-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kosko/env to v3 ([#859](https://github.com/SocialGouv/kosko-charts/issues/859)) ([fce3d09](https://github.com/SocialGouv/kosko-charts/commit/fce3d09ef75e509763783450f03496dbf6e320ae))
+* **env-slug:** up to break oclif infinite loop ([#861](https://github.com/SocialGouv/kosko-charts/issues/861)) ([1e533b2](https://github.com/SocialGouv/kosko-charts/commit/1e533b25a0e23f57243529acfbc751af59480cd1))
+
 ## [9.8.12](https://github.com/SocialGouv/kosko-charts/compare/v9.8.11...v9.8.12) (2021-12-10)
 
 
