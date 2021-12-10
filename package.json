@@ -7,7 +7,7 @@
   "dependencies": {
     "@kubernetes-models/sealed-secrets": "^2.0.2",
     "@sindresorhus/is": "^4.2.0",
-    "@socialgouv/env-slug": "^1.1.2",
+    "@socialgouv/env-slug": "^1.2.2",
     "fs-extra": "^10.0.0",
     "kubernetes-models": "^2.0.2",
     "slugify": "^1.6.3"
@@ -39,9 +39,6 @@
     "ts-node": "^10.4.0",
     "typedoc": "^0.22.10",
     "typescript": "^4.5.3"
-  },
-  "resolutions": {
-    "@oclif/command": "1.8.10"
   },
   "files": [
     "components",
