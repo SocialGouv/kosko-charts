@@ -1,3 +1,104 @@
+## [9.8.12](https://github.com/SocialGouv/kosko-charts/compare/v9.8.11...v9.8.12) (2021-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to ^4.5.3 ([#815](https://github.com/SocialGouv/kosko-charts/issues/815)) ([cf00081](https://github.com/SocialGouv/kosko-charts/commit/cf000816caa8873221e58402d9885bdb97ebaa8d))
+
+## [9.8.11](https://github.com/SocialGouv/kosko-charts/compare/v9.8.10...v9.8.11) (2021-12-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^16.11.12 ([#856](https://github.com/SocialGouv/kosko-charts/issues/856)) ([a96c953](https://github.com/SocialGouv/kosko-charts/commit/a96c953d3524d93a2cd389cda28085133881f3f4))
+
+## [9.8.10](https://github.com/SocialGouv/kosko-charts/compare/v9.8.9...v9.8.10) (2021-12-06)
+
+
+### Bug Fixes
+
+* **netpol:** use default namespace ([#854](https://github.com/SocialGouv/kosko-charts/issues/854)) ([7bf6cae](https://github.com/SocialGouv/kosko-charts/commit/7bf6caeb6d8737b5e3221c5a87cfd9b0d5bfb302))
+
+## [9.8.9](https://github.com/SocialGouv/kosko-charts/compare/v9.8.8...v9.8.9) (2021-12-06)
+
+
+### Bug Fixes
+
+* **netpol:** use podSelector + fix default name ([#853](https://github.com/SocialGouv/kosko-charts/issues/853)) ([252fef5](https://github.com/SocialGouv/kosko-charts/commit/252fef51093183b551054183b9fd16b3fdaecf8e))
+
+## [9.8.8](https://github.com/SocialGouv/kosko-charts/compare/v9.8.7...v9.8.8) (2021-11-30)
+
+
+### Bug Fixes
+
+* **clean:** remove unused create-db-secret job ([#848](https://github.com/SocialGouv/kosko-charts/issues/848)) ([30917f9](https://github.com/SocialGouv/kosko-charts/commit/30917f9575a2f534d7dabbf7ebe1067e33dd183d))
+
+## [9.8.7](https://github.com/SocialGouv/kosko-charts/compare/v9.8.6...v9.8.7) (2021-11-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to ^16.11.11 ([#845](https://github.com/SocialGouv/kosko-charts/issues/845)) ([3073db8](https://github.com/SocialGouv/kosko-charts/commit/3073db8b96b514b4bd24559a5c34c136fafc64c8))
+
+## [9.8.6](https://github.com/SocialGouv/kosko-charts/compare/v9.8.5...v9.8.6) (2021-11-30)
+
+
+### Bug Fixes
+
+* **createdb-jobs:** fix tests ([#844](https://github.com/SocialGouv/kosko-charts/issues/844)) ([a75a162](https://github.com/SocialGouv/kosko-charts/commit/a75a1627b4223f559ed079462f79a6c6969076a4))
+
+## [9.8.5](https://github.com/SocialGouv/kosko-charts/compare/v9.8.4...v9.8.5) (2021-11-30)
+
+
+### Bug Fixes
+
+* **createdb-jobs:** rely more on secret ([#843](https://github.com/SocialGouv/kosko-charts/issues/843)) ([a8180ee](https://github.com/SocialGouv/kosko-charts/commit/a8180eebed51b5750a90ca1fe30ecb804fc63872))
+
+## [9.8.4](https://github.com/SocialGouv/kosko-charts/compare/v9.8.3...v9.8.4) (2021-11-29)
+
+
+### Bug Fixes
+
+* **createdb-jobs:** remove sha suffix ([#842](https://github.com/SocialGouv/kosko-charts/issues/842)) ([13092c7](https://github.com/SocialGouv/kosko-charts/commit/13092c7e62d59f2590a0c062324bff3a84d3fd1e))
+
+## [9.8.3](https://github.com/SocialGouv/kosko-charts/compare/v9.8.2...v9.8.3) (2021-11-29)
+
+
+### Bug Fixes
+
+* **docker:** upgrade to 6.64.0 ([#841](https://github.com/SocialGouv/kosko-charts/issues/841)) ([c4bf054](https://github.com/SocialGouv/kosko-charts/commit/c4bf0547d1ca5ca84191f494433f31ebc2d88983))
+
+## [9.8.2](https://github.com/SocialGouv/kosko-charts/compare/v9.8.1...v9.8.2) (2021-11-29)
+
+
+### Bug Fixes
+
+* **create-db-user:** metadata scope ([#839](https://github.com/SocialGouv/kosko-charts/issues/839)) ([b080cbe](https://github.com/SocialGouv/kosko-charts/commit/b080cbed73a3fb74a22d4683533eb1d12a28d95d))
+* **create-db-user:** metadata scope ([#840](https://github.com/SocialGouv/kosko-charts/issues/840)) ([f33e897](https://github.com/SocialGouv/kosko-charts/commit/f33e8974968bad04ea9688f1e37f8712de7af58d))
+
+## [9.8.1](https://github.com/SocialGouv/kosko-charts/compare/v9.8.0...v9.8.1) (2021-11-29)
+
+
+### Bug Fixes
+
+* **create-db-user:** ci-env test and snapshots ([#837](https://github.com/SocialGouv/kosko-charts/issues/837)) ([7df8213](https://github.com/SocialGouv/kosko-charts/commit/7df8213ba9557d79f678034320eeb4ce6ebbbabc))
+* **create-db-user:** job metadata ([#836](https://github.com/SocialGouv/kosko-charts/issues/836)) ([e52a21c](https://github.com/SocialGouv/kosko-charts/commit/e52a21caf1c8b509224f4f9c3af8bfc1c53a11a9))
+* **create-db-user:** snapshots and clean debug ([#838](https://github.com/SocialGouv/kosko-charts/issues/838)) ([b8764d2](https://github.com/SocialGouv/kosko-charts/commit/b8764d293fce3f2a6369118641aaee3e87669a57))
+
+# [9.8.0](https://github.com/SocialGouv/kosko-charts/compare/v9.7.5...v9.8.0) (2021-11-29)
+
+
+### Features
+
+* **pg:** create-db-secret + create-db-user ([#828](https://github.com/SocialGouv/kosko-charts/issues/828)) ([7913877](https://github.com/SocialGouv/kosko-charts/commit/79138777ffee88b1ecd8f4113d05dcfe12dbb171))
+
+## [9.7.5](https://github.com/SocialGouv/kosko-charts/compare/v9.7.4...v9.7.5) (2021-11-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @socialgouv/env-slug to ^1.1.1 ([#829](https://github.com/SocialGouv/kosko-charts/issues/829)) ([ff8b44f](https://github.com/SocialGouv/kosko-charts/commit/ff8b44fb2d1a511db37097d5a98086517ed8307e))
+
 ## [9.7.4](https://github.com/SocialGouv/kosko-charts/compare/v9.7.3...v9.7.4) (2021-11-23)
 
 

@@ -5,7 +5,55 @@ Object {
   "apiVersion": "networking.k8s.io/v1",
   "kind": "NetworkPolicy",
   "metadata": Object {
-    "name": "default",
+    "name": "netpol-sample-42-my-test",
+    "namespace": "sample-42-my-test",
+  },
+  "spec": Object {
+    "ingress": Array [
+      Object {
+        "from": Array [
+          Object {
+            "podSelector": Object {},
+          },
+        ],
+      },
+      Object {
+        "from": Array [
+          Object {
+            "namespaceSelector": Object {
+              "matchLabels": Object {
+                "network-policy/source": "ingress-controller",
+              },
+            },
+          },
+        ],
+      },
+      Object {
+        "from": Array [
+          Object {
+            "namespaceSelector": Object {
+              "matchLabels": Object {
+                "network-policy/source": "monitoring",
+              },
+            },
+          },
+        ],
+      },
+    ],
+    "podSelector": Object {},
+    "policyTypes": Array [
+      "Ingress",
+    ],
+  },
+}
+`;
+
+exports[`should create a network policy with custom namespace 1`] = `
+Object {
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": Object {
+    "name": "netpol-some-app",
     "namespace": "some-app",
   },
   "spec": Object {
@@ -13,11 +61,7 @@ Object {
       Object {
         "from": Array [
           Object {
-            "namespaceSelector": Object {
-              "matchLabels": Object {
-                "network-policy/namespace": "some-app",
-              },
-            },
+            "podSelector": Object {},
           },
         ],
       },
