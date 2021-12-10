@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@kosko/env": "^2.0.1",
+    "@kosko/env": "^3.0.0",
     "kubernetes-models": "^2.0.2"
   },
   "devDependencies": {
