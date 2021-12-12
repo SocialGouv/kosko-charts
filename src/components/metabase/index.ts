@@ -6,8 +6,8 @@ import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import type { AppConfig, CreateFn } from "../app";
 import { create as createApp } from "../app";
 
-// renovate: datasource=docker depName=metabase/metabase versioning=v0.37.4
-const DOCKER_METABASE_TAG = "v0.37.4";
+// renovate: datasource=docker depName=metabase/metabase versioning=v0.38.6
+const DOCKER_METABASE_TAG = "v0.38.6";
 
 const metabaseConfig: Partial<AppConfig> = {
   containerPort: 3000,
