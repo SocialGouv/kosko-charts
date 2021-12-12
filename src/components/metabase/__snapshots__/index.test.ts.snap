@@ -6,7 +6,7 @@ Array [
   Object {
     "config": Object {
       "containerPort": 3000,
-      "image": "metabase/metabase:v0.37.4",
+      "image": "metabase/metabase:v0.38.6",
       "subDomainPrefix": "metabase-",
     },
     "deployment": Object {
