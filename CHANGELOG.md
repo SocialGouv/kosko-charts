@@ -1,3 +1,10 @@
+## [9.8.17](https://github.com/SocialGouv/kosko-charts/compare/v9.8.16...v9.8.17) (2021-12-12)
+
+
+### Bug Fixes
+
+* upgrade metabase ([#867](https://github.com/SocialGouv/kosko-charts/issues/867)) ([b396851](https://github.com/SocialGouv/kosko-charts/commit/b396851172a10fc5461f121c2dbd142489f53f4b))
+
 ## [9.8.16](https://github.com/SocialGouv/kosko-charts/compare/v9.8.15...v9.8.16) (2021-12-10)
 
 
