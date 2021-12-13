@@ -19,5 +19,6 @@
     "gitlab": "DOTENV_CONFIG_PATH=./environments/.gitlab-ci.env kosko generate --require dotenv/config",
     "gitlab:dev": "yarn --silent gitlab --env dev",
     "gitlab:prod": "yarn --silent gitlab --env prod"
-  }
+  },
+  "resolutions": {}
 }

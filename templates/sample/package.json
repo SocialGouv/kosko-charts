@@ -20,5 +20,6 @@
     "gitlab:dev": "yarn --silent gitlab --env dev",
     "gitlab:prod": "yarn --silent gitlab --env prod",
     "test": "jest"
-  }
+  },
+  "resolutions": {}
 }

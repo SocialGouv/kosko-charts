@@ -8,6 +8,7 @@
     "kubernetes-models": "^2.0.2",
     "ts-node": "^10.4.0"
   },
+  "resolutions": {},
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-modules-commonjs": "^7.16.0",
