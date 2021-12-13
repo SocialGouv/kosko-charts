@@ -34,6 +34,5 @@
     "gitlab:preprod": "yarn --silent gitlab --env preprod",
     "gitlab:prod": "yarn --silent gitlab --env prod",
     "test": "jest"
-  },
-  "resolutions": {}
+  }
 }

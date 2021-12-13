@@ -68,6 +68,9 @@ jobs:
                   return acc;
                 },{})
               };
+              if(Object.keys(package.resolutions).length===0){
+                delete package.resolutions;
+              }
               fs.writeFileSync('package.json', JSON.stringify(package, null, 2));"
             echo "templates/${TEMPLATE_DIR}yarn.lock" updated
           done
