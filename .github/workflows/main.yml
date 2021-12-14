@@ -19,9 +19,6 @@ jobs:
           node-version: lts/*
           cache: yarn
 
-      - name: Change yarn cache directory path
-        run: yarn config set cache-folder /tmp/yarn-cache
-
       - name: Get yarn cache directory path
         id: init
         shell: bash
