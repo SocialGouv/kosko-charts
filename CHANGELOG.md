@@ -1,3 +1,11 @@
+## [9.8.19](https://github.com/SocialGouv/kosko-charts/compare/v9.8.18...v9.8.19) (2021-12-14)
+
+
+### Bug Fixes
+
+* **templates:** add yarn.lock and upgrader ([#869](https://github.com/SocialGouv/kosko-charts/issues/869)) ([12d973f](https://github.com/SocialGouv/kosko-charts/commit/12d973f3b85fe095acf0313bef3f9fa99dacc5a2))
+* **yarn:** fix cache removing link-duplicates ([#872](https://github.com/SocialGouv/kosko-charts/issues/872)) ([c4da034](https://github.com/SocialGouv/kosko-charts/commit/c4da034c3424c3c5d5d0e9982bd744d5bfa5fa68))
+
 ## [9.8.18](https://github.com/SocialGouv/kosko-charts/compare/v9.8.17...v9.8.18) (2021-12-14)
 
 
