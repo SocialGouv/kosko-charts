@@ -9,8 +9,8 @@
     "ts-node": "^10.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.5",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.3",
     "dotenv": "^10.0.0",
