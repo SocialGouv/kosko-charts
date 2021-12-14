@@ -22,7 +22,7 @@
     "@socialgouv/kosko-charts": "link:./",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.3",
-    "@types/node": "^16.11.12",
+    "@types/node": "^16.11.13",
     "babel-plugin-module-resolver": "^4.1.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
