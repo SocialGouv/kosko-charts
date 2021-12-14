@@ -59,7 +59,7 @@ jobs:
                 }
               };
               fs.writeFileSync('package.json', JSON.stringify(tmpPackage, null, 2));"
-            yarn --perfer-offline --link-duplicates
+            yarn --perfer-offline
             node -e "
               const tmpPackage = JSON.parse(fs.readFileSync('package.json'));
               const package = {
