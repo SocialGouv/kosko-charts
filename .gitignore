@@ -1,7 +1,6 @@
 /components
 /environments
 /lib
-/templates/*/yarn.lock
 /testing
 /tsconfig.build.tsbuildinfo
 /types

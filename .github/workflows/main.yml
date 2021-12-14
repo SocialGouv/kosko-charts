@@ -39,6 +39,43 @@ jobs:
       - name: Installing
         run: yarn --frozen-lockfile --perfer-offline --link-duplicates
 
+      - name: Upgrade yarn.lock files in templates according to @socialgouv/kosko-charts root project
+        shell: bash
+        run: |
+          cd templates
+          TEMPLATES_DIR=$(pwd)
+          for TEMPLATE_DIR in */; do
+            cd $TEMPLATES_DIR/$TEMPLATE_DIR
+            node -e "
+              const package = JSON.parse(fs.readFileSync('package.json'));
+              const tmpPackage = {
+                ...package,
+                resolutions: {
+                  ...(package.resolutions || {}),
+                  '@socialgouv/kosko-charts': 'link:../..'
+                }
+              };
+              fs.writeFileSync('package.json', JSON.stringify(tmpPackage, null, 2));"
+            yarn --perfer-offline --link-duplicates
+            node -e "
+              const tmpPackage = JSON.parse(fs.readFileSync('package.json'));
+              const package = {
+                ...tmpPackage,
+                resolutions: Object.entries(tmpPackage.resolutions).reduce((acc, [key, value]) => {
+                  if(key !== '@socialgouv/kosko-charts'){
+                    acc[key] = value;
+                  }
+                  return acc;
+                },{})
+              };
+              if(Object.keys(package.resolutions).length===0){
+                delete package.resolutions;
+              }
+              fs.writeFileSync('package.json', JSON.stringify(package, null, 2));"
+            echo "templates/${TEMPLATE_DIR}yarn.lock" updated
+          done
+
+
       - name: Lint
         run: yarn lint
 
