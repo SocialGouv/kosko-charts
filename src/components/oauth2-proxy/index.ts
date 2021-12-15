@@ -1,8 +1,9 @@
-import path from "path";
 import koskoEnv from "@kosko/env";
-import { ConfigMap, EnvVar } from "kubernetes-models/v1";
 import { loadFile } from "@kosko/yaml";
-import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1";
+import type { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1";
+import type { ConfigMap } from "kubernetes-models/v1";
+import { EnvVar } from "kubernetes-models/v1";
+import path from "path";
 
 import { addEnv, getDeployment, getIngressHost } from "../..//utils";
 import environments from "../../environments";
@@ -18,7 +19,7 @@ const loadEnvYaml = async (fileName: string) => {
     await loadFile(
       path.join(koskoEnv.cwd, `environments/${koskoEnv.env}/${fileName}`),
       {
-        transform: (manifest: any) => {
+        transform: (manifest) => {
           // force fix namespace
           const ciEnv = environments(process.env);
           if (manifest.metadata) {
@@ -49,17 +50,23 @@ export const create = async ({ upstream }: ProxyParams) => {
   )) as SealedSecret;
 
   const manifests = await appCreate("proxy", {
-    env: koskoEnv,
     config: {
-      image: "quay.io/oauth2-proxy/oauth2-proxy:v7.2.0",
-      containerPort: 4180,
       container: {
-        startupProbe: {
-          httpGet: {
-            path: "/ping",
-            port: "http",
+        args: ["--upstream", upstream],
+        env: [
+          new EnvVar({
+            name: "OAUTH2_PROXY_HTTP_ADDRESS",
+            value: "0.0.0.0:4180",
+          }),
+        ],
+        envFrom: [
+          {
+            configMapRef: { name: configMap.metadata?.name },
           },
-        },
+          {
+            secretRef: { name: sealedSecret.metadata?.name },
+          },
+        ],
         livenessProbe: {
           httpGet: {
             path: "/ping",
@@ -72,23 +79,17 @@ export const create = async ({ upstream }: ProxyParams) => {
             port: "http",
           },
         },
-        args: ["--upstream", upstream],
-        env: [
-          new EnvVar({
-            name: "OAUTH2_PROXY_HTTP_ADDRESS",
-            value: "0.0.0.0:4180",
-          }),
-        ],
-        envFrom: [
-          {
-            configMapRef: { name: configMap?.metadata?.name },
+        startupProbe: {
+          httpGet: {
+            path: "/ping",
+            port: "http",
           },
-          {
-            secretRef: { name: sealedSecret?.metadata?.name },
-          },
-        ],
+        },
       },
+      containerPort: 4180,
+      image: "quay.io/oauth2-proxy/oauth2-proxy:v7.2.0",
     },
+    env: koskoEnv,
   });
 
   const deployment = getDeployment(manifests);
@@ -96,11 +97,11 @@ export const create = async ({ upstream }: ProxyParams) => {
 
   // TODO: has no effect with github
   addEnv({
-    deployment,
     data: new EnvVar({
       name: "OAUTH2_PROXY_REDIRECT_URL",
       value: `https://${hostName}/oauth2/callback`,
     }),
+    deployment,
   });
 
   return [configMap, sealedSecret, manifests];

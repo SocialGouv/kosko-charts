@@ -1,8 +1,9 @@
+import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1";
 import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
+import { ConfigMap } from "kubernetes-models/v1";
+import type { Manifest } from "templates/autodevops/types/config";
 
 import { create } from "./index";
-import { ConfigMap } from "kubernetes-models/v1";
-import { SealedSecret } from "@kubernetes-models/sealed-secrets/bitnami.com/v1alpha1";
 
 const mockConfigMap = new ConfigMap({
   metadata: { name: "some-config-map" },
@@ -14,12 +15,12 @@ const mockSealedSecret = new SealedSecret({
 jest.mock("@kosko/yaml", () => {
   return {
     loadFile:
-      (path: any, { transform }: any) =>
-      () => {
-        if (path.match(/configmap.yml$/)) {
-          return [transform(mockConfigMap)];
-        } else if (path.match(/sealed-secret.yml$/)) {
-          return [transform(mockSealedSecret)];
+      (path: string, { transform }) =>
+      (): Manifest[] | null => {
+        if (/configmap.yml$/.exec(path)) {
+          return [transform(mockConfigMap)] as Manifest[];
+        } else if (/sealed-secret.yml$/.exec(path)) {
+          return [transform(mockSealedSecret)] as Manifest[];
         }
         return null;
       },
