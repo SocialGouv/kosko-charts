@@ -13,6 +13,9 @@ interface ProxyParams {
   upstream: string;
 }
 
+// renovate: datasource=docker depName=sosedoff/pgweb versioning=v7.2.0
+const OAUTH2_PROXY_VERSION = "v7.2.0";
+
 // load some YAML from user env
 const loadEnvYaml = async (fileName: string) => {
   return (
@@ -87,7 +90,7 @@ export const create = async ({ upstream }: ProxyParams) => {
         },
       },
       containerPort: 4180,
-      image: "quay.io/oauth2-proxy/oauth2-proxy:v7.2.0",
+      image: `quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2_PROXY_VERSION}`,
     },
     env: koskoEnv,
   });
