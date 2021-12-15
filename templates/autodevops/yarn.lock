@@ -659,10 +659,10 @@
     slugify "^1.6.3"
     tslib "^2.3.1"
 
-"@socialgouv/kosko-charts@9.8.19":
-  version "9.8.19"
-  resolved "https://registry.yarnpkg.com/@socialgouv/kosko-charts/-/kosko-charts-9.8.19.tgz#1a616a6517a4b211f87007951829175c2d8863fd"
-  integrity sha512-9KfSIOGRzj8hO11Y2clPA2QdyPG6G3gHKyKAvi96xx+Yj35xOxVer6Py4vV3hXy3oO12/yzLBbOEOvoRnxGgVw==
+"@socialgouv/kosko-charts@9.8.20":
+  version "9.8.20"
+  resolved "https://registry.yarnpkg.com/@socialgouv/kosko-charts/-/kosko-charts-9.8.20.tgz#3d11a4f50443e6796b388becf57b94a1778ff9de"
+  integrity sha512-NUuLlQBk6krjUPGYjZquR+UbG7+wGe4Ai0FuKVuX+H5rRfHNE9o3Mj4d3FKfGUiJmW6PVWtbmzywiuJ/ZhTMkA==
   dependencies:
     "@kubernetes-models/sealed-secrets" "^2.0.2"
     "@sindresorhus/is" "^4.2.0"
@@ -770,10 +770,10 @@
     jest-diff "^27.0.0"
     pretty-format "^27.0.0"
 
-"@types/node@*", "@types/node@^16.11.13":
-  version "16.11.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.13.tgz#6b71641b81a98c6a538d89892440c06f147edddc"
-  integrity sha512-eUXZzHLHoZqj1frtUetNkUetYoJ6X55UmrVnFD4DMhVeAmwLjniZhtBmsRiemQh4uq4G3vUra/Ws/hs9vEvL3Q==
+"@types/node@*", "@types/node@^16.11.14":
+  version "16.11.14"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.14.tgz#4939fb42e5b0ffb3ea7e193c28244fe7414977a6"
+  integrity sha512-mK6BKLpL0bG6v2CxHbm0ed6RcZrAtTHBTd/ZpnlVPVa3HkumsqLE4BC4u6TQ8D7pnrRbOU0am6epuALs+Ncnzw==
 
 "@types/prettier@^2.1.5":
   version "2.4.2"
