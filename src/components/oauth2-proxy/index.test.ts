@@ -1,7 +1,4 @@
-import { createNodeCJSEnvironment } from "@kosko/env";
 import environmentMock from "@socialgouv/kosko-charts/environments/index.mock";
-
-import { directory } from "tempy";
 
 import { create } from "./index";
 import { ConfigMap } from "kubernetes-models/v1";
@@ -39,13 +36,8 @@ test("should return dev manifests", async () => {
 
   jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
 
-  const mockCwd = directory();
-  const mockEnv = createNodeCJSEnvironment({ cwd: mockCwd });
-  mockEnv.env = "dev";
-
   const manifests = await create({
     upstream: "http://target:123",
-    env: mockEnv,
   });
   expect(manifests).toMatchSnapshot();
 });
