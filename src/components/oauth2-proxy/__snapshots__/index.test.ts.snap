@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return dev manifests 1`] = `
+Array [
+  Object {
+    "apiVersion": "v1",
+    "kind": "ConfigMap",
+    "metadata": Object {
+      "name": "some-config-map",
+      "namespace": "test-456",
+    },
+  },
+  Object {
+    "apiVersion": "bitnami.com/v1alpha1",
+    "kind": "SealedSecret",
+    "metadata": Object {
+      "name": "some-sealed-secret",
+      "namespace": "test-456",
+    },
+  },
+  Array [
+    Object {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": Object {
+        "annotations": Object {
+          "app.github.com/job": "777",
+          "app.github.com/ref": "456",
+          "app.github.com/repo": "socialgouv/test",
+          "app.github.com/run": "888",
+          "app.github.com/sha": "123",
+          "kapp.k14s.io/disable-default-label-scoping-rules": "",
+          "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        },
+        "labels": Object {
+          "app": "proxy",
+          "application": "test",
+          "cert": "wildcard",
+          "component": "test",
+          "owner": "test",
+          "team": "test",
+        },
+        "name": "proxy",
+        "namespace": "test-456",
+      },
+      "spec": Object {
+        "replicas": 1,
+        "selector": Object {
+          "matchLabels": Object {
+            "app": "proxy",
+          },
+        },
+        "template": Object {
+          "metadata": Object {
+            "annotations": Object {
+              "app.github.com/job": "777",
+              "app.github.com/ref": "456",
+              "app.github.com/repo": "socialgouv/test",
+              "app.github.com/run": "888",
+              "app.github.com/sha": "123",
+              "kapp.k14s.io/disable-default-label-scoping-rules": "",
+              "kapp.k14s.io/disable-default-ownership-label-rules": "",
+            },
+            "labels": Object {
+              "app": "proxy",
+              "application": "test",
+              "cert": "wildcard",
+              "component": "test",
+              "owner": "test",
+              "team": "test",
+            },
+          },
+          "spec": Object {
+            "containers": Array [
+              Object {
+                "args": Array [
+                  "--upstream",
+                  "http://target:123",
+                ],
+                "env": Array [
+                  Object {
+                    "name": "OAUTH2_PROXY_HTTP_ADDRESS",
+                    "value": "0.0.0.0:4180",
+                  },
+                  Object {
+                    "name": "OAUTH2_PROXY_REDIRECT_URL",
+                    "value": "https://test-456.fabrique.social.gouv.fr/oauth2/callback",
+                  },
+                ],
+                "envFrom": Array [
+                  Object {
+                    "configMapRef": Object {
+                      "name": "some-config-map",
+                    },
+                  },
+                  Object {
+                    "secretRef": Object {
+                      "name": "some-sealed-secret",
+                    },
+                  },
+                ],
+                "image": "quay.io/oauth2-proxy/oauth2-proxy:v7.2.0",
+                "livenessProbe": Object {
+                  "failureThreshold": 6,
+                  "httpGet": Object {
+                    "path": "/ping",
+                    "port": "http",
+                  },
+                  "initialDelaySeconds": 30,
+                  "periodSeconds": 5,
+                  "timeoutSeconds": 5,
+                },
+                "name": "proxy",
+                "ports": Array [
+                  Object {
+                    "containerPort": 4180,
+                    "name": "http",
+                  },
+                ],
+                "readinessProbe": Object {
+                  "failureThreshold": 15,
+                  "httpGet": Object {
+                    "path": "/ping",
+                    "port": "http",
+                  },
+                  "initialDelaySeconds": 0,
+                  "periodSeconds": 5,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1,
+                },
+                "resources": Object {
+                  "limits": Object {
+                    "cpu": "500m",
+                    "memory": "128Mi",
+                  },
+                  "requests": Object {
+                    "cpu": "5m",
+                    "memory": "16Mi",
+                  },
+                },
+                "startupProbe": Object {
+                  "failureThreshold": 12,
+                  "httpGet": Object {
+                    "path": "/ping",
+                    "port": "http",
+                  },
+                  "periodSeconds": 5,
+                },
+              },
+            ],
+          },
+        },
+      },
+    },
+    Object {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": Object {
+        "annotations": Object {
+          "app.github.com/job": "777",
+          "app.github.com/ref": "456",
+          "app.github.com/repo": "socialgouv/test",
+          "app.github.com/run": "888",
+          "app.github.com/sha": "123",
+          "kapp.k14s.io/disable-default-label-scoping-rules": "",
+          "kapp.k14s.io/disable-default-ownership-label-rules": "",
+        },
+        "labels": Object {
+          "app": "proxy",
+          "application": "test",
+          "cert": "wildcard",
+          "component": "test",
+          "owner": "test",
+          "team": "test",
+        },
+        "name": "proxy",
+        "namespace": "test-456",
+      },
+      "spec": Object {
+        "ports": Array [
+          Object {
+            "name": "http",
+            "port": 80,
+            "targetPort": 4180,
+          },
+        ],
+        "selector": Object {
+          "app": "proxy",
+        },
+        "type": "ClusterIP",
+      },
+    },
+    Object {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "Ingress",
+      "metadata": Object {
+        "annotations": Object {
+          "app.github.com/job": "777",
+          "app.github.com/ref": "456",
+          "app.github.com/repo": "socialgouv/test",
+          "app.github.com/run": "888",
+          "app.github.com/sha": "123",
+          "kapp.k14s.io/disable-default-label-scoping-rules": "",
+          "kapp.k14s.io/disable-default-ownership-label-rules": "",
+          "kubernetes.io/ingress.class": "nginx",
+        },
+        "labels": Object {
+          "app": "proxy",
+          "application": "test",
+          "cert": "wildcard",
+          "component": "test",
+          "owner": "test",
+          "team": "test",
+        },
+        "name": "proxy",
+        "namespace": "test-456",
+      },
+      "spec": Object {
+        "rules": Array [
+          Object {
+            "host": "test-456.fabrique.social.gouv.fr",
+            "http": Object {
+              "paths": Array [
+                Object {
+                  "backend": Object {
+                    "service": Object {
+                      "name": "proxy",
+                      "port": Object {
+                        "name": "http",
+                      },
+                    },
+                  },
+                  "path": "/",
+                  "pathType": "Prefix",
+                },
+              ],
+            },
+          },
+        ],
+        "tls": Array [
+          Object {
+            "hosts": Array [
+              "test-456.fabrique.social.gouv.fr",
+            ],
+            "secretName": "wildcard-crt",
+          },
+        ],
+      },
+    },
+  ],
+]
+`;
