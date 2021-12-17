@@ -1,3 +1,10 @@
+# [9.9.0](https://github.com/SocialGouv/kosko-charts/compare/v9.8.21...v9.9.0) (2021-12-17)
+
+
+### Features
+
+* add oauth2-proxy component ([#874](https://github.com/SocialGouv/kosko-charts/issues/874)) ([e992d7e](https://github.com/SocialGouv/kosko-charts/commit/e992d7e59936c4734b60301d8aabf82fad88425d))
+
 ## [9.8.21](https://github.com/SocialGouv/kosko-charts/compare/v9.8.20...v9.8.21) (2021-12-16)
 
 
