@@ -82,9 +82,9 @@ jobs:
       - name: Unit tests
         run: yarn test --coverage --coverageReporters=lcov --coverageReporters=text-summary
 
-      - name: Send test coverage to codecov
-        continue-on-error: true
-        uses: codecov/codecov-action@v2
+      # - name: Send test coverage to codecov
+      #   continue-on-error: true
+      #   uses: codecov/codecov-action@v2
 
       - name: Build
         run: yarn build
