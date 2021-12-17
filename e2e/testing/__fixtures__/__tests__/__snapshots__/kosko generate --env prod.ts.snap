@@ -11,6 +11,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: prod
     app.gitlab.com/env.name: prod
@@ -32,6 +33,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-nxt-app
         app.gitlab.com/env: prod
         app.gitlab.com/env.name: prod
@@ -92,6 +94,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: prod
     app.gitlab.com/env.name: prod
@@ -114,6 +117,7 @@ metadata:
     kubernetes.io/tls-acme: 'true'
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: prod
     app.gitlab.com/env.name: prod

@@ -16,6 +16,9 @@ Array [
             "memory": "64Mi",
           },
         },
+        "startupProbe": Object {
+          "initialDelaySeconds": 120,
+        },
       },
       "containerPort": 80,
       "image": "hasura/graphql-engine:latest",
@@ -61,6 +64,9 @@ Array [
             "cpu": "100m",
             "memory": "64Mi",
           },
+        },
+        "startupProbe": Object {
+          "initialDelaySeconds": 120,
         },
       },
       "containerPort": 80,
