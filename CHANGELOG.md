@@ -1,3 +1,15 @@
+# [9.9.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.8.21...v9.9.0-alpha.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* **autodevops:** Disable coverage send to codecov ([a7c6348](https://github.com/SocialGouv/kosko-charts/commit/a7c6348dc9596d5d665b00c1617cad97938089ac))
+
+
+### Features
+
+* **autodevops:** Add hasura resources config ([269eb82](https://github.com/SocialGouv/kosko-charts/commit/269eb823620c0bc8130a5cffe34467316ea4b840))
+
 ## [9.8.21](https://github.com/SocialGouv/kosko-charts/compare/v9.8.20...v9.8.21) (2021-12-16)
 
 
