@@ -8,6 +8,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -30,6 +31,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -81,6 +83,8 @@ spec:
           env:
             - name: APP_BASE_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+            - name: NEXTAUTH_URL
+              value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
 ---
 apiVersion: v1
 kind: Service
@@ -96,6 +100,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -116,6 +121,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -151,6 +157,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -173,6 +180,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -221,6 +229,7 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 5
+            initialDelaySeconds: 120
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -256,6 +265,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -276,6 +286,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -335,6 +346,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -357,6 +369,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -408,6 +421,8 @@ spec:
           env:
             - name: APP_BASE_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+            - name: NEXTAUTH_URL
+              value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
 ---
 apiVersion: v1
 kind: Service
@@ -423,6 +438,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -443,6 +459,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -478,6 +495,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
@@ -500,6 +518,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-kosko
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
@@ -548,6 +567,7 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 5
+            initialDelaySeconds: 120
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -583,6 +603,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2

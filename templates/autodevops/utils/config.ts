@@ -7,15 +7,18 @@ interface Probes {
   readinessProbe?: IIoK8sApiCoreV1Probe;
 }
 
+interface Hasura {
+  exposed: boolean;
+  resources: Record<string, unknown>;
+}
+
 interface ConfigTypes {
   name: string;
   /** app or static */
   type: string;
   /** force deployment sudomain */
   subdomain: string;
-  /** deploy an hasura backend */
-  hasura?: boolean | "exposed";
-  /** enable azure-pg : wait-pg initContainer and secrets */
+  hasura?: Hasura | boolean | "exposed";
   azurepg?: boolean;
   /** define a custom pgHost for development */
   pgHostDev?: string;

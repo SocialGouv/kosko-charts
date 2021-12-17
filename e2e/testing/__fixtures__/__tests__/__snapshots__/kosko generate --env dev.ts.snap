@@ -34,6 +34,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev42
     app.gitlab.com/env.name: master-dev42
@@ -56,6 +57,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-nxt-app
         app.gitlab.com/env: master-dev42
         app.gitlab.com/env.name: master-dev42
@@ -118,6 +120,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev42
     app.gitlab.com/env.name: master-dev42
@@ -138,6 +141,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-nxt-app
     app.gitlab.com/env: master-dev42
     app.gitlab.com/env.name: master-dev42

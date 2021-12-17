@@ -1,7 +1,11 @@
 {
   "name": "@socialgouv/kosko-charts",
   "description": "Kosko charts for the SocialGouv needs",
+<<<<<<< HEAD
   "version": "9.15.0",
+=======
+  "version": "9.9.0-alpha.7",
+>>>>>>> fc3025442 (feat(autodevops): Add hasura resources config)
   "author": "Fabrique numérique des Ministères Sociaux <dsi-incubateur@sg.social.gouv.fr> (https://incubateur.social.gouv.fr)",
   "bugs": "https://github.com/SocialGouv/kosko-charts/issues",
   "dependencies": {
