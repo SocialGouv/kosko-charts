@@ -7,11 +7,16 @@ interface Probes {
   readinessProbe?: IIoK8sApiCoreV1Probe;
 }
 
+interface Hasura {
+  exposed: boolean;
+  resources: Record<string, unknown>;
+}
+
 interface ConfigTypes {
   name: string;
   type: string;
   subdomain: string;
-  hasura?: boolean | "exposed";
+  hasura?: Hasura | boolean | "exposed";
   azurepg?: boolean;
   pgHostDev?: string;
   probes?: Probes;

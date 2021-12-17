@@ -7,6 +7,8 @@ import type { Manifests } from "../types/config";
 import Config from "../utils/config";
 
 export default async (): Manifests => {
+  let resources = null;
+  let exposed = false;
   const { hasura, name: appName, project, registry } = await Config();
 
   const name = "hasura";
@@ -16,9 +18,30 @@ export default async (): Manifests => {
       ? getGithubRegistryImagePath({ name, project: project ?? appName })
       : getHarborImagePath({ name: `${appName}-hasura` });
 
+  if (hasura === "exposed") {
+    exposed = true;
+  } else if (typeof hasura !== "boolean") {
+    exposed = !!hasura?.exposed;
+    resources = hasura?.resources;
+  }
+
   const config = {
-    config: { ingress: hasura === "exposed" },
-    deployment: { image },
+    config: { ingress: exposed },
+    deployment: {
+      container: {
+        resources: resources ?? {
+          limits: {
+            cpu: "500m",
+            memory: "512Mi",
+          },
+          requests: {
+            cpu: "100m",
+            memory: "64Mi",
+          },
+        },
+      },
+      image,
+    },
     env,
   };
 
