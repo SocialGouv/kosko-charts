@@ -1,28 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`static-ingress-anotations: kosko generate --preprod 1`] = `
+exports[`app-ingress-annotations: kosko generate --preprod 1`] = `
 "---
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: netpol-sample-kosko-24-e2e-branch-42
-  namespace: sample-kosko-24-e2e-branch-42
-spec:
-  ingress:
-    - from:
-        - podSelector: {}
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              network-policy/source: ingress-controller
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              network-policy/source: monitoring
-  podSelector: {}
-  policyTypes:
-    - Ingress
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -33,19 +12,19 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
-    app: static-ingress-annotations
+    app: app-no-netpol
     application: e2e-branch-42-sample-kosko
-    component: nginx
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: static-ingress-annotations
+  name: app-no-netpol
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: static-ingress-annotations
+      app: app-no-netpol
   template:
     metadata:
       annotations:
@@ -55,32 +34,32 @@ spec:
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
-        app: static-ingress-annotations
+        app: app-no-netpol
         application: e2e-branch-42-sample-kosko
-        component: nginx
+        component: e2e-branch-42-sample-kosko
         owner: sample-kosko
         team: sample-kosko
         cert: wildcard
     spec:
       containers:
         - image: >-
-            harbor.fabrique.social.gouv.fr/undefined/static-ingress-annotations:8843083edb7f873cad1d1420731a60773594ffae
+            harbor.fabrique.social.gouv.fr/undefined/app-no-netpol:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
-              path: /index.html
+              path: /healthz
               port: http
             initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
-          name: static-ingress-annotations
+          name: app-no-netpol
           ports:
-            - containerPort: 80
+            - containerPort: 3000
               name: http
           readinessProbe:
             failureThreshold: 15
             httpGet:
-              path: /index.html
+              path: /healthz
               port: http
             initialDelaySeconds: 0
             periodSeconds: 5
@@ -88,29 +67,32 @@ spec:
             timeoutSeconds: 1
           resources:
             limits:
-              cpu: 500m
-              memory: 128Mi
+              cpu: 200m
+              memory: 256Mi
             requests:
-              cpu: 5m
-              memory: 32Mi
+              cpu: 50m
+              memory: 128Mi
           startupProbe:
             failureThreshold: 12
             httpGet:
-              path: /index.html
+              path: /healthz
               port: http
             periodSeconds: 5
+          env:
+            - name: APP_BASE_URL
+              value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: static-ingress-annotations
+    app: app-no-netpol
     application: e2e-branch-42-sample-kosko
-    component: nginx
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: static-ingress-annotations
+  name: app-no-netpol
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
@@ -122,9 +104,9 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 80
+      targetPort: 3000
   selector:
-    app: static-ingress-annotations
+    app: app-no-netpol
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
@@ -137,15 +119,14 @@ metadata:
     app.gitlab.com/app: socialgouv-sample-kosko
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
-    nginx.ingress.kubernetes.io/configuration-snippet: 'more_set_headers \\"X-Answer: 42\\";'
   labels:
-    app: static-ingress-annotations
+    app: app-no-netpol
     application: e2e-branch-42-sample-kosko
-    component: nginx
+    component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: static-ingress-annotations
+  name: app-no-netpol
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   rules:
@@ -154,7 +135,7 @@ spec:
         paths:
           - backend:
               service:
-                name: static-ingress-annotations
+                name: app-no-netpol
                 port:
                   name: http
             path: /

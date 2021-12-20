@@ -165,5 +165,26 @@ spec:
   tls:
     - hosts:
         - sample-kosko.dev2.fabrique.social.gouv.fr
-      secretName: myapp-crt"
+      secretName: myapp-crt
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: netpol-sample-kosko
+  namespace: sample-kosko
+spec:
+  ingress:
+    - from:
+        - podSelector: {}
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              network-policy/source: ingress-controller
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              network-policy/source: monitoring
+  podSelector: {}
+  policyTypes:
+    - Ingress"
 `;

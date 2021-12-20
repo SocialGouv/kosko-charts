@@ -1,0 +1,5 @@
+{
+  "name": "app-no-netpol",
+  "type": "app",
+  "netpol": false
+}
