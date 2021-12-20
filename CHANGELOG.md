@@ -1,3 +1,10 @@
+# [9.10.0](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0...v9.10.0) (2021-12-20)
+
+
+### Features
+
+* **autodevops:** enable netpols ([#855](https://github.com/SocialGouv/kosko-charts/issues/855)) ([4cb9576](https://github.com/SocialGouv/kosko-charts/commit/4cb9576e206e0d9601ad91ecf01fcb334175c71e))
+
 # [9.9.0](https://github.com/SocialGouv/kosko-charts/compare/v9.8.21...v9.9.0) (2021-12-17)
 
 
