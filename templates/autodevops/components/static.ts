@@ -4,7 +4,6 @@ import { getGithubRegistryImagePath } from "@socialgouv/kosko-charts/utils/getGi
 import { getHarborImagePath } from "@socialgouv/kosko-charts/utils/getHarborImagePath";
 import { getManifestByKind } from "@socialgouv/kosko-charts/utils/getManifestByKind";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
-import { AppConfig } from "../../../components/app";
 
 import type { Manifests } from "../types/config";
 import { addIngressAnnotations } from "../utils/addIngressAnnotations";
@@ -22,7 +21,7 @@ export default async (): Manifests => {
         ? getGithubRegistryImagePath({ name, project: project ?? name })
         : getHarborImagePath({ name });
 
-    const config = { subdomain } as AppConfig;
+    const config = { subdomain } as Record<string, number | string>;
     if (containerPort) {
       config.containerPort = containerPort;
     }
