@@ -1,0 +1,5 @@
+{
+  "name": "myapp",
+  "type": "app",
+  "oauth2Proxy": true
+}
