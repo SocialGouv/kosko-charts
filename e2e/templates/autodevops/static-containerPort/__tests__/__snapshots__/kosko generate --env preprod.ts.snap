@@ -35,19 +35,19 @@ metadata:
     app.github.com/run: '12345'
     app.github.com/sha: '8843083'
   labels:
-    app: myapp
+    app: static-containerPort
     application: sample-kosko
     component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: myapp
+  name: static-containerPort
   namespace: sample-kosko-preprod
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: static-containerPort
   template:
     metadata:
       annotations:
@@ -59,7 +59,7 @@ spec:
         app.github.com/run: '12345'
         app.github.com/sha: '8843083'
       labels:
-        app: myapp
+        app: static-containerPort
         application: sample-kosko
         component: nginx
         owner: sample-kosko
@@ -68,7 +68,7 @@ spec:
     spec:
       containers:
         - image: >-
-            ghcr.io/socialgouv/myapp/myapp:preprod-8843083edb7f873cad1d1420731a60773594ffae
+            harbor.fabrique.social.gouv.fr/undefined/static-containerPort:sha-8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -77,9 +77,9 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
-          name: myapp
+          name: static-containerPort
           ports:
-            - containerPort: 80
+            - containerPort: 4242
               name: http
           readinessProbe:
             failureThreshold: 15
@@ -108,13 +108,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: myapp
+    app: static-containerPort
     application: sample-kosko
     component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: myapp
+  name: static-containerPort
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
@@ -128,9 +128,9 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 80
+      targetPort: 4242
   selector:
-    app: myapp
+    app: static-containerPort
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
@@ -146,13 +146,13 @@ metadata:
     app.github.com/run: '12345'
     app.github.com/sha: '8843083'
   labels:
-    app: myapp
+    app: static-containerPort
     application: sample-kosko
     component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: myapp
+  name: static-containerPort
   namespace: sample-kosko-preprod
 spec:
   rules:
@@ -161,7 +161,7 @@ spec:
         paths:
           - backend:
               service:
-                name: myapp
+                name: static-containerPort
                 port:
                   name: http
             path: /
@@ -205,19 +205,19 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
-    app: myapp
+    app: static-containerPort
     application: e2e-branch-42-sample-kosko
     component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: myapp
+  name: static-containerPort
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: static-containerPort
   template:
     metadata:
       annotations:
@@ -227,7 +227,7 @@ spec:
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
-        app: myapp
+        app: static-containerPort
         application: e2e-branch-42-sample-kosko
         component: nginx
         owner: sample-kosko
@@ -236,7 +236,7 @@ spec:
     spec:
       containers:
         - image: >-
-            ghcr.io/socialgouv/myapp/myapp:sha-8843083edb7f873cad1d1420731a60773594ffae
+            harbor.fabrique.social.gouv.fr/undefined/static-containerPort:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -245,9 +245,9 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
-          name: myapp
+          name: static-containerPort
           ports:
-            - containerPort: 80
+            - containerPort: 4242
               name: http
           readinessProbe:
             failureThreshold: 15
@@ -276,13 +276,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: myapp
+    app: static-containerPort
     application: e2e-branch-42-sample-kosko
     component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: myapp
+  name: static-containerPort
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
@@ -294,9 +294,9 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 80
+      targetPort: 4242
   selector:
-    app: myapp
+    app: static-containerPort
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
@@ -310,13 +310,13 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
-    app: myapp
+    app: static-containerPort
     application: e2e-branch-42-sample-kosko
     component: nginx
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: myapp
+  name: static-containerPort
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   rules:
@@ -325,7 +325,7 @@ spec:
         paths:
           - backend:
               service:
-                name: myapp
+                name: static-containerPort
                 port:
                   name: http
             path: /

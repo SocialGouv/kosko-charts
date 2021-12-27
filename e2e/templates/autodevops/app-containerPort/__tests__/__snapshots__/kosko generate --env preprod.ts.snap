@@ -12,19 +12,19 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
-    app: app-no-netpol
+    app: app-containerPort
     application: e2e-branch-42-sample-kosko
     component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: app-no-netpol
+  name: app-containerPort
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app-no-netpol
+      app: app-containerPort
   template:
     metadata:
       annotations:
@@ -34,7 +34,7 @@ spec:
         app.gitlab.com/env: e2e-branch-42
         app.gitlab.com/env.name: e2e-branch-dev2
       labels:
-        app: app-no-netpol
+        app: app-containerPort
         application: e2e-branch-42-sample-kosko
         component: e2e-branch-42-sample-kosko
         owner: sample-kosko
@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - image: >-
-            harbor.fabrique.social.gouv.fr/undefined/app-no-netpol:8843083edb7f873cad1d1420731a60773594ffae
+            harbor.fabrique.social.gouv.fr/undefined/app-containerPort:8843083edb7f873cad1d1420731a60773594ffae
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -52,9 +52,9 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
-          name: app-no-netpol
+          name: app-containerPort
           ports:
-            - containerPort: 3000
+            - containerPort: 4242
               name: http
           readinessProbe:
             failureThreshold: 15
@@ -86,13 +86,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: app-no-netpol
+    app: app-containerPort
     application: e2e-branch-42-sample-kosko
     component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: app-no-netpol
+  name: app-containerPort
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
@@ -104,9 +104,9 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 3000
+      targetPort: 4242
   selector:
-    app: app-no-netpol
+    app: app-containerPort
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
@@ -120,13 +120,13 @@ metadata:
     app.gitlab.com/env: e2e-branch-42
     app.gitlab.com/env.name: e2e-branch-dev2
   labels:
-    app: app-no-netpol
+    app: app-containerPort
     application: e2e-branch-42-sample-kosko
     component: e2e-branch-42-sample-kosko
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: app-no-netpol
+  name: app-containerPort
   namespace: sample-kosko-24-e2e-branch-42
 spec:
   rules:
@@ -135,7 +135,7 @@ spec:
         paths:
           - backend:
               service:
-                name: app-no-netpol
+                name: app-containerPort
                 port:
                   name: http
             path: /
@@ -143,5 +143,26 @@ spec:
   tls:
     - hosts:
         - e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
-      secretName: wildcard-crt"
+      secretName: wildcard-crt
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: netpol-sample-kosko-24-e2e-branch-42
+  namespace: sample-kosko-24-e2e-branch-42
+spec:
+  ingress:
+    - from:
+        - podSelector: {}
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              network-policy/source: ingress-controller
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              network-policy/source: monitoring
+  podSelector: {}
+  policyTypes:
+    - Ingress"
 `;

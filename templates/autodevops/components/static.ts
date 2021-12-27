@@ -21,8 +21,12 @@ export default async (): Manifests => {
         ? getGithubRegistryImagePath({ name, project: project ?? name })
         : getHarborImagePath({ name });
 
+    const config = { subdomain } as Record<string, any>;
+    if (containerPort) {
+      config.containerPort = containerPort;
+    }
     const manifests = (await create(name, {
-      config: { subdomain, containerPort },
+      config,
       deployment: { image },
       env,
     })) as AppManifests;
