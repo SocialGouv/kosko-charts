@@ -1,0 +1,5 @@
+{
+  "name": "static-containerPort",
+  "type": "static",
+  "containerPort": 4242
+}

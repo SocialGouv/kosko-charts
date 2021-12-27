@@ -27,6 +27,7 @@ export default async (): Manifests => {
     ingress,
     registry = "harbor",
     project,
+    containerPort,
   } = await Config();
 
   const image =
@@ -57,7 +58,7 @@ export default async (): Manifests => {
   if (type && type === "app") {
     const manifests = await create(name, {
       config: {
-        containerPort: 3000,
+        containerPort: containerPort ?? 3000,
         subdomain,
         withPostgres: azurepg && !hasura,
       },

@@ -37,6 +37,8 @@ interface ConfigTypes {
   restoreDb?: string;
   /** set to false to deisable default network policy */
   netpol?: boolean;
+  /** force containerPort for app and static deployments */
+  containerPort?: number;
 }
 
 const Config = async (): Promise<ConfigTypes> => {

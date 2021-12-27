@@ -12,7 +12,8 @@ import Config from "../utils/config";
 declare type AppManifests = { kind: string }[];
 
 export default async (): Manifests => {
-  const { name, type, subdomain, ingress, registry, project } = await Config();
+  const { name, type, subdomain, ingress, registry, project, containerPort } =
+    await Config();
 
   if (type === "static") {
     const image =
@@ -21,7 +22,7 @@ export default async (): Manifests => {
         : getHarborImagePath({ name });
 
     const manifests = (await create(name, {
-      config: { subdomain },
+      config: { subdomain, containerPort },
       deployment: { image },
       env,
     })) as AppManifests;
