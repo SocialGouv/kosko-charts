@@ -4,14 +4,12 @@ import "templates/autodevops/utils/mock-directory"; //
 import { config } from "dotenv";
 import { KOSKO_BIN, template, TIMEOUT } from "e2e/templates/helpers";
 import execa from "execa";
+import { copy } from "fs-extra";
 import { join, resolve } from "path";
-import { copy, copyFile, mkdir } from "fs-extra";
 
 //
 
 const cwd = template("autodevops");
-
-console.log("cwd", cwd);
 
 test(
   "app: kosko generate --dev",
