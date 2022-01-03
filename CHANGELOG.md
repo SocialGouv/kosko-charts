@@ -1,3 +1,10 @@
+# [9.11.0](https://github.com/SocialGouv/kosko-charts/compare/v9.10.0...v9.11.0) (2022-01-03)
+
+
+### Features
+
+* **autodevops:** add config.containerPort ([#881](https://github.com/SocialGouv/kosko-charts/issues/881)) ([47b7135](https://github.com/SocialGouv/kosko-charts/commit/47b71358b7425f8b8619cfa751778b6379e37ae7))
+
 # [9.10.0](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0...v9.10.0) (2021-12-20)
 
 
