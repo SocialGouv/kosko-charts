@@ -15,15 +15,17 @@ const mockSealedSecret = new SealedSecret({
 jest.mock("@kosko/yaml", () => {
   return {
     loadFile:
-      (path: string, { transform }) =>
-      (): Manifest[] | null => {
-        if (/configmap.yml$/.exec(path)) {
-          return [transform(mockConfigMap)] as Manifest[];
-        } else if (/sealed-secret.yml$/.exec(path)) {
-          return [transform(mockSealedSecret)] as Manifest[];
-        }
-        return null;
-      },
+      //@ts-expect-error
+
+        (path: string, { transform }: { transform }) =>
+        (): Manifest[] | null => {
+          if (/configmap.yml$/.exec(path)) {
+            return [transform(mockConfigMap)] as Manifest[];
+          } else if (/sealed-secret.yml$/.exec(path)) {
+            return [transform(mockSealedSecret)] as Manifest[];
+          }
+          return null;
+        },
   };
 });
 
