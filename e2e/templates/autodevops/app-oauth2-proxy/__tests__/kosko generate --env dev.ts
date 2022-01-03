@@ -1,15 +1,13 @@
-// changes the cwd to a tmp folder
-import "templates/autodevops/utils/mock-directory"; //
+//
 
 import { config } from "dotenv";
 import { KOSKO_BIN, template, TIMEOUT } from "e2e/templates/helpers";
 import execa from "execa";
-import { copy } from "fs-extra";
-import { join, resolve } from "path";
+import { basename, resolve } from "path";
 
 //
 
-const cwd = template("autodevops");
+const cwd = template(basename(resolve(__dirname, "..", "..")));
 
 test(
   "app: kosko generate --dev",
@@ -23,17 +21,9 @@ test(
       SOCIALGOUV_CONFIG_PATH: __dirname + "/config.json",
     };
 
-    const destFolder = join(process.cwd(), "environments");
-    const sourceFolder = join(__dirname, "environments");
-
-    console.log(destFolder);
-    console.log(process.cwd());
-
-    await copy(sourceFolder, destFolder);
-
     // Required to allow seemless integration code example
     const result = await execa.node(KOSKO_BIN, ["generate", "--env", "dev"], {
-      cwd: process.cwd(),
+      cwd,
       env,
     });
 
