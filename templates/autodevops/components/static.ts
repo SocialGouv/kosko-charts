@@ -12,7 +12,8 @@ import Config from "../utils/config";
 declare type AppManifests = { kind: string }[];
 
 export default async (): Manifests => {
-  const { name, type, subdomain, ingress, registry, project } = await Config();
+  const { name, type, subdomain, ingress, registry, project, containerPort } =
+    await Config();
 
   if (type === "static") {
     const image =
@@ -20,8 +21,12 @@ export default async (): Manifests => {
         ? getGithubRegistryImagePath({ name, project: project ?? name })
         : getHarborImagePath({ name });
 
+    const config = { subdomain } as Record<string, number | string>;
+    if (containerPort) {
+      config.containerPort = containerPort;
+    }
     const manifests = (await create(name, {
-      config: { subdomain },
+      config,
       deployment: { image },
       env,
     })) as AppManifests;

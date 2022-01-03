@@ -1,0 +1,5 @@
+{
+  "name": "app-containerPort",
+  "type": "app",
+  "containerPort": 4242
+}
