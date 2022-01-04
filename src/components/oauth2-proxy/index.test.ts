@@ -17,6 +17,7 @@ jest.mock("@kosko/yaml", () => {
     loadFile:
       //@ts-expect-error
 
+
         (path: string, { transform }: { transform }) =>
         (): Manifest[] | null => {
           if (/configmap.yml$/.exec(path)) {
