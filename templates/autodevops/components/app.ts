@@ -1,11 +1,11 @@
 import env from "@kosko/env";
 import { create } from "@socialgouv/kosko-charts/components/app";
 import { addEnv } from "@socialgouv/kosko-charts/utils/addEnv";
+import { addInitContainerCommand } from "@socialgouv/kosko-charts/utils/addInitContainerCommand";
 import { getGithubRegistryImagePath } from "@socialgouv/kosko-charts/utils/getGithubRegistryImagePath";
 import { getHarborImagePath } from "@socialgouv/kosko-charts/utils/getHarborImagePath";
 import { getIngressHost } from "@socialgouv/kosko-charts/utils/getIngressHost";
 import { getManifestByKind } from "@socialgouv/kosko-charts/utils/getManifestByKind";
-import { addInitContainerCommand } from "@socialgouv/kosko-charts/utils/addInitContainerCommand";
 import { ok } from "assert";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
@@ -88,8 +88,8 @@ export default async (): Manifests => {
 
     if (seedCmd && env.env === "dev") {
       addInitContainerCommand(deployment, {
-        image,
         command: seedCmd,
+        image,
       });
     }
 
