@@ -1,3 +1,10 @@
+# [9.12.0](https://github.com/SocialGouv/kosko-charts/compare/v9.11.0...v9.12.0) (2022-01-06)
+
+
+### Features
+
+* **autodevops:** add config.initContainerCommand ([#884](https://github.com/SocialGouv/kosko-charts/issues/884)) ([c40fcd4](https://github.com/SocialGouv/kosko-charts/commit/c40fcd430119e423a6934991e7a62048ca8ac6f8))
+
 # [9.11.0](https://github.com/SocialGouv/kosko-charts/compare/v9.10.0...v9.11.0) (2022-01-03)
 
 
