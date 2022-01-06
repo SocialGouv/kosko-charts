@@ -5,6 +5,7 @@ import { getGithubRegistryImagePath } from "@socialgouv/kosko-charts/utils/getGi
 import { getHarborImagePath } from "@socialgouv/kosko-charts/utils/getHarborImagePath";
 import { getIngressHost } from "@socialgouv/kosko-charts/utils/getIngressHost";
 import { getManifestByKind } from "@socialgouv/kosko-charts/utils/getManifestByKind";
+import { addInitContainerCommand } from "@socialgouv/kosko-charts/utils/addInitContainerCommand";
 import { ok } from "assert";
 import { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
@@ -28,6 +29,7 @@ export default async (): Manifests => {
     registry = "harbor",
     project,
     containerPort,
+    seedCmd,
   } = await Config();
 
   const image =
@@ -83,6 +85,13 @@ export default async (): Manifests => {
 
     //@ts-expect-error
     const deployment = getManifestByKind(manifests, Deployment) as Deployment;
+
+    if (seedCmd && env.env === "dev") {
+      addInitContainerCommand(deployment, {
+        image,
+        command: seedCmd,
+      });
+    }
 
     if (ingress && ingress.annotations) {
       const deploymentIngress = getManifestByKind(
