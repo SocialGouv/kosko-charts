@@ -1,5 +1,5 @@
 {
   "name": "app-seedCmd",
   "type": "app",
-  "seedCmd": ["yarn", "seed"]
+  "initContainerCommand": ["yarn", "seed"]
 }

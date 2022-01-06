@@ -81,6 +81,22 @@ spec:
           env:
             - name: APP_BASE_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
+      initContainers:
+        - args: []
+          command:
+            - yarn
+            - seed
+          image: >-
+            harbor.fabrique.social.gouv.fr/undefined/app-seedCmd:8843083edb7f873cad1d1420731a60773594ffae
+          imagePullPolicy: Always
+          name: init
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
