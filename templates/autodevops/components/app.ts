@@ -1,6 +1,7 @@
 import env from "@kosko/env";
 import { create } from "@socialgouv/kosko-charts/components/app";
 import { addEnv } from "@socialgouv/kosko-charts/utils/addEnv";
+import { addInitContainerCommand } from "@socialgouv/kosko-charts/utils/addInitContainerCommand";
 import { getGithubRegistryImagePath } from "@socialgouv/kosko-charts/utils/getGithubRegistryImagePath";
 import { getHarborImagePath } from "@socialgouv/kosko-charts/utils/getHarborImagePath";
 import { getIngressHost } from "@socialgouv/kosko-charts/utils/getIngressHost";
@@ -28,6 +29,7 @@ export default async (): Manifests => {
     registry = "harbor",
     project,
     containerPort,
+    initContainerCommand,
   } = await Config();
 
   const image =
@@ -83,6 +85,13 @@ export default async (): Manifests => {
 
     //@ts-expect-error
     const deployment = getManifestByKind(manifests, Deployment) as Deployment;
+
+    if (initContainerCommand && env.env === "dev") {
+      addInitContainerCommand(deployment, {
+        command: initContainerCommand,
+        image,
+      });
+    }
 
     if (ingress && ingress.annotations) {
       const deploymentIngress = getManifestByKind(

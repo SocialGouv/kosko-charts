@@ -39,6 +39,8 @@ interface ConfigTypes {
   netpol?: boolean;
   /** force containerPort for app and static deployments */
   containerPort?: number;
+  /** add an init container with custom command on the main container. used in dev. ex: ["yarn", "seed"] */
+  initContainerCommand?: string[];
 }
 
 const Config = async (): Promise<ConfigTypes> => {
