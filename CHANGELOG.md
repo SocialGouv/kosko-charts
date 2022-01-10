@@ -1,3 +1,10 @@
+# [9.13.0](https://github.com/SocialGouv/kosko-charts/compare/v9.12.0...v9.13.0) (2022-01-10)
+
+
+### Features
+
+* **create-db-user:** optional admin secretnameref ([#885](https://github.com/SocialGouv/kosko-charts/issues/885)) ([ccc5121](https://github.com/SocialGouv/kosko-charts/commit/ccc5121bd886ee257303ac041fa185224f56c1cc))
+
 # [9.12.0](https://github.com/SocialGouv/kosko-charts/compare/v9.11.0...v9.12.0) (2022-01-06)
 
 
