@@ -10,9 +10,6 @@ const SOCIALGOUV_DOCKER_VERSION = "6.64.0";
 
 const defaultSecretRefName = `azure-pg-admin-user`;
 
-/* maybe in future 🤞 */
-// const defaultSecretRefName = `pg-scaleway`;
-
 export const createDbUserJob = ({
   extensions = DEFAULT_EXTENSIONS,
   secretRefName,
@@ -20,7 +17,7 @@ export const createDbUserJob = ({
   ciEnv,
 }: {
   extensions?: string;
-  secretRefName?: string;
+  secretRefName: string;
   pgPasswordSecretKeyRef: string;
   ciEnv: CIEnv;
 }): Job => {

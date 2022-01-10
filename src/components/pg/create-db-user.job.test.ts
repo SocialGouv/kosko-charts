@@ -6,6 +6,7 @@ test("should create a pg create-db-user job", () => {
   const job = createDbUserJob({
     ciEnv: environmentMock(),
     pgPasswordSecretKeyRef: "azure-pg-user-preprod",
+    secretRefName: "azure-pg-admin-user",
   });
   expect(job).toMatchInlineSnapshot(`
     Object {
