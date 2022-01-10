@@ -1,3 +1,4 @@
+import env from "@kosko/env";
 import environments from "@socialgouv/kosko-charts/environments";
 import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { Job } from "kubernetes-models/batch/v1";
@@ -8,9 +9,16 @@ const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
 // renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.64.0
 const SOCIALGOUV_DOCKER_VERSION = "6.64.0";
 
+const defaultSecretRefName = `azure-pg-admin-user`;
+
+/* maybe in future 🤞 */
+// const defaultSecretRefName = `pg-scaleway`;
+
+const params = env.component("pg");
+
 export const createDbUserJob = ({
   extensions = DEFAULT_EXTENSIONS,
-  secretRefName = `azure-pg-admin-user`,
+  secretRefName,
   pgPasswordSecretKeyRef,
   ciEnv,
 }: {
@@ -19,6 +27,14 @@ export const createDbUserJob = ({
   pgPasswordSecretKeyRef: string;
   ciEnv: CIEnv;
 }): Job => {
+  if (!secretRefName) {
+    if (params.adminSecretRefName) {
+      secretRefName = params.adminSecretRefName;
+    } else {
+      secretRefName = defaultSecretRefName;
+    }
+  }
+
   return new Job({
     metadata: {
       annotations: ciEnv.metadata.annotations,
