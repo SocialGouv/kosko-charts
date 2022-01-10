@@ -1,4 +1,3 @@
-import env from "@kosko/env";
 import environments from "@socialgouv/kosko-charts/environments";
 import type { CIEnv } from "@socialgouv/kosko-charts/types";
 import { Job } from "kubernetes-models/batch/v1";
@@ -14,8 +13,6 @@ const defaultSecretRefName = `azure-pg-admin-user`;
 /* maybe in future 🤞 */
 // const defaultSecretRefName = `pg-scaleway`;
 
-const params = env.component("pg");
-
 export const createDbUserJob = ({
   extensions = DEFAULT_EXTENSIONS,
   secretRefName,
@@ -27,14 +24,6 @@ export const createDbUserJob = ({
   pgPasswordSecretKeyRef: string;
   ciEnv: CIEnv;
 }): Job => {
-  if (!secretRefName) {
-    if (params.adminSecretRefName) {
-      secretRefName = params.adminSecretRefName;
-    } else {
-      secretRefName = defaultSecretRefName;
-    }
-  }
-
   return new Job({
     metadata: {
       annotations: ciEnv.metadata.annotations,
@@ -122,7 +111,9 @@ export const createDbUserJob = ({
 };
 
 export default (): [Job] => {
-  const ciEnv = environments(process.env);
+  const { env } = process;
+  const ciEnv = environments(env);
+  const secretRefName = env.ADMIN_PG_SECRET || defaultSecretRefName;
   const pgPasswordSecretKeyRef = ciEnv.isProduction
     ? `azure-pg-user`
     : ciEnv.isPreProduction
@@ -131,6 +122,7 @@ export default (): [Job] => {
   const job = createDbUserJob({
     ciEnv,
     pgPasswordSecretKeyRef,
+    secretRefName,
   });
   return [job];
 };
