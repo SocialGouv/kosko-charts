@@ -1,3 +1,10 @@
+# [9.9.0-alpha.2](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0-alpha.1...v9.9.0-alpha.2) (2022-01-11)
+
+
+### Bug Fixes
+
+* Add hasura startupProbe initialDelaySeconds ([947f9ef](https://github.com/SocialGouv/kosko-charts/commit/947f9ef32ce1194bc89bbc0272a9977138d16306))
+
 # [9.9.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.8.21...v9.9.0-alpha.1) (2021-12-17)
 
 
