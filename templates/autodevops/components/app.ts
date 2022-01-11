@@ -29,7 +29,7 @@ export default async (): Manifests => {
     registry = "harbor",
     project,
     containerPort,
-    initContainerCommand,
+    devInitContainerCommand,
   } = await Config();
 
   const image =
@@ -86,10 +86,12 @@ export default async (): Manifests => {
     //@ts-expect-error
     const deployment = getManifestByKind(manifests, Deployment) as Deployment;
 
-    if (initContainerCommand && env.env === "dev") {
+    if (devInitContainerCommand && env.env === "dev") {
       addInitContainerCommand(deployment, {
-        command: initContainerCommand,
+        command: devInitContainerCommand,
         image,
+        // copy env from main container
+        envFrom: deployment.spec?.template.spec?.containers[0].envFrom,
       });
     }
 

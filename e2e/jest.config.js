@@ -6,6 +6,7 @@ module.exports = {
   rootDir: "../",
   setupFilesAfterEnv: [],
   testEnvironment: "node",
+  testMatch: ["<rootDir>/e2e/templates/autodevops/**/*.ts"],
   testPathIgnorePatterns: [
     ...defaults.testPathIgnorePatterns,
     ...ignorePatterns,

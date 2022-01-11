@@ -1,0 +1,6 @@
+{
+  "name": "app-seedCmd",
+  "type": "app",
+  "azurepg": true,
+  "devInitContainerCommand": ["yarn", "seed"]
+}
