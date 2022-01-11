@@ -210,7 +210,7 @@ spec:
             - name: NEW_PASSWORD
               value: password_e2e-branch
             - name: NEW_DB_EXTENSIONS
-              value: hstore pgcrypto citext uuid-ossp
+              value: hstore pgcrypto citext uuid-ossp postgis
           envFrom:
             - secretRef:
                 name: azure-pg-admin-user
