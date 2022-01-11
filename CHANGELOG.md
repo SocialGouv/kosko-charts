@@ -1,3 +1,10 @@
+## [9.14.1](https://github.com/SocialGouv/kosko-charts/compare/v9.14.0...v9.14.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* **autodevops:** add envFrom to initContainer ([#891](https://github.com/SocialGouv/kosko-charts/issues/891)) ([06ff948](https://github.com/SocialGouv/kosko-charts/commit/06ff9489dbc5b54b32ae6f2e40acc22886f75856))
+
 # [9.14.0](https://github.com/SocialGouv/kosko-charts/compare/v9.13.0...v9.14.0) (2022-01-10)
 
 
