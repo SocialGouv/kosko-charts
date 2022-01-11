@@ -28,22 +28,15 @@ export default async (): Manifests => {
   const config = {
     config: { ingress: exposed },
     deployment: {
-      container: {
-        resources: resources ?? {
-          limits: {
-            cpu: "500m",
-            memory: "512Mi",
-          },
-          requests: {
-            cpu: "100m",
-            memory: "64Mi",
-          },
-        },
-      },
+      container: {},
       image,
     },
     env,
   };
+
+  if (resources) {
+    config.deployment.container = { resources };
+  }
 
   if (hasura) {
     const manifests = await create("hasura", config);

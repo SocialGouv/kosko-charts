@@ -79,6 +79,7 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 5
+            initialDelaySeconds: 60
           envFrom:
             - secretRef:
                 name: azure-pg-user

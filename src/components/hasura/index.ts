@@ -18,6 +18,9 @@ const hasuraConfig: Partial<AppConfig> = {
         memory: "64Mi",
       },
     },
+    startupProbe: {
+      initialDelaySeconds: 60,
+    },
   },
   containerPort: 80,
   ingress: false,
