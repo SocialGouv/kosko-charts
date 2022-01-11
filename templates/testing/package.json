@@ -20,7 +20,7 @@
     "@babel/core": "^7.16.5",
     "@babel/plugin-transform-modules-commonjs": "^7.16.5",
     "@types/jest": "^27.0.3",
-    "dotenv": "^10.0.0",
+    "dotenv": "^11.0.0",
     "jest": "^27.4.5"
   },
   "license": "Apache-2.0",
