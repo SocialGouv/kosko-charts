@@ -14,11 +14,13 @@ export const createDbUserJob = ({
   extensions = DEFAULT_EXTENSIONS,
   secretRefName,
   pgPasswordSecretKeyRef,
+  jobNamespace,
   ciEnv,
 }: {
   extensions?: string;
   secretRefName: string;
   pgPasswordSecretKeyRef: string;
+  jobNamespace?: string;
   ciEnv: CIEnv;
 }): Job => {
   return new Job({
@@ -26,7 +28,7 @@ export const createDbUserJob = ({
       annotations: ciEnv.metadata.annotations,
       labels: ciEnv.metadata.labels,
       name: `create-db-user`,
-      namespace: ciEnv.metadata.namespace.name,
+      namespace: jobNamespace ?? ciEnv.metadata.namespace.name,
     },
     spec: {
       backoffLimit: 5,
@@ -86,7 +88,7 @@ export const createDbUserJob = ({
               ],
               image: `${SOCIALGOUV_DOCKER_IMAGE}:${SOCIALGOUV_DOCKER_VERSION}`,
               imagePullPolicy: "IfNotPresent",
-              name: "create-db-user",
+              name: "ensure-db",
               resources: {
                 limits: {
                   cpu: "300m",
@@ -111,6 +113,7 @@ export default (): [Job] => {
   const { env } = process;
   const ciEnv = environments(env);
   const secretRefName = env.ADMIN_PG_SECRET ?? defaultSecretRefName;
+  const jobNamespace = env.JOB_NAMESPACE ?? "";
   const pgPasswordSecretKeyRef = ciEnv.isProduction
     ? `pg-user`
     : ciEnv.isPreProduction
@@ -118,6 +121,7 @@ export default (): [Job] => {
     : `pg-user-${ciEnv.branchSlug}`;
   const job = createDbUserJob({
     ciEnv,
+    jobNamespace,
     pgPasswordSecretKeyRef,
     secretRefName,
   });
