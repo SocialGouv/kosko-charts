@@ -27,7 +27,7 @@ export const createDbUserJob = ({
     metadata: {
       annotations: ciEnv.metadata.annotations,
       labels: ciEnv.metadata.labels,
-      name: `create-db-user`,
+      name: `ensure-db`,
       namespace: jobNamespace ?? ciEnv.metadata.namespace.name,
     },
     spec: {
@@ -36,7 +36,7 @@ export const createDbUserJob = ({
         spec: {
           containers: [
             {
-              command: ["create-db-user"],
+              command: ["ensure-db"],
               env: [
                 {
                   name: "NEW_DB_NAME",
