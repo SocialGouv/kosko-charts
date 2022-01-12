@@ -1,3 +1,10 @@
+# [9.15.0](https://github.com/SocialGouv/kosko-charts/compare/v9.14.1...v9.15.0) (2022-01-12)
+
+
+### Features
+
+* **azure-db:** enable postgis by default ([#892](https://github.com/SocialGouv/kosko-charts/issues/892)) ([bc52a2b](https://github.com/SocialGouv/kosko-charts/commit/bc52a2bf3593e1fd90b66439706248150f2ed696))
+
 ## [9.14.1](https://github.com/SocialGouv/kosko-charts/compare/v9.14.0...v9.14.1) (2022-01-11)
 
 
