@@ -106,7 +106,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
             - configMapRef:
                 name: hasura-configmap
       initContainers:
@@ -115,7 +115,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -193,7 +193,7 @@ metadata:
     app.github.com/repo: socialgouv/sample-next-app
     app.github.com/run: '12345'
     app.github.com/sha: '8843083'
-  name: azure-pg-user
+  name: pg-user
   labels:
     application: sample-next-app
     component: sample-next-app
@@ -240,7 +240,7 @@ spec:
         owner: sample-next-app
         team: sample-next-app
         component: sample-next-app
-      name: azure-pg-user
+      name: pg-user
     type: Opaque
 ---
 apiVersion: apps/v1
@@ -325,7 +325,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
             - configMapRef:
                 name: app-configmap
       initContainers:
@@ -334,7 +334,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres

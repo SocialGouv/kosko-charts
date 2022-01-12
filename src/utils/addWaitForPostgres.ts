@@ -26,7 +26,7 @@ export const addWaitForPostgres = (deployment: Manifest): Manifest => {
 
   const secretRefName =
     ciEnv.isPreProduction || ciEnv.isProduction
-      ? `azure-pg-user`
+      ? `pg-user`
       : defaultParams.name;
 
   const initContainer = waitForPostgres({

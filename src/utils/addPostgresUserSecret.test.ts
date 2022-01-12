@@ -23,7 +23,7 @@ test("should add a generated Postgres user secret to a deployment", async () => 
   expect(deployment).toMatchSnapshot();
 });
 
-test("should add azure-pg-user to a deployment in preproduction", async () => {
+test("should add pg-user to a deployment in preproduction", async () => {
   jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
     ...environmentMock(),
     isPreProduction: true,
@@ -48,7 +48,7 @@ test("should add azure-pg-user to a deployment in preproduction", async () => {
   expect(deployment).toMatchSnapshot();
 });
 
-test("should add azure-pg-user to a deployment in production", async () => {
+test("should add pg-user to a deployment in production", async () => {
   jest.doMock("@socialgouv/kosko-charts/environments", () => () => ({
     ...environmentMock(),
     isProduction: true,

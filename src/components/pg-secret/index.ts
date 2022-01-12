@@ -10,7 +10,7 @@ export interface SecretParams {
   sslmode?: string;
 }
 
-// create the azure-pg-user secret for dynamic environments (dev)
+// create the pg-user secret for dynamic environments (dev)
 export const createSecret = ({
   database: PGDATABASE,
   user,
