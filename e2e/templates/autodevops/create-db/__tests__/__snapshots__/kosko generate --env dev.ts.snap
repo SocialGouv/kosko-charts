@@ -16,15 +16,15 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: create-db-user
-  namespace: sample-kosko-e2e-branch
+  name: ensure-db
+  namespace: ''
 spec:
   backoffLimit: 5
   template:
     spec:
       containers:
         - command:
-            - create-db-user
+            - ensure-db
           env:
             - name: NEW_DB_NAME
               valueFrom:
@@ -53,7 +53,7 @@ spec:
                 name: azure-pg-admin-user
           image: ghcr.io/socialgouv/docker/azure-db:6.64.0
           imagePullPolicy: IfNotPresent
-          name: create-db-user
+          name: ensure-db
           resources:
             limits:
               cpu: 300m
@@ -79,15 +79,15 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: create-db-user
-  namespace: sample-kosko-24-e2e-branch-42
+  name: ensure-db
+  namespace: ''
 spec:
   backoffLimit: 5
   template:
     spec:
       containers:
         - command:
-            - create-db-user
+            - ensure-db
           env:
             - name: NEW_DB_NAME
               valueFrom:
@@ -116,7 +116,7 @@ spec:
                 name: azure-pg-admin-user
           image: ghcr.io/socialgouv/docker/azure-db:6.64.0
           imagePullPolicy: IfNotPresent
-          name: create-db-user
+          name: ensure-db
           resources:
             limits:
               cpu: 300m
