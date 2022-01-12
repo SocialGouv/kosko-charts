@@ -1,3 +1,10 @@
+# [9.9.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0-alpha.3...v9.9.0-alpha.4) (2022-01-12)
+
+
+### Bug Fixes
+
+* Set initialDelaySeconds to 180 ([2b81d87](https://github.com/SocialGouv/kosko-charts/commit/2b81d878e917883e6bd582836834b510aec401fd))
+
 # [9.9.0-alpha.3](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0-alpha.2...v9.9.0-alpha.3) (2022-01-12)
 
 
