@@ -30,7 +30,7 @@ export const getDefaultPgParams = (
       suffix,
     }),
     host: config.pgHost ?? getPgServerHostname(projectName, "dev"),
-    name: `azure-pg-user-${suffix}`,
+    name: `pg-user-${suffix}`,
   };
 };
 

@@ -112,10 +112,10 @@ export default (): [Job] => {
   const ciEnv = environments(env);
   const secretRefName = env.ADMIN_PG_SECRET ?? defaultSecretRefName;
   const pgPasswordSecretKeyRef = ciEnv.isProduction
-    ? `azure-pg-user`
+    ? `pg-user`
     : ciEnv.isPreProduction
-    ? `azure-pg-user-preprod`
-    : `azure-pg-user-${ciEnv.branchSlug}`;
+    ? `pg-user-preprod`
+    : `pg-user-${ciEnv.branchSlug}`;
   const job = createDbUserJob({
     ciEnv,
     pgPasswordSecretKeyRef,
