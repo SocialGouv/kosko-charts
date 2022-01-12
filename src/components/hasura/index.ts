@@ -19,7 +19,7 @@ const hasuraConfig: Partial<AppConfig> = {
       },
     },
     startupProbe: {
-      initialDelaySeconds: 120,
+      initialDelaySeconds: 180,
     },
   },
   containerPort: 80,
