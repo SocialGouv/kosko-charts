@@ -22,7 +22,7 @@ test("should create a pg create-db-user job", () => {
           "owner": "my-team",
           "team": "my-team",
         },
-        "name": "create-db-user",
+        "name": "ensure-db",
         "namespace": "sample-42-my-test",
       },
       "spec": Object {
@@ -32,7 +32,7 @@ test("should create a pg create-db-user job", () => {
             "containers": Array [
               Object {
                 "command": Array [
-                  "create-db-user",
+                  "ensure-db",
                 ],
                 "env": Array [
                   Object {
@@ -85,7 +85,7 @@ test("should create a pg create-db-user job", () => {
                 ],
                 "image": "ghcr.io/socialgouv/docker/azure-db:6.64.0",
                 "imagePullPolicy": "IfNotPresent",
-                "name": "create-db-user",
+                "name": "ensure-db",
                 "resources": Object {
                   "limits": Object {
                     "cpu": "300m",
