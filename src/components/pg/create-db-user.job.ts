@@ -28,7 +28,7 @@ export const createDbUserJob = ({
       annotations: ciEnv.metadata.annotations,
       labels: ciEnv.metadata.labels,
       name: `ensure-db`,
-      namespace: jobNamespace ?? ciEnv.metadata.namespace.name,
+      namespace: jobNamespace ? jobNamespace : ciEnv.metadata.namespace.name,
     },
     spec: {
       backoffLimit: 5,
