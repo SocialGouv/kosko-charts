@@ -17,7 +17,7 @@ metadata:
     team: sample-kosko
     cert: wildcard
   name: ensure-db
-  namespace: ''
+  namespace: sample-kosko-e2e-branch
 spec:
   backoffLimit: 5
   template:
@@ -80,7 +80,7 @@ metadata:
     team: sample-kosko
     cert: wildcard
   name: ensure-db
-  namespace: ''
+  namespace: sample-kosko-24-e2e-branch-42
 spec:
   backoffLimit: 5
   template:
