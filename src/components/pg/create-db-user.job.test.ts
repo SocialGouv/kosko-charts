@@ -83,7 +83,7 @@ test("should create a pg create-db-user job", () => {
                     },
                   },
                 ],
-                "image": "ghcr.io/socialgouv/docker/azure-db:6.64.0",
+                "image": "ghcr.io/socialgouv/docker/azure-db:6.68.0",
                 "imagePullPolicy": "IfNotPresent",
                 "name": "ensure-db",
                 "resources": Object {
