@@ -1,3 +1,10 @@
+# [9.9.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0-alpha.4...v9.9.0-alpha.5) (2022-01-13)
+
+
+### Bug Fixes
+
+* Add NEXTAUTH_URL ([1846232](https://github.com/SocialGouv/kosko-charts/commit/1846232d74cd30232e11bf830a19a242a5f14b67))
+
 # [9.9.0-alpha.4](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0-alpha.3...v9.9.0-alpha.4) (2022-01-12)
 
 
