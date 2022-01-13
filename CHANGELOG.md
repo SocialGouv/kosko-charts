@@ -1,3 +1,11 @@
+# [9.9.0-alpha.6](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0-alpha.5...v9.9.0-alpha.6) (2022-01-13)
+
+
+### Bug Fixes
+
+* Add delete-strategy annotation ([80c1d24](https://github.com/SocialGouv/kosko-charts/commit/80c1d248db467a6d66e6f496f68e6a87dba0a33c))
+* Update e2e snapshots ([5aeda3e](https://github.com/SocialGouv/kosko-charts/commit/5aeda3ea63ff0c9cc978d1a8c853ad9ab8784a22))
+
 # [9.9.0-alpha.5](https://github.com/SocialGouv/kosko-charts/compare/v9.9.0-alpha.4...v9.9.0-alpha.5) (2022-01-13)
 
 
