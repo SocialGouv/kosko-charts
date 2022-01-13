@@ -64,6 +64,7 @@ export const create: CreateFn = async (
     annotations: {
       "kapp.k14s.io/disable-default-ownership-label-rules": "",
       "kapp.k14s.io/disable-default-label-scoping-rules": "",
+      "kapp.k14s.io/delete-strategy": "orphan",
     },
   };
 
