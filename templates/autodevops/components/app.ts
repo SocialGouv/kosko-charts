@@ -94,13 +94,21 @@ export default async (): Manifests => {
 
     ok(deployment);
 
+    const ingressHost = getIngressHost(manifests);
+
     /* pass dynamic deployment URL as env var to the container */
     const frontendUrl = new EnvVar({
       name: "APP_BASE_URL",
-      value: `https://${getIngressHost(manifests)}`,
+      value: `https://${ingressHost}`,
+    });
+
+    const nextAuthUrl = new EnvVar({
+      name: "NEXTAUTH_URL",
+      value: `https://${ingressHost}`,
     });
 
     addEnv({ data: frontendUrl, deployment });
+    addEnv({ data: nextAuthUrl, deployment });
 
     return manifests;
   } else {
