@@ -1,3 +1,10 @@
+# [9.16.0](https://github.com/SocialGouv/kosko-charts/compare/v9.15.0...v9.16.0) (2022-01-17)
+
+
+### Features
+
+* **input:** pgUserSecretPrefix keep retrocompat ([#901](https://github.com/SocialGouv/kosko-charts/issues/901)) ([c0e4b5b](https://github.com/SocialGouv/kosko-charts/commit/c0e4b5bc1ecb6118f2b3e12a1de4d557da0cdcc3))
+
 # [9.15.0](https://github.com/SocialGouv/kosko-charts/compare/v9.14.1...v9.15.0) (2022-01-12)
 
 
