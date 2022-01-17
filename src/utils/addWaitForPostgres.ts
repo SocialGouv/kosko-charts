@@ -2,7 +2,6 @@ import type { Deployment } from "kubernetes-models/apps/v1/Deployment";
 import type { Job } from "kubernetes-models/batch/v1/Job";
 
 import { getDefaultPgParams } from "../components/azure-pg";
-import environments from "../environments";
 import { addInitContainer } from "./addInitContainer";
 import { waitForPostgres } from "./waitForPostgres";
 
@@ -21,16 +20,10 @@ type Manifest = Deployment | Job;
  * @return {Manifest}
  */
 export const addWaitForPostgres = (deployment: Manifest): Manifest => {
-  const ciEnv = environments(process.env);
   const defaultParams = getDefaultPgParams();
 
-  const secretRefName =
-    ciEnv.isPreProduction || ciEnv.isProduction
-      ? `azure-pg-user`
-      : defaultParams.name;
-
   const initContainer = waitForPostgres({
-    secretRefName,
+    secretRefName: defaultParams.secretRefName,
   });
 
   addInitContainer(deployment, initContainer);
