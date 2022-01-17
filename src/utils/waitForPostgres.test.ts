@@ -17,7 +17,7 @@ test("should succeed validating a valid value", () => {
       "envFrom": Array [
         Object {
           "secretRef": Object {
-            "name": "pg-user",
+            "name": "azure-pg-user",
           },
         },
       ],

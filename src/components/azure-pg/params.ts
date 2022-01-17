@@ -1,6 +1,6 @@
 import type { PgParams } from "./types";
 
-type PgDatabaseParams = Omit<PgParams, "host" | "name">;
+type PgDatabaseParams = Omit<PgParams, "host" | "name" | "secretRefName">;
 
 export function getDevDatabaseParameters({
   suffix,

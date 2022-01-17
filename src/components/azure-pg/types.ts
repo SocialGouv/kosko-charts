@@ -4,4 +4,5 @@ export interface PgParams {
   user: string;
   password: string;
   name: string;
+  secretRefName: string;
 }

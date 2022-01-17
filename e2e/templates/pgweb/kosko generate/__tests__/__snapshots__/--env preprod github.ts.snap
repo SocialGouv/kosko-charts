@@ -106,14 +106,14 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: pg-user
+                name: azure-pg-user
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: pg-user
+                name: azure-pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres

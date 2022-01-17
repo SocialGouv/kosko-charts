@@ -25,12 +25,20 @@ export const getDefaultPgParams = (
     : ciEnv.branchSlug;
   const projectName = ciEnv.projectName;
 
+  const pgUserSecretPrefix = process.env.PG_USER_SECRET_PREFIX
+    ? process.env.PG_USER_SECRET_PREFIX
+    : "azure-pg-user";
+
   return {
     ...getDevDatabaseParameters({
       suffix,
     }),
     host: config.pgHost ?? getPgServerHostname(projectName, "dev"),
-    name: `pg-user-${suffix}`,
+    name: `${pgUserSecretPrefix}-${suffix}`,
+    secretRefName:
+      ciEnv.isProduction || ciEnv.isPreProduction
+        ? `${pgUserSecretPrefix}`
+        : `${pgUserSecretPrefix}-${suffix}`,
   };
 };
 

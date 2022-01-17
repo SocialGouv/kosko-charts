@@ -80,7 +80,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: pg-user-e2e-branch
+                name: azure-pg-user-e2e-branch
           env:
             - name: APP_BASE_URL
               value: https://e2e-branch-42-sample-kosko.dev2.fabrique.social.gouv.fr
@@ -90,7 +90,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: pg-user-e2e-branch
+                name: azure-pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -206,7 +206,7 @@ spec:
               value: hstore pgcrypto citext uuid-ossp postgis
           envFrom:
             - secretRef:
-                name: azure-pg-admin-user
+                name: azure-pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/azure-db:6.56.1
           imagePullPolicy: IfNotPresent
           name: create-db-user
@@ -262,6 +262,6 @@ metadata:
     owner: sample-kosko
     team: sample-kosko
     cert: wildcard
-  name: pg-user-e2e-branch
+  name: azure-pg-user-e2e-branch
   namespace: sample-kosko-24-e2e-branch-42"
 `;

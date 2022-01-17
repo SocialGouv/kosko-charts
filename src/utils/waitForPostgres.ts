@@ -24,7 +24,7 @@ export interface WaitForPostgresParams {
  * @return {IIoK8sApiCoreV1Container}
  */
 export const waitForPostgres = ({
-  secretRefName = "pg-user",
+  secretRefName = "azure-pg-user",
 }: WaitForPostgresParams): IIoK8sApiCoreV1Container => {
   return {
     env: [
