@@ -195,7 +195,7 @@ spec:
         owner: sample-next-app
         team: sample-next-app
         component: sample-next-app
-      name: pg-user
+      name: azure-pg-user
     type: Opaque
 ---
 apiVersion: apps/v1

@@ -202,7 +202,7 @@ metadata:
     app.github.com/repo: socialgouv/sample-next-app
     app.github.com/run: '12345'
     app.github.com/sha: '8843083'
-  name: pg-user
+  name: azure-pg-user
   labels:
     application: sample-next-app
     component: sample-next-app
@@ -249,6 +249,6 @@ spec:
         owner: sample-next-app
         team: sample-next-app
         component: sample-next-app
-      name: pg-user
+      name: azure-pg-user
     type: Opaque"
 `;

@@ -216,7 +216,7 @@ metadata:
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
-  name: pg-user
+  name: azure-pg-user
   labels:
     application: v1-2-3-sample-next-app
     component: v1-2-3-sample-next-app
@@ -258,6 +258,6 @@ spec:
         owner: sample-next-app
         team: sample-next-app
         component: v1-2-3-sample-next-app
-      name: pg-user
+      name: azure-pg-user
     type: Opaque"
 `;
