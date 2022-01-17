@@ -1,3 +1,23 @@
+## [9.15.1-beta.1](https://github.com/SocialGouv/kosko-charts/compare/v9.15.0...v9.15.1-beta.1) (2022-01-17)
+
+
+### Bug Fixes
+
+* **create-db:** up docker image version for azure-pg ([c683c04](https://github.com/SocialGouv/kosko-charts/commit/c683c04a759f96cf808e4b0774624ecfc1873cb5))
+* **kosko-charts:** use beta ([2536086](https://github.com/SocialGouv/kosko-charts/commit/2536086ce9aee11e11680364e6ce3c200e38b38e))
+* **pg-user-secret:** fix ns ([80d1492](https://github.com/SocialGouv/kosko-charts/commit/80d1492d4d57d5fa9bb76b04bede72f31ce41536))
+* **pg-user-secret:** fix tests ([944eec5](https://github.com/SocialGouv/kosko-charts/commit/944eec54128b242b4123730330871aa078a09a1e))
+* **pg-user-secret:** fix tests ([b7c13db](https://github.com/SocialGouv/kosko-charts/commit/b7c13db70cac382f49fbff8405b8f5c2ece00608))
+* **pg-user-secret:** fix tests snapshots ([f5110e0](https://github.com/SocialGouv/kosko-charts/commit/f5110e04c7ae1eb53f0ca374915303d992a9f9bd))
+* **pg-user-secret:** fix tests snapshots ([6b7191b](https://github.com/SocialGouv/kosko-charts/commit/6b7191bbfed8c147a7e97771e878e52eaa630c0c))
+* **pg-user-secret:** fix tests snapshots ([e73e13c](https://github.com/SocialGouv/kosko-charts/commit/e73e13cf27971a2363d719bb4307ae4e8559ae33))
+* **pg-user-secret:** fix tests snapshots ([3a7c55e](https://github.com/SocialGouv/kosko-charts/commit/3a7c55e2628822554d281372fcfe722509e01ff2))
+* **pg-user-secret:** remove azure prefix ([93d8fc7](https://github.com/SocialGouv/kosko-charts/commit/93d8fc71bbdce1ad6c9b11b9b0fc4db7d88bc75a))
+* **pg-user-secret:** remove azure prefix ([43ce5a6](https://github.com/SocialGouv/kosko-charts/commit/43ce5a67683d901f13e2bc582878e8acb4f54f6d))
+* **pg-user-secret:** remove azure prefix ([d9ae291](https://github.com/SocialGouv/kosko-charts/commit/d9ae291511b3ec0955bc43c35e84e1e00d310a26))
+* **wip:** wip ([dd45d6b](https://github.com/SocialGouv/kosko-charts/commit/dd45d6bdeda2030e7b9d263684491e6472ebd765))
+* **wip:** wip ([bf57430](https://github.com/SocialGouv/kosko-charts/commit/bf57430f81e891ff9a4f321cbcdc3a1c9e52ca7f))
+
 # [9.15.0](https://github.com/SocialGouv/kosko-charts/compare/v9.14.1...v9.15.0) (2022-01-12)
 
 
