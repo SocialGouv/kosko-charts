@@ -1,3 +1,10 @@
+## [9.17.1](https://github.com/SocialGouv/kosko-charts/compare/v9.17.0...v9.17.1) (2022-01-20)
+
+
+### Bug Fixes
+
+* **oauth2-proxy:** add AppConfig param ([#902](https://github.com/SocialGouv/kosko-charts/issues/902)) ([5a7e0a6](https://github.com/SocialGouv/kosko-charts/commit/5a7e0a65a32fbe44c2ad6a875f174f7ec0b31bb9))
+
 # [9.17.0](https://github.com/SocialGouv/kosko-charts/compare/v9.16.0...v9.17.0) (2022-01-20)
 
 
