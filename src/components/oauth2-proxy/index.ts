@@ -5,12 +5,13 @@ import type { ConfigMap } from "kubernetes-models/v1";
 import { EnvVar } from "kubernetes-models/v1";
 import path from "path";
 
-import { addEnv, getDeployment, getIngressHost } from "../..//utils";
+import { addEnv, getDeployment, getIngressHost } from "../../utils";
 import environments from "../../environments";
-import { create as appCreate } from "../app";
+import { AppConfig, create as appCreate } from "../app";
 
 interface ProxyParams {
   upstream: string;
+  config?: Partial<AppConfig>;
 }
 
 // renovate: datasource=docker depName=sosedoff/pgweb versioning=v7.2.0
@@ -42,7 +43,7 @@ expect these files :
  - environments/[env]/oauth2-proxy-configmap.yaml
  - environments/[env]/oauth2-proxy-sealed-secret.yaml
 */
-export const create = async ({ upstream }: ProxyParams) => {
+export const create = async ({ upstream, config = {} }: ProxyParams) => {
   // expect dedicated configmap
   const configMap = (await loadEnvYaml(
     "oauth2-proxy-configmap.yml"
@@ -91,6 +92,7 @@ export const create = async ({ upstream }: ProxyParams) => {
       },
       containerPort: 4180,
       image: `quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2_PROXY_VERSION}`,
+      ...config,
     },
     env: koskoEnv,
   });
