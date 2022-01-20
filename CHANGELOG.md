@@ -1,3 +1,10 @@
+# [9.17.0](https://github.com/SocialGouv/kosko-charts/compare/v9.16.0...v9.17.0) (2022-01-20)
+
+
+### Features
+
+* **autodevops:** Add hasura resources config ([#878](https://github.com/SocialGouv/kosko-charts/issues/878)) ([1f1cdca](https://github.com/SocialGouv/kosko-charts/commit/1f1cdca58da00074817dcf74679a92b71092100a))
+
 # [9.17.0-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.16.0...v9.17.0-alpha.1) (2022-01-20)
 
 
