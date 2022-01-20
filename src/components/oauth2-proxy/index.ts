@@ -5,9 +5,10 @@ import type { ConfigMap } from "kubernetes-models/v1";
 import { EnvVar } from "kubernetes-models/v1";
 import path from "path";
 
-import { addEnv, getDeployment, getIngressHost } from "../../utils";
 import environments from "../../environments";
-import { AppConfig, create as appCreate } from "../app";
+import { addEnv, getDeployment, getIngressHost } from "../../utils";
+import type { AppConfig } from "../app";
+import { create as appCreate } from "../app";
 
 interface ProxyParams {
   upstream: string;

@@ -57,10 +57,10 @@ test("should return dev manifests with custom config", async () => {
   jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
 
   const manifests = await create({
-    upstream: "http://target:123",
     config: {
       subDomainPrefix: "metabase-",
     },
+    upstream: "http://target:123",
   });
   expect(manifests).toMatchSnapshot();
 });
