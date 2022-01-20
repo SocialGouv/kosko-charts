@@ -109,7 +109,7 @@ jobs:
         run: |
           git status
 
-      - uses: EndBug/add-and-commit@v7
+      - uses: EndBug/add-and-commit@v8
         env:
           HUSKY_SKIP_HOOKS: "true"
           GITHUB_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
