@@ -89,9 +89,10 @@ export default async (): Manifests => {
     if (devInitContainerCommand && env.env === "dev") {
       addInitContainerCommand(deployment, {
         command: devInitContainerCommand,
-        image,
         // copy env from main container
         envFrom: deployment.spec?.template.spec?.containers[0].envFrom,
+
+        image,
       });
     }
 

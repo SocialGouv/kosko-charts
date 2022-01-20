@@ -45,3 +45,22 @@ test("should return dev manifests", async () => {
   });
   expect(manifests).toMatchSnapshot();
 });
+
+test("should return dev manifests with custom config", async () => {
+  process.env.GITHUB_SHA = "123";
+  process.env.GITHUB_REF = "456";
+  process.env.GITHUB_JOB = "777";
+  process.env.GITHUB_RUN_ID = "888";
+  process.env.GITHUB_REPOSITORY = "socialgouv/test";
+  process.env.SOCIALGOUV_BASE_DOMAIN = "fabrique.social.gouv.fr";
+
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+
+  const manifests = await create({
+    config: {
+      subDomainPrefix: "metabase-",
+    },
+    upstream: "http://target:123",
+  });
+  expect(manifests).toMatchSnapshot();
+});
