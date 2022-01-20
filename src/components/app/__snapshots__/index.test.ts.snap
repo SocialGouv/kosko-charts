@@ -9,6 +9,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -33,6 +34,7 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/delete-strategy": "orphan",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -106,6 +108,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -139,6 +142,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -196,6 +200,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -220,6 +225,7 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/delete-strategy": "orphan",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -330,6 +336,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -363,6 +370,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -420,6 +428,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -444,6 +453,7 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/delete-strategy": "orphan",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -517,6 +527,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -550,6 +561,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -607,6 +619,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -631,6 +644,7 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/delete-strategy": "orphan",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -741,6 +755,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -774,6 +789,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -831,6 +847,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -855,6 +872,7 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/delete-strategy": "orphan",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -928,6 +946,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -962,6 +981,7 @@ Array [
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
         "cert-manager.io/cluster-issuer": "letsencrypt-prod",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -1020,6 +1040,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -1044,6 +1065,7 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/delete-strategy": "orphan",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -1117,6 +1139,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -1151,6 +1174,7 @@ Array [
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
         "cert-manager.io/cluster-issuer": "letsencrypt-prod",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",
@@ -1209,6 +1233,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -1233,6 +1258,7 @@ Array [
           "annotations": Object {
             "app.gitlab.com/app": "socialgouv-sample",
             "app.gitlab.com/env": "my-test",
+            "kapp.k14s.io/delete-strategy": "orphan",
             "kapp.k14s.io/disable-default-label-scoping-rules": "",
             "kapp.k14s.io/disable-default-ownership-label-rules": "",
           },
@@ -1306,6 +1332,7 @@ Array [
       "annotations": Object {
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
       },
@@ -1340,6 +1367,7 @@ Array [
         "app.gitlab.com/app": "socialgouv-sample",
         "app.gitlab.com/env": "my-test",
         "cert-manager.io/cluster-issuer": "letsencrypt-prod",
+        "kapp.k14s.io/delete-strategy": "orphan",
         "kapp.k14s.io/disable-default-label-scoping-rules": "",
         "kapp.k14s.io/disable-default-ownership-label-rules": "",
         "kubernetes.io/ingress.class": "nginx",

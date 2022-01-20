@@ -8,6 +8,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -29,6 +30,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-next-app
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
@@ -75,6 +77,7 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 5
+            initialDelaySeconds: 120
           envFrom:
             - secretRef:
                 name: azure-pg-user
@@ -105,6 +108,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -135,6 +139,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -204,6 +209,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -225,6 +231,7 @@ spec:
       annotations:
         kapp.k14s.io/disable-default-ownership-label-rules: ''
         kapp.k14s.io/disable-default-label-scoping-rules: ''
+        kapp.k14s.io/delete-strategy: orphan
         app.gitlab.com/app: socialgouv-sample-next-app
         app.gitlab.com/env: prod2
         app.gitlab.com/env.name: prod2
@@ -301,6 +308,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -327,6 +335,7 @@ metadata:
   annotations:
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
@@ -349,6 +358,7 @@ metadata:
     kubernetes.io/tls-acme: 'true'
     kapp.k14s.io/disable-default-ownership-label-rules: ''
     kapp.k14s.io/disable-default-label-scoping-rules: ''
+    kapp.k14s.io/delete-strategy: orphan
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: prod2
     app.gitlab.com/env.name: prod2
