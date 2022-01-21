@@ -230,7 +230,7 @@ spec:
               value: hstore pgcrypto citext uuid-ossp postgis
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: azure-pg-admin-user
           image: ghcr.io/socialgouv/docker/azure-db:6.56.1
           imagePullPolicy: IfNotPresent
           name: create-db-user

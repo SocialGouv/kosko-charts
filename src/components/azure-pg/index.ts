@@ -91,7 +91,11 @@ export const create = async (
     config // create options
   );
 
-  const job = createDbJob(defaultParams);
+  const job = createDbJob({
+    ...defaultParams,
+    secretRefName: undefined,
+  });
+
   updateMetadata(job, {
     annotations: envParams.annotations,
     labels: envParams.labels ?? {},
