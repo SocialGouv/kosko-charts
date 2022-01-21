@@ -1,3 +1,10 @@
+## [9.17.3](https://github.com/SocialGouv/kosko-charts/compare/v9.17.2...v9.17.3) (2022-01-21)
+
+
+### Bug Fixes
+
+* **metabase:** increase requests/limits ([#905](https://github.com/SocialGouv/kosko-charts/issues/905)) ([2bac06d](https://github.com/SocialGouv/kosko-charts/commit/2bac06d4f40c8590f6f11c526e1538473f4bc1ad))
+
 ## [9.17.2](https://github.com/SocialGouv/kosko-charts/compare/v9.17.1...v9.17.2) (2022-01-21)
 
 
