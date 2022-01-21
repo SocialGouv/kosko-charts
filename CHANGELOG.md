@@ -1,3 +1,10 @@
+## [9.17.2](https://github.com/SocialGouv/kosko-charts/compare/v9.17.1...v9.17.2) (2022-01-21)
+
+
+### Bug Fixes
+
+* **azure-pg:** fix create db secret ([#904](https://github.com/SocialGouv/kosko-charts/issues/904)) ([d4bee51](https://github.com/SocialGouv/kosko-charts/commit/d4bee51ba01fd3eeb102287ba5f50c862f2513cf))
+
 ## [9.17.1](https://github.com/SocialGouv/kosko-charts/compare/v9.17.0...v9.17.1) (2022-01-20)
 
 
