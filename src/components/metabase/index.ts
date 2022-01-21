@@ -6,8 +6,8 @@ import { merge } from "@socialgouv/kosko-charts/utils/@kosko/env/merge";
 import type { AppConfig, CreateFn } from "../app";
 import { create as createApp } from "../app";
 
-// renovate: datasource=docker depName=metabase/metabase versioning=v0.38.6
-const DOCKER_METABASE_TAG = "v0.38.6";
+// renovate: datasource=docker depName=metabase/metabase versioning=v0.41.6
+const DOCKER_METABASE_TAG = "v0.41.6";
 
 const metabaseConfig: Partial<AppConfig> = {
   containerPort: 3000,
@@ -31,12 +31,12 @@ const metabaseDeployment: Partial<Omit<DeploymentParams, "containerPort">> = {
     },
     resources: {
       limits: {
-        cpu: "500m",
-        memory: "1024Mi",
+        cpu: "1000m",
+        memory: "2048Mi",
       },
       requests: {
-        cpu: "100m",
-        memory: "256Mi",
+        cpu: "500m",
+        memory: "512Mi",
       },
     },
     startupProbe: {
