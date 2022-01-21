@@ -6,7 +6,7 @@ Array [
   Object {
     "config": Object {
       "containerPort": 3000,
-      "image": "metabase/metabase:v0.38.6",
+      "image": "metabase/metabase:v0.41.6",
       "subDomainPrefix": "metabase-",
     },
     "deployment": Object {
@@ -25,12 +25,12 @@ Array [
         },
         "resources": Object {
           "limits": Object {
-            "cpu": "500m",
-            "memory": "1024Mi",
+            "cpu": "1000m",
+            "memory": "2048Mi",
           },
           "requests": Object {
-            "cpu": "100m",
-            "memory": "256Mi",
+            "cpu": "500m",
+            "memory": "512Mi",
           },
         },
         "startupProbe": Object {
