@@ -102,14 +102,14 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -194,7 +194,7 @@ metadata:
     app.gitlab.com/app: socialgouv-sample-next-app
     app.gitlab.com/env: preprod-dev2
     app.gitlab.com/env.name: preprod-dev2
-  name: azure-pg-user
+  name: pg-user
   labels:
     application: v1-2-3-sample-next-app
     component: v1-2-3-sample-next-app
@@ -236,6 +236,6 @@ spec:
         owner: sample-next-app
         team: sample-next-app
         component: v1-2-3-sample-next-app
-      name: azure-pg-user
+      name: pg-user
     type: Opaque"
 `;

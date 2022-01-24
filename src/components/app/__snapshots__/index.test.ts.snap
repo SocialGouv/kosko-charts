@@ -242,7 +242,7 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user-my-test-branch",
+                    "name": "pg-user-my-test-branch",
                   },
                 },
               ],
@@ -306,7 +306,7 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user-my-test-branch",
+                    "name": "pg-user-my-test-branch",
                   },
                 },
               ],
@@ -661,7 +661,7 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user",
+                    "name": "pg-user",
                   },
                 },
               ],
@@ -725,7 +725,7 @@ Array [
               "envFrom": Array [
                 Object {
                   "secretRef": Object {
-                    "name": "azure-pg-user",
+                    "name": "pg-user",
                   },
                 },
               ],

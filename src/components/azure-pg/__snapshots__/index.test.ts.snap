@@ -88,7 +88,7 @@ Array [
         "owner": "my-team",
         "team": "my-team",
       },
-      "name": "azure-pg-user-my-test-branch",
+      "name": "pg-user-my-test-branch",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {
@@ -194,7 +194,7 @@ Array [
         "owner": "my-team",
         "team": "my-team",
       },
-      "name": "azure-pg-user-my-test-branch",
+      "name": "pg-user-my-test-branch",
       "namespace": "sample-42-my-test",
     },
     "stringData": Object {

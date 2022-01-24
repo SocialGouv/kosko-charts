@@ -82,7 +82,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
           env:
             - name: APP_BASE_URL
               value: https://sample-kosko.dev2.fabrique.social.gouv.fr
@@ -94,7 +94,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user
+                name: pg-user
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres

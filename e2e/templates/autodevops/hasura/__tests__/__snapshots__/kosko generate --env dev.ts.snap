@@ -244,14 +244,14 @@ spec:
             initialDelaySeconds: 120
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -559,14 +559,14 @@ spec:
             initialDelaySeconds: 120
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -862,14 +862,14 @@ spec:
             initialDelaySeconds: 120
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -1200,14 +1200,14 @@ spec:
             initialDelaySeconds: 120
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
       initContainers:
         - env:
             - name: WAIT_FOR_RETRIES
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres

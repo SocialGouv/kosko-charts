@@ -8,7 +8,7 @@ import { getDefaultPgParams } from "../components/azure-pg";
  *
  * This function will add a reference to the default postgres user secret to a given [[Deployment]]
  *
- * This secret is named `azure-pg-user` or `azure-pg-user-SHA1` on feature-branches.
+ * This secret is named `pg-user` or `pg-user-SHA1` on feature-branches.
  *
  * ```typescript
  * import { addPostgresUserSecret } from "@socialgouv/kosko-charts/utils"

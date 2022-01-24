@@ -110,7 +110,7 @@ spec:
             initialDelaySeconds: 120
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
             - configMapRef:
                 name: hasura-configmap
       initContainers:
@@ -119,7 +119,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres
@@ -269,7 +269,7 @@ metadata:
     owner: sample-next-app
     team: sample-next-app
     cert: wildcard
-  name: azure-pg-user-e2e-branch
+  name: pg-user-e2e-branch
   namespace: sample-next-app-e2e-branch
 ---
 apiVersion: apps/v1
@@ -356,7 +356,7 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
             - configMapRef:
                 name: app-configmap
       initContainers:
@@ -365,7 +365,7 @@ spec:
               value: '24'
           envFrom:
             - secretRef:
-                name: azure-pg-user-e2e-branch
+                name: pg-user-e2e-branch
           image: ghcr.io/socialgouv/docker/wait-for-postgres:6.56.1
           imagePullPolicy: Always
           name: wait-for-postgres

@@ -27,7 +27,7 @@ export const getDefaultPgParams = (
 
   const pgUserSecretPrefix = process.env.PG_USER_SECRET_PREFIX
     ? process.env.PG_USER_SECRET_PREFIX
-    : "azure-pg-user";
+    : "pg-user";
 
   return {
     ...getDevDatabaseParameters({
