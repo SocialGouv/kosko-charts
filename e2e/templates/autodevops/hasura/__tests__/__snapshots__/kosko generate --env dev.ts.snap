@@ -236,12 +236,14 @@ spec:
               cpu: 100m
               memory: 64Mi
           startupProbe:
-            failureThreshold: 12
+            failureThreshold: 20
             httpGet:
               path: /healthz
               port: http
-            periodSeconds: 5
-            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -551,12 +553,14 @@ spec:
               cpu: 250m
               memory: 512Mi
           startupProbe:
-            failureThreshold: 12
+            failureThreshold: 20
             httpGet:
               path: /healthz
               port: http
-            periodSeconds: 5
-            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -854,12 +858,14 @@ spec:
               cpu: 100m
               memory: 64Mi
           startupProbe:
-            failureThreshold: 12
+            failureThreshold: 20
             httpGet:
               path: /healthz
               port: http
-            periodSeconds: 5
-            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -1192,12 +1198,14 @@ spec:
               cpu: 100m
               memory: 64Mi
           startupProbe:
-            failureThreshold: 12
+            failureThreshold: 20
             httpGet:
               path: /healthz
               port: http
-            periodSeconds: 5
-            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
