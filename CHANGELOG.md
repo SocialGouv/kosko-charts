@@ -1,3 +1,11 @@
+## [9.17.4-alpha.1](https://github.com/SocialGouv/kosko-charts/compare/v9.17.3...v9.17.4-alpha.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* **db:** remove azure prefix from secret ref name ([5948180](https://github.com/SocialGouv/kosko-charts/commit/5948180c7822c554718afa93c115bc82c869b988))
+* test ([09017c3](https://github.com/SocialGouv/kosko-charts/commit/09017c301d5fa0b8aeac70adfcbb009c4f1949df))
+
 ## [9.17.3](https://github.com/SocialGouv/kosko-charts/compare/v9.17.2...v9.17.3) (2022-01-21)
 
 
