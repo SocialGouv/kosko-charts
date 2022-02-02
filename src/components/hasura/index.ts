@@ -19,7 +19,12 @@ const hasuraConfig: Partial<AppConfig> = {
       },
     },
     startupProbe: {
-      initialDelaySeconds: 120,
+      // wait 30 sec and up to 20*10sec to start
+      successThreshold: 1,
+      failureThreshold: 20,
+      periodSeconds: 10,
+      timeoutSeconds: 5,
+      initialDelaySeconds: 30,
     },
   },
   containerPort: 80,
