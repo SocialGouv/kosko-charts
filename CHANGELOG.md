@@ -1,3 +1,10 @@
+## [9.17.4](https://github.com/SocialGouv/kosko-charts/compare/v9.17.3...v9.17.4) (2022-02-02)
+
+
+### Bug Fixes
+
+* **hasura:** faster startupProbe ([#908](https://github.com/SocialGouv/kosko-charts/issues/908)) ([8146cf6](https://github.com/SocialGouv/kosko-charts/commit/8146cf673b1288252bcd9118f836e30d46b08b10))
+
 ## [9.17.3](https://github.com/SocialGouv/kosko-charts/compare/v9.17.2...v9.17.3) (2022-01-21)
 
 
