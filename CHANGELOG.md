@@ -1,3 +1,10 @@
+## [9.17.6](https://github.com/SocialGouv/kosko-charts/compare/v9.17.5...v9.17.6) (2022-02-10)
+
+
+### Bug Fixes
+
+* **oauth:** use console.error ([#913](https://github.com/SocialGouv/kosko-charts/issues/913)) ([08ae0ca](https://github.com/SocialGouv/kosko-charts/commit/08ae0caf4573a5c33841ba6a2fbf42258c5053cf))
+
 ## [9.17.5](https://github.com/SocialGouv/kosko-charts/compare/v9.17.4...v9.17.5) (2022-02-10)
 
 
