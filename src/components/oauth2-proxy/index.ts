@@ -51,19 +51,33 @@ expect these files :
  - environments/[env]/oauth2-proxy-configmap.yaml
  - environments/[env]/oauth2-proxy-sealed-secret.yaml
 */
-export const create = async ({ upstream, config = {} }: ProxyParams) => {
+
+export const create = async (
+  name: string | ProxyParams,
+  params?: ProxyParams
+) => {
+  let { upstream, config = {} } = params || {};
+
+  // todo: remove legacy call support (without name)
+  //@ts-ignore
+  if (!upstream && "upstream" in name) {
+    //@ts-ignore
+    upstream = name.upstream;
+    //@ts-ignore
+    config = name.config || {};
+    name = "proxy";
+  }
   // expect dedicated configmap
-  const configMap = (await loadEnvYaml(
-    "oauth2-proxy-configmap.yml"
-  )) as ConfigMap;
+  const configMap = (await loadEnvYaml(`${name}.configmap.yml`)) as ConfigMap;
 
   // expect dedicated secret
   const sealedSecret = (await loadEnvYaml(
-    "oauth2-proxy-sealed-secret.yml"
+    `${name}.sealed-secret.yml`
   )) as SealedSecret;
 
   // oauth2 containers
-  const manifests = await appCreate("proxy", {
+  //@ts-ignore
+  const manifests = await appCreate(name, {
     config: {
       ...config,
       container: {
@@ -75,6 +89,7 @@ export const create = async ({ upstream, config = {} }: ProxyParams) => {
             secretRef: { name: sealedSecret.metadata?.name },
           },
         ],
+        //@ts-ignore
         ...config.container,
         args: ["--upstream", upstream],
         env: [
@@ -82,6 +97,7 @@ export const create = async ({ upstream, config = {} }: ProxyParams) => {
             name: "OAUTH2_PROXY_HTTP_ADDRESS",
             value: "0.0.0.0:4180",
           }),
+          //@ts-ignore
           ...(config.container?.env ?? []),
         ],
         livenessProbe: {
