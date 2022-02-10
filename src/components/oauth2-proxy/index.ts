@@ -16,8 +16,8 @@ interface ProxyParams {
   config?: Partial<AppConfig>;
 }
 
-// renovate: datasource=docker depName=sosedoff/pgweb versioning=v7.2.0
-const OAUTH2_PROXY_VERSION = "v7.2.0";
+// renovate: datasource=docker depName=quay.io/oauth2-proxy/oauth2-proxy versioning=v7.2.1
+const OAUTH2_PROXY_VERSION = "v7.2.1";
 
 // load some YAML from user env
 const loadEnvYaml = async (fileName: string) => {
@@ -53,20 +53,23 @@ expect these files :
 */
 
 export const create = async (
-  name: string | ProxyParams,
+  name: ProxyParams | string,
   params?: ProxyParams
 ) => {
-  let { upstream, config = {} } = params || {};
+  let { upstream, config = {} } = params ?? {};
 
   // todo: remove legacy call support (without name)
-  //@ts-ignore
+  //@ts-expect-error
   if (!upstream && "upstream" in name) {
-    //@ts-ignore
     upstream = name.upstream;
-    //@ts-ignore
-    config = name.config || {};
+    config = name.config ?? {};
     name = "proxy";
   }
+
+  if (typeof name !== "string" || !upstream) {
+    return [];
+  }
+
   // expect dedicated configmap
   const configMap = (await loadEnvYaml(`${name}.configmap.yml`)) as ConfigMap;
 
@@ -76,7 +79,6 @@ export const create = async (
   )) as SealedSecret;
 
   // oauth2 containers
-  //@ts-ignore
   const manifests = await appCreate(name, {
     config: {
       ...config,
@@ -89,7 +91,6 @@ export const create = async (
             secretRef: { name: sealedSecret.metadata?.name },
           },
         ],
-        //@ts-ignore
         ...config.container,
         args: ["--upstream", upstream],
         env: [
@@ -97,7 +98,6 @@ export const create = async (
             name: "OAUTH2_PROXY_HTTP_ADDRESS",
             value: "0.0.0.0:4180",
           }),
-          //@ts-ignore
           ...(config.container?.env ?? []),
         ],
         livenessProbe: {

@@ -100,7 +100,7 @@ Array [
                   },
                 },
               ],
-              "image": "quay.io/oauth2-proxy/oauth2-proxy:v7.2.0",
+              "image": "quay.io/oauth2-proxy/oauth2-proxy:v7.2.1",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
@@ -353,7 +353,7 @@ Array [
                   },
                 },
               ],
-              "image": "quay.io/oauth2-proxy/oauth2-proxy:v7.2.0",
+              "image": "quay.io/oauth2-proxy/oauth2-proxy:v7.2.1",
               "livenessProbe": Object {
                 "failureThreshold": 6,
                 "httpGet": Object {
