@@ -56,7 +56,7 @@ test("should return dev manifests", async () => {
 
   jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
 
-  const manifests = await create({
+  const manifests = await create("proxy", {
     upstream: "http://target:123",
   });
   expect(manifests).toMatchSnapshot();
@@ -72,7 +72,7 @@ test("should return dev manifests with custom config", async () => {
 
   jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
 
-  const manifests = await create({
+  const manifests = await create("proxy", {
     config: {
       subDomainPrefix: "metabase-",
     },
@@ -82,6 +82,40 @@ test("should return dev manifests with custom config", async () => {
 });
 
 test("should return dev manifests with custom envFrom", async () => {
+  process.env.GITHUB_SHA = "123";
+  process.env.GITHUB_REF = "456";
+  process.env.GITHUB_JOB = "777";
+  process.env.GITHUB_RUN_ID = "888";
+  process.env.GITHUB_REPOSITORY = "socialgouv/test";
+  process.env.SOCIALGOUV_BASE_DOMAIN = "fabrique.social.gouv.fr";
+
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+
+  const expectedEnvFrom = [
+    {
+      secretRef: { name: "another-secret" },
+    },
+    {
+      configMapRef: { name: "another-configmap" },
+    },
+  ];
+  const manifests = await create("proxy", {
+    config: {
+      container: {
+        envFrom: expectedEnvFrom,
+      },
+      subDomainPrefix: "metabase-",
+    },
+    upstream: "http://target:123",
+  });
+
+  // @ts-ignore
+  const containerEnvFrom = manifests.find((m) => m.kind === "Deployment").spec
+    .template.spec.containers[0].envFrom;
+  expect(containerEnvFrom).toEqual(expectedEnvFrom);
+});
+
+test("should return dev manifests with custom envFrom (legacy syntax)", async () => {
   process.env.GITHUB_SHA = "123";
   process.env.GITHUB_REF = "456";
   process.env.GITHUB_JOB = "777";
@@ -116,6 +150,35 @@ test("should return dev manifests with custom envFrom", async () => {
 });
 
 test("should return proxy manifests with custom env", async () => {
+  process.env.GITHUB_SHA = "123";
+  process.env.GITHUB_REF = "456";
+  process.env.GITHUB_JOB = "777";
+  process.env.GITHUB_RUN_ID = "888";
+  process.env.GITHUB_REPOSITORY = "socialgouv/test";
+  process.env.SOCIALGOUV_BASE_DOMAIN = "fabrique.social.gouv.fr";
+
+  jest.doMock("@socialgouv/kosko-charts/environments", () => environmentMock);
+
+  const manifests = await create("proxy", {
+    config: {
+      container: {
+        env: [
+          {
+            name: "CUSTOM_VAR",
+            value: "HELLO",
+          },
+        ],
+      },
+    },
+    upstream: "http://target:123",
+  });
+  //@ts-expect-error
+  const containerEnv = manifests.find((m) => m.kind === "Deployment").spec
+    .template.spec.containers[0].env;
+  expect(containerEnv).toMatchSnapshot();
+});
+
+test("should return proxy manifests with custom env (legacy syntax)", async () => {
   process.env.GITHUB_SHA = "123";
   process.env.GITHUB_REF = "456";
   process.env.GITHUB_JOB = "777";
