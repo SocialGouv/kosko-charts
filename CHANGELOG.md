@@ -1,3 +1,10 @@
+## [9.17.5](https://github.com/SocialGouv/kosko-charts/compare/v9.17.4...v9.17.5) (2022-02-10)
+
+
+### Bug Fixes
+
+* **oauth2:** allow to override config ([#912](https://github.com/SocialGouv/kosko-charts/issues/912)) ([eb67f77](https://github.com/SocialGouv/kosko-charts/commit/eb67f77960aa9caf6e1ac7a1c371008fc1656b5d))
+
 ## [9.17.4](https://github.com/SocialGouv/kosko-charts/compare/v9.17.3...v9.17.4) (2022-02-02)
 
 
