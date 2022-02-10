@@ -241,9 +241,9 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 10
+            initialDelaySeconds: 30
             successThreshold: 1
             timeoutSeconds: 5
-            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -558,9 +558,9 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 10
+            initialDelaySeconds: 30
             successThreshold: 1
             timeoutSeconds: 5
-            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -863,9 +863,9 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 10
+            initialDelaySeconds: 30
             successThreshold: 1
             timeoutSeconds: 5
-            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
@@ -1203,9 +1203,9 @@ spec:
               path: /healthz
               port: http
             periodSeconds: 10
+            initialDelaySeconds: 30
             successThreshold: 1
             timeoutSeconds: 5
-            initialDelaySeconds: 30
           envFrom:
             - secretRef:
                 name: azure-pg-user-e2e-branch
