@@ -6,3 +6,4 @@
 /utils
 coverage
 node_modules
+*.test.ts
