@@ -27,7 +27,7 @@ const loadEnvYaml = async (fileName: string) => {
   );
 
   if (!existsSync(yamlPath)) {
-    console.info(`does not exist : ${yamlPath}`);
+    console.error(`does not exist : ${yamlPath}`);
     return [];
   }
   const manifests = await loadFile(yamlPath, {
