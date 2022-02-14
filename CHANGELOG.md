@@ -1,3 +1,10 @@
+## [9.17.8](https://github.com/SocialGouv/kosko-charts/compare/v9.17.7...v9.17.8) (2022-02-14)
+
+
+### Bug Fixes
+
+* **ingress:** remove trailing hyphens ([#915](https://github.com/SocialGouv/kosko-charts/issues/915)) ([1ff91cd](https://github.com/SocialGouv/kosko-charts/commit/1ff91cdaf220c014b398235ebf5199ccfac52330))
+
 ## [9.17.7](https://github.com/SocialGouv/kosko-charts/compare/v9.17.6...v9.17.7) (2022-02-10)
 
 
