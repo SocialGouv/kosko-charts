@@ -190,7 +190,7 @@ export const create: CreateFn = async (
 
   const MAX_HOSTNAME_SIZE = 53;
   const shortenHost = (hostname: string) =>
-    hostname.slice(0, MAX_HOSTNAME_SIZE);
+    hostname.slice(0, MAX_HOSTNAME_SIZE).replace(/-+$/, "");
 
   /* INGRESS */
   if (envParams.ingress !== false) {
