@@ -24,6 +24,7 @@ export default async (): Manifests => {
     probesPath,
     resources,
     azurepg,
+    pg,
     hasura,
     ingress,
     registry = "harbor",
@@ -62,7 +63,7 @@ export default async (): Manifests => {
       config: {
         containerPort: containerPort ?? 3000,
         subdomain,
-        withPostgres: azurepg && !hasura,
+        withPostgres: (pg || azurepg) && !hasura,
       },
       deployment: {
         container: {
