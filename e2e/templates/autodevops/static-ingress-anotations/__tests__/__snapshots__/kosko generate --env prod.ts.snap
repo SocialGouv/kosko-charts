@@ -2,27 +2,6 @@
 
 exports[`static-ingress-anotations: kosko generate --prod 1`] = `
 "---
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: netpol-sample-kosko-24-e2e-branch-42
-  namespace: sample-kosko-24-e2e-branch-42
-spec:
-  ingress:
-    - from:
-        - podSelector: {}
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              network-policy/source: ingress-controller
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              network-policy/source: monitoring
-  podSelector: {}
-  policyTypes:
-    - Ingress
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
