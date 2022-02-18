@@ -1,3 +1,10 @@
+# [9.18.0](https://github.com/SocialGouv/kosko-charts/compare/v9.17.8...v9.18.0) (2022-02-18)
+
+
+### Features
+
+* **autodevops:** add config.pg ([#916](https://github.com/SocialGouv/kosko-charts/issues/916)) ([8fbee0a](https://github.com/SocialGouv/kosko-charts/commit/8fbee0a5750be68d80fdd4200955795082f52eef))
+
 ## [9.17.8](https://github.com/SocialGouv/kosko-charts/compare/v9.17.7...v9.17.8) (2022-02-14)
 
 
