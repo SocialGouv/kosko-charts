@@ -10,6 +10,7 @@ interface Probes {
 interface Hasura {
   exposed: boolean;
   resources: Record<string, unknown>;
+  containerPort: number;
 }
 
 interface ConfigTypes {
