@@ -12,6 +12,7 @@ import Config from "../utils/config";
 export default async (): Promise<{ kind: string }[] | Manifest[]> => {
   const { azurepg, pgHostDev } = await Config();
   const ciEnv = environments(process.env);
+  // only run create-db job in dev and when azurepg is true
   if (!azurepg) {
     return [];
   }

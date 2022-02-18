@@ -19,6 +19,9 @@ interface ConfigTypes {
   /** force deployment sudomain */
   subdomain: string;
   hasura?: Hasura | boolean | "exposed";
+  /** Add `pg-user` secretRef to container and wait-for-pg initContainer environments. */
+  pg?: boolean;
+  /** Add `azure-pg-user` secretRef to container and wait-for-pg initContainer environments. Also create a create-db Job in dev */
   azurepg?: boolean;
   /** define a custom pgHost for development */
   pgHostDev?: string;
