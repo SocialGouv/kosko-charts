@@ -1,3 +1,10 @@
+# [9.19.0](https://github.com/SocialGouv/kosko-charts/compare/v9.18.0...v9.19.0) (2022-02-18)
+
+
+### Features
+
+* Hasura containerPort ([#917](https://github.com/SocialGouv/kosko-charts/issues/917)) ([335d65d](https://github.com/SocialGouv/kosko-charts/commit/335d65d6a4435d2d44ef5e8f7b631995f35ee780))
+
 # [9.18.0](https://github.com/SocialGouv/kosko-charts/compare/v9.17.8...v9.18.0) (2022-02-18)
 
 
