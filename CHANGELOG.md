@@ -1,3 +1,10 @@
+## [9.19.1](https://github.com/SocialGouv/kosko-charts/compare/v9.19.0...v9.19.1) (2022-02-22)
+
+
+### Bug Fixes
+
+* **autodevops:** rm netpols ([#918](https://github.com/SocialGouv/kosko-charts/issues/918)) ([5440ca1](https://github.com/SocialGouv/kosko-charts/commit/5440ca118a5cdb08d512b87db44a997ae71e10c0))
+
 # [9.19.0](https://github.com/SocialGouv/kosko-charts/compare/v9.18.0...v9.19.0) (2022-02-18)
 
 
