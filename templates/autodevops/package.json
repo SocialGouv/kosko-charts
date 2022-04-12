@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@kosko/env": "^3.0.0",
-    "@kubernetes-models/sealed-secrets": "^2.0.2",
+    "@kubernetes-models/sealed-secrets": "^3.0.0",
     "@socialgouv/kosko-charts": "9.19.2",
     "@types/node": "^16.11.14",
     "kosko": "^2.0.0",

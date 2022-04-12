@@ -582,6 +582,15 @@
     node-fetch "^2.6.6"
     tslib "^2.3.1"
 
+"@kubernetes-models/apimachinery@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/apimachinery/-/apimachinery-0.2.0.tgz#680cc2d2ed126d58d3acfa6b8d61dbb57dacb011"
+  integrity sha512-mSoBNn6ezZW9xJcLEZi41UbxQ/Z2NDyWLdY95wcYEoh5Cz6aBMhdzc3dzf89u6ZSZLcjuu5Kinr6rKampxXbjg==
+  dependencies:
+    "@kubernetes-models/base" "^3.0.0"
+    "@kubernetes-models/validate" "^2.0.1"
+    tslib "^2.3.1"
+
 "@kubernetes-models/base@2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@kubernetes-models/base/-/base-2.0.1.tgz#162a0d4e68d97e70a1b8cc3df4ac64697d97ed9f"
@@ -590,6 +599,15 @@
     "@kubernetes-models/validate" "2.0.1"
     is-plain-object "^5.0.0"
     tslib "^2.3.0"
+
+"@kubernetes-models/base@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/base/-/base-3.0.0.tgz#1b27498863cd10b9e422470e6524d0773adbccc7"
+  integrity sha512-oaWmwwZjMHgxa7FSpfUi8GbXPKmPZGOceVvB4KXc9JtgakZwDVgYBX2Q+fCf1mybbvypLOB/pjwpjznihaXEFQ==
+  dependencies:
+    "@kubernetes-models/validate" "^2.0.1"
+    is-plain-object "^5.0.0"
+    tslib "^2.3.1"
 
 "@kubernetes-models/sealed-secrets@^2.0.2":
   version "2.0.2"
@@ -601,7 +619,17 @@
     kubernetes-models "2.0.2"
     tslib "^2.3.0"
 
-"@kubernetes-models/validate@2.0.1":
+"@kubernetes-models/sealed-secrets@^3.0.0":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@kubernetes-models/sealed-secrets/-/sealed-secrets-3.0.2.tgz#609521727dc014643426aa1f224753855a3c2ae7"
+  integrity sha512-TGncvRJRiOOW8aSalZjj6Ou6S6mdfM7qRHNd8swmohi3NeCk20spU/dx+MiElBCmHDHVt2DodA6tw/mZLgYW/Q==
+  dependencies:
+    "@kubernetes-models/apimachinery" "^0.2.0"
+    "@kubernetes-models/base" "^3.0.0"
+    "@kubernetes-models/validate" "^2.0.1"
+    tslib "^2.3.1"
+
+"@kubernetes-models/validate@2.0.1", "@kubernetes-models/validate@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@kubernetes-models/validate/-/validate-2.0.1.tgz#fe421a08733ff7018f882c1e58a3b7a337964379"
   integrity sha512-jAXVwj1MJ3T2kEF3l0TYWDvzjVm4z9C7hWxgHKPoNu6zW5/BPxeYhxbCKtXrYRY4WaGWqVUF/6ogwK/vfuisVA==
@@ -659,10 +687,10 @@
     slugify "^1.6.3"
     tslib "^2.3.1"
 
-"@socialgouv/kosko-charts@9.8.20":
-  version "9.8.20"
-  resolved "https://registry.yarnpkg.com/@socialgouv/kosko-charts/-/kosko-charts-9.8.20.tgz#3d11a4f50443e6796b388becf57b94a1778ff9de"
-  integrity sha512-NUuLlQBk6krjUPGYjZquR+UbG7+wGe4Ai0FuKVuX+H5rRfHNE9o3Mj4d3FKfGUiJmW6PVWtbmzywiuJ/ZhTMkA==
+"@socialgouv/kosko-charts@9.19.2":
+  version "9.19.2"
+  resolved "https://registry.yarnpkg.com/@socialgouv/kosko-charts/-/kosko-charts-9.19.2.tgz#052d62e9dff01cf0fa6ca4bd4f466703ff56b3d3"
+  integrity sha512-suoRAOUh4knig2qB5Eki+qtkx9ktvBo5FqXEUj6ACLDpAbAcEtbteXX4darza7sXtls0vp0ImmfmbAhg3S8LyA==
   dependencies:
     "@kubernetes-models/sealed-secrets" "^2.0.2"
     "@sindresorhus/is" "^4.2.0"
