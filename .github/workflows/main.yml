@@ -92,7 +92,7 @@ jobs:
         run: yarn build --outDir lib
 
       - name: Archive lib components
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: components
           path: lib/
