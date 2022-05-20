@@ -2,8 +2,8 @@ import environments from "@socialgouv/kosko-charts/environments";
 import { Job } from "kubernetes-models/batch/v1";
 
 const SOCIALGOUV_DOCKER_IMAGE = "ghcr.io/socialgouv/docker/azure-db";
-// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.56.1
-const SOCIALGOUV_DOCKER_VERSION = "6.56.1";
+// renovate: datasource=docker depName=ghcr.io/socialgouv/docker/azure-db versioning=6.70.1
+const SOCIALGOUV_DOCKER_VERSION = "6.70.1";
 
 export const dropDbJob = ({
   database,
