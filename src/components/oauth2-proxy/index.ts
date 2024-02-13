@@ -16,8 +16,8 @@ interface ProxyParams {
   config?: Partial<AppConfig>;
 }
 
-// renovate: datasource=docker depName=quay.io/oauth2-proxy/oauth2-proxy versioning=v7.2.1
-const OAUTH2_PROXY_VERSION = "v7.2.1";
+// renovate: datasource=docker depName=quay.io/oauth2-proxy/oauth2-proxy versioning=v7.6.0
+const OAUTH2_PROXY_VERSION = "v7.6.0";
 
 // load some YAML from user env
 const loadEnvYaml = async (fileName: string) => {
